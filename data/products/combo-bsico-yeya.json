@@ -1,0 +1,32 @@
+{
+  "Category": "Productos",
+  "SubCategory": "Combos",
+  "Label": "Combo Básico YEYA",
+  "Images": [
+    "/images/products/combo-basico-yeya-0.webp",
+    "/images/products/combo-basico-yeya-1.webp"
+  ],
+  "Description": "Lo justo para empezar y no quedarse corto. Funcional, rendidor y sin complicaciones. Este combo incluye una selección equilibrada de productos básicos de alta calidad para tu despensa diaria, desde granos y pastas hasta café y productos de limpieza.",
+  "Price": "85.97 USD",
+  "Stock": 5,
+  "Features": [
+    "(10) Sazón completo YEYA (10 g)",
+    "(2) Frijoles negros YEYA (1 kg / 2.2 lb)",
+    "(2) Frazada de piso 60 x 80 cm YEYA",
+    "(2) Jabón de tocador de manzana YEYA (5 x 60 g / 2.12 oz)",
+    "(2) Estofado de cerdo YEYA (415 g / 14.6 oz)",
+    "(3) Aceite de girasol refinado YEYA (1 L)",
+    "(1) Azúcar morena YEYA (1 kg / 2.2 lb)",
+    "(2) Leche en polvo entera YEYA (800 g / 1.76 lb)",
+    "(1) Aceitunas verdes en rodajas con salsa Marmarabirlik (350 g / 12.34 oz)",
+    "(4) Arroz blanco de grano largo tailandés YEYA (1 kg / 2.2 lb)",
+    "(2) Café espresso Italiano YEYA (250 g / 8.8 oz)",
+    "(2) Sardinas en salmuera YEYA (425 g / 15 oz)",
+    "(1) Garbanzos en frasco de vidrio YEYA (540 g / 19 oz)",
+    "(2) Detergente en polvo con aroma a limón YEYA (500 g / 1.1 lb)",
+    "(2) Mayonesa con ajo YEYA (420 g / 14.8 oz)",
+    "(2) Pasta penne YEYA (400 g / 14.11 oz)"
+  ],
+  "Date": "2026-06-24T10:00:00-05:00",
+  "Update": "2026-06-24T10:00:00-05:00"
+}

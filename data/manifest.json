@@ -1,0 +1,47 @@
+{
+  "Title": "MERCADO",
+  "Cell": 54439440,
+  "Email": "suarezangulomarlon@gmail.com",
+  "Currency": "USD",
+  "BackgroundColor": "34, 34, 34",
+  "HeadNotification": "Transporte disponible y flexibilidad en la forma de pago.",
+  "Foot": "USD | CUP | EUR | Zelle | Paypal | Cashapp",
+  "CartPayMethod": "En el momento de la entrega.\r\n\r\nUSD, CUP, EUR, Zelle, Cashapp, Paypal",
+  "CartShipping": "Acordar al realizar la orden. Las entregas se realizan en el día.",
+  "Warranty": "15 días de garantía contra \"Defectos de Fábrica\".\r\n\r\nAnte problemas, el artículo no puede tener golpes, rayones, nada que indique mal uso y guardar todas las cajas, accesorios y envoltorios con los que fue entregado. De lo contrario se anula la garantía.",
+  "ProductStatus": "A Estrenar",
+  "ProductDefStatus": "Nuevo",
+  "Not1": "{status}",
+  "Not2": "{discount}",
+  "GoogleAnalyticsId": "G-QJ22NE5JZR",
+  "PaymentMethods": {
+    "Transfermobil": {
+      "name": "Transfermóvil",
+      "phone": "+53 54439440",
+      "bank": "BANDEC",
+      "qrCode": "/MERCADO/images/payment/transfermovil-qr.webp"
+    },
+    "EnZona": {
+      "name": "EnZona",
+      "phone": "+53 54439440",
+      "qrCode": "/images/payment/enzona-qr.png"
+    },
+    "Zelle": {
+      "name": "Zelle",
+      "email": "suarezangulomarlon@gmail.com",
+      "phone": "+53 54439440"
+    },
+    "PayPal": {
+      "name": "PayPal",
+      "email": "suarezangulomarlon@gmail.com"
+    },
+    "CashApp": {
+      "name": "CashApp",
+      "tag": "$mercadocuba"
+    },
+    "Efectivo": {
+      "name": "Efectivo",
+      "description": "Paga en efectivo al momento de la entrega."
+    }
+  }
+}

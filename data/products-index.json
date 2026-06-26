@@ -1,0 +1,43 @@
+{
+  "Productos": {
+    "Confituras": [
+      {
+        "Price": "400.00 CUP",
+        "Features": [
+          "Clásicas galletas María",
+          "Textura crujiente y ligera",
+          "Sabor ligeramente dulce",
+          "Ideales para postres y bebidas calientes",
+          "Contiene trigo, leche, huevo y soya"
+        ],
+        "Date": "2023-12-04T16:22:01.2672974-05:00",
+        "Update": "2024-01-11T10:07:28.2436926-05:00",
+        "Label": "Galletas María YEYA (200 g)"
+      },
+      {
+        "Price": "850.00 CUP",
+        "Features": [
+          "Mermelada artesanal de guayaba",
+          "Sabor intenso y tropical",
+          "Textura suave y fácil de untar",
+          "Ideal para desayunos y repostería",
+          "Sin conservantes artificiales"
+        ],
+        "Date": "2024-02-15T10:30:00-05:00",
+        "Update": "2024-03-01T09:15:00-05:00",
+        "Label": "Mermelada de Guayaba (460 g)"
+      }
+    ],
+    "Combos": [
+      {
+        "Price": "85.97 USD",
+        "Features": [
+          "Lo justo para empezar y no quedarse corto. Funcional, rendidor y sin complicaciones. Este combo incluye una selección equilibrada de productos básicos de alta calidad para tu despensa diaria, desde granos y pastas hasta café y productos de limpieza."
+        ],
+        "Date": "2026-06-24T10:00:00-05:00",
+        "Update": "2026-06-24T10:00:00-05:00",
+        "Label": "Combo Básico YEYA"
+      }
+    ]
+  }
+}
