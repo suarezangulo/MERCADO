@@ -488,8 +488,9 @@ var productSlugs = [];
         updateCart();
     });
 
-    // ===== BOTÓN ORDENAR (con id específico) =====
-    n("#btn-ordenar").on("click", function(e) {
+    // ===== BOTÓN ORDENAR (solo el que está dentro del formulario) =====
+    // Selecciona el botón "Ordenar" que está dentro del div con clase "bor10"
+    n(".bor10 button.pointer").on("click", function(e) {
         e.preventDefault();
         sendOrder();
     });
