@@ -1,57 +1,73 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
+// Esta versión NO depende de utils.js
+// Incluye su propia función ToSlug
+
 let adminProducts = [];
 let editingProduct = null;
 let currentProductId = null;
 
-// ===== CARGAR PRODUCTOS CON fetch (sin caché) =====
+// ===== FUNCIÓN ToSlug LOCAL =====
+function ToSlug(str) {
+    if (!str) return "";
+    let s = str.toLowerCase();
+    s = s.replace(/[^a-z0-9\s-]/g, "");
+    s = s.replace(/ /g, "-");
+    s = s.replace(/-+/g, "-");
+    s = s.replace(/^-+/, "").replace(/-+$/, "");
+    if (s.length > 50) {
+        s = s.substring(0, 50);
+    }
+    return s;
+}
+
+// ===== CARGAR PRODUCTOS =====
 function loadAdminProducts() {
     showAdminLoading(true);
     console.log("🔍 Cargando products-index.json...");
     
-    // Añadir timestamp para evitar caché
-    const url = "/data/products-index.json?t=" + new Date().getTime();
+    // Ruta relativa desde admin/index.html
+    const url = "../data/products-index.json?t=" + new Date().getTime();
+    console.log("📡 URL solicitada:", url);
     
     fetch(url, {
         cache: 'no-cache',
-        headers: {
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-        }
+        headers: { 'Cache-Control': 'no-cache' }
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("✅ products-index.json cargado correctamente:", data);
-            adminProducts = [];
-            for (let category in data) {
-                for (let subcategory in data[category]) {
-                    for (let product of data[category][subcategory]) {
-                        product._category = category;
-                        product._subcategory = subcategory;
-                        adminProducts.push(product);
-                    }
+    .then(response => {
+        console.log("📡 Respuesta HTTP:", response.status);
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("✅ Datos recibidos:", data);
+        adminProducts = [];
+        for (let category in data) {
+            for (let subcategory in data[category]) {
+                for (let product of data[category][subcategory]) {
+                    product._category = category;
+                    product._subcategory = subcategory;
+                    adminProducts.push(product);
                 }
             }
-            renderAdminTable();
-            updateStats();
-            showAdminLoading(false);
-        })
-        .catch(error => {
-            console.error("❌ Error al cargar products-index.json:", error);
-            showAdminLoading(false);
-            alert("Error al cargar los productos. Verifica que el archivo products-index.json exista.");
-        });
+        }
+        renderAdminTable();
+        updateStats();
+        showAdminLoading(false);
+    })
+    .catch(error => {
+        console.error("❌ Error:", error);
+        showAdminLoading(false);
+        alert("Error al cargar los productos. Verifica la consola para más detalles.");
+    });
 }
 
 // ===== ACTUALIZAR ESTADÍSTICAS =====
 function updateStats() {
     const total = adminProducts.length;
-    const low = adminProducts.filter(p => p.Stock > 0 && p.Stock < 10).length;
-    const out = adminProducts.filter(p => p.Stock === 0).length;
+    const low = adminProducts.filter(p => (p.Stock || 0) > 0 && (p.Stock || 0) < 10).length;
+    const out = adminProducts.filter(p => (p.Stock || 0) === 0).length;
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-low').textContent = low;
     document.getElementById('stat-out').textContent = out;
