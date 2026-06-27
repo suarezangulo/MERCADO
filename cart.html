@@ -241,7 +241,7 @@
 									<tbody role="rowgroup"></tbody>
 								</table>
 							</div>
-							<!-- ===== BOTÓN VACIAR (SIN POINTER) ===== -->
+							<!-- ===== BOTÓN VACIAR ===== -->
 							<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm" style="display: flex; justify-content: space-between;">
 								<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 m-tb-10 clearcart" style="margin-left: auto; cursor: pointer;" aria-label="Vaciar carrito" onclick="clearCart();">Vaciar</div>
 							</div>
@@ -308,7 +308,7 @@
 								</div>
 							</div>
 
-							<!-- ===== BOTÓN ORDENAR (CON ID) ===== -->
+							<!-- ===== BOTÓN ORDENAR ===== -->
 							<button id="btn-ordenar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" aria-label="Realizar pedido">Ordenar</button>
 						</div>
 					</div>
@@ -384,7 +384,9 @@
 	<script src="js/utils.js"></script>
 	<script src="js/cart.js"></script>
 
+	<!-- ===== SCRIPTS ADICIONALES ===== -->
 	<script>
+		// 1. Establecer la moneda activa
 		(function() {
 			var moneda = getMonedaPreferida();
 			if (moneda === 'CUP') {
@@ -397,6 +399,33 @@
 				if (movilUsd) movilUsd.classList.add('active');
 			}
 		})();
+
+		// 2. Cargar el carrito al iniciar la página
+		$(document).ready(function() {
+			updateCart();
+		});
+
+		// 3. Manejar el selector de método de pago (muestra los detalles)
+		$(document).ready(function() {
+			var paymentMethods = {
+				'Efectivo': 'Paga en efectivo al momento de la entrega.',
+				'Transfermobil': '<strong>Transfermóvil</strong><br>Teléfono: +53 54439440<br>Banco: BANDEC<br><img src="/MERCADO/images/payment/transfermovil-qr.webp" alt="QR Transfermóvil" class="payment-qr">',
+				'EnZona': '<strong>EnZona</strong><br>Teléfono: +53 54439440<br><img src="/images/payment/enzona-qr.png" alt="QR EnZona" class="payment-qr">',
+				'Zelle': '<strong>Zelle</strong><br>Correo: suarezangulomarlon@gmail.com<br>Teléfono: +53 54439440',
+				'PayPal': '<strong>PayPal</strong><br>Correo: suarezangulomarlon@gmail.com',
+				'CashApp': '<strong>CashApp</strong><br>Tag: $mercadocuba'
+			};
+
+			$('#paymentMethod').on('change', function() {
+				var selected = $(this).val();
+				var details = paymentMethods[selected] || 'Selecciona un método de pago';
+				$('#paymentDetails').html(details);
+				$('#paymentInfo').show();
+			});
+
+			// Mostrar el método por defecto (Efectivo)
+			$('#paymentMethod').trigger('change');
+		});
 	</script>
 </body>
 </html>
