@@ -8,21 +8,14 @@ function getMonedaPreferida() {
 
 // ===== CAMBIO DE MONEDA SIN RECARGAR LA PÁGINA =====
 function setMonedaPreferida(moneda) {
-    // 1. Guardar preferencia en localStorage
     localStorage.setItem('monedaPreferida', moneda);
-    
-    // 2. Actualizar la interfaz (resaltar el botón activo)
     $('.currency-selector a').removeClass('active');
     $('#moneda-' + moneda.toLowerCase()).addClass('active');
     $('#moneda-' + moneda.toLowerCase() + '-movil').addClass('active');
-    
-    // 3. Si estamos en la página del carrito, actualizar sin recargar
     if (typeof updateCart === 'function') {
         updateCart();
-        return; // Terminar aquí
+        return;
     }
-    
-    // 4. En cualquier otra página, recargar (fallback)
     location.reload();
 }
 
@@ -205,7 +198,9 @@ function addProductCardBase(n, t, i = "", r = 1) {
     let e = document.createElement("div");
     e.setAttribute("class", "block2-pic hov-img0");
     let y = document.createElement("img");
-    y.setAttribute("data-src", "./images/products/" + c + "-0.webp");
+    // ==== CAMBIO: Usar el campo Images del producto ====
+    let imgSrc = t.Images && t.Images.length > 0 ? t.Images[0] : "./images/products/" + c + "-0.webp";
+    y.setAttribute("data-src", imgSrc);
     y.setAttribute("alt", "imágen");
     e.appendChild(y);
     u.appendChild(e);
