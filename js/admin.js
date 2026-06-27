@@ -3,12 +3,21 @@ let adminProducts = [];
 let editingProduct = null;
 let currentProductId = null;
 
-// ===== CARGAR PRODUCTOS CON fetch (más robusto) =====
+// ===== CARGAR PRODUCTOS CON fetch (sin caché) =====
 function loadAdminProducts() {
     showAdminLoading(true);
     console.log("🔍 Cargando products-index.json...");
     
-    fetch("/data/products-index.json")
+    // Añadir timestamp para evitar caché
+    const url = "/data/products-index.json?t=" + new Date().getTime();
+    
+    fetch(url, {
+        cache: 'no-cache',
+        headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
