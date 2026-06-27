@@ -14,7 +14,7 @@ collections:
     description: "Gestiona todos los productos de la tienda"
     folder: "data/products"
     create: true
-    slug: "{{fields.Label | slugify}}"  # <--- ESTA ES LA LÍNEA CLAVE
+    slug: "{{fields.Label | slugify}}"  # <--- CLAVE: FORZA EL NOMBRE DEL ARCHIVO
     format: json
     fields:
       - label: "Categoría"
