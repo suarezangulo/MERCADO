@@ -1,0 +1,18 @@
+{
+  "Update": "2026-06-27T00:00:00-04:00",
+  "Price": "300.00 CUP",
+  "Date": "2026-06-27T00:00:00-04:00",
+  "Label": "Croquetas fritas y empanizadas",
+  "Stock": 150,
+  "Images": [
+    "/images/products/croquetas-de-boletus.webp",
+    "/images/products/croquetas.jpg.webp",
+    "/images/products/croquetas_2.webp"
+  ],
+  "Description": "La descripción",
+  "Features": [
+    "(15) Unidades por ración"
+  ],
+  "Category": "Productos",
+  "SubCategory": "Confituras"
+}
