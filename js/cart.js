@@ -1,3 +1,6 @@
+// ===== VARIABLE GLOBAL PARA ALMACENAR PRODUCTOS POR SLUG =====
+var productSlugs = {};
+
 // ===== FUNCIÓN AUXILIAR: convertir valor a moneda preferida =====
 function convertirAMonedaPreferida(valor, monedaOriginal) {
     var monedaPref = getMonedaPreferida();
@@ -16,7 +19,7 @@ function convertirAMonedaPreferida(valor, monedaOriginal) {
 }
 
 function addCartItem(n, t, i) {
-    if (n == null || t == null || i == null) return !1;
+    if (n == null || t == null || i == null) return false;
     let e = document.createElement("tr");
     e.setAttribute("class", "table_row");
     let r = document.createElement("td");
@@ -33,7 +36,7 @@ function addCartItem(n, t, i) {
     e.appendChild(r);
     r = document.createElement("td");
     r.setAttribute("class", "column-2");
-    aElement = document.createElement("a");
+    let aElement = document.createElement("a");
     aElement.setAttribute("class", "cl3");
     aElement.setAttribute("href", "product.html?id=" + i.slug);
     aElement.textContent = i.Label;
@@ -83,14 +86,14 @@ function addCartItem(n, t, i) {
     r.textContent = toMoneyStr(subtotalConvertido);
     e.appendChild(r);
     n.append(e);
-    return !0;
+    return true;
 }
 
 function cargarProductSlugs(callback) {
     console.log('Cargando productSlugs...');
     $.getJSON("./data/products-index.json", function(t) {
         if (t != null) {
-            productSlugs = [];
+            productSlugs = {}; // Reiniciamos como objeto
             for (let n in t) {
                 let i = t[n];
                 for (let n in i) {
@@ -154,7 +157,7 @@ function updateCart() {
         cell.textContent = "No hay productos en tu cesta";
         row.appendChild(cell);
         i.append(row);
-        updateCartTotals(!1);
+        updateCartTotals(false);
         return;
     }
 
@@ -179,7 +182,8 @@ function updateCart() {
         removeCartItem(r, id);
     }
 
-    $(".btn-num-product-down").on("click", function() {
+    // Actualizar eventos de los botones +/-
+    $(".btn-num-product-down").off("click").on("click", function() {
         let input = $(this).next();
         var val = Number(input.val());
         if (val > 0) {
@@ -187,7 +191,7 @@ function updateCart() {
             updateCartTotals();
         }
     });
-    $(".btn-num-product-up").on("click", function() {
+    $(".btn-num-product-up").off("click").on("click", function() {
         let input = $(this).prev();
         var val = Number(input.val());
         if (val < 99) {
@@ -195,7 +199,7 @@ function updateCart() {
             updateCartTotals();
         }
     });
-    updateCartTotals(!1);
+    updateCartTotals(false);
 }
 
 function clearCart() {
