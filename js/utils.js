@@ -6,8 +6,23 @@ function getMonedaPreferida() {
     return localStorage.getItem('monedaPreferida') || 'USD';
 }
 
+// ===== CAMBIO DE MONEDA SIN RECARGAR LA PÁGINA =====
 function setMonedaPreferida(moneda) {
+    // 1. Guardar preferencia en localStorage
     localStorage.setItem('monedaPreferida', moneda);
+    
+    // 2. Actualizar la interfaz (resaltar el botón activo)
+    $('.currency-selector a').removeClass('active');
+    $('#moneda-' + moneda.toLowerCase()).addClass('active');
+    $('#moneda-' + moneda.toLowerCase() + '-movil').addClass('active');
+    
+    // 3. Si estamos en la página del carrito, actualizar sin recargar
+    if (typeof updateCart === 'function') {
+        updateCart();
+        return; // Terminar aquí
+    }
+    
+    // 4. En cualquier otra página, recargar (fallback)
     location.reload();
 }
 
@@ -135,7 +150,6 @@ function getFilterValues(n, t) {
     return i.length > 0 ? i : [];
 }
 
-// ===== FUNCIÓN MODIFICADA: toMoneyStr con separadores de miles =====
 function toMoneyStr(valor, moneda = null) {
     if (valor == null || isNaN(valor)) valor = 0;
     if (!moneda) {
