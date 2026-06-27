@@ -44,10 +44,12 @@ function renderAdminTable() {
         const stock = product.Stock || 0;
         const stockClass = stock === 0 ? 'low' : stock < 10 ? 'medium' : 'high';
         const stockText = stock === 0 ? 'Agotado' : stock;
+        // ==== CAMBIO: Usar el campo Images del producto ====
+        let imgSrc = product.Images && product.Images.length > 0 ? product.Images[0] : "./images/products/" + slug + "-0.webp";
         
         html += `
             <tr>
-                <td><img src="./images/products/${slug}-0.webp" alt="${product.Label}" class="product-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22/%3E'"></td>
+                <td><img src="${imgSrc}" alt="${product.Label}" class="product-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22/%3E'"></td>
                 <td class="product-name">${product.Label}</td>
                 <td class="product-price">${product.Price}</td>
                 <td class="product-stock ${stockClass}">${stockText}</td>
