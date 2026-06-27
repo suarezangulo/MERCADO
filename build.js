@@ -36,25 +36,25 @@ files.forEach(file => {
       return;
     }
 
-    // Usar SubCategory directamente como clave de segundo nivel
-    // (ignoramos Category porque siempre es "Productos")
     const subCategory = product.SubCategory.trim();
 
     if (!index.Productos[subCategory]) {
       index.Productos[subCategory] = [];
     }
 
+    // ==== CAMBIO IMPORTANTE: Incluir el campo Images ====
     const entry = {
       Price: product.Price || '0.00 USD',
       Features: product.Features || [],
       Date: product.Date || new Date().toISOString(),
       Update: product.Update || new Date().toISOString(),
-      Label: product.Label
+      Label: product.Label,
+      Images: product.Images || []  // <--- SE INCLUYE IMAGES
     };
 
     index.Productos[subCategory].push(entry);
     processedCount++;
-    console.log(`✅ ${file} -> ${subCategory} / ${product.Label}`);
+    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (${entry.Images.length} imágenes)`);
   } catch (error) {
     console.error(`❌ Error al parsear ${file}:`, error.message);
   }
