@@ -1,17 +1,12 @@
-# ===== CONFIGURACIÓN DEL BACKEND =====
 backend:
-  name: github
-  repo: suarezangulo/MERCADO   # CAMBIA: pon tu usuario/repositorio
-  branch: main                 # Cambia a 'master' si usas master
+  name: git-gateway
+  branch: main
 
-# ===== CONFIGURACIÓN DE MEDIOS (IMÁGENES) =====
 media_folder: "images/products"
 public_folder: "/images/products"
 
-# ===== INTERFAZ EN ESPAÑOL =====
 locale: 'es'
 
-# ===== COLECCIÓN DE PRODUCTOS =====
 collections:
   - name: "productos"
     label: "Productos"
@@ -52,7 +47,7 @@ collections:
         name: "Description"
         widget: "text"
         required: true
-        hint: "Descripción detallada del producto. Usa saltos de línea para separar secciones (Ingredientes, Conservación, etc.)"
+        hint: "Descripción detallada del producto. Usa saltos de línea para separar secciones."
 
       - label: "Precio"
         name: "Price"
@@ -82,13 +77,12 @@ collections:
           widget: "image"
           media_folder: "/images/products"
           public_folder: "/images/products"
-          hint: "Selecciona o sube una imagen para este producto"
 
       - label: "Características"
         name: "Features"
         widget: "list"
         required: false
-        hint: "Lista de características o items del combo (ej: (10) Sazón completo YEYA (10 g))"
+        hint: "Lista de características o items del combo"
         field:
           label: "Característica"
           name: "feature"
@@ -100,7 +94,6 @@ collections:
         default: ""
         date_format: "YYYY-MM-DDTHH:mm:ssZ"
         time_format: false
-        hint: "Se genera automáticamente al crear el producto"
 
       - label: "Última actualización"
         name: "Update"
@@ -108,4 +101,3 @@ collections:
         default: ""
         date_format: "YYYY-MM-DDTHH:mm:ssZ"
         time_format: false
-        hint: "Se actualiza automáticamente al editar el producto"
