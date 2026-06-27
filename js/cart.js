@@ -477,6 +477,7 @@ var productSlugs = [];
 (function(n) {
     "use strict";
     
+    // Cargar métodos de pago desde manifest.json
     $.getJSON("./data/manifest.json", function(data) {
         if (data.PaymentMethods) {
             window.paymentMethods = data.PaymentMethods;
@@ -487,12 +488,15 @@ var productSlugs = [];
         updateCart();
     });
 
-    n("button.pointer").on("click", function(e) {
+    // ===== BOTÓN ORDENAR (con id específico) =====
+    n("#btn-ordenar").on("click", function(e) {
         e.preventDefault();
         sendOrder();
     });
 
-    n(".clearcart").on("click", function() {
+    // ===== BOTÓN VACIAR =====
+    n(".clearcart").on("click", function(e) {
+        e.preventDefault();
         clearCart();
     });
 
