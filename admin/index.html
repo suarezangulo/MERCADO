@@ -4,9 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- ===== NETLIFY IDENTITY WIDGET (para cerrar sesión) ===== -->
+    <!-- ===== NETLIFY IDENTITY WIDGET ===== -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <!-- ===== FIN WIDGET ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
@@ -506,23 +505,39 @@
             document.getElementById('closeModal').classList.add('active');
         }
 
-        // ===== CONFIRMAR CIERRE (CON LOGOUT FUNCIONAL) =====
+        // ===== CONFIRMAR CIERRE (CON LOGOUT Y ESPERA) =====
+        let logoutRedirectTimer = null;
+
         function confirmClose(closeSession) {
             // Cerrar el modal
             document.getElementById('closeModal').classList.remove('active');
             
             if (closeSession) {
+                console.log("🔐 Intentando cerrar sesión en Netlify Identity...");
                 // Cerrar sesión si Netlify Identity está disponible
                 if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
-                    console.log("🔐 Cerrando sesión en Netlify Identity...");
                     window.netlifyIdentity.logout();
+                    console.log("🔐 Se ejecutó logout(). Esperando confirmación...");
+                    
+                    // Escuchar el evento 'logout' para redirigir una vez confirmado
+                    window.netlifyIdentity.on('logout', function() {
+                        console.log("🔐 Evento 'logout' recibido. Redirigiendo...");
+                        if (logoutRedirectTimer) clearTimeout(logoutRedirectTimer);
+                        window.location.href = '/';
+                    });
+                    
+                    // Fallback: si el evento no se dispara en 3 segundos, redirigir igualmente
+                    logoutRedirectTimer = setTimeout(function() {
+                        console.log("⏱️ Timeout de logout. Redirigiendo de todas formas...");
+                        window.location.href = '/';
+                    }, 3000);
                 } else {
-                    console.warn("⚠️ Netlify Identity no disponible. No se pudo cerrar sesión.");
+                    console.warn("⚠️ Netlify Identity no disponible. Redirigiendo sin cerrar sesión.");
+                    window.location.href = '/';
                 }
-                // Redirigir a la página principal
-                window.location.href = '/';
             } else {
                 // Redirigir a la página principal sin cerrar sesión
+                console.log("👋 Salir sin cerrar sesión.");
                 window.location.href = '/';
             }
         }
@@ -539,6 +554,12 @@
             // Inicializar Netlify Identity si existe
             if (window.netlifyIdentity) {
                 window.netlifyIdentity.init();
+                // También escuchar el evento 'logout' para redirigir si el logout se dispara desde otro lugar
+                window.netlifyIdentity.on('logout', function() {
+                    console.log("🔐 Logout detectado (evento global). Redirigiendo...");
+                    if (logoutRedirectTimer) clearTimeout(logoutRedirectTimer);
+                    window.location.href = '/';
+                });
             }
             $(document).on('keydown', function(e) {
                 if (e.key === 'Escape') {
