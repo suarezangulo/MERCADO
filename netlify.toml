@@ -3,6 +3,7 @@
 
 [build]
   publish = "."
+  command = "npm run build"   # <--- EJECUTA EL SCRIPT ANTES DE PUBLICAR
 
 # ===== REDIRECCIONES =====
 # Asegura que el CMS (admin) funcione correctamente
