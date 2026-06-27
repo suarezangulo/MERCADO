@@ -14,6 +14,7 @@ if (!fs.existsSync(productsDir)) {
 const files = fs.readdirSync(productsDir);
 console.log(`📄 Encontrados ${files.length} archivos en data/products/`);
 
+// Estructura final: { "Productos": { "SubCategoria": [ ... ] } }
 const index = { Productos: {} };
 let processedCount = 0;
 
@@ -29,21 +30,18 @@ files.forEach(file => {
     const product = JSON.parse(content);
 
     // Validar campos obligatorios
-    if (!product.Category || !product.SubCategory || !product.Label) {
-      console.warn(`⚠️ ${file} -> Falta Category, SubCategory o Label.`);
-      console.warn(`   Category: ${product.Category}, SubCategory: ${product.SubCategory}, Label: ${product.Label}`);
+    if (!product.SubCategory || !product.Label) {
+      console.warn(`⚠️ ${file} -> Falta SubCategory o Label.`);
+      console.warn(`   SubCategory: ${product.SubCategory}, Label: ${product.Label}`);
       return;
     }
 
-    // Normalizar claves (por si tienen tildes o mayúsculas)
-    const category = product.Category.trim();
+    // Usar SubCategory directamente como clave de segundo nivel
+    // (ignoramos Category porque siempre es "Productos")
     const subCategory = product.SubCategory.trim();
 
-    if (!index.Productos[category]) {
-      index.Productos[category] = {};
-    }
-    if (!index.Productos[category][subCategory]) {
-      index.Productos[category][subCategory] = [];
+    if (!index.Productos[subCategory]) {
+      index.Productos[subCategory] = [];
     }
 
     const entry = {
@@ -54,21 +52,19 @@ files.forEach(file => {
       Label: product.Label
     };
 
-    index.Productos[category][subCategory].push(entry);
+    index.Productos[subCategory].push(entry);
     processedCount++;
-    console.log(`✅ ${file} -> ${category} / ${subCategory} / ${product.Label}`);
+    console.log(`✅ ${file} -> ${subCategory} / ${product.Label}`);
   } catch (error) {
     console.error(`❌ Error al parsear ${file}:`, error.message);
   }
 });
 
-// Ordenar por fecha (más reciente primero)
-for (const category in index.Productos) {
-  for (const subCategory in index.Productos[category]) {
-    index.Productos[category][subCategory].sort((a, b) => {
-      return new Date(b.Update) - new Date(a.Update);
-    });
-  }
+// Ordenar por fecha (más reciente primero) dentro de cada subcategoría
+for (const subCategory in index.Productos) {
+  index.Productos[subCategory].sort((a, b) => {
+    return new Date(b.Update) - new Date(a.Update);
+  });
 }
 
 // Escribir el índice
