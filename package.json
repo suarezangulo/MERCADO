@@ -1,0 +1,7 @@
+{
+  "name": "mercado",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@netlify/plugin-git-gateway": "^1.0.0"
+  }
+}
