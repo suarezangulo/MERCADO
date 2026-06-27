@@ -3,29 +3,39 @@ let adminProducts = [];
 let editingProduct = null;
 let currentProductId = null;
 
-// ===== CARGAR PRODUCTOS =====
+// ===== CARGAR PRODUCTOS CON fetch (más robusto) =====
 function loadAdminProducts() {
     showAdminLoading(true);
+    console.log("🔍 Cargando products-index.json...");
     
-    // ==== RUTA ABSOLUTA DESDE LA RAÍZ ====
-    $.getJSON("/data/products-index.json", function(data) {
-        adminProducts = [];
-        for (let category in data) {
-            for (let subcategory in data[category]) {
-                for (let product of data[category][subcategory]) {
-                    product._category = category;
-                    product._subcategory = subcategory;
-                    adminProducts.push(product);
+    fetch("/data/products-index.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("✅ products-index.json cargado correctamente:", data);
+            adminProducts = [];
+            for (let category in data) {
+                for (let subcategory in data[category]) {
+                    for (let product of data[category][subcategory]) {
+                        product._category = category;
+                        product._subcategory = subcategory;
+                        adminProducts.push(product);
+                    }
                 }
             }
-        }
-        renderAdminTable();
-        updateStats();
-        showAdminLoading(false);
-    }).fail(function() {
-        showAdminLoading(false);
-        alert("Error al cargar los productos. Verifica que el archivo products-index.json exista.");
-    });
+            renderAdminTable();
+            updateStats();
+            showAdminLoading(false);
+        })
+        .catch(error => {
+            console.error("❌ Error al cargar products-index.json:", error);
+            showAdminLoading(false);
+            alert("Error al cargar los productos. Verifica que el archivo products-index.json exista.");
+        });
 }
 
 // ===== ACTUALIZAR ESTADÍSTICAS =====
