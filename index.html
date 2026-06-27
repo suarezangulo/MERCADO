@@ -23,6 +23,9 @@
 	<meta name="twitter:title" content="MERCADO - Tu tienda en Cuba">
 	<meta name="twitter:description" content="Productos de calidad para tu hogar. Compra en CUP y USD.">
 	
+	<!-- ===== NETLIFY IDENTITY WIDGET (para autenticación) ===== -->
+	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+	
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -68,6 +71,31 @@
 		.currency-selector span {
 			color: #ccc;
 			margin: 0 5px;
+		}
+		/* ===== BOTÓN ADMIN ===== */
+		#btn-admin {
+			background-color: #717fe0;
+			color: #fff;
+			border: none;
+			border-radius: 23px;
+			padding: 10px 30px;
+			cursor: pointer;
+			font-family: Poppins-Regular;
+			font-size: 14px;
+			transition: all 0.3s;
+			text-decoration: none;
+			display: inline-block;
+		}
+		#btn-admin:hover {
+			background-color: #5a67c9;
+			transform: scale(1.02);
+			box-shadow: 0 4px 15px rgba(113, 127, 224, 0.4);
+		}
+		#btn-admin.logged {
+			background-color: #28a745;
+		}
+		#btn-admin.logged:hover {
+			background-color: #218838;
 		}
 	</style>
 </head>
@@ -253,6 +281,13 @@
 					     onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
 				</div>
 			</div>
+
+			<!-- ===== BOTÓN ADMIN ===== -->
+			<div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+				<button id="btn-admin" class="flex-c-m stext-101 cl0 size-121 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+					🔐 Panel de Administración
+				</button>
+			</div>
 		</div>
 	</footer>
 
@@ -282,8 +317,10 @@
 	<script src="js/utils.js"></script>
 	<script src="js/index.js"></script>
 
+	<!-- ===== NETLIFY IDENTITY SCRIPT ===== -->
 	<script>
 		(function() {
+			// Moneda preferida (código existente)
 			var moneda = getMonedaPreferida();
 			if (moneda === 'CUP') {
 				document.getElementById('moneda-cup').classList.add('active');
@@ -294,6 +331,74 @@
 				var movilUsd = document.getElementById('moneda-usd-movil');
 				if (movilUsd) movilUsd.classList.add('active');
 			}
+
+			// ===== NETLIFY IDENTITY (autenticación para el CMS) =====
+			document.addEventListener('DOMContentLoaded', function() {
+				// Inicializar el widget de Netlify Identity
+				if (window.netlifyIdentity) {
+					window.netlifyIdentity.init();
+				}
+
+				// Botón "Panel de Administración"
+				var btnAdmin = document.getElementById('btn-admin');
+				if (btnAdmin) {
+					btnAdmin.addEventListener('click', function(e) {
+						e.preventDefault();
+						
+						// Verificar si el widget está disponible
+						if (window.netlifyIdentity) {
+							// Verificar si el usuario ya está logueado
+							var user = window.netlifyIdentity.currentUser();
+							if (user) {
+								// Si ya está logueado, ir directamente al admin
+								window.location.href = '/admin/';
+							} else {
+								// Si no está logueado, abrir el widget de login
+								window.netlifyIdentity.open('login');
+							}
+						} else {
+							// Fallback: ir directamente al admin (intentar igual)
+							window.location.href = '/admin/';
+						}
+					});
+
+					// Cambiar el texto del botón según el estado de autenticación
+					if (window.netlifyIdentity) {
+						var user = window.netlifyIdentity.currentUser();
+						if (user) {
+							btnAdmin.textContent = '🔐 Ir al Admin';
+							btnAdmin.classList.add('logged');
+						}
+					}
+				}
+
+				// Escuchar eventos de autenticación
+				if (window.netlifyIdentity) {
+					// Cuando el usuario inicia sesión
+					window.netlifyIdentity.on('login', function(user) {
+						console.log('Usuario logueado:', user.email);
+						var btn = document.getElementById('btn-admin');
+						if (btn) {
+							btn.textContent = '🔐 Ir al Admin';
+							btn.classList.add('logged');
+						}
+						// Redirigir al panel de administración
+						window.location.href = '/admin/';
+					});
+
+					// Cuando el usuario cierra sesión
+					window.netlifyIdentity.on('logout', function() {
+						console.log('Usuario desconectado');
+						var btn = document.getElementById('btn-admin');
+						if (btn) {
+							btn.textContent = '🔐 Panel de Administración';
+							btn.classList.remove('logged');
+						}
+						// Recargar la página para actualizar el estado
+						window.location.reload();
+					});
+				}
+			});
 		})();
 	</script>
 </body>
