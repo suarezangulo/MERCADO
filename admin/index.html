@@ -417,28 +417,45 @@
             if (loading) loading.classList.toggle('active', show);
         }
 
-        // ===== ABRIR/CERRAR PANEL =====
+        // ===== CERRAR PANEL CON OPCIÓN DE CERRAR SESIÓN =====
+        function closeAdminPanel() {
+            // Preguntar si desea cerrar sesión
+            if (confirm('¿Deseas cerrar sesión y volver a la tienda?')) {
+                // Si confirma, cerrar sesión en Netlify Identity (si existe)
+                if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
+                    window.netlifyIdentity.logout();
+                }
+                // Redirigir a la página principal (raíz del sitio)
+                window.location.href = './';
+            } else {
+                // Si cancela, solo cerrar el panel
+                document.getElementById('admin-panel').classList.remove('active');
+                closeForm();
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ===== ABRIR PANEL =====
         function openAdminPanel() {
             document.getElementById('admin-panel').classList.add('active');
             document.body.style.overflow = 'hidden';
             loadAdminProducts();
         }
 
-        function closeAdminPanel() {
-            document.getElementById('admin-panel').classList.remove('active');
-            closeForm();
-            document.body.style.overflow = '';
-        }
-
         // ===== INICIALIZAR =====
         $(document).ready(function() {
             $(document).on('keydown', function(e) {
-                if (e.key === 'Escape') closeAdminPanel();
+                if (e.key === 'Escape') {
+                    closeAdminPanel();
+                }
             });
             $('#admin-panel').on('click', function(e) {
-                if (e.target === this) closeAdminPanel();
+                if (e.target === this) {
+                    closeAdminPanel();
+                }
             });
-            openAdminPanel(); // Abrir automáticamente
+            // Abrir automáticamente al cargar
+            openAdminPanel();
         });
     </script>
 </body>
