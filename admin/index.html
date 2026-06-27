@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- Netlify Identity Widget -->
+    <!-- Netlify Identity Widget (necesario para autenticación) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -214,7 +214,7 @@
                 </table>
             </div>
 
-            <!-- ===== FORMULARIO DE EDICIÓN (CAMPOS DE TEXTO + DESCRIPCIÓN) ===== -->
+            <!-- ===== FORMULARIO DE EDICIÓN ===== -->
             <div id="admin-form" class="admin-form">
                 <h3><i class="fas fa-edit"></i> <span id="admin-form-title">Editar Producto</span></h3>
                 <div class="form-row">
@@ -282,12 +282,13 @@
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init({ tool: ['console', 'network', 'elements'] });</script>
 
-    <!-- ===== TODO EL CÓDIGO JAVASCRIPT ===== -->
+    <!-- ===== TODO EL CÓDIGO JAVASCRIPT (con guardado real) ===== -->
     <script>
         // ===== VARIABLES GLOBALES =====
         let adminProducts = [];
         let editingProduct = null;
         let currentProductId = null;
+        let originalSlug = null; // Para saber si cambia el nombre
 
         // ===== FUNCIÓN ToSlug LOCAL =====
         function ToSlug(str) {
@@ -299,6 +300,88 @@
             s = s.replace(/^-+/, "").replace(/-+$/, "");
             if (s.length > 50) s = s.substring(0, 50);
             return s;
+        }
+
+        // ===== OBTENER TOKEN DE NETLIFY IDENTITY =====
+        function getToken() {
+            const user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
+            if (!user) return null;
+            return user.token && user.token.access_token ? user.token.access_token : null;
+        }
+
+        // ===== GUARDAR ARCHIVO EN REPOSITORIO MEDIANTE GIT GATEWAY =====
+        async function saveFileToRepo(filePath, content, message, sha = null) {
+            const token = getToken();
+            if (!token) {
+                alert('No has iniciado sesión o no se pudo obtener el token.');
+                return false;
+            }
+
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
+            const body = {
+                content: content,
+                message: message,
+                sha: sha
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error al guardar:', errorText);
+                    alert('Error al guardar el archivo. Código: ' + response.status);
+                    return false;
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Error en saveFileToRepo:', error);
+                alert('Error inesperado al guardar. Revisa la consola.');
+                return false;
+            }
+        }
+
+        // ===== ELIMINAR ARCHIVO DEL REPOSITORIO =====
+        async function deleteFileFromRepo(filePath, sha, message) {
+            const token = getToken();
+            if (!token) {
+                alert('No has iniciado sesión o no se pudo obtener el token.');
+                return false;
+            }
+
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
+            const body = {
+                message: message,
+                sha: sha
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (!response.ok) {
+                    console.error('Error al eliminar:', await response.text());
+                    return false;
+                }
+                return true;
+            } catch (error) {
+                console.error('Error en deleteFileFromRepo:', error);
+                return false;
+            }
         }
 
         // ===== CARGAR PRODUCTOS =====
@@ -401,11 +484,12 @@
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
             if (!product) return;
             currentProductId = slug;
+            originalSlug = slug; // Guardamos el slug original
             editingProduct = product;
             document.getElementById('edit-category').value = product._category || 'Productos';
             document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
             document.getElementById('edit-label').value = product.Label || '';
-            document.getElementById('edit-description').value = product.Description || ''; // <--- AHORA CON DESCRIPCIÓN
+            document.getElementById('edit-description').value = product.Description || '';
             document.getElementById('edit-price').value = product.Price || '';
             document.getElementById('edit-stock').value = product.Stock || 0;
             document.getElementById('edit-features').value = (product.Features || []).join('\n');
@@ -417,6 +501,7 @@
         // ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
         function openNewProductForm() {
             currentProductId = null;
+            originalSlug = null;
             editingProduct = null;
             document.getElementById('edit-category').value = 'Productos';
             document.getElementById('edit-subcategory').value = 'Confituras';
@@ -435,8 +520,8 @@
             document.getElementById('admin-form').classList.remove('active');
         }
 
-        // ===== GUARDAR PRODUCTO =====
-        function saveProduct() {
+        // ===== GUARDAR PRODUCTO (con escritura en repositorio) =====
+        async function saveProduct() {
             const label = document.getElementById('edit-label').value.trim();
             if (!label) { alert('El nombre del producto es obligatorio.'); return; }
             const price = document.getElementById('edit-price').value.trim();
@@ -459,41 +544,127 @@
                 Update: new Date().toISOString(),
                 Images: ['/images/products/' + ToSlug(label) + '-0.webp']
             };
+
             const btnSave = document.querySelector('.btn-save');
             const originalText = btnSave.innerHTML;
             btnSave.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
             btnSave.disabled = true;
-            setTimeout(() => {
-                if (currentProductId) {
+
+            try {
+                const slug = ToSlug(label);
+                const filePath = 'data/products/' + slug + '.json';
+                const content = JSON.stringify(productData, null, 2);
+                const isNew = !currentProductId;
+                const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
+
+                // Obtener SHA si el archivo existe (para edición)
+                let sha = null;
+                if (!isNew) {
+                    // Intentar obtener el archivo actual
+                    const token = getToken();
+                    if (token) {
+                        const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
+                        const getResponse = await fetch(getUrl, {
+                            headers: { 'Authorization': 'Bearer ' + token }
+                        });
+                        if (getResponse.ok) {
+                            const fileData = await getResponse.json();
+                            sha = fileData.sha;
+                        }
+                    }
+                }
+
+                // Guardar archivo
+                const success = await saveFileToRepo(filePath, content, message, sha);
+                if (!success) {
+                    btnSave.innerHTML = originalText;
+                    btnSave.disabled = false;
+                    return;
+                }
+
+                // Si el slug cambió en edición, eliminar el archivo antiguo
+                if (!isNew && originalSlug && originalSlug !== slug) {
+                    const oldFilePath = 'data/products/' + originalSlug + '.json';
+                    const token = getToken();
+                    if (token) {
+                        const getOldUrl = `/.netlify/git-gateway/git/files/${oldFilePath}`;
+                        const getOldResponse = await fetch(getOldUrl, {
+                            headers: { 'Authorization': 'Bearer ' + token }
+                        });
+                        if (getOldResponse.ok) {
+                            const oldFileData = await getOldResponse.json();
+                            await deleteFileFromRepo(oldFilePath, oldFileData.sha, 'Eliminar producto antiguo: ' + originalSlug);
+                        }
+                    }
+                }
+
+                // Actualizar lista en memoria
+                if (isNew) {
+                    productData._category = category;
+                    productData._subcategory = subcategory;
+                    adminProducts.push(productData);
+                } else {
                     const index = adminProducts.findIndex(p => ToSlug(p.Label) === currentProductId);
                     if (index !== -1) {
                         adminProducts[index] = productData;
-                        adminProducts[index]._category = productData.Category;
-                        adminProducts[index]._subcategory = productData.SubCategory;
+                        adminProducts[index]._category = category;
+                        adminProducts[index]._subcategory = subcategory;
                     }
-                } else {
-                    productData._category = productData.Category;
-                    productData._subcategory = productData.SubCategory;
-                    adminProducts.push(productData);
                 }
+
                 renderAdminTable();
                 updateStats();
                 closeForm();
                 btnSave.innerHTML = originalText;
                 btnSave.disabled = false;
-                alert(currentProductId ? '✅ Producto actualizado correctamente.' : '✅ Producto creado correctamente.');
-            }, 1000);
+                alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
+                // Recargar productos para reflejar cambios en el índice (opcional)
+                loadAdminProducts();
+            } catch (error) {
+                console.error('Error en saveProduct:', error);
+                alert('Error inesperado al guardar. Revisa la consola.');
+                btnSave.innerHTML = originalText;
+                btnSave.disabled = false;
+            }
         }
 
-        // ===== ELIMINAR PRODUCTO =====
-        function deleteProduct(slug) {
+        // ===== ELIMINAR PRODUCTO (con eliminación en repositorio) =====
+        async function deleteProduct(slug) {
             if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) return;
+            const product = adminProducts.find(p => ToSlug(p.Label) === slug);
+            if (!product) return;
+
+            const filePath = 'data/products/' + slug + '.json';
+            const token = getToken();
+            if (!token) {
+                alert('No has iniciado sesión o no se pudo obtener el token.');
+                return;
+            }
+
+            // Obtener SHA
+            const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
+            const getResponse = await fetch(getUrl, {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            if (!getResponse.ok) {
+                alert('No se pudo obtener el archivo para eliminar.');
+                return;
+            }
+            const fileData = await getResponse.json();
+            const sha = fileData.sha;
+
+            const success = await deleteFileFromRepo(filePath, sha, 'Eliminar producto: ' + product.Label);
+            if (!success) {
+                alert('Error al eliminar el producto.');
+                return;
+            }
+
             const index = adminProducts.findIndex(p => ToSlug(p.Label) === slug);
-            if (index === -1) return;
-            adminProducts.splice(index, 1);
+            if (index !== -1) adminProducts.splice(index, 1);
             renderAdminTable();
             updateStats();
             alert('🗑️ Producto eliminado correctamente.');
+            loadAdminProducts(); // Recargar para actualizar vista
         }
 
         // ===== MOSTRAR/OCULTAR LOADING =====
@@ -514,8 +685,6 @@
                 if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
                     console.log("🔐 Cerrando sesión en Netlify Identity...");
                     window.netlifyIdentity.logout();
-                } else {
-                    console.warn("⚠️ Netlify Identity no disponible. No se pudo cerrar sesión.");
                 }
                 window.location.href = '/';
             } else {
