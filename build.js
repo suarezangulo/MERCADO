@@ -42,19 +42,22 @@ files.forEach(file => {
       index.Productos[subCategory] = [];
     }
 
-    // ==== CAMBIO IMPORTANTE: Incluir el campo Images ====
+    // ===== INCLUIR TODOS LOS CAMPOS NECESARIOS =====
     const entry = {
       Price: product.Price || '0.00 USD',
       Features: product.Features || [],
       Date: product.Date || new Date().toISOString(),
       Update: product.Update || new Date().toISOString(),
       Label: product.Label,
-      Images: product.Images || []  // <--- SE INCLUYE IMAGES
+      Images: product.Images || [],
+      Stock: product.Stock || 0,           // <--- AÑADIDO
+      SubCategory: product.SubCategory,    // <--- AÑADIDO (aunque es la clave, lo incluimos)
+      Category: product.Category || 'Productos'
     };
 
     index.Productos[subCategory].push(entry);
     processedCount++;
-    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (${entry.Images.length} imágenes)`);
+    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (Stock: ${entry.Stock}, ${entry.Images.length} imágenes)`);
   } catch (error) {
     console.error(`❌ Error al parsear ${file}:`, error.message);
   }
