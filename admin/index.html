@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== TODOS LOS ESTILOS (los mismos que tenías) ===== */
+        /* ===== TODOS LOS ESTILOS EXISTENTES (sin cambios) ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
@@ -93,6 +93,81 @@
         @media (max-width: 992px) { .admin-panel-content { padding: 25px 20px; max-height: 98vh; } .admin-header-left h2 { font-size: 22px; } .admin-form .form-row { grid-template-columns: 1fr; } }
         @media (max-width: 768px) { .admin-panel { padding: 10px; } .admin-panel-content { padding: 20px 15px; border-radius: var(--radius-sm); } .admin-header { flex-direction: column; align-items: flex-start; padding-right: 0; } .admin-header-left h2 { font-size: 20px; } .admin-header-left .subtitle { font-size: 13px; } .admin-panel-close { width: 38px; height: 38px; font-size: 16px; position: absolute; top: 12px; right: 12px; float: none; } .admin-stats { grid-template-columns: repeat(2, 1fr); } .admin-table { font-size: 13px; } .admin-table th, .admin-table td { padding: 10px 12px; } .admin-table .product-img { width: 40px; height: 40px; } .admin-table .product-img:hover { transform: scale(2); } .admin-table .actions { flex-direction: column; gap: 5px; } .admin-table .actions button { width: 100%; justify-content: center; } .admin-form { padding: 18px 16px; } .admin-form h3 { font-size: 18px; } .admin-form .form-actions { flex-direction: column; } .admin-form .form-actions button { width: 100%; justify-content: center; } }
         @media (max-width: 480px) { .admin-panel-content { padding: 15px 12px; } .admin-header-left h2 { font-size: 18px; } .admin-stats { grid-template-columns: 1fr 1fr; gap: 10px; } .stat-card .stat-number { font-size: 22px; } .admin-actions button { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; } }
+
+        /* ===== MODAL PERSONALIZADO ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            max-width: 420px;
+            width: 90%;
+            padding: 30px 30px 20px;
+            box-shadow: var(--shadow-hover);
+            text-align: center;
+            animation: slideUp 0.3s ease;
+        }
+        .modal-box .modal-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .modal-box h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .modal-box p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .modal-actions button {
+            padding: 12px 32px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            min-width: 100px;
+        }
+        .modal-actions .btn-yes {
+            background: var(--danger);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+        .modal-actions .btn-yes:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+        }
+        .modal-actions .btn-no {
+            background: var(--border);
+            color: var(--text-secondary);
+        }
+        .modal-actions .btn-no:hover {
+            background: #d1d5db;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -100,7 +175,7 @@
     <div id="admin-panel" class="admin-panel" role="dialog" aria-modal="true" aria-label="Panel de administración">
         <div class="admin-panel-content">
             <!-- Botón cerrar -->
-            <button class="admin-panel-close" onclick="closeAdminPanel()" aria-label="Cerrar panel">
+            <button class="admin-panel-close" onclick="showCloseModal()" aria-label="Cerrar panel">
                 <i class="fas fa-times"></i>
             </button>
 
@@ -193,14 +268,27 @@
         </div>
     </div>
 
+    <!-- ===== MODAL DE CONFIRMACIÓN ===== -->
+    <div id="closeModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon"><i class="fas fa-sign-out-alt"></i></div>
+            <h3>¿Cerrar sesión?</h3>
+            <p>¿Deseas cerrar sesión y volver a la tienda, o solo salir del panel?</p>
+            <div class="modal-actions">
+                <button class="btn-yes" onclick="confirmClose(true)"><i class="fas fa-sign-out-alt"></i> Sí, cerrar sesión</button>
+                <button class="btn-no" onclick="confirmClose(false)"><i class="fas fa-arrow-right"></i> No, solo salir</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== JQUERY ===== -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- ===== ERUDA PARA DEPURACIÓN EN MÓVIL (opcional, pero útil) ===== -->
+    <!-- ===== ERUDA PARA DEPURACIÓN EN MÓVIL ===== -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init({ tool: ['console', 'network', 'elements'] });</script>
 
-    <!-- ===== TODO EL CÓDIGO JAVASCRIPT EMBEBIDO (sin depender de admin.js) ===== -->
+    <!-- ===== TODO EL CÓDIGO JAVASCRIPT ===== -->
     <script>
         // ===== VARIABLES GLOBALES =====
         let adminProducts = [];
@@ -417,21 +505,24 @@
             if (loading) loading.classList.toggle('active', show);
         }
 
-        // ===== CERRAR PANEL CON OPCIÓN DE CERRAR SESIÓN =====
-        function closeAdminPanel() {
-            // Preguntar si desea cerrar sesión
-            if (confirm('¿Deseas cerrar sesión y volver a la tienda?')) {
-                // Si confirma, cerrar sesión en Netlify Identity (si existe)
+        // ===== MOSTRAR MODAL =====
+        function showCloseModal() {
+            document.getElementById('closeModal').classList.add('active');
+        }
+
+        // ===== CONFIRMAR CIERRE =====
+        function confirmClose(closeSession) {
+            document.getElementById('closeModal').classList.remove('active');
+            if (closeSession) {
+                // Cerrar sesión si existe Netlify Identity
                 if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
                     window.netlifyIdentity.logout();
                 }
-                // Redirigir a la página principal (raíz del sitio)
+                // Redirigir a la página principal
                 window.location.href = './';
             } else {
-                // Si cancela, solo cerrar el panel
-                document.getElementById('admin-panel').classList.remove('active');
-                closeForm();
-                document.body.style.overflow = '';
+                // Solo redirigir sin cerrar sesión
+                window.location.href = './';
             }
         }
 
@@ -444,17 +535,19 @@
 
         // ===== INICIALIZAR =====
         $(document).ready(function() {
+            // Cerrar con ESC
             $(document).on('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    closeAdminPanel();
+                    showCloseModal();
                 }
             });
+            // Clic fuera del panel
             $('#admin-panel').on('click', function(e) {
                 if (e.target === this) {
-                    closeAdminPanel();
+                    showCloseModal();
                 }
             });
-            // Abrir automáticamente al cargar
+            // Abrir automáticamente
             openAdminPanel();
         });
     </script>
