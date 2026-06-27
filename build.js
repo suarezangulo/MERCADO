@@ -1,71 +1,77 @@
 const fs = require('fs');
 const path = require('path');
 
-// Ruta de la carpeta de productos
 const productsDir = path.join(__dirname, 'data', 'products');
-// Ruta del archivo de índice
 const indexFile = path.join(__dirname, 'data', 'products-index.json');
 
-// Leer todos los archivos de la carpeta
-fs.readdir(productsDir, (err, files) => {
-  if (err) {
-    console.error('Error al leer la carpeta de productos:', err);
-    process.exit(1);
+console.log('📂 Leyendo productos de:', productsDir);
+
+if (!fs.existsSync(productsDir)) {
+  console.error('❌ La carpeta data/products no existe.');
+  process.exit(1);
+}
+
+const files = fs.readdirSync(productsDir);
+console.log(`📄 Encontrados ${files.length} archivos en data/products/`);
+
+const index = { Productos: {} };
+let processedCount = 0;
+
+files.forEach(file => {
+  if (!file.endsWith('.json')) {
+    console.log(`⏩ Saltando ${file} (no es .json)`);
+    return;
   }
 
-  const index = { Productos: {} };
+  const filePath = path.join(productsDir, file);
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const product = JSON.parse(content);
 
-  // Procesar cada archivo
-  files.forEach(file => {
-    if (!file.endsWith('.json')) return;
-
-    const filePath = path.join(productsDir, file);
-    try {
-      const content = fs.readFileSync(filePath, 'utf8');
-      const product = JSON.parse(content);
-
-      // Validar que tenga los campos necesarios
-      if (!product.Category || !product.SubCategory || !product.Label) {
-        console.warn(`⚠️ El archivo ${file} no tiene Category, SubCategory o Label. Se omite.`);
-        return;
-      }
-
-      // Crear la estructura en el índice
-      const category = product.Category;
-      const subCategory = product.SubCategory;
-
-      if (!index.Productos[category]) {
-        index.Productos[category] = {};
-      }
-      if (!index.Productos[category][subCategory]) {
-        index.Productos[category][subCategory] = [];
-      }
-
-      // Extraer solo los campos que necesitas en el índice
-      const entry = {
-        Price: product.Price,
-        Features: product.Features || [],
-        Date: product.Date,
-        Update: product.Update,
-        Label: product.Label
-      };
-
-      index.Productos[category][subCategory].push(entry);
-    } catch (error) {
-      console.error(`❌ Error al procesar ${file}:`, error);
+    // Validar campos obligatorios
+    if (!product.Category || !product.SubCategory || !product.Label) {
+      console.warn(`⚠️ ${file} -> Falta Category, SubCategory o Label.`);
+      console.warn(`   Category: ${product.Category}, SubCategory: ${product.SubCategory}, Label: ${product.Label}`);
+      return;
     }
-  });
 
-  // Ordenar productos por fecha (más reciente primero) dentro de cada subcategoría
-  for (const category in index.Productos) {
-    for (const subCategory in index.Productos[category]) {
-      index.Productos[category][subCategory].sort((a, b) => {
-        return new Date(b.Update) - new Date(a.Update);
-      });
+    // Normalizar claves (por si tienen tildes o mayúsculas)
+    const category = product.Category.trim();
+    const subCategory = product.SubCategory.trim();
+
+    if (!index.Productos[category]) {
+      index.Productos[category] = {};
     }
+    if (!index.Productos[category][subCategory]) {
+      index.Productos[category][subCategory] = [];
+    }
+
+    const entry = {
+      Price: product.Price || '0.00 USD',
+      Features: product.Features || [],
+      Date: product.Date || new Date().toISOString(),
+      Update: product.Update || new Date().toISOString(),
+      Label: product.Label
+    };
+
+    index.Productos[category][subCategory].push(entry);
+    processedCount++;
+    console.log(`✅ ${file} -> ${category} / ${subCategory} / ${product.Label}`);
+  } catch (error) {
+    console.error(`❌ Error al parsear ${file}:`, error.message);
   }
-
-  // Escribir el archivo de índice
-  fs.writeFileSync(indexFile, JSON.stringify(index, null, 2), 'utf8');
-  console.log('✅ products-index.json generado correctamente.');
 });
+
+// Ordenar por fecha (más reciente primero)
+for (const category in index.Productos) {
+  for (const subCategory in index.Productos[category]) {
+    index.Productos[category][subCategory].sort((a, b) => {
+      return new Date(b.Update) - new Date(a.Update);
+    });
+  }
+}
+
+// Escribir el índice
+fs.writeFileSync(indexFile, JSON.stringify(index, null, 2), 'utf8');
+console.log(`✅ products-index.json generado con ${processedCount} productos procesados.`);
+console.log('📊 Estructura:', JSON.stringify(index, null, 2).substring(0, 200) + '...');
