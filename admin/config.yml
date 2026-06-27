@@ -14,35 +14,26 @@ collections:
     description: "Gestiona todos los productos de la tienda"
     folder: "data/products"
     create: true
-    slug: "{{fields.Label | slugify}}"  # <--- CLAVE: FORZA EL NOMBRE DEL ARCHIVO
+    slug: "{{slug}}"
     format: json
     fields:
       - label: "Categoría"
         name: "Category"
-        widget: "select"
+        widget: "string"          # <--- Ahora es texto libre
         default: "Productos"
-        options:
-          - "Productos"
-        hint: "Siempre debe ser 'Productos'"
+        hint: "Escribe la categoría (ej: Productos, Alimentos, Electrodomésticos)"
 
       - label: "Subcategoría"
         name: "SubCategory"
-        widget: "select"
+        widget: "string"          # <--- Ahora es texto libre
         default: "Confituras"
-        options:
-          - "Confituras"
-          - "Combos"
-          - "Bebidas"
-          - "Cuidado Personal"
-          - "Hogar"
-          - "Otros"
-        hint: "Selecciona la categoría secundaria del producto"
+        hint: "Escribe la subcategoría (ej: Confituras, Granos, Televisores)"
 
       - label: "Nombre del producto"
         name: "Label"
         widget: "string"
         required: true
-        hint: "Ej: Croquetas fritas y empanizadas"
+        hint: "Ej: Mermelada de Guayaba (460 g)"
 
       - label: "Descripción"
         name: "Description"
