@@ -174,12 +174,10 @@
     <!-- ===== PANEL DE ADMINISTRACIÓN ===== -->
     <div id="admin-panel" class="admin-panel" role="dialog" aria-modal="true" aria-label="Panel de administración">
         <div class="admin-panel-content">
-            <!-- Botón cerrar -->
             <button class="admin-panel-close" onclick="showCloseModal()" aria-label="Cerrar panel">
                 <i class="fas fa-times"></i>
             </button>
 
-            <!-- Header -->
             <div class="admin-header">
                 <div class="admin-header-left">
                     <div class="logo-icon"><i class="fas fa-store-alt"></i></div>
@@ -190,27 +188,23 @@
                 </div>
             </div>
 
-            <!-- Estadísticas -->
             <div class="admin-stats" id="admin-stats">
                 <div class="stat-card"><span class="stat-number" id="stat-total">0</span><span class="stat-label">Total productos</span></div>
                 <div class="stat-card"><span class="stat-number" id="stat-low">0</span><span class="stat-label">Stock bajo</span></div>
                 <div class="stat-card"><span class="stat-number" id="stat-out">0</span><span class="stat-label">Agotados</span></div>
             </div>
 
-            <!-- Acciones -->
             <div class="admin-actions">
                 <button class="btn-add" onclick="openNewProductForm()"><i class="fas fa-plus-circle"></i> Nuevo Producto</button>
                 <button class="btn-refresh" onclick="loadAdminProducts()"><i class="fas fa-sync-alt"></i> Recargar</button>
                 <button class="btn-export" onclick="exportProducts()"><i class="fas fa-file-export"></i> Exportar CSV</button>
             </div>
 
-            <!-- Loading -->
             <div id="admin-loading" class="admin-loading">
                 <div class="spinner"></div>
                 <p>Cargando productos...</p>
             </div>
 
-            <!-- Tabla -->
             <div class="admin-table-wrap">
                 <table class="admin-table" role="table" aria-label="Lista de productos">
                     <thead><tr><th>Imagen</th><th>Producto</th><th>Precio</th><th>Stock</th><th>Subcategoría</th><th>Acciones</th></tr></thead>
@@ -218,7 +212,6 @@
                 </table>
             </div>
 
-            <!-- Formulario de edición -->
             <div id="admin-form" class="admin-form">
                 <h3><i class="fas fa-edit"></i> <span id="admin-form-title">Editar Producto</span></h3>
                 <div class="form-row">
@@ -510,19 +503,21 @@
             document.getElementById('closeModal').classList.add('active');
         }
 
-        // ===== CONFIRMAR CIERRE =====
+        // ===== CONFIRMAR CIERRE (CORREGIDO) =====
         function confirmClose(closeSession) {
+            // Cerrar el modal
             document.getElementById('closeModal').classList.remove('active');
+            // Redirigir a la raíz del sitio (no a admin/)
             if (closeSession) {
                 // Cerrar sesión si existe Netlify Identity
                 if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
                     window.netlifyIdentity.logout();
                 }
                 // Redirigir a la página principal
-                window.location.href = './';
+                window.location.href = '/';
             } else {
-                // Solo redirigir sin cerrar sesión
-                window.location.href = './';
+                // Redirigir a la página principal sin cerrar sesión
+                window.location.href = '/';
             }
         }
 
@@ -535,19 +530,16 @@
 
         // ===== INICIALIZAR =====
         $(document).ready(function() {
-            // Cerrar con ESC
             $(document).on('keydown', function(e) {
                 if (e.key === 'Escape') {
                     showCloseModal();
                 }
             });
-            // Clic fuera del panel
             $('#admin-panel').on('click', function(e) {
                 if (e.target === this) {
                     showCloseModal();
                 }
             });
-            // Abrir automáticamente
             openAdminPanel();
         });
     </script>
