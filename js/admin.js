@@ -8,7 +8,8 @@ let currentProductId = null;
 function loadAdminProducts() {
     showAdminLoading(true);
     
-    $.getJSON("./data/products-index.json", function(data) {
+    // ==== RUTA CORREGIDA: ../data/products-index.json ====
+    $.getJSON("../data/products-index.json", function(data) {
         adminProducts = [];
         for (let category in data) {
             for (let subcategory in data[category]) {
