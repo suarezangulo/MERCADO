@@ -14,8 +14,8 @@ collections:
     description: "Gestiona todos los productos de la tienda"
     folder: "data/products"
     create: true
-    slug: "{{slug}}"
-    format: json              # <--- ESTA ES LA CLAVE: fuerza el guardado en JSON
+    slug: "{{fields.Label | slugify}}"  # <--- ESTA ES LA LÍNEA CLAVE
+    format: json
     fields:
       - label: "Categoría"
         name: "Category"
@@ -42,7 +42,7 @@ collections:
         name: "Label"
         widget: "string"
         required: true
-        hint: "Ej: Mermelada de Guayaba (460 g)"
+        hint: "Ej: Croquetas fritas y empanizadas"
 
       - label: "Descripción"
         name: "Description"
