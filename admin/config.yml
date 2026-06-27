@@ -1,1 +1,111 @@
+# ===== CONFIGURACIÓN DEL BACKEND =====
+backend:
+  name: github
+  repo: suarezangulo/MERCADO   # CAMBIA: pon tu usuario/repositorio
+  branch: main                 # Cambia a 'master' si usas master
 
+# ===== CONFIGURACIÓN DE MEDIOS (IMÁGENES) =====
+media_folder: "images/products"
+public_folder: "/images/products"
+
+# ===== INTERFAZ EN ESPAÑOL =====
+locale: 'es'
+
+# ===== COLECCIÓN DE PRODUCTOS =====
+collections:
+  - name: "productos"
+    label: "Productos"
+    label_singular: "Producto"
+    description: "Gestiona todos los productos de la tienda"
+    folder: "data/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Categoría"
+        name: "Category"
+        widget: "select"
+        default: "Productos"
+        options:
+          - "Productos"
+        hint: "Siempre debe ser 'Productos'"
+
+      - label: "Subcategoría"
+        name: "SubCategory"
+        widget: "select"
+        default: "Confituras"
+        options:
+          - "Confituras"
+          - "Combos"
+          - "Bebidas"
+          - "Cuidado Personal"
+          - "Hogar"
+          - "Otros"
+        hint: "Selecciona la categoría secundaria del producto"
+
+      - label: "Nombre del producto"
+        name: "Label"
+        widget: "string"
+        required: true
+        hint: "Ej: Mermelada de Guayaba (460 g)"
+
+      - label: "Descripción"
+        name: "Description"
+        widget: "text"
+        required: true
+        hint: "Descripción detallada del producto. Usa saltos de línea para separar secciones (Ingredientes, Conservación, etc.)"
+
+      - label: "Precio"
+        name: "Price"
+        widget: "string"
+        required: true
+        hint: "Ej: 850.00 CUP o 85.97 USD"
+        pattern:
+          - '^\d+\.?\d* (CUP|USD)$'
+          - "Formato: número + espacio + CUP o USD"
+
+      - label: "Stock"
+        name: "Stock"
+        widget: "number"
+        default: 0
+        min: 0
+        hint: "Cantidad disponible en inventario"
+
+      - label: "Imágenes"
+        name: "Images"
+        widget: "list"
+        required: true
+        min: 1
+        hint: "Agrega al menos una imagen del producto"
+        field:
+          label: "Imagen"
+          name: "image"
+          widget: "image"
+          media_folder: "/images/products"
+          public_folder: "/images/products"
+          hint: "Selecciona o sube una imagen para este producto"
+
+      - label: "Características"
+        name: "Features"
+        widget: "list"
+        required: false
+        hint: "Lista de características o items del combo (ej: (10) Sazón completo YEYA (10 g))"
+        field:
+          label: "Característica"
+          name: "feature"
+          widget: "string"
+
+      - label: "Fecha de creación"
+        name: "Date"
+        widget: "datetime"
+        default: ""
+        date_format: "YYYY-MM-DDTHH:mm:ssZ"
+        time_format: false
+        hint: "Se genera automáticamente al crear el producto"
+
+      - label: "Última actualización"
+        name: "Update"
+        widget: "datetime"
+        default: ""
+        date_format: "YYYY-MM-DDTHH:mm:ssZ"
+        time_format: false
+        hint: "Se actualiza automáticamente al editar el producto"
