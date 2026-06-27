@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- Estilos personalizados para que el panel se vea como tu tienda -->
     <style>
         :root {
             --primary: #717fe0;
@@ -18,7 +17,6 @@
             font-family: var(--font) !important;
             color: var(--text) !important;
         }
-        /* Mejora el contraste de los botones */
         .nc-entry-editor .nc-editor-toolbar {
             background: var(--bg) !important;
             border-bottom: 1px solid #e6e6e6 !important;
@@ -30,30 +28,23 @@
             background: var(--primary) !important;
             color: #fff !important;
         }
-        /* Ajusta el área de edición */
         .nc-entry-editor .nc-editor-content {
             background: var(--bg) !important;
         }
         .nc-entry-editor .nc-widget-control {
             background: var(--bg) !important;
         }
-        /* Estilos para campos */
         .nc-entry-editor .nc-widget {
             font-family: var(--font) !important;
         }
-        /* Ajuste del logo (opcional) */
         .nc-app-header .nc-app-header-logo {
             font-weight: 600 !important;
         }
     </style>
 </head>
 <body>
-    <!-- Cargar Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- Configuración adicional de widgets (si necesitas) -->
     <script>
-        // Puedes añadir configuraciones personalizadas aquí si lo necesitas
-        // Por ejemplo, para ordenar los productos por fecha de actualización
         CMS.registerPreviewStyle('/css/util.css');
         CMS.registerPreviewStyle('/css/main.css');
     </script>
