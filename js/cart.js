@@ -28,7 +28,9 @@ function addCartItem(n, t, i) {
     u.setAttribute("class", "how-itemcart1");
     u.addEventListener("click", () => removeCartItemFromView(i.slug, $(e)));
     let h = document.createElement("img");
-    h.setAttribute("src", "./images/products/" + i.slug + "-0.webp");
+    // ==== CAMBIO: Usar el campo Images del producto ====
+    let imgSrc = i.Images && i.Images.length > 0 ? i.Images[0] : "./images/products/" + i.slug + "-0.webp";
+    h.setAttribute("src", imgSrc);
     h.setAttribute("alt", "imagen del artículo");
     h.setAttribute("loading", "lazy");
     u.appendChild(h);
