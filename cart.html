@@ -34,8 +34,9 @@
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!-- ===== CSS MINIFICADOS ===== -->
+	<link rel="stylesheet" type="text/css" href="css/util.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 	<!--===============================================================================================-->
 	<style>
 		#moneda-cup.active, #moneda-usd.active,
@@ -241,8 +242,9 @@
 									<tbody role="rowgroup"></tbody>
 								</table>
 							</div>
+							<!-- ===== BOTÓN VACIAR (SIN POINTER) ===== -->
 							<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm" style="display: flex; justify-content: space-between;">
-								<button class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 clearcart" style="margin-left: auto;" aria-label="Vaciar carrito">Vaciar</button>
+								<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 m-tb-10 clearcart" style="margin-left: auto; cursor: pointer;" aria-label="Vaciar carrito">Vaciar</div>
 							</div>
 						</div>
 					</div>
@@ -307,7 +309,8 @@
 								</div>
 							</div>
 
-							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" aria-label="Realizar pedido">Ordenar</button>
+							<!-- ===== BOTÓN ORDENAR (CON ID) ===== -->
+							<button id="btn-ordenar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" aria-label="Realizar pedido">Ordenar</button>
 						</div>
 					</div>
 				</div>
@@ -378,8 +381,8 @@
 			})
 		});
 	</script>
-	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
+	<script src="js/main.js"></script>
 	<script src="js/cart.js"></script>
 
 	<script>
