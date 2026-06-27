@@ -1,5 +1,4 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
-// Variables globales
 let adminProducts = [];
 let editingProduct = null;
 let currentProductId = null;
@@ -8,8 +7,8 @@ let currentProductId = null;
 function loadAdminProducts() {
     showAdminLoading(true);
     
-    // ==== RUTA CORREGIDA: ../data/products-index.json ====
-    $.getJSON("../data/products-index.json", function(data) {
+    // ==== RUTA ABSOLUTA DESDE LA RAÍZ ====
+    $.getJSON("/data/products-index.json", function(data) {
         adminProducts = [];
         for (let category in data) {
             for (let subcategory in data[category]) {
@@ -34,7 +33,6 @@ function updateStats() {
     const total = adminProducts.length;
     const low = adminProducts.filter(p => p.Stock > 0 && p.Stock < 10).length;
     const out = adminProducts.filter(p => p.Stock === 0).length;
-    
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-low').textContent = low;
     document.getElementById('stat-out').textContent = out;
@@ -44,67 +42,42 @@ function updateStats() {
 function renderAdminTable() {
     const tbody = document.getElementById('admin-table-body');
     if (!tbody) return;
-    
     if (adminProducts.length === 0) {
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="6">
-                    <div class="empty-state">
-                        <i class="fas fa-box-open"></i>
-                        <h4>No hay productos</h4>
-                        <p>Haz clic en "Nuevo Producto" para comenzar.</p>
-                    </div>
-                </td>
-            </tr>
-        `;
+        tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-box-open"></i><h4>No hay productos</h4><p>Haz clic en "Nuevo Producto" para comenzar.</p></div></td></tr>`;
         return;
     }
-    
     let html = '';
-    adminProducts.forEach((product, index) => {
+    adminProducts.forEach((product) => {
         const slug = ToSlug(product.Label);
         const stock = product.Stock || 0;
         const stockClass = stock === 0 ? 'low' : stock < 10 ? 'medium' : 'high';
         const stockText = stock === 0 ? 'Agotado' : stock;
         let imgSrc = product.Images && product.Images.length > 0 ? product.Images[0] : "./images/products/" + slug + "-0.webp";
-        
-        html += `
-            <tr>
-                <td><img src="${imgSrc}" alt="${product.Label}" class="product-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2256%22 height=%2256%22/%3E'"></td>
-                <td class="product-name">${product.Label}</td>
-                <td class="product-price">${product.Price || '0.00 CUP'}</td>
-                <td><span class="product-stock ${stockClass}">${stockText}</span></td>
-                <td>${product.SubCategory || '-'}</td>
-                <td>
-                    <div class="actions">
-                        <button class="btn-edit" onclick="openEditForm('${slug}')">
-                            <i class="fas fa-edit"></i> Editar
-                        </button>
-                        <button class="btn-delete" onclick="deleteProduct('${slug}')">
-                            <i class="fas fa-trash-alt"></i> Eliminar
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        `;
+        html += `<tr>
+            <td><img src="${imgSrc}" alt="${product.Label}" class="product-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2256%22 height=%2256%22/%3E'"></td>
+            <td class="product-name">${product.Label}</td>
+            <td class="product-price">${product.Price || '0.00 CUP'}</td>
+            <td><span class="product-stock ${stockClass}">${stockText}</span></td>
+            <td>${product.SubCategory || '-'}</td>
+            <td>
+                <div class="actions">
+                    <button class="btn-edit" onclick="openEditForm('${slug}')"><i class="fas fa-edit"></i> Editar</button>
+                    <button class="btn-delete" onclick="deleteProduct('${slug}')"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                </div>
+            </td>
+        </tr>`;
     });
-    
     tbody.innerHTML = html;
 }
 
 // ===== EXPORTAR CSV =====
 function exportProducts() {
-    if (adminProducts.length === 0) {
-        alert('No hay productos para exportar.');
-        return;
-    }
-    
+    if (adminProducts.length === 0) { alert('No hay productos para exportar.'); return; }
     let csv = 'Producto,Subcategoría,Precio,Stock,Características\n';
     adminProducts.forEach(p => {
         const features = (p.Features || []).join('; ');
         csv += `"${p.Label}","${p.SubCategory || ''}","${p.Price || ''}",${p.Stock || 0},"${features}"\n`;
     });
-    
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -119,10 +92,8 @@ function exportProducts() {
 function openEditForm(slug) {
     const product = adminProducts.find(p => ToSlug(p.Label) === slug);
     if (!product) return;
-    
     currentProductId = slug;
     editingProduct = product;
-    
     document.getElementById('edit-category').value = product._category || 'Productos';
     document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
     document.getElementById('edit-label').value = product.Label || '';
@@ -130,7 +101,6 @@ function openEditForm(slug) {
     document.getElementById('edit-price').value = product.Price || '';
     document.getElementById('edit-stock').value = product.Stock || 0;
     document.getElementById('edit-features').value = (product.Features || []).join('\n');
-    
     document.getElementById('admin-form').classList.add('active');
     document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
     document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
@@ -140,7 +110,6 @@ function openEditForm(slug) {
 function openNewProductForm() {
     currentProductId = null;
     editingProduct = null;
-    
     document.getElementById('edit-category').value = 'Productos';
     document.getElementById('edit-subcategory').value = 'Confituras';
     document.getElementById('edit-label').value = '';
@@ -148,7 +117,6 @@ function openNewProductForm() {
     document.getElementById('edit-price').value = '';
     document.getElementById('edit-stock').value = '0';
     document.getElementById('edit-features').value = '';
-    
     document.getElementById('admin-form').classList.add('active');
     document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
     document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
@@ -162,17 +130,12 @@ function closeForm() {
 // ===== GUARDAR PRODUCTO =====
 function saveProduct() {
     const label = document.getElementById('edit-label').value.trim();
-    if (!label) {
-        alert('El nombre del producto es obligatorio.');
-        return;
-    }
-    
+    if (!label) { alert('El nombre del producto es obligatorio.'); return; }
     const price = document.getElementById('edit-price').value.trim();
     if (!price || !/^\d+\.?\d* (CUP|USD)$/.test(price)) {
         alert('El precio debe tener el formato: número + espacio + CUP o USD (ej. 850.00 CUP)');
         return;
     }
-    
     const productData = {
         Category: document.getElementById('edit-category').value,
         SubCategory: document.getElementById('edit-subcategory').value,
@@ -185,12 +148,10 @@ function saveProduct() {
         Update: new Date().toISOString(),
         Images: ['/images/products/' + ToSlug(label) + '-0.webp']
     };
-    
     const btnSave = document.querySelector('.btn-save');
     const originalText = btnSave.innerHTML;
     btnSave.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
     btnSave.disabled = true;
-    
     setTimeout(function() {
         if (currentProductId) {
             const index = adminProducts.findIndex(p => ToSlug(p.Label) === currentProductId);
@@ -204,27 +165,20 @@ function saveProduct() {
             productData._subcategory = productData.SubCategory;
             adminProducts.push(productData);
         }
-        
         renderAdminTable();
         updateStats();
         closeForm();
-        
         btnSave.innerHTML = originalText;
         btnSave.disabled = false;
-        
         alert(currentProductId ? '✅ Producto actualizado correctamente.' : '✅ Producto creado correctamente.');
     }, 1000);
 }
 
 // ===== ELIMINAR PRODUCTO =====
 function deleteProduct(slug) {
-    if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) {
-        return;
-    }
-    
+    if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) return;
     const index = adminProducts.findIndex(p => ToSlug(p.Label) === slug);
     if (index === -1) return;
-    
     adminProducts.splice(index, 1);
     renderAdminTable();
     updateStats();
@@ -234,9 +188,7 @@ function deleteProduct(slug) {
 // ===== MOSTRAR/OCULTAR LOADING =====
 function showAdminLoading(show) {
     const loading = document.getElementById('admin-loading');
-    if (loading) {
-        loading.classList.toggle('active', show);
-    }
+    if (loading) loading.classList.toggle('active', show);
 }
 
 // ===== ABRIR/CERRAR PANEL =====
@@ -255,14 +207,9 @@ function closeAdminPanel() {
 // ===== INICIALIZAR =====
 $(document).ready(function() {
     $(document).on('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeAdminPanel();
-        }
+        if (e.key === 'Escape') closeAdminPanel();
     });
-    
     $('#admin-panel').on('click', function(e) {
-        if (e.target === this) {
-            closeAdminPanel();
-        }
+        if (e.target === this) closeAdminPanel();
     });
 });
