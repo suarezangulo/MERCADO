@@ -1,0 +1,9 @@
+{
+  "name": "mercado-build",
+  "version": "1.0.0",
+  "description": "Build script para generar products-index.json",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {}
+}
