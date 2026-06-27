@@ -14,7 +14,6 @@ if (!fs.existsSync(productsDir)) {
 const files = fs.readdirSync(productsDir);
 console.log(`📄 Encontrados ${files.length} archivos en data/products/`);
 
-// Estructura final: { "Productos": { "SubCategoria": [ ... ] } }
 const index = { Productos: {} };
 let processedCount = 0;
 
@@ -29,7 +28,6 @@ files.forEach(file => {
     const content = fs.readFileSync(filePath, 'utf8');
     const product = JSON.parse(content);
 
-    // Validar campos obligatorios
     if (!product.SubCategory || !product.Label) {
       console.warn(`⚠️ ${file} -> Falta SubCategory o Label.`);
       console.warn(`   SubCategory: ${product.SubCategory}, Label: ${product.Label}`);
@@ -50,27 +48,27 @@ files.forEach(file => {
       Update: product.Update || new Date().toISOString(),
       Label: product.Label,
       Images: product.Images || [],
-      Stock: product.Stock || 0,           // <--- AÑADIDO
-      SubCategory: product.SubCategory,    // <--- AÑADIDO (aunque es la clave, lo incluimos)
-      Category: product.Category || 'Productos'
+      Stock: product.Stock || 0,
+      SubCategory: product.SubCategory,
+      Category: product.Category || 'Productos',
+      Description: product.Description || '' // <--- AÑADIDO
     };
 
     index.Productos[subCategory].push(entry);
     processedCount++;
-    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (Stock: ${entry.Stock}, ${entry.Images.length} imágenes)`);
+    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (Descripción: ${entry.Description.substring(0, 30)}...)`);
   } catch (error) {
     console.error(`❌ Error al parsear ${file}:`, error.message);
   }
 });
 
-// Ordenar por fecha (más reciente primero) dentro de cada subcategoría
+// Ordenar por fecha (más reciente primero)
 for (const subCategory in index.Productos) {
   index.Productos[subCategory].sort((a, b) => {
     return new Date(b.Update) - new Date(a.Update);
   });
 }
 
-// Escribir el índice
 fs.writeFileSync(indexFile, JSON.stringify(index, null, 2), 'utf8');
 console.log(`✅ products-index.json generado con ${processedCount} productos procesados.`);
 console.log('📊 Estructura:', JSON.stringify(index, null, 2).substring(0, 200) + '...');
