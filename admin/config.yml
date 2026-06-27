@@ -15,6 +15,7 @@ collections:
     folder: "data/products"
     create: true
     slug: "{{slug}}"
+    format: json              # <--- ESTA ES LA CLAVE: fuerza el guardado en JSON
     fields:
       - label: "Categoría"
         name: "Category"
