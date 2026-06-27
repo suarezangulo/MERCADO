@@ -93,7 +93,7 @@ function cargarProductSlugs(callback) {
     console.log('Cargando productSlugs...');
     $.getJSON("./data/products-index.json", function(t) {
         if (t != null) {
-            productSlugs = {}; // Reiniciamos como objeto
+            productSlugs = {};
             for (let n in t) {
                 let i = t[n];
                 for (let n in i) {
@@ -182,7 +182,6 @@ function updateCart() {
         removeCartItem(r, id);
     }
 
-    // Actualizar eventos de los botones +/-
     $(".btn-num-product-down").off("click").on("click", function() {
         let input = $(this).next();
         var val = Number(input.val());
