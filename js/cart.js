@@ -251,4 +251,43 @@ function updateCartTotals(guardarEnStorage = true) {
         totalEquivalente = totalGeneralConvertido * tasa;
     }
     
-    if (totalEqu
+    if (totalEquivalente > 0) {
+        totalText += ' ≈ ' + toMoneyStr(totalEquivalente, otraMoneda);
+    }
+
+    $(".mtext-110.cl2").text(totalText);
+
+    if (guardarEnStorage) {
+        addStorage("cart", itemsActualizados);
+        updateCartQty();
+    }
+}
+
+function removeCartItemFromView(n, t) {
+    swal({
+        title: "¿Eliminar artículo?",
+        text: "¿Estás seguro de eliminar este producto?",
+        icon: "warning",
+        buttons: ["Cancelar", "Eliminar"],
+        dangerMode: true,
+    }).then(function(r) {
+        if (r) {
+            let u = getCart();
+            removeCartItem(u, n);
+            addStorage("cart", u);
+            t.remove();
+            updateCartTotals();
+            updateCartQty();
+            swal("Eliminado", "El producto ha sido eliminado.", "success");
+        }
+    });
+}
+
+function removeCartItem(n, t) {
+    var i = n.items.findIndex(n => n.productId === t);
+    if (i !== -1) {
+        n.items.splice(i, 1);
+        updateCartTotals();
+    }
+    return n;
+}
