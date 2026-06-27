@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
+    <!-- ===== NETLIFY IDENTITY WIDGET (para cerrar sesión) ===== -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- ===== FIN WIDGET ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
@@ -503,15 +506,18 @@
             document.getElementById('closeModal').classList.add('active');
         }
 
-        // ===== CONFIRMAR CIERRE (CORREGIDO) =====
+        // ===== CONFIRMAR CIERRE (CON LOGOUT FUNCIONAL) =====
         function confirmClose(closeSession) {
             // Cerrar el modal
             document.getElementById('closeModal').classList.remove('active');
-            // Redirigir a la raíz del sitio (no a admin/)
+            
             if (closeSession) {
-                // Cerrar sesión si existe Netlify Identity
+                // Cerrar sesión si Netlify Identity está disponible
                 if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
+                    console.log("🔐 Cerrando sesión en Netlify Identity...");
                     window.netlifyIdentity.logout();
+                } else {
+                    console.warn("⚠️ Netlify Identity no disponible. No se pudo cerrar sesión.");
                 }
                 // Redirigir a la página principal
                 window.location.href = '/';
@@ -530,6 +536,10 @@
 
         // ===== INICIALIZAR =====
         $(document).ready(function() {
+            // Inicializar Netlify Identity si existe
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.init();
+            }
             $(document).on('keydown', function(e) {
                 if (e.key === 'Escape') {
                     showCloseModal();
