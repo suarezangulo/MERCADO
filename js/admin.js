@@ -1,6 +1,4 @@
-// ===== PANEL DE ADMINISTRACIÓN =====
-// Versión que usa la API de GitHub directamente con token personal
-
+// ===== PANEL DE ADMINISTRACIÓN (Netlify Functions) =====
 let adminProducts = [];
 let editingProduct = null;
 let currentProductId = null;
@@ -13,125 +11,77 @@ function ToSlug(str) {
     s = s.replace(/ /g, "-");
     s = s.replace(/-+/g, "-");
     s = s.replace(/^-+/, "").replace(/-+$/, "");
-    if (s.length > 50) {
-        s = s.substring(0, 50);
-    }
+    if (s.length > 50) s = s.substring(0, 50);
     return s;
 }
 
-// ===== OBTENER TOKEN DE GITHUB (desde variable global) =====
-function getGitHubToken() {
-    // El token se establece manualmente en admin/index.html
-    if (window.GITHUB_TOKEN) {
-        return window.GITHUB_TOKEN;
-    }
-    alert('❌ Token de GitHub no configurado. Agrega window.GITHUB_TOKEN en admin/index.html');
-    return null;
-}
-
-// ===== OBTENER SHA DE UN ARCHIVO (API de GitHub) =====
+// ===== LLAMADAS A LAS SERVERLESS FUNCTIONS =====
 async function getFileSha(filePath) {
-    const token = getGitHubToken();
-    if (!token) return null;
     try {
-        const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
-        const response = await fetch(url, {
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Accept': 'application/vnd.github.v3+json'
-            }
+        const res = await fetch('/.netlify/functions/get-sha', {
+            method: 'POST',
+            body: JSON.stringify({ filePath })
         });
-        if (response.status === 404) {
-            return null; // El archivo no existe
-        }
-        if (!response.ok) {
-            console.warn('⚠️ Error al obtener SHA, status:', response.status);
-            return null;
-        }
-        const data = await response.json();
-        return data.sha || null;
-    } catch (error) {
-        console.error('❌ Error al obtener SHA:', error);
+        const data = await res.json();
+        return data.sha;
+    } catch (e) {
+        console.error('Error get-sha:', e);
         return null;
     }
 }
 
-// ===== GUARDAR ARCHIVO (API de GitHub) =====
 async function saveFileToRepo(filePath, content, message, sha = null) {
-    const token = getGitHubToken();
-    if (!token) {
-        alert('No se pudo obtener el token de GitHub.');
-        return false;
-    }
-
-    const encodedContent = btoa(unescape(encodeURIComponent(content)));
-    const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
-    const body = {
-        content: encodedContent,
-        message: message,
-        sha: sha || undefined
-    };
-
-    console.log(`📤 Guardando archivo en GitHub:`, url);
-    console.log('📦 Datos:', { filePath, message, sha: sha || 'nuevo' });
-
     try {
-        const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json',
-                'Accept': 'application/vnd.github.v3+json'
-            },
-            body: JSON.stringify(body)
+        const res = await fetch('/.netlify/functions/save-product', {
+            method: 'POST',
+            body: JSON.stringify({ filePath, content, message, sha })
         });
-
-        console.log('📡 Respuesta HTTP:', response.status);
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('❌ Error al guardar:', errorText);
-            alert(`Error al guardar (${response.status}):\n${errorText.substring(0, 200)}`);
+        if (!res.ok) {
+            const err = await res.json();
+            alert('Error al guardar: ' + JSON.stringify(err));
             return false;
         }
-        console.log('✅ Archivo guardado correctamente');
         return true;
-    } catch (error) {
-        console.error('❌ Error en saveFileToRepo:', error);
-        alert('Error inesperado al guardar. Revisa la consola.');
+    } catch (e) {
+        console.error('Error save-file:', e);
+        alert('Error de conexión al guardar.');
         return false;
     }
 }
 
-// ===== ELIMINAR ARCHIVO (API de GitHub) =====
 async function deleteFileFromRepo(filePath, sha, message) {
-    const token = getGitHubToken();
-    if (!token) {
-        alert('No se pudo obtener el token de GitHub.');
-        return false;
-    }
-
-    const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
-    const body = { message: message, sha: sha };
-
     try {
-        const response = await fetch(url, {
+        const res = await fetch('/.netlify/functions/delete-product', {
             method: 'DELETE',
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json',
-                'Accept': 'application/vnd.github.v3+json'
-            },
-            body: JSON.stringify(body)
+            body: JSON.stringify({ filePath, message, sha })
         });
-
-        if (!response.ok) {
-            console.error('Error al eliminar:', await response.text());
+        if (!res.ok) {
+            const err = await res.json();
+            alert('Error al eliminar: ' + JSON.stringify(err));
             return false;
         }
         return true;
-    } catch (error) {
-        console.error('Error en deleteFileFromRepo:', error);
+    } catch (e) {
+        console.error('Error delete-file:', e);
+        alert('Error de conexión al eliminar.');
+        return false;
+    }
+}
+
+async function updateProductsIndex(product, oldSlug = null) {
+    try {
+        const res = await fetch('/.netlify/functions/update-index', {
+            method: 'POST',
+            body: JSON.stringify({ product, oldSlug })
+        });
+        if (!res.ok) {
+            const err = await res.json();
+            alert('Error al actualizar índice: ' + JSON.stringify(err));
+            return false;
+        }
+        return true;
+    } catch (e) {
+        console.error('Error update-index:', e);
         return false;
     }
 }
@@ -139,111 +89,97 @@ async function deleteFileFromRepo(filePath, sha, message) {
 // ===== CARGAR PRODUCTOS =====
 function loadAdminProducts() {
     showAdminLoading(true);
-    console.log("🔍 Cargando products-index.json...");
-    
-    const url = "../data/products-index.json?t=" + new Date().getTime();
-    console.log("📡 URL solicitada:", url);
-    
-    fetch(url, {
-        cache: 'no-cache',
-        headers: { 'Cache-Control': 'no-cache' }
-    })
-    .then(response => {
-        console.log("📡 Respuesta HTTP:", response.status);
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-        return response.json();
-    })
+    fetch("../data/products-index.json?t=" + new Date().getTime(), { cache: 'no-cache', headers: { 'Cache-Control': 'no-cache' } })
+    .then(r => r.json())
     .then(data => {
-        console.log("✅ Datos recibidos:", data);
         adminProducts = [];
-        for (let category in data) {
-            for (let subcategory in data[category]) {
-                for (let product of data[category][subcategory]) {
-                    product._category = category;
-                    product._subcategory = subcategory;
-                    adminProducts.push(product);
-                }
-            }
-        }
-        renderAdminTable();
-        updateStats();
-        showAdminLoading(false);
+        for (let cat in data) for (let sub in data[cat]) for (let p of data[cat][sub]) { p._category = cat; p._subcategory = sub; adminProducts.push(p); }
+        renderAdminTable(); updateStats(); showAdminLoading(false);
     })
-    .catch(error => {
-        console.error("❌ Error:", error);
-        showAdminLoading(false);
-        alert("Error al cargar los productos. Verifica la consola para más detalles.");
-    });
+    .catch(e => { console.error(e); showAdminLoading(false); alert("Error al cargar productos."); });
 }
 
-// ===== ACTUALIZAR ESTADÍSTICAS =====
 function updateStats() {
-    const total = adminProducts.length;
-    const low = adminProducts.filter(p => (p.Stock || 0) > 0 && (p.Stock || 0) < 10).length;
-    const out = adminProducts.filter(p => (p.Stock || 0) === 0).length;
-    document.getElementById('stat-total').textContent = total;
-    document.getElementById('stat-low').textContent = low;
-    document.getElementById('stat-out').textContent = out;
+    document.getElementById('stat-total').textContent = adminProducts.length;
+    document.getElementById('stat-low').textContent = adminProducts.filter(p => (p.Stock||0) > 0 && (p.Stock||0) < 10).length;
+    document.getElementById('stat-out').textContent = adminProducts.filter(p => (p.Stock||0) === 0).length;
 }
 
-// ===== RENDERIZAR TABLA =====
 function renderAdminTable() {
     const tbody = document.getElementById('admin-table-body');
     if (!tbody) return;
     if (adminProducts.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-box-open"></i><h4>No hay productos</h4><p>Haz clic en "Nuevo Producto" para comenzar.</p></div></td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-box-open"></i><h4>No hay productos</h4><p>Haz clic en "Nuevo Producto".</p></div></td></tr>`;
         return;
     }
     let html = '';
-    adminProducts.forEach((product) => {
-        const slug = ToSlug(product.Label);
-        const stock = product.Stock || 0;
+    adminProducts.forEach(p => {
+        const slug = ToSlug(p.Label);
+        const stock = p.Stock || 0;
         const stockClass = stock === 0 ? 'low' : stock < 10 ? 'medium' : 'high';
         const stockText = stock === 0 ? 'Agotado' : stock;
-        let imgSrc = product.Images && product.Images.length > 0 ? product.Images[0] : "./images/products/" + slug + "-0.webp";
+        const imgSrc = p.Images && p.Images.length > 0 ? p.Images[0] : "./images/products/" + slug + "-0.webp";
         html += `<tr>
-            <td><img src="${imgSrc}" alt="${product.Label}" class="product-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2256%22 height=%2256%22/%3E'"></td>
-            <td class="product-name">${product.Label}</td>
-            <td class="product-price">${product.Price || '0.00 CUP'}</td>
+            <td><img src="${imgSrc}" alt="${p.Label}" class="product-img" onerror="this.style.display='none'"></td>
+            <td class="product-name">${p.Label}</td>
+            <td class="product-price">${p.Price || '0.00 CUP'}</td>
             <td><span class="product-stock ${stockClass}">${stockText}</span></td>
-            <td>${product.SubCategory || '-'}</td>
-            <td>
-                <div class="actions">
-                    <button class="btn-edit" onclick="openEditForm('${slug}')"><i class="fas fa-edit"></i> Editar</button>
-                    <button class="btn-delete" onclick="deleteProduct('${slug}')"><i class="fas fa-trash-alt"></i> Eliminar</button>
-                </div>
-            </td>
+            <td>${p.SubCategory || '-'}</td>
+            <td><div class="actions">
+                <button class="btn-edit" onclick="openEditForm('${slug}')"><i class="fas fa-edit"></i> Editar</button>
+                <button class="btn-delete" onclick="deleteProduct('${slug}')"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            </div></td>
         </tr>`;
     });
     tbody.innerHTML = html;
 }
 
-// ===== EXPORTAR CSV =====
 function exportProducts() {
-    if (adminProducts.length === 0) { alert('No hay productos para exportar.'); return; }
+    if (adminProducts.length === 0) { alert('No hay productos.'); return; }
     let csv = 'Producto,Subcategoría,Precio,Stock,Características\n';
-    adminProducts.forEach(p => {
-        const features = (p.Features || []).join('; ');
-        csv += `"${p.Label}","${p.SubCategory || ''}","${p.Price || ''}",${p.Stock || 0},"${features}"\n`;
-    });
+    adminProducts.forEach(p => csv += `"${p.Label}","${p.SubCategory||''}","${p.Price||''}",${p.Stock||0},"${(p.Features||[]).join('; ')}"\n`);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'productos.csv';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(link.href);
+    document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(link.href);
 }
 
-// ===== ABRIR FORMULARIO DE EDICIÓN =====
+// ===== GESTOR DE IMÁGENES =====
+window.selectedImages = [];
+
+function renderCurrentImages() {
+    const container = document.getElementById('currentImages');
+    if (!container) return;
+    if (window.selectedImages.length === 0) {
+        container.innerHTML = '<span style="color: var(--text-muted); font-size: 14px;">No hay imágenes seleccionadas.</span>';
+        return;
+    }
+    container.innerHTML = window.selectedImages.map((img, i) => `
+        <div class="image-item">
+            <img src="${img}" onerror="this.style.display='none'">
+            <button class="remove-btn" onclick="removeImage(${i})">×</button>
+        </div>
+    `).join('');
+}
+
+function addManualImage() {
+    const input = document.getElementById('manualImagePath');
+    const paths = input.value.split(',').map(s => s.trim()).filter(s => s);
+    paths.forEach(path => { if (!window.selectedImages.includes(path)) window.selectedImages.push(path); });
+    input.value = '';
+    renderCurrentImages();
+}
+
+function removeImage(index) {
+    window.selectedImages.splice(index, 1);
+    renderCurrentImages();
+}
+
 function openEditForm(slug) {
     const product = adminProducts.find(p => ToSlug(p.Label) === slug);
     if (!product) return;
-    currentProductId = slug;
-    editingProduct = product;
+    currentProductId = slug; editingProduct = product;
     document.getElementById('edit-category').value = product._category || 'Productos';
     document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
     document.getElementById('edit-label').value = product.Label || '';
@@ -251,15 +187,15 @@ function openEditForm(slug) {
     document.getElementById('edit-price').value = product.Price || '';
     document.getElementById('edit-stock').value = product.Stock || 0;
     document.getElementById('edit-features').value = (product.Features || []).join('\n');
+    window.selectedImages = product.Images ? [...product.Images] : [];
+    renderCurrentImages();
     document.getElementById('admin-form').classList.add('active');
     document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
     document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
 function openNewProductForm() {
-    currentProductId = null;
-    editingProduct = null;
+    currentProductId = null; editingProduct = null;
     document.getElementById('edit-category').value = 'Productos';
     document.getElementById('edit-subcategory').value = 'Confituras';
     document.getElementById('edit-label').value = '';
@@ -267,41 +203,30 @@ function openNewProductForm() {
     document.getElementById('edit-price').value = '';
     document.getElementById('edit-stock').value = '0';
     document.getElementById('edit-features').value = '';
+    window.selectedImages = [];
+    renderCurrentImages();
     document.getElementById('admin-form').classList.add('active');
     document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
     document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ===== CERRAR FORMULARIO =====
-function closeForm() {
-    document.getElementById('admin-form').classList.remove('active');
-}
+function closeForm() { document.getElementById('admin-form').classList.remove('active'); }
 
-// ===== GUARDAR PRODUCTO =====
 async function saveProduct() {
     const label = document.getElementById('edit-label').value.trim();
-    if (!label) { alert('El nombre del producto es obligatorio.'); return; }
+    if (!label) { alert('El nombre es obligatorio.'); return; }
     const price = document.getElementById('edit-price').value.trim();
-    if (!price || !/^\d+\.?\d* (CUP|USD)$/.test(price)) {
-        alert('El precio debe tener el formato: número + espacio + CUP o USD (ej. 850.00 CUP)');
-        return;
-    }
+    if (!price || !/^\d+\.?\d* (CUP|USD)$/.test(price)) { alert('Formato de precio incorrecto.'); return; }
     const category = document.getElementById('edit-category').value.trim() || 'Productos';
     const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
-
-    const images = window.selectedImages && Array.isArray(window.selectedImages) ? window.selectedImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
+    const images = window.selectedImages && window.selectedImages.length > 0 ? window.selectedImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
 
     const productData = {
-        Category: category,
-        SubCategory: subcategory,
-        Label: label,
+        Category: category, SubCategory: subcategory, Label: label,
         Description: document.getElementById('edit-description').value,
-        Price: price,
-        Stock: parseInt(document.getElementById('edit-stock').value) || 0,
+        Price: price, Stock: parseInt(document.getElementById('edit-stock').value) || 0,
         Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
-        Date: new Date().toISOString(),
-        Update: new Date().toISOString(),
-        Images: images
+        Date: new Date().toISOString(), Update: new Date().toISOString(), Images: images
     };
 
     const btnSave = document.querySelector('.btn-save');
@@ -314,113 +239,51 @@ async function saveProduct() {
         const filePath = 'data/products/' + slug + '.json';
         const content = JSON.stringify(productData, null, 2);
         const isNew = !currentProductId;
-        const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
-
         let sha = null;
-        if (!isNew) {
-            sha = await getFileSha(filePath);
-            if (sha) {
-                console.log('📄 SHA existente:', sha);
-            } else {
-                console.log('ℹ️ Archivo no existe, se creará uno nuevo.');
-            }
+        if (!isNew) sha = await getFileSha(filePath);
+        const success = await saveFileToRepo(filePath, content, 'Guardar ' + label, sha);
+        if (!success) { btnSave.innerHTML = originalText; btnSave.disabled = false; return; }
+
+        if (!isNew && currentProductId !== slug) {
+            const oldSha = await getFileSha('data/products/' + currentProductId + '.json');
+            if (oldSha) await deleteFileFromRepo('data/products/' + currentProductId + '.json', oldSha, 'Eliminar antiguo');
         }
 
-        const success = await saveFileToRepo(filePath, content, message, sha);
-        if (!success) {
-            btnSave.innerHTML = originalText;
-            btnSave.disabled = false;
-            return;
-        }
+        await updateProductsIndex(productData, (!isNew && currentProductId !== slug) ? currentProductId : null);
 
-        if (!isNew && currentProductId && currentProductId !== slug) {
-            const oldFilePath = 'data/products/' + currentProductId + '.json';
-            const oldSha = await getFileSha(oldFilePath);
-            if (oldSha) {
-                await deleteFileFromRepo(oldFilePath, oldSha, 'Eliminar producto antiguo: ' + currentProductId);
-            }
-        }
+        if (isNew) { productData._category = category; productData._subcategory = subcategory; adminProducts.push(productData); }
+        else { const idx = adminProducts.findIndex(p => ToSlug(p.Label) === currentProductId); if (idx !== -1) { adminProducts[idx] = productData; adminProducts[idx]._category = category; adminProducts[idx]._subcategory = subcategory; } }
 
-        if (isNew) {
-            productData._category = category;
-            productData._subcategory = subcategory;
-            adminProducts.push(productData);
-        } else {
-            const index = adminProducts.findIndex(p => ToSlug(p.Label) === currentProductId);
-            if (index !== -1) {
-                adminProducts[index] = productData;
-                adminProducts[index]._category = category;
-                adminProducts[index]._subcategory = subcategory;
-            }
-        }
-
-        renderAdminTable();
-        updateStats();
-        closeForm();
-        btnSave.innerHTML = originalText;
-        btnSave.disabled = false;
-        alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
+        renderAdminTable(); updateStats(); closeForm();
+        btnSave.innerHTML = originalText; btnSave.disabled = false;
+        alert(isNew ? '✅ Producto creado.' : '✅ Producto actualizado.');
         loadAdminProducts();
-    } catch (error) {
-        console.error('❌ Error en saveProduct:', error);
-        alert('Error inesperado al guardar. Revisa la consola.');
-        btnSave.innerHTML = originalText;
-        btnSave.disabled = false;
-    }
+    } catch (e) { console.error(e); btnSave.innerHTML = originalText; btnSave.disabled = false; alert('Error inesperado.'); }
 }
 
-// ===== ELIMINAR PRODUCTO =====
 async function deleteProduct(slug) {
-    if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) return;
+    if (!confirm('¿Eliminar este producto?')) return;
     const product = adminProducts.find(p => ToSlug(p.Label) === slug);
     if (!product) return;
-
-    const filePath = 'data/products/' + slug + '.json';
-    const sha = await getFileSha(filePath);
-    if (!sha) {
-        alert('El archivo no existe o no se pudo obtener.');
-        return;
-    }
-
-    const success = await deleteFileFromRepo(filePath, sha, 'Eliminar producto: ' + product.Label);
-    if (!success) {
-        alert('Error al eliminar el producto.');
-        return;
-    }
-
-    const index = adminProducts.findIndex(p => ToSlug(p.Label) === slug);
-    if (index !== -1) adminProducts.splice(index, 1);
-    renderAdminTable();
-    updateStats();
-    alert('🗑️ Producto eliminado correctamente.');
+    const sha = await getFileSha('data/products/' + slug + '.json');
+    if (!sha) { alert('No se pudo obtener el archivo.'); return; }
+    const success = await deleteFileFromRepo('data/products/' + slug + '.json', sha, 'Eliminar ' + product.Label);
+    if (!success) { alert('Error al eliminar.'); return; }
+    await updateProductsIndex({ Category: product._category, SubCategory: product._subcategory, Label: product.Label }, slug);
+    const idx = adminProducts.findIndex(p => ToSlug(p.Label) === slug);
+    if (idx !== -1) adminProducts.splice(idx, 1);
+    renderAdminTable(); updateStats();
+    alert('🗑️ Producto eliminado.');
     loadAdminProducts();
 }
 
-// ===== MOSTRAR/OCULTAR LOADING =====
-function showAdminLoading(show) {
-    const loading = document.getElementById('admin-loading');
-    if (loading) loading.classList.toggle('active', show);
-}
+function showAdminLoading(show) { const el = document.getElementById('admin-loading'); if (el) el.classList.toggle('active', show); }
 
-// ===== ABRIR/CERRAR PANEL =====
-function openAdminPanel() {
-    document.getElementById('admin-panel').classList.add('active');
-    document.body.style.overflow = 'hidden';
-    loadAdminProducts();
-}
+function openAdminPanel() { document.getElementById('admin-panel').classList.add('active'); document.body.style.overflow = 'hidden'; loadAdminProducts(); }
+function closeAdminPanel() { document.getElementById('admin-panel').classList.remove('active'); closeForm(); document.body.style.overflow = ''; }
 
-function closeAdminPanel() {
-    document.getElementById('admin-panel').classList.remove('active');
-    closeForm();
-    document.body.style.overflow = '';
-}
-
-// ===== INICIALIZAR =====
 $(document).ready(function() {
-    $(document).on('keydown', function(e) {
-        if (e.key === 'Escape') closeAdminPanel();
-    });
-    $('#admin-panel').on('click', function(e) {
-        if (e.target === this) closeAdminPanel();
-    });
+    $(document).on('keydown', e => { if (e.key === 'Escape') closeAdminPanel(); });
+    $('#admin-panel').on('click', function(e) { if (e.target === this) closeAdminPanel(); });
+    renderCurrentImages();
 });
