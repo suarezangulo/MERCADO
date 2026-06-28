@@ -244,7 +244,7 @@
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== GUARDAR ARCHIVO CON GIT GATEWAY (USANDO ENDPOINT CORRECTO) =====
+        // ===== GUARDAR ARCHIVO CON GIT GATEWAY (ENDPOINT CORRECTO: /files/) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
@@ -255,7 +255,7 @@
             // Codificar contenido a base64
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
 
-            const url = `/.netlify/git-gateway/git/contents/${filePath}`;
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = {
                 content: encodedContent,
                 message: message,
@@ -294,7 +294,7 @@
                 return false;
             }
 
-            const url = `/.netlify/git-gateway/git/contents/${filePath}`;
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = {
                 message: message,
                 sha: sha
@@ -488,7 +488,7 @@
                 if (!isNew) {
                     const token = getToken();
                     if (token) {
-                        const getUrl = `/.netlify/git-gateway/git/contents/${filePath}`;
+                        const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
                         const getResponse = await fetch(getUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -511,7 +511,7 @@
                     const oldFilePath = 'data/products/' + originalSlug + '.json';
                     const token = getToken();
                     if (token) {
-                        const getOldUrl = `/.netlify/git-gateway/git/contents/${oldFilePath}`;
+                        const getOldUrl = `/.netlify/git-gateway/git/files/${oldFilePath}`;
                         const getOldResponse = await fetch(getOldUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -563,7 +563,7 @@
                 return;
             }
 
-            const getUrl = `/.netlify/git-gateway/git/contents/${filePath}`;
+            const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
             const getResponse = await fetch(getUrl, {
                 headers: { 'Authorization': 'Bearer ' + token }
             });
