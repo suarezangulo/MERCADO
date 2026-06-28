@@ -417,7 +417,7 @@ function prepareWhatsapp() {
     $("body").append(n);
 }
 
-// ===== BOTÓN FLOTANTE DE ADMINISTRACIÓN (MEJORADO) =====
+// ===== BOTÓN FLOTANTE DE ADMINISTRACIÓN (MEJORADO CON FONDO TRANSLÚCIDO) =====
 function prepareAdminButton() {
     // Evitar duplicados
     if ($('.admin-floating-btn').length > 0) {
@@ -428,10 +428,11 @@ function prepareAdminButton() {
     console.log('🔨 Creando botón flotante de administración...');
 
     var $btn = $("<div class='admin-floating-btn'></div>");
+    // Icono de tuerca (engranaje)
     $btn.html('<i class="fas fa-cog"></i>');
     $btn.attr('title', 'Panel de Administración');
 
-    // Estilos en línea (más robustos)
+    // Estilos en línea (con fondo translúcido)
     $btn.css({
         position: 'fixed',
         bottom: '130px', // Justo encima del botón de WhatsApp
@@ -439,33 +440,35 @@ function prepareAdminButton() {
         width: '60px',
         height: '60px',
         borderRadius: '50%',
-        backgroundColor: '#717fe0',
+        backgroundColor: 'rgba(113, 127, 224, 0.85)', // Azul translúcido por defecto
         color: '#fff',
-        border: '2px solid #fff',
-        boxShadow: '0 4px 20px rgba(113, 127, 224, 0.4)',
+        border: '2px solid rgba(255,255,255,0.8)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        zIndex: '10000', // Aumentado para asegurar que esté por encima
+        zIndex: '10000',
         transition: 'all 0.3s ease',
-        fontSize: '28px',
+        fontSize: '32px', // Tamaño del icono
         textDecoration: 'none',
-        opacity: '1', // Asegurar que sea visible
-        visibility: 'visible' // Asegurar que sea visible
+        opacity: '1',
+        visibility: 'visible',
+        backdropFilter: 'blur(4px)', // Efecto de desenfoque para translucidez
+        WebkitBackdropFilter: 'blur(4px)'
     });
 
     // Efecto hover
     $btn.on('mouseenter', function() {
         $(this).css({
             transform: 'scale(1.1)',
-            boxShadow: '0 6px 30px rgba(113, 127, 224, 0.6)'
+            boxShadow: '0 6px 30px rgba(0, 0, 0, 0.4)'
         });
     });
     $btn.on('mouseleave', function() {
         $(this).css({
             transform: 'scale(1)',
-            boxShadow: '0 4px 20px rgba(113, 127, 224, 0.4)'
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
         });
     });
 
@@ -490,21 +493,26 @@ function prepareAdminButton() {
     $('body').append($btn);
     console.log('✅ Botón de administración añadido al DOM');
 
-    // Actualizar estado si el usuario está logueado
-    if (window.netlifyIdentity) {
-        var user = window.netlifyIdentity.currentUser();
-        if (user) {
-            $btn.html('<i class="fas fa-user-check"></i>');
-            $btn.css('backgroundColor', '#28a745');
+    // Actualizar estado según la sesión
+    function updateAdminButtonState() {
+        if (window.netlifyIdentity) {
+            var user = window.netlifyIdentity.currentUser();
+            if (user) {
+                // Sesión abierta: verde translúcido
+                $btn.css('backgroundColor', 'rgba(40, 167, 69, 0.85)');
+                $btn.html('<i class="fas fa-user-check"></i>');
+            } else {
+                // Sesión cerrada: azul translúcido
+                $btn.css('backgroundColor', 'rgba(113, 127, 224, 0.85)');
+                $btn.html('<i class="fas fa-cog"></i>');
+            }
         }
-        window.netlifyIdentity.on('login', function() {
-            $btn.html('<i class="fas fa-user-check"></i>');
-            $btn.css('backgroundColor', '#28a745');
-        });
-        window.netlifyIdentity.on('logout', function() {
-            $btn.html('<i class="fas fa-cog"></i>');
-            $btn.css('backgroundColor', '#717fe0');
-        });
+    }
+
+    if (window.netlifyIdentity) {
+        updateAdminButtonState();
+        window.netlifyIdentity.on('login', updateAdminButtonState);
+        window.netlifyIdentity.on('logout', updateAdminButtonState);
     }
 }
 
