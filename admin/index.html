@@ -232,11 +232,13 @@
         }
         .image-manager .manual-add {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
             margin-top: 12px;
         }
         .image-manager .manual-add input {
             flex: 1;
+            min-width: 200px;
             padding: 8px 12px;
             border: 1.5px solid var(--border);
             border-radius: 6px;
@@ -252,6 +254,11 @@
             transition: var(--transition);
         }
         .image-manager .manual-add button:hover { background: var(--primary-dark); }
+        .image-manager .hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -334,9 +341,11 @@
                         <div class="no-images">Cargando imágenes...</div>
                     </div>
                     <div class="manual-add">
-                        <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp" />
+                        <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp (varias separadas por coma)" />
                         <button onclick="addManualImage()"><i class="fas fa-plus"></i> Agregar</button>
+                        <button onclick="addManualImagesFromInput()" style="background: var(--primary-dark);"><i class="fas fa-plus-circle"></i> Agregar varias</button>
                     </div>
+                    <div class="hint">💡 Escribe la ruta exacta de la imagen. Puedes agregar varias separadas por coma.</div>
                 </div>
 
                 <div class="form-actions">
@@ -391,7 +400,7 @@
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== CARGAR IMÁGENES DISPONIBLES (NOMBRES REALES) =====
+        // ===== CARGAR IMÁGENES DISPONIBLES (CON MANEJO DE ERRORES) =====
         async function loadAvailableImages() {
             const grid = document.getElementById('imageGrid');
             grid.innerHTML = '<div class="no-images">Cargando imágenes...</div>';
@@ -409,21 +418,30 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('HTTP ' + response.status);
+                    // Si no existe la carpeta o no se puede listar, mostramos mensaje claro
+                    grid.innerHTML = '<div class="no-images">📁 No se pudo listar la carpeta images/products. Puedes agregar imágenes manualmente abajo.</div>';
+                    return;
                 }
 
                 const data = await response.json();
+                // Asegurarse de que es un array
+                if (!Array.isArray(data)) {
+                    throw new Error('La respuesta no es un array');
+                }
                 // Filtrar solo imágenes
                 const images = data.filter(item => /\.(jpg|jpeg|png|webp|gif)$/i.test(item.name));
+                if (images.length === 0) {
+                    grid.innerHTML = '<div class="no-images">📁 La carpeta images/products está vacía. Puedes agregar imágenes manualmente.</div>';
+                    return;
+                }
                 availableImages = images.map(item => ({
                     name: item.name,
                     path: '/images/products/' + item.name
                 }));
-
                 renderImageGrid();
             } catch (error) {
                 console.error('Error al cargar imágenes:', error);
-                grid.innerHTML = `<div class="no-images">❌ No se pudieron cargar las imágenes. Puedes agregarlas manualmente abajo.</div>`;
+                grid.innerHTML = '<div class="no-images">❌ Error al cargar imágenes. Usa el campo manual para agregar.</div>';
             }
         }
 
@@ -431,7 +449,7 @@
         function renderImageGrid() {
             const grid = document.getElementById('imageGrid');
             if (!availableImages.length) {
-                grid.innerHTML = '<div class="no-images">📁 No hay imágenes en la carpeta products. Puedes agregarlas manualmente.</div>';
+                grid.innerHTML = '<div class="no-images">📁 No hay imágenes disponibles. Agrega manualmente.</div>';
                 return;
             }
             let html = '';
@@ -489,21 +507,30 @@
             }
         }
 
-        // ===== AGREGAR IMAGEN MANUALMENTE =====
+        // ===== AGREGAR IMAGEN MANUAL (una sola) =====
         function addManualImage() {
             const input = document.getElementById('manualImagePath');
-            const path = input.value.trim();
-            if (!path) {
-                alert('Escribe la ruta de la imagen, ej: /images/products/mi-foto.webp');
+            const val = input.value.trim();
+            if (!val) {
+                alert('Escribe al menos una ruta de imagen.');
                 return;
             }
-            if (!selectedImages.includes(path)) {
-                selectedImages.push(path);
+            // Separar por coma, limpiar y filtrar vacíos
+            const paths = val.split(',').map(p => p.trim()).filter(p => p.length > 0);
+            let added = 0;
+            paths.forEach(path => {
+                if (!selectedImages.includes(path)) {
+                    selectedImages.push(path);
+                    added++;
+                }
+            });
+            if (added === 0) {
+                alert('Todas las rutas ya estaban seleccionadas.');
+            } else {
+                input.value = '';
                 renderCurrentImages();
                 renderImageGrid();
-                input.value = '';
-            } else {
-                alert('Esta imagen ya está seleccionada.');
+                alert(`✅ Se agregaron ${added} imagen(es).`);
             }
         }
 
@@ -679,13 +706,13 @@
             document.getElementById('edit-stock').value = product.Stock || 0;
             document.getElementById('edit-features').value = (product.Features || []).join('\n');
 
-            // Cargar imágenes reales del producto
             selectedImages = product.Images || [];
-            // Si no tiene imágenes, las dejamos vacías
             renderCurrentImages();
 
-            // Cargar imágenes disponibles desde el repositorio (nombres reales)
-            loadAvailableImages().then(() => renderImageGrid());
+            // Cargar imágenes disponibles (sin bloquear si falla)
+            loadAvailableImages().then(() => renderImageGrid()).catch(() => {
+                document.getElementById('imageGrid').innerHTML = '<div class="no-images">⚠️ No se pudieron cargar. Usa el campo manual.</div>';
+            });
 
             document.getElementById('admin-form').classList.add('active');
             document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
@@ -705,7 +732,9 @@
             document.getElementById('edit-stock').value = '0';
             document.getElementById('edit-features').value = '';
             renderCurrentImages();
-            loadAvailableImages().then(() => renderImageGrid());
+            loadAvailableImages().then(() => renderImageGrid()).catch(() => {
+                document.getElementById('imageGrid').innerHTML = '<div class="no-images">⚠️ No se pudieron cargar. Usa el campo manual.</div>';
+            });
             document.getElementById('admin-form').classList.add('active');
             document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
@@ -737,7 +766,7 @@
                 Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
                 Date: new Date().toISOString(),
                 Update: new Date().toISOString(),
-                Images: selectedImages // Guarda las rutas reales seleccionadas
+                Images: selectedImages // Guardar las rutas reales
             };
 
             const btnSave = document.querySelector('.btn-save');
