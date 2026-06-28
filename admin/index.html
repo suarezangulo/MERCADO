@@ -392,7 +392,7 @@
             return s;
         }
 
-        // ===== OBTENER TOKEN (con refresh) =====
+        // ===== OBTENER TOKEN =====
         async function getToken() {
             const user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
             if (!user) {
@@ -400,7 +400,6 @@
                 return null;
             }
             try {
-                // Usar el método jwt() para obtener un token fresco
                 const token = await user.jwt();
                 console.log('✅ Token obtenido correctamente');
                 return token;
@@ -410,7 +409,7 @@
             }
         }
 
-        // ===== CARGAR IMÁGENES DISPONIBLES (con Git Gateway) =====
+        // ===== CARGAR IMÁGENES DISPONIBLES =====
         async function loadAvailableImages() {
             const grid = document.getElementById('imageGrid');
             grid.innerHTML = '<div class="no-images">Cargando imágenes...</div>';
@@ -422,7 +421,7 @@
             }
 
             try {
-                const url = `/.netlify/git-gateway/git/github/contents/images/products`;
+                const url = `/.netlify/git/github/contents/images/products`;
                 console.log('🔍 Cargando imágenes desde:', url);
                 const response = await fetch(url, {
                     headers: { 'Authorization': 'Bearer ' + token }
@@ -547,19 +546,19 @@
             }
         }
 
-        // ===== OBTENER SHA DE UN ARCHIVO (con Git Gateway) =====
+        // ===== OBTENER SHA DE UN ARCHIVO =====
         async function getFileSha(filePath) {
             const token = await getToken();
             if (!token) return null;
 
             try {
-                const url = `/.netlify/git-gateway/git/files/${filePath}`;
+                const url = `/.netlify/git/github/contents/${filePath}`;
                 const response = await fetch(url, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 });
 
                 if (response.status === 404) {
-                    return null; // El archivo no existe
+                    return null;
                 }
 
                 if (!response.ok) {
@@ -575,7 +574,7 @@
             }
         }
 
-        // ===== GUARDAR ARCHIVO (con Git Gateway, POST para crear, PUT para actualizar) =====
+        // ===== GUARDAR ARCHIVO (CON ENDPOINT CORRECTO) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = await getToken();
             if (!token) {
@@ -584,11 +583,8 @@
             }
 
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
-            
-            // Si hay SHA, es una actualización -> PUT
-            // Si no hay SHA, es un archivo nuevo -> POST
+            const url = `/.netlify/git/github/contents/${filePath}`;
             const method = sha ? 'PUT' : 'POST';
-            const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = {
                 content: encodedContent,
                 message: message,
@@ -626,7 +622,7 @@
             }
         }
 
-        // ===== ELIMINAR ARCHIVO (con Git Gateway) =====
+        // ===== ELIMINAR ARCHIVO =====
         async function deleteFileFromRepo(filePath, sha, message) {
             const token = await getToken();
             if (!token) {
@@ -634,7 +630,7 @@
                 return false;
             }
 
-            const url = `/.netlify/git-gateway/git/files/${filePath}`;
+            const url = `/.netlify/git/github/contents/${filePath}`;
             const body = { message: message, sha: sha };
 
             try {
@@ -947,7 +943,6 @@
         $(document).ready(function() {
             if (window.netlifyIdentity) {
                 window.netlifyIdentity.init();
-                // Esperar a que el usuario esté autenticado
                 window.netlifyIdentity.on('login', function() {
                     console.log('🔐 Usuario logueado');
                 });
