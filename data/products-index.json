@@ -30,7 +30,8 @@
         ],
         "Stock": 5,
         "SubCategory": "Combos",
-        "Category": "Productos"
+        "Category": "Productos",
+        "Description": "Lo justo para empezar y no quedarse corto. Funcional, rendidor y sin complicaciones. Este combo incluye una selección equilibrada de productos básicos de alta calidad para tu despensa diaria, desde granos y pastas hasta café y productos de limpieza."
       }
     ],
     "Confituras": [
@@ -54,7 +55,8 @@
         ],
         "Stock": 500,
         "SubCategory": "Confituras",
-        "Category": "Productos"
+        "Category": "Productos",
+        "Description": "Clásicas galletas María, ligeramente dulces y con una textura que se deshace en la boca. Perfectas para acompañar café, té o leche, y para preparar postres caseros.\n\nIngredientes: harina de trigo, azúcar, grasas vegetales, leche, huevo, sal, gasificantes (bicarbonato sódico, bicarbonato amónico), jarabe de azúcar, leudantes, emulsionante (lecitina de soya), saborizante artificial.\n\nConservación: Conservar en lugar fresco y seco.\n\nAlérgenos: Contiene gluten (trigo), leche, huevo y soya.\n\nModo de preparación: Consumir directamente. Ideales para acompañar bebidas calientes o usar en postres.\n\nPaís de origen: India"
       },
       {
         "Price": "850.00 CUP",
@@ -77,7 +79,8 @@
         ],
         "Stock": 250,
         "SubCategory": "Confituras",
-        "Category": "Productos"
+        "Category": "Productos",
+        "Description": "Mermelada de guayaba casera, elaborada con fruta fresca cuidadosamente seleccionada. Su sabor intenso y dulce, junto con su textura suave y brillante, la convierten en el acompañante ideal para desayunos y meriendas.\n\nIngredientes: guayaba fresca, azúcar, agua, ácido cítrico (como conservante natural).\n\nConservación: Mantener en lugar fresco y seco. Una vez abierto, conservar refrigerado y consumir antes de 15 días.\n\nAlérgenos: No contiene gluten ni lácteos.\n\nModo de preparación: Lista para consumir. Ideal para untar en pan, galletas o acompañar quesos.\n\nPaís de origen: Cuba"
       }
     ]
   }
