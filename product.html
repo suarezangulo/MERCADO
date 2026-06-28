@@ -23,6 +23,9 @@
 	<meta name="twitter:title" content="MERCADO - Tu tienda en Cuba">
 	<meta name="twitter:description" content="Productos de calidad para tu hogar. Compra en CUP y USD.">
 	
+	<!-- ===== NETLIFY IDENTITY WIDGET (para autenticación) ===== -->
+	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+	
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -340,8 +343,10 @@
 	<script src="js/utils.js"></script>
 	<script src="js/product.js"></script>
 
+	<!-- ===== SCRIPTS DE INICIALIZACIÓN ===== -->
 	<script>
 		(function() {
+			// 1. Establecer moneda activa
 			var moneda = getMonedaPreferida();
 			if (moneda === 'CUP') {
 				document.getElementById('moneda-cup').classList.add('active');
@@ -352,6 +357,22 @@
 				var movilUsd = document.getElementById('moneda-usd-movil');
 				if (movilUsd) movilUsd.classList.add('active');
 			}
+
+			// 2. Inicializar Netlify Identity para el botón flotante
+			document.addEventListener('DOMContentLoaded', function() {
+				if (window.netlifyIdentity) {
+					window.netlifyIdentity.init();
+					// El botón flotante se crea automáticamente en utils.js
+					// Solo necesitamos escuchar eventos para actualizar el icono
+					window.netlifyIdentity.on('login', function() {
+						console.log('🔐 Usuario logueado');
+					});
+					window.netlifyIdentity.on('logout', function() {
+						console.log('🔓 Usuario deslogueado');
+					});
+				}
+				// prepareAdminButton() ya se llama desde utils.js
+			});
 		})();
 	</script>
 </body>
