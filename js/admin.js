@@ -157,7 +157,7 @@ function renderCurrentImages() {
     }
     container.innerHTML = window.selectedImages.map((img, i) => `
         <div class="image-item">
-            <img src="${img}" onerror="this.style.display='none'">
+            <img src="${img}" alt="Imagen seleccionada" onerror="this.style.display='none'">
             <button class="remove-btn" onclick="removeImage(${i})">×</button>
         </div>
     `).join('');
@@ -166,16 +166,72 @@ function renderCurrentImages() {
 function addManualImage() {
     const input = document.getElementById('manualImagePath');
     const paths = input.value.split(',').map(s => s.trim()).filter(s => s);
-    paths.forEach(path => { if (!window.selectedImages.includes(path)) window.selectedImages.push(path); });
+    paths.forEach(path => {
+        if (path && !window.selectedImages.includes(path)) {
+            window.selectedImages.push(path);
+        }
+    });
     input.value = '';
     renderCurrentImages();
+    loadAvailableImages();
 }
 
 function removeImage(index) {
     window.selectedImages.splice(index, 1);
     renderCurrentImages();
+    loadAvailableImages();
 }
 
+async function loadAvailableImages() {
+    const grid = document.getElementById('imageGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '<div class="no-images" style="grid-column: 1/-1; text-align: center; padding: 20px; color: var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> Cargando imágenes...</div>';
+
+    try {
+        const response = await fetch('/.netlify/functions/list-images');
+        if (!response.ok) throw new Error('Error al obtener imágenes');
+        const data = await response.json();
+        const images = data.images || [];
+
+        if (images.length === 0) {
+            grid.innerHTML = '<div class="no-images" style="grid-column: 1/-1; text-align: center; padding: 20px; color: var(--text-muted);">No se encontraron imágenes en images/products.</div>';
+            return;
+        }
+
+        let html = '';
+        images.forEach(img => {
+            const isSelected = window.selectedImages.includes(img.path);
+            html += `
+                <div class="image-option${isSelected ? ' selected' : ''}" 
+                     onclick="toggleImageSelection('${img.path}', this)" 
+                     style="cursor: pointer; border-radius: 6px; overflow: hidden; border: 2px solid ${isSelected ? 'var(--success)' : 'var(--border)'}; transition: all 0.2s; position: relative;">
+                    <img src="${img.path}" alt="${img.name}" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; display: block;" 
+                         loading="lazy"
+                         onerror="this.parentElement.style.display='none'">
+                    ${isSelected ? '<div class="check" style="position: absolute; top: 4px; right: 4px; background: var(--success); color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">✓</div>' : ''}
+                </div>
+            `;
+        });
+        grid.innerHTML = html;
+    } catch (error) {
+        console.error('Error al cargar imágenes:', error);
+        grid.innerHTML = '<div class="no-images" style="grid-column: 1/-1; text-align: center; padding: 20px; color: var(--text-muted);">Error al cargar imágenes. Usa el campo manual.</div>';
+    }
+}
+
+function toggleImageSelection(imagePath, element) {
+    if (window.selectedImages.includes(imagePath)) {
+        window.selectedImages = window.selectedImages.filter(img => img !== imagePath);
+    } else {
+        window.selectedImages.push(imagePath);
+    }
+    loadAvailableImages();
+    renderCurrentImages();
+}
+
+// ===== ABRIR FORMULARIO DE EDICIÓN =====
 function openEditForm(slug) {
     const product = adminProducts.find(p => ToSlug(p.Label) === slug);
     if (!product) return;
@@ -189,11 +245,13 @@ function openEditForm(slug) {
     document.getElementById('edit-features').value = (product.Features || []).join('\n');
     window.selectedImages = product.Images ? [...product.Images] : [];
     renderCurrentImages();
+    loadAvailableImages();
     document.getElementById('admin-form').classList.add('active');
     document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
     document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
 }
 
+// ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
 function openNewProductForm() {
     currentProductId = null; editingProduct = null;
     document.getElementById('edit-category').value = 'Productos';
@@ -205,13 +263,16 @@ function openNewProductForm() {
     document.getElementById('edit-features').value = '';
     window.selectedImages = [];
     renderCurrentImages();
+    loadAvailableImages();
     document.getElementById('admin-form').classList.add('active');
     document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
     document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
 }
 
+// ===== CERRAR FORMULARIO =====
 function closeForm() { document.getElementById('admin-form').classList.remove('active'); }
 
+// ===== GUARDAR PRODUCTO =====
 async function saveProduct() {
     const label = document.getElementById('edit-label').value.trim();
     if (!label) { alert('El nombre es obligatorio.'); return; }
@@ -261,6 +322,7 @@ async function saveProduct() {
     } catch (e) { console.error(e); btnSave.innerHTML = originalText; btnSave.disabled = false; alert('Error inesperado.'); }
 }
 
+// ===== ELIMINAR PRODUCTO =====
 async function deleteProduct(slug) {
     if (!confirm('¿Eliminar este producto?')) return;
     const product = adminProducts.find(p => ToSlug(p.Label) === slug);
@@ -286,4 +348,5 @@ $(document).ready(function() {
     $(document).on('keydown', e => { if (e.key === 'Escape') closeAdminPanel(); });
     $('#admin-panel').on('click', function(e) { if (e.target === this) closeAdminPanel(); });
     renderCurrentImages();
+    loadAvailableImages();
 });
