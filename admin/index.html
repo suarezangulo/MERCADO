@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== TODOS LOS ESTILOS ===== */
+        /* ===== ESTILOS BASE (sin cambios) ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
@@ -94,6 +95,8 @@
         @media (max-width: 992px) { .admin-panel-content { padding: 25px 20px; max-height: 98vh; } .admin-header-left h2 { font-size: 22px; } .admin-form .form-row { grid-template-columns: 1fr; } }
         @media (max-width: 768px) { .admin-panel { padding: 10px; } .admin-panel-content { padding: 20px 15px; border-radius: var(--radius-sm); } .admin-header { flex-direction: column; align-items: flex-start; padding-right: 0; } .admin-header-left h2 { font-size: 20px; } .admin-header-left .subtitle { font-size: 13px; } .admin-panel-close { width: 38px; height: 38px; font-size: 16px; position: absolute; top: 12px; right: 12px; float: none; } .admin-stats { grid-template-columns: repeat(2, 1fr); } .admin-table { font-size: 13px; } .admin-table th, .admin-table td { padding: 10px 12px; } .admin-table .product-img { width: 40px; height: 40px; } .admin-table .product-img:hover { transform: scale(2); } .admin-table .actions { flex-direction: column; gap: 5px; } .admin-table .actions button { width: 100%; justify-content: center; } .admin-form { padding: 18px 16px; } .admin-form h3 { font-size: 18px; } .admin-form .form-actions { flex-direction: column; } .admin-form .form-actions button { width: 100%; justify-content: center; } }
         @media (max-width: 480px) { .admin-panel-content { padding: 15px 12px; } .admin-header-left h2 { font-size: 18px; } .admin-stats { grid-template-columns: 1fr 1fr; gap: 10px; } .stat-card .stat-number { font-size: 22px; } .admin-actions button { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; } }
+
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -126,94 +129,113 @@
         .modal-actions .btn-no { background: var(--border); color: var(--text-secondary); }
         .modal-actions .btn-no:hover { background: #d1d5db; transform: translateY(-2px); }
 
-        /* Estilos para la gestión de imágenes */
-        .image-list {
+        /* ===== ESTILOS PARA EL GESTOR DE IMÁGENES ===== */
+        .image-manager {
+            margin-top: 16px;
+            padding: 16px;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+        .image-manager .current-images {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 10px;
+            margin-bottom: 16px;
         }
-        .image-item {
+        .image-manager .current-images .image-item {
             position: relative;
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--border);
+            width: 100px;
+            height: 100px;
             border-radius: var(--radius-sm);
             overflow: hidden;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: 2px solid var(--border);
+            transition: var(--transition);
         }
-        .image-item img {
+        .image-manager .current-images .image-item:hover {
+            border-color: var(--danger);
+        }
+        .image-manager .current-images .image-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .image-item .remove-image {
+        .image-manager .current-images .image-item .remove-btn {
             position: absolute;
-            top: 2px;
-            right: 2px;
+            top: 4px;
+            right: 4px;
             background: var(--danger);
-            color: white;
+            color: #fff;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             font-size: 12px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
             transition: var(--transition);
+            opacity: 0.9;
         }
-        .image-item:hover .remove-image {
-            opacity: 1;
+        .image-manager .current-images .image-item .remove-btn:hover {
+            transform: scale(1.1);
         }
-        .add-image-btn {
+        .image-manager .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+        .image-manager .image-grid .image-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        .image-manager .image-grid .image-option:hover {
+            transform: scale(1.02);
+            border-color: var(--primary);
+        }
+        .image-manager .image-grid .image-option.selected {
+            border-color: var(--success);
+            box-shadow: 0 0 0 2px var(--success);
+        }
+        .image-manager .image-grid .image-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-manager .image-grid .image-option .check {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: var(--success);
+            color: #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 80px;
-            height: 80px;
-            border: 2px dashed var(--border);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            color: var(--text-muted);
-            font-size: 24px;
+            font-size: 14px;
+            opacity: 0;
             transition: var(--transition);
         }
-        .add-image-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
+        .image-manager .image-grid .image-option.selected .check {
+            opacity: 1;
         }
-        .image-url-input {
-            display: none;
-            margin-top: 10px;
-            gap: 10px;
-        }
-        .image-url-input.active {
-            display: flex;
-        }
-        .image-url-input input {
-            flex: 1;
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-family: var(--font);
+        .image-manager .no-images {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
             font-size: 14px;
-        }
-        .image-url-input button {
-            padding: 8px 16px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .image-url-input button:hover {
-            background: var(--primary-dark);
         }
     </style>
 </head>
@@ -282,19 +304,24 @@
                     <textarea id="edit-features" placeholder="Ej:&#10;Clásicas galletas María&#10;Textura crujiente"></textarea>
                 </div>
 
-                <!-- ===== SECCIÓN DE IMÁGENES ===== -->
-                <div class="form-group">
-                    <label>Imágenes del producto</label>
-                    <div id="image-list" class="image-list"></div>
-                    <div class="add-image-btn" onclick="showAddImageInput()">
-                        <i class="fas fa-plus"></i>
+                <!-- ===== GESTOR DE IMÁGENES ===== -->
+                <div class="image-manager">
+                    <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">
+                        <i class="fas fa-images"></i> Imágenes del producto
+                    </label>
+                    
+                    <!-- Imágenes actuales (seleccionadas) -->
+                    <div class="current-images" id="currentImages">
+                        <!-- Se renderizan dinámicamente -->
                     </div>
-                    <div id="image-url-input" class="image-url-input">
-                        <input type="text" id="new-image-url" placeholder="URL de la imagen (ej: /images/products/mi-foto.webp)">
-                        <button onclick="addImageFromUrl()">Añadir</button>
-                        <button onclick="cancelAddImage()" style="background: var(--border); color: var(--text-secondary);">Cancelar</button>
+
+                    <!-- Grid de imágenes disponibles -->
+                    <div style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
+                        <i class="fas fa-folder-open"></i> Imágenes disponibles (haz clic para añadir/eliminar)
                     </div>
-                    <small style="color: var(--text-muted); display: block; margin-top: 5px;">La primera imagen de la lista será la principal.</small>
+                    <div class="image-grid" id="imageGrid">
+                        <div class="no-images">Cargando imágenes...</div>
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -327,7 +354,8 @@
         let editingProduct = null;
         let currentProductId = null;
         let originalSlug = null;
-        let tempImages = []; // Almacena las URLs de imágenes durante la edición
+        let selectedImages = []; // Array de rutas de imágenes seleccionadas
+        let availableImages = []; // Array de objetos {name, path} de imágenes disponibles
 
         // ===== ToSlug LOCAL =====
         function ToSlug(str) {
@@ -348,29 +376,127 @@
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== GUARDAR ARCHIVO =====
+        // ===== CARGAR IMÁGENES DISPONIBLES =====
+        async function loadAvailableImages() {
+            const token = getToken();
+            if (!token) {
+                document.getElementById('imageGrid').innerHTML = '<div class="no-images">Inicia sesión para ver imágenes</div>';
+                return;
+            }
+            try {
+                const url = `/.netlify/git/github/contents/images/products`;
+                const response = await fetch(url, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                const data = await response.json();
+                // Filtrar solo imágenes (extensiones comunes)
+                const images = data.filter(item => /\.(jpg|jpeg|png|webp|gif)$/i.test(item.name));
+                availableImages = images.map(item => ({
+                    name: item.name,
+                    path: '/images/products/' + item.name
+                }));
+                renderImageGrid();
+            } catch (error) {
+                console.error('Error al cargar imágenes:', error);
+                document.getElementById('imageGrid').innerHTML = '<div class="no-images">Error al cargar imágenes. Revisa la consola.</div>';
+            }
+        }
+
+        // ===== RENDERIZAR GRID DE IMÁGENES DISPONIBLES =====
+        function renderImageGrid() {
+            const grid = document.getElementById('imageGrid');
+            if (!availableImages.length) {
+                grid.innerHTML = '<div class="no-images">No hay imágenes disponibles en la carpeta products.</div>';
+                return;
+            }
+            let html = '';
+            availableImages.forEach(img => {
+                const isSelected = selectedImages.includes(img.path);
+                html += `
+                    <div class="image-option ${isSelected ? 'selected' : ''}" onclick="toggleImageSelection('${img.path}')">
+                        <img src="${img.path}" alt="${img.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22/%3E'">
+                        <div class="check"><i class="fas fa-check"></i></div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        // ===== RENDERIZAR IMÁGENES ACTUALES (seleccionadas) =====
+        function renderCurrentImages() {
+            const container = document.getElementById('currentImages');
+            if (!selectedImages.length) {
+                container.innerHTML = '<span style="color: var(--text-muted); font-size: 14px;">No hay imágenes seleccionadas.</span>';
+                return;
+            }
+            let html = '';
+            selectedImages.forEach(path => {
+                const name = path.split('/').pop();
+                html += `
+                    <div class="image-item">
+                        <img src="${path}" alt="${name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22/%3E'">
+                        <button class="remove-btn" onclick="removeImage('${path}')" title="Eliminar imagen"><i class="fas fa-times"></i></button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ===== ALTERNAR SELECCIÓN DE IMAGEN =====
+        function toggleImageSelection(path) {
+            const index = selectedImages.indexOf(path);
+            if (index !== -1) {
+                selectedImages.splice(index, 1);
+            } else {
+                selectedImages.push(path);
+            }
+            renderCurrentImages();
+            renderImageGrid();
+        }
+
+        // ===== ELIMINAR IMAGEN DE LA SELECCIÓN =====
+        function removeImage(path) {
+            const index = selectedImages.indexOf(path);
+            if (index !== -1) {
+                selectedImages.splice(index, 1);
+                renderCurrentImages();
+                renderImageGrid();
+            }
+        }
+
+        // ===== GUARDAR ARCHIVO CON GIT GATEWAY (ENDPOINT CORRECTO) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
+
+            // Codificar a base64
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+            // Endpoint correcto para Git Gateway
             const url = `/.netlify/git/github/contents/${filePath}`;
             const body = {
                 content: encodedContent,
                 message: message,
                 sha: sha || undefined
             };
+
             try {
                 const response = await fetch(url, {
                     method: 'PUT',
                     headers: {
                         'Authorization': 'Bearer ' + token,
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
                     body: JSON.stringify(body)
                 });
+
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('Error al guardar:', errorText);
@@ -392,17 +518,24 @@
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
+
             const url = `/.netlify/git/github/contents/${filePath}`;
-            const body = { message: message, sha: sha };
+            const body = {
+                message: message,
+                sha: sha
+            };
+
             try {
                 const response = await fetch(url, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': 'Bearer ' + token,
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
                     body: JSON.stringify(body)
                 });
+
                 if (!response.ok) {
                     console.error('Error al eliminar:', await response.text());
                     return false;
@@ -502,47 +635,6 @@
             URL.revokeObjectURL(link.href);
         }
 
-        // ===== GESTIÓN DE IMÁGENES =====
-        function showAddImageInput() {
-            document.getElementById('image-url-input').classList.add('active');
-        }
-
-        function cancelAddImage() {
-            document.getElementById('image-url-input').classList.remove('active');
-            document.getElementById('new-image-url').value = '';
-        }
-
-        function addImageFromUrl() {
-            const url = document.getElementById('new-image-url').value.trim();
-            if (!url) {
-                alert('Por favor, introduce una URL de imagen válida.');
-                return;
-            }
-            tempImages.push(url);
-            renderImageList();
-            document.getElementById('new-image-url').value = '';
-            document.getElementById('image-url-input').classList.remove('active');
-        }
-
-        function removeImage(index) {
-            tempImages.splice(index, 1);
-            renderImageList();
-        }
-
-        function renderImageList() {
-            const container = document.getElementById('image-list');
-            container.innerHTML = '';
-            tempImages.forEach((url, index) => {
-                const div = document.createElement('div');
-                div.className = 'image-item';
-                div.innerHTML = `
-                    <img src="${url}" alt="Imagen ${index+1}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22/%3E'">
-                    <button class="remove-image" onclick="removeImage(${index})" title="Eliminar imagen"><i class="fas fa-times"></i></button>
-                `;
-                container.appendChild(div);
-            });
-        }
-
         // ===== ABRIR FORMULARIO DE EDICIÓN =====
         function openEditForm(slug) {
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
@@ -551,7 +643,6 @@
             originalSlug = slug;
             editingProduct = product;
 
-            // Cargar datos básicos
             document.getElementById('edit-category').value = product._category || 'Productos';
             document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
             document.getElementById('edit-label').value = product.Label || '';
@@ -560,9 +651,11 @@
             document.getElementById('edit-stock').value = product.Stock || 0;
             document.getElementById('edit-features').value = (product.Features || []).join('\n');
 
-            // Cargar imágenes
-            tempImages = product.Images ? [...product.Images] : [];
-            renderImageList();
+            // Cargar imágenes del producto
+            selectedImages = product.Images || [];
+            renderCurrentImages();
+            // Cargar imágenes disponibles desde el repositorio
+            loadAvailableImages().then(() => renderImageGrid());
 
             document.getElementById('admin-form').classList.add('active');
             document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
@@ -574,6 +667,7 @@
             currentProductId = null;
             originalSlug = null;
             editingProduct = null;
+            selectedImages = [];
             document.getElementById('edit-category').value = 'Productos';
             document.getElementById('edit-subcategory').value = 'Confituras';
             document.getElementById('edit-label').value = '';
@@ -581,8 +675,8 @@
             document.getElementById('edit-price').value = '';
             document.getElementById('edit-stock').value = '0';
             document.getElementById('edit-features').value = '';
-            tempImages = [];
-            renderImageList();
+            renderCurrentImages();
+            loadAvailableImages().then(() => renderImageGrid());
             document.getElementById('admin-form').classList.add('active');
             document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
@@ -604,9 +698,6 @@
             const category = document.getElementById('edit-category').value.trim() || 'Productos';
             const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
 
-            // Asegurar que al menos haya una imagen
-            let images = tempImages.length > 0 ? tempImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
-
             const productData = {
                 Category: category,
                 SubCategory: subcategory,
@@ -617,7 +708,7 @@
                 Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
                 Date: new Date().toISOString(),
                 Update: new Date().toISOString(),
-                Images: images
+                Images: selectedImages // Guardar las imágenes seleccionadas
             };
 
             const btnSave = document.querySelector('.btn-save');
@@ -632,6 +723,7 @@
                 const isNew = !currentProductId;
                 const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
 
+                // Obtener SHA si el archivo existe
                 let sha = null;
                 if (!isNew) {
                     const token = getToken();
