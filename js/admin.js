@@ -1,5 +1,6 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
 // Esta versión incluye guardado en repositorio mediante Git Gateway
+// Usa el endpoint estándar /.netlify/git-gateway/git/files/
 
 let adminProducts = [];
 let editingProduct = null;
@@ -36,12 +37,12 @@ async function getToken() {
     }
 }
 
-// ===== OBTENER SHA DE UN ARCHIVO =====
+// ===== OBTENER SHA DE UN ARCHIVO (usando Git Gateway) =====
 async function getFileSha(filePath) {
     const token = await getToken();
     if (!token) return null;
     try {
-        const url = `/.netlify/git/github/contents/${filePath}`;
+        const url = `/.netlify/git-gateway/git/files/${filePath}`;
         const response = await fetch(url, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
@@ -60,7 +61,7 @@ async function getFileSha(filePath) {
     }
 }
 
-// ===== GUARDAR ARCHIVO EN REPOSITORIO =====
+// ===== GUARDAR ARCHIVO EN REPOSITORIO (con Git Gateway) =====
 async function saveFileToRepo(filePath, content, message, sha = null) {
     const token = await getToken();
     if (!token) {
@@ -69,8 +70,8 @@ async function saveFileToRepo(filePath, content, message, sha = null) {
     }
 
     const encodedContent = btoa(unescape(encodeURIComponent(content)));
-    const url = `/.netlify/git/github/contents/${filePath}`;
-    const method = sha ? 'PUT' : 'POST';
+    const url = `/.netlify/git-gateway/git/files/${filePath}`;
+    const method = sha ? 'PUT' : 'POST'; // PUT para actualizar, POST para crear
     const body = {
         content: encodedContent,
         message: message,
@@ -108,7 +109,7 @@ async function saveFileToRepo(filePath, content, message, sha = null) {
     }
 }
 
-// ===== ELIMINAR ARCHIVO DEL REPOSITORIO =====
+// ===== ELIMINAR ARCHIVO DEL REPOSITORIO (con Git Gateway) =====
 async function deleteFileFromRepo(filePath, sha, message) {
     const token = await getToken();
     if (!token) {
@@ -116,7 +117,7 @@ async function deleteFileFromRepo(filePath, sha, message) {
         return false;
     }
 
-    const url = `/.netlify/git/github/contents/${filePath}`;
+    const url = `/.netlify/git-gateway/git/files/${filePath}`;
     const body = { message: message, sha: sha };
 
     try {
