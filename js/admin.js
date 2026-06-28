@@ -1,5 +1,5 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
-// Versión que usa funciones serverless de Netlify
+// Versión completa con guardado mediante funciones serverless
 
 let adminProducts = [];
 let editingProduct = null;
@@ -31,6 +31,7 @@ async function saveProduct() {
     const category = document.getElementById('edit-category').value.trim() || 'Productos';
     const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
 
+    // Obtener la lista de imágenes seleccionadas
     const images = window.selectedImages && Array.isArray(window.selectedImages) ? window.selectedImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
 
     const productData = {
@@ -68,7 +69,7 @@ async function saveProduct() {
                 filePath: filePath,
                 content: content,
                 message: message,
-                sha: null // La función serverless obtendrá el SHA automáticamente
+                sha: null
             })
         });
 
@@ -119,7 +120,6 @@ async function deleteProduct(slug) {
     const filePath = 'data/products/' + slug + '.json';
 
     try {
-        // Primero obtener el SHA del archivo (opcional, la función puede obtenerlo)
         const response = await fetch('/.netlify/functions/delete-product', {
             method: 'DELETE',
             headers: {
@@ -128,7 +128,7 @@ async function deleteProduct(slug) {
             body: JSON.stringify({
                 filePath: filePath,
                 message: 'Eliminar producto: ' + product.Label,
-                sha: null // La función serverless obtendrá el SHA automáticamente
+                sha: null
             })
         });
 
