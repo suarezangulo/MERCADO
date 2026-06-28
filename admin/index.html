@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== TODOS LOS ESTILOS (sin cambios) ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
-        .admin-panel { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgba(26, 26, 46, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); overflow-y: auto; padding: 20px; animation: fadeIn 0.3s ease; }
+        .admin-panel { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgba(26, 26, 46, 0.6); backdrop-filter: blur(8px); overflow-y: auto; padding: 20px; animation: fadeIn 0.3s ease; }
         .admin-panel.active { display: flex; align-items: flex-start; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
         .admin-panel-content { background: var(--card-bg); border-radius: var(--radius); max-width: 1400px; width: 100%; max-height: 95vh; overflow-y: auto; padding: 35px 40px; box-shadow: var(--shadow); position: relative; animation: slideUp 0.4s ease; }
@@ -20,9 +19,8 @@
         .admin-panel-content::-webkit-scrollbar { width: 8px; }
         .admin-panel-content::-webkit-scrollbar-track { background: var(--bg); border-radius: 10px; }
         .admin-panel-content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-        .admin-panel-content::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
         .admin-panel-close { position: sticky; top: 0; float: right; background: var(--danger); color: #fff; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; transition: var(--transition); z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
-        .admin-panel-close:hover { background: #c82333; transform: scale(1.1) rotate(90deg); box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4); }
+        .admin-panel-close:hover { background: #c82333; transform: scale(1.1) rotate(90deg); }
         .admin-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; padding-right: 60px; margin-bottom: 25px; border-bottom: 2px solid var(--border); padding-bottom: 20px; }
         .admin-header-left { display: flex; align-items: center; gap: 15px; }
         .admin-header-left .logo-icon { width: 48px; height: 48px; background: var(--primary-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--primary); }
@@ -31,17 +29,17 @@
         .admin-header-left .subtitle { font-size: 14px; color: var(--text-muted); font-weight: 400; display: block; margin-top: -2px; }
         .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stat-card { background: var(--bg); border-radius: var(--radius-sm); padding: 16px 20px; text-align: center; transition: var(--transition); border: 1px solid transparent; }
-        .stat-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(113, 127, 224, 0.1); }
+        .stat-card:hover { border-color: var(--primary); transform: translateY(-2px); }
         .stat-card .stat-number { font-size: 28px; font-weight: 700; color: var(--primary); display: block; }
         .stat-card .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; }
         .admin-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
         .admin-actions button { padding: 12px 24px; border: none; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font); font-size: 14px; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
         .btn-add { background: var(--success); color: #fff; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); }
-        .btn-add:hover { background: #218838; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4); }
+        .btn-add:hover { background: #218838; transform: translateY(-2px); }
         .btn-refresh { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(113, 127, 224, 0.3); }
-        .btn-refresh:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(113, 127, 224, 0.4); }
+        .btn-refresh:hover { background: var(--primary-dark); transform: translateY(-2px); }
         .btn-export { background: #17a2b8; color: #fff; box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3); }
-        .btn-export:hover { background: #138496; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4); }
+        .btn-export:hover { background: #138496; transform: translateY(-2px); }
         .admin-table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); }
         .admin-table { width: 100%; border-collapse: collapse; font-family: var(--font); font-size: 14px; }
         .admin-table thead { background: var(--bg); }
@@ -49,7 +47,6 @@
         .admin-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: middle; color: var(--text-secondary); }
         .admin-table tbody tr { transition: var(--transition); }
         .admin-table tbody tr:hover { background: var(--primary-bg); }
-        .admin-table tbody tr:last-child td { border-bottom: none; }
         .admin-table .product-img { width: 56px; height: 56px; object-fit: cover; border-radius: var(--radius-sm); background: var(--bg); border: 2px solid var(--border); transition: var(--transition); }
         .admin-table .product-img:hover { transform: scale(1.5); border-color: var(--primary); box-shadow: 0 4px 15px rgba(113, 127, 224, 0.3); z-index: 5; position: relative; }
         .admin-table .product-name { font-weight: 600; color: var(--text); }
@@ -83,7 +80,7 @@
         .admin-form .form-actions { display: flex; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
         .admin-form .form-actions button { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-family: var(--font); font-size: 14px; font-weight: 600; transition: var(--transition); }
         .admin-form .form-actions .btn-save { background: var(--success); color: #fff; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); }
-        .admin-form .form-actions .btn-save:hover { background: #218838; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4); }
+        .admin-form .form-actions .btn-save:hover { background: #218838; transform: translateY(-2px); }
         .admin-form .form-actions .btn-save:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .admin-form .form-actions .btn-cancel { background: var(--border); color: var(--text-secondary); }
         .admin-form .form-actions .btn-cancel:hover { background: #d1d5db; }
@@ -92,173 +89,40 @@
         .empty-state h4 { font-size: 20px; color: var(--text-secondary); margin-bottom: 8px; }
         .empty-state p { font-size: 15px; }
         @media (max-width: 992px) { .admin-panel-content { padding: 25px 20px; max-height: 98vh; } .admin-header-left h2 { font-size: 22px; } .admin-form .form-row { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .admin-panel { padding: 10px; } .admin-panel-content { padding: 20px 15px; border-radius: var(--radius-sm); } .admin-header { flex-direction: column; align-items: flex-start; padding-right: 0; } .admin-header-left h2 { font-size: 20px; } .admin-header-left .subtitle { font-size: 13px; } .admin-panel-close { width: 38px; height: 38px; font-size: 16px; position: absolute; top: 12px; right: 12px; float: none; } .admin-stats { grid-template-columns: repeat(2, 1fr); } .admin-table { font-size: 13px; } .admin-table th, .admin-table td { padding: 10px 12px; } .admin-table .product-img { width: 40px; height: 40px; } .admin-table .product-img:hover { transform: scale(2); } .admin-table .actions { flex-direction: column; gap: 5px; } .admin-table .actions button { width: 100%; justify-content: center; } .admin-form { padding: 18px 16px; } .admin-form h3 { font-size: 18px; } .admin-form .form-actions { flex-direction: column; } .admin-form .form-actions button { width: 100%; justify-content: center; } }
+        @media (max-width: 768px) { .admin-panel { padding: 10px; } .admin-panel-content { padding: 20px 15px; border-radius: var(--radius-sm); } .admin-header { flex-direction: column; align-items: flex-start; padding-right: 0; } .admin-panel-close { width: 38px; height: 38px; font-size: 16px; position: absolute; top: 12px; right: 12px; float: none; } .admin-stats { grid-template-columns: repeat(2, 1fr); } .admin-table { font-size: 13px; } .admin-table th, .admin-table td { padding: 10px 12px; } .admin-table .product-img { width: 40px; height: 40px; } .admin-table .actions { flex-direction: column; gap: 5px; } .admin-table .actions button { width: 100%; justify-content: center; } .admin-form { padding: 18px 16px; } .admin-form .form-actions { flex-direction: column; } .admin-form .form-actions button { width: 100%; justify-content: center; } }
         @media (max-width: 480px) { .admin-panel-content { padding: 15px 12px; } .admin-header-left h2 { font-size: 18px; } .admin-stats { grid-template-columns: 1fr 1fr; gap: 10px; } .stat-card .stat-number { font-size: 22px; } .admin-actions button { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; } }
-
-        /* ===== MODAL ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 10000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
         .modal-overlay.active { display: flex; }
-        .modal-box {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            max-width: 420px;
-            width: 90%;
-            padding: 30px 30px 20px;
-            box-shadow: var(--shadow-hover);
-            text-align: center;
-            animation: slideUp 0.3s ease;
-        }
+        .modal-box { background: var(--card-bg); border-radius: var(--radius); max-width: 420px; width: 90%; padding: 30px 30px 20px; box-shadow: var(--shadow-hover); text-align: center; animation: slideUp 0.3s ease; }
         .modal-box .modal-icon { font-size: 48px; color: var(--primary); margin-bottom: 15px; }
         .modal-box h3 { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
         .modal-box p { font-size: 15px; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.5; }
         .modal-actions { display: flex; gap: 12px; justify-content: center; }
         .modal-actions button { padding: 12px 32px; border: none; border-radius: var(--radius-sm); font-family: var(--font); font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transition); min-width: 100px; }
         .modal-actions .btn-yes { background: var(--danger); color: #fff; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
-        .modal-actions .btn-yes:hover { background: #c82333; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4); }
+        .modal-actions .btn-yes:hover { background: #c82333; transform: translateY(-2px); }
         .modal-actions .btn-no { background: var(--border); color: var(--text-secondary); }
         .modal-actions .btn-no:hover { background: #d1d5db; transform: translateY(-2px); }
 
         /* ===== GESTOR DE IMÁGENES ===== */
-        .image-manager {
-            margin-top: 16px;
-            padding: 16px;
-            background: var(--bg);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-        }
-        .image-manager .current-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        .image-manager .current-images .image-item {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            border: 2px solid var(--border);
-            transition: var(--transition);
-        }
+        .image-manager { margin-top: 16px; padding: 16px; background: var(--bg); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+        .image-manager .current-images { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; min-height: 40px; align-items: center; }
+        .image-manager .current-images .image-item { position: relative; width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 2px solid var(--border); transition: var(--transition); }
         .image-manager .current-images .image-item:hover { border-color: var(--danger); }
-        .image-manager .current-images .image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .image-manager .current-images .image-item .remove-btn {
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            background: var(--danger);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            font-size: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            opacity: 0.9;
-        }
+        .image-manager .current-images .image-item img { width: 100%; height: 100%; object-fit: cover; }
+        .image-manager .current-images .image-item .remove-btn { position: absolute; top: 2px; right: 2px; background: var(--danger); color: #fff; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); opacity: 0.9; }
         .image-manager .current-images .image-item .remove-btn:hover { transform: scale(1.1); }
-        .image-manager .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            padding: 4px;
-        }
-        .image-manager .image-grid .image-option {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            border: 2px solid var(--border);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-        .image-manager .image-grid .image-option:hover {
-            transform: scale(1.02);
-            border-color: var(--primary);
-        }
-        .image-manager .image-grid .image-option.selected {
-            border-color: var(--success);
-            box-shadow: 0 0 0 2px var(--success);
-        }
-        .image-manager .image-grid .image-option img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .image-manager .image-grid .image-option .check {
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            background: var(--success);
-            color: #fff;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .image-manager .image-grid .image-option.selected .check { opacity: 1; }
-        .image-manager .no-images {
-            color: var(--text-muted);
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
-        .image-manager .manual-add {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-        .image-manager .manual-add input {
-            flex: 1;
-            min-width: 200px;
-            padding: 8px 12px;
-            border: 1.5px solid var(--border);
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        .image-manager .manual-add button {
-            padding: 8px 16px;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
+        .image-manager .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; max-height: 300px; overflow-y: auto; padding: 8px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; }
+        .image-manager .image-grid .image-option { width: 100%; aspect-ratio: 1; border-radius: 6px; overflow: hidden; border: 2px solid var(--border); cursor: pointer; transition: var(--transition); position: relative; }
+        .image-manager .image-grid .image-option:hover { transform: scale(1.02); border-color: var(--primary); }
+        .image-manager .image-grid .image-option.selected { border-color: var(--success); box-shadow: 0 0 0 2px var(--success); }
+        .image-manager .image-grid .image-option img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .image-manager .image-grid .image-option .check { position: absolute; top: 4px; right: 4px; background: var(--success); color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+        .image-manager .manual-add { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .image-manager .manual-add input { flex: 1; min-width: 200px; padding: 8px 12px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 14px; }
+        .image-manager .manual-add button { padding: 8px 16px; background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: var(--transition); }
         .image-manager .manual-add button:hover { background: var(--primary-dark); }
-        .image-manager .hint {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
+        .image-manager .hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -334,11 +198,24 @@
                     <div class="current-images" id="currentImages">
                         <span style="color: var(--text-muted); font-size: 14px;">No hay imágenes seleccionadas.</span>
                     </div>
+                    <div style="margin-top: 12px;">
+                        <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px;">
+                            <i class="fas fa-folder-open"></i> Imágenes disponibles (haz clic para seleccionar)
+                        </label>
+                        <div class="image-grid" id="imageGrid">
+                            <div class="no-images" style="grid-column: 1/-1; text-align: center; padding: 20px; color: var(--text-muted);">
+                                <i class="fas fa-spinner fa-spin"></i> Cargando imágenes...
+                            </div>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                            Haz clic en una imagen para añadirla. Clic de nuevo para quitarla.
+                        </div>
+                    </div>
                     <div class="manual-add">
-                        <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp (varias separadas por coma)" />
+                        <input type="text" id="manualImagePath" placeholder="O escribe una ruta manual: /images/products/mi-foto.webp" />
                         <button onclick="addManualImage()"><i class="fas fa-plus"></i> Agregar</button>
                     </div>
-                    <div class="hint">💡 Escribe la ruta exacta de la imagen. Puedes agregar varias separadas por coma.</div>
+                    <div class="hint">💡 También puedes escribir rutas manuales separadas por coma.</div>
                 </div>
 
                 <div class="form-actions">
@@ -362,7 +239,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- ===== ADMIN.JS (sin token, usa Netlify Functions) ===== -->
     <script src="../js/admin.js"></script>
 </body>
 </html>
