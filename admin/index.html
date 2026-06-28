@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== TODOS LOS ESTILOS (sin cambios) ===== */
+        /* ===== ESTILOS (sin cambios) ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
@@ -400,7 +400,7 @@
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== CARGAR IMÁGENES DISPONIBLES (CON MANEJO DE ERRORES) =====
+        // ===== CARGAR IMÁGENES DISPONIBLES =====
         async function loadAvailableImages() {
             const grid = document.getElementById('imageGrid');
             grid.innerHTML = '<div class="no-images">Cargando imágenes...</div>';
@@ -412,23 +412,23 @@
             }
 
             try {
-                const url = `/.netlify/git/github/contents/images/products`;
+                // Usar la ruta correcta de Git Gateway
+                const url = `/.netlify/git-gateway/git/github/contents/images/products`;
+                console.log('🔍 Cargando imágenes desde:', url);
                 const response = await fetch(url, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 });
 
                 if (!response.ok) {
-                    // Si no existe la carpeta o no se puede listar, mostramos mensaje claro
                     grid.innerHTML = '<div class="no-images">📁 No se pudo listar la carpeta images/products. Puedes agregar imágenes manualmente abajo.</div>';
+                    console.warn('❌ No se pudo listar imágenes, status:', response.status);
                     return;
                 }
 
                 const data = await response.json();
-                // Asegurarse de que es un array
                 if (!Array.isArray(data)) {
                     throw new Error('La respuesta no es un array');
                 }
-                // Filtrar solo imágenes
                 const images = data.filter(item => /\.(jpg|jpeg|png|webp|gif)$/i.test(item.name));
                 if (images.length === 0) {
                     grid.innerHTML = '<div class="no-images">📁 La carpeta images/products está vacía. Puedes agregar imágenes manualmente.</div>';
@@ -440,7 +440,7 @@
                 }));
                 renderImageGrid();
             } catch (error) {
-                console.error('Error al cargar imágenes:', error);
+                console.error('❌ Error al cargar imágenes:', error);
                 grid.innerHTML = '<div class="no-images">❌ Error al cargar imágenes. Usa el campo manual para agregar.</div>';
             }
         }
@@ -507,7 +507,7 @@
             }
         }
 
-        // ===== AGREGAR IMAGEN MANUAL (una sola) =====
+        // ===== AGREGAR IMAGEN MANUAL (una o varias) =====
         function addManualImage() {
             const input = document.getElementById('manualImagePath');
             const val = input.value.trim();
@@ -515,7 +515,6 @@
                 alert('Escribe al menos una ruta de imagen.');
                 return;
             }
-            // Separar por coma, limpiar y filtrar vacíos
             const paths = val.split(',').map(p => p.trim()).filter(p => p.length > 0);
             let added = 0;
             paths.forEach(path => {
@@ -534,16 +533,26 @@
             }
         }
 
-        // ===== GUARDAR ARCHIVO =====
+        // ===== GUARDAR ARCHIVO (CON RUTA CORREGIDA Y LOGS) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
+
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
-            const url = `/.netlify/git/github/contents/${filePath}`;
-            const body = { content: encodedContent, message: message, sha: sha || undefined };
+            
+            // === RUTA CORRECTA PARA GIT GATEWAY ===
+            const url = `/.netlify/git-gateway/git/github/contents/${filePath}`;
+            const body = {
+                content: encodedContent,
+                message: message,
+                sha: sha || undefined
+            };
+
+            console.log('📤 Guardando archivo en:', url);
+            console.log('📦 Datos:', { filePath, message, sha: sha || 'nuevo' });
 
             try {
                 const response = await fetch(url, {
@@ -551,20 +560,24 @@
                     headers: {
                         'Authorization': 'Bearer ' + token,
                         'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(body)
                 });
 
+                console.log('📡 Respuesta HTTP:', response.status);
+
                 if (!response.ok) {
                     const errorText = await response.text();
-                    console.error('Error al guardar:', errorText);
-                    alert('Error al guardar. Código: ' + response.status + '\n' + errorText);
+                    console.error('❌ Error al guardar:', errorText);
+                    alert(`Error al guardar (${response.status}):\n${errorText.substring(0, 200)}`);
                     return false;
                 }
+                console.log('✅ Archivo guardado correctamente');
                 return true;
             } catch (error) {
-                console.error('Error en saveFileToRepo:', error);
+                console.error('❌ Error en saveFileToRepo:', error);
                 alert('Error inesperado al guardar. Revisa la consola.');
                 return false;
             }
@@ -577,7 +590,8 @@
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
-            const url = `/.netlify/git/github/contents/${filePath}`;
+
+            const url = `/.netlify/git-gateway/git/github/contents/${filePath}`;
             const body = { message: message, sha: sha };
 
             try {
@@ -709,7 +723,6 @@
             selectedImages = product.Images || [];
             renderCurrentImages();
 
-            // Cargar imágenes disponibles (sin bloquear si falla)
             loadAvailableImages().then(() => renderImageGrid()).catch(() => {
                 document.getElementById('imageGrid').innerHTML = '<div class="no-images">⚠️ No se pudieron cargar. Usa el campo manual.</div>';
             });
@@ -766,7 +779,7 @@
                 Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
                 Date: new Date().toISOString(),
                 Update: new Date().toISOString(),
-                Images: selectedImages // Guardar las rutas reales
+                Images: selectedImages
             };
 
             const btnSave = document.querySelector('.btn-save');
@@ -785,13 +798,16 @@
                 if (!isNew) {
                     const token = getToken();
                     if (token) {
-                        const getUrl = `/.netlify/git/github/contents/${filePath}`;
+                        const getUrl = `/.netlify/git-gateway/git/github/contents/${filePath}`;
                         const getResponse = await fetch(getUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
                         if (getResponse.ok) {
                             const fileData = await getResponse.json();
                             sha = fileData.sha;
+                            console.log('📄 SHA existente:', sha);
+                        } else {
+                            console.log('ℹ️ Archivo no existe, se creará uno nuevo.');
                         }
                     }
                 }
@@ -808,7 +824,7 @@
                     const oldFilePath = 'data/products/' + originalSlug + '.json';
                     const token = getToken();
                     if (token) {
-                        const getOldUrl = `/.netlify/git/github/contents/${oldFilePath}`;
+                        const getOldUrl = `/.netlify/git-gateway/git/github/contents/${oldFilePath}`;
                         const getOldResponse = await fetch(getOldUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -841,7 +857,7 @@
                 alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
                 loadAdminProducts();
             } catch (error) {
-                console.error('Error en saveProduct:', error);
+                console.error('❌ Error en saveProduct:', error);
                 alert('Error inesperado al guardar. Revisa la consola.');
                 btnSave.innerHTML = originalText;
                 btnSave.disabled = false;
@@ -861,7 +877,7 @@
                 return;
             }
 
-            const getUrl = `/.netlify/git/github/contents/${filePath}`;
+            const getUrl = `/.netlify/git-gateway/git/github/contents/${filePath}`;
             const getResponse = await fetch(getUrl, {
                 headers: { 'Authorization': 'Bearer ' + token }
             });
