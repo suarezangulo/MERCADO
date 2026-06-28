@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- Netlify Identity solo para autenticación (no para Git Gateway) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -335,12 +334,6 @@
                     <div class="current-images" id="currentImages">
                         <span style="color: var(--text-muted); font-size: 14px;">No hay imágenes seleccionadas.</span>
                     </div>
-                    <div style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
-                        <i class="fas fa-folder-open"></i> Imágenes disponibles (haz clic para añadir/eliminar)
-                    </div>
-                    <div class="image-grid" id="imageGrid">
-                        <div class="no-images">Cargando imágenes...</div>
-                    </div>
                     <div class="manual-add">
                         <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp (varias separadas por coma)" />
                         <button onclick="addManualImage()"><i class="fas fa-plus"></i> Agregar</button>
@@ -369,23 +362,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init({ tool: ['console', 'network', 'elements'] });</script>
-
-    <!-- ===== ADMIN.JS (cargado desde archivo externo) ===== -->
+    <!-- ===== ADMIN.JS (sin token, usa Netlify Functions) ===== -->
     <script src="../js/admin.js"></script>
-
-    <!-- ===== CONFIGURACIÓN DEL TOKEN Y INICIALIZACIÓN ===== -->
-    <script>
-        // ===== CONFIGURAR TOKEN DE GITHUB (personal) =====
-        // Reemplaza con tu token personal de GitHub
-        window.GITHUB_TOKEN = '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';
-        console.log('✅ Token de GitHub configurado');
-        
-        // Inicializar el panel automáticamente
-        $(document).ready(function() {
-            openAdminPanel();
-        });
-    </script>
 </body>
 </html>
