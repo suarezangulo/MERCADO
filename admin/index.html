@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- Netlify Identity Widget (necesario para autenticación) -->
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -96,7 +96,7 @@
         @media (max-width: 768px) { .admin-panel { padding: 10px; } .admin-panel-content { padding: 20px 15px; border-radius: var(--radius-sm); } .admin-header { flex-direction: column; align-items: flex-start; padding-right: 0; } .admin-header-left h2 { font-size: 20px; } .admin-header-left .subtitle { font-size: 13px; } .admin-panel-close { width: 38px; height: 38px; font-size: 16px; position: absolute; top: 12px; right: 12px; float: none; } .admin-stats { grid-template-columns: repeat(2, 1fr); } .admin-table { font-size: 13px; } .admin-table th, .admin-table td { padding: 10px 12px; } .admin-table .product-img { width: 40px; height: 40px; } .admin-table .product-img:hover { transform: scale(2); } .admin-table .actions { flex-direction: column; gap: 5px; } .admin-table .actions button { width: 100%; justify-content: center; } .admin-form { padding: 18px 16px; } .admin-form h3 { font-size: 18px; } .admin-form .form-actions { flex-direction: column; } .admin-form .form-actions button { width: 100%; justify-content: center; } }
         @media (max-width: 480px) { .admin-panel-content { padding: 15px 12px; } .admin-header-left h2 { font-size: 18px; } .admin-stats { grid-template-columns: 1fr 1fr; gap: 10px; } .stat-card .stat-number { font-size: 22px; } .admin-actions button { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; } }
 
-        /* ===== MODAL PERSONALIZADO ===== */
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -119,67 +119,21 @@
             text-align: center;
             animation: slideUp 0.3s ease;
         }
-        .modal-box .modal-icon {
-            font-size: 48px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        .modal-box h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-        .modal-box p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-        .modal-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-        .modal-actions button {
-            padding: 12px 32px;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: var(--font);
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            min-width: 100px;
-        }
-        .modal-actions .btn-yes {
-            background: var(--danger);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-        }
-        .modal-actions .btn-yes:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
-        }
-        .modal-actions .btn-no {
-            background: var(--border);
-            color: var(--text-secondary);
-        }
-        .modal-actions .btn-no:hover {
-            background: #d1d5db;
-            transform: translateY(-2px);
-        }
+        .modal-box .modal-icon { font-size: 48px; color: var(--primary); margin-bottom: 15px; }
+        .modal-box h3 { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+        .modal-box p { font-size: 15px; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.5; }
+        .modal-actions { display: flex; gap: 12px; justify-content: center; }
+        .modal-actions button { padding: 12px 32px; border: none; border-radius: var(--radius-sm); font-family: var(--font); font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transition); min-width: 100px; }
+        .modal-actions .btn-yes { background: var(--danger); color: #fff; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
+        .modal-actions .btn-yes:hover { background: #c82333; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4); }
+        .modal-actions .btn-no { background: var(--border); color: var(--text-secondary); }
+        .modal-actions .btn-no:hover { background: #d1d5db; transform: translateY(-2px); }
     </style>
 </head>
 <body>
-    <!-- ===== PANEL DE ADMINISTRACIÓN ===== -->
-    <div id="admin-panel" class="admin-panel" role="dialog" aria-modal="true" aria-label="Panel de administración">
+    <div id="admin-panel" class="admin-panel" role="dialog">
         <div class="admin-panel-content">
-            <button class="admin-panel-close" onclick="showCloseModal()" aria-label="Cerrar panel">
-                <i class="fas fa-times"></i>
-            </button>
-
+            <button class="admin-panel-close" onclick="showCloseModal()" aria-label="Cerrar panel"><i class="fas fa-times"></i></button>
             <div class="admin-header">
                 <div class="admin-header-left">
                     <div class="logo-icon"><i class="fas fa-store-alt"></i></div>
@@ -189,55 +143,43 @@
                     </div>
                 </div>
             </div>
-
             <div class="admin-stats" id="admin-stats">
                 <div class="stat-card"><span class="stat-number" id="stat-total">0</span><span class="stat-label">Total productos</span></div>
                 <div class="stat-card"><span class="stat-number" id="stat-low">0</span><span class="stat-label">Stock bajo</span></div>
                 <div class="stat-card"><span class="stat-number" id="stat-out">0</span><span class="stat-label">Agotados</span></div>
             </div>
-
             <div class="admin-actions">
                 <button class="btn-add" onclick="openNewProductForm()"><i class="fas fa-plus-circle"></i> Nuevo Producto</button>
                 <button class="btn-refresh" onclick="loadAdminProducts()"><i class="fas fa-sync-alt"></i> Recargar</button>
                 <button class="btn-export" onclick="exportProducts()"><i class="fas fa-file-export"></i> Exportar CSV</button>
             </div>
-
-            <div id="admin-loading" class="admin-loading">
-                <div class="spinner"></div>
-                <p>Cargando productos...</p>
-            </div>
-
+            <div id="admin-loading" class="admin-loading"><div class="spinner"></div><p>Cargando productos...</p></div>
             <div class="admin-table-wrap">
-                <table class="admin-table" role="table" aria-label="Lista de productos">
+                <table class="admin-table">
                     <thead><tr><th>Imagen</th><th>Producto</th><th>Precio</th><th>Stock</th><th>Subcategoría</th><th>Acciones</th></tr></thead>
                     <tbody id="admin-table-body"></tbody>
                 </table>
             </div>
-
-            <!-- ===== FORMULARIO DE EDICIÓN ===== -->
             <div id="admin-form" class="admin-form">
                 <h3><i class="fas fa-edit"></i> <span id="admin-form-title">Editar Producto</span></h3>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="edit-category">Categoría <span class="required">*</span></label>
-                        <input type="text" id="edit-category" placeholder="Ej: Productos, Alimentos, Electrodomésticos..." value="Productos">
+                        <input type="text" id="edit-category" placeholder="Ej: Productos, Alimentos..." value="Productos">
                     </div>
                     <div class="form-group">
                         <label for="edit-subcategory">Subcategoría <span class="required">*</span></label>
-                        <input type="text" id="edit-subcategory" placeholder="Ej: Confituras, Granos, Televisores..." value="Confituras">
+                        <input type="text" id="edit-subcategory" placeholder="Ej: Confituras, Granos..." value="Confituras">
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label for="edit-label">Nombre del producto <span class="required">*</span></label>
+                    <label for="edit-label">Nombre <span class="required">*</span></label>
                     <input type="text" id="edit-label" placeholder="Ej: Mermelada de Guayaba (460 g)">
                 </div>
-
                 <div class="form-group">
                     <label for="edit-description">Descripción</label>
-                    <textarea id="edit-description" placeholder="Descripción detallada del producto..."></textarea>
+                    <textarea id="edit-description" placeholder="Descripción detallada..."></textarea>
                 </div>
-
                 <div class="form-row">
                     <div class="form-group">
                         <label for="edit-price">Precio <span class="required">*</span></label>
@@ -248,12 +190,10 @@
                         <input type="number" id="edit-stock" min="0" value="0">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="edit-features">Características (una por línea)</label>
                     <textarea id="edit-features" placeholder="Ej:&#10;Clásicas galletas María&#10;Textura crujiente"></textarea>
                 </div>
-
                 <div class="form-actions">
                     <button class="btn-save" onclick="saveProduct()"><i class="fas fa-save"></i> Guardar</button>
                     <button class="btn-cancel" onclick="closeForm()"><i class="fas fa-times"></i> Cancelar</button>
@@ -262,7 +202,6 @@
         </div>
     </div>
 
-    <!-- ===== MODAL DE CONFIRMACIÓN ===== -->
     <div id="closeModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-icon"><i class="fas fa-sign-out-alt"></i></div>
@@ -275,22 +214,18 @@
         </div>
     </div>
 
-    <!-- ===== JQUERY ===== -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- ===== ERUDA PARA DEPURACIÓN EN MÓVIL ===== -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init({ tool: ['console', 'network', 'elements'] });</script>
 
-    <!-- ===== TODO EL CÓDIGO JAVASCRIPT (con guardado real) ===== -->
     <script>
         // ===== VARIABLES GLOBALES =====
         let adminProducts = [];
         let editingProduct = null;
         let currentProductId = null;
-        let originalSlug = null; // Para saber si cambia el nombre
+        let originalSlug = null;
 
-        // ===== FUNCIÓN ToSlug LOCAL =====
+        // ===== ToSlug LOCAL =====
         function ToSlug(str) {
             if (!str) return "";
             let s = str.toLowerCase();
@@ -302,14 +237,14 @@
             return s;
         }
 
-        // ===== OBTENER TOKEN DE NETLIFY IDENTITY =====
+        // ===== OBTENER TOKEN =====
         function getToken() {
             const user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
             if (!user) return null;
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== GUARDAR ARCHIVO EN REPOSITORIO MEDIANTE GIT GATEWAY =====
+        // ===== GUARDAR ARCHIVO CON GIT GATEWAY (USANDO ENDPOINT CORRECTO) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
@@ -317,11 +252,14 @@
                 return false;
             }
 
-            const url = `/.netlify/git-gateway/git/files/${filePath}`;
+            // Codificar contenido a base64
+            const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+            const url = `/.netlify/git-gateway/git/contents/${filePath}`;
             const body = {
-                content: content,
+                content: encodedContent,
                 message: message,
-                sha: sha
+                sha: sha || undefined
             };
 
             try {
@@ -337,10 +275,9 @@
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('Error al guardar:', errorText);
-                    alert('Error al guardar el archivo. Código: ' + response.status);
+                    alert('Error al guardar el archivo. Código: ' + response.status + '\n' + errorText);
                     return false;
                 }
-
                 return true;
             } catch (error) {
                 console.error('Error en saveFileToRepo:', error);
@@ -349,7 +286,7 @@
             }
         }
 
-        // ===== ELIMINAR ARCHIVO DEL REPOSITORIO =====
+        // ===== ELIMINAR ARCHIVO =====
         async function deleteFileFromRepo(filePath, sha, message) {
             const token = getToken();
             if (!token) {
@@ -357,7 +294,7 @@
                 return false;
             }
 
-            const url = `/.netlify/git-gateway/git/files/${filePath}`;
+            const url = `/.netlify/git-gateway/git/contents/${filePath}`;
             const body = {
                 message: message,
                 sha: sha
@@ -387,17 +324,13 @@
         // ===== CARGAR PRODUCTOS =====
         function loadAdminProducts() {
             showAdminLoading(true);
-            console.log("🔍 Cargando products-index.json...");
             const url = "../data/products-index.json?t=" + new Date().getTime();
-            console.log("📡 URL:", url);
-            fetch(url, { cache: 'no-cache', headers: { 'Cache-Control': 'no-cache' } })
+            fetch(url, { cache: 'no-cache' })
                 .then(response => {
-                    console.log("📡 Status:", response.status);
                     if (!response.ok) throw new Error("HTTP " + response.status);
                     return response.json();
                 })
                 .then(data => {
-                    console.log("✅ Datos recibidos:", data);
                     adminProducts = [];
                     for (let category in data) {
                         for (let subcategory in data[category]) {
@@ -415,11 +348,10 @@
                 .catch(error => {
                     console.error("❌ Error:", error);
                     showAdminLoading(false);
-                    alert("Error al cargar los productos. Revisa la consola (Eruda) para más detalles.");
+                    alert("Error al cargar los productos. Revisa la consola.");
                 });
         }
 
-        // ===== ACTUALIZAR ESTADÍSTICAS =====
         function updateStats() {
             const total = adminProducts.length;
             const low = adminProducts.filter(p => (p.Stock || 0) > 0 && (p.Stock || 0) < 10).length;
@@ -429,12 +361,11 @@
             document.getElementById('stat-out').textContent = out;
         }
 
-        // ===== RENDERIZAR TABLA =====
         function renderAdminTable() {
             const tbody = document.getElementById('admin-table-body');
             if (!tbody) return;
             if (adminProducts.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-box-open"></i><h4>No hay productos</h4><p>Haz clic en "Nuevo Producto" para comenzar.</p></div></td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-box-open"></i><h4>No hay productos</h4><p>Haz clic en "Nuevo Producto".</p></div></td></tr>`;
                 return;
             }
             let html = '';
@@ -461,7 +392,6 @@
             tbody.innerHTML = html;
         }
 
-        // ===== EXPORTAR CSV =====
         function exportProducts() {
             if (adminProducts.length === 0) { alert('No hay productos para exportar.'); return; }
             let csv = 'Producto,Subcategoría,Precio,Stock,Características\n';
@@ -479,12 +409,11 @@
             URL.revokeObjectURL(link.href);
         }
 
-        // ===== ABRIR FORMULARIO DE EDICIÓN =====
         function openEditForm(slug) {
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
             if (!product) return;
             currentProductId = slug;
-            originalSlug = slug; // Guardamos el slug original
+            originalSlug = slug;
             editingProduct = product;
             document.getElementById('edit-category').value = product._category || 'Productos';
             document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
@@ -498,7 +427,6 @@
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
         function openNewProductForm() {
             currentProductId = null;
             originalSlug = null;
@@ -515,12 +443,10 @@
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ===== CERRAR FORMULARIO =====
         function closeForm() {
             document.getElementById('admin-form').classList.remove('active');
         }
 
-        // ===== GUARDAR PRODUCTO (con escritura en repositorio) =====
         async function saveProduct() {
             const label = document.getElementById('edit-label').value.trim();
             if (!label) { alert('El nombre del producto es obligatorio.'); return; }
@@ -560,10 +486,9 @@
                 // Obtener SHA si el archivo existe (para edición)
                 let sha = null;
                 if (!isNew) {
-                    // Intentar obtener el archivo actual
                     const token = getToken();
                     if (token) {
-                        const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
+                        const getUrl = `/.netlify/git-gateway/git/contents/${filePath}`;
                         const getResponse = await fetch(getUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -574,7 +499,6 @@
                     }
                 }
 
-                // Guardar archivo
                 const success = await saveFileToRepo(filePath, content, message, sha);
                 if (!success) {
                     btnSave.innerHTML = originalText;
@@ -582,12 +506,12 @@
                     return;
                 }
 
-                // Si el slug cambió en edición, eliminar el archivo antiguo
+                // Si el slug cambió, eliminar archivo antiguo
                 if (!isNew && originalSlug && originalSlug !== slug) {
                     const oldFilePath = 'data/products/' + originalSlug + '.json';
                     const token = getToken();
                     if (token) {
-                        const getOldUrl = `/.netlify/git-gateway/git/files/${oldFilePath}`;
+                        const getOldUrl = `/.netlify/git-gateway/git/contents/${oldFilePath}`;
                         const getOldResponse = await fetch(getOldUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -618,7 +542,6 @@
                 btnSave.innerHTML = originalText;
                 btnSave.disabled = false;
                 alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
-                // Recargar productos para reflejar cambios en el índice (opcional)
                 loadAdminProducts();
             } catch (error) {
                 console.error('Error en saveProduct:', error);
@@ -628,9 +551,8 @@
             }
         }
 
-        // ===== ELIMINAR PRODUCTO (con eliminación en repositorio) =====
         async function deleteProduct(slug) {
-            if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) return;
+            if (!confirm('¿Estás seguro de que quieres eliminar este producto?')) return;
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
             if (!product) return;
 
@@ -641,8 +563,7 @@
                 return;
             }
 
-            // Obtener SHA
-            const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
+            const getUrl = `/.netlify/git-gateway/git/contents/${filePath}`;
             const getResponse = await fetch(getUrl, {
                 headers: { 'Authorization': 'Bearer ' + token }
             });
@@ -664,26 +585,22 @@
             renderAdminTable();
             updateStats();
             alert('🗑️ Producto eliminado correctamente.');
-            loadAdminProducts(); // Recargar para actualizar vista
+            loadAdminProducts();
         }
 
-        // ===== MOSTRAR/OCULTAR LOADING =====
         function showAdminLoading(show) {
             const loading = document.getElementById('admin-loading');
             if (loading) loading.classList.toggle('active', show);
         }
 
-        // ===== MOSTRAR MODAL =====
         function showCloseModal() {
             document.getElementById('closeModal').classList.add('active');
         }
 
-        // ===== CONFIRMAR CIERRE =====
         function confirmClose(closeSession) {
             document.getElementById('closeModal').classList.remove('active');
             if (closeSession) {
                 if (window.netlifyIdentity && typeof window.netlifyIdentity.logout === 'function') {
-                    console.log("🔐 Cerrando sesión en Netlify Identity...");
                     window.netlifyIdentity.logout();
                 }
                 window.location.href = '/';
@@ -692,27 +609,19 @@
             }
         }
 
-        // ===== ABRIR PANEL =====
         function openAdminPanel() {
             document.getElementById('admin-panel').classList.add('active');
             document.body.style.overflow = 'hidden';
             loadAdminProducts();
         }
 
-        // ===== INICIALIZAR =====
         $(document).ready(function() {
-            if (window.netlifyIdentity) {
-                window.netlifyIdentity.init();
-            }
+            if (window.netlifyIdentity) window.netlifyIdentity.init();
             $(document).on('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    showCloseModal();
-                }
+                if (e.key === 'Escape') showCloseModal();
             });
             $('#admin-panel').on('click', function(e) {
-                if (e.target === this) {
-                    showCloseModal();
-                }
+                if (e.target === this) showCloseModal();
             });
             openAdminPanel();
         });
