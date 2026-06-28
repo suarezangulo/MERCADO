@@ -48,27 +48,27 @@ files.forEach(file => {
       Update: product.Update || new Date().toISOString(),
       Label: product.Label,
       Images: product.Images || [],
-      Stock: product.Stock || 0,
-      SubCategory: product.SubCategory,
-      Category: product.Category || 'Productos',
-      Description: product.Description || '' // <--- AÑADIDO
+      Stock: product.Stock || 0,           // <--- AÑADIDO
+      SubCategory: product.SubCategory,    // <--- AÑADIDO
+      Category: product.Category || 'Productos'
     };
 
     index.Productos[subCategory].push(entry);
     processedCount++;
-    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (Descripción: ${entry.Description.substring(0, 30)}...)`);
+    console.log(`✅ ${file} -> ${subCategory} / ${product.Label} (Stock: ${entry.Stock}, ${entry.Images.length} imágenes)`);
   } catch (error) {
     console.error(`❌ Error al parsear ${file}:`, error.message);
   }
 });
 
-// Ordenar por fecha (más reciente primero)
+// Ordenar por fecha (más reciente primero) dentro de cada subcategoría
 for (const subCategory in index.Productos) {
   index.Productos[subCategory].sort((a, b) => {
     return new Date(b.Update) - new Date(a.Update);
   });
 }
 
+// Escribir el índice
 fs.writeFileSync(indexFile, JSON.stringify(index, null, 2), 'utf8');
 console.log(`✅ products-index.json generado con ${processedCount} productos procesados.`);
 console.log('📊 Estructura:', JSON.stringify(index, null, 2).substring(0, 200) + '...');
