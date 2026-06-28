@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== TODOS LOS ESTILOS (sin cambios) ===== */
+        /* ===== TODOS LOS ESTILOS ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
@@ -95,8 +94,6 @@
         @media (max-width: 992px) { .admin-panel-content { padding: 25px 20px; max-height: 98vh; } .admin-header-left h2 { font-size: 22px; } .admin-form .form-row { grid-template-columns: 1fr; } }
         @media (max-width: 768px) { .admin-panel { padding: 10px; } .admin-panel-content { padding: 20px 15px; border-radius: var(--radius-sm); } .admin-header { flex-direction: column; align-items: flex-start; padding-right: 0; } .admin-header-left h2 { font-size: 20px; } .admin-header-left .subtitle { font-size: 13px; } .admin-panel-close { width: 38px; height: 38px; font-size: 16px; position: absolute; top: 12px; right: 12px; float: none; } .admin-stats { grid-template-columns: repeat(2, 1fr); } .admin-table { font-size: 13px; } .admin-table th, .admin-table td { padding: 10px 12px; } .admin-table .product-img { width: 40px; height: 40px; } .admin-table .product-img:hover { transform: scale(2); } .admin-table .actions { flex-direction: column; gap: 5px; } .admin-table .actions button { width: 100%; justify-content: center; } .admin-form { padding: 18px 16px; } .admin-form h3 { font-size: 18px; } .admin-form .form-actions { flex-direction: column; } .admin-form .form-actions button { width: 100%; justify-content: center; } }
         @media (max-width: 480px) { .admin-panel-content { padding: 15px 12px; } .admin-header-left h2 { font-size: 18px; } .admin-stats { grid-template-columns: 1fr 1fr; gap: 10px; } .stat-card .stat-number { font-size: 22px; } .admin-actions button { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; } }
-
-        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -128,6 +125,96 @@
         .modal-actions .btn-yes:hover { background: #c82333; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4); }
         .modal-actions .btn-no { background: var(--border); color: var(--text-secondary); }
         .modal-actions .btn-no:hover { background: #d1d5db; transform: translateY(-2px); }
+
+        /* Estilos para la gestión de imágenes */
+        .image-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .image-item {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-item .remove-image {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .image-item:hover .remove-image {
+            opacity: 1;
+        }
+        .add-image-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        .add-image-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .image-url-input {
+            display: none;
+            margin-top: 10px;
+            gap: 10px;
+        }
+        .image-url-input.active {
+            display: flex;
+        }
+        .image-url-input input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: var(--font);
+            font-size: 14px;
+        }
+        .image-url-input button {
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .image-url-input button:hover {
+            background: var(--primary-dark);
+        }
     </style>
 </head>
 <body>
@@ -194,6 +281,22 @@
                     <label for="edit-features">Características (una por línea)</label>
                     <textarea id="edit-features" placeholder="Ej:&#10;Clásicas galletas María&#10;Textura crujiente"></textarea>
                 </div>
+
+                <!-- ===== SECCIÓN DE IMÁGENES ===== -->
+                <div class="form-group">
+                    <label>Imágenes del producto</label>
+                    <div id="image-list" class="image-list"></div>
+                    <div class="add-image-btn" onclick="showAddImageInput()">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div id="image-url-input" class="image-url-input">
+                        <input type="text" id="new-image-url" placeholder="URL de la imagen (ej: /images/products/mi-foto.webp)">
+                        <button onclick="addImageFromUrl()">Añadir</button>
+                        <button onclick="cancelAddImage()" style="background: var(--border); color: var(--text-secondary);">Cancelar</button>
+                    </div>
+                    <small style="color: var(--text-muted); display: block; margin-top: 5px;">La primera imagen de la lista será la principal.</small>
+                </div>
+
                 <div class="form-actions">
                     <button class="btn-save" onclick="saveProduct()"><i class="fas fa-save"></i> Guardar</button>
                     <button class="btn-cancel" onclick="closeForm()"><i class="fas fa-times"></i> Cancelar</button>
@@ -224,6 +327,7 @@
         let editingProduct = null;
         let currentProductId = null;
         let originalSlug = null;
+        let tempImages = []; // Almacena las URLs de imágenes durante la edición
 
         // ===== ToSlug LOCAL =====
         function ToSlug(str) {
@@ -244,35 +348,29 @@
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== GUARDAR ARCHIVO CON GIT GATEWAY (ENDPOINT CORREGIDO) =====
+        // ===== GUARDAR ARCHIVO =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
-
-            // Codificar a base64 (GitHub API requiere Base64)
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
-
-            // Endpoint correcto para GitHub API a través de Git Gateway
             const url = `/.netlify/git/github/contents/${filePath}`;
             const body = {
                 content: encodedContent,
                 message: message,
                 sha: sha || undefined
             };
-
             try {
                 const response = await fetch(url, {
-                    method: 'PUT', // PUT para crear o actualizar
+                    method: 'PUT',
                     headers: {
                         'Authorization': 'Bearer ' + token,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(body)
                 });
-
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('Error al guardar:', errorText);
@@ -294,13 +392,8 @@
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
-
             const url = `/.netlify/git/github/contents/${filePath}`;
-            const body = {
-                message: message,
-                sha: sha
-            };
-
+            const body = { message: message, sha: sha };
             try {
                 const response = await fetch(url, {
                     method: 'DELETE',
@@ -310,7 +403,6 @@
                     },
                     body: JSON.stringify(body)
                 });
-
                 if (!response.ok) {
                     console.error('Error al eliminar:', await response.text());
                     return false;
@@ -410,12 +502,56 @@
             URL.revokeObjectURL(link.href);
         }
 
+        // ===== GESTIÓN DE IMÁGENES =====
+        function showAddImageInput() {
+            document.getElementById('image-url-input').classList.add('active');
+        }
+
+        function cancelAddImage() {
+            document.getElementById('image-url-input').classList.remove('active');
+            document.getElementById('new-image-url').value = '';
+        }
+
+        function addImageFromUrl() {
+            const url = document.getElementById('new-image-url').value.trim();
+            if (!url) {
+                alert('Por favor, introduce una URL de imagen válida.');
+                return;
+            }
+            tempImages.push(url);
+            renderImageList();
+            document.getElementById('new-image-url').value = '';
+            document.getElementById('image-url-input').classList.remove('active');
+        }
+
+        function removeImage(index) {
+            tempImages.splice(index, 1);
+            renderImageList();
+        }
+
+        function renderImageList() {
+            const container = document.getElementById('image-list');
+            container.innerHTML = '';
+            tempImages.forEach((url, index) => {
+                const div = document.createElement('div');
+                div.className = 'image-item';
+                div.innerHTML = `
+                    <img src="${url}" alt="Imagen ${index+1}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22/%3E'">
+                    <button class="remove-image" onclick="removeImage(${index})" title="Eliminar imagen"><i class="fas fa-times"></i></button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // ===== ABRIR FORMULARIO DE EDICIÓN =====
         function openEditForm(slug) {
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
             if (!product) return;
             currentProductId = slug;
             originalSlug = slug;
             editingProduct = product;
+
+            // Cargar datos básicos
             document.getElementById('edit-category').value = product._category || 'Productos';
             document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
             document.getElementById('edit-label').value = product.Label || '';
@@ -423,11 +559,17 @@
             document.getElementById('edit-price').value = product.Price || '';
             document.getElementById('edit-stock').value = product.Stock || 0;
             document.getElementById('edit-features').value = (product.Features || []).join('\n');
+
+            // Cargar imágenes
+            tempImages = product.Images ? [...product.Images] : [];
+            renderImageList();
+
             document.getElementById('admin-form').classList.add('active');
             document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
         }
 
+        // ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
         function openNewProductForm() {
             currentProductId = null;
             originalSlug = null;
@@ -439,6 +581,8 @@
             document.getElementById('edit-price').value = '';
             document.getElementById('edit-stock').value = '0';
             document.getElementById('edit-features').value = '';
+            tempImages = [];
+            renderImageList();
             document.getElementById('admin-form').classList.add('active');
             document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
@@ -448,6 +592,7 @@
             document.getElementById('admin-form').classList.remove('active');
         }
 
+        // ===== GUARDAR PRODUCTO =====
         async function saveProduct() {
             const label = document.getElementById('edit-label').value.trim();
             if (!label) { alert('El nombre del producto es obligatorio.'); return; }
@@ -459,6 +604,9 @@
             const category = document.getElementById('edit-category').value.trim() || 'Productos';
             const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
 
+            // Asegurar que al menos haya una imagen
+            let images = tempImages.length > 0 ? tempImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
+
             const productData = {
                 Category: category,
                 SubCategory: subcategory,
@@ -469,7 +617,7 @@
                 Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
                 Date: new Date().toISOString(),
                 Update: new Date().toISOString(),
-                Images: ['/images/products/' + ToSlug(label) + '-0.webp']
+                Images: images
             };
 
             const btnSave = document.querySelector('.btn-save');
@@ -484,7 +632,6 @@
                 const isNew = !currentProductId;
                 const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
 
-                // Obtener SHA si el archivo existe (para edición)
                 let sha = null;
                 if (!isNew) {
                     const token = getToken();
@@ -552,6 +699,7 @@
             }
         }
 
+        // ===== ELIMINAR PRODUCTO =====
         async function deleteProduct(slug) {
             if (!confirm('¿Estás seguro de que quieres eliminar este producto?')) return;
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
