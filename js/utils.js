@@ -401,6 +401,7 @@ function eval(n, t) {
     return i[u];
 }
 
+// ===== BOTÓN FLOTANTE DE WHATSAPP (existente) =====
 function prepareWhatsapp() {
     var n = $("<div class='whatsapp-btn'></div>");
     n.html("<img src='images/icons/whatsapp_logo.png' alt='WhatsApp'>");
@@ -414,6 +415,94 @@ function prepareWhatsapp() {
         }
     });
     $("body").append(n);
+}
+
+// ===== BOTÓN FLOTANTE DE ADMINISTRACIÓN (nuevo) =====
+function prepareAdminButton() {
+    // Evitar duplicados
+    if ($('.admin-floating-btn').length > 0) return;
+
+    var $btn = $("<div class='admin-floating-btn'></div>");
+    $btn.html('<i class="fas fa-cog"></i>');
+    $btn.attr('title', 'Panel de Administración');
+
+    // Estilos en línea para evitar conflictos con CSS existente
+    $btn.css({
+        position: 'fixed',
+        bottom: '130px', // Justo encima del botón de WhatsApp
+        right: '20px',
+        width: '60px',
+        height: '60px',
+        borderRadius: '50%',
+        backgroundColor: '#717fe0',
+        color: '#fff',
+        border: 'none',
+        boxShadow: '0 4px 20px rgba(113, 127, 224, 0.4)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        zIndex: '9999',
+        transition: 'all 0.3s ease',
+        fontSize: '28px',
+        textDecoration: 'none'
+    });
+
+    // Efecto hover con CSS puro
+    $btn.on('mouseenter', function() {
+        $(this).css({
+            transform: 'scale(1.1)',
+            boxShadow: '0 6px 30px rgba(113, 127, 224, 0.6)'
+        });
+    });
+    $btn.on('mouseleave', function() {
+        $(this).css({
+            transform: 'scale(1)',
+            boxShadow: '0 4px 20px rgba(113, 127, 224, 0.4)'
+        });
+    });
+
+    // Lógica de autenticación y redirección
+    $btn.on('click', function() {
+        if (window.netlifyIdentity) {
+            var user = window.netlifyIdentity.currentUser();
+            if (user) {
+                // Si ya está logueado, ir al admin
+                window.location.href = '/admin/';
+            } else {
+                // Abrir modal de login
+                window.netlifyIdentity.open('login');
+                // Cuando el usuario inicie sesión, redirigir al admin
+                window.netlifyIdentity.on('login', function() {
+                    window.location.href = '/admin/';
+                });
+            }
+        } else {
+            // Fallback: ir directamente al admin
+            window.location.href = '/admin/';
+        }
+    });
+
+    // Añadir al body
+    $('body').append($btn);
+
+    // Cambiar el ícono si el usuario está logueado
+    if (window.netlifyIdentity) {
+        var user = window.netlifyIdentity.currentUser();
+        if (user) {
+            $btn.html('<i class="fas fa-user-check"></i>');
+            $btn.css('backgroundColor', '#28a745');
+        }
+        // Escuchar cambios de autenticación
+        window.netlifyIdentity.on('login', function() {
+            $btn.html('<i class="fas fa-user-check"></i>');
+            $btn.css('backgroundColor', '#28a745');
+        });
+        window.netlifyIdentity.on('logout', function() {
+            $btn.html('<i class="fas fa-cog"></i>');
+            $btn.css('backgroundColor', '#717fe0');
+        });
+    }
 }
 
 var contactCell = "",
@@ -551,6 +640,7 @@ var contactCell = "",
     });
     updateCartQty();
     prepareWhatsapp();
+    prepareAdminButton(); // <--- AÑADIDO: Inicializa el botón flotante de administración
 })(jQuery);
 
 const chars = "0123456789abcdefghijklmnopqrstuvwxyz";
