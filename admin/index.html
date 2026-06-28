@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== ESTILOS (sin cambios) ===== */
+        /* ===== ESTILOS (sin cambios relevantes) ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
@@ -259,6 +259,24 @@
             color: var(--text-muted);
             margin-top: 4px;
         }
+        .image-manager .images-textarea {
+            margin-top: 12px;
+        }
+        .image-manager .images-textarea textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            font-family: var(--font);
+            font-size: 13px;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .image-manager .images-textarea .hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -334,6 +352,13 @@
                     <div class="current-images" id="currentImages">
                         <span style="color: var(--text-muted); font-size: 14px;">No hay imágenes seleccionadas.</span>
                     </div>
+
+                    <!-- Campo de texto para ver/editar las rutas de las imágenes -->
+                    <div class="images-textarea">
+                        <textarea id="imagesRaw" placeholder="Lista de rutas de imágenes (una por línea)"></textarea>
+                        <div class="hint">💡 Edita manualmente las rutas de las imágenes. Cada ruta en una línea.</div>
+                    </div>
+
                     <div style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
                         <i class="fas fa-folder-open"></i> Imágenes disponibles (haz clic para añadir/eliminar)
                     </div>
@@ -341,10 +366,10 @@
                         <div class="no-images">Cargando imágenes...</div>
                     </div>
                     <div class="manual-add">
-                        <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp (varias separadas por coma)" />
+                        <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp" />
                         <button onclick="addManualImage()"><i class="fas fa-plus"></i> Agregar</button>
                     </div>
-                    <div class="hint">💡 Escribe la ruta exacta de la imagen. Puedes agregar varias separadas por coma.</div>
+                    <div class="hint">💡 Escribe la ruta exacta de la imagen y haz clic en Agregar.</div>
                 </div>
 
                 <div class="form-actions">
@@ -411,7 +436,6 @@
             }
 
             try {
-                // Ruta correcta para Git Gateway
                 const url = `/.netlify/git-gateway/git/github/contents/images/products`;
                 console.log('🔍 Cargando imágenes desde:', url);
                 const response = await fetch(url, {
@@ -487,6 +511,10 @@
                 `;
             });
             container.innerHTML = html;
+
+            // Actualizar el textarea con las rutas de las imágenes
+            const textarea = document.getElementById('imagesRaw');
+            textarea.value = selectedImages.join('\n');
         }
 
         // ===== ALTERNAR SELECCIÓN =====
@@ -537,7 +565,16 @@
             }
         }
 
-        // ===== GUARDAR ARCHIVO (CON RUTA CORREGIDA Y MÉTODO PUT) =====
+        // ===== Sincronizar textarea con selectedImages =====
+        function syncImagesFromTextarea() {
+            const textarea = document.getElementById('imagesRaw');
+            const lines = textarea.value.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+            selectedImages = lines;
+            renderCurrentImages();
+            renderImageGrid();
+        }
+
+        // ===== GUARDAR ARCHIVO =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
@@ -546,8 +583,6 @@
             }
 
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
-            
-            // Ruta correcta para Git Gateway: /git/files/
             const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = {
                 content: encodedContent,
@@ -726,6 +761,9 @@
 
             selectedImages = product.Images || [];
             renderCurrentImages();
+            // Actualizar textarea con las imágenes actuales
+            const textarea = document.getElementById('imagesRaw');
+            textarea.value = selectedImages.join('\n');
 
             loadAvailableImages().then(() => renderImageGrid()).catch(() => {
                 document.getElementById('imageGrid').innerHTML = '<div class="no-images">⚠️ No se pudieron cargar. Usa el campo manual.</div>';
@@ -749,6 +787,7 @@
             document.getElementById('edit-stock').value = '0';
             document.getElementById('edit-features').value = '';
             renderCurrentImages();
+            document.getElementById('imagesRaw').value = '';
             loadAvailableImages().then(() => renderImageGrid()).catch(() => {
                 document.getElementById('imageGrid').innerHTML = '<div class="no-images">⚠️ No se pudieron cargar. Usa el campo manual.</div>';
             });
@@ -763,6 +802,9 @@
 
         // ===== GUARDAR PRODUCTO =====
         async function saveProduct() {
+            // Sincronizar las imágenes desde el textarea antes de guardar
+            syncImagesFromTextarea();
+
             const label = document.getElementById('edit-label').value.trim();
             if (!label) { alert('El nombre del producto es obligatorio.'); return; }
             const price = document.getElementById('edit-price').value.trim();
@@ -783,7 +825,7 @@
                 Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
                 Date: new Date().toISOString(),
                 Update: new Date().toISOString(),
-                Images: selectedImages
+                Images: selectedImages // Aquí se guardan las imágenes seleccionadas
             };
 
             const btnSave = document.querySelector('.btn-save');
