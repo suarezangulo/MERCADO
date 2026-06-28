@@ -15,17 +15,18 @@ collections:
     folder: "data/products"
     create: true
     slug: "{{slug}}"
+    identifier_field: "Label"
     format: json
     fields:
       - label: "Categoría"
         name: "Category"
-        widget: "string"          # <--- Ahora es texto libre
+        widget: "string"
         default: "Productos"
         hint: "Escribe la categoría (ej: Productos, Alimentos, Electrodomésticos)"
 
       - label: "Subcategoría"
         name: "SubCategory"
-        widget: "string"          # <--- Ahora es texto libre
+        widget: "string"
         default: "Confituras"
         hint: "Escribe la subcategoría (ej: Confituras, Granos, Televisores)"
 
@@ -67,7 +68,7 @@ collections:
           label: "Imagen"
           name: "image"
           widget: "image"
-          media_folder: "/images/products"
+          media_folder: "images/products"
           public_folder: "/images/products"
 
       - label: "Características"
@@ -84,12 +85,12 @@ collections:
         name: "Date"
         widget: "datetime"
         default: ""
-        date_format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
         time_format: false
 
       - label: "Última actualización"
         name: "Update"
         widget: "datetime"
         default: ""
-        date_format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
         time_format: false
