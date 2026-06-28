@@ -1,15 +1,16 @@
 {
-  "Update": "2026-06-27T00:00:00-04:00",
-  "Price": "850.00 CUP",
-  "Date": "2026-06-27T00:00:00-04:00",
-  "Label": "sjdhflkjsahflsakhf",
-  "Stock": 20,
-  "Images": [
-    "/images/products/croquetas-de-boletus.webp",
-    "/images/products/croquetas.jpg.webp",
-    "/images/products/croquetas_2.webp"
-  ],
-  "Description": "sdfhjsldkjfhasljfhaslfh",
   "Category": "Productos",
-  "SubCategory": "Confituras"
+  "SubCategory": "Confituras",
+  "Label": "sjdhflkjsahflsakhf",
+  "Description": "sdfhjsldkjfhasljfhaslfh",
+  "Price": "850.00 CUP",
+  "Stock": 20,
+  "Features": [
+    "Ffbdbjffkdkzbzbfkjdshzb"
+  ],
+  "Date": "2026-06-28T00:22:00.988Z",
+  "Update": "2026-06-28T00:22:00.988Z",
+  "Images": [
+    "/images/products/sjdhflkjsahflsakhf-0.webp"
+  ]
 }
