@@ -343,7 +343,6 @@
                     <div class="manual-add">
                         <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp (varias separadas por coma)" />
                         <button onclick="addManualImage()"><i class="fas fa-plus"></i> Agregar</button>
-                        <button onclick="addManualImagesFromInput()" style="background: var(--primary-dark);"><i class="fas fa-plus-circle"></i> Agregar varias</button>
                     </div>
                     <div class="hint">💡 Escribe la ruta exacta de la imagen. Puedes agregar varias separadas por coma.</div>
                 </div>
@@ -412,15 +411,20 @@
             }
 
             try {
-                // Usar la ruta correcta de Git Gateway
+                // Ruta correcta para Git Gateway
                 const url = `/.netlify/git-gateway/git/github/contents/images/products`;
                 console.log('🔍 Cargando imágenes desde:', url);
                 const response = await fetch(url, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 });
 
+                if (response.status === 404) {
+                    grid.innerHTML = '<div class="no-images">📁 La carpeta images/products no existe o está vacía. Puedes agregar imágenes manualmente.</div>';
+                    return;
+                }
+
                 if (!response.ok) {
-                    grid.innerHTML = '<div class="no-images">📁 No se pudo listar la carpeta images/products. Puedes agregar imágenes manualmente abajo.</div>';
+                    grid.innerHTML = '<div class="no-images">❌ Error al cargar imágenes. Usa el campo manual.</div>';
                     console.warn('❌ No se pudo listar imágenes, status:', response.status);
                     return;
                 }
@@ -533,7 +537,7 @@
             }
         }
 
-        // ===== GUARDAR ARCHIVO (CON RUTA CORREGIDA Y LOGS) =====
+        // ===== GUARDAR ARCHIVO (CON RUTA CORREGIDA Y MÉTODO PUT) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
@@ -543,8 +547,8 @@
 
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
             
-            // === RUTA CORRECTA PARA GIT GATEWAY ===
-            const url = `/.netlify/git-gateway/git/github/contents/${filePath}`;
+            // Ruta correcta para Git Gateway: /git/files/
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = {
                 content: encodedContent,
                 message: message,
@@ -591,7 +595,7 @@
                 return false;
             }
 
-            const url = `/.netlify/git-gateway/git/github/contents/${filePath}`;
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = { message: message, sha: sha };
 
             try {
@@ -798,7 +802,7 @@
                 if (!isNew) {
                     const token = getToken();
                     if (token) {
-                        const getUrl = `/.netlify/git-gateway/git/github/contents/${filePath}`;
+                        const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
                         const getResponse = await fetch(getUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -824,7 +828,7 @@
                     const oldFilePath = 'data/products/' + originalSlug + '.json';
                     const token = getToken();
                     if (token) {
-                        const getOldUrl = `/.netlify/git-gateway/git/github/contents/${oldFilePath}`;
+                        const getOldUrl = `/.netlify/git-gateway/git/files/${oldFilePath}`;
                         const getOldResponse = await fetch(getOldUrl, {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
@@ -877,7 +881,7 @@
                 return;
             }
 
-            const getUrl = `/.netlify/git-gateway/git/github/contents/${filePath}`;
+            const getUrl = `/.netlify/git-gateway/git/files/${filePath}`;
             const getResponse = await fetch(getUrl, {
                 headers: { 'Authorization': 'Bearer ' + token }
             });
