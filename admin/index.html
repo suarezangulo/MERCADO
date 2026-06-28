@@ -392,31 +392,40 @@
             return s;
         }
 
-        // ===== OBTENER TOKEN =====
-        function getToken() {
+        // ===== OBTENER TOKEN (con refresh) =====
+        async function getToken() {
             const user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
-            if (!user) return null;
-            return user.token && user.token.access_token ? user.token.access_token : null;
+            if (!user) {
+                console.warn('⚠️ No hay usuario logueado');
+                return null;
+            }
+            try {
+                // Usar el método jwt() para obtener un token fresco
+                const token = await user.jwt();
+                console.log('✅ Token obtenido correctamente');
+                return token;
+            } catch (error) {
+                console.error('❌ Error al obtener token:', error);
+                return null;
+            }
         }
 
-        // ===== CARGAR IMÁGENES DISPONIBLES (con API de GitHub) =====
+        // ===== CARGAR IMÁGENES DISPONIBLES (con Git Gateway) =====
         async function loadAvailableImages() {
             const grid = document.getElementById('imageGrid');
             grid.innerHTML = '<div class="no-images">Cargando imágenes...</div>';
             
-            const token = getToken();
+            const token = await getToken();
             if (!token) {
                 grid.innerHTML = '<div class="no-images">⚠️ Inicia sesión para ver imágenes.</div>';
                 return;
             }
 
             try {
-                const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/images/products`;
+                const url = `/.netlify/git-gateway/git/github/contents/images/products`;
+                console.log('🔍 Cargando imágenes desde:', url);
                 const response = await fetch(url, {
-                    headers: {
-                        'Authorization': 'Bearer ' + token,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
+                    headers: { 'Authorization': 'Bearer ' + token }
                 });
 
                 if (response.status === 404) {
@@ -538,32 +547,64 @@
             }
         }
 
-        // ===== GUARDAR ARCHIVO (USANDO API DE GITHUB DIRECTAMENTE) =====
+        // ===== OBTENER SHA DE UN ARCHIVO (con Git Gateway) =====
+        async function getFileSha(filePath) {
+            const token = await getToken();
+            if (!token) return null;
+
+            try {
+                const url = `/.netlify/git-gateway/git/files/${filePath}`;
+                const response = await fetch(url, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+
+                if (response.status === 404) {
+                    return null; // El archivo no existe
+                }
+
+                if (!response.ok) {
+                    console.warn('⚠️ Error al obtener SHA, status:', response.status);
+                    return null;
+                }
+
+                const data = await response.json();
+                return data.sha || null;
+            } catch (error) {
+                console.error('❌ Error al obtener SHA:', error);
+                return null;
+            }
+        }
+
+        // ===== GUARDAR ARCHIVO (con Git Gateway, POST para crear, PUT para actualizar) =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
-            const token = getToken();
+            const token = await getToken();
             if (!token) {
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
 
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
-            const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
+            
+            // Si hay SHA, es una actualización -> PUT
+            // Si no hay SHA, es un archivo nuevo -> POST
+            const method = sha ? 'PUT' : 'POST';
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
             const body = {
                 content: encodedContent,
                 message: message,
                 sha: sha || undefined
             };
 
-            console.log('📤 Guardando archivo en GitHub:', url);
+            console.log(`📤 Guardando archivo (${method}):`, url);
             console.log('📦 Datos:', { filePath, message, sha: sha || 'nuevo' });
 
             try {
                 const response = await fetch(url, {
-                    method: 'PUT',
+                    method: method,
                     headers: {
                         'Authorization': 'Bearer ' + token,
                         'Content-Type': 'application/json',
-                        'Accept': 'application/vnd.github.v3+json'
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(body)
                 });
@@ -585,19 +626,16 @@
             }
         }
 
-        // ===== ELIMINAR ARCHIVO (USANDO API DE GITHUB DIRECTAMENTE) =====
+        // ===== ELIMINAR ARCHIVO (con Git Gateway) =====
         async function deleteFileFromRepo(filePath, sha, message) {
-            const token = getToken();
+            const token = await getToken();
             if (!token) {
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
 
-            const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
-            const body = {
-                message: message,
-                sha: sha
-            };
+            const url = `/.netlify/git-gateway/git/files/${filePath}`;
+            const body = { message: message, sha: sha };
 
             try {
                 const response = await fetch(url, {
@@ -605,7 +643,7 @@
                     headers: {
                         'Authorization': 'Bearer ' + token,
                         'Content-Type': 'application/json',
-                        'Accept': 'application/vnd.github.v3+json'
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(body)
                 });
@@ -799,27 +837,12 @@
                 const isNew = !currentProductId;
                 const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
 
-                let sha = null;
-                if (!isNew) {
-                    const token = getToken();
-                    if (token) {
-                        const getUrl = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
-                        const getResponse = await fetch(getUrl, {
-                            headers: {
-                                'Authorization': 'Bearer ' + token,
-                                'Accept': 'application/vnd.github.v3+json'
-                            }
-                        });
-                        if (getResponse.ok) {
-                            const fileData = await getResponse.json();
-                            sha = fileData.sha;
-                            console.log('📄 SHA existente:', sha);
-                        } else if (getResponse.status === 404) {
-                            console.log('ℹ️ Archivo no existe, se creará uno nuevo.');
-                        } else {
-                            console.warn('⚠️ Error al obtener SHA, status:', getResponse.status);
-                        }
-                    }
+                // Obtener SHA del archivo (si existe)
+                const sha = await getFileSha(filePath);
+                if (sha) {
+                    console.log('📄 SHA existente:', sha);
+                } else {
+                    console.log('ℹ️ Archivo no existe, se creará uno nuevo.');
                 }
 
                 const success = await saveFileToRepo(filePath, content, message, sha);
@@ -832,19 +855,9 @@
                 // Si el slug cambió, eliminar archivo antiguo
                 if (!isNew && originalSlug && originalSlug !== slug) {
                     const oldFilePath = 'data/products/' + originalSlug + '.json';
-                    const token = getToken();
-                    if (token) {
-                        const getOldUrl = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${oldFilePath}`;
-                        const getOldResponse = await fetch(getOldUrl, {
-                            headers: {
-                                'Authorization': 'Bearer ' + token,
-                                'Accept': 'application/vnd.github.v3+json'
-                            }
-                        });
-                        if (getOldResponse.ok) {
-                            const oldFileData = await getOldResponse.json();
-                            await deleteFileFromRepo(oldFilePath, oldFileData.sha, 'Eliminar producto antiguo: ' + originalSlug);
-                        }
+                    const oldSha = await getFileSha(oldFilePath);
+                    if (oldSha) {
+                        await deleteFileFromRepo(oldFilePath, oldSha, 'Eliminar producto antiguo: ' + originalSlug);
                     }
                 }
 
@@ -884,25 +897,11 @@
             if (!product) return;
 
             const filePath = 'data/products/' + slug + '.json';
-            const token = getToken();
-            if (!token) {
-                alert('No has iniciado sesión o no se pudo obtener el token.');
+            const sha = await getFileSha(filePath);
+            if (!sha) {
+                alert('El archivo no existe o no se pudo obtener.');
                 return;
             }
-
-            const getUrl = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
-            const getResponse = await fetch(getUrl, {
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Accept': 'application/vnd.github.v3+json'
-                }
-            });
-            if (!getResponse.ok) {
-                alert('No se pudo obtener el archivo para eliminar.');
-                return;
-            }
-            const fileData = await getResponse.json();
-            const sha = fileData.sha;
 
             const success = await deleteFileFromRepo(filePath, sha, 'Eliminar producto: ' + product.Label);
             if (!success) {
@@ -946,7 +945,16 @@
         }
 
         $(document).ready(function() {
-            if (window.netlifyIdentity) window.netlifyIdentity.init();
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.init();
+                // Esperar a que el usuario esté autenticado
+                window.netlifyIdentity.on('login', function() {
+                    console.log('🔐 Usuario logueado');
+                });
+                window.netlifyIdentity.on('logout', function() {
+                    console.log('🔓 Usuario deslogueado');
+                });
+            }
             $(document).on('keydown', function(e) {
                 if (e.key === 'Escape') showCloseModal();
             });
