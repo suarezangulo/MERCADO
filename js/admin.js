@@ -1,5 +1,5 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
-// Versión que usa Git Gateway directamente (sin funciones serverless)
+// Versión que usa la API de GitHub directamente con token personal
 
 let adminProducts = [];
 let editingProduct = null;
@@ -19,31 +19,27 @@ function ToSlug(str) {
     return s;
 }
 
-// ===== OBTENER TOKEN DE NETLIFY IDENTITY =====
-async function getToken() {
-    const user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
-    if (!user) {
-        console.warn('⚠️ No hay usuario logueado');
-        return null;
+// ===== OBTENER TOKEN DE GITHUB (desde variable global) =====
+function getGitHubToken() {
+    // El token se establece manualmente en admin/index.html
+    if (window.GITHUB_TOKEN) {
+        return window.GITHUB_TOKEN;
     }
-    try {
-        const token = await user.jwt();
-        console.log('✅ Token obtenido correctamente');
-        return token;
-    } catch (error) {
-        console.error('❌ Error al obtener token:', error);
-        return null;
-    }
+    alert('❌ Token de GitHub no configurado. Agrega window.GITHUB_TOKEN en admin/index.html');
+    return null;
 }
 
-// ===== OBTENER SHA DE UN ARCHIVO (usando Git Gateway) =====
+// ===== OBTENER SHA DE UN ARCHIVO (API de GitHub) =====
 async function getFileSha(filePath) {
-    const token = await getToken();
+    const token = getGitHubToken();
     if (!token) return null;
     try {
-        const url = `/.netlify/git-gateway/git/files/${filePath}`;
+        const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
         const response = await fetch(url, {
-            headers: { 'Authorization': 'Bearer ' + token }
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/vnd.github.v3+json'
+            }
         });
         if (response.status === 404) {
             return null; // El archivo no existe
@@ -60,33 +56,32 @@ async function getFileSha(filePath) {
     }
 }
 
-// ===== GUARDAR ARCHIVO EN REPOSITORIO (con Git Gateway) =====
+// ===== GUARDAR ARCHIVO (API de GitHub) =====
 async function saveFileToRepo(filePath, content, message, sha = null) {
-    const token = await getToken();
+    const token = getGitHubToken();
     if (!token) {
-        alert('No has iniciado sesión o no se pudo obtener el token.');
+        alert('No se pudo obtener el token de GitHub.');
         return false;
     }
 
     const encodedContent = btoa(unescape(encodeURIComponent(content)));
-    const url = `/.netlify/git-gateway/git/files/${filePath}`;
-    const method = sha ? 'PUT' : 'POST';
+    const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
     const body = {
         content: encodedContent,
         message: message,
         sha: sha || undefined
     };
 
-    console.log(`📤 Guardando archivo (${method}):`, url);
+    console.log(`📤 Guardando archivo en GitHub:`, url);
     console.log('📦 Datos:', { filePath, message, sha: sha || 'nuevo' });
 
     try {
         const response = await fetch(url, {
-            method: method,
+            method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/vnd.github.v3+json'
             },
             body: JSON.stringify(body)
         });
@@ -108,15 +103,15 @@ async function saveFileToRepo(filePath, content, message, sha = null) {
     }
 }
 
-// ===== ELIMINAR ARCHIVO DEL REPOSITORIO (con Git Gateway) =====
+// ===== ELIMINAR ARCHIVO (API de GitHub) =====
 async function deleteFileFromRepo(filePath, sha, message) {
-    const token = await getToken();
+    const token = getGitHubToken();
     if (!token) {
-        alert('No has iniciado sesión o no se pudo obtener el token.');
+        alert('No se pudo obtener el token de GitHub.');
         return false;
     }
 
-    const url = `/.netlify/git-gateway/git/files/${filePath}`;
+    const url = `https://api.github.com/repos/suarezangulo/MERCADO/contents/${filePath}`;
     const body = { message: message, sha: sha };
 
     try {
@@ -125,7 +120,7 @@ async function deleteFileFromRepo(filePath, sha, message) {
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/vnd.github.v3+json'
             },
             body: JSON.stringify(body)
         });
@@ -294,7 +289,6 @@ async function saveProduct() {
     const category = document.getElementById('edit-category').value.trim() || 'Productos';
     const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
 
-    // Obtener la lista de imágenes seleccionadas
     const images = window.selectedImages && Array.isArray(window.selectedImages) ? window.selectedImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
 
     const productData = {
@@ -322,7 +316,6 @@ async function saveProduct() {
         const isNew = !currentProductId;
         const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
 
-        // Obtener SHA si existe
         let sha = null;
         if (!isNew) {
             sha = await getFileSha(filePath);
@@ -340,7 +333,6 @@ async function saveProduct() {
             return;
         }
 
-        // Si el slug cambió, eliminar archivo antiguo
         if (!isNew && currentProductId && currentProductId !== slug) {
             const oldFilePath = 'data/products/' + currentProductId + '.json';
             const oldSha = await getFileSha(oldFilePath);
@@ -349,7 +341,6 @@ async function saveProduct() {
             }
         }
 
-        // Actualizar lista en memoria
         if (isNew) {
             productData._category = category;
             productData._subcategory = subcategory;
@@ -369,7 +360,7 @@ async function saveProduct() {
         btnSave.innerHTML = originalText;
         btnSave.disabled = false;
         alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
-        loadAdminProducts(); // Recargar lista
+        loadAdminProducts();
     } catch (error) {
         console.error('❌ Error en saveProduct:', error);
         alert('Error inesperado al guardar. Revisa la consola.');
