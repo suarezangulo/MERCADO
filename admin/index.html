@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - MERCADO</title>
-    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ===== ESTILOS BASE (sin cambios) ===== */
+        /* ===== TODOS LOS ESTILOS (sin cambios) ===== */
         :root { --primary: #717fe0; --primary-dark: #5a67c9; --primary-light: #8b97e8; --primary-bg: #f0f2ff; --success: #28a745; --success-bg: #d4edda; --danger: #dc3545; --danger-bg: #f8d7da; --warning: #ffc107; --warning-bg: #fff3cd; --bg: #f5f7fc; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8888aa; --border: #e2e8f0; --shadow: 0 10px 40px rgba(113, 127, 224, 0.15); --shadow-hover: 0 15px 50px rgba(113, 127, 224, 0.25); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
@@ -129,7 +128,7 @@
         .modal-actions .btn-no { background: var(--border); color: var(--text-secondary); }
         .modal-actions .btn-no:hover { background: #d1d5db; transform: translateY(-2px); }
 
-        /* ===== ESTILOS PARA EL GESTOR DE IMÁGENES ===== */
+        /* ===== GESTOR DE IMÁGENES ===== */
         .image-manager {
             margin-top: 16px;
             padding: 16px;
@@ -152,9 +151,7 @@
             border: 2px solid var(--border);
             transition: var(--transition);
         }
-        .image-manager .current-images .image-item:hover {
-            border-color: var(--danger);
-        }
+        .image-manager .current-images .image-item:hover { border-color: var(--danger); }
         .image-manager .current-images .image-item img {
             width: 100%;
             height: 100%;
@@ -178,9 +175,7 @@
             transition: var(--transition);
             opacity: 0.9;
         }
-        .image-manager .current-images .image-item .remove-btn:hover {
-            transform: scale(1.1);
-        }
+        .image-manager .current-images .image-item .remove-btn:hover { transform: scale(1.1); }
         .image-manager .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -228,15 +223,35 @@
             opacity: 0;
             transition: var(--transition);
         }
-        .image-manager .image-grid .image-option.selected .check {
-            opacity: 1;
-        }
+        .image-manager .image-grid .image-option.selected .check { opacity: 1; }
         .image-manager .no-images {
             color: var(--text-muted);
             text-align: center;
             padding: 20px;
             font-size: 14px;
         }
+        .image-manager .manual-add {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .image-manager .manual-add input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .image-manager .manual-add button {
+            padding: 8px 16px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .image-manager .manual-add button:hover { background: var(--primary-dark); }
     </style>
 </head>
 <body>
@@ -309,18 +324,18 @@
                     <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">
                         <i class="fas fa-images"></i> Imágenes del producto
                     </label>
-                    
-                    <!-- Imágenes actuales (seleccionadas) -->
                     <div class="current-images" id="currentImages">
-                        <!-- Se renderizan dinámicamente -->
+                        <span style="color: var(--text-muted); font-size: 14px;">No hay imágenes seleccionadas.</span>
                     </div>
-
-                    <!-- Grid de imágenes disponibles -->
                     <div style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
                         <i class="fas fa-folder-open"></i> Imágenes disponibles (haz clic para añadir/eliminar)
                     </div>
                     <div class="image-grid" id="imageGrid">
                         <div class="no-images">Cargando imágenes...</div>
+                    </div>
+                    <div class="manual-add">
+                        <input type="text" id="manualImagePath" placeholder="Ej: /images/products/mi-foto.webp" />
+                        <button onclick="addManualImage()"><i class="fas fa-plus"></i> Agregar</button>
                     </div>
                 </div>
 
@@ -354,8 +369,8 @@
         let editingProduct = null;
         let currentProductId = null;
         let originalSlug = null;
-        let selectedImages = []; // Array de rutas de imágenes seleccionadas
-        let availableImages = []; // Array de objetos {name, path} de imágenes disponibles
+        let selectedImages = [];
+        let availableImages = [];
 
         // ===== ToSlug LOCAL =====
         function ToSlug(str) {
@@ -376,40 +391,47 @@
             return user.token && user.token.access_token ? user.token.access_token : null;
         }
 
-        // ===== CARGAR IMÁGENES DISPONIBLES =====
+        // ===== CARGAR IMÁGENES DISPONIBLES (NOMBRES REALES) =====
         async function loadAvailableImages() {
+            const grid = document.getElementById('imageGrid');
+            grid.innerHTML = '<div class="no-images">Cargando imágenes...</div>';
+            
             const token = getToken();
             if (!token) {
-                document.getElementById('imageGrid').innerHTML = '<div class="no-images">Inicia sesión para ver imágenes</div>';
+                grid.innerHTML = '<div class="no-images">⚠️ Inicia sesión para ver imágenes.</div>';
                 return;
             }
+
             try {
                 const url = `/.netlify/git/github/contents/images/products`;
                 const response = await fetch(url, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 });
+
                 if (!response.ok) {
                     throw new Error('HTTP ' + response.status);
                 }
+
                 const data = await response.json();
-                // Filtrar solo imágenes (extensiones comunes)
+                // Filtrar solo imágenes
                 const images = data.filter(item => /\.(jpg|jpeg|png|webp|gif)$/i.test(item.name));
                 availableImages = images.map(item => ({
                     name: item.name,
                     path: '/images/products/' + item.name
                 }));
+
                 renderImageGrid();
             } catch (error) {
                 console.error('Error al cargar imágenes:', error);
-                document.getElementById('imageGrid').innerHTML = '<div class="no-images">Error al cargar imágenes. Revisa la consola.</div>';
+                grid.innerHTML = `<div class="no-images">❌ No se pudieron cargar las imágenes. Puedes agregarlas manualmente abajo.</div>`;
             }
         }
 
-        // ===== RENDERIZAR GRID DE IMÁGENES DISPONIBLES =====
+        // ===== RENDERIZAR GRID =====
         function renderImageGrid() {
             const grid = document.getElementById('imageGrid');
             if (!availableImages.length) {
-                grid.innerHTML = '<div class="no-images">No hay imágenes disponibles en la carpeta products.</div>';
+                grid.innerHTML = '<div class="no-images">📁 No hay imágenes en la carpeta products. Puedes agregarlas manualmente.</div>';
                 return;
             }
             let html = '';
@@ -425,7 +447,7 @@
             grid.innerHTML = html;
         }
 
-        // ===== RENDERIZAR IMÁGENES ACTUALES (seleccionadas) =====
+        // ===== RENDERIZAR IMÁGENES ACTUALES =====
         function renderCurrentImages() {
             const container = document.getElementById('currentImages');
             if (!selectedImages.length) {
@@ -445,7 +467,7 @@
             container.innerHTML = html;
         }
 
-        // ===== ALTERNAR SELECCIÓN DE IMAGEN =====
+        // ===== ALTERNAR SELECCIÓN =====
         function toggleImageSelection(path) {
             const index = selectedImages.indexOf(path);
             if (index !== -1) {
@@ -457,7 +479,7 @@
             renderImageGrid();
         }
 
-        // ===== ELIMINAR IMAGEN DE LA SELECCIÓN =====
+        // ===== ELIMINAR IMAGEN =====
         function removeImage(path) {
             const index = selectedImages.indexOf(path);
             if (index !== -1) {
@@ -467,24 +489,34 @@
             }
         }
 
-        // ===== GUARDAR ARCHIVO CON GIT GATEWAY (ENDPOINT CORRECTO) =====
+        // ===== AGREGAR IMAGEN MANUALMENTE =====
+        function addManualImage() {
+            const input = document.getElementById('manualImagePath');
+            const path = input.value.trim();
+            if (!path) {
+                alert('Escribe la ruta de la imagen, ej: /images/products/mi-foto.webp');
+                return;
+            }
+            if (!selectedImages.includes(path)) {
+                selectedImages.push(path);
+                renderCurrentImages();
+                renderImageGrid();
+                input.value = '';
+            } else {
+                alert('Esta imagen ya está seleccionada.');
+            }
+        }
+
+        // ===== GUARDAR ARCHIVO =====
         async function saveFileToRepo(filePath, content, message, sha = null) {
             const token = getToken();
             if (!token) {
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
-
-            // Codificar a base64
             const encodedContent = btoa(unescape(encodeURIComponent(content)));
-
-            // Endpoint correcto para Git Gateway
             const url = `/.netlify/git/github/contents/${filePath}`;
-            const body = {
-                content: encodedContent,
-                message: message,
-                sha: sha || undefined
-            };
+            const body = { content: encodedContent, message: message, sha: sha || undefined };
 
             try {
                 const response = await fetch(url, {
@@ -500,7 +532,7 @@
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('Error al guardar:', errorText);
-                    alert('Error al guardar el archivo. Código: ' + response.status + '\n' + errorText);
+                    alert('Error al guardar. Código: ' + response.status + '\n' + errorText);
                     return false;
                 }
                 return true;
@@ -518,12 +550,8 @@
                 alert('No has iniciado sesión o no se pudo obtener el token.');
                 return false;
             }
-
             const url = `/.netlify/git/github/contents/${filePath}`;
-            const body = {
-                message: message,
-                sha: sha
-            };
+            const body = { message: message, sha: sha };
 
             try {
                 const response = await fetch(url, {
@@ -635,7 +663,7 @@
             URL.revokeObjectURL(link.href);
         }
 
-        // ===== ABRIR FORMULARIO DE EDICIÓN =====
+        // ===== ABRIR FORMULARIO =====
         function openEditForm(slug) {
             const product = adminProducts.find(p => ToSlug(p.Label) === slug);
             if (!product) return;
@@ -651,10 +679,12 @@
             document.getElementById('edit-stock').value = product.Stock || 0;
             document.getElementById('edit-features').value = (product.Features || []).join('\n');
 
-            // Cargar imágenes del producto
+            // Cargar imágenes reales del producto
             selectedImages = product.Images || [];
+            // Si no tiene imágenes, las dejamos vacías
             renderCurrentImages();
-            // Cargar imágenes disponibles desde el repositorio
+
+            // Cargar imágenes disponibles desde el repositorio (nombres reales)
             loadAvailableImages().then(() => renderImageGrid());
 
             document.getElementById('admin-form').classList.add('active');
@@ -662,7 +692,6 @@
             document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
         function openNewProductForm() {
             currentProductId = null;
             originalSlug = null;
@@ -708,7 +737,7 @@
                 Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
                 Date: new Date().toISOString(),
                 Update: new Date().toISOString(),
-                Images: selectedImages // Guardar las imágenes seleccionadas
+                Images: selectedImages // Guarda las rutas reales seleccionadas
             };
 
             const btnSave = document.querySelector('.btn-save');
@@ -723,7 +752,6 @@
                 const isNew = !currentProductId;
                 const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
 
-                // Obtener SHA si el archivo existe
                 let sha = null;
                 if (!isNew) {
                     const token = getToken();
