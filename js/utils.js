@@ -417,7 +417,7 @@ function prepareWhatsapp() {
     $("body").append(n);
 }
 
-// ===== BOTÓN FLOTANTE DE ADMINISTRACIÓN (MEJORADO CON FONDO TRANSLÚCIDO) =====
+// ===== BOTÓN FLOTANTE DE ADMINISTRACIÓN CON IMAGEN =====
 function prepareAdminButton() {
     // Evitar duplicados
     if ($('.admin-floating-btn').length > 0) {
@@ -425,14 +425,33 @@ function prepareAdminButton() {
         return;
     }
 
-    console.log('🔨 Creando botón flotante de administración...');
+    console.log('🔨 Creando botón flotante de administración con imagen...');
 
     var $btn = $("<div class='admin-floating-btn'></div>");
-    // Icono de tuerca (engranaje)
-    $btn.html('<i class="fas fa-cog"></i>');
+    
+    // Crear elemento img para la tuerca
+    var $imgGear = $("<img>", {
+        src: "images/icons/tuerca.png",
+        alt: "Panel de Administración",
+        style: "width: 32px; height: 32px; display: block;"
+    });
+    
+    // Crear elemento img para el usuario (check) - usaremos un SVG simple como fallback
+    var userSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <polyline points="16 11 18 13 22 9"/>
+    </svg>`;
+
+    // Guardar referencias
+    $btn.data('imgGear', $imgGear);
+    $btn.data('userSvg', userSvg);
+
+    // Configuración inicial
+    $btn.append($imgGear.clone());
     $btn.attr('title', 'Panel de Administración');
 
-    // Estilos en línea (con fondo translúcido)
+    // Estilos en línea
     $btn.css({
         position: 'fixed',
         bottom: '130px', // Justo encima del botón de WhatsApp
@@ -440,8 +459,7 @@ function prepareAdminButton() {
         width: '60px',
         height: '60px',
         borderRadius: '50%',
-        backgroundColor: 'rgba(113, 127, 224, 0.85)', // Azul translúcido por defecto
-        color: '#fff',
+        backgroundColor: 'rgba(113, 127, 224, 0.85)',
         border: '2px solid rgba(255,255,255,0.8)',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
         display: 'flex',
@@ -450,11 +468,10 @@ function prepareAdminButton() {
         cursor: 'pointer',
         zIndex: '10000',
         transition: 'all 0.3s ease',
-        fontSize: '32px', // Tamaño del icono
         textDecoration: 'none',
         opacity: '1',
         visibility: 'visible',
-        backdropFilter: 'blur(4px)', // Efecto de desenfoque para translucidez
+        backdropFilter: 'blur(4px)',
         WebkitBackdropFilter: 'blur(4px)'
     });
 
@@ -498,13 +515,15 @@ function prepareAdminButton() {
         if (window.netlifyIdentity) {
             var user = window.netlifyIdentity.currentUser();
             if (user) {
-                // Sesión abierta: verde translúcido
+                // Sesión abierta: verde translúcido y icono de usuario (SVG)
                 $btn.css('backgroundColor', 'rgba(40, 167, 69, 0.85)');
-                $btn.html('<i class="fas fa-user-check"></i>');
+                $btn.empty();
+                $btn.append(userSvg);
             } else {
-                // Sesión cerrada: azul translúcido
+                // Sesión cerrada: azul translúcido y tuerca (imagen)
                 $btn.css('backgroundColor', 'rgba(113, 127, 224, 0.85)');
-                $btn.html('<i class="fas fa-cog"></i>');
+                $btn.empty();
+                $btn.append($imgGear.clone());
             }
         }
     }
