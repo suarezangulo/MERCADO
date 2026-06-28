@@ -1,5 +1,5 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
-// Versión visualizadora + redirección al CMS para acciones de escritura
+// Versión que usa funciones serverless de Netlify
 
 let adminProducts = [];
 let editingProduct = null;
@@ -17,6 +17,138 @@ function ToSlug(str) {
         s = s.substring(0, 50);
     }
     return s;
+}
+
+// ===== GUARDAR PRODUCTO (usando función serverless) =====
+async function saveProduct() {
+    const label = document.getElementById('edit-label').value.trim();
+    if (!label) { alert('El nombre del producto es obligatorio.'); return; }
+    const price = document.getElementById('edit-price').value.trim();
+    if (!price || !/^\d+\.?\d* (CUP|USD)$/.test(price)) {
+        alert('El precio debe tener el formato: número + espacio + CUP o USD (ej. 850.00 CUP)');
+        return;
+    }
+    const category = document.getElementById('edit-category').value.trim() || 'Productos';
+    const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
+
+    const images = window.selectedImages && Array.isArray(window.selectedImages) ? window.selectedImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
+
+    const productData = {
+        Category: category,
+        SubCategory: subcategory,
+        Label: label,
+        Description: document.getElementById('edit-description').value,
+        Price: price,
+        Stock: parseInt(document.getElementById('edit-stock').value) || 0,
+        Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
+        Date: new Date().toISOString(),
+        Update: new Date().toISOString(),
+        Images: images
+    };
+
+    const btnSave = document.querySelector('.btn-save');
+    const originalText = btnSave.innerHTML;
+    btnSave.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+    btnSave.disabled = true;
+
+    try {
+        const slug = ToSlug(label);
+        const filePath = 'data/products/' + slug + '.json';
+        const content = JSON.stringify(productData, null, 2);
+        const isNew = !currentProductId;
+        const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
+
+        // Llamar a la función serverless de Netlify
+        const response = await fetch('/.netlify/functions/save-product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                filePath: filePath,
+                content: content,
+                message: message,
+                sha: null // La función serverless obtendrá el SHA automáticamente
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            alert('Error al guardar: ' + (result.error?.message || 'Error desconocido'));
+            btnSave.innerHTML = originalText;
+            btnSave.disabled = false;
+            return;
+        }
+
+        // Actualizar lista en memoria
+        if (isNew) {
+            productData._category = category;
+            productData._subcategory = subcategory;
+            adminProducts.push(productData);
+        } else {
+            const index = adminProducts.findIndex(p => ToSlug(p.Label) === currentProductId);
+            if (index !== -1) {
+                adminProducts[index] = productData;
+                adminProducts[index]._category = category;
+                adminProducts[index]._subcategory = subcategory;
+            }
+        }
+
+        renderAdminTable();
+        updateStats();
+        closeForm();
+        btnSave.innerHTML = originalText;
+        btnSave.disabled = false;
+        alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
+        loadAdminProducts(); // Recargar lista
+    } catch (error) {
+        console.error('❌ Error en saveProduct:', error);
+        alert('Error inesperado al guardar. Revisa la consola.');
+        btnSave.innerHTML = originalText;
+        btnSave.disabled = false;
+    }
+}
+
+// ===== ELIMINAR PRODUCTO (usando función serverless) =====
+async function deleteProduct(slug) {
+    if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) return;
+    const product = adminProducts.find(p => ToSlug(p.Label) === slug);
+    if (!product) return;
+
+    const filePath = 'data/products/' + slug + '.json';
+
+    try {
+        // Primero obtener el SHA del archivo (opcional, la función puede obtenerlo)
+        const response = await fetch('/.netlify/functions/delete-product', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                filePath: filePath,
+                message: 'Eliminar producto: ' + product.Label,
+                sha: null // La función serverless obtendrá el SHA automáticamente
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            alert('Error al eliminar: ' + (result.error?.message || 'Error desconocido'));
+            return;
+        }
+
+        const index = adminProducts.findIndex(p => ToSlug(p.Label) === slug);
+        if (index !== -1) adminProducts.splice(index, 1);
+        renderAdminTable();
+        updateStats();
+        alert('🗑️ Producto eliminado correctamente.');
+        loadAdminProducts();
+    } catch (error) {
+        console.error('❌ Error en deleteProduct:', error);
+        alert('Error inesperado al eliminar. Revisa la consola.');
+    }
 }
 
 // ===== CARGAR PRODUCTOS =====
@@ -121,33 +253,43 @@ function exportProducts() {
     URL.revokeObjectURL(link.href);
 }
 
-// ===== ABRIR FORMULARIO DE EDICIÓN (redirige al CMS) =====
+// ===== ABRIR FORMULARIO DE EDICIÓN =====
 function openEditForm(slug) {
     const product = adminProducts.find(p => ToSlug(p.Label) === slug);
     if (!product) return;
     currentProductId = slug;
     editingProduct = product;
-    
-    // Redirigir al CMS en una nueva pestaña
-    window.open('/admin/#/collections/productos/entries/' + slug, '_blank');
+    document.getElementById('edit-category').value = product._category || 'Productos';
+    document.getElementById('edit-subcategory').value = product.SubCategory || 'Confituras';
+    document.getElementById('edit-label').value = product.Label || '';
+    document.getElementById('edit-description').value = product.Description || '';
+    document.getElementById('edit-price').value = product.Price || '';
+    document.getElementById('edit-stock').value = product.Stock || 0;
+    document.getElementById('edit-features').value = (product.Features || []).join('\n');
+    document.getElementById('admin-form').classList.add('active');
+    document.getElementById('admin-form-title').textContent = '✏️ Editar Producto';
+    document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO (redirige al CMS) =====
+// ===== ABRIR FORMULARIO PARA NUEVO PRODUCTO =====
 function openNewProductForm() {
-    // Redirigir al CMS en una nueva pestaña
-    window.open('/admin/#/collections/productos/new', '_blank');
+    currentProductId = null;
+    editingProduct = null;
+    document.getElementById('edit-category').value = 'Productos';
+    document.getElementById('edit-subcategory').value = 'Confituras';
+    document.getElementById('edit-label').value = '';
+    document.getElementById('edit-description').value = '';
+    document.getElementById('edit-price').value = '';
+    document.getElementById('edit-stock').value = '0';
+    document.getElementById('edit-features').value = '';
+    document.getElementById('admin-form').classList.add('active');
+    document.getElementById('admin-form-title').textContent = '➕ Nuevo Producto';
+    document.getElementById('admin-form').scrollIntoView({ behavior: 'smooth' });
 }
 
 // ===== CERRAR FORMULARIO =====
 function closeForm() {
     document.getElementById('admin-form').classList.remove('active');
-}
-
-// ===== ELIMINAR PRODUCTO (redirige al CMS) =====
-function deleteProduct(slug) {
-    if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nSe abrirá el CMS para que confirmes la eliminación.`)) return;
-    // Redirigir al CMS en una nueva pestaña
-    window.open('/admin/#/collections/productos/entries/' + slug, '_blank');
 }
 
 // ===== MOSTRAR/OCULTAR LOADING =====
