@@ -1,6 +1,5 @@
 // ===== PANEL DE ADMINISTRACIÓN =====
-// Esta versión NO depende de utils.js
-// Incluye su propia función ToSlug
+// Esta versión incluye guardado en repositorio mediante Git Gateway
 
 let adminProducts = [];
 let editingProduct = null;
@@ -18,6 +17,128 @@ function ToSlug(str) {
         s = s.substring(0, 50);
     }
     return s;
+}
+
+// ===== OBTENER TOKEN DE NETLIFY IDENTITY =====
+async function getToken() {
+    const user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
+    if (!user) {
+        console.warn('⚠️ No hay usuario logueado');
+        return null;
+    }
+    try {
+        const token = await user.jwt();
+        console.log('✅ Token obtenido correctamente');
+        return token;
+    } catch (error) {
+        console.error('❌ Error al obtener token:', error);
+        return null;
+    }
+}
+
+// ===== OBTENER SHA DE UN ARCHIVO =====
+async function getFileSha(filePath) {
+    const token = await getToken();
+    if (!token) return null;
+    try {
+        const url = `/.netlify/git/github/contents/${filePath}`;
+        const response = await fetch(url, {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (response.status === 404) {
+            return null; // El archivo no existe
+        }
+        if (!response.ok) {
+            console.warn('⚠️ Error al obtener SHA, status:', response.status);
+            return null;
+        }
+        const data = await response.json();
+        return data.sha || null;
+    } catch (error) {
+        console.error('❌ Error al obtener SHA:', error);
+        return null;
+    }
+}
+
+// ===== GUARDAR ARCHIVO EN REPOSITORIO =====
+async function saveFileToRepo(filePath, content, message, sha = null) {
+    const token = await getToken();
+    if (!token) {
+        alert('No has iniciado sesión o no se pudo obtener el token.');
+        return false;
+    }
+
+    const encodedContent = btoa(unescape(encodeURIComponent(content)));
+    const url = `/.netlify/git/github/contents/${filePath}`;
+    const method = sha ? 'PUT' : 'POST';
+    const body = {
+        content: encodedContent,
+        message: message,
+        sha: sha || undefined
+    };
+
+    console.log(`📤 Guardando archivo (${method}):`, url);
+    console.log('📦 Datos:', { filePath, message, sha: sha || 'nuevo' });
+
+    try {
+        const response = await fetch(url, {
+            method: method,
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        console.log('📡 Respuesta HTTP:', response.status);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ Error al guardar:', errorText);
+            alert(`Error al guardar (${response.status}):\n${errorText.substring(0, 200)}`);
+            return false;
+        }
+        console.log('✅ Archivo guardado correctamente');
+        return true;
+    } catch (error) {
+        console.error('❌ Error en saveFileToRepo:', error);
+        alert('Error inesperado al guardar. Revisa la consola.');
+        return false;
+    }
+}
+
+// ===== ELIMINAR ARCHIVO DEL REPOSITORIO =====
+async function deleteFileFromRepo(filePath, sha, message) {
+    const token = await getToken();
+    if (!token) {
+        alert('No has iniciado sesión o no se pudo obtener el token.');
+        return false;
+    }
+
+    const url = `/.netlify/git/github/contents/${filePath}`;
+    const body = { message: message, sha: sha };
+
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            console.error('Error al eliminar:', await response.text());
+            return false;
+        }
+        return true;
+    } catch (error) {
+        console.error('Error en deleteFileFromRepo:', error);
+        return false;
+    }
 }
 
 // ===== CARGAR PRODUCTOS =====
@@ -162,8 +283,8 @@ function closeForm() {
     document.getElementById('admin-form').classList.remove('active');
 }
 
-// ===== GUARDAR PRODUCTO =====
-function saveProduct() {
+// ===== GUARDAR PRODUCTO (CON ESCRIBIR EN REPOSITORIO) =====
+async function saveProduct() {
     const label = document.getElementById('edit-label').value.trim();
     if (!label) { alert('El nombre del producto es obligatorio.'); return; }
     const price = document.getElementById('edit-price').value.trim();
@@ -171,9 +292,15 @@ function saveProduct() {
         alert('El precio debe tener el formato: número + espacio + CUP o USD (ej. 850.00 CUP)');
         return;
     }
+    const category = document.getElementById('edit-category').value.trim() || 'Productos';
+    const subcategory = document.getElementById('edit-subcategory').value.trim() || 'Confituras';
+
+    // Obtener la lista de imágenes seleccionadas (desde la variable global window.selectedImages)
+    const images = window.selectedImages && Array.isArray(window.selectedImages) ? window.selectedImages : ['/images/products/' + ToSlug(label) + '-0.webp'];
+
     const productData = {
-        Category: document.getElementById('edit-category').value,
-        SubCategory: document.getElementById('edit-subcategory').value,
+        Category: category,
+        SubCategory: subcategory,
         Label: label,
         Description: document.getElementById('edit-description').value,
         Price: price,
@@ -181,43 +308,102 @@ function saveProduct() {
         Features: document.getElementById('edit-features').value.split('\n').filter(f => f.trim() !== ''),
         Date: new Date().toISOString(),
         Update: new Date().toISOString(),
-        Images: ['/images/products/' + ToSlug(label) + '-0.webp']
+        Images: images
     };
+
     const btnSave = document.querySelector('.btn-save');
     const originalText = btnSave.innerHTML;
     btnSave.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
     btnSave.disabled = true;
-    setTimeout(function() {
-        if (currentProductId) {
+
+    try {
+        const slug = ToSlug(label);
+        const filePath = 'data/products/' + slug + '.json';
+        const content = JSON.stringify(productData, null, 2);
+        const isNew = !currentProductId;
+        const message = isNew ? 'Crear producto: ' + label : 'Actualizar producto: ' + label;
+
+        // Obtener SHA si existe
+        let sha = null;
+        if (!isNew) {
+            sha = await getFileSha(filePath);
+            if (sha) {
+                console.log('📄 SHA existente:', sha);
+            } else {
+                console.log('ℹ️ Archivo no existe, se creará uno nuevo.');
+            }
+        }
+
+        const success = await saveFileToRepo(filePath, content, message, sha);
+        if (!success) {
+            btnSave.innerHTML = originalText;
+            btnSave.disabled = false;
+            return;
+        }
+
+        // Si el slug cambió, eliminar archivo antiguo
+        if (!isNew && currentProductId && currentProductId !== slug) {
+            const oldFilePath = 'data/products/' + currentProductId + '.json';
+            const oldSha = await getFileSha(oldFilePath);
+            if (oldSha) {
+                await deleteFileFromRepo(oldFilePath, oldSha, 'Eliminar producto antiguo: ' + currentProductId);
+            }
+        }
+
+        // Actualizar lista en memoria
+        if (isNew) {
+            productData._category = category;
+            productData._subcategory = subcategory;
+            adminProducts.push(productData);
+        } else {
             const index = adminProducts.findIndex(p => ToSlug(p.Label) === currentProductId);
             if (index !== -1) {
                 adminProducts[index] = productData;
-                adminProducts[index]._category = productData.Category;
-                adminProducts[index]._subcategory = productData.SubCategory;
+                adminProducts[index]._category = category;
+                adminProducts[index]._subcategory = subcategory;
             }
-        } else {
-            productData._category = productData.Category;
-            productData._subcategory = productData.SubCategory;
-            adminProducts.push(productData);
         }
+
         renderAdminTable();
         updateStats();
         closeForm();
         btnSave.innerHTML = originalText;
         btnSave.disabled = false;
-        alert(currentProductId ? '✅ Producto actualizado correctamente.' : '✅ Producto creado correctamente.');
-    }, 1000);
+        alert(isNew ? '✅ Producto creado correctamente.' : '✅ Producto actualizado correctamente.');
+        loadAdminProducts(); // Recargar lista
+    } catch (error) {
+        console.error('❌ Error en saveProduct:', error);
+        alert('Error inesperado al guardar. Revisa la consola.');
+        btnSave.innerHTML = originalText;
+        btnSave.disabled = false;
+    }
 }
 
-// ===== ELIMINAR PRODUCTO =====
-function deleteProduct(slug) {
+// ===== ELIMINAR PRODUCTO (CON ELIMINAR DEL REPOSITORIO) =====
+async function deleteProduct(slug) {
     if (!confirm(`¿Estás seguro de que quieres eliminar este producto?\nEsta acción no se puede deshacer.`)) return;
+    const product = adminProducts.find(p => ToSlug(p.Label) === slug);
+    if (!product) return;
+
+    const filePath = 'data/products/' + slug + '.json';
+    const sha = await getFileSha(filePath);
+    if (!sha) {
+        alert('El archivo no existe o no se pudo obtener.');
+        return;
+    }
+
+    const success = await deleteFileFromRepo(filePath, sha, 'Eliminar producto: ' + product.Label);
+    if (!success) {
+        alert('Error al eliminar el producto.');
+        return;
+    }
+
     const index = adminProducts.findIndex(p => ToSlug(p.Label) === slug);
-    if (index === -1) return;
-    adminProducts.splice(index, 1);
+    if (index !== -1) adminProducts.splice(index, 1);
     renderAdminTable();
     updateStats();
     alert('🗑️ Producto eliminado correctamente.');
+    loadAdminProducts();
 }
 
 // ===== MOSTRAR/OCULTAR LOADING =====
