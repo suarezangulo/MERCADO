@@ -1,9 +1,7 @@
 {
-  "name": "mercado-build",
+  "name": "mercado-functions",
   "version": "1.0.0",
-  "description": "Build script para generar products-index.json",
-  "scripts": {
-    "build": "node build.js"
-  },
-  "devDependencies": {}
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
 }
