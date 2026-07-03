@@ -261,4 +261,153 @@ if (dropArea) {
         this.classList.remove('dragover');
         const files = e.dataTransfer.files;
         document.getElementById('imageUpload').files = files;
-        document
+        document.getElementById('imageUpload').dispatchEvent(new Event('change'));
+    });
+}
+
+// ===== GUARDAR PRODUCTO =====
+async function saveProduct() {
+    const label = document.getElementById('productLabel').value.trim();
+    const category = document.getElementById('productCategory').value;
+    const subcategory = document.getElementById('productSubcategory').value;
+    const price = document.getElementById('productPrice').value.trim();
+    const stock = parseInt(document.getElementById('productStock').value) || 0;
+    const description = document.getElementById('productDescription').value.trim();
+    const features = document.getElementById('productFeatures').value
+        .split('\n')
+        .filter(f => f.trim());
+
+    if (!label || !category || !subcategory || !price) {
+        showToast('Completa todos los campos obligatorios.', 'warning');
+        return;
+    }
+
+    if (isNaN(price) || parseFloat(price) <= 0) {
+        showToast('Ingresa un precio válido.', 'warning');
+        return;
+    }
+
+    const slug = ToSlug(label);
+    const now = new Date().toISOString();
+
+    const productData = {
+        Category: category,
+        SubCategory: subcategory,
+        Label: label,
+        Images: uploadedImages.length > 0 ? 
+            uploadedImages.map((_, i) => `/images/products/${slug}-${i}.webp`) :
+            [`/images/products/${slug}-0.webp`],
+        Description: description,
+        Price: `${parseFloat(price).toFixed(2)} CUP`,
+        Stock: stock,
+        Features: features,
+        Date: editingProduct ? editingProduct.Date : now,
+        Update: now
+    };
+
+    try {
+        // Guardar archivo individual
+        const saveResponse = await fetch('../data/save-product.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slug, product: productData })
+        });
+
+        if (!saveResponse.ok) {
+            const error = await saveResponse.json();
+            throw new Error(error.error || 'Error al guardar');
+        }
+
+        // Subir imágenes
+        if (uploadedImages.length > 0) {
+            const formData = new FormData();
+            uploadedImages.forEach((file, i) => {
+                const ext = file.name.split('.').pop();
+                formData.append(`images[]`, file, `${slug}-${i}.webp`);
+            });
+            const uploadResponse = await fetch('../data/upload-images.php', {
+                method: 'POST',
+                body: formData
+            });
+            if (!uploadResponse.ok) throw new Error('Error al subir imágenes');
+        }
+
+        showToast(`"${label}" guardado exitosamente`, 'success');
+        closeModal('productModal');
+        await loadProducts();
+        showView('products');
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ===== EDITAR PRODUCTO =====
+function editProduct(index) {
+    const product = products[index];
+    openProductForm(product);
+}
+
+// ===== ELIMINAR PRODUCTO =====
+async function deleteProduct(index) {
+    const product = products[index];
+    if (!confirm(`¿Eliminar "${product.Label}" definitivamente?`)) return;
+
+    try {
+        const response = await fetch('../data/delete-product.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slug: ToSlug(product.Label) })
+        });
+
+        if (!response.ok) throw new Error('Error al eliminar');
+        showToast(`"${product.Label}" eliminado`, 'success');
+        await loadProducts();
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ===== CERRAR SESIÓN =====
+function logout() {
+    localStorage.removeItem('adminUser');
+    window.location.href = 'login.html';
+}
+
+// ===== UTILITARIOS =====
+function ToSlug(n) {
+    if (!n) return "";
+    let t = n.toLowerCase();
+    t = t.replace(/[^a-z0-9\s-]/g, "");
+    t = t.replace(/ /g, "-");
+    t = t.replace(/-+/g, "-");
+    t = t.replace(/^-+/, "").replace(/-+$/, "");
+    return t;
+}
+
+// ===== NAVEGACIÓN =====
+function showView(view) {
+    document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
+    document.getElementById(`view-${view}`).style.display = 'block';
+    document.querySelectorAll('.sidebar nav a').forEach(el => el.classList.remove('active'));
+    const activeLink = document.querySelector(`.sidebar nav a[data-view="${view}"]`);
+    if (activeLink) activeLink.classList.add('active');
+}
+
+// ===== INICIALIZACIÓN =====
+document.addEventListener('DOMContentLoaded', function() {
+    loadProducts();
+    showView('dashboard');
+
+    document.getElementById('createProductBtn').addEventListener('click', () => openProductForm(null));
+    document.getElementById('submitProductBtn').addEventListener('click', saveProduct);
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+});
