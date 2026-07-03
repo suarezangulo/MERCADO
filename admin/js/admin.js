@@ -1,5 +1,6 @@
 // ============================================================
-// ADMIN.JS - Panel de administración con GitHub API (UTF-8 corregido)
+// ADMIN.JS - Panel de administración con GitHub API
+// Corrección definitiva de codificación UTF-8 con BOM
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -37,7 +38,7 @@ let products = [];
 let editingProduct = null;
 let uploadedImages = [];
 
-// ===== FUNCIONES DE GITHUB API (con soporte UTF-8) =====
+// ===== FUNCIONES DE GITHUB API (con soporte UTF-8 y BOM) =====
 
 // Obtener el contenido actual del CSV (con soporte UTF-8)
 async function fetchCSV() {
@@ -59,21 +60,29 @@ async function fetchCSV() {
     for (let i = 0; i < binaryString.length; i++) {
         bytes[i] = binaryString.charCodeAt(i);
     }
-    const content = new TextDecoder('utf-8').decode(bytes);
+    let content = new TextDecoder('utf-8').decode(bytes);
+    
+    // Si tiene BOM al inicio, lo eliminamos para procesarlo correctamente
+    if (content.charCodeAt(0) === 0xFEFF) {
+        content = content.slice(1);
+    }
     
     return { content, sha: data.sha };
 }
 
-// Actualizar el CSV en GitHub (con codificación UTF-8)
+// Actualizar el CSV en GitHub (con codificación UTF-8 y BOM)
 async function updateCSV(csvContent) {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
     const { sha } = await fetchCSV();
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
     
+    // Agregar BOM al inicio para que GitHub y el navegador reconozcan UTF-8
+    const contentWithBOM = '\uFEFF' + csvContent;
+    
     // Codificar a Base64 con UTF-8
     const encoder = new TextEncoder();
-    const data = encoder.encode(csvContent);
+    const data = encoder.encode(contentWithBOM);
     const base64 = btoa(String.fromCharCode(...data));
     
     const response = await fetch(url, {
@@ -101,7 +110,6 @@ async function uploadImage(file, slug, index) {
     const path = `images/products/${fileName}`;
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
     
-    // Leer archivo y convertirlo a base64
     const reader = new FileReader();
     const fileData = await new Promise((resolve) => {
         reader.onload = () => resolve(reader.result.split(',')[1]);
@@ -128,6 +136,16 @@ async function uploadImage(file, slug, index) {
 async function loadProducts() {
     try {
         const { content } = await fetchCSV();
+        // Verificar que el contenido no esté vacío
+        if (!content.trim()) {
+            products = [];
+            renderProductTable();
+            updateStats();
+            updateRecentProducts();
+            document.getElementById('productCount').textContent = 0;
+            return;
+        }
+        
         const lines = content.split('\n').filter(line => line.trim());
         if (lines.length === 0) {
             products = [];
@@ -137,10 +155,12 @@ async function loadProducts() {
             document.getElementById('productCount').textContent = 0;
             return;
         }
+        
         const headers = lines[0].split(',').map(h => h.trim());
         products = [];
         for (let i = 1; i < lines.length; i++) {
-            const values = lines[i].split(',').map(v => v.trim());
+            // Usar expresiones regulares para manejar campos entre comillas que contengan comas
+            const values = parseCSVLine(lines[i]);
             const product = {};
             headers.forEach((header, index) => {
                 product[header] = values[index] || '';
@@ -154,6 +174,37 @@ async function loadProducts() {
     } catch (error) {
         showToast('Error al cargar productos: ' + error.message, 'error');
     }
+}
+
+// ===== FUNCIÓN PARA PARSEAR LÍNEAS CSV RESPETANDO COMILLAS =====
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let insideQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (insideQuotes) {
+            if (char === '"' && line[i+1] === '"') {
+                current += '"';
+                i++;
+            } else if (char === '"') {
+                insideQuotes = false;
+            } else {
+                current += char;
+            }
+        } else {
+            if (char === '"') {
+                insideQuotes = true;
+            } else if (char === ',') {
+                result.push(current.trim());
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+    }
+    result.push(current.trim());
+    return result;
 }
 
 // ===== RENDER TABLA =====
@@ -352,18 +403,23 @@ async function saveProduct() {
         return;
     }
 
-    // Construir la línea del CSV
+    // Construir la línea del CSV (escapando comillas si es necesario)
     const imagesNames = uploadedImages.length > 0 ? 
         uploadedImages.map((_, i) => `${slug}-${i}.webp`).join(';') :
         `${slug}-0.webp`;
+    
+    // Escapar descripción y características (pueden contener comas)
+    const escapedDescription = description.includes(',') ? `"${description}"` : description;
+    const escapedFeatures = features.includes(',') ? `"${features}"` : features;
+    
     const csvRow = [
         category,
         subcategory,
         label,
         `${parseFloat(price).toFixed(2)} CUP`,
         stock,
-        description,
-        features,
+        escapedDescription,
+        escapedFeatures,
         imagesNames
     ].join(',');
 
