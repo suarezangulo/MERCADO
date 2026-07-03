@@ -2,12 +2,14 @@
   "Category": "Shows",
   "SubCategory": "Comedia",
   "Label": "The Office (Temporada 1)",
+  "Type": "episode",
+  "Episodes": 6,
   "Images": [
     "/images/products/the-office-t1-0.webp",
     "/images/products/the-office-t1-1.webp"
   ],
   "Description": "Adaptación estadounidense de la serie británica. Sigue la vida cotidiana de los empleados de la empresa Dunder Mifflin, liderados por el excéntrico Michael Scott. Una comedia de oficina que se convirtió en un fenómeno cultural.",
-  "Price": "150.00 CUP",
+  "Price": "12.00 CUP",
   "Stock": 12,
   "Features": [
     "Creador: Greg Daniels",
