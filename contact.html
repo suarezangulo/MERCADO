@@ -4,8 +4,6 @@
 	<title>Contacto - CINEMARKET</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- ===== SEO META TAGS ===== -->
 	<meta name="description" content="Contacta con CINEMARKET para consultas, pedidos o información sobre títulos audiovisuales.">
 	<meta name="keywords" content="contacto, películas, series, comprar, Cuba, WhatsApp">
 	<meta name="robots" content="index, follow">
@@ -17,11 +15,6 @@
 	<meta property="og:title" content="Contacto - CINEMARKET">
 	<meta property="og:description" content="Contáctanos por WhatsApp para cualquier consulta o pedido.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
-	
-	<!-- Twitter Cards -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Contacto - CINEMARKET">
-	<meta name="twitter:description" content="Contáctanos por WhatsApp.">
 	
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
@@ -36,37 +29,6 @@
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!--===============================================================================================-->
-	<style>
-		#moneda-cup.active, #moneda-usd.active,
-		#moneda-cup-movil.active, #moneda-usd-movil.active {
-			background-color: #717fe0 !important;
-			color: #fff !important;
-			border-radius: 4px;
-		}
-		#moneda-cup:hover, #moneda-usd:hover,
-		#moneda-cup-movil:hover, #moneda-usd-movil:hover {
-			background-color: rgba(113, 127, 224, 0.1);
-			border-radius: 4px;
-		}
-		.currency-selector {
-			display: flex;
-			align-items: center;
-			margin-right: 15px;
-		}
-		.currency-selector a {
-			color: #333;
-			font-weight: bold;
-			padding: 5px 10px;
-			border-radius: 4px;
-			transition: all 0.3s;
-			text-decoration: none;
-		}
-		.currency-selector span {
-			color: #ccc;
-			margin: 0 5px;
-		}
-	</style>
 </head>
 <body class="animsition">
 
@@ -76,7 +38,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.
+						Disfruta del mejor contenido audiovisual. Paga en CUP.
 					</div>
 					<div class="right-top-bar flex-w h-full"></div>
 				</div>
@@ -93,11 +55,6 @@
 
 					<div class="menu-desktop">
 						<ul class="main-menu" role="menubar">
-							<li role="none" class="currency-selector">
-								<a href="#" role="menuitem" id="moneda-cup" onclick="setMonedaPreferida('CUP')" aria-label="Cambiar a moneda CUP">CUP</a>
-								<span aria-hidden="true">|</span>
-								<a href="#" role="menuitem" id="moneda-usd" onclick="setMonedaPreferida('USD')" aria-label="Cambiar a moneda USD">USD</a>
-							</li>
 							<li role="none">
 								<a href="contact.html" role="menuitem">Contacto</a>
 							</li>
@@ -149,14 +106,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.
-					</div>
-				</li>
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04" id="moneda-cup-movil" onclick="setMonedaPreferida('CUP')" aria-label="Cambiar a moneda CUP" style="color: #fff; font-weight: bold;">CUP</a>
-						<span style="color: #888;" aria-hidden="true">|</span>
-						<a href="#" class="flex-c-m p-lr-10 trans-04" id="moneda-usd-movil" onclick="setMonedaPreferida('USD')" aria-label="Cambiar a moneda USD" style="color: #fff; font-weight: bold;">USD</a>
+						Disfruta del mejor contenido audiovisual. Paga en CUP.
 					</div>
 				</li>
 			</ul>
@@ -226,7 +176,6 @@
 				</p>
 			</div>
 			
-			<!-- ===== CÓDIGO QR ===== -->
 			<div class="qr-container">
 				<div style="text-align: center;">
 					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
@@ -285,21 +234,6 @@
 			let enlace = "https://wa.me/+" + contactCell + "?text=" + encodeURIComponent(message);
 			window.open(enlace);
 		});
-	</script>
-
-	<script>
-		(function() {
-			var moneda = getMonedaPreferida();
-			if (moneda === 'CUP') {
-				document.getElementById('moneda-cup').classList.add('active');
-				var movilCup = document.getElementById('moneda-cup-movil');
-				if (movilCup) movilCup.classList.add('active');
-			} else {
-				document.getElementById('moneda-usd').classList.add('active');
-				var movilUsd = document.getElementById('moneda-usd-movil');
-				if (movilUsd) movilUsd.classList.add('active');
-			}
-		})();
 	</script>
 </body>
 </html>
