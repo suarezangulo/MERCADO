@@ -12,13 +12,18 @@
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
         <div class="brand">
-            <i class="fas fa-film"></i>
-            <span>CINEMARKET</span>
+            <div class="logo-icon"><i class="fas fa-film"></i></div>
+            <span class="logo-text">CINE<span>MARKET</span></span>
         </div>
-        <div class="user-info">
-            <div class="name" id="adminName">Administrador</div>
-            <div class="username" id="adminUsername">@admin</div>
+
+        <div class="user-card">
+            <div class="avatar" id="adminAvatar">AD</div>
+            <div class="user-info">
+                <div class="name" id="adminName">Administrador</div>
+                <div class="username" id="adminUsername">@admin</div>
+            </div>
         </div>
+
         <nav>
             <ul>
                 <li><a href="#" data-view="dashboard" class="active" onclick="showView('dashboard')">
@@ -26,12 +31,14 @@
                 </a></li>
                 <li><a href="#" data-view="products" onclick="showView('products')">
                     <i class="fas fa-list"></i> <span>Catálogo</span>
+                    <span class="badge" id="productCount">0</span>
                 </a></li>
-                <li><a href="#" data-view="create" onclick="openProductForm(null)">
+                <li><a href="#" onclick="openProductForm(null)">
                     <i class="fas fa-plus-circle"></i> <span>Nuevo Título</span>
                 </a></li>
             </ul>
         </nav>
+
         <button class="logout-btn" id="logoutBtn">
             <i class="fas fa-sign-out-alt"></i> <span>Cerrar Sesión</span>
         </button>
@@ -48,14 +55,17 @@
 
             <div class="stats-grid">
                 <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-film"></i></div>
                     <div class="number" id="totalProducts">0</div>
                     <div class="label">Títulos totales</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-tags"></i></div>
                     <div class="number" id="totalCategories">0</div>
                     <div class="label">Categorías</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-boxes"></i></div>
                     <div class="number" id="totalStock">0</div>
                     <div class="label">Unidades en stock</div>
                 </div>
@@ -63,7 +73,7 @@
 
             <div class="card">
                 <div class="card-title">
-                    <i class="fas fa-info-circle"></i> Acciones rápidas
+                    <i class="fas fa-bolt"></i> Acciones rápidas
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                     <button class="btn btn-primary" onclick="openProductForm(null)">
@@ -80,7 +90,7 @@
                     <i class="fas fa-clock"></i> Últimos títulos agregados
                 </div>
                 <div id="recentProducts" style="color: var(--text-secondary);">
-                    Cargando...
+                    <i class="fas fa-spinner fa-spin"></i> Cargando...
                 </div>
             </div>
         </section>
@@ -109,11 +119,11 @@
                                 <th>Categoría</th>
                                 <th>Precio</th>
                                 <th>Stock</th>
-                                <th style="width:180px;">Acciones</th>
+                                <th style="width:100px;">Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="productTableBody">
-                            <tr><td colspan="6" style="text-align:center; padding:40px; color: rgba(255,255,255,0.4);">
+                            <tr><td colspan="6" style="text-align:center; padding:50px; color: var(--text-muted);">
                                 <i class="fas fa-spinner fa-spin" style="font-size:30px;"></i> Cargando...
                             </td></tr>
                         </tbody>
@@ -123,14 +133,14 @@
         </section>
     </main>
 
-    <!-- ===== TOAST NOTIFICATIONS ===== -->
+    <!-- ===== TOAST ===== -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- ===== MODAL: CREAR/EDITAR PRODUCTO ===== -->
+    <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="productModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 id="modalTitle">Crear Nuevo Título</h2>
+                <h2 id="modalTitle"><i class="fas fa-plus-circle"></i> Nuevo Título</h2>
                 <button class="modal-close" onclick="closeModal('productModal')">&times;</button>
             </div>
             <form id="productForm">
@@ -172,15 +182,15 @@
                 </div>
                 <div class="form-group">
                     <label>Imágenes (posters, capturas)</label>
-                    <div class="file-upload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <div class="text">
-                            <strong>Haz clic para subir imágenes</strong><br>
-                            Formatos: JPG, PNG, WebP
+                    <div class="file-upload-area">
+                        <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <div class="upload-text">
+                            <strong>Haz clic o arrastra</strong> para subir imágenes
                         </div>
+                        <div class="upload-hint">Formatos: JPG, PNG, WebP</div>
                         <input type="file" id="imageUpload" accept="image/*" multiple>
                     </div>
-                    <div id="imagePreviewContainer" style="display:flex; flex-wrap:wrap; margin-top:15px;"></div>
+                    <div id="imagePreviewContainer" class="image-preview-grid"></div>
                 </div>
             </form>
             <div class="modal-footer">
