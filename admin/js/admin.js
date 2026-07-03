@@ -1,5 +1,5 @@
 // ============================================================
-// ADMIN.JS - Panel de administración con GitHub API
+// ADMIN.JS - Panel de administración con GitHub API (UTF-8 corregido)
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -37,9 +37,9 @@ let products = [];
 let editingProduct = null;
 let uploadedImages = [];
 
-// ===== FUNCIONES DE GITHUB API (usando token dinámico) =====
+// ===== FUNCIONES DE GITHUB API (con soporte UTF-8) =====
 
-// Obtener el contenido actual del CSV
+// Obtener el contenido actual del CSV (con soporte UTF-8)
 async function fetchCSV() {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
@@ -52,16 +52,30 @@ async function fetchCSV() {
     });
     if (!response.ok) throw new Error('Error al obtener CSV');
     const data = await response.json();
-    const content = atob(data.content);
+    
+    // Decodificar correctamente UTF-8 desde Base64
+    const binaryString = atob(data.content);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    const content = new TextDecoder('utf-8').decode(bytes);
+    
     return { content, sha: data.sha };
 }
 
-// Actualizar el CSV en GitHub
+// Actualizar el CSV en GitHub (con codificación UTF-8)
 async function updateCSV(csvContent) {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
     const { sha } = await fetchCSV();
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
+    
+    // Codificar a Base64 con UTF-8
+    const encoder = new TextEncoder();
+    const data = encoder.encode(csvContent);
+    const base64 = btoa(String.fromCharCode(...data));
+    
     const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -71,7 +85,7 @@ async function updateCSV(csvContent) {
         },
         body: JSON.stringify({
             message: 'Actualizar catálogo desde panel de administración',
-            content: btoa(csvContent),
+            content: base64,
             sha: sha
         })
     });
