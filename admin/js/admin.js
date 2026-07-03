@@ -1,6 +1,6 @@
 // ============================================================
 // ADMIN.JS - Panel de administración con GitHub API
-// Soporte para imágenes con cualquier extensión
+// Versión con botones funcionales
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -37,10 +37,9 @@ const CSV_PATH = 'data/catalogo.csv';
 let products = [];
 let editingProduct = null;
 let uploadedImages = [];
-let existingImages = []; // Para almacenar las imágenes existentes al editar
+let existingImages = [];
 
-// ===== FUNCIONES DE GITHUB API (con soporte UTF-8 y BOM) =====
-
+// ===== FUNCIONES DE GITHUB API =====
 async function fetchCSV() {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
@@ -96,11 +95,9 @@ async function updateCSV(csvContent) {
     return await response.json();
 }
 
-// ===== SUBIR IMAGEN CON EXTENSIÓN ORIGINAL =====
 async function uploadImage(file, slug, index) {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
-    // Obtener la extensión del archivo original
     const extension = file.name.split('.').pop();
     const fileName = `${slug}-${index}.${extension}`;
     const path = `images/products/${fileName}`;
@@ -128,7 +125,7 @@ async function uploadImage(file, slug, index) {
     return { fileName, extension };
 }
 
-// ===== CARGAR PRODUCTOS DESDE EL CSV =====
+// ===== CARGAR PRODUCTOS =====
 async function loadProducts() {
     try {
         const { content } = await fetchCSV();
@@ -200,7 +197,7 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA (con verificación de imágenes mediante fetch) =====
+// ===== RENDER TABLA CON FALLBACK DE IMÁGENES =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -224,7 +221,6 @@ function renderProductTable() {
         const imgId = `img-${slug}-${index}`;
         const csvExt = imageName.split('.').pop().toLowerCase();
         const extensions = [csvExt, 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
-        // Eliminar duplicados
         const uniqueExtensions = [...new Set(extensions)];
         
         html += `
@@ -258,7 +254,7 @@ function renderProductTable() {
     });
     tbody.innerHTML = html;
 
-    // Ahora, para cada fila, verificar las imágenes con fetch
+    // Verificar imágenes con fetch
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
@@ -273,14 +269,12 @@ function renderProductTable() {
         const extensions = [csvExt, 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
         const uniqueExtensions = [...new Set(extensions)];
         
-        // Función para probar extensiones
         let extIndex = 0;
         const imgElement = document.getElementById(imgId);
         const loadingElement = document.getElementById(loadingId);
         
         function tryNextExtension() {
             if (extIndex >= uniqueExtensions.length) {
-                // No se encontró ninguna imagen, mostrar placeholder
                 if (loadingElement) loadingElement.style.display = 'none';
                 if (imgElement) {
                     imgElement.style.display = 'block';
@@ -288,39 +282,64 @@ function renderProductTable() {
                 }
                 return;
             }
-            
             const ext = uniqueExtensions[extIndex];
             const url = `../images/products/${baseName}.${ext}`;
-            
-            // Usar fetch para verificar si la imagen existe
             fetch(url, { method: 'HEAD' })
                 .then(response => {
                     if (response.ok) {
-                        // La imagen existe
                         if (loadingElement) loadingElement.style.display = 'none';
                         if (imgElement) {
                             imgElement.style.display = 'block';
                             imgElement.src = url;
-                            // Actualizar el CSV con la extensión correcta (opcional)
-                            // Aquí podríamos guardar la extensión encontrada, pero no lo haremos para no modificar el CSV sin permiso.
                         }
                     } else {
-                        // Probar siguiente extensión
                         extIndex++;
                         tryNextExtension();
                     }
                 })
                 .catch(() => {
-                    // Error de red, probar siguiente
                     extIndex++;
                     tryNextExtension();
                 });
         }
-        
-        // Iniciar la búsqueda
         tryNextExtension();
     });
-                }
+}
+
+// ===== EDITAR PRODUCTO (FUNCIÓN GLOBAL) =====
+window.editProduct = function(index) {
+    console.log('editProduct llamado con índice:', index);
+    const product = products[index];
+    if (product) {
+        openProductForm(product);
+    } else {
+        showToast('Producto no encontrado', 'error');
+    }
+};
+
+// ===== ELIMINAR PRODUCTO (FUNCIÓN GLOBAL) =====
+window.deleteProduct = function(index) {
+    const product = products[index];
+    if (!product) return;
+    if (!confirm(`¿Eliminar "${product.Label}" definitivamente?`)) return;
+
+    (async function() {
+        try {
+            const { content } = await fetchCSV();
+            const lines = content.split('\n').filter(line => line.trim());
+            const headers = lines[0];
+            let bodyLines = lines.slice(1);
+
+            bodyLines = bodyLines.filter(line => !line.includes(product.Label));
+            const newCSV = [headers, ...bodyLines].join('\n');
+            await updateCSV(newCSV);
+            showToast(`"${product.Label}" eliminado`, 'success');
+            await loadProducts();
+        } catch (error) {
+            showToast('Error al eliminar: ' + error.message, 'error');
+        }
+    })();
+};
 
 // ===== ACTUALIZAR ESTADÍSTICAS =====
 function updateStats() {
@@ -340,7 +359,7 @@ function updateRecentProducts() {
         return;
     }
     container.innerHTML = recent.map(p => {
-        const imagesList = p.Images ? p.Images.split(';') : [];
+        const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         const firstImage = imagesList.length > 0 ? imagesList[0].trim() : '';
         const imagePath = firstImage ? `../images/products/${firstImage}` : '';
         return `
@@ -353,7 +372,7 @@ function updateRecentProducts() {
     `}).join('');
 }
 
-// ===== ABRIR FORMULARIO (con previsualización de imágenes existentes) =====
+// ===== ABRIR FORMULARIO =====
 function openProductForm(product = null) {
     editingProduct = product;
     uploadedImages = [];
@@ -376,7 +395,6 @@ function openProductForm(product = null) {
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
         
-        // Cargar imágenes existentes para previsualización
         const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
         existingImages = imagesList;
         const container = document.getElementById('imagePreviewContainer');
@@ -384,7 +402,7 @@ function openProductForm(product = null) {
             const div = document.createElement('div');
             div.className = 'image-preview-item';
             div.innerHTML = `
-                <img src="../images/products/${imgName}" alt="Imagen existente">
+                <img src="../images/products/${imgName}" alt="Imagen existente" onerror="this.alt='Error'">
                 <button class="remove-image" onclick="removeExistingImage(${index})">&times;</button>
             `;
             container.appendChild(div);
@@ -401,14 +419,13 @@ function openProductForm(product = null) {
 
 function removeExistingImage(index) {
     existingImages.splice(index, 1);
-    // Reconstruir previsualización
     const container = document.getElementById('imagePreviewContainer');
     container.innerHTML = '';
     existingImages.forEach((imgName, i) => {
         const div = document.createElement('div');
         div.className = 'image-preview-item';
         div.innerHTML = `
-            <img src="../images/products/${imgName}" alt="Imagen existente">
+            <img src="../images/products/${imgName}" alt="Imagen existente" onerror="this.alt='Error'">
             <button class="remove-image" onclick="removeExistingImage(${i})">&times;</button>
         `;
         container.appendChild(div);
@@ -454,7 +471,7 @@ document.getElementById('productCategory').addEventListener('change', function()
     }
 });
 
-// ===== SUBIR IMÁGENES (previsualización) =====
+// ===== SUBIR IMÁGENES =====
 document.getElementById('imageUpload').addEventListener('change', function(e) {
     const files = this.files;
     const container = document.getElementById('imagePreviewContainer');
@@ -482,7 +499,7 @@ function removeNewImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO (con extensión dinámica) =====
+// ===== GUARDAR PRODUCTO =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
@@ -503,7 +520,6 @@ async function saveProduct() {
     const slug = ToSlug(label);
     const uploadedNames = [];
 
-    // Subir nuevas imágenes a GitHub
     try {
         for (let i = 0; i < uploadedImages.length; i++) {
             const result = await uploadImage(uploadedImages[i], slug, existingImages.length + i);
@@ -514,11 +530,9 @@ async function saveProduct() {
         return;
     }
 
-    // Combinar imágenes existentes + nuevas
     const allImages = [...existingImages, ...uploadedNames];
     const imagesNames = allImages.join(';');
 
-    // Escapar descripción y características
     const escapedDescription = description.includes(',') ? `"${description}"` : description;
     const escapedFeatures = features.includes(',') ? `"${features}"` : features;
     
@@ -533,7 +547,6 @@ async function saveProduct() {
         imagesNames
     ].join(',');
 
-    // Leer CSV actual
     try {
         const { content } = await fetchCSV();
         const lines = content.split('\n').filter(line => line.trim());
@@ -559,27 +572,6 @@ async function saveProduct() {
         showView('products');
     } catch (error) {
         showToast('Error al guardar: ' + error.message, 'error');
-    }
-}
-
-// ===== ELIMINAR PRODUCTO =====
-async function deleteProduct(index) {
-    const product = products[index];
-    if (!confirm(`¿Eliminar "${product.Label}" definitivamente?`)) return;
-
-    try {
-        const { content } = await fetchCSV();
-        const lines = content.split('\n').filter(line => line.trim());
-        const headers = lines[0];
-        let bodyLines = lines.slice(1);
-
-        bodyLines = bodyLines.filter(line => !line.includes(product.Label));
-        const newCSV = [headers, ...bodyLines].join('\n');
-        await updateCSV(newCSV);
-        showToast(`"${product.Label}" eliminado`, 'success');
-        await loadProducts();
-    } catch (error) {
-        showToast('Error al eliminar: ' + error.message, 'error');
     }
 }
 
@@ -642,22 +634,46 @@ function showView(view) {
     if (activeLink) activeLink.classList.add('active');
 }
 
-// ===== CERRAR SESIÓN =====
-function logout() {
+// ===== CERRAR SESIÓN (FUNCIÓN GLOBAL) =====
+window.logout = function() {
+    console.log('Cerrando sesión...');
     sessionStorage.removeItem('adminUser');
     sessionStorage.removeItem('githubToken');
     window.location.href = 'login.html';
-}
+};
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Inicializando panel...');
     loadProducts();
     showView('dashboard');
 
-    document.getElementById('createProductBtn').addEventListener('click', () => openProductForm(null));
-    document.getElementById('submitProductBtn').addEventListener('click', saveProduct);
-    document.getElementById('logoutBtn').addEventListener('click', logout);
+    // Botón de nuevo producto
+    const createBtn = document.getElementById('createProductBtn');
+    if (createBtn) {
+        createBtn.addEventListener('click', () => openProductForm(null));
+    } else {
+        console.warn('No se encontró #createProductBtn');
+    }
 
+    // Botón de guardar producto
+    const submitBtn = document.getElementById('submitProductBtn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', saveProduct);
+    } else {
+        console.warn('No se encontró #submitProductBtn');
+    }
+
+    // Botón de cerrar sesión
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', window.logout);
+        console.log('Evento de logout asignado');
+    } else {
+        console.warn('No se encontró #logoutBtn');
+    }
+
+    // Cerrar modal al hacer clic fuera
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', function(e) {
             if (e.target === this) {
