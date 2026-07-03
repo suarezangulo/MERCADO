@@ -1,6 +1,6 @@
 // ============================================================
 // ADMIN.JS - Panel de administración con GitHub API
-// Corrección definitiva de codificación UTF-8 con BOM
+// Soporte para imágenes con cualquier extensión
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -37,10 +37,10 @@ const CSV_PATH = 'data/catalogo.csv';
 let products = [];
 let editingProduct = null;
 let uploadedImages = [];
+let existingImages = []; // Para almacenar las imágenes existentes al editar
 
 // ===== FUNCIONES DE GITHUB API (con soporte UTF-8 y BOM) =====
 
-// Obtener el contenido actual del CSV (con soporte UTF-8)
 async function fetchCSV() {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
@@ -54,7 +54,6 @@ async function fetchCSV() {
     if (!response.ok) throw new Error('Error al obtener CSV');
     const data = await response.json();
     
-    // Decodificar correctamente UTF-8 desde Base64
     const binaryString = atob(data.content);
     const bytes = new Uint8Array(binaryString.length);
     for (let i = 0; i < binaryString.length; i++) {
@@ -62,7 +61,6 @@ async function fetchCSV() {
     }
     let content = new TextDecoder('utf-8').decode(bytes);
     
-    // Si tiene BOM al inicio, lo eliminamos para procesarlo correctamente
     if (content.charCodeAt(0) === 0xFEFF) {
         content = content.slice(1);
     }
@@ -70,17 +68,13 @@ async function fetchCSV() {
     return { content, sha: data.sha };
 }
 
-// Actualizar el CSV en GitHub (con codificación UTF-8 y BOM)
 async function updateCSV(csvContent) {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
     const { sha } = await fetchCSV();
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
     
-    // Agregar BOM al inicio para que GitHub y el navegador reconozcan UTF-8
     const contentWithBOM = '\uFEFF' + csvContent;
-    
-    // Codificar a Base64 con UTF-8
     const encoder = new TextEncoder();
     const data = encoder.encode(contentWithBOM);
     const base64 = btoa(String.fromCharCode(...data));
@@ -102,11 +96,13 @@ async function updateCSV(csvContent) {
     return await response.json();
 }
 
-// Subir imagen a GitHub
+// ===== SUBIR IMAGEN CON EXTENSIÓN ORIGINAL =====
 async function uploadImage(file, slug, index) {
     const token = getGitHubToken();
     if (!token) throw new Error('Token no disponible');
-    const fileName = `${slug}-${index}.webp`;
+    // Obtener la extensión del archivo original
+    const extension = file.name.split('.').pop();
+    const fileName = `${slug}-${index}.${extension}`;
     const path = `images/products/${fileName}`;
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
     
@@ -129,14 +125,13 @@ async function uploadImage(file, slug, index) {
         })
     });
     if (!response.ok) throw new Error(`Error al subir imagen ${fileName}`);
-    return await response.json();
+    return { fileName, extension };
 }
 
 // ===== CARGAR PRODUCTOS DESDE EL CSV =====
 async function loadProducts() {
     try {
         const { content } = await fetchCSV();
-        // Verificar que el contenido no esté vacío
         if (!content.trim()) {
             products = [];
             renderProductTable();
@@ -159,7 +154,6 @@ async function loadProducts() {
         const headers = lines[0].split(',').map(h => h.trim());
         products = [];
         for (let i = 1; i < lines.length; i++) {
-            // Usar expresiones regulares para manejar campos entre comillas que contengan comas
             const values = parseCSVLine(lines[i]);
             const product = {};
             headers.forEach((header, index) => {
@@ -176,7 +170,6 @@ async function loadProducts() {
     }
 }
 
-// ===== FUNCIÓN PARA PARSEAR LÍNEAS CSV RESPETANDO COMILLAS =====
 function parseCSVLine(line) {
     const result = [];
     let current = '';
@@ -207,7 +200,7 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA =====
+// ===== RENDER TABLA (con soporte para cualquier extensión) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -218,14 +211,15 @@ function renderProductTable() {
         return;
     }
     tbody.innerHTML = products.map((p, index) => {
-        const slug = ToSlug(p.Label);
+        // Obtener la primera imagen del CSV (puede ser .webp, .jpg, etc.)
+        const imagesList = p.Images ? p.Images.split(';') : [];
+        const firstImage = imagesList.length > 0 ? imagesList[0].trim() : '';
+        const imagePath = firstImage ? `../images/products/${firstImage}` : '';
         return `
         <tr>
             <td>
-                <img src="../images/products/${slug}-0.webp" 
-                     alt="${p.Label}" 
-                     class="product-thumb"
-                     onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2245%22 height=%2265%22><rect fill=%22%23141414%22 width=%2245%22 height=%2265%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23666%22 font-size=%2212%22>?</text></svg>'">
+                ${imagePath ? `<img src="${imagePath}" alt="${p.Label}" class="product-thumb" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2245%22 height=%2265%22><rect fill=%22%23141414%22 width=%2245%22 height=%2265%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23666%22 font-size=%2212%22>?</text></svg>'">` :
+                `<span style="color: var(--text-muted); font-size:12px;">Sin imagen</span>`}
             </td>
             <td><strong>${p.Label}</strong></td>
             <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
@@ -263,22 +257,24 @@ function updateRecentProducts() {
         return;
     }
     container.innerHTML = recent.map(p => {
-        const slug = ToSlug(p.Label);
+        const imagesList = p.Images ? p.Images.split(';') : [];
+        const firstImage = imagesList.length > 0 ? imagesList[0].trim() : '';
+        const imagePath = firstImage ? `../images/products/${firstImage}` : '';
         return `
         <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border-color);">
-            <img src="../images/products/${slug}-0.webp" 
-                 style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03);"
-                 onerror="this.style.display='none'">
+            ${imagePath ? `<img src="${imagePath}" style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03);" onerror="this.style.display='none'">` :
+            `<span style="width:32px; height:45px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px;">?</span>`}
             <span style="flex:1;">${p.Label}</span>
             <span style="color: var(--text-muted); font-size:13px;">${p.Price}</span>
         </div>
     `}).join('');
 }
 
-// ===== ABRIR FORMULARIO =====
+// ===== ABRIR FORMULARIO (con previsualización de imágenes existentes) =====
 function openProductForm(product = null) {
     editingProduct = product;
     uploadedImages = [];
+    existingImages = [];
     document.getElementById('imagePreviewContainer').innerHTML = '';
     document.getElementById('imageUpload').value = '';
 
@@ -296,6 +292,20 @@ function openProductForm(product = null) {
         document.getElementById('productStock').value = product.Stock || 0;
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
+        
+        // Cargar imágenes existentes para previsualización
+        const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
+        existingImages = imagesList;
+        const container = document.getElementById('imagePreviewContainer');
+        imagesList.forEach((imgName, index) => {
+            const div = document.createElement('div');
+            div.className = 'image-preview-item';
+            div.innerHTML = `
+                <img src="../images/products/${imgName}" alt="Imagen existente">
+                <button class="remove-image" onclick="removeExistingImage(${index})">&times;</button>
+            `;
+            container.appendChild(div);
+        });
     } else {
         title.innerHTML = '<i class="fas fa-plus-circle"></i> Nuevo Título';
         submitBtn.innerHTML = '<i class="fas fa-save"></i> Guardar Título';
@@ -304,6 +314,22 @@ function openProductForm(product = null) {
 
     populateCategorySelects();
     openModal('productModal');
+}
+
+function removeExistingImage(index) {
+    existingImages.splice(index, 1);
+    // Reconstruir previsualización
+    const container = document.getElementById('imagePreviewContainer');
+    container.innerHTML = '';
+    existingImages.forEach((imgName, i) => {
+        const div = document.createElement('div');
+        div.className = 'image-preview-item';
+        div.innerHTML = `
+            <img src="../images/products/${imgName}" alt="Imagen existente">
+            <button class="remove-image" onclick="removeExistingImage(${i})">&times;</button>
+        `;
+        container.appendChild(div);
+    });
 }
 
 function populateCategorySelects() {
@@ -345,7 +371,7 @@ document.getElementById('productCategory').addEventListener('change', function()
     }
 });
 
-// ===== SUBIR IMÁGENES =====
+// ===== SUBIR IMÁGENES (previsualización) =====
 document.getElementById('imageUpload').addEventListener('change', function(e) {
     const files = this.files;
     const container = document.getElementById('imagePreviewContainer');
@@ -357,7 +383,7 @@ document.getElementById('imageUpload').addEventListener('change', function(e) {
             div.className = 'image-preview-item';
             div.innerHTML = `
                 <img src="${event.target.result}" alt="Vista previa">
-                <button class="remove-image" onclick="removeImage(this, '${file.name}')">&times;</button>
+                <button class="remove-image" onclick="removeNewImage(this, '${file.name}')">&times;</button>
             `;
             container.appendChild(div);
         };
@@ -366,14 +392,14 @@ document.getElementById('imageUpload').addEventListener('change', function(e) {
     }
 });
 
-function removeImage(btn, fileName) {
+function removeNewImage(btn, fileName) {
     const item = btn.closest('.image-preview-item');
     item.remove();
     const index = uploadedImages.findIndex(f => f.name === fileName);
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO =====
+// ===== GUARDAR PRODUCTO (con extensión dinámica) =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
@@ -392,23 +418,24 @@ async function saveProduct() {
     }
 
     const slug = ToSlug(label);
+    const uploadedNames = [];
 
-    // Subir imágenes a GitHub
+    // Subir nuevas imágenes a GitHub
     try {
         for (let i = 0; i < uploadedImages.length; i++) {
-            await uploadImage(uploadedImages[i], slug, i);
+            const result = await uploadImage(uploadedImages[i], slug, existingImages.length + i);
+            uploadedNames.push(result.fileName);
         }
     } catch (error) {
         showToast('Error al subir imágenes: ' + error.message, 'error');
         return;
     }
 
-    // Construir la línea del CSV (escapando comillas si es necesario)
-    const imagesNames = uploadedImages.length > 0 ? 
-        uploadedImages.map((_, i) => `${slug}-${i}.webp`).join(';') :
-        `${slug}-0.webp`;
-    
-    // Escapar descripción y características (pueden contener comas)
+    // Combinar imágenes existentes + nuevas
+    const allImages = [...existingImages, ...uploadedNames];
+    const imagesNames = allImages.join(';');
+
+    // Escapar descripción y características
     const escapedDescription = description.includes(',') ? `"${description}"` : description;
     const escapedFeatures = features.includes(',') ? `"${features}"` : features;
     
