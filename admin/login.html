@@ -91,6 +91,12 @@
         .form-group input::placeholder {
             color: rgba(255,255,255,0.2);
         }
+        .form-group .hint {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            margin-top: 4px;
+            display: block;
+        }
         .btn-login {
             width: 100%;
             padding: 15px;
@@ -143,11 +149,16 @@
                 <label><i class="fas fa-lock" style="margin-right:6px;"></i> Contraseña</label>
                 <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
             </div>
+            <div class="form-group">
+                <label><i class="fas fa-key" style="margin-right:6px;"></i> Token de GitHub</label>
+                <input type="password" id="githubToken" placeholder="Ingresa tu token de GitHub" required>
+                <span class="hint">Necesita permisos: repo y workflow. <a href="https://github.com/settings/tokens" target="_blank" style="color: #e50914; text-decoration: none;">Generar token</a></span>
+            </div>
             <button type="submit" class="btn-login">
                 <i class="fas fa-sign-in-alt" style="margin-right:10px;"></i> Acceder
             </button>
             <div id="errorMsg" class="error-msg">
-                <i class="fas fa-exclamation-circle"></i> Usuario o contraseña incorrectos
+                <i class="fas fa-exclamation-circle"></i> Usuario, contraseña o token incorrectos
             </div>
         </form>
         <p class="footer-text">© 2024 CINEMARKET</p>
@@ -158,16 +169,27 @@
             e.preventDefault();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
+            const githubToken = document.getElementById('githubToken').value.trim();
             const errorMsg = document.getElementById('errorMsg');
 
+            if (!githubToken) {
+                errorMsg.textContent = 'El token de GitHub es obligatorio.';
+                errorMsg.style.display = 'block';
+                setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+                return;
+            }
+
+            // Validar usuario y contraseña desde el archivo JSON
             fetch('../data/admin-users.json')
                 .then(response => response.json())
                 .then(users => {
                     if (users[username] && users[username].password === password) {
-                        localStorage.setItem('adminUser', JSON.stringify({
+                        // Guardar sesión y token en sessionStorage
+                        sessionStorage.setItem('adminUser', JSON.stringify({
                             username: username,
                             name: users[username].name
                         }));
+                        sessionStorage.setItem('githubToken', githubToken);
                         window.location.href = 'index.html';
                     } else {
                         errorMsg.style.display = 'block';
@@ -180,8 +202,11 @@
                 });
         });
 
-        const adminUser = localStorage.getItem('adminUser');
-        if (adminUser) window.location.href = 'index.html';
+        // Redirigir si ya está autenticado
+        const adminUser = sessionStorage.getItem('adminUser');
+        if (adminUser) {
+            window.location.href = 'index.html';
+        }
     </script>
 </body>
 </html>
