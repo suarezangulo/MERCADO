@@ -20,33 +20,14 @@ function loadIsotope() {
                 columnWidth: '.isotope-item'
             },
             getSortData: {
-                price: '[data-price-usd] parseFloat', // <--- CAMBIO: Ahora usa data-price-usd
+                price: '[data-price-usd] parseFloat', // Ya no se usa, pero se mantiene
                 update: '[data-update] parseFloat'
             },
             filter: function() {
-                // Filtros existentes (categoría, subcategoría, feature, búsqueda)
                 for (let groupKey in currentFilter) {
-                    // Si es "currency", manejamos de forma especial
-                    if (groupKey === 'currency') {
-                        // Si el filtro es "all", no filtramos por moneda
-                        if (currentFilter[groupKey] === 'all') continue;
-                        // Verificar si el producto tiene la moneda correcta
-                        let priceAttr = $(this).attr('data-price');
-                        if (priceAttr) {
-                            let partes = priceAttr.split(' ');
-                            let moneda = partes[1] || 'USD';
-                            if (moneda !== currentFilter[groupKey]) return false;
-                        } else {
-                            // Si no tiene data-price, asumimos que es USD y filtramos según corresponda
-                            if (currentFilter[groupKey] !== 'USD') return false;
-                        }
-                        continue;
-                    }
-                    // Filtros normales (categoría, subcategoría, feature)
                     if (!$(this).hasClass(groupKey + "-" + currentFilter[groupKey])) return false;
                 }
 
-                // Búsqueda por texto
                 var searchText = $('[name="search-product"]').val();
                 if (searchText != null && searchText.length > 0) {
                     let aClass = $(this).attr('class');
@@ -79,24 +60,6 @@ function loadData($, data) {
     addFilterLi(orderByFilter, "Más económicos", "orderBy", false, () => sortProducts("price", "asc", "Más económicos"));
     addFilterLi(orderByFilter, "Más costosos", "orderBy", false, () => sortProducts("price", "desc", "Más costosos"));
 
-    // ===== MEJORA #5: Filtro por moneda =====
-    let currencyFilter = addFiltersTag($filtersTag, 4, "Moneda");
-    addFilterLi(currencyFilter, "Todas", "currency", true, () => {
-        currentFilter['currency'] = 'all';
-        $('.isotope-grid').isotope();
-        updateView();
-    });
-    addFilterLi(currencyFilter, "CUP", "currency", false, () => {
-        currentFilter['currency'] = 'CUP';
-        $('.isotope-grid').isotope();
-        updateView();
-    });
-    addFilterLi(currencyFilter, "USD", "currency", false, () => {
-        currentFilter['currency'] = 'USD';
-        $('.isotope-grid').isotope();
-        updateView();
-    });
-
     // Obtener parámetros de URL
     var urlParams = new URLSearchParams(window.location.search);
     var categoryKeyParam = urlParams.get('category');
@@ -106,13 +69,6 @@ function loadData($, data) {
         if (subcategoryKey != null && subcategoryKey.length > 0) {
             currentFilter['subcategory'] = subcategoryKey;
         }
-    }
-    // Si hay parámetro de moneda en URL
-    var currencyParam = urlParams.get('currency');
-    if (currencyParam != null && (currencyParam === 'CUP' || currencyParam === 'USD')) {
-        currentFilter['currency'] = currencyParam;
-    } else {
-        currentFilter['currency'] = 'all'; // Por defecto: todas las monedas
     }
 
     var searchParam = urlParams.get('search');
@@ -197,7 +153,6 @@ function udpateViewFilter() {
     let anyFilter = false;
     if (currentFilter["subcategory"] != null && currentFilter["subcategory"].length > 0) anyFilter = true;
     if (!anyFilter && (currentFilter["feature"] != null && currentFilter["feature"].length > 0)) anyFilter = true;
-    if (!anyFilter && (currentFilter["currency"] != null && currentFilter["currency"] !== 'all')) anyFilter = true;
     if (anyFilter) $('.js-show-filter').addClass("how-active1");
     else $('.js-show-filter').removeClass("how-active1");
 }
@@ -334,8 +289,6 @@ function addCategoryTag($container, label, filterValue, active) {
         if (currentFilter["category"] == normalizeText(filterValue)) return;
         currentFilter = [];
         if (filterValue != "*") currentFilter["category"] = normalizeText(filterValue);
-        // Mantener el filtro de moneda si existe
-        if (currentFilter['currency'] == null) currentFilter['currency'] = 'all';
         $('.isotope-grid').isotope();
     });
     $container.append(newButton);
@@ -389,8 +342,6 @@ function addFilterLi(container, label, groupKey = null, active = false, action =
             else
                 currentFilter[groupKey] = normalizeText(label);
             delete currentFilter["feature"];
-            // Mantener el filtro de moneda si existe
-            if (currentFilter['currency'] == null) currentFilter['currency'] = 'all';
             $('.isotope-grid').isotope();
         });
     }
@@ -414,8 +365,6 @@ function addFilterDiv(container, label, groupKey = null, active = false) {
                 delete currentFilter[groupKey];
             else
                 currentFilter[groupKey] = normalizeText(label);
-            // Mantener el filtro de moneda
-            if (currentFilter['currency'] == null) currentFilter['currency'] = 'all';
             $('.isotope-grid').isotope();
         });
     }
@@ -452,7 +401,6 @@ function sortProducts(sortBy, sortDirection, text) {
     "use strict";
     $.getJSON("./data/products-index.json", function (data) {
         loadData($, data);
-        // Código existente (parallax, gallery, etc.)
         $('.parallax100').parallax100();
         $('.gallery-lb').each(function () {
             $(this).magnificPopup({
@@ -516,72 +464,4 @@ function sortProducts(sortBy, sortDirection, text) {
         for (var i = 0; i < arrowMainMenu.length; i++) {
             $(arrowMainMenu[i]).on('click', function () {
                 $(this).parent().find('.sub-menu-m').slideToggle();
-                $(this).toggleClass('turn-arrow-main-menu-m');
-            })
-        }
-        $(window).resize(function () {
-            if ($(window).width() >= 992) {
-                if ($('.menu-mobile').css('display') == 'block') {
-                    $('.menu-mobile').css('display', 'none');
-                    $('.btn-show-menu-mobile').toggleClass('is-active');
-                }
-                $('.sub-menu-m').each(function () {
-                    if ($(this).css('display') == 'block') {
-                        $(this).css('display', 'none');
-                        $(arrowMainMenu).removeClass('turn-arrow-main-menu-m');
-                    }
-                });
-            }
-        });
-        $('.js-show-modal-search').on('click', function () {
-            $('.modal-search-header').addClass('show-modal-search');
-            $(this).css('opacity', '0');
-        });
-        $('.js-hide-modal-search').on('click', function () {
-            $('.modal-search-header').removeClass('show-modal-search');
-            $('.js-show-modal-search').css('opacity', '1');
-        });
-        $('.container-search-header').on('click', function (e) {
-            e.stopPropagation();
-        });
-        $('.isotope-grid').imagesLoaded({}, function () {
-            loadIsotope();
-        });
-        var isotopeButton = $('.filter-tope-group button');
-        $(isotopeButton).each(function () {
-            $(this).on('click', function () {
-                for (var i = 0; i < isotopeButton.length; i++) {
-                    $(isotopeButton[i]).removeClass('how-active1');
-                }
-                $(this).addClass('how-active1');
-            });
-        });
-        $('.js-show-filter').on('click', function (event) {
-            event.preventDefault();
-            $(this).toggleClass('show-filter');
-            $('.panel-filter').slideToggle(400);
-            if ($('.js-show-search').hasClass('show-search')) {
-                $('.js-show-search').removeClass('show-search');
-                $('.panel-search').slideUp(400);
-            }
-        });
-        $('.js-show-search').on('click', function (event) {
-            event.preventDefault();
-            $(this).toggleClass('show-search');
-            $('.panel-search').slideToggle(400);
-            if ($('.js-show-filter').hasClass('show-filter')) {
-                $('.js-show-filter').removeClass('show-filter');
-                $('.panel-filter').slideUp(400);
-            }
-        });
-        // Botón +/- num product
-        $('.btn-num-product-down').on('click', function () {
-            var numProduct = Number($(this).next().val());
-            if (numProduct > 0) $(this).next().val(numProduct - 1);
-        });
-        $('.btn-num-product-up').on('click', function () {
-            var numProduct = Number($(this).prev().val());
-            $(this).prev().val(numProduct + 1);
-        });
-    });
-})(jQuery);
+                $(this).toggleClass('turn
