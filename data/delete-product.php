@@ -20,7 +20,7 @@ if (file_exists($productFile)) {
     unlink($productFile);
 }
 
-// Eliminar del índice (requiere leer y reescribir)
+// Eliminar del índice
 $indexFile = __DIR__ . '/products-index.json';
 if (file_exists($indexFile)) {
     $index = json_decode(file_get_contents($indexFile), true);
@@ -43,9 +43,12 @@ if (file_exists($indexFile)) {
 
 echo json_encode(['success' => true, 'slug' => $slug]);
 
-// Helper function
+// ===== FUNCIÓN CORREGIDA: CONVIERTE ACENTOS =====
 function ToSlug($text) {
     $text = strtolower($text);
+    // Convertir acentos
+    $map = ['á'=>'a', 'é'=>'e', 'í'=>'i', 'ó'=>'o', 'ú'=>'u', 'ü'=>'u', 'ñ'=>'n'];
+    $text = str_replace(array_keys($map), array_values($map), $text);
     $text = preg_replace('/[^a-z0-9\s-]/', '', $text);
     $text = preg_replace('/\s+/', '-', $text);
     $text = preg_replace('/-+/', '-', $text);
