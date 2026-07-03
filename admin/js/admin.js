@@ -13,7 +13,6 @@
         const user = JSON.parse(adminUser);
         document.getElementById('adminName').textContent = user.name || user.username;
         document.getElementById('adminUsername').textContent = '@' + user.username;
-        // Iniciales para el avatar
         const avatar = document.getElementById('adminAvatar');
         const initials = (user.name || user.username).substring(0, 2).toUpperCase();
         avatar.textContent = initials;
@@ -27,6 +26,30 @@ let products = [];
 let categories = {};
 let editingProduct = null;
 let uploadedImages = [];
+
+// ===== FUNCIÓN PARA CONVERTIR ACENTOS =====
+function toEnglish(n) {
+    var t = {
+        "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
+        "ü": "u", "ñ": "n", "Á": "A", "É": "E", "Í": "I",
+        "Ó": "O", "Ú": "U", "Ü": "U", "Ñ": "N"
+    };
+    return n.replace(/[áéíóúüñÁÉÍÓÚÜÑ]/g, function(match) {
+        return t[match];
+    });
+}
+
+// ===== FUNCIÓN CORREGIDA: CONVIERTE ACENTOS =====
+function ToSlug(n) {
+    if (!n) return "";
+    var t = n.toLowerCase();
+    t = toEnglish(t);  // Convertir acentos ANTES de eliminar caracteres especiales
+    t = t.replace(/[^a-z0-9\s-]/g, "");
+    t = t.replace(/ /g, "-");
+    t = t.replace(/-+/g, "-");
+    t = t.replace(/^-+/, "").replace(/-+$/, "");
+    return t;
+}
 
 // ===== TOAST NOTIFICATIONS =====
 function showToast(message, type = 'info') {
@@ -82,6 +105,7 @@ async function loadProducts() {
         renderProductTable();
         updateStats();
         updateRecentProducts();
+        document.getElementById('productCount').textContent = products.length;
     } catch (error) {
         showToast('Error al cargar los productos', 'error');
     }
@@ -97,10 +121,12 @@ function renderProductTable() {
         </td></tr>`;
         return;
     }
-    tbody.innerHTML = products.map((p, index) => `
+    tbody.innerHTML = products.map((p, index) => {
+        const slug = ToSlug(p.Label);
+        return `
         <tr>
             <td>
-                <img src="../images/products/${ToSlug(p.Label)}-0.webp" 
+                <img src="../images/products/${slug}-0.webp" 
                      alt="${p.Label}" 
                      class="product-thumb"
                      onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2245%22 height=%2265%22><rect fill=%22%23141414%22 width=%2245%22 height=%2265%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23666%22 font-size=%2212%22>?</text></svg>'">
@@ -120,7 +146,7 @@ function renderProductTable() {
                 </div>
             </td>
         </tr>
-    `).join('');
+    `}).join('');
 }
 
 // ===== ACTUALIZAR ESTADÍSTICAS =====
@@ -141,15 +167,17 @@ function updateRecentProducts() {
         container.innerHTML = '<span style="color: var(--text-muted);">No hay títulos aún.</span>';
         return;
     }
-    container.innerHTML = recent.map(p => `
+    container.innerHTML = recent.map(p => {
+        const slug = ToSlug(p.Label);
+        return `
         <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border-color);">
-            <img src="../images/products/${ToSlug(p.Label)}-0.webp" 
+            <img src="../images/products/${slug}-0.webp" 
                  style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03);"
                  onerror="this.style.display='none'">
             <span style="flex:1;">${p.Label}</span>
             <span style="color: var(--text-muted); font-size:13px;">${p.Price}</span>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // ===== ABRIR FORMULARIO =====
@@ -306,7 +334,6 @@ async function saveProduct() {
     };
 
     try {
-        // Guardar archivo individual
         const saveResponse = await fetch('../data/save-product.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -318,7 +345,6 @@ async function saveProduct() {
             throw new Error(error.error || 'Error al guardar');
         }
 
-        // Subir imágenes
         if (uploadedImages.length > 0) {
             const formData = new FormData();
             uploadedImages.forEach((file, i) => {
@@ -359,55 +385,4 @@ async function deleteProduct(index) {
             body: JSON.stringify({ slug: ToSlug(product.Label) })
         });
 
-        if (!response.ok) throw new Error('Error al eliminar');
-        showToast(`"${product.Label}" eliminado`, 'success');
-        await loadProducts();
-    } catch (error) {
-        showToast('Error: ' + error.message, 'error');
-    }
-}
-
-// ===== CERRAR SESIÓN =====
-function logout() {
-    localStorage.removeItem('adminUser');
-    window.location.href = 'login.html';
-}
-
-// ===== UTILITARIOS =====
-function ToSlug(n) {
-    if (!n) return "";
-    let t = n.toLowerCase();
-    t = t.replace(/[^a-z0-9\s-]/g, "");
-    t = t.replace(/ /g, "-");
-    t = t.replace(/-+/g, "-");
-    t = t.replace(/^-+/, "").replace(/-+$/, "");
-    return t;
-}
-
-// ===== NAVEGACIÓN =====
-function showView(view) {
-    document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
-    document.getElementById(`view-${view}`).style.display = 'block';
-    document.querySelectorAll('.sidebar nav a').forEach(el => el.classList.remove('active'));
-    const activeLink = document.querySelector(`.sidebar nav a[data-view="${view}"]`);
-    if (activeLink) activeLink.classList.add('active');
-}
-
-// ===== INICIALIZACIÓN =====
-document.addEventListener('DOMContentLoaded', function() {
-    loadProducts();
-    showView('dashboard');
-
-    document.getElementById('createProductBtn').addEventListener('click', () => openProductForm(null));
-    document.getElementById('submitProductBtn').addEventListener('click', saveProduct);
-    document.getElementById('logoutBtn').addEventListener('click', logout);
-
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-});
+        if (!response.ok)
