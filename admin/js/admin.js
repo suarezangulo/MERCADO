@@ -1,11 +1,12 @@
 // ============================================================
-// ADMIN.JS - Panel de Administración CINEMARKET
+// ADMIN.JS - Panel de administración con GitHub API
 // ============================================================
 
-// ===== VERIFICACIÓN DE SESIÓN =====
+// ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
 (function checkSession() {
-    const adminUser = localStorage.getItem('adminUser');
-    if (!adminUser) {
+    const adminUser = sessionStorage.getItem('adminUser');
+    const githubToken = sessionStorage.getItem('githubToken');
+    if (!adminUser || !githubToken) {
         window.location.href = 'login.html';
         return;
     }
@@ -21,93 +22,123 @@
     }
 })();
 
+// ===== OBTENER TOKEN =====
+function getGitHubToken() {
+    return sessionStorage.getItem('githubToken');
+}
+
+// ===== CONFIGURACIÓN DE GITHUB =====
+const REPO_OWNER = 'suarezangulo';
+const REPO_NAME = 'MERCADO';
+const CSV_PATH = 'data/catalogo.csv';
+
 // ===== VARIABLES GLOBALES =====
 let products = [];
-let categories = {};
 let editingProduct = null;
 let uploadedImages = [];
 
-// ===== FUNCIÓN PARA CONVERTIR ACENTOS =====
-function toEnglish(n) {
-    var t = {
-        "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
-        "ü": "u", "ñ": "n", "Á": "A", "É": "E", "Í": "I",
-        "Ó": "O", "Ú": "U", "Ü": "U", "Ñ": "N"
-    };
-    return n.replace(/[áéíóúüñÁÉÍÓÚÜÑ]/g, function(match) {
-        return t[match];
+// ===== FUNCIONES DE GITHUB API (usando token dinámico) =====
+
+// Obtener el contenido actual del CSV
+async function fetchCSV() {
+    const token = getGitHubToken();
+    if (!token) throw new Error('Token no disponible');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
+    const response = await fetch(url, {
+        headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+        }
     });
+    if (!response.ok) throw new Error('Error al obtener CSV');
+    const data = await response.json();
+    const content = atob(data.content);
+    return { content, sha: data.sha };
 }
 
-// ===== FUNCIÓN CORREGIDA: CONVIERTE ACENTOS =====
-function ToSlug(n) {
-    if (!n) return "";
-    var t = n.toLowerCase();
-    t = toEnglish(t);  // Convertir acentos ANTES de eliminar caracteres especiales
-    t = t.replace(/[^a-z0-9\s-]/g, "");
-    t = t.replace(/ /g, "-");
-    t = t.replace(/-+/g, "-");
-    t = t.replace(/^-+/, "").replace(/-+$/, "");
-    return t;
+// Actualizar el CSV en GitHub
+async function updateCSV(csvContent) {
+    const token = getGitHubToken();
+    if (!token) throw new Error('Token no disponible');
+    const { sha } = await fetchCSV();
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+            message: 'Actualizar catálogo desde panel de administración',
+            content: btoa(csvContent),
+            sha: sha
+        })
+    });
+    if (!response.ok) throw new Error('Error al actualizar CSV');
+    return await response.json();
 }
 
-// ===== TOAST NOTIFICATIONS =====
-function showToast(message, type = 'info') {
-    const container = document.getElementById('toastContainer');
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    const icons = {
-        success: 'fa-check-circle',
-        error: 'fa-exclamation-circle',
-        warning: 'fa-exclamation-triangle',
-        info: 'fa-info-circle'
-    };
-    toast.innerHTML = `
-        <i class="fas ${icons[type] || icons.info}"></i>
-        <span>${message}</span>
-        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
-    `;
-    container.appendChild(toast);
-    setTimeout(() => {
-        if (toast.parentElement) toast.remove();
-    }, 5000);
+// Subir imagen a GitHub
+async function uploadImage(file, slug, index) {
+    const token = getGitHubToken();
+    if (!token) throw new Error('Token no disponible');
+    const fileName = `${slug}-${index}.webp`;
+    const path = `images/products/${fileName}`;
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
+    
+    // Leer archivo y convertirlo a base64
+    const reader = new FileReader();
+    const fileData = await new Promise((resolve) => {
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+    });
+    
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+            message: `Subir imagen: ${fileName}`,
+            content: fileData
+        })
+    });
+    if (!response.ok) throw new Error(`Error al subir imagen ${fileName}`);
+    return await response.json();
 }
 
-// ===== MODAL =====
-function openModal(modalId) {
-    document.getElementById(modalId).classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// ===== CARGAR PRODUCTOS =====
+// ===== CARGAR PRODUCTOS DESDE EL CSV =====
 async function loadProducts() {
     try {
-        const response = await fetch('../data/products-index.json?' + Date.now());
-        const data = await response.json();
-        categories = data;
+        const { content } = await fetchCSV();
+        const lines = content.split('\n').filter(line => line.trim());
+        if (lines.length === 0) {
+            products = [];
+            renderProductTable();
+            updateStats();
+            updateRecentProducts();
+            document.getElementById('productCount').textContent = 0;
+            return;
+        }
+        const headers = lines[0].split(',').map(h => h.trim());
         products = [];
-        for (const category in data) {
-            for (const subcategory in data[category]) {
-                for (const product of data[category][subcategory]) {
-                    products.push({
-                        ...product,
-                        category: category,
-                        subcategory: subcategory
-                    });
-                }
-            }
+        for (let i = 1; i < lines.length; i++) {
+            const values = lines[i].split(',').map(v => v.trim());
+            const product = {};
+            headers.forEach((header, index) => {
+                product[header] = values[index] || '';
+            });
+            products.push(product);
         }
         renderProductTable();
         updateStats();
         updateRecentProducts();
         document.getElementById('productCount').textContent = products.length;
     } catch (error) {
-        showToast('Error al cargar los productos', 'error');
+        showToast('Error al cargar productos: ' + error.message, 'error');
     }
 }
 
@@ -132,7 +163,7 @@ function renderProductTable() {
                      onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2245%22 height=%2265%22><rect fill=%22%23141414%22 width=%2245%22 height=%2265%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23666%22 font-size=%2212%22>?</text></svg>'">
             </td>
             <td><strong>${p.Label}</strong></td>
-            <td><span style="color: var(--text-secondary);">${p.category}</span> / ${p.subcategory}</td>
+            <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
             <td style="color: var(--text-secondary);">${p.Price}</td>
             <td>${p.Stock || 0}</td>
             <td>
@@ -152,17 +183,16 @@ function renderProductTable() {
 // ===== ACTUALIZAR ESTADÍSTICAS =====
 function updateStats() {
     document.getElementById('totalProducts').textContent = products.length;
-    const categoriesCount = Object.keys(categories).length;
-    document.getElementById('totalCategories').textContent = categoriesCount;
-    const totalStock = products.reduce((sum, p) => sum + (p.Stock || 0), 0);
+    const categories = new Set(products.map(p => p.Category));
+    document.getElementById('totalCategories').textContent = categories.size;
+    const totalStock = products.reduce((sum, p) => sum + (parseInt(p.Stock) || 0), 0);
     document.getElementById('totalStock').textContent = totalStock;
 }
 
 // ===== ÚLTIMOS PRODUCTOS =====
 function updateRecentProducts() {
     const container = document.getElementById('recentProducts');
-    const sorted = [...products].sort((a, b) => new Date(b.Update || b.Date) - new Date(a.Update || a.Date));
-    const recent = sorted.slice(0, 5);
+    const recent = products.slice(0, 5);
     if (!recent.length) {
         container.innerHTML = '<span style="color: var(--text-muted);">No hay títulos aún.</span>';
         return;
@@ -195,12 +225,12 @@ function openProductForm(product = null) {
         title.innerHTML = '<i class="fas fa-edit"></i> Editar Título';
         submitBtn.innerHTML = '<i class="fas fa-save"></i> Actualizar';
         document.getElementById('productLabel').value = product.Label || '';
-        document.getElementById('productCategory').value = product.category || '';
-        document.getElementById('productSubcategory').value = product.subcategory || '';
+        document.getElementById('productCategory').value = product.Category || '';
+        document.getElementById('productSubcategory').value = product.SubCategory || '';
         document.getElementById('productPrice').value = product.Price ? product.Price.replace(' CUP', '') : '';
         document.getElementById('productStock').value = product.Stock || 0;
         document.getElementById('productDescription').value = product.Description || '';
-        document.getElementById('productFeatures').value = (product.Features || []).join('\n');
+        document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
     } else {
         title.innerHTML = '<i class="fas fa-plus-circle"></i> Nuevo Título';
         submitBtn.innerHTML = '<i class="fas fa-save"></i> Guardar Título';
@@ -217,17 +247,19 @@ function populateCategorySelects() {
     const currentCat = catSelect.value;
     const currentSub = subSelect.value;
 
+    const categories = [...new Set(products.map(p => p.Category))];
     catSelect.innerHTML = '<option value="">Seleccionar...</option>';
-    for (const cat in categories) {
+    categories.forEach(cat => {
         catSelect.innerHTML += `<option value="${cat}">${cat}</option>`;
-    }
+    });
     if (currentCat) catSelect.value = currentCat;
 
-    if (currentCat && categories[currentCat]) {
+    if (currentCat) {
+        const subs = [...new Set(products.filter(p => p.Category === currentCat).map(p => p.SubCategory))];
         subSelect.innerHTML = '<option value="">Seleccionar...</option>';
-        for (const sub in categories[currentCat]) {
+        subs.forEach(sub => {
             subSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
-        }
+        });
         if (currentSub) subSelect.value = currentSub;
     } else {
         subSelect.innerHTML = '<option value="">Primero selecciona una categoría</option>';
@@ -237,11 +269,14 @@ function populateCategorySelects() {
 document.getElementById('productCategory').addEventListener('change', function() {
     const subSelect = document.getElementById('productSubcategory');
     const cat = this.value;
-    subSelect.innerHTML = '<option value="">Seleccionar...</option>';
-    if (cat && categories[cat]) {
-        for (const sub in categories[cat]) {
+    if (cat) {
+        const subs = [...new Set(products.filter(p => p.Category === cat).map(p => p.SubCategory))];
+        subSelect.innerHTML = '<option value="">Seleccionar...</option>';
+        subs.forEach(sub => {
             subSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
-        }
+        });
+    } else {
+        subSelect.innerHTML = '<option value="">Primero selecciona una categoría</option>';
     }
 });
 
@@ -273,26 +308,6 @@ function removeImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== DRAG & DROP =====
-const dropArea = document.querySelector('.file-upload-area');
-if (dropArea) {
-    dropArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        this.classList.add('dragover');
-    });
-    dropArea.addEventListener('dragleave', function(e) {
-        e.preventDefault();
-        this.classList.remove('dragover');
-    });
-    dropArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        this.classList.remove('dragover');
-        const files = e.dataTransfer.files;
-        document.getElementById('imageUpload').files = files;
-        document.getElementById('imageUpload').dispatchEvent(new Event('change'));
-    });
-}
-
 // ===== GUARDAR PRODUCTO =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
@@ -303,74 +318,68 @@ async function saveProduct() {
     const description = document.getElementById('productDescription').value.trim();
     const features = document.getElementById('productFeatures').value
         .split('\n')
-        .filter(f => f.trim());
+        .filter(f => f.trim())
+        .join(';');
 
     if (!label || !category || !subcategory || !price) {
         showToast('Completa todos los campos obligatorios.', 'warning');
         return;
     }
 
-    if (isNaN(price) || parseFloat(price) <= 0) {
-        showToast('Ingresa un precio válido.', 'warning');
+    const slug = ToSlug(label);
+
+    // Subir imágenes a GitHub
+    try {
+        for (let i = 0; i < uploadedImages.length; i++) {
+            await uploadImage(uploadedImages[i], slug, i);
+        }
+    } catch (error) {
+        showToast('Error al subir imágenes: ' + error.message, 'error');
         return;
     }
 
-    const slug = ToSlug(label);
-    const now = new Date().toISOString();
+    // Construir la línea del CSV
+    const imagesNames = uploadedImages.length > 0 ? 
+        uploadedImages.map((_, i) => `${slug}-${i}.webp`).join(';') :
+        `${slug}-0.webp`;
+    const csvRow = [
+        category,
+        subcategory,
+        label,
+        `${parseFloat(price).toFixed(2)} CUP`,
+        stock,
+        description,
+        features,
+        imagesNames
+    ].join(',');
 
-    const productData = {
-        Category: category,
-        SubCategory: subcategory,
-        Label: label,
-        Images: uploadedImages.length > 0 ? 
-            uploadedImages.map((_, i) => `/images/products/${slug}-${i}.webp`) :
-            [`/images/products/${slug}-0.webp`],
-        Description: description,
-        Price: `${parseFloat(price).toFixed(2)} CUP`,
-        Stock: stock,
-        Features: features,
-        Date: editingProduct ? editingProduct.Date : now,
-        Update: now
-    };
-
+    // Leer CSV actual
     try {
-        const saveResponse = await fetch('../data/save-product.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ slug, product: productData })
-        });
+        const { content } = await fetchCSV();
+        const lines = content.split('\n').filter(line => line.trim());
+        const headers = lines[0];
+        let bodyLines = lines.slice(1);
 
-        if (!saveResponse.ok) {
-            const error = await saveResponse.json();
-            throw new Error(error.error || 'Error al guardar');
+        if (editingProduct) {
+            const index = bodyLines.findIndex(line => line.includes(editingProduct.Label));
+            if (index > -1) {
+                bodyLines[index] = csvRow;
+            } else {
+                bodyLines.push(csvRow);
+            }
+        } else {
+            bodyLines.push(csvRow);
         }
 
-        if (uploadedImages.length > 0) {
-            const formData = new FormData();
-            uploadedImages.forEach((file, i) => {
-                const ext = file.name.split('.').pop();
-                formData.append(`images[]`, file, `${slug}-${i}.webp`);
-            });
-            const uploadResponse = await fetch('../data/upload-images.php', {
-                method: 'POST',
-                body: formData
-            });
-            if (!uploadResponse.ok) throw new Error('Error al subir imágenes');
-        }
-
+        const newCSV = [headers, ...bodyLines].join('\n');
+        await updateCSV(newCSV);
         showToast(`"${label}" guardado exitosamente`, 'success');
         closeModal('productModal');
         await loadProducts();
         showView('products');
     } catch (error) {
-        showToast('Error: ' + error.message, 'error');
+        showToast('Error al guardar: ' + error.message, 'error');
     }
-}
-
-// ===== EDITAR PRODUCTO =====
-function editProduct(index) {
-    const product = products[index];
-    openProductForm(product);
 }
 
 // ===== ELIMINAR PRODUCTO =====
@@ -379,24 +388,69 @@ async function deleteProduct(index) {
     if (!confirm(`¿Eliminar "${product.Label}" definitivamente?`)) return;
 
     try {
-        const response = await fetch('../data/delete-product.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ slug: ToSlug(product.Label) })
-        });
+        const { content } = await fetchCSV();
+        const lines = content.split('\n').filter(line => line.trim());
+        const headers = lines[0];
+        let bodyLines = lines.slice(1);
 
-        if (!response.ok) throw new Error('Error al eliminar');
+        bodyLines = bodyLines.filter(line => !line.includes(product.Label));
+        const newCSV = [headers, ...bodyLines].join('\n');
+        await updateCSV(newCSV);
         showToast(`"${product.Label}" eliminado`, 'success');
         await loadProducts();
     } catch (error) {
-        showToast('Error: ' + error.message, 'error');
+        showToast('Error al eliminar: ' + error.message, 'error');
     }
 }
 
-// ===== CERRAR SESIÓN =====
-function logout() {
-    localStorage.removeItem('adminUser');
-    window.location.href = 'login.html';
+// ===== FUNCIONES UTILITARIAS =====
+function ToSlug(n) {
+    if (!n) return "";
+    const map = {
+        'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
+        'ü': 'u', 'ñ': 'n', 'Á': 'A', 'É': 'E', 'Í': 'I',
+        'Ó': 'O', 'Ú': 'U', 'Ü': 'U', 'Ñ': 'N'
+    };
+    let t = n.toLowerCase();
+    t = t.replace(/[áéíóúüñÁÉÍÓÚÜÑ]/g, char => map[char] || char);
+    t = t.replace(/[^a-z0-9\s-]/g, "");
+    t = t.replace(/ /g, "-");
+    t = t.replace(/-+/g, "-");
+    t = t.replace(/^-+/, "").replace(/-+$/, "");
+    return t;
+}
+
+// ===== TOAST =====
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-exclamation-circle',
+        warning: 'fa-exclamation-triangle',
+        info: 'fa-info-circle'
+    };
+    toast.innerHTML = `
+        <i class="fas ${icons[type] || icons.info}"></i>
+        <span>${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => {
+        if (toast.parentElement) toast.remove();
+    }, 5000);
+}
+
+// ===== MODAL =====
+function openModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 // ===== NAVEGACIÓN =====
@@ -406,6 +460,13 @@ function showView(view) {
     document.querySelectorAll('.sidebar nav a').forEach(el => el.classList.remove('active'));
     const activeLink = document.querySelector(`.sidebar nav a[data-view="${view}"]`);
     if (activeLink) activeLink.classList.add('active');
+}
+
+// ===== CERRAR SESIÓN =====
+function logout() {
+    sessionStorage.removeItem('adminUser');
+    sessionStorage.removeItem('githubToken');
+    window.location.href = 'login.html';
 }
 
 // ===== INICIALIZACIÓN =====
