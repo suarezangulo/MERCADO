@@ -200,7 +200,7 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA (con soporte para cualquier extensión) =====
+// ===== RENDER TABLA (con fallback de extensiones) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -210,26 +210,48 @@ function renderProductTable() {
         </td></tr>`;
         return;
     }
+    
+    // Definir la función de fallback globalmente (una sola vez)
+    if (typeof window.tryNextExtension === 'undefined') {
+        window.tryNextExtension = function(imgId, basePath, extensions, currentIndex) {
+            const img = document.getElementById(imgId);
+            if (!img) return;
+            const nextIndex = currentIndex + 1;
+            if (nextIndex >= extensions.length) {
+                // Si se agotaron todas las extensiones, mostrar placeholder
+                img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
+                return;
+            }
+            const nextExt = extensions[nextIndex];
+            img.src = basePath + '.' + nextExt;
+        };
+    }
+    
     tbody.innerHTML = products.map((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
+        
         // Si el nombre de la imagen no tiene extensión, asumimos webp
         if (!imageName.includes('.')) {
             imageName = imageName + '.webp';
         }
+        
         // Extraer el nombre base (sin extensión)
         const baseName = imageName.replace(/\.[^.]+$/, '');
         const basePath = `../images/products/${baseName}`;
+        
         // Extensiones a probar en orden de prioridad
         const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
         // Obtener la extensión del CSV
         const csvExt = imageName.split('.').pop().toLowerCase();
         // Colocar la extensión del CSV al principio para que se intente primero
         const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+        
         // Generar un ID único para cada imagen
         const imgId = `img-${slug}-${index}`;
-        // Crear un contenedor para la imagen
+        
+        // Construir el HTML de la fila
         return `
         <tr>
             <td>
@@ -237,32 +259,7 @@ function renderProductTable() {
                      src="../images/products/${imageName}" 
                      alt="${p.Label}" 
                      class="product-thumb" 
-                     onerror="tryNextExtension('${imgId}', '${basePath}', ${JSON.stringify(orderedExtensions)})">
-                <script>
-                // Definir la función de fallback globalmente (solo una vez)
-                if (typeof window.tryNextExtension === 'undefined') {
-                    window.tryNextExtension = function(imgId, basePath, extensions) {
-                        const img = document.getElementById(imgId);
-                        if (!img) return;
-                        // Si la imagen ya tiene una extensión que no es la primera, ya estamos en fallback
-                        const currentSrc = img.src;
-                        // Extraer la extensión actual de la src (puede tener parámetros)
-                        const currentExt = currentSrc.split('.').pop().split('?')[0].toLowerCase();
-                        // Encontrar el índice de la extensión actual
-                        const currentIndex = extensions.indexOf(currentExt);
-                        // Si no se encuentra o es la última, mostrar placeholder
-                        if (currentIndex === -1 || currentIndex === extensions.length - 1) {
-                            img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
-                            return;
-                        }
-                        // Probar la siguiente extensión
-                        const nextExt = extensions[currentIndex + 1];
-                        const newSrc = basePath + '.' + nextExt;
-                        img.src = newSrc;
-                    };
-                }
-                // Ejecutar inmediatamente si la imagen falla (el onerror lo hará)
-                </script>
+                     onerror="tryNextExtension('${imgId}', '${basePath}', ${JSON.stringify(orderedExtensions)}, ${orderedExtensions.indexOf(csvExt)})">
             </td>
             <td><strong>${p.Label}</strong></td>
             <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
