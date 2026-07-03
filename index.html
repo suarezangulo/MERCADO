@@ -4,6 +4,8 @@
 	<title>CINEMARKET - Catálogo de películas, series y más</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- ===== SEO META TAGS ===== -->
 	<meta name="description" content="Catálogo audiovisual en CUP: películas (5 CUP) y capítulos de series, shows, documentales y novelas (2 CUP por capítulo).">
 	<meta name="keywords" content="películas, series, documentales, shows, novelas, cine, comprar, Cuba, CUP">
 	<meta name="robots" content="index, follow">
@@ -61,6 +63,12 @@
 							<li role="none">
 								<a href="contact.html" role="menuitem">Contacto</a>
 							</li>
+							<!-- ===== NUEVO: ENLACE AL PANEL DE ADMINISTRACIÓN ===== -->
+							<li role="none">
+								<a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;">
+									<i class="zmdi zmdi-settings" style="font-size: 18px;"></i> Panel
+								</a>
+							</li>
 						</ul>
 					</div>
 
@@ -110,6 +118,12 @@
 			<ul class="main-menu-m" role="menubar">
 				<li role="none">
 					<a href="contact.html" role="menuitem">Contacto</a>
+				</li>
+				<!-- ===== NUEVO: ENLACE AL PANEL EN MÓVIL ===== -->
+				<li role="none">
+					<a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;">
+						<i class="zmdi zmdi-settings"></i> Panel
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -175,6 +189,8 @@
 				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
 				<p class="txt-center">
 					<a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
+					<span style="color: #888; margin: 0 10px;">|</span>
+					<a class="stext-107 cl1 txt-center" href="admin/login.html">Panel</a>
 				</p>
 				<p class="stext-107 cl6 txt-center" aria-live="polite">
 					Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados
