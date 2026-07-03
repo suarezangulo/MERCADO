@@ -1,15 +1,4 @@
-// ===== TASA DE CAMBIO (global) =====
-var TASA_CAMBIO = parseFloat(localStorage.getItem('tasaCambio')) || 685; // 1 USD = 685 CUP
-
-// ===== MONEDA PREFERIDA DEL USUARIO =====
-function getMonedaPreferida() {
-    return localStorage.getItem('monedaPreferida') || 'USD';
-}
-
-function setMonedaPreferida(moneda) {
-    localStorage.setItem('monedaPreferida', moneda);
-    location.reload();
-}
+// ===== FUNCIONES GENERALES =====
 
 function splitTitle(n) {
     const t = n.split(" "),
@@ -69,6 +58,7 @@ function stringToHash(n) {
         t = ((t << 5) - t + r) & 2147483647;
     }
     let i = "";
+    const chars = "0123456789abcdefghijklmnopqrstuvwxyz";
     while (t > 0) {
         i = chars[t % 36] + i;
         t = Math.floor(t / 36);
@@ -78,22 +68,11 @@ function stringToHash(n) {
 
 function spanishFormat(n) {
     const t = {
-        "á": String.fromCharCode(225),
-        "é": String.fromCharCode(233),
-        "í": String.fromCharCode(237),
-        "ó": String.fromCharCode(243),
-        "ú": String.fromCharCode(250),
-        "ñ": String.fromCharCode(241),
-        "Á": String.fromCharCode(193),
-        "É": String.fromCharCode(201),
-        "Í": String.fromCharCode(205),
-        "Ó": String.fromCharCode(211),
-        "Ú": String.fromCharCode(218),
-        "Ñ": String.fromCharCode(209)
+        "á": "á", "é": "é", "í": "í", "ó": "ó", "ú": "ú",
+        "ñ": "ñ", "Á": "Á", "É": "É", "Í": "Í", "Ó": "Ó", "Ú": "Ú", "Ñ": "Ñ"
     };
-    for (const i in t) {
-        n = n.replace(new RegExp(i, "g"), t[i]);
-    }
+    // Esta función solo reemplaza caracteres con sus equivalentes acentuados
+    // En realidad, ya viene con acentos, pero la dejamos para mantener consistencia
     return n;
 }
 
@@ -103,20 +82,9 @@ function normalizeText(n) {
 
 function toEnglish(n) {
     var t = {
-        "á": "a",
-        "é": "e",
-        "í": "i",
-        "ó": "o",
-        "ú": "u",
-        "ü": "u",
-        "ñ": "n",
-        "Á": "A",
-        "É": "E",
-        "Í": "I",
-        "Ó": "O",
-        "Ú": "U",
-        "Ü": "U",
-        "Ñ": "N"
+        "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
+        "ü": "u", "ñ": "n", "Á": "A", "É": "E", "Í": "I",
+        "Ó": "O", "Ú": "U", "Ü": "U", "Ñ": "N"
     };
     return n.replace(/[áéíóúüñÁÉÍÓÚÜÑ]/g, function(n) {
         return t[n];
@@ -135,17 +103,10 @@ function getFilterValues(n, t) {
     return i.length > 0 ? i : [];
 }
 
-// ===== FUNCIÓN MODIFICADA: toMoneyStr con separadores de miles =====
-function toMoneyStr(valor, moneda = null) {
+// ===== FUNCIÓN toMoneyStr (solo CUP) =====
+function toMoneyStr(valor) {
     if (valor == null || isNaN(valor)) valor = 0;
-    if (!moneda) {
-        moneda = getMonedaPreferida();
-    }
-    const prefijo = moneda === 'CUP' ? 'CUP$ ' : 'USD$ ';
-    return prefijo + valor.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
+    return "CUP$ " + valor.toFixed(2);
 }
 
 function addProductCardBase(n, t, i = "", r = 1) {
@@ -159,12 +120,10 @@ function addProductCardBase(n, t, i = "", r = 1) {
     if (t.Price) {
         h.setAttribute("data-price", t.Price);
     }
-    let precioOriginal = t.Price || "0.00 USD";
-    let partes = precioOriginal.split(' ');
-    let valorNumerico = parseFloat(partes[0]) || 0;
-    let moneda = partes[1] || 'USD';
-    let valorUSD = moneda === 'CUP' ? (valorNumerico / TASA_CAMBIO) : valorNumerico;
-    h.setAttribute("data-price-usd", valorUSD.toFixed(4));
+    let precioOriginal = t.Price || "0.00 CUP";
+    let valorNumerico = parseFloat(precioOriginal) || 0;
+    let valorUSD = 0; // Ya no necesitamos conversión
+    h.setAttribute("data-price-usd", "0"); // Para compatibilidad
     if (t.Update) {
         var d = new Date(t.Update);
         var g = d.getTime();
@@ -214,35 +173,8 @@ function addProductCardBase(n, t, i = "", r = 1) {
     o.textContent = b;
     f.appendChild(o);
 
-    let monedaPref = getMonedaPreferida();
-    let valorOriginal = parseFloat(t.Price.split(' ')[0]) || 0;
-    let monedaOriginal = t.Price.split(' ')[1] || 'USD';
-    let valorEnMonedaPref, monedaMostrar, valorEquivalente, monedaEquivalente;
-
-    if (monedaOriginal === monedaPref) {
-        valorEnMonedaPref = valorOriginal;
-        monedaMostrar = monedaPref;
-        monedaEquivalente = monedaPref === 'CUP' ? 'USD' : 'CUP';
-        let tasa = typeof TASA_CAMBIO !== 'undefined' ? TASA_CAMBIO : 24;
-        valorEquivalente = monedaPref === 'CUP' ? (valorOriginal / tasa) : (valorOriginal * tasa);
-    } else {
-        let tasa = typeof TASA_CAMBIO !== 'undefined' ? TASA_CAMBIO : 24;
-        if (monedaOriginal === 'CUP' && monedaPref === 'USD') {
-            valorEnMonedaPref = valorOriginal / tasa;
-            monedaMostrar = 'USD';
-            valorEquivalente = valorOriginal;
-            monedaEquivalente = 'CUP';
-        } else if (monedaOriginal === 'USD' && monedaPref === 'CUP') {
-            valorEnMonedaPref = valorOriginal * tasa;
-            monedaMostrar = 'CUP';
-            valorEquivalente = valorOriginal;
-            monedaEquivalente = 'USD';
-        }
-    }
-
-    let precioFormateado = toMoneyStr(valorEnMonedaPref, monedaMostrar);
-    let equivalenteFormateado = toMoneyStr(valorEquivalente, monedaEquivalente);
-
+    // Mostrar precio en CUP
+    let precioFormateado = toMoneyStr(valorNumerico);
     let precioContainer = document.createElement("div");
     precioContainer.setAttribute("class", "p-t-6");
     precioContainer.setAttribute("style", "line-height: 1.3;");
@@ -252,11 +184,6 @@ function addProductCardBase(n, t, i = "", r = 1) {
     precioPrincipal.setAttribute("style", "font-weight: bold; font-size: 20px;");
     precioPrincipal.textContent = precioFormateado;
     precioContainer.appendChild(precioPrincipal);
-
-    let precioEquivalente = document.createElement("span");
-    precioEquivalente.setAttribute("style", "display: block; font-size: 12px; color: #888; font-weight: normal; margin-top: 2px;");
-    precioEquivalente.textContent = `≈ ${equivalenteFormateado}`;
-    precioContainer.appendChild(precioEquivalente);
 
     f.appendChild(precioContainer);
 
@@ -368,7 +295,7 @@ function getNot(n, t) {
 
 function eval(n, t) {
     let i = [];
-    i.discount = t.Discount != null && t.Discount > 0 ? "- " + t.Discount.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }) : "";
+    i.discount = t.Discount != null && t.Discount > 0 ? "- " + t.Discount.toLocaleString("en-US", { style: "currency", currency: "CUP", minimumFractionDigits: 0 }) : "";
     i.status = t.Def == true ? productDefStatus : productStatus;
     i.category = normalizeText(t.Category);
     i.subcategory = normalizeText(t.SubCategory);
@@ -409,7 +336,6 @@ function prepareWhatsapp() {
 
 var contactCell = "",
     contactEmail = "",
-    currency = "USD",
     productStatus = "",
     productDefStatus = "",
     not1Template = "",
@@ -485,7 +411,6 @@ var contactCell = "",
             n(".storet2").text(r[1]);
             contactCell = t.Cell;
             contactEmail = t.Email;
-            currency = t.Currency;
             not1Template = t.Not1;
             not2Template = t.Not2;
             productStatus = t.ProductStatus;
@@ -494,7 +419,6 @@ var contactCell = "",
             if (t.Warranty != null && t.Warranty.length > 0) {
                 n("#warrantyText").html(t.Warranty.replace(/\n/g, "<br>"));
             }
-            n(".currency").text(currency);
             n(".headnotification").text(t.HeadNotification);
             n(".foot").text(t.Foot);
             if (t.CartPayMethod != null && t.CartPayMethod.length > 0) {
@@ -543,5 +467,3 @@ var contactCell = "",
     updateCartQty();
     prepareWhatsapp();
 })(jQuery);
-
-const chars = "0123456789abcdefghijklmnopqrstuvwxyz";
