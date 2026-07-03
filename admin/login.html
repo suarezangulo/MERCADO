@@ -3,196 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - CINEMARKET</title>
+    <title>Login - Panel de Administración</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .login-container h1 {
+            color: #fff;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .login-container .subtitle {
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .login-container .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container .logo i {
+            font-size: 60px;
+            color: #6c7ae0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s;
+            outline: none;
+        }
+        .form-group input:focus {
+            border-color: #6c7ae0;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(108, 122, 224, 0.2);
+        }
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6c7ae0, #5a67d8);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 122, 224, 0.4);
+        }
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        .error-msg {
+            color: #ff6b6b;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+        }
+        .footer-text {
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar">
-        <div class="brand">
+    <div class="login-container">
+        <div class="logo">
             <i class="fas fa-film"></i>
-            <span>CINEMARKET</span>
         </div>
-        <div class="user-info">
-            <div class="name" id="adminName">Administrador</div>
-            <div class="username" id="adminUsername">@admin</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" data-view="dashboard" class="active" onclick="showView('dashboard')">
-                    <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
-                </a></li>
-                <li><a href="#" data-view="products" onclick="showView('products')">
-                    <i class="fas fa-list"></i> <span>Catálogo</span>
-                </a></li>
-                <li><a href="#" data-view="create" onclick="openProductForm(null)">
-                    <i class="fas fa-plus-circle"></i> <span>Nuevo Título</span>
-                </a></li>
-            </ul>
-        </nav>
-        <button class="logout-btn" id="logoutBtn">
-            <i class="fas fa-sign-out-alt"></i> <span>Cerrar Sesión</span>
-        </button>
-    </aside>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="main-content">
-
-        <!-- ===== VIEW: DASHBOARD ===== -->
-        <section id="view-dashboard" class="view-section">
-            <div class="page-header">
-                <h1>Dashboard <small>Resumen del catálogo</small></h1>
+        <h1>Panel de Administración</h1>
+        <p class="subtitle">Gestiona tu catálogo audiovisual</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Usuario</label>
+                <input type="text" id="username" placeholder="Ingresa tu usuario" required>
             </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="number" id="totalProducts">0</div>
-                    <div class="label">Títulos totales</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number" id="totalCategories">0</div>
-                    <div class="label">Categorías</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number" id="totalStock">0</div>
-                    <div class="label">Unidades en stock</div>
-                </div>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
             </div>
-
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-info-circle"></i> Acciones rápidas
-                </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button class="btn btn-primary" onclick="openProductForm(null)">
-                        <i class="fas fa-plus"></i> Nuevo Título
-                    </button>
-                    <button class="btn btn-outline" onclick="showView('products')">
-                        <i class="fas fa-list"></i> Ver Catálogo
-                    </button>
-                </div>
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i> Acceder
+            </button>
+            <div id="errorMsg" class="error-msg">
+                <i class="fas fa-exclamation-circle"></i> Usuario o contraseña incorrectos
             </div>
-
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-clock"></i> Últimos títulos agregados
-                </div>
-                <div id="recentProducts" style="color: var(--text-secondary);">
-                    Cargando...
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== VIEW: PRODUCTS ===== -->
-        <section id="view-products" class="view-section" style="display:none;">
-            <div class="page-header">
-                <h1>Catálogo <small>Gestión de títulos</small></h1>
-                <div class="actions">
-                    <button class="btn btn-primary" onclick="openProductForm(null)">
-                        <i class="fas fa-plus"></i> Nuevo Título
-                    </button>
-                    <button class="btn btn-outline" onclick="loadProducts()">
-                        <i class="fas fa-sync"></i> Actualizar
-                    </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="width:60px;">Imagen</th>
-                                <th>Título</th>
-                                <th>Categoría</th>
-                                <th>Precio</th>
-                                <th>Stock</th>
-                                <th style="width:180px;">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productTableBody">
-                            <tr><td colspan="6" style="text-align:center; padding:40px; color: rgba(255,255,255,0.4);">
-                                <i class="fas fa-spinner fa-spin" style="font-size:30px;"></i> Cargando...
-                            </td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ===== TOAST NOTIFICATIONS ===== -->
-    <div class="toast-container" id="toastContainer"></div>
-
-    <!-- ===== MODAL: CREAR/EDITAR PRODUCTO ===== -->
-    <div class="modal-overlay" id="productModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 id="modalTitle">Crear Nuevo Título</h2>
-                <button class="modal-close" onclick="closeModal('productModal')">&times;</button>
-            </div>
-            <form id="productForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Nombre del título <span class="required">*</span></label>
-                        <input type="text" id="productLabel" class="form-control" placeholder="Ej: Duro de Matar" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Precio (CUP) <span class="required">*</span></label>
-                        <input type="number" id="productPrice" class="form-control" placeholder="5.00" step="0.01" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Categoría <span class="required">*</span></label>
-                        <select id="productCategory" class="form-control" required>
-                            <option value="">Seleccionar...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Subcategoría <span class="required">*</span></label>
-                        <select id="productSubcategory" class="form-control" required>
-                            <option value="">Primero selecciona una categoría</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Stock</label>
-                    <input type="number" id="productStock" class="form-control" placeholder="10" min="0">
-                </div>
-                <div class="form-group">
-                    <label>Sinopsis / Descripción</label>
-                    <textarea id="productDescription" class="form-control" placeholder="Describe el título..." rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Características (una por línea)</label>
-                    <textarea id="productFeatures" class="form-control" placeholder="Director: ...&#10;Año: ...&#10;Actores: ..." rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Imágenes (posters, capturas)</label>
-                    <div class="file-upload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <div class="text">
-                            <strong>Haz clic para subir imágenes</strong><br>
-                            Formatos: JPG, PNG, WebP
-                        </div>
-                        <input type="file" id="imageUpload" accept="image/*" multiple>
-                    </div>
-                    <div id="imagePreviewContainer" style="display:flex; flex-wrap:wrap; margin-top:15px;"></div>
-                </div>
-            </form>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('productModal')">Cancelar</button>
-                <button class="btn btn-primary" id="submitProductBtn">
-                    <i class="fas fa-save"></i> Guardar Título
-                </button>
-            </div>
-        </div>
+        </form>
+        <p class="footer-text">© 2024 CINEMARKET - Todos los derechos reservados</p>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script src="js/admin.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+
+            // Cargar usuarios desde el archivo JSON
+            fetch('../data/admin-users.json')
+                .then(response => response.json())
+                .then(users => {
+                    if (users[username] && users[username].password === password) {
+                        // Guardar sesión
+                        localStorage.setItem('adminUser', JSON.stringify({
+                            username: username,
+                            name: users[username].name
+                        }));
+                        window.location.href = 'index.html';
+                    } else {
+                        errorMsg.style.display = 'block';
+                        setTimeout(() => {
+                            errorMsg.style.display = 'none';
+                        }, 3000);
+                    }
+                })
+                .catch(() => {
+                    errorMsg.textContent = 'Error al cargar usuarios. Intenta de nuevo.';
+                    errorMsg.style.display = 'block';
+                });
+        });
+
+        // Verificar si ya está logueado
+        const adminUser = localStorage.getItem('adminUser');
+        if (adminUser) {
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
-                                                                                            </html>
+</html>
