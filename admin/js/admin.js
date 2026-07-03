@@ -200,7 +200,7 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA (con fallback de extensiones) =====
+// ===== RENDER TABLA (con verificación de imágenes mediante fetch) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -210,56 +210,34 @@ function renderProductTable() {
         </td></tr>`;
         return;
     }
-    
-    // Definir la función de fallback globalmente (una sola vez)
-    if (typeof window.tryNextExtension === 'undefined') {
-        window.tryNextExtension = function(imgId, basePath, extensions, currentIndex) {
-            const img = document.getElementById(imgId);
-            if (!img) return;
-            const nextIndex = currentIndex + 1;
-            if (nextIndex >= extensions.length) {
-                // Si se agotaron todas las extensiones, mostrar placeholder
-                img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
-                return;
-            }
-            const nextExt = extensions[nextIndex];
-            img.src = basePath + '.' + nextExt;
-        };
-    }
-    
-    tbody.innerHTML = products.map((p, index) => {
+
+    // Generar HTML inicial con placeholders
+    let html = '';
+    products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
-        
-        // Si el nombre de la imagen no tiene extensión, asumimos webp
         if (!imageName.includes('.')) {
             imageName = imageName + '.webp';
         }
-        
-        // Extraer el nombre base (sin extensión)
         const baseName = imageName.replace(/\.[^.]+$/, '');
-        const basePath = `../images/products/${baseName}`;
-        
-        // Extensiones a probar en orden de prioridad
-        const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
-        // Obtener la extensión del CSV
-        const csvExt = imageName.split('.').pop().toLowerCase();
-        // Colocar la extensión del CSV al principio para que se intente primero
-        const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
-        
-        // Generar un ID único para cada imagen
         const imgId = `img-${slug}-${index}`;
+        const csvExt = imageName.split('.').pop().toLowerCase();
+        const extensions = [csvExt, 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
+        // Eliminar duplicados
+        const uniqueExtensions = [...new Set(extensions)];
         
-        // Construir el HTML de la fila
-        return `
+        html += `
         <tr>
             <td>
                 <img id="${imgId}" 
-                     src="../images/products/${imageName}" 
+                     src="" 
                      alt="${p.Label}" 
                      class="product-thumb" 
-                     onerror="tryNextExtension('${imgId}', '${basePath}', ${JSON.stringify(orderedExtensions)}, ${orderedExtensions.indexOf(csvExt)})">
+                     style="display:none;">
+                <div id="${imgId}-loading" style="width:45px; height:65px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
             </td>
             <td><strong>${p.Label}</strong></td>
             <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
@@ -276,8 +254,73 @@ function renderProductTable() {
                 </div>
             </td>
         </tr>
-    `}).join('');
-}
+        `;
+    });
+    tbody.innerHTML = html;
+
+    // Ahora, para cada fila, verificar las imágenes con fetch
+    products.forEach((p, index) => {
+        const slug = ToSlug(p.Label);
+        const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
+        let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
+        if (!imageName.includes('.')) {
+            imageName = imageName + '.webp';
+        }
+        const baseName = imageName.replace(/\.[^.]+$/, '');
+        const imgId = `img-${slug}-${index}`;
+        const loadingId = `${imgId}-loading`;
+        const csvExt = imageName.split('.').pop().toLowerCase();
+        const extensions = [csvExt, 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
+        const uniqueExtensions = [...new Set(extensions)];
+        
+        // Función para probar extensiones
+        let extIndex = 0;
+        const imgElement = document.getElementById(imgId);
+        const loadingElement = document.getElementById(loadingId);
+        
+        function tryNextExtension() {
+            if (extIndex >= uniqueExtensions.length) {
+                // No se encontró ninguna imagen, mostrar placeholder
+                if (loadingElement) loadingElement.style.display = 'none';
+                if (imgElement) {
+                    imgElement.style.display = 'block';
+                    imgElement.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
+                }
+                return;
+            }
+            
+            const ext = uniqueExtensions[extIndex];
+            const url = `../images/products/${baseName}.${ext}`;
+            
+            // Usar fetch para verificar si la imagen existe
+            fetch(url, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        // La imagen existe
+                        if (loadingElement) loadingElement.style.display = 'none';
+                        if (imgElement) {
+                            imgElement.style.display = 'block';
+                            imgElement.src = url;
+                            // Actualizar el CSV con la extensión correcta (opcional)
+                            // Aquí podríamos guardar la extensión encontrada, pero no lo haremos para no modificar el CSV sin permiso.
+                        }
+                    } else {
+                        // Probar siguiente extensión
+                        extIndex++;
+                        tryNextExtension();
+                    }
+                })
+                .catch(() => {
+                    // Error de red, probar siguiente
+                    extIndex++;
+                    tryNextExtension();
+                });
+        }
+        
+        // Iniciar la búsqueda
+        tryNextExtension();
+    });
+                }
 
 // ===== ACTUALIZAR ESTADÍSTICAS =====
 function updateStats() {
