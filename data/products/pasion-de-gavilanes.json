@@ -2,12 +2,14 @@
   "Category": "Novelas",
   "SubCategory": "Romance",
   "Label": "Pasión de Gavilanes",
+  "Type": "episode",
+  "Episodes": 200,
   "Images": [
     "/images/products/pasion-de-gavilanes-0.webp",
     "/images/products/pasion-de-gavilanes-1.webp"
   ],
   "Description": "Tres hermanos llegan a un pueblo colombiano para vengar la muerte de su hermana, pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión, intriga y amor.",
-  "Price": "300.00 CUP",
+  "Price": "400.00 CUP",
   "Stock": 20,
   "Features": [
     "Director: Rodrigo Triana",
