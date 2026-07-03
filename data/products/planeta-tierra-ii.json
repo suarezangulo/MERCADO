@@ -2,12 +2,14 @@
   "Category": "Documentales",
   "SubCategory": "Naturaleza",
   "Label": "Planeta Tierra II",
+  "Type": "episode",
+  "Episodes": 6,
   "Images": [
     "/images/products/planeta-tierra-ii-0.webp",
     "/images/products/planeta-tierra-ii-1.webp"
   ],
   "Description": "La secuela del aclamado documental de la BBC. Utilizando tecnología de vanguardia, el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable.",
-  "Price": "8.00 USD",
+  "Price": "12.00 CUP",
   "Stock": 15,
   "Features": [
     "Narrador: David Attenborough",
