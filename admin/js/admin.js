@@ -385,4 +385,44 @@ async function deleteProduct(index) {
             body: JSON.stringify({ slug: ToSlug(product.Label) })
         });
 
-        if (!response.ok)
+        if (!response.ok) throw new Error('Error al eliminar');
+        showToast(`"${product.Label}" eliminado`, 'success');
+        await loadProducts();
+    } catch (error) {
+        showToast('Error: ' + error.message, 'error');
+    }
+}
+
+// ===== CERRAR SESIÓN =====
+function logout() {
+    localStorage.removeItem('adminUser');
+    window.location.href = 'login.html';
+}
+
+// ===== NAVEGACIÓN =====
+function showView(view) {
+    document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
+    document.getElementById(`view-${view}`).style.display = 'block';
+    document.querySelectorAll('.sidebar nav a').forEach(el => el.classList.remove('active'));
+    const activeLink = document.querySelector(`.sidebar nav a[data-view="${view}"]`);
+    if (activeLink) activeLink.classList.add('active');
+}
+
+// ===== INICIALIZACIÓN =====
+document.addEventListener('DOMContentLoaded', function() {
+    loadProducts();
+    showView('dashboard');
+
+    document.getElementById('createProductBtn').addEventListener('click', () => openProductForm(null));
+    document.getElementById('submitProductBtn').addEventListener('click', saveProduct);
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+});
