@@ -1,20 +1,4 @@
-// ===== FUNCIÓN AUXILIAR: convertir valor a moneda preferida =====
-function convertirAMonedaPreferida(valor, monedaOriginal) {
-    var monedaPref = getMonedaPreferida();
-    var tasa = typeof TASA_CAMBIO !== 'undefined' ? TASA_CAMBIO : 685;
-    var resultado;
-    if (monedaOriginal === monedaPref) {
-        resultado = valor;
-    } else if (monedaOriginal === 'CUP' && monedaPref === 'USD') {
-        resultado = valor / tasa;
-    } else if (monedaOriginal === 'USD' && monedaPref === 'CUP') {
-        resultado = valor * tasa;
-    } else {
-        resultado = valor;
-    }
-    return resultado;
-}
-
+// ===== FUNCIÓN PARA AGREGAR PRODUCTO AL CARRITO (DESDE LA VISTA) =====
 function addCartItem(n, t, i) {
     if (n == null || t == null || i == null) return !1;
     let e = document.createElement("tr");
@@ -41,11 +25,9 @@ function addCartItem(n, t, i) {
     e.appendChild(r);
     r = document.createElement("td");
     r.setAttribute("class", "column-3");
-    let partesPrecio = i.Price.split(' ');
-    let valorPrecio = parseFloat(partesPrecio[0]);
-    let monedaOriginal = partesPrecio[1] || 'USD';
-    let valorConvertido = convertirAMonedaPreferida(valorPrecio, monedaOriginal);
-    r.textContent = toMoneyStr(valorConvertido);
+    let precioStr = i.Price;
+    let valorNumerico = parseFloat(precioStr) || 0;
+    r.textContent = toMoneyStr(valorNumerico);
     e.appendChild(r);
     r = document.createElement("td");
     r.setAttribute("class", "column-4");
@@ -78,9 +60,8 @@ function addCartItem(n, t, i) {
     e.appendChild(r);
     r = document.createElement("td");
     r.setAttribute("class", "column-5");
-    let subtotalOriginal = valorPrecio * t.qty;
-    let subtotalConvertido = convertirAMonedaPreferida(subtotalOriginal, monedaOriginal);
-    r.textContent = toMoneyStr(subtotalConvertido);
+    let subtotal = valorNumerico * t.qty;
+    r.textContent = toMoneyStr(subtotal);
     e.appendChild(r);
     n.append(e);
     return !0;
@@ -208,52 +189,22 @@ function clearCart() {
 function updateCartTotals(guardarEnStorage = true) {
     let itemsActualizados = { items: [] };
     let totalCUP = 0;
-    let totalUSD = 0;
 
     $(".num-product").each(function(index, elemento) {
         let productId = $(elemento).attr("name").substring(4);
         let cantidad = parseFloat($(elemento).val()) || 0;
         let precioStr = $(elemento).attr("price");
-        let partes = precioStr.split(' ');
-        let valorNumerico = parseFloat(partes[0]);
-        let moneda = partes[1] || 'USD';
+        let valorNumerico = parseFloat(precioStr) || 0;
         let subtotalOriginal = valorNumerico * cantidad;
 
-        if (moneda === 'CUP') {
-            totalCUP += subtotalOriginal;
-        } else {
-            totalUSD += subtotalOriginal;
-        }
+        totalCUP += subtotalOriginal;
 
         itemsActualizados.items.push({ productId: productId, qty: cantidad });
         let celdaTotalProducto = $(this).parent().parent().next();
-        let subtotalConvertido = convertirAMonedaPreferida(subtotalOriginal, moneda);
-        celdaTotalProducto.text(toMoneyStr(subtotalConvertido));
+        celdaTotalProducto.text(toMoneyStr(subtotalOriginal));
     });
 
-    let monedaPref = getMonedaPreferida();
-    let tasa = typeof TASA_CAMBIO !== 'undefined' ? TASA_CAMBIO : 685;
-    
-    let totalGeneralConvertido = 0;
-    if (monedaPref === 'CUP') {
-        totalGeneralConvertido = totalCUP + (totalUSD * tasa);
-    } else {
-        totalGeneralConvertido = totalUSD + (totalCUP / tasa);
-    }
-
-    let totalText = toMoneyStr(totalGeneralConvertido, monedaPref);
-    
-    let otraMoneda = monedaPref === 'CUP' ? 'USD' : 'CUP';
-    let totalEquivalente;
-    if (monedaPref === 'CUP') {
-        totalEquivalente = totalGeneralConvertido / tasa;
-    } else {
-        totalEquivalente = totalGeneralConvertido * tasa;
-    }
-    
-    if (totalEquivalente > 0) {
-        totalText += '\n≈ ' + toMoneyStr(totalEquivalente, otraMoneda);
-    }
+    let totalText = toMoneyStr(totalCUP);
 
     $("span.mtext-110.cl2").css("white-space", "pre-line").text(totalText);
 
@@ -308,28 +259,6 @@ function mostrarInfoPago(metodo) {
                 <span style="color: #888; font-size: 12px; display: block; margin-top: 5px;">Escanea el código QR o paga con el número de teléfono.</span>
             </div>`;
             break;
-        case 'Zelle':
-            html = `<div style="line-height: 1.8;">
-                <strong>💳 Zelle</strong><br>
-                Email: <strong>${methodData.email}</strong><br>
-                Teléfono: <strong>${methodData.phone}</strong><br>
-                <span style="color: #888; font-size: 12px;">Envía el pago por Zelle y confirma por WhatsApp.</span>
-            </div>`;
-            break;
-        case 'PayPal':
-            html = `<div style="line-height: 1.8;">
-                <strong>💳 PayPal</strong><br>
-                Email: <strong>${methodData.email}</strong><br>
-                <span style="color: #888; font-size: 12px;">Envía el pago por PayPal y confirma por WhatsApp.</span>
-            </div>`;
-            break;
-        case 'CashApp':
-            html = `<div style="line-height: 1.8;">
-                <strong>💳 CashApp</strong><br>
-                Tag: <strong>${methodData.tag}</strong><br>
-                <span style="color: #888; font-size: 12px;">Envía el pago por CashApp y confirma por WhatsApp.</span>
-            </div>`;
-            break;
         case 'Efectivo':
             html = `<div style="line-height: 1.8;">
                 <strong>💵 Efectivo</strong><br>
@@ -344,15 +273,13 @@ function mostrarInfoPago(metodo) {
     paymentInfo.show();
 }
 
-// ===== FUNCIÓN MODIFICADA: Envía pedido con método de pago =====
+// ===== FUNCIÓN MODIFICADA: Envía pedido con método de pago (solo CUP) =====
 function sendOrder() {
     var metodoPago = $('#paymentMethod').val();
     var nombreMetodo = $('#paymentMethod option:selected').text().trim();
     
-    let productosCUP = [];
-    let productosUSD = [];
+    let productos = [];
     let totalCUP = 0;
-    let totalUSD = 0;
     let items = [];
 
     $(".num-product").each(function(index, elemento) {
@@ -360,9 +287,7 @@ function sendOrder() {
         let cantidad = parseFloat($(elemento).val());
         if (cantidad > 0) {
             let precioStr = $(elemento).attr("price");
-            let partes = precioStr.split(' ');
-            let valorNumerico = parseFloat(partes[0]);
-            let moneda = partes[1] || 'USD';
+            let valorNumerico = parseFloat(precioStr) || 0;
             let subtotal = valorNumerico * cantidad;
 
             let producto = {
@@ -372,20 +297,15 @@ function sendOrder() {
                 subtotal: subtotal
             };
 
-            if (moneda === 'CUP') {
-                productosCUP.push(producto);
-                totalCUP += subtotal;
-            } else {
-                productosUSD.push(producto);
-                totalUSD += subtotal;
-            }
+            productos.push(producto);
+            totalCUP += subtotal;
 
             items.push({
                 id: ToSlug(nombre),
                 name: nombre,
                 quantity: cantidad,
                 price: valorNumerico,
-                currency: moneda
+                currency: 'CUP'
             });
         }
     });
@@ -393,32 +313,18 @@ function sendOrder() {
     let mensaje = "📦 *NUEVO PEDIDO*\n";
     mensaje += "------------------------------\n\n";
 
-    if (productosCUP.length > 0) {
+    if (productos.length > 0) {
         mensaje += "💰 *Productos en CUP*\n";
-        productosCUP.forEach(function(p) {
+        productos.forEach(function(p) {
             let subtotalStr = 'CUP$ ' + p.subtotal.toFixed(2);
             mensaje += "   " + p.cantidad + "x " + p.nombre + " de CUP$ " + p.precioUnitario.toFixed(2) + "  → *" + subtotalStr + "*\n";
         });
         mensaje += "\n";
     }
 
-    if (productosUSD.length > 0) {
-        mensaje += "💵 *Productos en USD*\n";
-        productosUSD.forEach(function(p) {
-            let subtotalStr = 'USD$ ' + p.subtotal.toFixed(2);
-            mensaje += "   " + p.cantidad + "x " + p.nombre + " de USD$ " + p.precioUnitario.toFixed(2) + " → *" + subtotalStr + "*\n";
-        });
-        mensaje += "\n";
-    }
-
     mensaje += "------------------------------\n";
     mensaje += "*RESUMEN DEL PEDIDO*\n";
-    if (totalCUP > 0) {
-        mensaje += "💰 Total en CUP: *$ " + totalCUP.toFixed(2) + "*\n";
-    }
-    if (totalUSD > 0) {
-        mensaje += "💵 Total en USD: *$ " + totalUSD.toFixed(2) + "*\n";
-    }
+    mensaje += "💰 Total en CUP: *$ " + totalCUP.toFixed(2) + "*\n";
     mensaje += "\n";
 
     mensaje += "*Método de pago:* " + nombreMetodo + "\n\n";
@@ -433,15 +339,6 @@ function sendOrder() {
                 break;
             case 'EnZona':
                 infoPago = `Teléfono: ${methodData.phone}`;
-                break;
-            case 'Zelle':
-                infoPago = `Email: ${methodData.email} | Teléfono: ${methodData.phone}`;
-                break;
-            case 'PayPal':
-                infoPago = `Email: ${methodData.email}`;
-                break;
-            case 'CashApp':
-                infoPago = `Tag: ${methodData.tag}`;
                 break;
             case 'Efectivo':
                 infoPago = `Paga al recibir el pedido.`;
@@ -460,12 +357,10 @@ function sendOrder() {
     window.open(urlWhatsApp);
 
     if (googleAnalyticsId != null && googleAnalyticsId.length > 0 && items.length > 0) {
-        const TASA_CAMBIO_GA = 24;
-        let totalGeneralUSD = totalUSD + (totalCUP / TASA_CAMBIO_GA);
         gtag("event", "purchase", {
             transaction_id: "trans_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9),
-            value: totalGeneralUSD,
-            currency: "USD",
+            value: totalCUP,
+            currency: "CUP",
             items: items
         });
     }
