@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - CINEMARKET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fas fa-film"></i>
+            <span>CINEMARKET</span>
+        </div>
+        <div class="user-info">
+            <div class="name" id="adminName">Administrador</div>
+            <div class="username" id="adminUsername">@admin</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" data-view="dashboard" class="active" onclick="showView('dashboard')">
+                    <i class="fas fa-chart-pie"></i> <span>Dashboard</span>
+                </a></li>
+                <li><a href="#" data-view="products" onclick="showView('products')">
+                    <i class="fas fa-list"></i> <span>Catálogo</span>
+                </a></li>
+                <li><a href="#" data-view="create" onclick="openProductForm(null)">
+                    <i class="fas fa-plus-circle"></i> <span>Nuevo Título</span>
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-btn" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> <span>Cerrar Sesión</span>
+        </button>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+
+        <!-- ===== VIEW: DASHBOARD ===== -->
+        <section id="view-dashboard" class="view-section">
+            <div class="page-header">
+                <h1>Dashboard <small>Resumen del catálogo</small></h1>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number" id="totalProducts">0</div>
+                    <div class="label">Títulos totales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="totalCategories">0</div>
+                    <div class="label">Categorías</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="totalStock">0</div>
+                    <div class="label">Unidades en stock</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-info-circle"></i> Acciones rápidas
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="openProductForm(null)">
+                        <i class="fas fa-plus"></i> Nuevo Título
+                    </button>
+                    <button class="btn btn-outline" onclick="showView('products')">
+                        <i class="fas fa-list"></i> Ver Catálogo
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-clock"></i> Últimos títulos agregados
+                </div>
+                <div id="recentProducts" style="color: var(--text-secondary);">
+                    Cargando...
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== VIEW: PRODUCTS ===== -->
+        <section id="view-products" class="view-section" style="display:none;">
+            <div class="page-header">
+                <h1>Catálogo <small>Gestión de títulos</small></h1>
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="openProductForm(null)">
+                        <i class="fas fa-plus"></i> Nuevo Título
+                    </button>
+                    <button class="btn btn-outline" onclick="loadProducts()">
+                        <i class="fas fa-sync"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:60px;">Imagen</th>
+                                <th>Título</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th style="width:180px;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody">
+                            <tr><td colspan="6" style="text-align:center; padding:40px; color: rgba(255,255,255,0.4);">
+                                <i class="fas fa-spinner fa-spin" style="font-size:30px;"></i> Cargando...
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== TOAST NOTIFICATIONS ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ===== MODAL: CREAR/EDITAR PRODUCTO ===== -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Crear Nuevo Título</h2>
+                <button class="modal-close" onclick="closeModal('productModal')">&times;</button>
+            </div>
+            <form id="productForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre del título <span class="required">*</span></label>
+                        <input type="text" id="productLabel" class="form-control" placeholder="Ej: Duro de Matar" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio (CUP) <span class="required">*</span></label>
+                        <input type="number" id="productPrice" class="form-control" placeholder="5.00" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Categoría <span class="required">*</span></label>
+                        <select id="productCategory" class="form-control" required>
+                            <option value="">Seleccionar...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subcategoría <span class="required">*</span></label>
+                        <select id="productSubcategory" class="form-control" required>
+                            <option value="">Primero selecciona una categoría</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Stock</label>
+                    <input type="number" id="productStock" class="form-control" placeholder="10" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Sinopsis / Descripción</label>
+                    <textarea id="productDescription" class="form-control" placeholder="Describe el título..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Características (una por línea)</label>
+                    <textarea id="productFeatures" class="form-control" placeholder="Director: ...&#10;Año: ...&#10;Actores: ..." rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Imágenes (posters, capturas)</label>
+                    <div class="file-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <div class="text">
+                            <strong>Haz clic para subir imágenes</strong><br>
+                            Formatos: JPG, PNG, WebP
+                        </div>
+                        <input type="file" id="imageUpload" accept="image/*" multiple>
+                    </div>
+                    <div id="imagePreviewContainer" style="display:flex; flex-wrap:wrap; margin-top:15px;"></div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('productModal')">Cancelar</button>
+                <button class="btn btn-primary" id="submitProductBtn">
+                    <i class="fas fa-save"></i> Guardar Título
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/admin.js"></script>
+</body>
+                                                                                            </html>
