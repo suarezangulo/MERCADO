@@ -4,8 +4,6 @@
 	<title>Detalle - CINEMARKET</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- ===== SEO META TAGS ===== -->
 	<meta name="description" content="Conoce todos los detalles de este título: sinopsis, ficha técnica, precio y disponibilidad.">
 	<meta name="keywords" content="película, serie, documental, show, novela, ficha técnica, sinopsis">
 	<meta name="robots" content="index, follow">
@@ -17,11 +15,6 @@
 	<meta property="og:title" content="CINEMARKET - Detalle del título">
 	<meta property="og:description" content="Información completa del título audiovisual.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
-	
-	<!-- Twitter Cards -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="CINEMARKET - Detalle del título">
-	<meta name="twitter:description" content="Información completa del título audiovisual.">
 	
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
@@ -39,37 +32,6 @@
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!--===============================================================================================-->
-	<style>
-		#moneda-cup.active, #moneda-usd.active,
-		#moneda-cup-movil.active, #moneda-usd-movil.active {
-			background-color: #717fe0 !important;
-			color: #fff !important;
-			border-radius: 4px;
-		}
-		#moneda-cup:hover, #moneda-usd:hover,
-		#moneda-cup-movil:hover, #moneda-usd-movil:hover {
-			background-color: rgba(113, 127, 224, 0.1);
-			border-radius: 4px;
-		}
-		.currency-selector {
-			display: flex;
-			align-items: center;
-			margin-right: 15px;
-		}
-		.currency-selector a {
-			color: #333;
-			font-weight: bold;
-			padding: 5px 10px;
-			border-radius: 4px;
-			transition: all 0.3s;
-			text-decoration: none;
-		}
-		.currency-selector span {
-			color: #ccc;
-			margin: 0 5px;
-		}
-	</style>
 </head>
 <body class="animsition">
 
@@ -79,7 +41,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.
+						Disfruta del mejor contenido audiovisual. Paga en CUP.
 					</div>
 					<div class="right-top-bar flex-w h-full"></div>
 				</div>
@@ -96,11 +58,6 @@
 
 					<div class="menu-desktop">
 						<ul class="main-menu" role="menubar">
-							<li role="none" class="currency-selector">
-								<a href="#" role="menuitem" id="moneda-cup" onclick="setMonedaPreferida('CUP')" aria-label="Cambiar a moneda CUP">CUP</a>
-								<span aria-hidden="true">|</span>
-								<a href="#" role="menuitem" id="moneda-usd" onclick="setMonedaPreferida('USD')" aria-label="Cambiar a moneda USD">USD</a>
-							</li>
 							<li role="none">
 								<a href="contact.html" role="menuitem">Contacto</a>
 							</li>
@@ -123,7 +80,7 @@
 
 		<div class="wrap-header-mobile">
 			<div class="logo-mobile">
-				<a href="catalog.html" aria-label="Ir a la página de inicio">
+				<a href="./" aria-label="Ir a la página de inicio">
 					<p style="margin-right: 25px; font-size: 23px;">
 						<span class="storet1" style="color: #333; font-weight: bold;">CINE</span>
 						<span class="storet2" style="color: #666;">MARKET</span>
@@ -152,14 +109,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.
-					</div>
-				</li>
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04" id="moneda-cup-movil" onclick="setMonedaPreferida('CUP')" aria-label="Cambiar a moneda CUP" style="color: #fff; font-weight: bold;">CUP</a>
-						<span style="color: #888;" aria-hidden="true">|</span>
-						<a href="#" class="flex-c-m p-lr-10 trans-04" id="moneda-usd-movil" onclick="setMonedaPreferida('USD')" aria-label="Cambiar a moneda USD" style="color: #fff; font-weight: bold;">USD</a>
+						Disfruta del mejor contenido audiovisual. Paga en CUP.
 					</div>
 				</li>
 			</ul>
@@ -213,7 +163,7 @@
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14 product-label">Título</h4>
-							<span class="mtext-106 cl2 product-price" aria-label="Precio">$0</span>
+							<span class="mtext-106 cl2 product-price" aria-label="Precio">0.00 CUP</span>
 							<p class="stext-102 cl3 p-t-23 product-features" aria-label="Ficha técnica"></p>
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
@@ -273,7 +223,6 @@
 			</div>
 		</section>
 
-		<!-- ===== RELATED ===== -->
 		<section class="sec-relate-product bg0 p-t-45 p-b-105" aria-label="Títulos relacionados">
 			<div class="container">
 				<div class="p-b-45">
@@ -301,7 +250,6 @@
 				</p>
 			</div>
 			
-			<!-- ===== CÓDIGO QR ===== -->
 			<div class="qr-container">
 				<div style="text-align: center;">
 					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
@@ -339,20 +287,5 @@
 	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/product.js"></script>
-
-	<script>
-		(function() {
-			var moneda = getMonedaPreferida();
-			if (moneda === 'CUP') {
-				document.getElementById('moneda-cup').classList.add('active');
-				var movilCup = document.getElementById('moneda-cup-movil');
-				if (movilCup) movilCup.classList.add('active');
-			} else {
-				document.getElementById('moneda-usd').classList.add('active');
-				var movilUsd = document.getElementById('moneda-usd-movil');
-				if (movilUsd) movilUsd.classList.add('active');
-			}
-		})();
-	</script>
 </body>
 </html>
