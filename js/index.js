@@ -464,4 +464,71 @@ function sortProducts(sortBy, sortDirection, text) {
         for (var i = 0; i < arrowMainMenu.length; i++) {
             $(arrowMainMenu[i]).on('click', function () {
                 $(this).parent().find('.sub-menu-m').slideToggle();
-                $(this).toggleClass('turn
+                $(this).toggleClass('turn-arrow-main-menu-m');
+            })
+        }
+        $(window).resize(function () {
+            if ($(window).width() >= 992) {
+                if ($('.menu-mobile').css('display') == 'block') {
+                    $('.menu-mobile').css('display', 'none');
+                    $('.btn-show-menu-mobile').toggleClass('is-active');
+                }
+                $('.sub-menu-m').each(function () {
+                    if ($(this).css('display') == 'block') {
+                        $(this).css('display', 'none');
+                        $(arrowMainMenu).removeClass('turn-arrow-main-menu-m');
+                    }
+                });
+            }
+        });
+        $('.js-show-modal-search').on('click', function () {
+            $('.modal-search-header').addClass('show-modal-search');
+            $(this).css('opacity', '0');
+        });
+        $('.js-hide-modal-search').on('click', function () {
+            $('.modal-search-header').removeClass('show-modal-search');
+            $('.js-show-modal-search').css('opacity', '1');
+        });
+        $('.container-search-header').on('click', function (e) {
+            e.stopPropagation();
+        });
+        $('.isotope-grid').imagesLoaded({}, function () {
+            loadIsotope();
+        });
+        var isotopeButton = $('.filter-tope-group button');
+        $(isotopeButton).each(function () {
+            $(this).on('click', function () {
+                for (var i = 0; i < isotopeButton.length; i++) {
+                    $(isotopeButton[i]).removeClass('how-active1');
+                }
+                $(this).addClass('how-active1');
+            });
+        });
+        $('.js-show-filter').on('click', function (event) {
+            event.preventDefault();
+            $(this).toggleClass('show-filter');
+            $('.panel-filter').slideToggle(400);
+            if ($('.js-show-search').hasClass('show-search')) {
+                $('.js-show-search').removeClass('show-search');
+                $('.panel-search').slideUp(400);
+            }
+        });
+        $('.js-show-search').on('click', function (event) {
+            event.preventDefault();
+            $(this).toggleClass('show-search');
+            $('.panel-search').slideToggle(400);
+            if ($('.js-show-filter').hasClass('show-filter')) {
+                $('.js-show-filter').removeClass('show-filter');
+                $('.panel-filter').slideUp(400);
+            }
+        });
+        $('.btn-num-product-down').on('click', function () {
+            var numProduct = Number($(this).next().val());
+            if (numProduct > 0) $(this).next().val(numProduct - 1);
+        });
+        $('.btn-num-product-up').on('click', function () {
+            var numProduct = Number($(this).prev().val());
+            $(this).prev().val(numProduct + 1);
+        });
+    });
+})(jQuery);
