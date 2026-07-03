@@ -1,0 +1,47 @@
+{
+  "Title": "CINEMARKET",
+  "Cell": 54439440,
+  "Email": "suarezangulomarlon@gmail.com",
+  "Currency": "USD",
+  "BackgroundColor": "34, 34, 34",
+  "HeadNotification": "Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.",
+  "Foot": "CUP | USD | Zelle | Paypal | Cashapp | Efectivo",
+  "CartPayMethod": "En el momento de la entrega o por transferencia.\r\n\r\nCUP, USD, Zelle, Cashapp, Paypal.",
+  "CartShipping": "Acordar al realizar la orden. Entregas digitales inmediatas, físicas en el día.",
+  "Warranty": "Garantía de calidad en la reproducción. Si el contenido presenta fallas técnicas, se repone sin costo.",
+  "ProductStatus": "Nuevo",
+  "ProductDefStatus": "Clásico",
+  "Not1": "{status}",
+  "Not2": "{discount}",
+  "GoogleAnalyticsId": "G-QJ22NE5JZR",
+  "PaymentMethods": {
+    "Transfermobil": {
+      "name": "Transfermóvil",
+      "phone": "+53 54439440",
+      "bank": "BANDEC",
+      "qrCode": "/MERCADO/images/payment/transfermovil-qr.webp"
+    },
+    "EnZona": {
+      "name": "EnZona",
+      "phone": "+53 54439440",
+      "qrCode": "/images/payment/enzona-qr.png"
+    },
+    "Zelle": {
+      "name": "Zelle",
+      "email": "suarezangulomarlon@gmail.com",
+      "phone": "+53 54439440"
+    },
+    "PayPal": {
+      "name": "PayPal",
+      "email": "suarezangulomarlon@gmail.com"
+    },
+    "CashApp": {
+      "name": "CashApp",
+      "tag": "$mercadocuba"
+    },
+    "Efectivo": {
+      "name": "Efectivo",
+      "description": "Paga en efectivo al momento de la entrega."
+    }
+  }
+}

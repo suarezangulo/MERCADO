@@ -1,0 +1,20 @@
+{
+  "Category": "Películas",
+  "SubCategory": "Drama",
+  "Label": "La La Land",
+  "Images": [
+    "/images/products/la-la-land-0.webp",
+    "/images/products/la-la-land-1.webp"
+  ],
+  "Description": "Mia, una aspirante a actriz, y Sebastian, un pianista de jazz, se enamoran en Los Ángeles mientras persiguen sus sueños. Pero el éxito y la vida los pondrán a prueba. Una historia de amor, música y pasión que cautivó al mundo.",
+  "Price": "200.00 CUP",
+  "Stock": 5,
+  "Features": [
+    "Director: Damien Chazelle",
+    "Año: 2016",
+    "Duración: 128 min",
+    "Actores: Ryan Gosling, Emma Stone, John Legend"
+  ],
+  "Date": "2024-02-15T10:00:00-05:00",
+  "Update": "2024-02-15T10:00:00-05:00"
+}

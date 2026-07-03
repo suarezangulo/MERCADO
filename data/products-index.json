@@ -1,0 +1,66 @@
+{
+  "Películas": {
+    "Acción": [
+      {
+        "Label": "Duro de Matar",
+        "Price": "5.00 USD",
+        "Features": ["Director: John McTiernan", "Año: 1988", "Duración: 132 min", "Actores: Bruce Willis, Alan Rickman"],
+        "Date": "2024-01-10T10:00:00-05:00",
+        "Update": "2024-01-10T10:00:00-05:00"
+      }
+    ],
+    "Drama": [
+      {
+        "Label": "La La Land",
+        "Price": "200.00 CUP",
+        "Features": ["Director: Damien Chazelle", "Año: 2016", "Duración: 128 min", "Actores: Ryan Gosling, Emma Stone"],
+        "Date": "2024-02-15T10:00:00-05:00",
+        "Update": "2024-02-15T10:00:00-05:00"
+      }
+    ]
+  },
+  "Series": {
+    "Ciencia Ficción": [
+      {
+        "Label": "The Expanse (Temporada 1)",
+        "Price": "10.00 USD",
+        "Features": ["Creador: Daniel Abraham, Ty Franck", "Año: 2015", "Episodios: 10", "Actores: Steven Strait, Dominique Tipper"],
+        "Date": "2024-03-01T10:00:00-05:00",
+        "Update": "2024-03-01T10:00:00-05:00"
+      }
+    ]
+  },
+  "Documentales": {
+    "Naturaleza": [
+      {
+        "Label": "Planeta Tierra II",
+        "Price": "8.00 USD",
+        "Features": ["Narrador: David Attenborough", "Año: 2016", "Episodios: 6", "Duración: 50 min por episodio"],
+        "Date": "2024-04-01T10:00:00-05:00",
+        "Update": "2024-04-01T10:00:00-05:00"
+      }
+    ]
+  },
+  "Shows": {
+    "Comedia": [
+      {
+        "Label": "The Office (Temporada 1)",
+        "Price": "150.00 CUP",
+        "Features": ["Creador: Greg Daniels", "Año: 2005", "Episodios: 6", "Actores: Steve Carell, John Krasinski"],
+        "Date": "2024-05-01T10:00:00-05:00",
+        "Update": "2024-05-01T10:00:00-05:00"
+      }
+    ]
+  },
+  "Novelas": {
+    "Romance": [
+      {
+        "Label": "Pasión de Gavilanes",
+        "Price": "300.00 CUP",
+        "Features": ["Director: Rodrigo Triana", "Año: 2003", "Episodios: 200", "Actores: Danna García, Mario Cimarro"],
+        "Date": "2024-06-01T10:00:00-05:00",
+        "Update": "2024-06-01T10:00:00-05:00"
+      }
+    ]
+  }
+}

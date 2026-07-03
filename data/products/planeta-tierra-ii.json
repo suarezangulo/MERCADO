@@ -1,0 +1,20 @@
+{
+  "Category": "Documentales",
+  "SubCategory": "Naturaleza",
+  "Label": "Planeta Tierra II",
+  "Images": [
+    "/images/products/planeta-tierra-ii-0.webp",
+    "/images/products/planeta-tierra-ii-1.webp"
+  ],
+  "Description": "La secuela del aclamado documental de la BBC. Utilizando tecnología de vanguardia, el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable.",
+  "Price": "8.00 USD",
+  "Stock": 15,
+  "Features": [
+    "Narrador: David Attenborough",
+    "Año: 2016",
+    "Episodios: 6",
+    "Duración: 50 min por episodio"
+  ],
+  "Date": "2024-04-01T10:00:00-05:00",
+  "Update": "2024-04-01T10:00:00-05:00"
+}
