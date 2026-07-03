@@ -169,50 +169,17 @@ function getCiclon(n, t) {
                 }
             });
 
-            // Mostrar precio con moneda
-            let monedaPref = getMonedaPreferida();
-            let valorOriginal = parseFloat(i.Price.split(' ')[0]) || 0;
-            let monedaOriginal = i.Price.split(' ')[1] || 'USD';
-            let valorEnMonedaPref, monedaMostrar, valorEquivalente, monedaEquivalente;
-
-            if (monedaOriginal === monedaPref) {
-                valorEnMonedaPref = valorOriginal;
-                monedaMostrar = monedaPref;
-                monedaEquivalente = monedaPref === 'CUP' ? 'USD' : 'CUP';
-                let tasa = typeof TASA_CAMBIO !== 'undefined' ? TASA_CAMBIO : 24;
-                valorEquivalente = monedaPref === 'CUP' ? (valorOriginal / tasa) : (valorOriginal * tasa);
-            } else {
-                let tasa = typeof TASA_CAMBIO !== 'undefined' ? TASA_CAMBIO : 24;
-                if (monedaOriginal === 'CUP' && monedaPref === 'USD') {
-                    valorEnMonedaPref = valorOriginal / tasa;
-                    monedaMostrar = 'USD';
-                    valorEquivalente = valorOriginal;
-                    monedaEquivalente = 'CUP';
-                } else if (monedaOriginal === 'USD' && monedaPref === 'CUP') {
-                    valorEnMonedaPref = valorOriginal * tasa;
-                    monedaMostrar = 'CUP';
-                    valorEquivalente = valorOriginal;
-                    monedaEquivalente = 'USD';
-                }
-            }
-
-            let precioFormateado = toMoneyStr(valorEnMonedaPref, monedaMostrar);
-            let equivalenteFormateado = toMoneyStr(valorEquivalente, monedaEquivalente);
-            let htmlPrecio = `<span style="font-weight: bold; font-size: 24px; color: #222;">${precioFormateado}</span>
-                             <span style="font-size: 14px; color: #888; display: block; font-weight: normal; margin-top: 2px;">≈ ${equivalenteFormateado}</span>`;
-
+            // Mostrar precio en CUP (sin conversión)
+            let precioStr = i.Price;
+            let valorNumerico = parseFloat(precioStr) || 0;
+            let precioFormateado = toMoneyStr(valorNumerico);
+            let htmlPrecio = `<span style="font-weight: bold; font-size: 24px; color: #222;">${precioFormateado}</span>`;
             n(".product-price").each(function() {
                 $(this).html(htmlPrecio);
-                if (i.Discount && i.Discount > 0) {
-                    let descuentoStr = i.Discount.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
-                    $(this).addClass("pdiscount");
-                    $(this).attr("data-pdiscount", "- " + descuentoStr);
-                }
             });
 
             buildFeatures(i);
 
-            // ===== INDICADOR DE STOCK =====
             let stock = i.Stock || 0;
             let stockHtml = '';
             if (stock > 0) {
@@ -237,7 +204,6 @@ function getCiclon(n, t) {
                 t.innerHTML = f.replace(/\n/g, "<br>");
             });
 
-            // ===== BOTÓN AGREGAR =====
             n(".js-addcart-detail").off('click').on('click', function(e) {
                 e.preventDefault();
                 var $btn = n(this);
