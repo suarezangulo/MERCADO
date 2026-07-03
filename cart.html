@@ -4,10 +4,8 @@
 	<title>Cesta de Audiovisuales - CINEMARKET</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- ===== SEO META TAGS ===== -->
-	<meta name="description" content="Revisa tu cesta de títulos en CINEMARKET. Compra películas, series y más en Cuba. Precios en CUP y USD.">
-	<meta name="keywords" content="carrito, cesta, películas, series, comprar, Cuba, CUP, USD">
+	<meta name="description" content="Revisa tu cesta de títulos en CINEMARKET. Precios en CUP.">
+	<meta name="keywords" content="carrito, cesta, películas, series, comprar, Cuba, CUP">
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="CINEMARKET">
 	
@@ -17,11 +15,6 @@
 	<meta property="og:title" content="CINEMARKET - Tu tienda audiovisual en Cuba">
 	<meta property="og:description" content="Revisa tu cesta de compra. Títulos de calidad para tu entretenimiento.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
-	
-	<!-- Twitter Cards -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="CINEMARKET - Tu tienda audiovisual en Cuba">
-	<meta name="twitter:description" content="Revisa tu cesta de compra.">
 	
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
@@ -36,36 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!--===============================================================================================-->
 	<style>
-		#moneda-cup.active, #moneda-usd.active,
-		#moneda-cup-movil.active, #moneda-usd-movil.active {
-			background-color: #717fe0 !important;
-			color: #fff !important;
-			border-radius: 4px;
-		}
-		#moneda-cup:hover, #moneda-usd:hover,
-		#moneda-cup-movil:hover, #moneda-usd-movil:hover {
-			background-color: rgba(113, 127, 224, 0.1);
-			border-radius: 4px;
-		}
-		.currency-selector {
-			display: flex;
-			align-items: center;
-			margin-right: 15px;
-		}
-		.currency-selector a {
-			color: #333;
-			font-weight: bold;
-			padding: 5px 10px;
-			border-radius: 4px;
-			transition: all 0.3s;
-			text-decoration: none;
-		}
-		.currency-selector span {
-			color: #ccc;
-			margin: 0 5px;
-		}
 		#paymentMethod {
 			background-color: #fff;
 			cursor: pointer;
@@ -113,7 +77,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.
+						Disfruta del mejor contenido audiovisual. Paga en CUP.
 					</div>
 					<div class="right-top-bar flex-w h-full"></div>
 				</div>
@@ -130,11 +94,6 @@
 
 					<div class="menu-desktop">
 						<ul class="main-menu" role="menubar">
-							<li role="none" class="currency-selector">
-								<a href="#" role="menuitem" id="moneda-cup" onclick="setMonedaPreferida('CUP')" aria-label="Cambiar a moneda CUP">CUP</a>
-								<span aria-hidden="true">|</span>
-								<a href="#" role="menuitem" id="moneda-usd" onclick="setMonedaPreferida('USD')" aria-label="Cambiar a moneda USD">USD</a>
-							</li>
 							<li role="none">
 								<a href="contact.html" role="menuitem">Contacto</a>
 							</li>
@@ -176,14 +135,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP, USD, Zelle, PayPal.
-					</div>
-				</li>
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04" id="moneda-cup-movil" onclick="setMonedaPreferida('CUP')" aria-label="Cambiar a moneda CUP" style="color: #fff; font-weight: bold;">CUP</a>
-						<span style="color: #888;" aria-hidden="true">|</span>
-						<a href="#" class="flex-c-m p-lr-10 trans-04" id="moneda-usd-movil" onclick="setMonedaPreferida('USD')" aria-label="Cambiar a moneda USD" style="color: #fff; font-weight: bold;">USD</a>
+						Disfruta del mejor contenido audiovisual. Paga en CUP.
 					</div>
 				</li>
 			</ul>
@@ -256,11 +208,10 @@
 									<span class="stext-110 cl2">Forma de Pago:</span>
 								</div>
 								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-									<p class="stext-111 cl6 p-t-2 paymethod">En el momento de la entrega o por transferencia.</p>
+									<p class="stext-111 cl6 p-t-2 paymethod">En el momento de la entrega o por transferencia en CUP.</p>
 								</div>
 							</div>
 
-							<!-- ===== SELECTOR DE MÉTODO DE PAGO ===== -->
 							<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 								<div class="size-208 w-full-ssm">
 									<span class="stext-110 cl2">Método de Pago:</span>
@@ -270,14 +221,10 @@
 										<option value="Efectivo">💵 Efectivo (al recibir)</option>
 										<option value="Transfermobil">📱 Transfermóvil</option>
 										<option value="EnZona">📱 EnZona</option>
-										<option value="Zelle">💳 Zelle</option>
-										<option value="PayPal">💳 PayPal</option>
-										<option value="CashApp">💳 CashApp</option>
 									</select>
 								</div>
 							</div>
 
-							<!-- ===== INFORMACIÓN DE PAGO ===== -->
 							<div id="paymentInfo" class="flex-w flex-t p-t-15 p-b-30">
 								<div class="size-208 w-full-ssm">
 									<span class="stext-110 cl2">Datos para el pago:</span>
@@ -303,7 +250,7 @@
 									<span class="mtext-101 cl2">Total:</span>
 								</div>
 								<div class="size-209 p-t-1">
-									<span class="mtext-110 cl2" aria-live="polite">$0.00</span>
+									<span class="mtext-110 cl2" aria-live="polite">0.00 CUP</span>
 								</div>
 							</div>
 
@@ -328,7 +275,6 @@
 				</p>
 			</div>
 			
-			<!-- ===== CÓDIGO QR ===== -->
 			<div class="qr-container">
 				<div style="text-align: center;">
 					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
@@ -381,20 +327,5 @@
 	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/cart.js"></script>
-
-	<script>
-		(function() {
-			var moneda = getMonedaPreferida();
-			if (moneda === 'CUP') {
-				document.getElementById('moneda-cup').classList.add('active');
-				var movilCup = document.getElementById('moneda-cup-movil');
-				if (movilCup) movilCup.classList.add('active');
-			} else {
-				document.getElementById('moneda-usd').classList.add('active');
-				var movilUsd = document.getElementById('moneda-usd-movil');
-				if (movilUsd) movilUsd.classList.add('active');
-			}
-		})();
-	</script>
 </body>
 </html>
