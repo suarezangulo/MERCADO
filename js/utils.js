@@ -38,9 +38,11 @@ function addToCart(n, t, i, r) {
     return f;
 }
 
+// ===== FUNCIÓN CORREGIDA: CONVIERTE ACENTOS =====
 function ToSlug(n) {
     if (!n) return "";
     var t = n.toLowerCase();
+    t = toEnglish(t);  // Convertir acentos ANTES de eliminar caracteres especiales
     t = t.replace(/[^a-z0-9\s-]/g, "");
     t = t.replace(/ /g, "-");
     t = t.replace(/-+/g, "-");
@@ -81,6 +83,7 @@ function normalizeText(n) {
     return "";
 }
 
+// ===== FUNCIÓN PARA CONVERTIR ACENTOS =====
 function toEnglish(n) {
     var t = {
         "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
@@ -447,7 +450,6 @@ var googleAnalyticsId = "";
                 $("#shippingText").html(shippingText);
             }
 
-            // Cambiar color de fondo de ciertos elementos (si existe la regla)
             var sheets = document.styleSheets;
             for (var s = 0; s < sheets.length; s++) {
                 var sheet = sheets[s];
