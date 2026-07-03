@@ -58,3 +58,16 @@ if (!$found) {
 file_put_contents($indexFile, json_encode($index, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
 echo json_encode(['success' => true, 'slug' => $slug]);
+
+// ===== FUNCIÓN CORREGIDA: CONVIERTE ACENTOS =====
+function ToSlug($text) {
+    $text = strtolower($text);
+    // Convertir acentos
+    $map = ['á'=>'a', 'é'=>'e', 'í'=>'i', 'ó'=>'o', 'ú'=>'u', 'ü'=>'u', 'ñ'=>'n'];
+    $text = str_replace(array_keys($map), array_values($map), $text);
+    $text = preg_replace('/[^a-z0-9\s-]/', '', $text);
+    $text = preg_replace('/\s+/', '-', $text);
+    $text = preg_replace('/-+/', '-', $text);
+    $text = trim($text, '-');
+    return $text;
+}
