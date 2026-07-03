@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Panel de Administración</title>
+    <title>Login - Panel CINEMARKET</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,131 +12,145 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-image: 
+                radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(229, 9, 20, 0.05) 0%, transparent 60%);
         }
         .login-container {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 50px 40px;
+            background: #141414;
+            border-radius: 16px;
+            padding: 50px 45px;
             width: 100%;
             max-width: 420px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+        }
+        .login-container .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-container .logo .icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #e50914, #b20710);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #fff;
+            box-shadow: 0 0 50px rgba(229, 9, 20, 0.2);
         }
         .login-container h1 {
             color: #fff;
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 16px;
+            letter-spacing: -0.5px;
         }
         .login-container .subtitle {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.4);
             text-align: center;
             font-size: 14px;
             margin-bottom: 30px;
-        }
-        .login-container .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .login-container .logo i {
-            font-size: 60px;
-            color: #6c7ae0;
         }
         .form-group {
             margin-bottom: 20px;
         }
         .form-group label {
             display: block;
-            color: rgba(255,255,255,0.8);
-            font-size: 14px;
-            margin-bottom: 6px;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
             font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
         }
         .form-group input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
             color: #fff;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s;
             outline: none;
         }
         .form-group input:focus {
-            border-color: #6c7ae0;
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 20px rgba(108, 122, 224, 0.2);
+            border-color: #e50914;
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 30px rgba(229, 9, 20, 0.1);
         }
         .form-group input::placeholder {
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.2);
         }
         .btn-login {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #6c7ae0, #5a67d8);
+            border-radius: 10px;
+            background: linear-gradient(135deg, #e50914, #b20710);
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 10px;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
         }
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(108, 122, 224, 0.4);
+            box-shadow: 0 10px 40px rgba(229, 9, 20, 0.3);
         }
         .btn-login:active {
             transform: translateY(0);
         }
         .error-msg {
-            color: #ff6b6b;
+            color: #e74c3c;
             text-align: center;
-            font-size: 14px;
-            margin-top: 15px;
+            font-size: 13px;
+            margin-top: 14px;
             display: none;
         }
         .footer-text {
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.15);
             text-align: center;
             font-size: 12px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <div class="logo">
-            <i class="fas fa-film"></i>
+            <div class="icon"><i class="fas fa-film"></i></div>
         </div>
-        <h1>Panel de Administración</h1>
-        <p class="subtitle">Gestiona tu catálogo audiovisual</p>
+        <h1>CINEMARKET</h1>
+        <p class="subtitle">Panel de Administración</p>
         <form id="loginForm">
             <div class="form-group">
-                <label><i class="fas fa-user"></i> Usuario</label>
+                <label><i class="fas fa-user" style="margin-right:6px;"></i> Usuario</label>
                 <input type="text" id="username" placeholder="Ingresa tu usuario" required>
             </div>
             <div class="form-group">
-                <label><i class="fas fa-lock"></i> Contraseña</label>
+                <label><i class="fas fa-lock" style="margin-right:6px;"></i> Contraseña</label>
                 <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
             </div>
             <button type="submit" class="btn-login">
-                <i class="fas fa-sign-in-alt"></i> Acceder
+                <i class="fas fa-sign-in-alt" style="margin-right:10px;"></i> Acceder
             </button>
             <div id="errorMsg" class="error-msg">
                 <i class="fas fa-exclamation-circle"></i> Usuario o contraseña incorrectos
             </div>
         </form>
-        <p class="footer-text">© 2024 CINEMARKET - Todos los derechos reservados</p>
+        <p class="footer-text">© 2024 CINEMARKET</p>
     </div>
 
     <script>
@@ -146,12 +160,10 @@
             const password = document.getElementById('password').value.trim();
             const errorMsg = document.getElementById('errorMsg');
 
-            // Cargar usuarios desde el archivo JSON
             fetch('../data/admin-users.json')
                 .then(response => response.json())
                 .then(users => {
                     if (users[username] && users[username].password === password) {
-                        // Guardar sesión
                         localStorage.setItem('adminUser', JSON.stringify({
                             username: username,
                             name: users[username].name
@@ -159,9 +171,7 @@
                         window.location.href = 'index.html';
                     } else {
                         errorMsg.style.display = 'block';
-                        setTimeout(() => {
-                            errorMsg.style.display = 'none';
-                        }, 3000);
+                        setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
                     }
                 })
                 .catch(() => {
@@ -170,11 +180,8 @@
                 });
         });
 
-        // Verificar si ya está logueado
         const adminUser = localStorage.getItem('adminUser');
-        if (adminUser) {
-            window.location.href = 'index.html';
-        }
+        if (adminUser) window.location.href = 'index.html';
     </script>
 </body>
 </html>
