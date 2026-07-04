@@ -938,3 +938,98 @@ select.form-control {
         padding: 20px;
     }
 }
+/* ===== BOTÓN FLOTANTE MICA (ESTILO BASE) ===== */
+.mica-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 25px;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #CCCCCC;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    white-space: nowrap;
+    outline: none;
+    line-height: 1.2;
+}
+
+.mica-btn i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.mica-btn:hover {
+    background: rgba(30, 144, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.5);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.25);
+}
+
+.mica-btn:active {
+    transform: scale(0.97);
+}
+
+/* Variante primaria (azul eléctrico) */
+.mica-btn-primary {
+    background: linear-gradient(135deg, #1E90FF, #0066cc);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+}
+.mica-btn-primary:hover {
+    background: linear-gradient(135deg, #3aa3ff, #1E90FF);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.6);
+    color: #fff;
+}
+
+/* Variante peligro (rojo vibrante) */
+.mica-btn-danger {
+    background: linear-gradient(135deg, #FF3B3B, #cc0000);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 59, 59, 0.4);
+}
+.mica-btn-danger:hover {
+    background: linear-gradient(135deg, #ff5555, #FF3B3B);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(255, 59, 59, 0.6);
+    color: #fff;
+}
+
+/* Variante éxito (verde) */
+.mica-btn-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+}
+.mica-btn-success:hover {
+    background: linear-gradient(135deg, #3ddb84, #2ecc71);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+    color: #fff;
+}
+
+/* Botón deshabilitado */
+.mica-btn:disabled,
+.mica-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(30%);
+}
