@@ -9,9 +9,17 @@ function addCartItem(n, t, i) {
     u.setAttribute("class", "how-itemcart1");
     u.addEventListener("click", () => removeCartItemFromView(i.slug, $(e)));
     let h = document.createElement("img");
-    h.setAttribute("src", "./images/products/" + i.slug + "-0.webp");
     h.setAttribute("alt", "imagen del artículo");
     h.setAttribute("loading", "lazy");
+    // Usar fallback de extensiones para la imagen
+    var baseName = i.slug + "-0";
+    var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+    h.setAttribute("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%231a1a1a' width='60' height='60'/%3E%3C/svg%3E");
+    resolveImageUrl(baseName, extensions, function(url) {
+        if (url) {
+            h.setAttribute("src", url);
+        }
+    });
     u.appendChild(h);
     r.appendChild(u);
     e.appendChild(r);
