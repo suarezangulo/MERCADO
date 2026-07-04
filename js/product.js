@@ -30,21 +30,34 @@ function addBreadCrumb(n, t, i = null) {
 
 function buildGallery(n) {
     $container = $(".gallery-lb");
-    n.Images.forEach(function(n) {
-        addGalleryItem($container, n);
-    });
-    $container.each(function() {
-        $(this).magnificPopup({
-            delegate: "a",
-            type: "image",
-            gallery: { enabled: !0 },
-            mainClass: "mfp-fade"
+    n.Images.forEach(function(imgName, idx) {
+        // Resolver cada imagen con fallback de extensiones
+        var baseName = imgName.replace(/\.[^.]+$/, '');
+        var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        var csvExt = imgName.split('.').pop().toLowerCase();
+        var orderedExtensions = [csvExt].concat(extensions.filter(function(ext) { return ext !== csvExt; }));
+        
+        resolveImageUrl(baseName, orderedExtensions, function(url) {
+            var resolvedUrl = url || ('./images/products/' + imgName);
+            addGalleryItem($container, resolvedUrl);
         });
     });
+    // Inicializar magnificPopup después de un breve retraso para que se carguen las imágenes
+    setTimeout(function() {
+        $container.each(function() {
+            $(this).magnificPopup({
+                delegate: "a",
+                type: "image",
+                gallery: { enabled: !0 },
+                mainClass: "mfp-fade"
+            });
+        });
+        // Re-inicializar slick después de resolver imágenes
+        $('.slick3').slick('refresh');
+    }, 500);
 }
 
 function addGalleryItem(n, t) {
-    t = "." + t;
     let i = document.createElement("div");
     i.setAttribute("class", "item-slick3");
     i.setAttribute("data-thumb", t);
@@ -81,14 +94,14 @@ function buildFeatures(product) {
                 const quantity = match[1];
                 const name = match[2];
                 html += `<li style="display: flex; align-items: center; padding: 6px 0; border-bottom: 1px solid #f0f0f0;">
-                    <span style="background-color: rgba(113, 127, 224, 0.25); color: #2c3e8a; font-size: 12px; font-weight: bold; min-width: 30px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 13px; flex-shrink: 0; margin-right: 10px; border: 1px solid rgba(113, 127, 224, 0.3); backdrop-filter: blur(2px);">${quantity}</span>
-                    <span style="font-family: Poppins-Regular; font-size: 14px; color: #555;">${name}</span>
+                    <span style="background-color: rgba(30, 144, 255, 0.25); color: #fff; font-size: 12px; font-weight: bold; min-width: 30px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 13px; flex-shrink: 0; margin-right: 10px; border: 1px solid rgba(30, 144, 255, 0.3); backdrop-filter: blur(2px);">${quantity}</span>
+                    <span style="font-family: Poppins-Regular; font-size: 14px; color: #ccc;">${name}</span>
                 </li>`;
             } else {
-                html += `<li style="padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-family: Poppins-Regular; font-size: 14px; color: #555;">${feature}</li>`;
+                html += `<li style="padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-family: Poppins-Regular; font-size: 14px; color: #ccc;">${feature}</li>`;
             }
         } else {
-            html += `<li style="padding: 4px 0; list-style: disc; margin-left: 20px; font-family: Poppins-Regular; font-size: 14px; color: #555;">${feature}</li>`;
+            html += `<li style="padding: 4px 0; list-style: disc; margin-left: 20px; font-family: Poppins-Regular; font-size: 14px; color: #ccc;">${feature}</li>`;
         }
     });
     html += '</ul>';
@@ -152,7 +165,16 @@ function getCiclon(n, t) {
             let r = spanishFormat(i.Label);
             document.title = r;
             n("head").append('<meta property="og:title" content="' + spanishFormat(r) + '">');
-            n("head").append('<meta property="og:image" content="./images/products/' + t + '-0.webp">');
+            
+            // Imagen OG con fallback
+            var baseName = t + "-0";
+            var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+            resolveImageUrl(baseName, extensions, function(url) {
+                if (url) {
+                    n("head").append('<meta property="og:image" content="' + url + '">');
+                }
+            });
+            
             whatsappMessage = 'Hola, me interesa el artículo "' + r + '" que vi en tu sitio web. ¿Podrías darme más información?';
             whatsappMessage = spanishFormat(whatsappMessage);
 
@@ -173,7 +195,7 @@ function getCiclon(n, t) {
             let precioStr = i.Price;
             let valorNumerico = parseFloat(precioStr) || 0;
             let precioFormateado = toMoneyStr(valorNumerico);
-            let htmlPrecio = `<span style="font-weight: bold; font-size: 24px; color: #222;">${precioFormateado}</span>`;
+            let htmlPrecio = `<span style="font-weight: bold; font-size: 24px; color: #fff;">${precioFormateado}</span>`;
             n(".product-price").each(function() {
                 $(this).html(htmlPrecio);
             });
@@ -190,7 +212,7 @@ function getCiclon(n, t) {
             } else {
                 stockHtml = `<div class="p-t-10 p-b-10">
                     <span class="stext-102 cl3">Disponibilidad: </span>
-                    <span class="stext-102 cl1" style="color: #e74c3c; font-weight: bold;">Agotado</span>
+                    <span class="stext-102 cl1" style="color: #FF3B3B; font-weight: bold;">Agotado</span>
                 </div>`;
             }
             n(".product-label").after(stockHtml);
