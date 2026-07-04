@@ -68,9 +68,25 @@
 			padding: 5px;
 			background: #fff;
 		}
+
+		/* ===== MEJORA 3: BARRA DE PROGRESO DE SCROLL ===== */
+		.scroll-progress {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
+			z-index: 9999;
+			width: 0%;
+			transition: width 0.1s ease;
+			border-radius: 0 2px 2px 0;
+		}
 	</style>
 </head>
 <body class="animsition">
+
+	<!-- ===== BARRA DE PROGRESO DE SCROLL ===== -->
+	<div class="scroll-progress" id="scrollProgress"></div>
 
 	<!-- ===== HEADER ===== -->
 	<header role="banner" aria-label="Encabezado principal" class="header-v4">
@@ -332,5 +348,15 @@
 	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/cart.js"></script>
+
+	<!-- ===== SCRIPT: BARRA DE PROGRESO DE SCROLL ===== -->
+	<script>
+	window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		var progress = (scrollTop / scrollHeight) * 100;
+		document.getElementById('scrollProgress').style.width = progress + '%';
+	});
+	</script>
 </body>
 </html>
