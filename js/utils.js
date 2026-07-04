@@ -1,5 +1,47 @@
 // ===== FUNCIONES GENERALES =====
 
+// ===== CACHÉ DE IMÁGENES (igual que en admin.js) =====
+var imageCache = {};
+
+// ===== FUNCIÓN UNIVERSAL PARA RESOLVER UNA IMAGEN (con fallback de extensiones) =====
+function resolveImageUrl(baseName, extensions, callback) {
+    if (!baseName) return callback(null);
+    // Si ya está en caché, usarlo
+    if (imageCache[baseName]) {
+        callback(imageCache[baseName]);
+        return;
+    }
+    // Extensiones por defecto si no se proporcionan
+    const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+    let index = 0;
+    
+    function tryNext() {
+        if (index >= extList.length) {
+            // No se encontró ninguna
+            imageCache[baseName] = null;
+            callback(null);
+            return;
+        }
+        const ext = extList[index];
+        const url = './images/products/' + baseName + '.' + ext;
+        fetch(url, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    imageCache[baseName] = url;
+                    callback(url);
+                } else {
+                    index++;
+                    tryNext();
+                }
+            })
+            .catch(() => {
+                index++;
+                tryNext();
+            });
+    }
+    tryNext();
+}
+
 function splitTitle(n) {
     var t = n.split(" ");
     var i = t.length;
@@ -42,7 +84,7 @@ function addToCart(n, t, i, r) {
 function ToSlug(n) {
     if (!n) return "";
     var t = n.toLowerCase();
-    t = toEnglish(t);  // Convertir acentos ANTES de eliminar caracteres especiales
+    t = toEnglish(t);
     t = t.replace(/[^a-z0-9\s-]/g, "");
     t = t.replace(/ /g, "-");
     t = t.replace(/-+/g, "-");
@@ -83,7 +125,6 @@ function normalizeText(n) {
     return "";
 }
 
-// ===== FUNCIÓN PARA CONVERTIR ACENTOS =====
 function toEnglish(n) {
     var t = {
         "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
@@ -158,7 +199,27 @@ function addProductCardBase(container, product, extraClass, mode) {
     var img = document.createElement("img");
     img.setAttribute("data-src", "./images/products/" + slug + "-0.webp");
     img.setAttribute("alt", "imagen");
+    img.setAttribute("data-slug", slug);
+    img.setAttribute("data-index", "0");
+    // Placeholder mientras se resuelve
+    img.setAttribute("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%231a1a1a' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23666' font-size='14'%3ECargando...%3C/text%3E%3C/svg%3E");
     pic.appendChild(img);
+    
+    // Resolver imagen con fallback de extensiones
+    (function(imgEl, productSlug, idx) {
+        var baseName = productSlug + "-" + idx;
+        var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        resolveImageUrl(baseName, extensions, function(url) {
+            if (url) {
+                imgEl.setAttribute('data-src', url);
+                imgEl.setAttribute('src', url);
+                imgEl.classList.add('loaded');
+            } else {
+                imgEl.setAttribute('src', 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="400"%3E%3Crect fill="%231a1a1a" width="300" height="400"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23666" font-size="14"%3E?%3C/text%3E%3C/svg%3E');
+            }
+        });
+    })(img, slug, 0);
+    
     link.appendChild(pic);
     block.appendChild(link);
 
@@ -390,7 +451,7 @@ var googleAnalyticsId = "";
     var interval = setInterval(function() {
         if (loadingStarted) clearInterval(interval);
         if (stepIndex >= steps.length) {
-            $("#loading-text").text("“La carga está tardando más de lo usual. Por favor, recarga la página.”");
+            $("#loading-text").text(""La carga está tardando más de lo usual. Por favor, recarga la página."");
         } else if (progress < 100) {
             progress++;
             $("#loading-text").text("cargando " + steps[stepIndex] + ": " + progress + "%");
