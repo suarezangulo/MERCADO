@@ -1,5 +1,5 @@
 // ============================================================
-// INDEX.JS - Carga de catálogo, filtros y grid
+// INDEX.JS - Carga de catálogo, filtros y grid con Isotope
 // ============================================================
 
 (function($) {
@@ -9,10 +9,11 @@
     var filterTree = {};
     var currentFilter = {};
     var productsList = [];
+    var $grid;
 
     // ===== CARGA DE DATOS =====
     function loadCatalog() {
-        $.getJSON('./data/products-index.json', function(data) {
+        $.getJSON('data/products-index.json', function(data) {
             if (!data) {
                 console.error('No se pudo cargar products-index.json');
                 return;
@@ -35,6 +36,8 @@
                         var product = items[i];
                         product.Category = category;
                         product.SubCategory = subcategory;
+                        // Generar slug
+                        product.slug = ToSlug(product.Label);
                         productsList.push(product);
                         // Guardar features en el árbol
                         var features = product.Features || [];
@@ -55,6 +58,8 @@
             // Renderizar filtros y productos
             renderFilters();
             renderProducts(productsList);
+            initIsotope();
+
         }).fail(function() {
             console.error('Error al cargar products-index.json');
         });
@@ -62,13 +67,13 @@
 
     // ===== RENDER FILTROS =====
     function renderFilters() {
-        var $tabs = $('.filters__tabs');
+        var $tabs = $('.filter-tope-group');
         $tabs.empty();
 
         // Botón "Todos"
         var allBtn = $('<button>').text('Todos').addClass('active');
         allBtn.on('click', function() {
-            $('.filters__tabs button').removeClass('active');
+            $('.filter-tope-group button').removeClass('active');
             $(this).addClass('active');
             currentFilter = {};
             applyFilters();
@@ -80,7 +85,7 @@
             var btn = $('<button>').text(category);
             btn.on('click', (function(cat) {
                 return function() {
-                    $('.filters__tabs button').removeClass('active');
+                    $('.filter-tope-group button').removeClass('active');
                     $(this).addClass('active');
                     currentFilter = { category: cat };
                     applyFilters();
@@ -88,6 +93,18 @@
             })(category));
             $tabs.append(btn);
         }
+
+        // Renderizar filtros avanzados (subcategorías y features)
+        renderAdvancedFilters();
+    }
+
+    // ===== FILTROS AVANZADOS =====
+    function renderAdvancedFilters() {
+        var $container = $('#filterContent');
+        $container.empty();
+
+        // No mostramos filtros avanzados en esta versión para simplificar
+        // Puedes añadirlos más tarde si lo deseas
     }
 
     // ===== APLICAR FILTROS =====
@@ -129,11 +146,11 @@
 
     // ===== RENDER PRODUCTOS =====
     function renderProducts(products) {
-        var $grid = $('.product-grid');
+        $grid = $('.isotope-grid');
         $grid.empty();
 
         if (!products || products.length === 0) {
-            $grid.html('<p style="color: var(--text-muted); text-align:center; padding:40px 0;">No se encontraron títulos.</p>');
+            $grid.html('<div class="col-12"><p style="color: var(--text-muted); text-align:center; padding:40px 0;">No se encontraron títulos.</p></div>');
             return;
         }
 
@@ -148,74 +165,104 @@
             $grid.append(card);
         }
 
-        // Inicializar LazyLoad para las imágenes
+        // Inicializar Isotope
+        if (typeof Isotope !== 'undefined') {
+            $grid.isotope('destroy');
+            $grid.isotope({
+                itemSelector: '.isotope-item',
+                layoutMode: 'fitRows',
+                percentPosition: true,
+                animationEngine: 'best-available',
+                masonry: {
+                    columnWidth: '.isotope-item'
+                }
+            });
+        }
+
+        // Inicializar LazyLoad
         if (typeof LazyLoad !== 'undefined') {
             var lazy = new LazyLoad({
-                elements_selector: '.card-product__img img[data-src]'
+                elements_selector: '.block2-pic img[data-src]'
             });
         }
     }
 
     // ===== CREAR TARJETA =====
     function createProductCard(product) {
-        var slug = ToSlug(product.Label);
-        var $card = $('<div>').addClass('card-product');
+        var slug = product.slug || ToSlug(product.Label);
+        var $col = $('<div>').addClass('col-sm-6 col-md-4 col-lg-3 p-b-60 isotope-item');
 
-        // Imagen
-        var imgSrc = './images/products/' + slug + '-0.webp';
-        var $img = $('<img>').attr('data-src', imgSrc).attr('alt', product.Label);
-        var $imgWrap = $('<div>').addClass('card-product__img').append($img);
-        $card.append($imgWrap);
+        // Clases para filtros
+        var filterClass = ' category-' + normalizeText(product.Category) + ' subcategory-' + normalizeText(product.SubCategory);
+        if (product.Features) {
+            for (var f = 0; f < product.Features.length; f++) {
+                var feat = normalizeText(product.Features[f]);
+                if (feat) filterClass += ' feature-' + feat;
+            }
+        }
+        $col.addClass(filterClass);
 
-        // Cuerpo
-        var $body = $('<div>').addClass('card-product__body');
+        // HTML de la tarjeta (similar al original)
+        var html = '';
+        html += '<div class="block2">';
+        html += '  <a href="product.html?id=' + slug + '" class="stext-104 cl3 hov-cl1 trans-04 js-name-b2">';
+        html += '    <div class="block2-pic hov-img0">';
+        html += '      <img data-src="./images/products/' + slug + '-0.webp" alt="' + product.Label + '">';
+        html += '    </div>';
+        html += '  </a>';
+        html += '  <div class="block2-txt flex-w flex-t p-t-14">';
+        html += '    <div class="block2-txt-child1 flex-col-l">';
+        html += '      <a href="product.html?id=' + slug + '" class="stext-104 cl3 hov-cl1 trans-04 js-name-b2">' + spanishFormat(product.Label) + '</a>';
+        html += '      <span class="cl4 stext-111">' + ((product.Features && product.Features.length > 0) ? spanishFormat(product.Features.join(', ')) : '') + '</span>';
+        html += '      <div class="p-t-6" style="line-height:1.3;">';
+        html += '        <span class="stext-105 cl2" style="font-weight:bold; font-size:20px;">' + product.Price + '</span>';
+        html += '      </div>';
+        html += '    </div>';
+        html += '    <div class="block2-txt-child2 flex-r p-t-3">';
+        var inCartFlag = inCart(slug);
+        html += '      <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addcart icon-add-cart hov-cl1 trans-04 ' + (inCartFlag ? 'cl1' : 'cl4') + '" data-slug="' + slug + '" data-label="' + product.Label + '">';
+        html += '        <i class="' + (inCartFlag ? 'zmdi zmdi-shopping-cart' : 'zmdi zmdi-shopping-cart-plus') + '" style="vertical-align:top;"></i>';
+        html += '      </a>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '</div>';
 
-        // Título
-        var $title = $('<div>').addClass('card-product__title').text(product.Label);
-        $body.append($title);
+        $col.html(html);
 
-        // Descripción (primer feature o resumen)
-        var desc = (product.Features && product.Features.length > 0) ? product.Features[0] : '';
-        var $desc = $('<div>').addClass('card-product__desc').text(desc);
-        $body.append($desc);
-
-        // Precio
-        var price = product.Price || '0.00 CUP';
-        var $price = $('<div>').addClass('card-product__price').text(price);
-        $body.append($price);
-
-        // Botón carrito
-        var $actions = $('<div>').addClass('card-product__actions');
-        var inCart = inCart(slug);
-        var $cartBtn = $('<button>')
-            .addClass('card-product__cart' + (inCart ? ' card-product__cart--in' : ''))
-            .html(inCart ? '🛒' : '➕')
-            .attr('data-slug', slug)
-            .attr('data-label', product.Label);
-        $cartBtn.on('click', function(e) {
+        // Evento del botón carrito
+        $col.find('.js-addcart').on('click', function(e) {
             e.preventDefault();
             var slug = $(this).data('slug');
             var label = $(this).data('label');
             var wasRemoved = addToCart(slug, label, 1, true);
             updateCartQty();
+            var icon = $(this).find('i');
             if (wasRemoved) {
-                $(this).removeClass('card-product__cart--in').html('➕');
+                icon.removeClass('zmdi-shopping-cart').addClass('zmdi-shopping-cart-plus');
+                $(this).removeClass('cl1').addClass('cl4');
             } else {
-                $(this).addClass('card-product__cart--in').html('🛒');
+                icon.removeClass('zmdi-shopping-cart-plus').addClass('zmdi-shopping-cart');
+                $(this).removeClass('cl4').addClass('cl1');
             }
         });
-        $actions.append($cartBtn);
-        $body.append($actions);
 
-        // Enlace al detalle
-        $card.on('click', function(e) {
-            if ($(e.target).closest('.card-product__cart').length) return;
-            window.location.href = 'product.html?id=' + slug;
-        });
-        $card.css('cursor', 'pointer');
+        return $col;
+    }
 
-        $card.append($body);
-        return $card;
+    // ===== INICIAR ISOTOPE =====
+    function initIsotope() {
+        $grid = $('.isotope-grid');
+        if ($grid.length && typeof Isotope !== 'undefined') {
+            $grid.isotope({
+                itemSelector: '.isotope-item',
+                layoutMode: 'fitRows',
+                percentPosition: true,
+                animationEngine: 'best-available',
+                masonry: {
+                    columnWidth: '.isotope-item'
+                }
+            });
+        }
     }
 
     // ===== BÚSQUEDA EN TIEMPO REAL =====
@@ -240,7 +287,6 @@
         window.addEventListener('storage', function(e) {
             if (e.key === 'cart') {
                 updateCartQty();
-                // Actualizar iconos de carrito en las tarjetas (recargar productos)
                 // Para simplificar, recargamos los productos con el filtro actual
                 applyFilters();
             }
