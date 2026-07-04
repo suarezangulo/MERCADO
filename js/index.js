@@ -20,7 +20,7 @@ function loadIsotope() {
                 columnWidth: '.isotope-item'
             },
             getSortData: {
-                price: '[data-price-usd] parseFloat', // Ya no se usa, pero se mantiene
+                price: '[data-price-usd] parseFloat',
                 update: '[data-update] parseFloat'
             },
             filter: function() {
@@ -54,6 +54,23 @@ function loadData($, data) {
     let $filterCategoriesTag = $('.filter-tope-group');
     let $filtersTag = $('.wrap-filter');
 
+    // ===== MEJORA 2: MOSTRAR SKELETONS MIENTRAS CARGA =====
+    $topeContainer.empty();
+    for (let i = 0; i < 8; i++) {
+        let skeleton = document.createElement("div");
+        skeleton.setAttribute("class", "col-sm-6 col-md-4 col-lg-3 p-b-60");
+        skeleton.innerHTML = `
+            <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-text">
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-desc"></div>
+                    <div class="skeleton-price"></div>
+                </div>
+            </div>`;
+        $topeContainer.append(skeleton);
+    }
+
     // Ordenar por
     let orderByFilter = addFiltersTag($filtersTag, 1, "Ordenar por");
     addFilterLi(orderByFilter, "Recientes", "orderBy", true, () => sortProducts("update", "desc", "Recientes"));
@@ -74,51 +91,62 @@ function loadData($, data) {
     var searchParam = urlParams.get('search');
     $('[name="search-product"]').val(searchParam);
 
-    // Agregar categorías al tope
-    addCategoryTag($filterCategoriesTag, "Todos", "*", categoryKeyParam == null || categoryKeyParam.length == 0);
-    for (const categoryKey in data) {
-        if (filterTree[categoryKey] == null) filterTree[categoryKey] = [];
-        filterData[normalizeText(categoryKey)] = categoryKey;
-        addCategoryTag($filterCategoriesTag, categoryKey, categoryKey, normalizeText(categoryKey) == categoryKeyParam);
-        const category = data[categoryKey];
-        for (const subcategoryKey in category) {
-            filterData[normalizeText(subcategoryKey)] = subcategoryKey;
-            if (filterTree[categoryKey][subcategoryKey] == null) filterTree[categoryKey][subcategoryKey] = [];
-            const subcategory = category[subcategoryKey];
-            for (const productKey in subcategory) {
-                const product = subcategory[productKey];
-                if (filterTree[categoryKey][subcategoryKey][product.Date] == null)
-                    filterTree[categoryKey][subcategoryKey][product.Date] = [];
+    // Pequeño retraso para que los skeletons sean visibles
+    setTimeout(function() {
+        // Eliminar skeletons
+        $topeContainer.find('.skeleton-card').parent().remove();
+        
+        // Agregar categorías al tope
+        addCategoryTag($filterCategoriesTag, "Todos", "*", categoryKeyParam == null || categoryKeyParam.length == 0);
+        for (const categoryKey in data) {
+            if (filterTree[categoryKey] == null) filterTree[categoryKey] = [];
+            filterData[normalizeText(categoryKey)] = categoryKey;
+            addCategoryTag($filterCategoriesTag, categoryKey, categoryKey, normalizeText(categoryKey) == categoryKeyParam);
+            const category = data[categoryKey];
+            for (const subcategoryKey in category) {
+                filterData[normalizeText(subcategoryKey)] = subcategoryKey;
+                if (filterTree[categoryKey][subcategoryKey] == null) filterTree[categoryKey][subcategoryKey] = [];
+                const subcategory = category[subcategoryKey];
+                for (const productKey in subcategory) {
+                    const product = subcategory[productKey];
+                    if (filterTree[categoryKey][subcategoryKey][product.Date] == null)
+                        filterTree[categoryKey][subcategoryKey][product.Date] = [];
 
-                var filterClass = "";
-                var extendedFeatures = extendFeatures(product);
-                for (const featureKey in extendedFeatures) {
-                    const feature = extendedFeatures[featureKey];
-                    const filterPart = normalizeText(feature);
-                    if (filterPart.length > 0) {
-                        filterClass += " feature-" + filterPart;
-                        filterData[filterPart] = feature;
-                        filterTree[categoryKey][subcategoryKey][product.Date].push(feature);
+                    var filterClass = "";
+                    var extendedFeatures = extendFeatures(product);
+                    for (const featureKey in extendedFeatures) {
+                        const feature = extendedFeatures[featureKey];
+                        const filterPart = normalizeText(feature);
+                        if (filterPart.length > 0) {
+                            filterClass += " feature-" + filterPart;
+                            filterData[filterPart] = feature;
+                            filterTree[categoryKey][subcategoryKey][product.Date].push(feature);
+                        }
                     }
+                    addProductCard($topeContainer, product, categoryKey, subcategoryKey, filterClass);
                 }
-                addProductCard($topeContainer, product, categoryKey, subcategoryKey, filterClass);
             }
         }
-    }
 
-    $topeContainer.on('arrangeComplete', updateView);
-    $('[name="search-product"]').keyup(debounce(function() {
-        $('.isotope-grid').isotope();
-        updateViewSearch($(this));
-    }, 400));
+        $topeContainer.on('arrangeComplete', updateView);
+        $('[name="search-product"]').keyup(debounce(function() {
+            $('.isotope-grid').isotope();
+            updateViewSearch($(this));
+        }, 400));
 
-    var lazyLoadInstance = new LazyLoad({
-        elements_selector: "img[data-src]",
-        callback_loaded: function() {
-            let iso = $('.isotope-grid');
-            if (iso.data('isotope')) iso.isotope('layout');
-        }
-    });
+        var lazyLoadInstance = new LazyLoad({
+            elements_selector: "img[data-src]",
+            callback_loaded: function() {
+                let iso = $('.isotope-grid');
+                if (iso.data('isotope')) iso.isotope('layout');
+            }
+        });
+        
+        // Inicializar Isotope después de cargar los productos
+        $('.isotope-grid').imagesLoaded({}, function () {
+            loadIsotope();
+        });
+    }, 600);
 }
 
 // ===== FUNCIONES AUXILIARES =====
@@ -140,12 +168,12 @@ function updateViewSearch(searchControl = null) {
     if (searchControl == null) searchControl = $('[name="search-product"]');
     let searchText = searchControl.val();
     if (searchText != null && searchText.length > 0) {
-        $('.js-show-search').addClass("how-active1");
+        $('.js-show-search').addClass("show-search");
         if (googleAnalyticsId != null && googleAnalyticsId.length > 0) {
             gtag('event', 'search', { 'search_term': searchText });
         }
     } else {
-        $('.js-show-search').removeClass("how-active1");
+        $('.js-show-search').removeClass("show-search");
     }
 }
 
@@ -153,8 +181,8 @@ function udpateViewFilter() {
     let anyFilter = false;
     if (currentFilter["subcategory"] != null && currentFilter["subcategory"].length > 0) anyFilter = true;
     if (!anyFilter && (currentFilter["feature"] != null && currentFilter["feature"].length > 0)) anyFilter = true;
-    if (anyFilter) $('.js-show-filter').addClass("how-active1");
-    else $('.js-show-filter').removeClass("how-active1");
+    if (anyFilter) $('.js-show-filter').addClass("show-filter");
+    else $('.js-show-filter').removeClass("show-filter");
 }
 
 function updateView() {    
@@ -278,11 +306,13 @@ function updateFilters(title, pos, collection, forTags, prevFilter) {
     }
 }
 
+// ===== MEJORA 1: FUNCIÓN addCategoryTag CON PÍLDORAS MICA =====
 function addCategoryTag($container, label, filterValue, active) {
     let newButton = document.createElement("button");
-    let aClass = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
-    if (active) aClass += " how-active1";
-    newButton.setAttribute("class", aClass);    
+    let aClass = "mica-pill-btn";
+    if (active) aClass += " active";
+    newButton.setAttribute("class", aClass);
+    newButton.setAttribute("data-filter", filterValue);
     newButton.textContent = spanishFormat(label);
     newButton.addEventListener('click', () => {   
         if (filterValue == "*" && currentFilter["category"] == null) return;
@@ -290,8 +320,18 @@ function addCategoryTag($container, label, filterValue, active) {
         currentFilter = [];
         if (filterValue != "*") currentFilter["category"] = normalizeText(filterValue);
         $('.isotope-grid').isotope();
+        // Actualizar estado activo en todas las píldoras
+        $('.mica-pill-btn').removeClass('active');
+        $(newButton).addClass('active');
     });
     $container.append(newButton);
+    
+    // Asegurar que el contenedor tenga display flex
+    $container.css({
+        'display': 'flex',
+        'flex-wrap': 'wrap',
+        'gap': '8px'
+    });
 }
 
 function addFiltersTag($container, col, label, forTags = false) {
