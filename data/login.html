@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Panel de Administración</title>
+    <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -13,7 +14,7 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background: linear-gradient(135deg, #1a1a2e, #0d0d0d, #1a0000);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -47,7 +48,7 @@
         }
         .login-container .logo i {
             font-size: 60px;
-            color: #6c7ae0;
+            color: #e50914;
         }
         .form-group {
             margin-bottom: 20px;
@@ -71,9 +72,9 @@
             outline: none;
         }
         .form-group input:focus {
-            border-color: #6c7ae0;
+            border-color: #e50914;
             background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 20px rgba(108, 122, 224, 0.2);
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
         }
         .form-group input::placeholder {
             color: rgba(255,255,255,0.3);
@@ -83,7 +84,7 @@
             padding: 14px;
             border: none;
             border-radius: 12px;
-            background: linear-gradient(135deg, #6c7ae0, #5a67d8);
+            background: linear-gradient(135deg, #e50914, #b20710);
             color: #fff;
             font-size: 18px;
             font-weight: 700;
@@ -93,7 +94,7 @@
         }
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(108, 122, 224, 0.4);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.5);
         }
         .btn-login:active {
             transform: translateY(0);
@@ -146,12 +147,10 @@
             const password = document.getElementById('password').value.trim();
             const errorMsg = document.getElementById('errorMsg');
 
-            // Cargar usuarios desde el archivo JSON
             fetch('../data/admin-users.json')
                 .then(response => response.json())
                 .then(users => {
                     if (users[username] && users[username].password === password) {
-                        // Guardar sesión
                         localStorage.setItem('adminUser', JSON.stringify({
                             username: username,
                             name: users[username].name
@@ -170,7 +169,6 @@
                 });
         });
 
-        // Verificar si ya está logueado
         const adminUser = localStorage.getItem('adminUser');
         if (adminUser) {
             window.location.href = 'index.html';
