@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Contacto - CINEMARKET</title>
+	<title>CINEMARKET - Catálogo de películas, series y más</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0a0a0a">
-	<meta name="description" content="Contacta con CINEMARKET para consultas, pedidos o información sobre títulos audiovisuales.">
-	<meta name="keywords" content="contacto, películas, series, comprar, Cuba, WhatsApp">
+	<meta name="description" content="Catálogo audiovisual en CUP: películas (5 CUP) y capítulos de series, shows, documentales y novelas (2 CUP por capítulo).">
+	<meta name="keywords" content="películas, series, documentales, shows, novelas, cine, comprar, Cuba, CUP">
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="CINEMARKET">
-	
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://tutienda.com/">
-	<meta property="og:title" content="Contacto - CINEMARKET">
-	<meta property="og:description" content="Contáctanos por WhatsApp para cualquier consulta o pedido.">
+	<meta property="og:title" content="CINEMARKET - Catálogo Audiovisual en CUP">
+	<meta property="og:description" content="Encuentra las mejores películas, series, documentales y más. Precios fijos en CUP.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
 	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
@@ -25,47 +24,110 @@
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style>
+		.mica-floating-btn {
+			display: inline-flex; align-items: center; gap: 8px;
+			padding: 10px 22px; border-radius: 25px;
+			background: rgba(26, 26, 26, 0.65);
+			backdrop-filter: blur(16px) saturate(150%);
+			-webkit-backdrop-filter: blur(16px) saturate(150%);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			color: #CCCCCC; font-family: Poppins-Medium, sans-serif;
+			font-size: 14px; cursor: pointer; transition: all 0.3s ease;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			white-space: nowrap; outline: none;
+		}
+		.mica-floating-btn i { font-size: 16px; transition: all 0.3s ease; }
+		.mica-floating-btn:hover {
+			background: rgba(30, 144, 255, 0.2);
+			border-color: rgba(30, 144, 255, 0.5);
+			color: #FFFFFF; transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+		}
+		.mica-floating-btn.show-filter,
+		.mica-floating-btn.show-search {
+			background: rgba(30, 144, 255, 0.25);
+			border-color: rgba(30, 144, 255, 0.6);
+			color: #FFFFFF; box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+		}
+		.mica-floating-btn .icon-close-filter,
+		.mica-floating-btn .icon-close-search { display: none; }
+		.mica-floating-btn.show-filter .icon-filter,
+		.mica-floating-btn.show-search .icon-search { display: none; }
+		.mica-floating-btn.show-filter .icon-close-filter,
+		.mica-floating-btn.show-search .icon-close-search { display: inline-block; }
+
+		.filter-tope-group { display: flex; flex-wrap: wrap; gap: 8px; }
+		.mica-pill-btn {
+			padding: 8px 20px; border-radius: 25px;
+			background: rgba(26, 26, 26, 0.5);
+			backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			color: #AAA; font-family: 'Poppins', sans-serif;
+			font-size: 13px; font-weight: 500; cursor: pointer;
+			transition: all 0.3s ease; white-space: nowrap;
+		}
+		.mica-pill-btn:hover {
+			background: rgba(30, 144, 255, 0.15);
+			border-color: rgba(30, 144, 255, 0.4);
+			color: #fff; transform: translateY(-1px);
+		}
+		.mica-pill-btn.active, .mica-pill-btn.how-active1 {
+			background: linear-gradient(135deg, #1E90FF, #0066cc);
+			border-color: transparent; color: #fff;
+			font-weight: 600; box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+		}
+
+		/* Filtros Mica */
+		.filter-link {
+			display: inline-flex; align-items: center; gap: 6px;
+			padding: 6px 14px; border-radius: 20px;
+			background: rgba(26,26,26,0.4); color: #aaa;
+			border: 1px solid rgba(255,255,255,0.05);
+			font-size: 13px; text-decoration: none;
+			transition: all 0.3s ease; cursor: pointer;
+		}
+		.filter-link:hover {
+			background: rgba(30,144,255,0.15);
+			border-color: rgba(30,144,255,0.4); color: #fff;
+		}
+		.filter-link-active {
+			background: linear-gradient(135deg, #1E90FF, #0066cc);
+			border-color: transparent; color: #fff;
+			font-weight: 600;
+		}
+		.filter-link-active-bor {
+			background: linear-gradient(135deg, #1E90FF, #0066cc) !important;
+			border-color: transparent !important; color: #fff !important;
+			font-weight: 600;
+		}
+
+		.skeleton-card {
+			background: rgba(26, 26, 26, 0.5); border-radius: 16px;
+			overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
+		}
+		.skeleton-image {
+			width: 100%; height: 200px;
+			background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+			background-size: 200% 100%; animation: shimmer 1.5s infinite;
+		}
+		.skeleton-text { padding: 15px; }
+		.skeleton-title { height: 18px; width: 80%; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 10px; animation: shimmer 1.5s infinite; }
+		.skeleton-desc { height: 14px; width: 100%; background: rgba(255,255,255,0.03); border-radius: 4px; margin-bottom: 8px; animation: shimmer 1.5s infinite; }
+		.skeleton-price { height: 22px; width: 40%; background: rgba(255,255,255,0.05); border-radius: 4px; animation: shimmer 1.5s infinite; }
+		@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
 		.scroll-progress {
 			position: fixed; top: 0; left: 0; height: 3px;
 			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
 			z-index: 9999; width: 0%; transition: width 0.1s ease;
 			border-radius: 0 2px 2px 0;
-		}
-		.contact-card {
-			background: rgba(26,26,26,0.5);
-			backdrop-filter: blur(16px);
-			-webkit-backdrop-filter: blur(16px);
-			border: 1px solid rgba(255,255,255,0.08);
-			border-radius: 20px;
-			padding: 50px 60px;
-			box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-		}
-		.contact-textarea {
-			width: 100%;
-			padding: 16px 20px;
-			border: 1px solid rgba(255,255,255,0.1);
-			border-radius: 12px;
-			background: rgba(255,255,255,0.04);
-			color: #fff;
-			font-family: 'Poppins', sans-serif;
-			font-size: 14px;
-			resize: vertical;
-			min-height: 120px;
-			outline: none;
-			transition: all 0.3s ease;
-		}
-		.contact-textarea:focus {
-			border-color: rgba(30,144,255,0.5);
-			box-shadow: 0 0 20px rgba(30,144,255,0.15);
-			background: rgba(255,255,255,0.06);
-		}
-		.contact-textarea::placeholder { color: rgba(255,255,255,0.3); }
-		@media (max-width: 768px) {
-			.contact-card { padding: 30px 20px; }
 		}
 	</style>
 </head>
@@ -73,7 +135,6 @@
 
 	<div class="scroll-progress" id="scrollProgress"></div>
 
-	<!-- ===== HEADER ===== -->
 	<header role="banner" aria-label="Encabezado principal" class="header-v4">
 		<div class="container-menu-desktop">
 			<div class="top-bar">
@@ -94,15 +155,11 @@
 					<div class="menu-desktop">
 						<ul class="main-menu" role="menubar">
 							<li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
+							<li role="none"><a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;"><i class="zmdi zmdi-settings" style="font-size: 18px;"></i> Panel</a></li>
 						</ul>
 					</div>
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<button class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search" aria-label="Abrir búsqueda">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0" role="button" tabindex="0" aria-label="Carrito">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0" role="button" tabindex="0" aria-label="Carrito"><i class="zmdi zmdi-shopping-cart"></i></div>
 					</div>
 				</nav>
 			</div>
@@ -110,24 +167,22 @@
 		<div class="wrap-header-mobile">
 			<div class="logo-mobile">
 				<a href="./" aria-label="CINEMARKET" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
-					<div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30,144,255,0.4);">
-						<i class="zmdi zmdi-movie" style="color: #fff; font-size: 18px;"></i>
-					</div>
+					<div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30,144,255,0.4);"><i class="zmdi zmdi-movie" style="color: #fff; font-size: 18px;"></i></div>
 					<span style="font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">CINE</span>
 					<span style="font-size: 18px; font-weight: 600; color: #FFFFFF;">MARKET</span>
 				</a>
 			</div>
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<button class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search" aria-label="Abrir búsqueda"><i class="zmdi zmdi-search"></i></button>
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2" role="button" tabindex="0" aria-label="Carrito"><i class="zmdi zmdi-shopping-cart"></i></div>
 			</div>
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze" role="button" tabindex="0" aria-label="Abrir menú móvil">
-				<span class="hamburger-box"><span class="hamburger-inner"></span></span>
-			</div>
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze" role="button" tabindex="0" aria-label="Abrir menú móvil"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div>
 		</div>
 		<div class="menu-mobile" role="navigation" aria-label="Menú móvil">
 			<ul class="topbar-mobile"><li><div class="left-top-bar headnotification">Disfruta del mejor contenido audiovisual. Paga en CUP.</div></li></ul>
-			<ul class="main-menu-m" role="menubar"><li role="none"><a href="contact.html" role="menuitem">Contacto</a></li></ul>
+			<ul class="main-menu-m" role="menubar">
+				<li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
+				<li role="none"><a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;"><i class="zmdi zmdi-settings"></i> Panel</a></li>
+			</ul>
 		</div>
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search" role="dialog" aria-label="Búsqueda" aria-modal="true">
 			<div class="container-search-header">
@@ -140,47 +195,47 @@
 		</div>
 	</header>
 
-	<!-- ===== BREADCRUMB ===== -->
-	<nav aria-label="Ruta de navegación" class="container">
-		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<ul class="breadcrumb-list">
-				<li class="breadcrumb-item">
-					<a href="./" class="breadcrumb-btn">Inicio</a>
-					<span class="breadcrumb-sep"><i class="fa fa-angle-right"></i></span>
-				</li>
-				<li class="breadcrumb-item">
-					<span class="breadcrumb-btn active">Contacto</span>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-	<!-- ===== CONTACT PAGE ===== -->
 	<main role="main" aria-label="Contenido principal" class="mica-surface">
-		<section class="p-t-25 p-b-116">
+		<div class="bg0 m-t-23 p-b-140">
 			<div class="container">
-				<div class="flex-c">
-					<div class="contact-card" style="width: 100%; max-width: 700px;">
-						<form role="form" aria-label="Formulario de contacto por WhatsApp">
-							<h4 class="mtext-105 cl2 txt-center p-b-30">Envíame un WhatsApp</h4>
-							<div class="m-b-30">
-								<label for="msgContact" class="sr-only">Mensaje</label>
-								<textarea id="msgContact" class="contact-textarea" name="msg" placeholder="¿Cómo le puedo ayudar? (consulta sobre películas, series, precios, etc.)"></textarea>
-							</div>
-							<button type="submit" class="mica-btn mica-btn-primary pointer" style="width: 100%;" aria-label="Enviar mensaje por WhatsApp">Enviar</button>
-						</form>
+				<div class="flex-w flex-sb-m p-b-52">
+					<div class="flex-w flex-l-m filter-tope-group m-tb-10" role="group" aria-label="Filtros de categoría"></div>
+					<div class="flex-w flex-c-m m-tb-10" style="gap: 12px;">
+						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
+							<i class="icon-filter zmdi zmdi-filter-list"></i>
+							<i class="icon-close-filter zmdi zmdi-close"></i>
+							<span>Filtrar</span>
+						</button>
+						<button class="mica-floating-btn js-show-search" aria-label="Buscar productos">
+							<i class="icon-search zmdi zmdi-search"></i>
+							<i class="icon-close-search zmdi zmdi-close"></i>
+							<span>Buscar</span>
+						</button>
+					</div>
+					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
+						<div class="bor8 dis-flex p-l-15">
+							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
+							<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Buscar título, actor, director...">
+						</div>
+					</div>
+					<div class="dis-none panel-filter w-full p-t-10">
+						<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm" role="group" aria-label="Filtros avanzados"></div>
 					</div>
 				</div>
+				<div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
 			</div>
-		</section>
+		</div>
 	</main>
 
-	<!-- ===== FOOTER ===== -->
 	<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
 		<div class="container">
 			<div class="p-t-20">
 				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
-				<p class="txt-center"><a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a></p>
+				<p class="txt-center">
+					<a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
+					<span style="color: #888; margin: 0 10px;">|</span>
+					<a class="stext-107 cl1 txt-center" href="admin/login.html">Panel</a>
+				</p>
 				<p class="stext-107 cl6 txt-center">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados</p>
 			</div>
 			<div class="qr-container">
@@ -198,23 +253,21 @@
 
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/popper.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="vendor/select2/select2.min.js"></script>
-	<script>$(".js-select2").each(function(){$(this).select2({minimumResultsForSearch:20,dropdownParent:$(this).next('.dropDownSelect2')})})</script>
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="vendor/parallax100/parallax100.js"></script>
 	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="vendor/isotope/imagesloaded.pkgd.min.js"></script>
+	<script src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>$('.js-pscroll').each(function(){$(this).css({position:'relative',overflow:'hidden'});var ps=new PerfectScrollbar(this,{wheelSpeed:1,scrollingThreshold:1000,wheelPropagation:false});$(window).on('resize',function(){ps.update()})})</script>
-	<script src="js/main.js"></script>
+	<script src="js/lazyload.min.js"></script>
 	<script src="js/utils.js"></script>
-	<script>
-		$('button.pointer').off('click');
-		$('button.pointer').on('click', function () {
-			const message = $('textarea[name="msg"]').val();
-			let enlace = "https://wa.me/+" + contactCell + "?text=" + encodeURIComponent(message);
-			window.open(enlace);
-		});
-	</script>
+	<script src="js/index.js"></script>
 	<script>
 	window.addEventListener('scroll', function() {
 		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
