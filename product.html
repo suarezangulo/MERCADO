@@ -264,6 +264,44 @@
 			border-radius: 8px;
 		}
 
+		/* ===== FLECHAS DE NAVEGACIÓN DEL LIGHTBOX ===== */
+		.mfp-arrow {
+			background: rgba(26, 26, 26, 0.7) !important;
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border-radius: 50% !important;
+			width: 50px !important;
+			height: 50px !important;
+			display: flex !important;
+			align-items: center;
+			justify-content: center;
+			opacity: 0.8;
+			transition: all 0.3s ease;
+		}
+
+		.mfp-arrow:hover {
+			opacity: 1;
+			background: rgba(30, 144, 255, 0.5) !important;
+		}
+
+		.mfp-arrow-left {
+			left: 20px !important;
+		}
+
+		.mfp-arrow-right {
+			right: 20px !important;
+		}
+
+		/* Contador de imágenes */
+		.mfp-counter {
+			font-family: 'Poppins', sans-serif;
+			font-size: 14px;
+			color: #fff;
+			background: rgba(0,0,0,0.5);
+			padding: 4px 12px;
+			border-radius: 15px;
+		}
+
 		/* Responsive */
 		@media (max-width: 768px) {
 			.product-hero {
@@ -285,6 +323,16 @@
 			}
 			.gallery-item img {
 				height: 120px;
+			}
+			.mfp-arrow {
+				width: 40px !important;
+				height: 40px !important;
+			}
+			.mfp-arrow-left {
+				left: 10px !important;
+			}
+			.mfp-arrow-right {
+				right: 10px !important;
 			}
 		}
 
