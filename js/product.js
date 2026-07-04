@@ -1,23 +1,17 @@
 function buildBreadCrumb(n) {
     $container = $(".bread-crumb");
-    // Limpiar
     $container.empty();
-    // Crear lista
     var list = document.createElement("ul");
     list.setAttribute("class", "breadcrumb-list flex-w flex-m");
-    // Inicio
     addBreadCrumbItem(list, "Inicio", "./", false);
-    // Categoría
     if (n.Category) {
         let catUrl = "./?category=" + normalizeText(n.Category);
         addBreadCrumbItem(list, n.Category, catUrl, false);
     }
-    // Subcategoría
     if (n.SubCategory && n.SubCategory.length > 0) {
         let subUrl = "./?category=" + normalizeText(n.Category) + "&subcategory=" + normalizeText(n.SubCategory);
         addBreadCrumbItem(list, n.SubCategory, subUrl, false);
     }
-    // Producto actual (activo)
     addBreadCrumbItem(list, n.Label, null, true);
     $container.append(list);
 }
@@ -36,7 +30,6 @@ function addBreadCrumbItem(container, label, url, active) {
         a.setAttribute("class", "breadcrumb-btn");
         a.textContent = spanishFormat(label);
         li.appendChild(a);
-        // Separador
         var sep = document.createElement("span");
         sep.setAttribute("class", "breadcrumb-sep");
         sep.innerHTML = '<i class="fa fa-angle-right"></i>';
@@ -46,83 +39,81 @@ function addBreadCrumbItem(container, label, url, active) {
 }
 
 function buildGallery(n) {
-    $container = $(".gallery-lb");
-    n.Images.forEach(function(imgName, idx) {
-        // Resolver cada imagen con fallback de extensiones
+    var $galleryRow = $("#galleryRow");
+    $galleryRow.empty();
+    var imagesToProcess = n.Images || [];
+    var processedCount = 0;
+    
+    if (imagesToProcess.length === 0) {
+        var baseName = ToSlug(n.Label) + "-0";
+        imagesToProcess = [baseName + ".webp"];
+    }
+    
+    imagesToProcess.forEach(function(imgName, idx) {
         var baseName = imgName.replace(/\.[^.]+$/, '');
         var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
-        var csvExt = imgName.split('.').pop().toLowerCase();
+        var csvExt = imgName.includes('.') ? imgName.split('.').pop().toLowerCase() : 'webp';
         var orderedExtensions = [csvExt].concat(extensions.filter(function(ext) { return ext !== csvExt; }));
         
         resolveImageUrl(baseName, orderedExtensions, function(url) {
             var resolvedUrl = url || ('./images/products/' + imgName);
-            addGalleryItem($container, resolvedUrl);
-        });
-    });
-    // Inicializar magnificPopup después de un breve retraso para que se carguen las imágenes
-    setTimeout(function() {
-        $container.each(function() {
-            $(this).magnificPopup({
-                delegate: "a",
-                type: "image",
-                gallery: { enabled: !0 },
-                mainClass: "mfp-fade"
+            var galleryItem = document.createElement("div");
+            galleryItem.setAttribute("class", "gallery-item");
+            var img = document.createElement("img");
+            img.setAttribute("src", resolvedUrl);
+            img.setAttribute("alt", n.Label + " - Imagen " + (idx + 1));
+            img.setAttribute("loading", "lazy");
+            galleryItem.appendChild(img);
+            
+            // Click para abrir lightbox
+            $(galleryItem).on('click', function() {
+                $.magnificPopup.open({
+                    items: { src: resolvedUrl },
+                    type: 'image'
+                });
             });
-        });
-        // Re-inicializar slick después de resolver imágenes
-        $('.slick3').slick('refresh');
-    }, 500);
-}
-
-function addGalleryItem(n, t) {
-    let i = document.createElement("div");
-    i.setAttribute("class", "item-slick3");
-    i.setAttribute("data-thumb", t);
-    let r = document.createElement("div");
-    r.setAttribute("class", "wrap-pic-w pos-relative");
-    let f = document.createElement("img");
-    f.setAttribute("src", t);
-    f.setAttribute("alt", "imagen del artículo");
-    r.appendChild(f);
-    let u = document.createElement("a");
-    u.setAttribute("class", "flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04");
-    u.setAttribute("href", t);
-    let e = document.createElement("i");
-    e.setAttribute("class", "fa fa-expand");
-    u.appendChild(e);
-    r.appendChild(u);
-    i.appendChild(r);
-    n.append(i);
-}
-
-function buildFeatures(product) {
-    const featuresContainer = $(".product-features");
-    if (!featuresContainer.length) return;
-    if (!product.Features || product.Features.length === 0) {
-        featuresContainer.html('<p class="stext-102 cl6">Sin características.</p>');
-        return;
-    }
-    const isCombo = product.Features.some(f => /^\(\d+\)/.test(f));
-    let html = '<ul class="features-list" style="list-style: none; padding-left: 0; margin: 0;">';
-    product.Features.forEach(function(feature) {
-        if (isCombo) {
-            const match = feature.match(/^\((\d+)\)\s*(.*)/);
-            if (match) {
-                const quantity = match[1];
-                const name = match[2];
-                html += `<li style="display: flex; align-items: center; padding: 6px 0; border-bottom: 1px solid #f0f0f0;">
-                    <span style="background-color: rgba(30, 144, 255, 0.25); color: #fff; font-size: 12px; font-weight: bold; min-width: 30px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 13px; flex-shrink: 0; margin-right: 10px; border: 1px solid rgba(30, 144, 255, 0.3); backdrop-filter: blur(2px);">${quantity}</span>
-                    <span style="font-family: Poppins-Regular; font-size: 14px; color: #ccc;">${name}</span>
-                </li>`;
-            } else {
-                html += `<li style="padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-family: Poppins-Regular; font-size: 14px; color: #ccc;">${feature}</li>`;
+            
+            $galleryRow.append(galleryItem);
+            
+            // Usar la primera imagen como fondo del hero
+            if (processedCount === 0) {
+                $("#productHero").css("background-image", "url('" + resolvedUrl + "')");
             }
-        } else {
-            html += `<li style="padding: 4px 0; list-style: disc; margin-left: 20px; font-family: Poppins-Regular; font-size: 14px; color: #ccc;">${feature}</li>`;
-        }
+            processedCount++;
+        });
     });
-    html += '</ul>';
-    featuresContainer.html(html);
+}
+
+function buildDetailsGrid(n) {
+    var $grid = $("#detailsGrid");
+    $grid.empty();
+    
+    var details = [];
+    
+    // Extraer características del array Features
+    if (n.Features && n.Features.length > 0) {
+        n.Features.forEach(function(feature) {
+            var parts = feature.split(':');
+            if (parts.length >= 2) {
+                details.push({
+                    label: parts[0].trim(),
+                    value: parts.slice(1).join(':').trim()
+                });
+            }
+        });
+    }
+    
+    // Añadir datos adicionales
+    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' });
+    details.push({ label: 'Stock', value: (n.Stock || 0) + ' unidades' });
+    details.push({ label: 'Categoría', value: n.Category + ' / ' + n.SubCategory });
+    
+    details.forEach(function(detail) {
+        var item = document.createElement("div");
+        item.setAttribute("class", "detail-item");
+        item.innerHTML = '<h4>' + detail.label + '</h4><p>' + detail.value + '</p>';
+        $grid.append(item);
+    });
 }
 
 function buildRelatedProducts(n) {
@@ -156,8 +147,7 @@ function getCiclon(n, t) {
         i = r.findIndex(n => n.Label === t);
     if (i < 0) return r;
     if (r.splice(i, 1), i + 1 == n.length) return n.sort((n, t) => t.Price - n.Price);
-    let f = -1,
-        e = 12;
+    let f = -1, e = 12;
     while (r.length > 0 && e > 0) {
         i >= r.length ? i = r.length - 1 : i < 0 && (i = 0);
         u.push(r[i]);
@@ -175,12 +165,12 @@ function getCiclon(n, t) {
         var i = new URLSearchParams(window.location.search),
             t = i.get("id");
         if (!t) {
-            $(".product-description").html("<p>Producto no encontrado.</p>");
+            $(".product-description-netflix").html("<p>Producto no encontrado.</p>");
             return;
         }
         n.getJSON("./data/products/" + t + ".json", function(i) {
             let r = spanishFormat(i.Label);
-            document.title = r;
+            document.title = r + " - CINEMARKET";
             n("head").append('<meta property="og:title" content="' + spanishFormat(r) + '">');
             
             // Imagen OG con fallback
@@ -197,111 +187,73 @@ function getCiclon(n, t) {
 
             buildBreadCrumb(i);
             buildGallery(i);
+            buildDetailsGrid(i);
 
-            var u = !0;
-            n(".product-label").each(function(t, i) {
-                i.textContent = r;
-                if (u && productStatus != null && productStatus.length > 0) {
-                    n(i).addClass("pstatus");
-                    n(i).attr("data-pstatus", productStatus);
-                    u = !1;
+            // Título
+            n(".product-label").text(r);
+            
+            // Categoría badge
+            n("#productCategoryBadge").text(i.Category);
+            
+            // Año (extraer de Features)
+            var yearText = "";
+            if (i.Features) {
+                var yearFeature = i.Features.find(function(f) { return f.toLowerCase().includes('año'); });
+                if (yearFeature) {
+                    yearText = yearFeature.split(':')[1] ? yearFeature.split(':')[1].trim() : "";
                 }
-            });
-
-            // Mostrar precio en CUP (sin conversión)
+            }
+            n("#productYearBadge").text(yearText || "N/A");
+            
+            // Precio badge
             let precioStr = i.Price;
             let valorNumerico = parseFloat(precioStr) || 0;
-            let precioFormateado = toMoneyStr(valorNumerico);
-            let htmlPrecio = `<span style="font-weight: bold; font-size: 24px; color: #fff;">${precioFormateado}</span>`;
-            n(".product-price").each(function() {
-                $(this).html(htmlPrecio);
-            });
+            n("#productPriceBadge").text(toMoneyStr(valorNumerico));
 
-            buildFeatures(i);
+            // Descripción
+            let desc = spanishFormat(i.Description || '');
+            n("#productDescriptionNetflix").text(desc);
 
+            // Botón agregar
             let stock = i.Stock || 0;
-            let stockHtml = '';
-            if (stock > 0) {
-                stockHtml = `<div class="p-t-10 p-b-10">
-                    <span class="stext-102 cl3">Disponibilidad: </span>
-                    <span class="stext-102 cl1" style="font-weight: bold;">${stock} unidades disponibles</span>
-                </div>`;
-            } else {
-                stockHtml = `<div class="p-t-10 p-b-10">
-                    <span class="stext-102 cl3">Disponibilidad: </span>
-                    <span class="stext-102 cl1" style="color: #FF3B3B; font-weight: bold;">Agotado</span>
-                </div>`;
-            }
-            n(".product-label").after(stockHtml);
-
+            var $btn = n(".js-addcart-detail");
+            $btn.attr("product-id", t);
+            $btn.attr("product-label", r);
+            
             if (stock <= 0) {
-                n(".js-addcart-detail").prop('disabled', true).text('Sin stock');
+                $btn.prop('disabled', true).text('Sin stock');
+                $btn.removeClass('btn-play-netflix').addClass('btn-info-netflix');
             }
 
-            let f = spanishFormat(i.Description);
-            n(".product-description").each(function(n, t) {
-                t.innerHTML = f.replace(/\n/g, "<br>");
-            });
-
-            n(".js-addcart-detail").off('click').on('click', function(e) {
+            $btn.off('click').on('click', function(e) {
                 e.preventDefault();
-                var $btn = n(this);
-                var productId = $btn.attr("product-id");
-                var productLabel = $btn.attr("product-label");
-                
                 if ($btn.prop('disabled')) return;
                 
                 var qty = 1;
-                var qtyInput = $btn.parent().find('[name="num-product"]');
-                if (qtyInput.length && parseInt(qtyInput.val()) > 0) {
-                    qty = parseInt(qtyInput.val());
-                }
-                
-                if (stock > 0 && qty > stock) {
-                    swal("Stock insuficiente", "Solo hay " + stock + " unidades disponibles.", "warning");
-                    return;
-                }
-                
-                var wasRemoved = addToCart(productId, productLabel, qty, true);
+                var wasRemoved = addToCart(t, r, qty, true);
                 updateCartQty();
                 
                 if (wasRemoved) {
-                    $btn.text("Agregar");
-                    $btn.removeClass("bg1").addClass("bg3");
+                    $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
                 } else {
-                    $btn.text("Agregado ✓");
-                    $btn.removeClass("bg3").addClass("bg1");
+                    $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
+                    setTimeout(function() {
+                        if (inCart(t)) {
+                            $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
+                        } else {
+                            $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
+                        }
+                    }, 2500);
                 }
-                
-                $btn.css("transform", "scale(0.9)");
-                setTimeout(function() {
-                    $btn.css("transform", "scale(1)");
-                }, 200);
-                
-                setTimeout(function() {
-                    var isStillInCart = inCart(productId);
-                    if (isStillInCart) {
-                        $btn.text("Agregado ✓");
-                        $btn.removeClass("bg3").addClass("bg1");
-                    } else {
-                        $btn.text("Agregar");
-                        $btn.removeClass("bg1").addClass("bg3");
-                    }
-                }, 2500);
-            });
-
-            n(".js-addcart-detail").each(function() {
-                $(this).attr("product-id", t);
-                $(this).attr("product-label", r);
             });
 
             if (inCart(t) && stock > 0) {
-                n(".js-addcart-detail").text("Agregado ✓").addClass("bg1").removeClass("bg3");
+                $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
             }
 
             buildRelatedProducts(i);
         }).fail(function() {
-            $(".product-description").html("<p>Producto no disponible.</p>");
+            $(".product-description-netflix").html("<p>Producto no disponible.</p>");
         });
     });
 })(jQuery);
