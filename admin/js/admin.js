@@ -1,861 +1,818 @@
-/* ============================================================
-   ADMIN.CSS - Panel de Administración CINEMARKET
-   Estilo claro, similar a la vista de usuario
-   ============================================================ */
-
-/* ===== VARIABLES ===== */
-:root {
-    --primary: #e50914;
-    --primary-dark: #b20710;
-    --primary-glow: rgba(229, 9, 20, 0.15);
-    --bg-body: #f5f5f5;
-    --bg-sidebar: #ffffff;
-    --bg-card: #ffffff;
-    --bg-card-hover: #f8f8f8;
-    --bg-input: #f9f9f9;
-    --text-primary: #222222;
-    --text-secondary: #555555;
-    --text-muted: #888888;
-    --border-color: #e6e6e6;
-    --border-glow: rgba(229, 9, 20, 0.15);
-    --success: #2ecc71;
-    --danger: #e74c3c;
-    --warning: #f39c12;
-    --info: #3498db;
-    --radius: 10px;
-    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.12);
-}
-
-/* ===== RESET Y BASE ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-primary);
-    min-height: 100vh;
-    display: flex;
-    overflow: hidden;
-}
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-track {
-    background: var(--bg-body);
-}
-::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #aaa;
-}
-
-/* ===== SIDEBAR ===== */
-.sidebar {
-    width: 280px;
-    background: var(--bg-sidebar);
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 30px 20px;
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    z-index: 100;
-    transition: all 0.3s ease;
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.04);
-}
-
-.sidebar .brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 24px;
-}
-
-.sidebar .brand .logo-icon {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #fff;
-}
-
-.sidebar .brand .logo-text {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    color: var(--text-primary);
-}
-
-.sidebar .brand .logo-text span {
-    color: var(--primary);
-}
-
-/* ===== USUARIO ===== */
-.sidebar .user-card {
-    background: var(--bg-body);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    border: 1px solid var(--border-color);
-}
-
-.sidebar .user-card .avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
-    flex-shrink: 0;
-}
-
-.sidebar .user-card .user-info .name {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text-primary);
-}
-.sidebar .user-card .user-info .username {
-    font-size: 12px;
-    color: var(--text-muted);
-}
-
-/* ===== NAVEGACIÓN ===== */
-.sidebar nav ul {
-    list-style: none;
-    flex: 1;
-}
-
-.sidebar nav ul li {
-    margin-bottom: 2px;
-}
-
-.sidebar nav ul li a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-radius: var(--radius);
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 500;
-    position: relative;
-}
-
-.sidebar nav ul li a:hover {
-    background: var(--bg-body);
-    color: var(--text-primary);
-}
-
-.sidebar nav ul li a.active {
-    background: rgba(229, 9, 20, 0.08);
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.sidebar nav ul li a i {
-    width: 20px;
-    text-align: center;
-    font-size: 16px;
-    color: var(--text-muted);
-}
-
-.sidebar nav ul li a.active i {
-    color: var(--primary);
-}
-
-.sidebar nav ul li a .badge {
-    margin-left: auto;
-    background: var(--primary);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 10px;
-    border-radius: 20px;
-}
-
-/* ===== BOTÓN CERRAR SESIÓN ===== */
-.sidebar .logout-btn {
-    margin-top: 20px;
-    padding: 13px 16px;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    width: 100%;
-}
-
-.sidebar .logout-btn:hover {
-    background: rgba(229, 9, 20, 0.06);
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.sidebar .logout-btn i {
-    width: 20px;
-    text-align: center;
-}
-
-/* ===== MAIN CONTENT ===== */
-.main-content {
-    margin-left: 280px;
-    flex: 1;
-    padding: 35px 40px;
-    min-height: 100vh;
-    background: var(--bg-body);
-    overflow-y: auto;
-    height: 100vh;
-}
-
-/* ===== PAGE HEADER ===== */
-.page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.page-header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.page-header h1 small {
-    font-size: 16px;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-left: 10px;
-}
-
-.page-header .actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-/* ===== BOTONES ===== */
-.btn {
-    padding: 10px 22px;
-    border: none;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    letter-spacing: 0.3px;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: #fff;
-}
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
-}
-
-.btn-success {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-    color: #fff;
-}
-.btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.3);
-}
-
-.btn-danger {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: #fff;
-}
-.btn-danger:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
-}
-
-.btn-warning {
-    background: linear-gradient(135deg, #f39c12, #e67e22);
-    color: #fff;
-}
-.btn-warning:hover {
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-}
-.btn-outline:hover {
-    background: var(--bg-body);
-    color: var(--text-primary);
-    border-color: #ccc;
-}
-
-.btn-sm {
-    padding: 6px 14px;
-    font-size: 12px;
-    border-radius: 8px;
-}
-
-/* ===== CARDS ===== */
-.card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    padding: 28px 30px;
-    margin-bottom: 24px;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: var(--shadow-hover);
-}
-
-.card .card-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-secondary);
-}
-
-.card .card-title i {
-    color: var(--primary);
-    font-size: 18px;
-}
-
-/* ===== ESTADÍSTICAS ===== */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.stat-card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    padding: 24px 22px;
-    border: 1px solid var(--border-color);
-    text-align: left;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
-}
-
-.stat-card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
-}
-
-.stat-card .stat-icon {
-    font-size: 28px;
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-.stat-card .number {
-    font-size: 34px;
-    font-weight: 800;
-    color: var(--text-primary);
-}
-
-.stat-card .label {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-top: 4px;
-}
-
-/* ===== TABLA ===== */
-.table-wrap {
-    overflow-x: auto;
-    margin: -5px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table thead th {
-    padding: 14px 18px;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-muted);
-    border-bottom: 2px solid var(--border-color);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-table tbody td {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 14px;
-    vertical-align: middle;
-    color: var(--text-secondary);
-}
-
-table tbody tr {
-    transition: all 0.3s ease;
-}
-
-table tbody tr:hover {
-    background: var(--bg-body);
-}
-
-table tbody td strong {
-    color: var(--text-primary);
-}
-
-table .product-thumb {
-    width: 45px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 6px;
-    background: var(--bg-body);
-    border: 1px solid var(--border-color);
-}
-
-table .actions-cell {
-    display: flex;
-    gap: 6px;
-}
-
-/* ===== FORMULARIOS ===== */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
-}
-
-.form-group label .required {
-    color: var(--primary);
-}
-
-.form-control {
-    width: 100%;
-    padding: 13px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: var(--radius);
-    background: var(--bg-input);
-    color: var(--text-primary);
-    font-size: 14px;
-    transition: all 0.3s ease;
-    outline: none;
-    font-family: inherit;
-}
-
-.form-control:focus {
-    border-color: var(--primary);
-    background: #fff;
-    box-shadow: 0 0 0 4px var(--primary-glow);
-}
-
-.form-control::placeholder {
-    color: var(--text-muted);
-}
-
-textarea.form-control {
-    resize: vertical;
-    min-height: 90px;
-}
-
-select.form-control {
-    appearance: none;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
-}
-
-.form-control option {
-    color: var(--text-primary);
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-/* ===== FILE UPLOAD ===== */
-.file-upload-area {
-    border: 2px dashed var(--border-color);
-    border-radius: var(--radius);
-    padding: 40px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    background: var(--bg-input);
-}
-
-.file-upload-area:hover {
-    border-color: var(--primary);
-    background: rgba(229, 9, 20, 0.03);
-}
-
-.file-upload-area.dragover {
-    border-color: var(--primary);
-    background: rgba(229, 9, 20, 0.06);
-    box-shadow: 0 0 30px var(--primary-glow);
-}
-
-.file-upload-area input[type="file"] {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.file-upload-area .upload-icon {
-    font-size: 48px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-}
-
-.file-upload-area .upload-text {
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
-.file-upload-area .upload-text strong {
-    color: var(--primary);
-}
-
-.file-upload-area .upload-hint {
-    color: var(--text-muted);
-    font-size: 12px;
-    margin-top: 6px;
-}
-
-.image-preview-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.image-preview-item {
-    position: relative;
-    width: 100px;
-    height: 140px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 2px solid var(--border-color);
-    transition: all 0.3s ease;
-    background: var(--bg-body);
-}
-
-.image-preview-item:hover {
-    border-color: var(--primary);
-}
-
-.image-preview-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.image-preview-item .remove-image {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--danger);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.image-preview-item .remove-image:hover {
-    transform: scale(1.1);
-}
-
-/* ===== MODAL ===== */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal {
-    background: var(--bg-card);
-    border-radius: 16px;
-    padding: 40px;
-    max-width: 780px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    border: 1px solid var(--border-color);
-    animation: modalFadeIn 0.3s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.97);
+// ============================================================
+// ADMIN.JS - Panel de administración con GitHub API
+// Versión con fallback universal de extensiones
+// ============================================================
+
+// ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
+(function checkSession() {
+    const adminUser = sessionStorage.getItem('adminUser');
+    const githubToken = sessionStorage.getItem('githubToken');
+    if (!adminUser || !githubToken) {
+        window.location.href = 'login.html';
+        return;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+    try {
+        const user = JSON.parse(adminUser);
+        document.getElementById('adminName').textContent = user.name || user.username;
+        document.getElementById('adminUsername').textContent = '@' + user.username;
+        const avatar = document.getElementById('adminAvatar');
+        const initials = (user.name || user.username).substring(0, 2).toUpperCase();
+        avatar.textContent = initials;
+    } catch (e) {
+        window.location.href = 'login.html';
+    }
+})();
+
+// ===== OBTENER TOKEN =====
+function getGitHubToken() {
+    return sessionStorage.getItem('githubToken');
+}
+
+// ===== CONFIGURACIÓN DE GITHUB =====
+const REPO_OWNER = 'suarezangulo';
+const REPO_NAME = 'MERCADO';
+const CSV_PATH = 'data/catalogo.csv';
+
+// ===== VARIABLES GLOBALES =====
+let products = [];
+let editingProduct = null;
+let uploadedImages = [];
+let existingImages = [];
+let imageCache = {}; // Cache de imágenes resueltas
+
+// ===== FUNCIÓN UNIVERSAL PARA RESOLVER UNA IMAGEN (con fallback de extensiones) =====
+function resolveImageUrl(baseName, extensions, callback) {
+    if (!baseName) return callback(null);
+    // Si ya está en caché, usarlo
+    if (imageCache[baseName]) {
+        callback(imageCache[baseName]);
+        return;
+    }
+    // Extensiones por defecto si no se proporcionan
+    const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+    let index = 0;
+    
+    function tryNext() {
+        if (index >= extList.length) {
+            // No se encontró ninguna
+            imageCache[baseName] = null;
+            callback(null);
+            return;
+        }
+        const ext = extList[index];
+        const url = `../images/products/${baseName}.${ext}`;
+        fetch(url, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    imageCache[baseName] = url;
+                    callback(url);
+                } else {
+                    index++;
+                    tryNext();
+                }
+            })
+            .catch(() => {
+                index++;
+                tryNext();
+            });
+    }
+    tryNext();
+}
+
+// ===== FUNCIONES DE GITHUB API =====
+async function fetchCSV() {
+    const token = getGitHubToken();
+    if (!token) throw new Error('Token no disponible');
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
+    const response = await fetch(url, {
+        headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+        }
+    });
+    if (!response.ok) throw new Error('Error al obtener CSV');
+    const data = await response.json();
+    
+    const binaryString = atob(data.content);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    let content = new TextDecoder('utf-8').decode(bytes);
+    
+    if (content.charCodeAt(0) === 0xFEFF) {
+        content = content.slice(1);
+    }
+    
+    return { content, sha: data.sha };
+}
+
+async function updateCSV(csvContent) {
+    const token = getGitHubToken();
+    if (!token) throw new Error('Token no disponible');
+    const { sha } = await fetchCSV();
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
+    
+    const contentWithBOM = '\uFEFF' + csvContent;
+    const encoder = new TextEncoder();
+    const data = encoder.encode(contentWithBOM);
+    const base64 = btoa(String.fromCharCode(...data));
+    
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+            message: 'Actualizar catálogo desde panel de administración',
+            content: base64,
+            sha: sha
+        })
+    });
+    if (!response.ok) throw new Error('Error al actualizar CSV');
+    return await response.json();
+}
+
+async function uploadImage(file, slug, index) {
+    const token = getGitHubToken();
+    if (!token) throw new Error('Token no disponible');
+    const extension = file.name.split('.').pop();
+    const fileName = `${slug}-${index}.${extension}`;
+    const path = `images/products/${fileName}`;
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
+    
+    const reader = new FileReader();
+    const fileData = await new Promise((resolve) => {
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+    });
+    
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+            message: `Subir imagen: ${fileName}`,
+            content: fileData
+        })
+    });
+    if (!response.ok) throw new Error(`Error al subir imagen ${fileName}`);
+    return { fileName, extension };
+}
+
+// ===== CARGAR PRODUCTOS =====
+async function loadProducts() {
+    try {
+        const { content } = await fetchCSV();
+        if (!content.trim()) {
+            products = [];
+            renderProductTable();
+            updateStats();
+            updateRecentProducts();
+            document.getElementById('productCount').textContent = 0;
+            return;
+        }
+        
+        const lines = content.split('\n').filter(line => line.trim());
+        if (lines.length === 0) {
+            products = [];
+            renderProductTable();
+            updateStats();
+            updateRecentProducts();
+            document.getElementById('productCount').textContent = 0;
+            return;
+        }
+        
+        const headers = lines[0].split(',').map(h => h.trim());
+        products = [];
+        for (let i = 1; i < lines.length; i++) {
+            const values = parseCSVLine(lines[i]);
+            const product = {};
+            headers.forEach((header, index) => {
+                product[header] = values[index] || '';
+            });
+            products.push(product);
+        }
+        renderProductTable();
+        updateStats();
+        updateRecentProducts();
+        document.getElementById('productCount').textContent = products.length;
+    } catch (error) {
+        showToast('Error al cargar productos: ' + error.message, 'error');
     }
 }
 
-.modal .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 28px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--border-color);
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let insideQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (insideQuotes) {
+            if (char === '"' && line[i+1] === '"') {
+                current += '"';
+                i++;
+            } else if (char === '"') {
+                insideQuotes = false;
+            } else {
+                current += char;
+            }
+        } else {
+            if (char === '"') {
+                insideQuotes = true;
+            } else if (char === ',') {
+                result.push(current.trim());
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+    }
+    result.push(current.trim());
+    return result;
 }
 
-.modal .modal-header h2 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-primary);
+// ===== RENDER TABLA (con fallback universal) =====
+function renderProductTable() {
+    const tbody = document.getElementById('productTableBody');
+    if (!products.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:50px; color: var(--text-muted);">
+            <i class="fas fa-film" style="font-size:48px; display:block; margin-bottom:16px; opacity:0.3;"></i>
+            No hay títulos en el catálogo. ¡Crea uno ahora!
+        </td></tr>`;
+        return;
+    }
+
+    // Generar HTML inicial con placeholders
+    let html = '';
+    products.forEach((p, index) => {
+        const slug = ToSlug(p.Label);
+        const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
+        let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
+        if (!imageName.includes('.')) {
+            imageName = imageName + '.webp';
+        }
+        const baseName = imageName.replace(/\.[^.]+$/, '');
+        const imgId = `img-${slug}-${index}`;
+        
+        html += `
+        <tr data-index="${index}">
+            <td>
+                <img id="${imgId}" 
+                     src="" 
+                     alt="${p.Label}" 
+                     class="product-thumb" 
+                     style="display:none;">
+                <div id="${imgId}-loading" style="width:45px; height:65px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            </td>
+            <td><strong>${p.Label}</strong></td>
+            <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
+            <td style="color: var(--text-secondary);">${p.Price}</td>
+            <td>${p.Stock || 0}</td>
+            <td>
+                <div class="actions-cell">
+                    <button class="btn btn-primary btn-sm edit-btn" data-index="${index}">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        `;
+    });
+    tbody.innerHTML = html;
+
+    // Asignar eventos a los botones
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            if (typeof editProduct === 'function') {
+                editProduct(index);
+            }
+        });
+    });
+
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            if (typeof deleteProduct === 'function') {
+                deleteProduct(index);
+            }
+        });
+    });
+
+    // Resolver imágenes con fallback
+    products.forEach((p, index) => {
+        const slug = ToSlug(p.Label);
+        const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
+        let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
+        if (!imageName.includes('.')) {
+            imageName = imageName + '.webp';
+        }
+        const baseName = imageName.replace(/\.[^.]+$/, '');
+        const imgId = `img-${slug}-${index}`;
+        const loadingId = `${imgId}-loading`;
+        const imgElement = document.getElementById(imgId);
+        const loadingElement = document.getElementById(loadingId);
+        
+        // Obtener extensiones posibles
+        const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        const csvExt = imageName.split('.').pop().toLowerCase();
+        const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+        
+        resolveImageUrl(baseName, orderedExtensions, (url) => {
+            if (loadingElement) loadingElement.style.display = 'none';
+            if (imgElement) {
+                imgElement.style.display = 'block';
+                imgElement.src = url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
+            }
+        });
+    });
 }
 
-.modal .modal-header h2 i {
-    color: var(--primary);
-    margin-right: 10px;
+// ===== FUNCIONES GLOBALES PARA BOTONES =====
+window.editProduct = function(index) {
+    console.log('editProduct llamado con índice:', index);
+    const product = products[index];
+    if (product) {
+        openProductForm(product);
+    } else {
+        showToast('Producto no encontrado', 'error');
+    }
+};
+
+window.deleteProduct = function(index) {
+    const product = products[index];
+    if (!product) return;
+    if (!confirm(`¿Eliminar "${product.Label}" definitivamente?`)) return;
+
+    (async function() {
+        try {
+            const { content } = await fetchCSV();
+            const lines = content.split('\n').filter(line => line.trim());
+            const headers = lines[0];
+            let bodyLines = lines.slice(1);
+
+            bodyLines = bodyLines.filter(line => !line.includes(product.Label));
+            const newCSV = [headers, ...bodyLines].join('\n');
+            await updateCSV(newCSV);
+            showToast(`"${product.Label}" eliminado`, 'success');
+            await loadProducts();
+        } catch (error) {
+            showToast('Error al eliminar: ' + error.message, 'error');
+        }
+    })();
+};
+
+// ===== ACTUALIZAR ESTADÍSTICAS =====
+function updateStats() {
+    document.getElementById('totalProducts').textContent = products.length;
+    const categories = new Set(products.map(p => p.Category));
+    document.getElementById('totalCategories').textContent = categories.size;
+    const totalStock = products.reduce((sum, p) => sum + (parseInt(p.Stock) || 0), 0);
+    document.getElementById('totalStock').textContent = totalStock;
 }
 
-.modal .modal-close {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+// ===== ÚLTIMOS PRODUCTOS (con fallback universal de imágenes) =====
+function updateRecentProducts() {
+    const container = document.getElementById('recentProducts');
+    const recent = products.slice(0, 5);
+    if (!recent.length) {
+        container.innerHTML = '<span style="color: var(--text-muted);">No hay títulos aún.</span>';
+        return;
+    }
+
+    // Generar HTML con placeholders de carga
+    let html = '';
+    const items = [];
+    recent.forEach((p, index) => {
+        const slug = ToSlug(p.Label);
+        const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
+        const firstImage = imagesList.length > 0 ? imagesList[0].trim() : '';
+        const baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : `${slug}-0`;
+        const imgId = `recent-img-${slug}-${index}`;
+        const loadingId = `recent-loading-${slug}-${index}`;
+        
+        html += `
+        <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border-color);">
+            <div style="width:32px; height:45px; flex-shrink:0; position:relative;">
+                <img id="${imgId}" 
+                     src="" 
+                     alt="${p.Label}" 
+                     style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03); display:none;">
+                <div id="${loadingId}" style="width:32px; height:45px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px; position:absolute; top:0; left:0;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            </div>
+            <span style="flex:1;">${p.Label}</span>
+            <span style="color: var(--text-muted); font-size:13px;">${p.Price}</span>
+        </div>
+        `;
+        items.push({ slug, baseName, imgId, loadingId });
+    });
+    container.innerHTML = html;
+
+    // Resolver cada imagen con fallback de extensiones
+    items.forEach(item => {
+        const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        // Si la imagen del CSV tiene extensión, ponerla primero
+        const imagesList = recent.find(p => ToSlug(p.Label) === item.slug)?.Images || '';
+        const firstImage = imagesList.split(';').map(img => img.trim())[0] || '';
+        const csvExt = firstImage.includes('.') ? firstImage.split('.').pop().toLowerCase() : 'webp';
+        const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+        
+        resolveImageUrl(item.baseName, orderedExtensions, (url) => {
+            const img = document.getElementById(item.imgId);
+            const loading = document.getElementById(item.loadingId);
+            if (loading) loading.style.display = 'none';
+            if (img) {
+                img.style.display = 'block';
+                if (url) {
+                    img.src = url;
+                } else {
+                    // Mostrar placeholder "?" si no se encontró ninguna imagen
+                    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="45"><rect fill="%23141414" width="32" height="45"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="10">?</text></svg>';
+                }
+            }
+        });
+    });
 }
 
-.modal .modal-close:hover {
-    color: var(--text-primary);
-    background: var(--bg-body);
-    transform: rotate(90deg);
+// ===== ABRIR FORMULARIO (con fallback de imágenes existentes) =====
+function openProductForm(product = null) {
+    editingProduct = product;
+    uploadedImages = [];
+    existingImages = [];
+    const container = document.getElementById('imagePreviewContainer');
+    container.innerHTML = '';
+    document.getElementById('imageUpload').value = '';
+
+    const modal = document.getElementById('productModal');
+    const title = document.getElementById('modalTitle');
+    const submitBtn = document.getElementById('submitProductBtn');
+
+    if (product) {
+        title.innerHTML = '<i class="fas fa-edit"></i> Editar Título';
+        submitBtn.innerHTML = '<i class="fas fa-save"></i> Actualizar';
+        document.getElementById('productLabel').value = product.Label || '';
+        document.getElementById('productCategory').value = product.Category || '';
+        document.getElementById('productSubcategory').value = product.SubCategory || '';
+        document.getElementById('productPrice').value = product.Price ? product.Price.replace(' CUP', '') : '';
+        document.getElementById('productStock').value = product.Stock || 0;
+        document.getElementById('productDescription').value = product.Description || '';
+        document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
+        
+        // Cargar imágenes existentes con fallback de extensiones
+        const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
+        existingImages = imagesList;
+        
+        // Mostrar un spinner mientras se resuelven las imágenes
+        container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> Cargando imágenes...</div>';
+        
+        // Resolver cada imagen y mostrarla cuando esté lista
+        let resolvedCount = 0;
+        imagesList.forEach((imgName, idx) => {
+            const baseName = imgName.replace(/\.[^.]+$/, '');
+            const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+            const csvExt = imgName.split('.').pop().toLowerCase();
+            const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+            
+            resolveImageUrl(baseName, orderedExtensions, (url) => {
+                // Limpiar el spinner la primera vez que se resuelve una imagen
+                if (resolvedCount === 0) {
+                    container.innerHTML = '';
+                }
+                resolvedCount++;
+                
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                const img = document.createElement('img');
+                img.alt = `Imagen ${idx+1}`;
+                if (url) {
+                    img.src = url;
+                    console.log(`✅ Imagen resuelta: ${url}`);
+                } else {
+                    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
+                    console.warn(`❌ No se encontró imagen para: ${baseName}`);
+                }
+                div.appendChild(img);
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-image';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = function() {
+                    removeExistingImage(idx);
+                };
+                div.appendChild(removeBtn);
+                container.appendChild(div);
+            });
+        });
+    } else {
+        title.innerHTML = '<i class="fas fa-plus-circle"></i> Nuevo Título';
+        submitBtn.innerHTML = '<i class="fas fa-save"></i> Guardar Título';
+        document.getElementById('productForm').reset();
+    }
+
+    populateCategorySelects();
+    openModal('productModal');
 }
 
-.modal .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border-color);
-    margin-top: 22px;
-}
-
-/* ===== TOAST ===== */
-.toast-container {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.toast {
-    padding: 16px 22px;
-    border-radius: var(--radius);
-    color: #fff;
-    font-weight: 500;
-    font-size: 14px;
-    animation: toastSlideIn 0.4s ease;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    min-width: 280px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.toast-success {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-}
-.toast-error {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-}
-.toast-warning {
-    background: linear-gradient(135deg, #f39c12, #e67e22);
-}
-.toast-info {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-}
-
-@keyframes toastSlideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.toast .toast-close {
-    margin-left: auto;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.7);
-    font-size: 20px;
-    transition: all 0.3s;
-}
-.toast .toast-close:hover {
-    color: #fff;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 992px) {
-    .sidebar {
-        width: 80px;
-        padding: 20px 12px;
-    }
-    .sidebar .brand span,
-    .sidebar .user-card .user-info,
-    .sidebar nav ul li a span,
-    .sidebar nav ul li a .badge,
-    .sidebar .logout-btn span {
-        display: none;
-    }
-    .sidebar .brand {
-        justify-content: center;
-    }
-    .sidebar .brand .logo-text {
-        display: none;
-    }
-    .sidebar .user-card {
-        justify-content: center;
-        padding: 12px;
-    }
-    .sidebar nav ul li a {
-        justify-content: center;
-        padding: 13px;
-    }
-    .sidebar .logout-btn {
-        justify-content: center;
-    }
-    .main-content {
-        margin-left: 80px;
-        padding: 25px;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-content {
-        padding: 20px;
-    }
-    .page-header h1 {
-        font-size: 22px;
-    }
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .modal {
-        padding: 25px;
+function removeExistingImage(index) {
+    existingImages.splice(index, 1);
+    // Reconstruir previsualización (simplificado: recargar el modal)
+    const product = editingProduct;
+    if (product) {
+        // Limpiar y volver a cargar
+        const container = document.getElementById('imagePreviewContainer');
+        container.innerHTML = '';
+        // Volver a cargar las imágenes existentes (sin fallback, se resolverán de nuevo)
+        existingImages.forEach((imgName, idx) => {
+            const baseName = imgName.replace(/\.[^.]+$/, '');
+            const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+            const csvExt = imgName.split('.').pop().toLowerCase();
+            const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+            
+            resolveImageUrl(baseName, orderedExtensions, (url) => {
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                const img = document.createElement('img');
+                img.alt = `Imagen ${idx+1}`;
+                img.src = url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
+                div.appendChild(img);
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-image';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = function() {
+                    removeExistingImage(idx);
+                };
+                div.appendChild(removeBtn);
+                container.appendChild(div);
+            });
+        });
     }
 }
 
-@media (max-width: 480px) {
-    .main-content {
-        padding: 15px;
-    }
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    .page-header {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .page-header .actions {
-        flex-wrap: wrap;
-    }
-    .modal {
-        padding: 20px;
+function populateCategorySelects() {
+    const catSelect = document.getElementById('productCategory');
+    const subSelect = document.getElementById('productSubcategory');
+    const currentCat = catSelect.value;
+    const currentSub = subSelect.value;
+
+    const categories = [...new Set(products.map(p => p.Category))];
+    catSelect.innerHTML = '<option value="">Seleccionar...</option>';
+    categories.forEach(cat => {
+        catSelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+    });
+    if (currentCat) catSelect.value = currentCat;
+
+    if (currentCat) {
+        const subs = [...new Set(products.filter(p => p.Category === currentCat).map(p => p.SubCategory))];
+        subSelect.innerHTML = '<option value="">Seleccionar...</option>';
+        subs.forEach(sub => {
+            subSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
+        });
+        if (currentSub) subSelect.value = currentSub;
+    } else {
+        subSelect.innerHTML = '<option value="">Primero selecciona una categoría</option>';
     }
 }
+
+document.getElementById('productCategory').addEventListener('change', function() {
+    const subSelect = document.getElementById('productSubcategory');
+    const cat = this.value;
+    if (cat) {
+        const subs = [...new Set(products.filter(p => p.Category === cat).map(p => p.SubCategory))];
+        subSelect.innerHTML = '<option value="">Seleccionar...</option>';
+        subs.forEach(sub => {
+            subSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
+        });
+    } else {
+        subSelect.innerHTML = '<option value="">Primero selecciona una categoría</option>';
+    }
+});
+
+// ===== SUBIR IMÁGENES =====
+document.getElementById('imageUpload').addEventListener('change', function(e) {
+    const files = this.files;
+    const container = document.getElementById('imagePreviewContainer');
+    
+    for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const div = document.createElement('div');
+            div.className = 'image-preview-item';
+            div.innerHTML = `
+                <img src="${event.target.result}" alt="Vista previa">
+                <button class="remove-image" onclick="removeNewImage(this, '${file.name}')">&times;</button>
+            `;
+            container.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+        uploadedImages.push(file);
+    }
+});
+
+function removeNewImage(btn, fileName) {
+    const item = btn.closest('.image-preview-item');
+    item.remove();
+    const index = uploadedImages.findIndex(f => f.name === fileName);
+    if (index > -1) uploadedImages.splice(index, 1);
+}
+
+// ===== GUARDAR PRODUCTO =====
+async function saveProduct() {
+    const label = document.getElementById('productLabel').value.trim();
+    const category = document.getElementById('productCategory').value;
+    const subcategory = document.getElementById('productSubcategory').value;
+    const price = document.getElementById('productPrice').value.trim();
+    const stock = parseInt(document.getElementById('productStock').value) || 0;
+    const description = document.getElementById('productDescription').value.trim();
+    const features = document.getElementById('productFeatures').value
+        .split('\n')
+        .filter(f => f.trim())
+        .join(';');
+
+    if (!label || !category || !subcategory || !price) {
+        showToast('Completa todos los campos obligatorios.', 'warning');
+        return;
+    }
+
+    const slug = ToSlug(label);
+    const uploadedNames = [];
+
+    try {
+        for (let i = 0; i < uploadedImages.length; i++) {
+            const result = await uploadImage(uploadedImages[i], slug, existingImages.length + i);
+            uploadedNames.push(result.fileName);
+        }
+    } catch (error) {
+        showToast('Error al subir imágenes: ' + error.message, 'error');
+        return;
+    }
+
+    const allImages = [...existingImages, ...uploadedNames];
+    const imagesNames = allImages.join(';');
+
+    const escapedDescription = description.includes(',') ? `"${description}"` : description;
+    const escapedFeatures = features.includes(',') ? `"${features}"` : features;
+    
+    const csvRow = [
+        category,
+        subcategory,
+        label,
+        `${parseFloat(price).toFixed(2)} CUP`,
+        stock,
+        escapedDescription,
+        escapedFeatures,
+        imagesNames
+    ].join(',');
+
+    try {
+        const { content } = await fetchCSV();
+        const lines = content.split('\n').filter(line => line.trim());
+        const headers = lines[0];
+        let bodyLines = lines.slice(1);
+
+        if (editingProduct) {
+            const index = bodyLines.findIndex(line => line.includes(editingProduct.Label));
+            if (index > -1) {
+                bodyLines[index] = csvRow;
+            } else {
+                bodyLines.push(csvRow);
+            }
+        } else {
+            bodyLines.push(csvRow);
+        }
+
+        const newCSV = [headers, ...bodyLines].join('\n');
+        await updateCSV(newCSV);
+        showToast(`"${label}" guardado exitosamente`, 'success');
+        closeModal('productModal');
+        await loadProducts();
+        showView('products');
+    } catch (error) {
+        showToast('Error al guardar: ' + error.message, 'error');
+    }
+}
+
+// ===== FUNCIONES UTILITARIAS =====
+function ToSlug(n) {
+    if (!n) return "";
+    const map = {
+        'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
+        'ü': 'u', 'ñ': 'n', 'Á': 'A', 'É': 'E', 'Í': 'I',
+        'Ó': 'O', 'Ú': 'U', 'Ü': 'U', 'Ñ': 'N'
+    };
+    let t = n.toLowerCase();
+    t = t.replace(/[áéíóúüñÁÉÍÓÚÜÑ]/g, char => map[char] || char);
+    t = t.replace(/[^a-z0-9\s-]/g, "");
+    t = t.replace(/ /g, "-");
+    t = t.replace(/-+/g, "-");
+    t = t.replace(/^-+/, "").replace(/-+$/, "");
+    return t;
+}
+
+// ===== TOAST =====
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-exclamation-circle',
+        warning: 'fa-exclamation-triangle',
+        info: 'fa-info-circle'
+    };
+    toast.innerHTML = `
+        <i class="fas ${icons[type] || icons.info}"></i>
+        <span>${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => {
+        if (toast.parentElement) toast.remove();
+    }, 5000);
+}
+
+// ===== MODAL =====
+function openModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ===== NAVEGACIÓN =====
+function showView(view) {
+    document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
+    document.getElementById(`view-${view}`).style.display = 'block';
+    document.querySelectorAll('.sidebar nav a').forEach(el => el.classList.remove('active'));
+    const activeLink = document.querySelector(`.sidebar nav a[data-view="${view}"]`);
+    if (activeLink) activeLink.classList.add('active');
+}
+
+// ===== CERRAR SESIÓN (FUNCIÓN GLOBAL) =====
+window.logout = function() {
+    console.log('Cerrando sesión...');
+    sessionStorage.removeItem('adminUser');
+    sessionStorage.removeItem('githubToken');
+    window.location.href = 'login.html';
+};
+
+// ===== INICIALIZACIÓN =====
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Inicializando panel...');
+    loadProducts();
+    showView('dashboard');
+
+    // Botón de nuevo producto
+    const createBtn = document.getElementById('createProductBtn');
+    if (createBtn) {
+        createBtn.addEventListener('click', () => openProductForm(null));
+    } else {
+        console.warn('No se encontró #createProductBtn');
+    }
+
+    // Botón de guardar producto
+    const submitBtn = document.getElementById('submitProductBtn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', saveProduct);
+    } else {
+        console.warn('No se encontró #submitProductBtn');
+    }
+
+    // Botón de cerrar sesión
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', window.logout);
+        console.log('Evento de logout asignado');
+    } else {
+        console.warn('No se encontró #logoutBtn');
+    }
+
+    // Cerrar modal al hacer clic fuera
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+});
+
+// ===== EXPONER FUNCIONES GLOBALMENTE (por si acaso) =====
+window.editProduct = editProduct;
+window.deleteProduct = deleteProduct;
+window.logout = logout;
