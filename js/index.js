@@ -1,245 +1,250 @@
 // ============================================================
-// INDEX.JS - Carga y filtrado del catálogo
+// INDEX.JS - Carga de catálogo, filtros y grid
 // ============================================================
 
-// ===== VARIABLES GLOBALES =====
-var filterData = {};
-var filterTree = {};
-var currentFilter = {};
+(function($) {
+    'use strict';
 
-// ===== FUNCIÓN PRINCIPAL =====
-function loadData($, data) {
-    var $container = $('#productGrid'); // Nuevo contenedor
-    var $filterCategoriesTag = $('.filters__tabs');
-    var $filtersTag = $('#filterContent');
+    var filterData = {};
+    var filterTree = {};
+    var currentFilter = {};
+    var productsList = [];
 
-    // ===== ORDENAR POR =====
-    addFilters($filtersTag, "Ordenar por", [
-        { label: "Recientes", action: function() { sortProducts("update", "desc", "Recientes"); } },
-        { label: "Más económicos", action: function() { sortProducts("price", "asc", "Más económicos"); } },
-        { label: "Más costosos", action: function() { sortProducts("price", "desc", "Más costosos"); } }
-    ]);
+    // ===== CARGA DE DATOS =====
+    function loadCatalog() {
+        $.getJSON('./data/products-index.json', function(data) {
+            if (!data) {
+                console.error('No se pudo cargar products-index.json');
+                return;
+            }
 
-    // ===== OBTENER PARÁMETROS DE URL =====
-    var urlParams = new URLSearchParams(window.location.search);
-    var categoryKeyParam = urlParams.get('category');
-    if (categoryKeyParam != null && categoryKeyParam.length > 0) {
-        currentFilter['category'] = categoryKeyParam;
-        var subcategoryKey = urlParams.get('subcategory');
-        if (subcategoryKey != null && subcategoryKey.length > 0) {
-            currentFilter['subcategory'] = subcategoryKey;
-        }
-    }
+            // Construir árbol de filtros y lista de productos
+            productsList = [];
+            filterTree = {};
+            filterData = {};
 
-    var searchParam = urlParams.get('search');
-    $('[name="search-product"]').val(searchParam);
-
-    // ===== AGREGAR CATEGORÍAS =====
-    addCategoryTag($filterCategoriesTag, "Todos", "*", categoryKeyParam == null || categoryKeyParam.length == 0);
-    for (var categoryKey in data) {
-        if (filterTree[categoryKey] == null) filterTree[categoryKey] = [];
-        filterData[normalizeText(categoryKey)] = categoryKey;
-        addCategoryTag($filterCategoriesTag, categoryKey, categoryKey, normalizeText(categoryKey) == categoryKeyParam);
-        var category = data[categoryKey];
-        for (var subcategoryKey in category) {
-            filterData[normalizeText(subcategoryKey)] = subcategoryKey;
-            if (filterTree[categoryKey][subcategoryKey] == null) filterTree[categoryKey][subcategoryKey] = [];
-            var subcategory = category[subcategoryKey];
-            for (var productKey in subcategory) {
-                var product = subcategory[productKey];
-                if (filterTree[categoryKey][subcategoryKey][product.Date] == null)
-                    filterTree[categoryKey][subcategoryKey][product.Date] = [];
-
-                var filterClass = "";
-                var extendedFeatures = extendFeatures(product);
-                for (var featureKey in extendedFeatures) {
-                    var feature = extendedFeatures[featureKey];
-                    var filterPart = normalizeText(feature);
-                    if (filterPart.length > 0) {
-                        filterClass += " feature-" + filterPart;
-                        filterData[filterPart] = feature;
-                        filterTree[categoryKey][subcategoryKey][product.Date].push(feature);
+            for (var category in data) {
+                if (!filterTree[category]) filterTree[category] = {};
+                filterData[category] = category;
+                var subcategories = data[category];
+                for (var subcategory in subcategories) {
+                    if (!filterTree[category][subcategory]) filterTree[category][subcategory] = [];
+                    filterData[subcategory] = subcategory;
+                    var items = subcategories[subcategory];
+                    for (var i = 0; i < items.length; i++) {
+                        var product = items[i];
+                        product.Category = category;
+                        product.SubCategory = subcategory;
+                        productsList.push(product);
+                        // Guardar features en el árbol
+                        var features = product.Features || [];
+                        for (var f = 0; f < features.length; f++) {
+                            var featureKey = normalizeText(features[f]);
+                            if (featureKey) {
+                                filterData[featureKey] = features[f];
+                                if (!filterTree[category][subcategory][featureKey]) {
+                                    filterTree[category][subcategory][featureKey] = [];
+                                }
+                                filterTree[category][subcategory][featureKey].push(features[f]);
+                            }
+                        }
                     }
                 }
-                // Agregar tarjeta al contenedor
-                addProductCard($container, product, categoryKey, subcategoryKey, filterClass);
             }
+
+            // Renderizar filtros y productos
+            renderFilters();
+            renderProducts(productsList);
+        }).fail(function() {
+            console.error('Error al cargar products-index.json');
+        });
+    }
+
+    // ===== RENDER FILTROS =====
+    function renderFilters() {
+        var $tabs = $('.filters__tabs');
+        $tabs.empty();
+
+        // Botón "Todos"
+        var allBtn = $('<button>').text('Todos').addClass('active');
+        allBtn.on('click', function() {
+            $('.filters__tabs button').removeClass('active');
+            $(this).addClass('active');
+            currentFilter = {};
+            applyFilters();
+        });
+        $tabs.append(allBtn);
+
+        // Botones por categoría
+        for (var category in filterTree) {
+            var btn = $('<button>').text(category);
+            btn.on('click', (function(cat) {
+                return function() {
+                    $('.filters__tabs button').removeClass('active');
+                    $(this).addClass('active');
+                    currentFilter = { category: cat };
+                    applyFilters();
+                };
+            })(category));
+            $tabs.append(btn);
         }
     }
 
-    // ===== EVENTOS =====
-    $('[name="search-product"]').keyup(debounce(function() {
+    // ===== APLICAR FILTROS =====
+    function applyFilters() {
+        var filtered = [];
+        var searchText = $('[name="search-product"]').val() || '';
+
+        for (var i = 0; i < productsList.length; i++) {
+            var p = productsList[i];
+            var match = true;
+
+            // Filtro por categoría
+            if (currentFilter.category && p.Category !== currentFilter.category) {
+                match = false;
+            }
+
+            // Filtro por subcategoría (si existe)
+            if (match && currentFilter.subcategory && p.SubCategory !== currentFilter.subcategory) {
+                match = false;
+            }
+
+            // Búsqueda por texto
+            if (match && searchText.length > 0) {
+                var target = (p.Label + ' ' + (p.Features || []).join(' ')).toLowerCase();
+                var words = searchText.toLowerCase().split(' ');
+                for (var w = 0; w < words.length; w++) {
+                    if (target.indexOf(words[w]) === -1) {
+                        match = false;
+                        break;
+                    }
+                }
+            }
+
+            if (match) filtered.push(p);
+        }
+
+        renderProducts(filtered);
+    }
+
+    // ===== RENDER PRODUCTOS =====
+    function renderProducts(products) {
+        var $grid = $('.product-grid');
+        $grid.empty();
+
+        if (!products || products.length === 0) {
+            $grid.html('<p style="color: var(--text-muted); text-align:center; padding:40px 0;">No se encontraron títulos.</p>');
+            return;
+        }
+
+        // Ordenar por fecha (más reciente primero)
+        products.sort(function(a, b) {
+            return new Date(b.Update || b.Date) - new Date(a.Update || a.Date);
+        });
+
+        for (var i = 0; i < products.length; i++) {
+            var product = products[i];
+            var card = createProductCard(product);
+            $grid.append(card);
+        }
+
+        // Inicializar LazyLoad para las imágenes
+        if (typeof LazyLoad !== 'undefined') {
+            var lazy = new LazyLoad({
+                elements_selector: '.card-product__img img[data-src]'
+            });
+        }
+    }
+
+    // ===== CREAR TARJETA =====
+    function createProductCard(product) {
+        var slug = ToSlug(product.Label);
+        var $card = $('<div>').addClass('card-product');
+
+        // Imagen
+        var imgSrc = './images/products/' + slug + '-0.webp';
+        var $img = $('<img>').attr('data-src', imgSrc).attr('alt', product.Label);
+        var $imgWrap = $('<div>').addClass('card-product__img').append($img);
+        $card.append($imgWrap);
+
+        // Cuerpo
+        var $body = $('<div>').addClass('card-product__body');
+
+        // Título
+        var $title = $('<div>').addClass('card-product__title').text(product.Label);
+        $body.append($title);
+
+        // Descripción (primer feature o resumen)
+        var desc = (product.Features && product.Features.length > 0) ? product.Features[0] : '';
+        var $desc = $('<div>').addClass('card-product__desc').text(desc);
+        $body.append($desc);
+
+        // Precio
+        var price = product.Price || '0.00 CUP';
+        var $price = $('<div>').addClass('card-product__price').text(price);
+        $body.append($price);
+
+        // Botón carrito
+        var $actions = $('<div>').addClass('card-product__actions');
+        var inCart = inCart(slug);
+        var $cartBtn = $('<button>')
+            .addClass('card-product__cart' + (inCart ? ' card-product__cart--in' : ''))
+            .html(inCart ? '🛒' : '➕')
+            .attr('data-slug', slug)
+            .attr('data-label', product.Label);
+        $cartBtn.on('click', function(e) {
+            e.preventDefault();
+            var slug = $(this).data('slug');
+            var label = $(this).data('label');
+            var wasRemoved = addToCart(slug, label, 1, true);
+            updateCartQty();
+            if (wasRemoved) {
+                $(this).removeClass('card-product__cart--in').html('➕');
+            } else {
+                $(this).addClass('card-product__cart--in').html('🛒');
+            }
+        });
+        $actions.append($cartBtn);
+        $body.append($actions);
+
+        // Enlace al detalle
+        $card.on('click', function(e) {
+            if ($(e.target).closest('.card-product__cart').length) return;
+            window.location.href = 'product.html?id=' + slug;
+        });
+        $card.css('cursor', 'pointer');
+
+        $card.append($body);
+        return $card;
+    }
+
+    // ===== BÚSQUEDA EN TIEMPO REAL =====
+    $(document).on('input', '[name="search-product"]', function() {
         applyFilters();
-    }, 400));
-
-    // ===== INICIALIZAR LAZY LOAD =====
-    var lazyLoadInstance = new LazyLoad({
-        elements_selector: "img[data-src]",
-        callback_loaded: function() {
-            // No es necesario layout para grid simple, pero lo mantenemos por si acaso
-        }
-    });
-}
-
-// ===== FUNCIONES AUXILIARES =====
-function debounce(fn, threshold) {
-    var timeout;
-    threshold = threshold || 100;
-    return function debounced() {
-        clearTimeout(timeout);
-        var args = arguments;
-        var _this = this;
-        function delayed() {
-            fn.apply(_this, args);
-        }
-        timeout = setTimeout(delayed, threshold);
-    };
-}
-
-function addCategoryTag($container, label, filterValue, active) {
-    var newButton = document.createElement("button");
-    var aClass = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
-    if (active) aClass += " how-active1";
-    newButton.setAttribute("class", aClass);
-    newButton.textContent = spanishFormat(label);
-    newButton.addEventListener('click', function() {
-        if (filterValue == "*" && currentFilter["category"] == null) return;
-        if (currentFilter["category"] == normalizeText(filterValue)) return;
-        currentFilter = {};
-        if (filterValue != "*") currentFilter["category"] = normalizeText(filterValue);
-        applyFilters();
-    });
-    $container.append(newButton);
-}
-
-function addFilters($container, title, items) {
-    var html = '<div class="filter-group">';
-    html += '<div class="filter-group__label">' + spanishFormat(title) + '</div>';
-    html += '<div class="filter-group__items">';
-    items.forEach(function(item) {
-        html += '<a href="#" data-action="' + item.label + '">' + spanishFormat(item.label) + '</a>';
-    });
-    html += '</div></div>';
-    $container.append(html);
-
-    // Asignar eventos
-    $container.find('.filter-group__items a').on('click', function(e) {
-        e.preventDefault();
-        var label = $(this).data('action');
-        var found = items.find(function(item) { return item.label === label; });
-        if (found && found.action) {
-            found.action();
-        }
-        $container.find('.filter-group__items a').removeClass('active');
-        $(this).addClass('active');
-    });
-}
-
-function addProductCard($container, product, categoryKey, subcategoryKey, filterClass) {
-    // Asegurar que el producto tenga categoría y subcategoría
-    product.Category = categoryKey;
-    product.SubCategory = subcategoryKey;
-    addProductCardBase($container, product, filterClass);
-}
-
-function applyFilters() {
-    // Obtener todos los productos (tarjetas)
-    var $cards = $('.card-product');
-    var searchText = $('[name="search-product"]').val();
-
-    $cards.each(function() {
-        var $card = $(this);
-        var show = true;
-
-        // Filtros de categoría/subcategoría/feature
-        for (var groupKey in currentFilter) {
-            if (!$(this).hasClass(groupKey + "-" + currentFilter[groupKey])) {
-                show = false;
-                break;
-            }
-        }
-
-        // Búsqueda por texto
-        if (show && searchText && searchText.length > 0) {
-            var label = $card.data('label') || '';
-            var features = $card.data('features') || '';
-            var text = label + ' ' + features;
-            if (!text.toLowerCase().includes(searchText.toLowerCase())) {
-                show = false;
-            }
-        }
-
-        if (show) {
-            $card.show();
-        } else {
-            $card.hide();
-        }
-    });
-}
-
-function sortProducts(sortBy, sortDirection, text) {
-    var $container = $('#productGrid');
-    var $cards = $container.children('.card-product').get();
-
-    $cards.sort(function(a, b) {
-        var valA, valB;
-        if (sortBy === 'price') {
-            valA = parseFloat($(a).data('price')) || 0;
-            valB = parseFloat($(b).data('price')) || 0;
-        } else if (sortBy === 'update') {
-            valA = parseInt($(a).data('update')) || 0;
-            valB = parseInt($(b).data('update')) || 0;
-        }
-        if (sortDirection === 'asc') {
-            return valA - valB;
-        } else {
-            return valB - valA;
-        }
     });
 
-    $container.empty().append($cards);
-}
+    // ===== INICIALIZAR =====
+    $(document).ready(function() {
+        loadCatalog();
 
-function extendFeatures(product) {
-    var words = product.Label.split(' ');
-    var featuresExtended = (product.Features || []).concat(words);
-    var splitedWords = [];
-    featuresExtended.forEach(function(element) {
-        element.split('-').forEach(function(subword) {
-            if (subword.length > 1) {
-                splitedWords.push(subword);
+        // Evento para el botón de búsqueda (panel)
+        $('.panel--search button').on('click', function(e) {
+            e.preventDefault();
+            applyFilters();
+        });
+
+        // Actualizar contador del carrito al cargar
+        updateCartQty();
+
+        // Reaccionar a cambios en el carrito desde otras pestañas
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'cart') {
+                updateCartQty();
+                // Actualizar iconos de carrito en las tarjetas (recargar productos)
+                // Para simplificar, recargamos los productos con el filtro actual
+                applyFilters();
             }
         });
     });
-    return splitedWords;
-}
 
-// ===== INICIALIZACIÓN =====
-(function($) {
-    "use strict";
-    $.getJSON("./data/products-index.json", function(data) {
-        loadData($, data);
-        // Inicializar el resto de componentes (parallax, etc.)
-        $('.parallax100').parallax100();
-        $('.gallery-lb').each(function() {
-            $(this).magnificPopup({
-                delegate: 'a',
-                type: 'image',
-                gallery: { enabled: true },
-                mainClass: 'mfp-fade'
-            });
-        });
-        $('.js-pscroll').each(function() {
-            $(this).css('position', 'relative');
-            $(this).css('overflow', 'hidden');
-            var ps = new PerfectScrollbar(this, {
-                wheelSpeed: 1,
-                scrollingThreshold: 1000,
-                wheelPropagation: false
-            });
-            $(window).on('resize', function() {
-                ps.update();
-            });
-        });
-    });
 })(jQuery);
