@@ -1,31 +1,48 @@
 function buildBreadCrumb(n) {
     $container = $(".bread-crumb");
-    let t = "./?category=" + normalizeText(n.Category);
-    addBreadCrumb($container, n.Category, t);
-    if (n.SubCategory != null && n.SubCategory.length > 0) {
-        t += "&subcategory=" + normalizeText(n.SubCategory);
-        addBreadCrumb($container, n.SubCategory, t);
+    // Limpiar
+    $container.empty();
+    // Crear lista
+    var list = document.createElement("ul");
+    list.setAttribute("class", "breadcrumb-list flex-w flex-m");
+    // Inicio
+    addBreadCrumbItem(list, "Inicio", "./", false);
+    // Categoría
+    if (n.Category) {
+        let catUrl = "./?category=" + normalizeText(n.Category);
+        addBreadCrumbItem(list, n.Category, catUrl, false);
     }
-    addBreadCrumb($container, n.Label);
+    // Subcategoría
+    if (n.SubCategory && n.SubCategory.length > 0) {
+        let subUrl = "./?category=" + normalizeText(n.Category) + "&subcategory=" + normalizeText(n.SubCategory);
+        addBreadCrumbItem(list, n.SubCategory, subUrl, false);
+    }
+    // Producto actual (activo)
+    addBreadCrumbItem(list, n.Label, null, true);
+    $container.append(list);
 }
 
-function addBreadCrumb(n, t, i = null) {
-    if (i == null) {
-        let i = document.createElement("span");
-        i.setAttribute("class", "stext-109 cl4");
-        i.textContent = spanishFormat(t);
-        n.append(i);
-        return;
+function addBreadCrumbItem(container, label, url, active) {
+    var li = document.createElement("li");
+    li.setAttribute("class", "breadcrumb-item");
+    if (active) {
+        var span = document.createElement("span");
+        span.setAttribute("class", "breadcrumb-btn active");
+        span.textContent = spanishFormat(label);
+        li.appendChild(span);
+    } else {
+        var a = document.createElement("a");
+        a.setAttribute("href", url);
+        a.setAttribute("class", "breadcrumb-btn");
+        a.textContent = spanishFormat(label);
+        li.appendChild(a);
+        // Separador
+        var sep = document.createElement("span");
+        sep.setAttribute("class", "breadcrumb-sep");
+        sep.innerHTML = '<i class="fa fa-angle-right"></i>';
+        li.appendChild(sep);
     }
-    let r = document.createElement("a");
-    r.setAttribute("href", i);
-    r.setAttribute("class", "stext-109 cl8 hov-cl1 trans-04");
-    r.textContent = spanishFormat(t);
-    let u = document.createElement("i");
-    u.setAttribute("class", "fa fa-angle-right m-l-9 m-r-10");
-    u.setAttribute("aria-hidden", "true");
-    r.appendChild(u);
-    n.append(r);
+    container.appendChild(li);
 }
 
 function buildGallery(n) {
