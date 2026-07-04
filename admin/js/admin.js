@@ -433,7 +433,11 @@ function openProductForm(product = null) {
         const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
         existingImages = imagesList;
         
-        // Para cada imagen existente, resolver con fallback
+        // Mostrar un spinner mientras se resuelven las imágenes
+        container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> Cargando imágenes...</div>';
+        
+        // Resolver cada imagen y mostrarla cuando esté lista
+        let resolvedCount = 0;
         imagesList.forEach((imgName, idx) => {
             const baseName = imgName.replace(/\.[^.]+$/, '');
             const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
@@ -441,14 +445,22 @@ function openProductForm(product = null) {
             const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
             
             resolveImageUrl(baseName, orderedExtensions, (url) => {
+                // Limpiar el spinner la primera vez que se resuelve una imagen
+                if (resolvedCount === 0) {
+                    container.innerHTML = '';
+                }
+                resolvedCount++;
+                
                 const div = document.createElement('div');
                 div.className = 'image-preview-item';
                 const img = document.createElement('img');
                 img.alt = `Imagen ${idx+1}`;
                 if (url) {
                     img.src = url;
+                    console.log(`✅ Imagen resuelta: ${url}`);
                 } else {
                     img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
+                    console.warn(`❌ No se encontró imagen para: ${baseName}`);
                 }
                 div.appendChild(img);
                 const removeBtn = document.createElement('button');
