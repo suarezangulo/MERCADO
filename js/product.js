@@ -52,7 +52,7 @@ function buildGallery(n) {
     
     var foundAny = false;
     var totalProcessed = 0;
-    var resolvedUrls = []; // Almacenar URLs resueltas para la galería
+    var resolvedUrls = [];
     
     imagesToProcess.forEach(function(imgName, idx) {
         var baseName = imgName.replace(/\.[^.]+$/, '');
@@ -67,29 +67,23 @@ function buildGallery(n) {
                 foundAny = true;
                 resolvedUrls.push(url);
                 
-                // Crear item de galería
                 var galleryItem = document.createElement("div");
                 galleryItem.setAttribute("class", "gallery-item");
                 galleryItem.setAttribute("data-index", idx);
                 var img = document.createElement("img");
                 img.setAttribute("src", url);
                 img.setAttribute("alt", n.Label + " - Imagen " + (idx + 1));
+                img.setAttribute("loading", "lazy");
+                img.onerror = function() { this.style.display = 'none'; };
                 galleryItem.appendChild(img);
                 
-                // Click para abrir galería con navegación
                 $(galleryItem).on('click', function() {
                     var items = resolvedUrls.map(function(resolvedUrl) {
                         return { src: resolvedUrl };
                     });
-                    
                     $.magnificPopup.open({
                         items: items,
-                        gallery: {
-                            enabled: true,
-                            navigateByImgClick: true,
-                            preload: [1, 1],
-                            arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"><i class="zmdi zmdi-chevron-%dir%" style="font-size: 40px; color: #fff;"></i></button>'
-                        },
+                        gallery: { enabled: true, navigateByImgClick: true, preload: [1, 1] },
                         type: 'image',
                         mainClass: 'mfp-fade',
                         removalDelay: 300
@@ -98,13 +92,11 @@ function buildGallery(n) {
                 
                 $galleryRow.append(galleryItem);
                 
-                // Usar como fondo del hero si es la primera
                 if (idx === 0) {
                     $("#productHero").css("background-image", "url('" + url + "')");
                 }
             }
             
-            // Si terminó de procesar y no encontró nada
             if (totalProcessed >= imagesToProcess.length && !foundAny) {
                 var placeholder = getPlaceholderImage(n.Label);
                 resolvedUrls.push(placeholder);
@@ -136,21 +128,14 @@ function buildDetailsGrid(n) {
     $grid.empty();
     
     var details = [];
-    
-    // Extraer características del array Features
     if (n.Features && n.Features.length > 0) {
         n.Features.forEach(function(feature) {
             var parts = feature.split(':');
             if (parts.length >= 2) {
-                details.push({
-                    label: parts[0].trim(),
-                    value: parts.slice(1).join(':').trim()
-                });
+                details.push({ label: parts[0].trim(), value: parts.slice(1).join(':').trim() });
             }
         });
     }
-    
-    // Añadir datos adicionales
     details.push({ label: 'Precio', value: n.Price || '0.00 CUP' });
     details.push({ label: 'Stock', value: (n.Stock || 0) + ' unidades' });
     details.push({ label: 'Categoría', value: n.Category + ' / ' + n.SubCategory });
@@ -163,6 +148,21 @@ function buildDetailsGrid(n) {
     });
 }
 
+function buildFeatures(product) {
+    const featuresContainer = $(".product-features");
+    if (!featuresContainer.length) return;
+    if (!product.Features || product.Features.length === 0) {
+        featuresContainer.html('<p class="stext-102 cl6">Sin características.</p>');
+        return;
+    }
+    let html = '<ul class="features-list" style="list-style: none; padding-left: 0; margin: 0;">';
+    product.Features.forEach(function(feature) {
+        html += '<li style="padding: 4px 0; list-style: disc; margin-left: 20px; font-family: Poppins-Regular; font-size: 14px; color: #ccc;">' + feature + '</li>';
+    });
+    html += '</ul>';
+    featuresContainer.html(html);
+}
+
 function buildRelatedProducts(n) {
     if (n != null && n.Category != null && n.Category.length != 0 && n.SubCategory != null && n.SubCategory.length != 0) {
         $.getJSON("./data/products-index.json", function(t) {
@@ -172,14 +172,18 @@ function buildRelatedProducts(n) {
                     let i = r[n.SubCategory];
                     if (i != null) {
                         i = getCiclon(i, n.Label);
-                        $container = $(".slick2");
-                        i.forEach(function(t) {
-                            t.Category = n.Category;
-                            t.SubCategory = n.SubCategory;
-                            addProductCardBase($container, t, "", 2);
-                        });
-                        $.getScript("./js/slick-custom.js", function() {});
-                        var u = new LazyLoad({ elements_selector: "img[data-src]" });
+                        if (i.length > 0) {
+                            $container = $(".slick2");
+                            i.forEach(function(t) {
+                                t.Category = n.Category;
+                                t.SubCategory = n.SubCategory;
+                                addProductCardBase($container, t, "", 2);
+                            });
+                            $.getScript("./js/slick-custom.js", function() {});
+                            var u = new LazyLoad({ elements_selector: "img[data-src]" });
+                        } else {
+                            $(".sec-relate-product").hide();
+                        }
                     }
                 }
             }
@@ -193,7 +197,8 @@ function getCiclon(n, t) {
     let r = n.sort((n, t) => n.Price - t.Price),
         i = r.findIndex(n => n.Label === t);
     if (i < 0) return r;
-    if (r.splice(i, 1), i + 1 == n.length) return n.sort((n, t) => t.Price - n.Price);
+    r.splice(i, 1);
+    if (r.length === 0) return u;
     let f = -1, e = 12;
     while (r.length > 0 && e > 0) {
         i >= r.length ? i = r.length - 1 : i < 0 && (i = 0);
@@ -220,7 +225,6 @@ function getCiclon(n, t) {
             document.title = r + " - CINEMARKET";
             n("head").append('<meta property="og:title" content="' + spanishFormat(r) + '">');
             
-            // Imagen OG con fallback
             var baseName = t + "-0";
             var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
             resolveImageUrl(baseName, extensions, function(url) {
@@ -235,14 +239,11 @@ function getCiclon(n, t) {
             buildBreadCrumb(i);
             buildGallery(i);
             buildDetailsGrid(i);
+            buildFeatures(i);
 
-            // Título
             n(".product-label").text(r);
-            
-            // Categoría badge
             n("#productCategoryBadge").text(i.Category);
             
-            // Año (extraer de Features)
             var yearText = "";
             if (i.Features) {
                 var yearFeature = i.Features.find(function(f) { return f.toLowerCase().includes('año'); });
@@ -252,16 +253,13 @@ function getCiclon(n, t) {
             }
             n("#productYearBadge").text(yearText || "N/A");
             
-            // Precio badge
             let precioStr = i.Price;
             let valorNumerico = parseFloat(precioStr) || 0;
             n("#productPriceBadge").text(toMoneyStr(valorNumerico));
 
-            // Descripción
             let desc = spanishFormat(i.Description || '');
             n("#productDescriptionNetflix").text(desc);
 
-            // Botón agregar
             let stock = i.Stock || 0;
             var $btn = n(".js-addcart-detail");
             $btn.attr("product-id", t);
@@ -269,7 +267,7 @@ function getCiclon(n, t) {
             
             if (stock <= 0) {
                 $btn.prop('disabled', true).text('Sin stock');
-                $btn.removeClass('btn-play-netflix').addClass('btn-info-netflix');
+                $btn.css({ opacity: '0.6', cursor: 'not-allowed' });
             }
 
             $btn.off('click').on('click', function(e) {
