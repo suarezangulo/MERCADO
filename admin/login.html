@@ -13,23 +13,20 @@
         }
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0a0a;
+            background: #f5f5f5;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: 
-                radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(229, 9, 20, 0.05) 0%, transparent 60%);
         }
         .login-container {
-            background: #141414;
+            background: #ffffff;
             border-radius: 16px;
             padding: 50px 45px;
             width: 100%;
             max-width: 420px;
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         }
         .login-container .logo {
             text-align: center;
@@ -45,10 +42,10 @@
             justify-content: center;
             font-size: 36px;
             color: #fff;
-            box-shadow: 0 0 50px rgba(229, 9, 20, 0.2);
+            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.2);
         }
         .login-container h1 {
-            color: #fff;
+            color: #222;
             text-align: center;
             font-size: 26px;
             font-weight: 700;
@@ -56,7 +53,7 @@
             letter-spacing: -0.5px;
         }
         .login-container .subtitle {
-            color: rgba(255,255,255,0.4);
+            color: #888;
             text-align: center;
             font-size: 14px;
             margin-bottom: 30px;
@@ -66,7 +63,7 @@
         }
         .form-group label {
             display: block;
-            color: rgba(255,255,255,0.6);
+            color: #555;
             font-size: 13px;
             font-weight: 600;
             margin-bottom: 6px;
@@ -75,27 +72,34 @@
         .form-group input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid rgba(255,255,255,0.06);
+            border: 2px solid #e6e6e6;
             border-radius: 10px;
-            background: rgba(255,255,255,0.03);
-            color: #fff;
+            background: #f9f9f9;
+            color: #222;
             font-size: 15px;
             transition: all 0.3s;
             outline: none;
         }
         .form-group input:focus {
             border-color: #e50914;
-            background: rgba(255,255,255,0.05);
-            box-shadow: 0 0 30px rgba(229, 9, 20, 0.1);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.08);
         }
         .form-group input::placeholder {
-            color: rgba(255,255,255,0.2);
+            color: #aaa;
         }
         .form-group .hint {
             font-size: 12px;
-            color: rgba(255,255,255,0.3);
+            color: #888;
             margin-top: 4px;
             display: block;
+        }
+        .form-group .hint a {
+            color: #e50914;
+            text-decoration: none;
+        }
+        .form-group .hint a:hover {
+            text-decoration: underline;
         }
         .btn-login {
             width: 100%;
@@ -113,7 +117,7 @@
         }
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(229, 9, 20, 0.3);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.25);
         }
         .btn-login:active {
             transform: translateY(0);
@@ -126,7 +130,7 @@
             display: none;
         }
         .footer-text {
-            color: rgba(255,255,255,0.15);
+            color: #aaa;
             text-align: center;
             font-size: 12px;
             margin-top: 24px;
@@ -152,7 +156,7 @@
             <div class="form-group">
                 <label><i class="fas fa-key" style="margin-right:6px;"></i> Token de GitHub</label>
                 <input type="password" id="githubToken" placeholder="Ingresa tu token de GitHub" required>
-                <span class="hint">Necesita permisos: repo y workflow. <a href="https://github.com/settings/tokens" target="_blank" style="color: #e50914; text-decoration: none;">Generar token</a></span>
+                <span class="hint">Necesita permisos: repo y workflow. <a href="https://github.com/settings/tokens" target="_blank">Generar token</a></span>
             </div>
             <button type="submit" class="btn-login">
                 <i class="fas fa-sign-in-alt" style="margin-right:10px;"></i> Acceder
@@ -161,7 +165,7 @@
                 <i class="fas fa-exclamation-circle"></i> Usuario, contraseña o token incorrectos
             </div>
         </form>
-        <p class="footer-text">© 2024 CINEMARKET</p>
+        <p class="footer-text">© 2025 CINEMARKET</p>
     </div>
 
     <script>
@@ -179,12 +183,10 @@
                 return;
             }
 
-            // Validar usuario y contraseña desde el archivo JSON
             fetch('../data/admin-users.json')
                 .then(response => response.json())
                 .then(users => {
                     if (users[username] && users[username].password === password) {
-                        // Guardar sesión y token en sessionStorage
                         sessionStorage.setItem('adminUser', JSON.stringify({
                             username: username,
                             name: users[username].name
@@ -202,7 +204,6 @@
                 });
         });
 
-        // Redirigir si ya está autenticado
         const adminUser = sessionStorage.getItem('adminUser');
         if (adminUser) {
             window.location.href = 'index.html';
