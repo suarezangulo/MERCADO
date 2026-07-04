@@ -451,7 +451,7 @@ var googleAnalyticsId = "";
     var interval = setInterval(function() {
         if (loadingStarted) clearInterval(interval);
         if (stepIndex >= steps.length) {
-            $("#loading-text").text(""La carga está tardando más de lo usual. Por favor, recarga la página."");
+            $("#loading-text").text("La carga está tardando más de lo usual. Por favor, recarga la página.");
         } else if (progress < 100) {
             progress++;
             $("#loading-text").text("cargando " + steps[stepIndex] + ": " + progress + "%");
