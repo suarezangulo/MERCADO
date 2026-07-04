@@ -1,0 +1,37 @@
+name: Generar productos desde CSV
+
+on:
+  push:
+    paths:
+      - 'data/catalogo.csv'  # Se activa solo cuando cambia este archivo
+  workflow_dispatch:         # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write         # Necesario para hacer commit de los cambios
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias
+        run: |
+          npm install csv-parser
+
+      - name: Ejecutar generador de productos
+        run: node scripts/generate-products.js
+
+      - name: Commit y push de los cambios
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/products-index.json data/products/*.json
+          git diff --staged --quiet || git commit -m "🔄 Actualizar productos generados desde CSV"
+          git push
