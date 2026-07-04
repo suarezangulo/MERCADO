@@ -329,3 +329,61 @@ body::before {
 .bg1 { background: linear-gradient(135deg, var(--accent-blue), #0066cc) !important; }
 .hov-cl1:hover { color: var(--accent-blue) !important; }
 .hov-btn3:hover { background: var(--accent-blue) !important; border-color: var(--accent-blue) !important; color: #fff !important; }
+
+/* ===== BREADCRUMB ESTILO MICA (Botones flotantes) ===== */
+.breadcrumb-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 25px;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #CCCCCC;
+    font-family: Poppins-Medium, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.breadcrumb-btn:hover {
+    background: rgba(30, 144, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.5);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+}
+
+.breadcrumb-btn.active {
+    background: linear-gradient(135deg, #1E90FF, #0066cc);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+    cursor: default;
+    pointer-events: none;
+}
+
+.breadcrumb-sep {
+    margin: 0 4px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
