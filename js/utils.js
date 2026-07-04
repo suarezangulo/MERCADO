@@ -3,7 +3,6 @@
 // ============================================================
 
 // ===== CONFIGURACIÓN GLOBAL =====
-var TASA_CAMBIO = 685; // 1 USD = 685 CUP (ya no se usa pero se mantiene)
 var contactCell = '';
 var contactEmail = '';
 var productStatus = '';
@@ -99,7 +98,6 @@ function addToCart(productId, label, quantity, removeIfExists) {
         }
     } else {
         cart.items.push({ productId: productId, qty: quantity.toString() });
-        // Google Analytics (si está configurado)
         if (googleAnalyticsId && window.gtag) {
             gtag('event', 'add_to_cart', { items: [{ id: productId, name: label, quantity: quantity }] });
         }
@@ -141,13 +139,12 @@ function getNot(template, product) {
 }
 
 function evaluateExpression(expr, product) {
-    // Simplificado: devuelve el valor de status o discount
     if (expr === 'status') return product.Def ? productDefStatus : productStatus;
     if (expr === 'discount') return product.Discount ? '-' + product.Discount + '%' : '';
     return '';
 }
 
-// ===== PREPARAR WHATSAPP (se inicializa en utils.js) =====
+// ===== PREPARAR WHATSAPP =====
 function prepareWhatsapp() {
     var btn = $('<div class="whatsapp-btn"></div>');
     btn.html('<img src="images/icons/whatsapp_logo.png" alt="WhatsApp">');
@@ -162,8 +159,7 @@ function prepareWhatsapp() {
 
 // ===== INICIALIZACIÓN =====
 $(document).ready(function() {
-    // Cargar manifest.json para configuración
-    $.getJSON('./data/manifest.json', function(data) {
+    $.getJSON('data/manifest.json', function(data) {
         if (data) {
             contactCell = data.Cell || '';
             contactEmail = data.Email || '';
@@ -174,18 +170,13 @@ $(document).ready(function() {
             googleAnalyticsId = data.GoogleAnalyticsId || '';
             whatsappMessage = data.HeadNotification || '¡Hola! Me interesa saber más sobre tus productos.';
 
-            // Actualizar textos del header/footer
             var titleParts = splitTitle(data.Title || 'CINEMARKET');
             $('.logo__cine').text(titleParts[0] || 'CINE');
             $('.logo__market').text(titleParts[1] || 'MARKET');
             $('.topbar__text').text(data.HeadNotification || '');
-            $('.foot').text(data.Foot || '');
         }
     });
 
-    // Inicializar WhatsApp
     prepareWhatsapp();
-
-    // Actualizar contador del carrito
     updateCartQty();
 });
