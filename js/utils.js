@@ -39,6 +39,17 @@ function resolveImageUrl(baseName, extensions, callback) {
     tryNext();
 }
 
+// ===== FUNCIÓN PARA GENERAR PLACEHOLDER =====
+function getPlaceholderImage(label) {
+    var encodedLabel = encodeURIComponent(label || 'Sin imagen');
+    return 'data:image/svg+xml,' + 
+        '%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="600"%3E' +
+        '%3Crect fill="%231a1a2e" width="400" height="600"/%3E' +
+        '%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23888" font-size="20" font-family="Arial"%3E' + 
+        encodedLabel + 
+        '%3C/text%3E%3C/svg%3E';
+}
+
 function splitTitle(n) {
     var t = n.split(" ");
     var i = t.length;
@@ -197,10 +208,9 @@ function addProductCardBase(container, product, extraClass, mode) {
     img.setAttribute("alt", "imagen");
     img.setAttribute("data-slug", slug);
     img.setAttribute("data-index", "0");
-    img.setAttribute("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%231a1a1a' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23666' font-size='14'%3ECargando...%3C/text%3E%3C/svg%3E");
+    img.setAttribute("src", getPlaceholderImage(product.Label));
     pic.appendChild(img);
     
-    // Resolver imagen con fallback de extensiones
     (function(imgEl, productSlug, idx) {
         var baseName = productSlug + "-" + idx;
         var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
@@ -209,8 +219,6 @@ function addProductCardBase(container, product, extraClass, mode) {
                 imgEl.setAttribute('data-src', url);
                 imgEl.setAttribute('src', url);
                 imgEl.classList.add('loaded');
-            } else {
-                imgEl.setAttribute('src', 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="400"%3E%3Crect fill="%231a1a1a" width="300" height="400"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23666" font-size="14"%3E?%3C/text%3E%3C/svg%3E');
             }
         });
     })(img, slug, 0);
@@ -224,32 +232,29 @@ function addProductCardBase(container, product, extraClass, mode) {
     var child1 = document.createElement("div");
     child1.setAttribute("class", "block2-txt-child1 flex-col-l");
     
-    // --- Título (nombre del producto) ---
     var nameLink = document.createElement("a");
-    nameLink.setAttribute("class", "stext-104 cl2 hov-cl1 trans-04 js-name-b2");  // cl2 = blanco
+    nameLink.setAttribute("class", "stext-104 cl2 hov-cl1 trans-04 js-name-b2");
     nameLink.setAttribute("href", "product.html?id=" + slug);
     nameLink.setAttribute("style", "display: block; margin-bottom: 8px; font-size: 16px; font-weight: 600;");
     nameLink.textContent = spanishFormat(product.Label);
     child1.appendChild(nameLink);
 
-    // --- Descripción (características) ---
     var featuresText = "";
     if (product.Features != null) {
         featuresText = spanishFormat(product.Features.join(", "));
     }
     var featuresSpan = document.createElement("span");
-    featuresSpan.setAttribute("class", "cl4 stext-111");  // cl4 = gris medio
+    featuresSpan.setAttribute("class", "cl4 stext-111");
     featuresSpan.setAttribute("style", "display: block; margin-bottom: 10px; line-height: 1.4; font-size: 13px;");
     featuresSpan.textContent = featuresText;
     child1.appendChild(featuresSpan);
 
-    // --- Precio ---
     var precioFormateado = toMoneyStr(valorNumerico);
     var precioContainer = document.createElement("div");
     precioContainer.setAttribute("class", "p-t-6");
     precioContainer.setAttribute("style", "line-height: 1.3; margin-top: 4px;");
     var precioPrincipal = document.createElement("span");
-    precioPrincipal.setAttribute("class", "stext-105 cl2");  // cl2 = blanco
+    precioPrincipal.setAttribute("class", "stext-105 cl2");
     precioPrincipal.setAttribute("style", "font-weight: bold; font-size: 20px;");
     precioPrincipal.textContent = precioFormateado;
     precioContainer.appendChild(precioPrincipal);
@@ -260,14 +265,25 @@ function addProductCardBase(container, product, extraClass, mode) {
     var child2 = document.createElement("div");
     child2.setAttribute("class", "block2-txt-child2 flex-r p-t-3");
     var inCartFlag = inCart(slug);
-    var colorClass = inCartFlag ? "cl1" : "cl4";
     var cartBtn = document.createElement("a");
-    cartBtn.setAttribute("class", "btn-addwish-b2 dis-block pos-relative js-addcart icon-add-cart hov-cl1 trans-04 " + colorClass);
+    cartBtn.setAttribute("class", "mica-btn-icon " + (inCartFlag ? "in-cart" : ""));
     cartBtn.setAttribute("href", "#");
+    cartBtn.setAttribute("aria-label", "Agregar al carrito");
+    cartBtn.setAttribute("style", "width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(26,26,26,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 18px; cursor: pointer; transition: all 0.3s ease;");
     var icon = document.createElement("i");
     icon.setAttribute("class", inCartFlag ? "zmdi zmdi-shopping-cart" : "zmdi zmdi-shopping-cart-plus");
-    icon.setAttribute("style", "vertical-align: top;");
     cartBtn.appendChild(icon);
+    
+    $(cartBtn).on("mouseenter", function() {
+        $(this).css({ background: 'rgba(30,144,255,0.4)', color: '#fff', 'border-color': 'rgba(30,144,255,0.6)' });
+    }).on("mouseleave", function() {
+        if (!$(this).hasClass('in-cart')) {
+            $(this).css({ background: 'rgba(26,26,26,0.6)', color: '#ccc', 'border-color': 'rgba(255,255,255,0.1)' });
+        } else {
+            $(this).css({ background: 'rgba(30,144,255,0.3)', color: '#fff', 'border-color': 'rgba(30,144,255,0.4)' });
+        }
+    });
+    
     child2.appendChild(cartBtn);
     txt.appendChild(child2);
 
@@ -344,13 +360,13 @@ function updateAddCartIcon(element, inCartFlag) {
     if (inCartFlag) {
         icon.removeClass("zmdi-shopping-cart-plus");
         icon.addClass("zmdi-shopping-cart");
-        element.removeClass("cl4");
-        element.addClass("cl1");
+        element.addClass("in-cart");
+        element.css({ background: 'rgba(30,144,255,0.3)', color: '#fff', 'border-color': 'rgba(30,144,255,0.4)' });
     } else {
         icon.removeClass("zmdi-shopping-cart");
         icon.addClass("zmdi-shopping-cart-plus");
-        element.removeClass("cl1");
-        element.addClass("cl4");
+        element.removeClass("in-cart");
+        element.css({ background: 'rgba(26,26,26,0.6)', color: '#ccc', 'border-color': 'rgba(255,255,255,0.1)' });
     }
 }
 
@@ -462,30 +478,6 @@ var googleAnalyticsId = "";
         }
     }, 100);
 
-    $(".js-addcart-detail").each(function() {
-        $(this).on("click", function(e) {
-            e.preventDefault();
-            var productId = $(this).attr("product-id");
-            if (productId != null) {
-                var qty = 1;
-                var qtyInput = $(this).parent().find('[name="num-product"]');
-                if (qtyInput != null) qty = qtyInput.val();
-                addToCart(productId, $(this).attr("product-label"), qty);
-            }
-        });
-    });
-
-    $(".js-show-cart").click(function() {
-        window.location.replace("./cart.html");
-    });
-
-    window.addEventListener("storage", function(e) {
-        if (e.key === "cart") {
-            updateCartQty();
-            updateAddCartIcons();
-        }
-    });
-
     $.getJSON("./data/manifest.json", function(data) {
         if (data != null) {
             var titleParts = splitTitle(data.Title.toUpperCase());
@@ -511,44 +503,7 @@ var googleAnalyticsId = "";
                 $(".shipping").html(shippingText);
                 $("#shippingText").html(shippingText);
             }
-
-            var sheets = document.styleSheets;
-            for (var s = 0; s < sheets.length; s++) {
-                var sheet = sheets[s];
-                var rules = sheet.cssRules || sheet.rules;
-                if (!rules) continue;
-                for (var r = 0; r < rules.length; r++) {
-                    var rule = rules[r];
-                    if (rule.style && rule.style.backgroundColor === "rgb(34, 34, 34)") {
-                        rule.style.backgroundColor = "rgb(" + data.BackgroundColor + ")";
-                    }
-                }
-            }
-
-            if (typeof googleAnalyticsId !== 'undefined' && googleAnalyticsId !== null && googleAnalyticsId.length > 0) {
-                var gaScript = document.createElement("script");
-                gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + googleAnalyticsId;
-                gaScript.async = true;
-                gaScript.onload = function() {
-                    window.dataLayer = window.dataLayer || [];
-                    window.gtag = function() {
-                        dataLayer.push(arguments);
-                    };
-                    gtag("js", new Date());
-                    gtag("config", googleAnalyticsId, { cookie_domain: "auto", cookie_flags: "SameSite=None;Secure" });
-                };
-                document.head.appendChild(gaScript);
-            }
         }
-    });
-
-    $("input[name='search-product']").on("visible", function() {
-        $(this).focus();
-    });
-    $(".js-show-search").click(function() {
-        setTimeout(function() {
-            $("input[name='search-product']").trigger("visible");
-        }, 500);
     });
 
     updateCartQty();
