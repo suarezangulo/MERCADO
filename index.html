@@ -35,6 +35,66 @@
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style>
+		/* ===== BOTONES FLOTANTES MICA (Filtrar / Buscar) ===== */
+		.mica-floating-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 22px;
+			border-radius: 25px;
+			background: rgba(26, 26, 26, 0.65);
+			backdrop-filter: blur(16px) saturate(150%);
+			-webkit-backdrop-filter: blur(16px) saturate(150%);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			color: #CCCCCC;
+			font-family: Poppins-Medium, sans-serif;
+			font-size: 14px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			white-space: nowrap;
+			outline: none;
+		}
+
+		.mica-floating-btn i {
+			font-size: 16px;
+			transition: all 0.3s ease;
+		}
+
+		.mica-floating-btn:hover {
+			background: rgba(30, 144, 255, 0.2);
+			border-color: rgba(30, 144, 255, 0.5);
+			color: #FFFFFF;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+		}
+
+		/* Estado activo cuando se abre el panel */
+		.mica-floating-btn.show-filter,
+		.mica-floating-btn.show-search {
+			background: rgba(30, 144, 255, 0.25);
+			border-color: rgba(30, 144, 255, 0.6);
+			color: #FFFFFF;
+			box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+		}
+
+		/* Ocultar/mostrar iconos según estado */
+		.mica-floating-btn .icon-close-filter,
+		.mica-floating-btn .icon-close-search {
+			display: none;
+		}
+
+		.mica-floating-btn.show-filter .icon-filter,
+		.mica-floating-btn.show-search .icon-search {
+			display: none;
+		}
+
+		.mica-floating-btn.show-filter .icon-close-filter,
+		.mica-floating-btn.show-search .icon-close-search {
+			display: inline-block;
+		}
+	</style>
 </head>
 <body class="animsition">
 
@@ -153,16 +213,16 @@
 				<div class="flex-w flex-sb-m p-b-52">
 					<div class="flex-w flex-l-m filter-tope-group m-tb-10" role="group" aria-label="Filtros de categoría"></div>
 
-					<div class="flex-w flex-c-m m-tb-10">
-						<button class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter" aria-label="Filtrar productos">
-							<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list" aria-hidden="true"></i>
-							<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" aria-hidden="true"></i>
-							Filtrar
+					<div class="flex-w flex-c-m m-tb-10" style="gap: 12px;">
+						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
+							<i class="icon-filter zmdi zmdi-filter-list" aria-hidden="true"></i>
+							<i class="icon-close-filter zmdi zmdi-close" aria-hidden="true"></i>
+							<span>Filtrar</span>
 						</button>
-						<button class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search" aria-label="Buscar productos">
-							<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search" aria-hidden="true"></i>
-							<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" aria-hidden="true"></i>
-							Buscar
+						<button class="mica-floating-btn js-show-search" aria-label="Buscar productos">
+							<i class="icon-search zmdi zmdi-search" aria-hidden="true"></i>
+							<i class="icon-close-search zmdi zmdi-close" aria-hidden="true"></i>
+							<span>Buscar</span>
 						</button>
 					</div>
 
