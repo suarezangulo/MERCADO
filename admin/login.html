@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Panel CINEMARKET</title>
+    <title>Login - CINEMARKET</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,42 +13,49 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-            background: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-image: radial-gradient(ellipse at 30% 40%, rgba(229,9,20,0.08) 0%, transparent 60%);
         }
         .login-container {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 50px 45px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 48px 40px;
             width: 100%;
             max-width: 420px;
-            border: 1px solid #e6e6e6;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            transition: all 0.3s ease;
+        }
+        .login-container:hover {
+            border-color: rgba(229,9,20,0.3);
         }
         .login-container .logo {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
         .login-container .logo .icon {
             width: 72px;
             height: 72px;
             background: linear-gradient(135deg, #e50914, #b20710);
-            border-radius: 16px;
+            border-radius: 18px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
             color: #fff;
-            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.2);
+            box-shadow: 0 0 40px rgba(229,9,20,0.2);
         }
         .login-container h1 {
-            color: #222;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
             text-align: center;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             margin-top: 16px;
             letter-spacing: -0.5px;
@@ -56,14 +64,14 @@
             color: #888;
             text-align: center;
             font-size: 14px;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
         .form-group {
             margin-bottom: 20px;
         }
         .form-group label {
             display: block;
-            color: #555;
+            color: #aaa;
             font-size: 13px;
             font-weight: 600;
             margin-bottom: 6px;
@@ -72,25 +80,25 @@
         .form-group input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid #e6e6e6;
-            border-radius: 10px;
-            background: #f9f9f9;
-            color: #222;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+            color: #fff;
             font-size: 15px;
             transition: all 0.3s;
             outline: none;
         }
         .form-group input:focus {
             border-color: #e50914;
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.08);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 0 0 4px rgba(229,9,20,0.1);
         }
         .form-group input::placeholder {
-            color: #aaa;
+            color: #555;
         }
         .form-group .hint {
             font-size: 12px;
-            color: #888;
+            color: #666;
             margin-top: 4px;
             display: block;
         }
@@ -105,7 +113,7 @@
             width: 100%;
             padding: 15px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             background: linear-gradient(135deg, #e50914, #b20710);
             color: #fff;
             font-size: 16px;
@@ -114,10 +122,11 @@
             transition: all 0.3s;
             margin-top: 8px;
             letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(229,9,20,0.2);
         }
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.25);
+            box-shadow: 0 8px 30px rgba(229,9,20,0.4);
         }
         .btn-login:active {
             transform: translateY(0);
@@ -130,10 +139,16 @@
             display: none;
         }
         .footer-text {
-            color: #aaa;
+            color: #444;
             text-align: center;
             font-size: 12px;
             margin-top: 24px;
+        }
+        .footer-text a {
+            color: #666;
+        }
+        .footer-text a:hover {
+            color: #e50914;
         }
     </style>
 </head>
@@ -165,10 +180,11 @@
                 <i class="fas fa-exclamation-circle"></i> Usuario, contraseña o token incorrectos
             </div>
         </form>
-        <p class="footer-text">© 2025 CINEMARKET</p>
+        <p class="footer-text">© 2025 CINEMARKET — <a href="../index.html">Ir al catálogo</a></p>
     </div>
 
     <script>
+        // La lógica de login sigue siendo la misma
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const username = document.getElementById('username').value.trim();
