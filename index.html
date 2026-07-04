@@ -94,9 +94,118 @@
 		.mica-floating-btn.show-search .icon-close-search {
 			display: inline-block;
 		}
+
+		/* ===== MEJORA 1: PÍLDORAS MICA PARA CATEGORÍAS ===== */
+		.filter-tope-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.mica-pill-btn {
+			padding: 8px 20px;
+			border-radius: 25px;
+			background: rgba(26, 26, 26, 0.5);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			color: #AAA;
+			font-family: 'Poppins', sans-serif;
+			font-size: 13px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			white-space: nowrap;
+		}
+
+		.mica-pill-btn:hover {
+			background: rgba(30, 144, 255, 0.15);
+			border-color: rgba(30, 144, 255, 0.4);
+			color: #fff;
+			transform: translateY(-1px);
+		}
+
+		.mica-pill-btn.active,
+		.mica-pill-btn.how-active1 {
+			background: linear-gradient(135deg, #1E90FF, #0066cc);
+			border-color: transparent;
+			color: #fff;
+			font-weight: 600;
+			box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+		}
+
+		/* ===== MEJORA 2: SKELETON LOADING ===== */
+		.skeleton-card {
+			background: rgba(26, 26, 26, 0.5);
+			border-radius: 16px;
+			overflow: hidden;
+			border: 1px solid rgba(255,255,255,0.06);
+		}
+
+		.skeleton-image {
+			width: 100%;
+			height: 200px;
+			background: linear-gradient(90deg, 
+				rgba(255,255,255,0.03) 25%, 
+				rgba(255,255,255,0.06) 50%, 
+				rgba(255,255,255,0.03) 75%);
+			background-size: 200% 100%;
+			animation: shimmer 1.5s infinite;
+		}
+
+		.skeleton-text {
+			padding: 15px;
+		}
+
+		.skeleton-title {
+			height: 18px;
+			width: 80%;
+			background: rgba(255,255,255,0.05);
+			border-radius: 4px;
+			margin-bottom: 10px;
+			animation: shimmer 1.5s infinite;
+		}
+
+		.skeleton-desc {
+			height: 14px;
+			width: 100%;
+			background: rgba(255,255,255,0.03);
+			border-radius: 4px;
+			margin-bottom: 8px;
+			animation: shimmer 1.5s infinite;
+		}
+
+		.skeleton-price {
+			height: 22px;
+			width: 40%;
+			background: rgba(255,255,255,0.05);
+			border-radius: 4px;
+			animation: shimmer 1.5s infinite;
+		}
+
+		@keyframes shimmer {
+			0% { background-position: -200% 0; }
+			100% { background-position: 200% 0; }
+		}
+
+		/* ===== MEJORA 3: BARRA DE PROGRESO DE SCROLL ===== */
+		.scroll-progress {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
+			z-index: 9999;
+			width: 0%;
+			transition: width 0.1s ease;
+			border-radius: 0 2px 2px 0;
+		}
 	</style>
 </head>
 <body class="animsition">
+
+	<!-- ===== BARRA DE PROGRESO DE SCROLL ===== -->
+	<div class="scroll-progress" id="scrollProgress"></div>
 
 	<!-- ===== HEADER ===== -->
 	<header role="banner" aria-label="Encabezado principal" class="header-v4">
@@ -297,5 +406,15 @@
 	<script src="js/lazyload.min.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/index.js"></script>
+
+	<!-- ===== SCRIPT: BARRA DE PROGRESO DE SCROLL ===== -->
+	<script>
+	window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		var progress = (scrollTop / scrollHeight) * 100;
+		document.getElementById('scrollProgress').style.width = progress + '%';
+	});
+	</script>
 </body>
 </html>
