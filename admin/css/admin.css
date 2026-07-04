@@ -864,3 +864,15 @@ select.form-control {
         padding: 20px;
     }
 }
+
+/* ===== LOGO UNIFICADO ===== */
+.sidebar .brand .logo-text {
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.sidebar .brand .logo-text span {
+    background: linear-gradient(135deg, #e50914, #ff4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
