@@ -11,10 +11,9 @@ function addCartItem(n, t, i) {
     let h = document.createElement("img");
     h.setAttribute("alt", "imagen del artículo");
     h.setAttribute("loading", "lazy");
-    // Usar fallback de extensiones para la imagen
     var baseName = i.slug + "-0";
     var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
-    h.setAttribute("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%231a1a1a' width='60' height='60'/%3E%3C/svg%3E");
+    h.setAttribute("src", getPlaceholderImage(i.Label));
     resolveImageUrl(baseName, extensions, function(url) {
         if (url) {
             h.setAttribute("src", url);
@@ -26,7 +25,7 @@ function addCartItem(n, t, i) {
     r = document.createElement("td");
     r.setAttribute("class", "column-2");
     aElement = document.createElement("a");
-    aElement.setAttribute("class", "cl3");
+    aElement.setAttribute("class", "cl2");
     aElement.setAttribute("href", "product.html?id=" + i.slug);
     aElement.textContent = i.Label;
     r.appendChild(aElement);
@@ -76,7 +75,6 @@ function addCartItem(n, t, i) {
 }
 
 function cargarProductSlugs(callback) {
-    console.log('Cargando productSlugs...');
     $.getJSON("./data/products-index.json", function(t) {
         if (t != null) {
             productSlugs = [];
@@ -91,13 +89,9 @@ function cargarProductSlugs(callback) {
                     }
                 }
             }
-            console.log('productSlugs cargado:', Object.keys(productSlugs).length, 'productos');
             if (callback) callback();
-        } else {
-            console.error('Error: products-index.json no encontrado');
         }
     }).fail(function() {
-        console.error('Error al cargar products-index.json');
         setTimeout(function() {
             cargarProductSlugs(callback);
         }, 2000);
@@ -105,7 +99,6 @@ function cargarProductSlugs(callback) {
 }
 
 function updateCart() {
-    console.log('updateCart ejecutado');
     let i = $(".table-shopping-cart");
     i.empty();
     
@@ -113,7 +106,7 @@ function updateCart() {
     t.setAttribute("class", "table_head");
     let n = document.createElement("th");
     n.setAttribute("class", "column-1");
-    n.textContent = spanishFormat("Articulo");
+    n.textContent = "Artículo";
     t.appendChild(n);
     n = document.createElement("th");
     n.setAttribute("class", "column-2");
@@ -133,7 +126,6 @@ function updateCart() {
     i.append(t);
 
     let r = getCart();
-    console.log('Items en carrito:', r.items);
     
     if (!r.items || r.items.length === 0) {
         let row = document.createElement("tr");
@@ -148,7 +140,6 @@ function updateCart() {
     }
 
     if (!productSlugs || Object.keys(productSlugs).length === 0) {
-        console.log('productSlugs vacío, cargando...');
         cargarProductSlugs(function() {
             updateCart();
         });
@@ -160,7 +151,6 @@ function updateCart() {
         if (productSlugs[item.productId]) {
             addCartItem(i, item, productSlugs[item.productId]);
         } else {
-            console.warn('Producto no encontrado:', item.productId);
             itemsNoEncontrados.push(item.productId);
         }
     }
@@ -213,7 +203,6 @@ function updateCartTotals(guardarEnStorage = true) {
     });
 
     let totalText = toMoneyStr(totalCUP);
-
     $("span.mtext-110.cl2").css("white-space", "pre-line").text(totalText);
 
     if (guardarEnStorage) {
@@ -235,7 +224,6 @@ function removeCartItem(n, t) {
     updateCartTotals(!1);
 }
 
-// ===== MOSTRAR INFORMACIÓN DE PAGO SEGÚN MÉTODO SELECCIONADO =====
 function mostrarInfoPago(metodo) {
     var paymentInfo = $('#paymentInfo');
     var paymentDetails = $('#paymentDetails');
@@ -256,7 +244,6 @@ function mostrarInfoPago(metodo) {
                 Teléfono: <strong>${methodData.phone}</strong><br>
                 Banco: <strong>${methodData.bank || 'Cualquier banco'}</strong><br>
                 ${methodData.qrCode ? `<img src="${methodData.qrCode}" alt="Código QR Transfermóvil" style="max-width: 150px; margin-top: 10px; border: 1px solid #ddd; border-radius: 8px; padding: 5px; background: #fff;">` : ''}
-                <span style="color: #888; font-size: 12px; display: block; margin-top: 5px;">Escanea el código QR para pagar por Transfermóvil.</span>
             </div>`;
             break;
         case 'EnZona':
@@ -264,7 +251,6 @@ function mostrarInfoPago(metodo) {
                 <strong>📱 EnZona</strong><br>
                 Teléfono: <strong>${methodData.phone}</strong><br>
                 ${methodData.qrCode ? `<img src="${methodData.qrCode}" alt="Código QR EnZona" style="max-width: 150px; margin-top: 10px; border: 1px solid #ddd; border-radius: 8px; padding: 5px; background: #fff;">` : ''}
-                <span style="color: #888; font-size: 12px; display: block; margin-top: 5px;">Escanea el código QR o paga con el número de teléfono.</span>
             </div>`;
             break;
         case 'Efectivo':
@@ -281,7 +267,6 @@ function mostrarInfoPago(metodo) {
     paymentInfo.show();
 }
 
-// ===== FUNCIÓN MODIFICADA: Envía pedido con método de pago (solo CUP) =====
 function sendOrder() {
     var metodoPago = $('#paymentMethod').val();
     var nombreMetodo = $('#paymentMethod option:selected').text().trim();
@@ -298,85 +283,42 @@ function sendOrder() {
             let valorNumerico = parseFloat(precioStr) || 0;
             let subtotal = valorNumerico * cantidad;
 
-            let producto = {
-                nombre: nombre,
-                cantidad: cantidad,
-                precioUnitario: valorNumerico,
-                subtotal: subtotal
-            };
-
-            productos.push(producto);
+            productos.push({ nombre: nombre, cantidad: cantidad, precioUnitario: valorNumerico, subtotal: subtotal });
             totalCUP += subtotal;
-
-            items.push({
-                id: ToSlug(nombre),
-                name: nombre,
-                quantity: cantidad,
-                price: valorNumerico,
-                currency: 'CUP'
-            });
+            items.push({ id: ToSlug(nombre), name: nombre, quantity: cantidad, price: valorNumerico, currency: 'CUP' });
         }
     });
 
-    let mensaje = "📦 *NUEVO PEDIDO*\n";
-    mensaje += "------------------------------\n\n";
-
+    let mensaje = "📦 *NUEVO PEDIDO*\n------------------------------\n\n";
     if (productos.length > 0) {
         mensaje += "💰 *Productos en CUP*\n";
         productos.forEach(function(p) {
-            let subtotalStr = 'CUP$ ' + p.subtotal.toFixed(2);
-            mensaje += "   " + p.cantidad + "x " + p.nombre + " de CUP$ " + p.precioUnitario.toFixed(2) + "  → *" + subtotalStr + "*\n";
+            mensaje += "   " + p.cantidad + "x " + p.nombre + " de CUP$ " + p.precioUnitario.toFixed(2) + "  → *CUP$ " + p.subtotal.toFixed(2) + "*\n";
         });
         mensaje += "\n";
     }
-
-    mensaje += "------------------------------\n";
-    mensaje += "*RESUMEN DEL PEDIDO*\n";
-    mensaje += "💰 Total en CUP: *$ " + totalCUP.toFixed(2) + "*\n";
-    mensaje += "\n";
-
-    mensaje += "*Método de pago:* " + nombreMetodo + "\n\n";
+    mensaje += "------------------------------\n*RESUMEN DEL PEDIDO*\n💰 Total en CUP: *$ " + totalCUP.toFixed(2) + "*\n\n*Método de pago:* " + nombreMetodo + "\n\n";
 
     var methods = window.paymentMethods || {};
     var methodData = methods[metodoPago];
     if (methodData) {
         var infoPago = '';
         switch(metodoPago) {
-            case 'Transfermobil':
-                infoPago = `Teléfono: ${methodData.phone} | Banco: ${methodData.bank || 'Cualquier banco'}`;
-                break;
-            case 'EnZona':
-                infoPago = `Teléfono: ${methodData.phone}`;
-                break;
-            case 'Efectivo':
-                infoPago = `Paga al recibir el pedido.`;
-                break;
+            case 'Transfermobil': infoPago = `Teléfono: ${methodData.phone} | Banco: ${methodData.bank || 'Cualquier banco'}`; break;
+            case 'EnZona': infoPago = `Teléfono: ${methodData.phone}`; break;
+            case 'Efectivo': infoPago = `Paga al recibir el pedido.`; break;
         }
-        if (infoPago) {
-            mensaje += "*Datos para el pago:* " + infoPago + "\n\n";
-        }
+        if (infoPago) mensaje += "*Datos para el pago:* " + infoPago + "\n\n";
     }
 
-    mensaje += "*Momento del pago:* En el momento de la entrega.\n";
-    mensaje += "*Envío:* Acordar al realizar la orden. Las entregas se realizan en el día.\n\n";
-    mensaje += "¡Gracias por tu compra!";
+    mensaje += "*Momento del pago:* En el momento de la entrega.\n*Envío:* Acordar al realizar la orden. Las entregas se realizan en el día.\n\n¡Gracias por tu compra!";
 
     let urlWhatsApp = "https://wa.me/+" + contactCell + "?text=" + encodeURIComponent(mensaje);
     window.open(urlWhatsApp);
-
-    if (googleAnalyticsId != null && googleAnalyticsId.length > 0 && items.length > 0) {
-        gtag("event", "purchase", {
-            transaction_id: "trans_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9),
-            value: totalCUP,
-            currency: "CUP",
-            items: items
-        });
-    }
 }
 
 var productSlugs = [];
 
-// ===== INICIALIZACIÓN =====
 (function(n) {
     "use strict";
     
@@ -413,13 +355,9 @@ var productSlugs = [];
     
     $(document).ready(function() {
         $('#paymentMethod').on('change', function() {
-            var metodo = $(this).val();
-            mostrarInfoPago(metodo);
+            mostrarInfoPago($(this).val());
         });
-        
         var metodoInicial = $('#paymentMethod').val();
-        if (metodoInicial) {
-            mostrarInfoPago(metodoInicial);
-        }
+        if (metodoInicial) mostrarInfoPago(metodoInicial);
     });
 })(jQuery);
