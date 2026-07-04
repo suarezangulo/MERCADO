@@ -36,6 +36,39 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style>
+		/* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO DEL CONTENIDO ===== */
+		body {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		main, .mica-surface, .bg0 {
+			flex: 1 0 auto;
+		}
+		footer, .bg3 {
+			flex-shrink: 0;
+			position: relative;
+			z-index: 10;
+			clear: both;
+			width: 100%;
+		}
+		.mica-surface {
+			min-height: 60vh;
+			overflow: visible;
+		}
+		.isotope-grid {
+			position: relative !important;
+			height: auto !important;
+			overflow: visible !important;
+		}
+		.isotope-item {
+			position: relative !important;
+			left: auto !important;
+			top: auto !important;
+			transform: none !important;
+			margin-bottom: 20px;
+		}
+
 		/* ===== BOTONES FLOTANTES MICA (Filtrar / Buscar) ===== */
 		.mica-floating-btn {
 			display: inline-flex;
@@ -70,7 +103,6 @@
 			box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
 		}
 
-		/* Estado activo cuando se abre el panel */
 		.mica-floating-btn.show-filter,
 		.mica-floating-btn.show-search {
 			background: rgba(30, 144, 255, 0.25);
@@ -79,7 +111,6 @@
 			box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
 		}
 
-		/* Ocultar/mostrar iconos según estado */
 		.mica-floating-btn .icon-close-filter,
 		.mica-floating-btn .icon-close-search {
 			display: none;
@@ -199,6 +230,39 @@
 			width: 0%;
 			transition: width 0.1s ease;
 			border-radius: 0 2px 2px 0;
+		}
+
+		/* ===== FILTROS INTERNOS ESTILO MICA ===== */
+		.filter-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 6px 14px;
+			border-radius: 20px;
+			background: rgba(26,26,26,0.4);
+			color: #aaa;
+			border: 1px solid rgba(255,255,255,0.05);
+			font-size: 13px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			cursor: pointer;
+		}
+		.filter-link:hover {
+			background: rgba(30,144,255,0.15);
+			border-color: rgba(30,144,255,0.4);
+			color: #fff;
+		}
+		.filter-link-active {
+			background: linear-gradient(135deg, #1E90FF, #0066cc);
+			border-color: transparent;
+			color: #fff;
+			font-weight: 600;
+		}
+		.filter-link-active-bor {
+			background: linear-gradient(135deg, #1E90FF, #0066cc) !important;
+			border-color: transparent !important;
+			color: #fff !important;
+			font-weight: 600;
 		}
 	</style>
 </head>
@@ -350,6 +414,7 @@
 				</div>
 
 				<div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
+				<div style="clear: both;"></div>
 			</div>
 		</div>
 	</main>
