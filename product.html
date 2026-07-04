@@ -264,79 +264,9 @@
 			border-radius: 8px;
 		}
 
-		/* ===== FLECHAS DE NAVEGACIÓN DEL LIGHTBOX (ESTILO MICA) ===== */
+		/* Ocultar flechas originales de MagnificPopup */
 		.mfp-arrow {
-			background: transparent !important;
-			width: 50px !important;
-			height: 50px !important;
-			margin-top: -25px !important;
-			opacity: 0.8;
-			transition: all 0.3s ease;
-		}
-
-		/* Ocultar los pseudo-elementos originales (triángulos feos) */
-		.mfp-arrow:before,
-		.mfp-arrow:after {
 			display: none !important;
-		}
-
-		.mfp-arrow-left {
-			left: 20px !important;
-		}
-
-		.mfp-arrow-right {
-			right: 20px !important;
-		}
-
-		/* Flecha izquierda personalizada */
-		.mfp-arrow-left::before {
-			content: '\f104' !important;
-			font-family: 'FontAwesome' !important;
-			display: flex !important;
-			align-items: center;
-			justify-content: center;
-			width: 50px;
-			height: 50px;
-			background: rgba(26, 26, 26, 0.7);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			border-radius: 50%;
-			color: #fff;
-			font-size: 28px;
-			border: 1px solid rgba(255, 255, 255, 0.15);
-			margin: 0 !important;
-			position: static !important;
-		}
-
-		/* Flecha derecha personalizada */
-		.mfp-arrow-right::before {
-			content: '\f105' !important;
-			font-family: 'FontAwesome' !important;
-			display: flex !important;
-			align-items: center;
-			justify-content: center;
-			width: 50px;
-			height: 50px;
-			background: rgba(26, 26, 26, 0.7);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			border-radius: 50%;
-			color: #fff;
-			font-size: 28px;
-			border: 1px solid rgba(255, 255, 255, 0.15);
-			margin: 0 !important;
-			position: static !important;
-		}
-
-		.mfp-arrow-left:hover::before,
-		.mfp-arrow-right:hover::before {
-			background: rgba(30, 144, 255, 0.5);
-			border-color: rgba(30, 144, 255, 0.6);
-		}
-
-		.mfp-arrow:hover {
-			opacity: 1;
-			background: transparent !important;
 		}
 
 		/* Contador de imágenes */
@@ -370,23 +300,6 @@
 			}
 			.gallery-item img {
 				height: 120px;
-			}
-			.mfp-arrow {
-				width: 40px !important;
-				height: 40px !important;
-				margin-top: -20px !important;
-			}
-			.mfp-arrow-left {
-				left: 10px !important;
-			}
-			.mfp-arrow-right {
-				right: 10px !important;
-			}
-			.mfp-arrow-left::before,
-			.mfp-arrow-right::before {
-				width: 40px;
-				height: 40px;
-				font-size: 22px;
 			}
 		}
 
@@ -647,5 +560,120 @@
 	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/product.js"></script>
+
+	<!-- ===== SCRIPT PARA FLECHAS DEL LIGHTBOX (BOTONES MICA) ===== -->
+	<script>
+	$(document).ready(function() {
+		// Observar cuando se abre el lightbox
+		$(document).on('mfpOpen', function() {
+			// Eliminar flechas originales
+			$('.mfp-arrow').remove();
+			
+			// Crear botón izquierdo
+			var $leftArrow = $('<button>', {
+				'class': 'mfp-arrow-left-custom',
+				'html': '<i class="fa fa-chevron-left"></i>',
+				'css': {
+					'position': 'fixed',
+					'top': '50%',
+					'left': '20px',
+					'transform': 'translateY(-50%)',
+					'width': '50px',
+					'height': '50px',
+					'border-radius': '50%',
+					'background': 'rgba(26, 26, 26, 0.7)',
+					'backdrop-filter': 'blur(10px)',
+					'-webkit-backdrop-filter': 'blur(10px)',
+					'border': '1px solid rgba(255, 255, 255, 0.15)',
+					'color': '#fff',
+					'font-size': '20px',
+					'cursor': 'pointer',
+					'z-index': '9999',
+					'display': 'flex',
+					'align-items': 'center',
+					'justify-content': 'center',
+					'transition': 'all 0.3s ease',
+					'opacity': '0.8'
+				},
+				'click': function() {
+					$.magnificPopup.instance.prev();
+				},
+				'mouseenter': function() {
+					$(this).css({
+						'background': 'rgba(30, 144, 255, 0.5)',
+						'border-color': 'rgba(30, 144, 255, 0.6)',
+						'opacity': '1'
+					});
+				},
+				'mouseleave': function() {
+					$(this).css({
+						'background': 'rgba(26, 26, 26, 0.7)',
+						'border-color': 'rgba(255, 255, 255, 0.15)',
+						'opacity': '0.8'
+					});
+				}
+			});
+			
+			// Crear botón derecho
+			var $rightArrow = $('<button>', {
+				'class': 'mfp-arrow-right-custom',
+				'html': '<i class="fa fa-chevron-right"></i>',
+				'css': {
+					'position': 'fixed',
+					'top': '50%',
+					'right': '20px',
+					'transform': 'translateY(-50%)',
+					'width': '50px',
+					'height': '50px',
+					'border-radius': '50%',
+					'background': 'rgba(26, 26, 26, 0.7)',
+					'backdrop-filter': 'blur(10px)',
+					'-webkit-backdrop-filter': 'blur(10px)',
+					'border': '1px solid rgba(255, 255, 255, 0.15)',
+					'color': '#fff',
+					'font-size': '20px',
+					'cursor': 'pointer',
+					'z-index': '9999',
+					'display': 'flex',
+					'align-items': 'center',
+					'justify-content': 'center',
+					'transition': 'all 0.3s ease',
+					'opacity': '0.8'
+				},
+				'click': function() {
+					$.magnificPopup.instance.next();
+				},
+				'mouseenter': function() {
+					$(this).css({
+						'background': 'rgba(30, 144, 255, 0.5)',
+						'border-color': 'rgba(30, 144, 255, 0.6)',
+						'opacity': '1'
+					});
+				},
+				'mouseleave': function() {
+					$(this).css({
+						'background': 'rgba(26, 26, 26, 0.7)',
+						'border-color': 'rgba(255, 255, 255, 0.15)',
+						'opacity': '0.8'
+					});
+				}
+			});
+			
+			// Agregar al body
+			$('body').append($leftArrow, $rightArrow);
+			
+			// Ajuste responsive
+			if ($(window).width() < 768) {
+				$leftArrow.css({ 'width': '40px', 'height': '40px', 'left': '10px', 'font-size': '16px' });
+				$rightArrow.css({ 'width': '40px', 'height': '40px', 'right': '10px', 'font-size': '16px' });
+			}
+		});
+		
+		// Eliminar botones cuando se cierra el lightbox
+		$(document).on('mfpClose', function() {
+			$('.mfp-arrow-left-custom, .mfp-arrow-right-custom').remove();
+		});
+	});
+	</script>
 </body>
 </html>
