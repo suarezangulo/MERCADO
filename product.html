@@ -279,6 +279,19 @@
 			border-radius: 15px;
 		}
 
+		/* ===== MEJORA 3: BARRA DE PROGRESO DE SCROLL ===== */
+		.scroll-progress {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
+			z-index: 9999;
+			width: 0%;
+			transition: width 0.1s ease;
+			border-radius: 0 2px 2px 0;
+		}
+
 		/* Responsive */
 		@media (max-width: 768px) {
 			.product-hero {
@@ -358,6 +371,9 @@
 	</style>
 </head>
 <body class="animsition">
+
+	<!-- ===== BARRA DE PROGRESO DE SCROLL ===== -->
+	<div class="scroll-progress" id="scrollProgress"></div>
 
 	<!-- ===== HEADER ===== -->
 	<header role="banner" aria-label="Encabezado principal" class="header-v4">
@@ -564,115 +580,74 @@
 	<!-- ===== SCRIPT PARA FLECHAS DEL LIGHTBOX (BOTONES MICA) ===== -->
 	<script>
 	$(document).ready(function() {
-		// Observar cuando se abre el lightbox
 		$(document).on('mfpOpen', function() {
-			// Eliminar flechas originales
 			$('.mfp-arrow').remove();
 			
-			// Crear botón izquierdo
 			var $leftArrow = $('<button>', {
 				'class': 'mfp-arrow-left-custom',
 				'html': '<i class="fa fa-chevron-left"></i>',
 				'css': {
-					'position': 'fixed',
-					'top': '50%',
-					'left': '20px',
-					'transform': 'translateY(-50%)',
-					'width': '50px',
-					'height': '50px',
-					'border-radius': '50%',
-					'background': 'rgba(26, 26, 26, 0.7)',
-					'backdrop-filter': 'blur(10px)',
-					'-webkit-backdrop-filter': 'blur(10px)',
-					'border': '1px solid rgba(255, 255, 255, 0.15)',
-					'color': '#fff',
-					'font-size': '20px',
-					'cursor': 'pointer',
-					'z-index': '9999',
-					'display': 'flex',
-					'align-items': 'center',
-					'justify-content': 'center',
-					'transition': 'all 0.3s ease',
-					'opacity': '0.8'
+					'position': 'fixed', 'top': '50%', 'left': '20px',
+					'transform': 'translateY(-50%)', 'width': '50px', 'height': '50px',
+					'border-radius': '50%', 'background': 'rgba(26, 26, 26, 0.7)',
+					'backdrop-filter': 'blur(10px)', '-webkit-backdrop-filter': 'blur(10px)',
+					'border': '1px solid rgba(255, 255, 255, 0.15)', 'color': '#fff',
+					'font-size': '20px', 'cursor': 'pointer', 'z-index': '9999',
+					'display': 'flex', 'align-items': 'center', 'justify-content': 'center',
+					'transition': 'all 0.3s ease', 'opacity': '0.8'
 				},
-				'click': function() {
-					$.magnificPopup.instance.prev();
-				},
+				'click': function() { $.magnificPopup.instance.prev(); },
 				'mouseenter': function() {
-					$(this).css({
-						'background': 'rgba(30, 144, 255, 0.5)',
-						'border-color': 'rgba(30, 144, 255, 0.6)',
-						'opacity': '1'
-					});
+					$(this).css({ 'background': 'rgba(30, 144, 255, 0.5)', 'border-color': 'rgba(30, 144, 255, 0.6)', 'opacity': '1' });
 				},
 				'mouseleave': function() {
-					$(this).css({
-						'background': 'rgba(26, 26, 26, 0.7)',
-						'border-color': 'rgba(255, 255, 255, 0.15)',
-						'opacity': '0.8'
-					});
+					$(this).css({ 'background': 'rgba(26, 26, 26, 0.7)', 'border-color': 'rgba(255, 255, 255, 0.15)', 'opacity': '0.8' });
 				}
 			});
 			
-			// Crear botón derecho
 			var $rightArrow = $('<button>', {
 				'class': 'mfp-arrow-right-custom',
 				'html': '<i class="fa fa-chevron-right"></i>',
 				'css': {
-					'position': 'fixed',
-					'top': '50%',
-					'right': '20px',
-					'transform': 'translateY(-50%)',
-					'width': '50px',
-					'height': '50px',
-					'border-radius': '50%',
-					'background': 'rgba(26, 26, 26, 0.7)',
-					'backdrop-filter': 'blur(10px)',
-					'-webkit-backdrop-filter': 'blur(10px)',
-					'border': '1px solid rgba(255, 255, 255, 0.15)',
-					'color': '#fff',
-					'font-size': '20px',
-					'cursor': 'pointer',
-					'z-index': '9999',
-					'display': 'flex',
-					'align-items': 'center',
-					'justify-content': 'center',
-					'transition': 'all 0.3s ease',
-					'opacity': '0.8'
+					'position': 'fixed', 'top': '50%', 'right': '20px',
+					'transform': 'translateY(-50%)', 'width': '50px', 'height': '50px',
+					'border-radius': '50%', 'background': 'rgba(26, 26, 26, 0.7)',
+					'backdrop-filter': 'blur(10px)', '-webkit-backdrop-filter': 'blur(10px)',
+					'border': '1px solid rgba(255, 255, 255, 0.15)', 'color': '#fff',
+					'font-size': '20px', 'cursor': 'pointer', 'z-index': '9999',
+					'display': 'flex', 'align-items': 'center', 'justify-content': 'center',
+					'transition': 'all 0.3s ease', 'opacity': '0.8'
 				},
-				'click': function() {
-					$.magnificPopup.instance.next();
-				},
+				'click': function() { $.magnificPopup.instance.next(); },
 				'mouseenter': function() {
-					$(this).css({
-						'background': 'rgba(30, 144, 255, 0.5)',
-						'border-color': 'rgba(30, 144, 255, 0.6)',
-						'opacity': '1'
-					});
+					$(this).css({ 'background': 'rgba(30, 144, 255, 0.5)', 'border-color': 'rgba(30, 144, 255, 0.6)', 'opacity': '1' });
 				},
 				'mouseleave': function() {
-					$(this).css({
-						'background': 'rgba(26, 26, 26, 0.7)',
-						'border-color': 'rgba(255, 255, 255, 0.15)',
-						'opacity': '0.8'
-					});
+					$(this).css({ 'background': 'rgba(26, 26, 26, 0.7)', 'border-color': 'rgba(255, 255, 255, 0.15)', 'opacity': '0.8' });
 				}
 			});
 			
-			// Agregar al body
 			$('body').append($leftArrow, $rightArrow);
 			
-			// Ajuste responsive
 			if ($(window).width() < 768) {
 				$leftArrow.css({ 'width': '40px', 'height': '40px', 'left': '10px', 'font-size': '16px' });
 				$rightArrow.css({ 'width': '40px', 'height': '40px', 'right': '10px', 'font-size': '16px' });
 			}
 		});
 		
-		// Eliminar botones cuando se cierra el lightbox
 		$(document).on('mfpClose', function() {
 			$('.mfp-arrow-left-custom, .mfp-arrow-right-custom').remove();
 		});
+	});
+	</script>
+
+	<!-- ===== SCRIPT: BARRA DE PROGRESO DE SCROLL ===== -->
+	<script>
+	window.addEventListener('scroll', function() {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		var progress = (scrollTop / scrollHeight) * 100;
+		document.getElementById('scrollProgress').style.width = progress + '%';
 	});
 	</script>
 </body>
