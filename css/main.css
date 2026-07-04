@@ -1,6 +1,6 @@
 /* ============================================================
-   MAIN.CSS - CINEMARKET Dark Glassmorphism Design
-   Estilo oscuro translúcido con efecto mica (Windows 11 style)
+   MAIN.CSS - CINEMARKET Dark Glassmorphism (Corregido)
+   Fondo oscuro uniforme, filtros como botones individuales
    ============================================================ */
 
 /* ===== IMPORTS ===== */
@@ -17,11 +17,31 @@ html {
 }
 body {
     font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
+    background: #0a0a0a !important;
     color: #f0f0f0;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
+}
+
+/* Forzar fondo oscuro en todos los contenedores */
+.container,
+.container-fluid,
+.row,
+[class*="col-"],
+.bg0,
+.bg-white,
+.bg6,
+.bg-body,
+.main,
+.main-content,
+.page-content,
+.content,
+.wrapper,
+.section,
+[class*="bg-"] {
+    background-color: transparent !important;
+    background: transparent !important;
 }
 
 /* ===== VARIABLES ===== */
@@ -380,6 +400,7 @@ a:hover { color: #ff6b35; }
 /* ===== MAIN ===== */
 .main {
     padding: 32px 0 80px;
+    background: transparent !important;
 }
 
 /* ===== FILTERS ===== */
@@ -399,11 +420,12 @@ a:hover { color: #ff6b35; }
 .filters__tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
 }
 .filters__tabs button {
-    background: transparent;
-    border: none;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
     padding: 6px 18px;
     border-radius: 30px;
     color: var(--text-secondary);
@@ -411,15 +433,17 @@ a:hover { color: #ff6b35; }
     font-size: 0.8rem;
     cursor: pointer;
     transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 .filters__tabs button:hover {
     color: #fff;
-    background: var(--glass-bg);
+    background: var(--glass-hover);
+    transform: translateY(-1px);
 }
 .filters__tabs button.active {
     color: #fff;
     background: rgba(229, 9, 20, 0.25);
-    border: 1px solid rgba(229, 9, 20, 0.2);
+    border-color: rgba(229, 9, 20, 0.3);
     box-shadow: 0 4px 16px var(--primary-glow);
 }
 .filters__actions {
@@ -1027,6 +1051,11 @@ a:hover { color: #ff6b35; }
     }
     .filters__tabs {
         flex-wrap: wrap;
+        gap: 6px;
+    }
+    .filters__tabs button {
+        font-size: 0.7rem;
+        padding: 4px 12px;
     }
     .footer__qr-img {
         width: 60px;
