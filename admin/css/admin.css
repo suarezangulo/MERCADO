@@ -1,28 +1,29 @@
 /* ============================================================
    ADMIN.CSS - Panel de Administración CINEMARKET
-   Estilo cinematográfico oscuro y elegante
+   Estilo claro, similar a la vista de usuario
    ============================================================ */
 
 /* ===== VARIABLES ===== */
 :root {
     --primary: #e50914;
     --primary-dark: #b20710;
-    --primary-glow: rgba(229, 9, 20, 0.3);
-    --bg-dark: #0a0a0a;
-    --bg-card: #141414;
-    --bg-card-hover: #1f1f1f;
-    --bg-sidebar: #0d0d0d;
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --text-muted: rgba(255, 255, 255, 0.4);
-    --border-color: rgba(255, 255, 255, 0.06);
-    --border-glow: rgba(229, 9, 20, 0.2);
+    --primary-glow: rgba(229, 9, 20, 0.15);
+    --bg-body: #f5f5f5;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8f8f8;
+    --bg-input: #f9f9f9;
+    --text-primary: #222222;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --border-color: #e6e6e6;
     --success: #2ecc71;
     --danger: #e74c3c;
     --warning: #f39c12;
     --info: #3498db;
-    --radius: 12px;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* ===== RESET Y BASE ===== */
@@ -34,27 +35,27 @@
 
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg-dark);
+    background: var(--bg-body);
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
     overflow: hidden;
 }
 
-/* ===== SCROLLBAR PERSONALIZADA ===== */
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--bg-dark);
+    background: var(--bg-body);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--primary);
+    background: #ccc;
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    background: #aaa;
 }
 
 /* ===== SIDEBAR ===== */
@@ -72,15 +73,16 @@ body {
     overflow-y: auto;
     z-index: 100;
     transition: all 0.3s ease;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.04);
 }
 
 .sidebar .brand {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding-bottom: 30px;
+    padding-bottom: 28px;
     border-bottom: 1px solid var(--border-color);
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .sidebar .brand .logo-icon {
@@ -93,33 +95,29 @@ body {
     justify-content: center;
     font-size: 24px;
     color: #fff;
-    box-shadow: 0 0 30px var(--primary-glow);
 }
 
 .sidebar .brand .logo-text {
     font-size: 22px;
     font-weight: 800;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-primary);
 }
 
 .sidebar .brand .logo-text span {
     color: var(--primary);
-    -webkit-text-fill-color: var(--primary);
 }
 
 /* ===== USUARIO ===== */
 .sidebar .user-card {
-    background: linear-gradient(135deg, rgba(229, 9, 20, 0.15), rgba(229, 9, 20, 0.05));
-    border: 1px solid rgba(229, 9, 20, 0.15);
+    background: var(--bg-body);
     border-radius: var(--radius);
     padding: 16px 18px;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     gap: 14px;
+    border: 1px solid var(--border-color);
 }
 
 .sidebar .user-card .avatar {
@@ -139,10 +137,11 @@ body {
 .sidebar .user-card .user-info .name {
     font-weight: 600;
     font-size: 15px;
+    color: var(--text-primary);
 }
 .sidebar .user-card .user-info .username {
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 /* ===== NAVEGACIÓN ===== */
@@ -159,7 +158,7 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 13px 16px;
+    padding: 12px 16px;
     color: var(--text-secondary);
     text-decoration: none;
     border-radius: var(--radius);
@@ -170,14 +169,14 @@ body {
 }
 
 .sidebar nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--bg-body);
     color: var(--text-primary);
 }
 
 .sidebar nav ul li a.active {
-    background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.05));
-    color: #fff;
-    border-left: 3px solid var(--primary);
+    background: rgba(229, 9, 20, 0.08);
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .sidebar nav ul li a i {
@@ -220,7 +219,7 @@ body {
 }
 
 .sidebar .logout-btn:hover {
-    background: rgba(229, 9, 20, 0.1);
+    background: rgba(229, 9, 20, 0.06);
     border-color: var(--primary);
     color: var(--primary);
 }
@@ -236,7 +235,7 @@ body {
     flex: 1;
     padding: 35px 40px;
     min-height: 100vh;
-    background: var(--bg-dark);
+    background: var(--bg-body);
     overflow-y: auto;
     height: 100vh;
 }
@@ -246,22 +245,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 15px;
 }
 
 .page-header h1 {
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .page-header h1 small {
     font-size: 16px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     font-weight: 400;
-    margin-left: 12px;
+    margin-left: 10px;
 }
 
 .page-header .actions {
@@ -289,11 +288,10 @@ body {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: #fff;
-    box-shadow: 0 4px 20px var(--primary-glow);
 }
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px var(--primary-glow);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
 }
 
 .btn-success {
@@ -328,9 +326,9 @@ body {
     border: 1px solid var(--border-color);
 }
 .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--bg-body);
+    color: var(--text-primary);
+    border-color: #ccc;
 }
 
 .btn-sm {
@@ -344,13 +342,14 @@ body {
     background: var(--bg-card);
     border-radius: var(--radius);
     padding: 28px 30px;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
 
 .card:hover {
-    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-hover);
 }
 
 .card .card-title {
@@ -383,22 +382,13 @@ body {
     border: 1px solid var(--border-color);
     text-align: left;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
 }
 
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), transparent);
-}
-
 .stat-card:hover {
-    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-hover);
     transform: translateY(-2px);
 }
 
@@ -411,12 +401,12 @@ body {
 .stat-card .number {
     font-size: 34px;
     font-weight: 800;
-    letter-spacing: -0.5px;
+    color: var(--text-primary);
 }
 
 .stat-card .label {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     margin-top: 4px;
 }
 
@@ -437,7 +427,7 @@ table thead th {
     font-size: 12px;
     font-weight: 700;
     color: var(--text-muted);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
@@ -447,6 +437,7 @@ table tbody td {
     border-bottom: 1px solid var(--border-color);
     font-size: 14px;
     vertical-align: middle;
+    color: var(--text-secondary);
 }
 
 table tbody tr {
@@ -454,7 +445,11 @@ table tbody tr {
 }
 
 table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-body);
+}
+
+table tbody td strong {
+    color: var(--text-primary);
 }
 
 table .product-thumb {
@@ -462,7 +457,7 @@ table .product-thumb {
     height: 65px;
     object-fit: cover;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--bg-body);
     border: 1px solid var(--border-color);
 }
 
@@ -494,8 +489,8 @@ table .actions-cell {
     padding: 13px 16px;
     border: 2px solid var(--border-color);
     border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.03);
-    color: #fff;
+    background: var(--bg-input);
+    color: var(--text-primary);
     font-size: 14px;
     transition: all 0.3s ease;
     outline: none;
@@ -504,17 +499,12 @@ table .actions-cell {
 
 .form-control:focus {
     border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.05);
+    background: #fff;
     box-shadow: 0 0 0 4px var(--primary-glow);
 }
 
 .form-control::placeholder {
     color: var(--text-muted);
-}
-
-.form-control option {
-    background: var(--bg-card);
-    color: #fff;
 }
 
 textarea.form-control {
@@ -525,10 +515,14 @@ textarea.form-control {
 select.form-control {
     appearance: none;
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
+}
+
+.form-control option {
+    color: var(--text-primary);
 }
 
 .form-row {
@@ -546,18 +540,18 @@ select.form-control {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-input);
 }
 
 .file-upload-area:hover {
     border-color: var(--primary);
-    background: rgba(229, 9, 20, 0.05);
+    background: rgba(229, 9, 20, 0.03);
 }
 
 .file-upload-area.dragover {
     border-color: var(--primary);
-    background: rgba(229, 9, 20, 0.08);
-    box-shadow: 0 0 40px var(--primary-glow);
+    background: rgba(229, 9, 20, 0.06);
+    box-shadow: 0 0 30px var(--primary-glow);
 }
 
 .file-upload-area input[type="file"] {
@@ -603,6 +597,7 @@ select.form-control {
     overflow: hidden;
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+    background: var(--bg-body);
 }
 
 .image-preview-item:hover {
@@ -631,7 +626,7 @@ select.form-control {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .image-preview-item .remove-image:hover {
@@ -642,8 +637,8 @@ select.form-control {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
     z-index: 1000;
     display: none;
     justify-content: center;
@@ -664,8 +659,8 @@ select.form-control {
     max-height: 90vh;
     overflow-y: auto;
     border: 1px solid var(--border-color);
-    animation: modalFadeIn 0.4s ease;
-    box-shadow: var(--shadow);
+    animation: modalFadeIn 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes modalFadeIn {
@@ -691,7 +686,7 @@ select.form-control {
 .modal .modal-header h2 {
     font-size: 24px;
     font-weight: 700;
-    letter-spacing: -0.3px;
+    color: var(--text-primary);
 }
 
 .modal .modal-header h2 i {
@@ -702,7 +697,7 @@ select.form-control {
 .modal .modal-close {
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     font-size: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -715,8 +710,8 @@ select.form-control {
 }
 
 .modal .modal-close:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    background: var(--bg-body);
     transform: rotate(90deg);
 }
 
@@ -747,12 +742,11 @@ select.form-control {
     font-weight: 500;
     font-size: 14px;
     animation: toastSlideIn 0.4s ease;
-    box-shadow: var(--shadow);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     min-width: 280px;
     display: flex;
     align-items: center;
     gap: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .toast-success {
