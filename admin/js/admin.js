@@ -1,6 +1,6 @@
 // ============================================================
 // ADMIN.JS - Panel de administración con GitHub API
-// Versión con botones funcionales
+// Versión con fallback universal de extensiones
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -38,6 +38,46 @@ let products = [];
 let editingProduct = null;
 let uploadedImages = [];
 let existingImages = [];
+let imageCache = {}; // Cache de imágenes resueltas
+
+// ===== FUNCIÓN UNIVERSAL PARA RESOLVER UNA IMAGEN (con fallback de extensiones) =====
+function resolveImageUrl(baseName, extensions, callback) {
+    if (!baseName) return callback(null);
+    // Si ya está en caché, usarlo
+    if (imageCache[baseName]) {
+        callback(imageCache[baseName]);
+        return;
+    }
+    // Extensiones por defecto si no se proporcionan
+    const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+    let index = 0;
+    
+    function tryNext() {
+        if (index >= extList.length) {
+            // No se encontró ninguna
+            imageCache[baseName] = null;
+            callback(null);
+            return;
+        }
+        const ext = extList[index];
+        const url = `../images/products/${baseName}.${ext}`;
+        fetch(url, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    imageCache[baseName] = url;
+                    callback(url);
+                } else {
+                    index++;
+                    tryNext();
+                }
+            })
+            .catch(() => {
+                index++;
+                tryNext();
+            });
+    }
+    tryNext();
+}
 
 // ===== FUNCIONES DE GITHUB API =====
 async function fetchCSV() {
@@ -197,6 +237,7 @@ function parseCSVLine(line) {
     return result;
 }
 
+// ===== RENDER TABLA (con fallback universal) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -207,7 +248,7 @@ function renderProductTable() {
         return;
     }
 
-    // Generar HTML con placeholders
+    // Generar HTML inicial con placeholders
     let html = '';
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
@@ -218,9 +259,6 @@ function renderProductTable() {
         }
         const baseName = imageName.replace(/\.[^.]+$/, '');
         const imgId = `img-${slug}-${index}`;
-        const csvExt = imageName.split('.').pop().toLowerCase();
-        const extensions = [csvExt, 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
-        const uniqueExtensions = [...new Set(extensions)];
         
         html += `
         <tr data-index="${index}">
@@ -253,33 +291,26 @@ function renderProductTable() {
     });
     tbody.innerHTML = html;
 
-    // Asignar eventos a los botones de editar
+    // Asignar eventos a los botones
     document.querySelectorAll('.edit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.dataset.index);
-            console.log('Editar producto índice:', index);
             if (typeof editProduct === 'function') {
                 editProduct(index);
-            } else {
-                console.error('editProduct no está definida');
             }
         });
     });
 
-    // Asignar eventos a los botones de eliminar
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.dataset.index);
-            console.log('Eliminar producto índice:', index);
             if (typeof deleteProduct === 'function') {
                 deleteProduct(index);
-            } else {
-                console.error('deleteProduct no está definida');
             }
         });
     });
 
-    // Verificar imágenes con fetch (código igual que antes)
+    // Resolver imágenes con fallback
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
@@ -290,47 +321,25 @@ function renderProductTable() {
         const baseName = imageName.replace(/\.[^.]+$/, '');
         const imgId = `img-${slug}-${index}`;
         const loadingId = `${imgId}-loading`;
-        const csvExt = imageName.split('.').pop().toLowerCase();
-        const extensions = [csvExt, 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'];
-        const uniqueExtensions = [...new Set(extensions)];
-        
-        let extIndex = 0;
         const imgElement = document.getElementById(imgId);
         const loadingElement = document.getElementById(loadingId);
         
-        function tryNextExtension() {
-            if (extIndex >= uniqueExtensions.length) {
-                if (loadingElement) loadingElement.style.display = 'none';
-                if (imgElement) {
-                    imgElement.style.display = 'block';
-                    imgElement.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
-                }
-                return;
+        // Obtener extensiones posibles
+        const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        const csvExt = imageName.split('.').pop().toLowerCase();
+        const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+        
+        resolveImageUrl(baseName, orderedExtensions, (url) => {
+            if (loadingElement) loadingElement.style.display = 'none';
+            if (imgElement) {
+                imgElement.style.display = 'block';
+                imgElement.src = url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="65"><rect fill="%23141414" width="45" height="65"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="12">?</text></svg>';
             }
-            const ext = uniqueExtensions[extIndex];
-            const url = `../images/products/${baseName}.${ext}`;
-            fetch(url, { method: 'HEAD' })
-                .then(response => {
-                    if (response.ok) {
-                        if (loadingElement) loadingElement.style.display = 'none';
-                        if (imgElement) {
-                            imgElement.style.display = 'block';
-                            imgElement.src = url;
-                        }
-                    } else {
-                        extIndex++;
-                        tryNextExtension();
-                    }
-                })
-                .catch(() => {
-                    extIndex++;
-                    tryNextExtension();
-                });
-        }
-        tryNextExtension();
+        });
     });
 }
-// ===== EDITAR PRODUCTO (FUNCIÓN GLOBAL) =====
+
+// ===== FUNCIONES GLOBALES PARA BOTONES =====
 window.editProduct = function(index) {
     console.log('editProduct llamado con índice:', index);
     const product = products[index];
@@ -341,7 +350,6 @@ window.editProduct = function(index) {
     }
 };
 
-// ===== ELIMINAR PRODUCTO (FUNCIÓN GLOBAL) =====
 window.deleteProduct = function(index) {
     const product = products[index];
     if (!product) return;
@@ -385,10 +393,11 @@ function updateRecentProducts() {
     container.innerHTML = recent.map(p => {
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         const firstImage = imagesList.length > 0 ? imagesList[0].trim() : '';
-        const imagePath = firstImage ? `../images/products/${firstImage}` : '';
+        const baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : '';
+        const imagePath = baseName ? `../images/products/${baseName}` : '';
         return `
         <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border-color);">
-            ${imagePath ? `<img src="${imagePath}" style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03);" onerror="this.style.display='none'">` :
+            ${imagePath ? `<img src="${imagePath}.webp" style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03);" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'45\'><rect fill=\'%23141414\' width=\'32\' height=\'45\'/><text x=\'50%\' y=\'50%\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23666\' font-size=\'10\'>?</text></svg>'">` :
             `<span style="width:32px; height:45px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px;">?</span>`}
             <span style="flex:1;">${p.Label}</span>
             <span style="color: var(--text-muted); font-size:13px;">${p.Price}</span>
@@ -396,12 +405,13 @@ function updateRecentProducts() {
     `}).join('');
 }
 
-// ===== ABRIR FORMULARIO =====
+// ===== ABRIR FORMULARIO (con fallback de imágenes existentes) =====
 function openProductForm(product = null) {
     editingProduct = product;
     uploadedImages = [];
     existingImages = [];
-    document.getElementById('imagePreviewContainer').innerHTML = '';
+    const container = document.getElementById('imagePreviewContainer');
+    container.innerHTML = '';
     document.getElementById('imageUpload').value = '';
 
     const modal = document.getElementById('productModal');
@@ -419,17 +429,37 @@ function openProductForm(product = null) {
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
         
+        // Cargar imágenes existentes con fallback de extensiones
         const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
         existingImages = imagesList;
-        const container = document.getElementById('imagePreviewContainer');
-        imagesList.forEach((imgName, index) => {
-            const div = document.createElement('div');
-            div.className = 'image-preview-item';
-            div.innerHTML = `
-                <img src="../images/products/${imgName}" alt="Imagen existente" onerror="this.alt='Error'">
-                <button class="remove-image" onclick="removeExistingImage(${index})">&times;</button>
-            `;
-            container.appendChild(div);
+        
+        // Para cada imagen existente, resolver con fallback
+        imagesList.forEach((imgName, idx) => {
+            const baseName = imgName.replace(/\.[^.]+$/, '');
+            const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+            const csvExt = imgName.split('.').pop().toLowerCase();
+            const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+            
+            resolveImageUrl(baseName, orderedExtensions, (url) => {
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                const img = document.createElement('img');
+                img.alt = `Imagen ${idx+1}`;
+                if (url) {
+                    img.src = url;
+                } else {
+                    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
+                }
+                div.appendChild(img);
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-image';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = function() {
+                    removeExistingImage(idx);
+                };
+                div.appendChild(removeBtn);
+                container.appendChild(div);
+            });
         });
     } else {
         title.innerHTML = '<i class="fas fa-plus-circle"></i> Nuevo Título';
@@ -443,17 +473,37 @@ function openProductForm(product = null) {
 
 function removeExistingImage(index) {
     existingImages.splice(index, 1);
-    const container = document.getElementById('imagePreviewContainer');
-    container.innerHTML = '';
-    existingImages.forEach((imgName, i) => {
-        const div = document.createElement('div');
-        div.className = 'image-preview-item';
-        div.innerHTML = `
-            <img src="../images/products/${imgName}" alt="Imagen existente" onerror="this.alt='Error'">
-            <button class="remove-image" onclick="removeExistingImage(${i})">&times;</button>
-        `;
-        container.appendChild(div);
-    });
+    // Reconstruir previsualización (simplificado: recargar el modal)
+    const product = editingProduct;
+    if (product) {
+        // Limpiar y volver a cargar
+        const container = document.getElementById('imagePreviewContainer');
+        container.innerHTML = '';
+        // Volver a cargar las imágenes existentes (sin fallback, se resolverán de nuevo)
+        existingImages.forEach((imgName, idx) => {
+            const baseName = imgName.replace(/\.[^.]+$/, '');
+            const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+            const csvExt = imgName.split('.').pop().toLowerCase();
+            const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+            
+            resolveImageUrl(baseName, orderedExtensions, (url) => {
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                const img = document.createElement('img');
+                img.alt = `Imagen ${idx+1}`;
+                img.src = url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
+                div.appendChild(img);
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-image';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = function() {
+                    removeExistingImage(idx);
+                };
+                div.appendChild(removeBtn);
+                container.appendChild(div);
+            });
+        });
+    }
 }
 
 function populateCategorySelects() {
@@ -707,3 +757,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// ===== EXPONER FUNCIONES GLOBALMENTE (por si acaso) =====
+window.editProduct = editProduct;
+window.deleteProduct = deleteProduct;
+window.logout = logout;
