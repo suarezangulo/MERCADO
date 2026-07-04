@@ -1,23 +1,20 @@
 // ===== FUNCIONES GENERALES =====
 
-// ===== CACHÉ DE IMÁGENES (igual que en admin.js) =====
+// ===== CACHÉ DE IMÁGENES =====
 var imageCache = {};
 
 // ===== FUNCIÓN UNIVERSAL PARA RESOLVER UNA IMAGEN (con fallback de extensiones) =====
 function resolveImageUrl(baseName, extensions, callback) {
     if (!baseName) return callback(null);
-    // Si ya está en caché, usarlo
     if (imageCache[baseName]) {
         callback(imageCache[baseName]);
         return;
     }
-    // Extensiones por defecto si no se proporcionan
     const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
     let index = 0;
     
     function tryNext() {
         if (index >= extList.length) {
-            // No se encontró ninguna
             imageCache[baseName] = null;
             callback(null);
             return;
@@ -80,7 +77,6 @@ function addToCart(n, t, i, r) {
     return f;
 }
 
-// ===== FUNCIÓN CORREGIDA: CONVIERTE ACENTOS =====
 function ToSlug(n) {
     if (!n) return "";
     var t = n.toLowerCase();
@@ -201,7 +197,6 @@ function addProductCardBase(container, product, extraClass, mode) {
     img.setAttribute("alt", "imagen");
     img.setAttribute("data-slug", slug);
     img.setAttribute("data-index", "0");
-    // Placeholder mientras se resuelve
     img.setAttribute("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%231a1a1a' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23666' font-size='14'%3ECargando...%3C/text%3E%3C/svg%3E");
     pic.appendChild(img);
     
@@ -228,27 +223,33 @@ function addProductCardBase(container, product, extraClass, mode) {
 
     var child1 = document.createElement("div");
     child1.setAttribute("class", "block2-txt-child1 flex-col-l");
+    
+    // --- Título (nombre del producto) ---
     var nameLink = document.createElement("a");
-    nameLink.setAttribute("class", "stext-104 cl3 hov-cl1 trans-04 js-name-b2");
+    nameLink.setAttribute("class", "stext-104 cl2 hov-cl1 trans-04 js-name-b2");  // cl2 = blanco
     nameLink.setAttribute("href", "product.html?id=" + slug);
+    nameLink.setAttribute("style", "display: block; margin-bottom: 8px; font-size: 16px; font-weight: 600;");
     nameLink.textContent = spanishFormat(product.Label);
     child1.appendChild(nameLink);
 
+    // --- Descripción (características) ---
     var featuresText = "";
     if (product.Features != null) {
         featuresText = spanishFormat(product.Features.join(", "));
     }
     var featuresSpan = document.createElement("span");
-    featuresSpan.setAttribute("class", "cl4 stext-111");
+    featuresSpan.setAttribute("class", "cl4 stext-111");  // cl4 = gris medio
+    featuresSpan.setAttribute("style", "display: block; margin-bottom: 10px; line-height: 1.4; font-size: 13px;");
     featuresSpan.textContent = featuresText;
     child1.appendChild(featuresSpan);
 
+    // --- Precio ---
     var precioFormateado = toMoneyStr(valorNumerico);
     var precioContainer = document.createElement("div");
     precioContainer.setAttribute("class", "p-t-6");
-    precioContainer.setAttribute("style", "line-height: 1.3;");
+    precioContainer.setAttribute("style", "line-height: 1.3; margin-top: 4px;");
     var precioPrincipal = document.createElement("span");
-    precioPrincipal.setAttribute("class", "stext-105 cl2");
+    precioPrincipal.setAttribute("class", "stext-105 cl2");  // cl2 = blanco
     precioPrincipal.setAttribute("style", "font-weight: bold; font-size: 20px;");
     precioPrincipal.textContent = precioFormateado;
     precioContainer.appendChild(precioPrincipal);
