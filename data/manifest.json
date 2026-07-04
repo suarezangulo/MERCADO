@@ -1,0 +1,33 @@
+{
+  "Title": "CINEMARKET",
+  "Cell": 54439440,
+  "Email": "suarezangulomarlon@gmail.com",
+  "BackgroundColor": "34, 34, 34",
+  "HeadNotification": "Disfruta del mejor contenido audiovisual. Paga en CUP.",
+  "Foot": "CUP",
+  "CartPayMethod": "En el momento de la entrega o por transferencia en CUP.",
+  "CartShipping": "Acordar al realizar la orden. Entregas digitales inmediatas, físicas en el día.",
+  "Warranty": "Garantía de calidad en la reproducción. Si el contenido presenta fallas técnicas, se repone sin costo.",
+  "ProductStatus": "Nuevo",
+  "ProductDefStatus": "Clásico",
+  "Not1": "{status}",
+  "Not2": "{discount}",
+  "GoogleAnalyticsId": "",
+  "PaymentMethods": {
+    "Transfermobil": {
+      "name": "Transfermóvil",
+      "phone": "+53 54439440",
+      "bank": "BANDEC",
+      "qrCode": "/MERCADO/images/payment/transfermovil-qr.webp"
+    },
+    "EnZona": {
+      "name": "EnZona",
+      "phone": "+53 54439440",
+      "qrCode": "/images/payment/enzona-qr.png"
+    },
+    "Efectivo": {
+      "name": "Efectivo",
+      "description": "Paga en efectivo al momento de la entrega."
+    }
+  }
+}
