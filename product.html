@@ -33,6 +33,23 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style>
+		/* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO DEL CONTENIDO ===== */
+		body {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		main, .mica-surface {
+			flex: 1 0 auto;
+		}
+		footer, .bg3 {
+			flex-shrink: 0;
+			position: relative;
+			z-index: 10;
+			clear: both;
+			width: 100%;
+		}
+
 		/* ===== ESTILO NETFLIX PARA PÁGINA DE PRODUCTO ===== */
 		.product-hero {
 			position: relative;
