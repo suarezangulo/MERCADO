@@ -46,63 +46,85 @@ function buildGallery(n) {
     if (n.Images && n.Images.length > 0) {
         imagesToProcess = n.Images;
     } else {
-        // Si no hay imágenes definidas, intentar con el slug
         var slug = ToSlug(n.Label);
-        imagesToProcess = [slug + "-0.webp", slug + "-1.webp"];
+        imagesToProcess = [slug + "-0.webp"];
     }
     
-    var processedCount = 0;
-    var foundAnyImage = false;
+    var foundAny = false;
+    var totalProcessed = 0;
+    var resolvedUrls = []; // Almacenar URLs resueltas para la galería
     
     imagesToProcess.forEach(function(imgName, idx) {
         var baseName = imgName.replace(/\.[^.]+$/, '');
-        var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        var extensions = ['webp', 'jpg', 'jpeg', 'png'];
         var csvExt = imgName.includes('.') ? imgName.split('.').pop().toLowerCase() : 'webp';
         var orderedExtensions = [csvExt].concat(extensions.filter(function(ext) { return ext !== csvExt; }));
         
         resolveImageUrl(baseName, orderedExtensions, function(url) {
+            totalProcessed++;
+            
             if (url) {
-                foundAnyImage = true;
+                foundAny = true;
+                resolvedUrls.push(url);
+                
+                // Crear item de galería
                 var galleryItem = document.createElement("div");
                 galleryItem.setAttribute("class", "gallery-item");
+                galleryItem.setAttribute("data-index", idx);
                 var img = document.createElement("img");
                 img.setAttribute("src", url);
                 img.setAttribute("alt", n.Label + " - Imagen " + (idx + 1));
-                img.setAttribute("loading", "lazy");
-                // Manejar error de carga
-                img.onerror = function() {
-                    this.style.display = 'none';
-                };
                 galleryItem.appendChild(img);
                 
+                // Click para abrir galería con navegación
                 $(galleryItem).on('click', function() {
+                    var items = resolvedUrls.map(function(resolvedUrl) {
+                        return { src: resolvedUrl };
+                    });
+                    
                     $.magnificPopup.open({
-                        items: { src: url },
-                        type: 'image'
+                        items: items,
+                        gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [1, 1],
+                            arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"><i class="zmdi zmdi-chevron-%dir%" style="font-size: 40px; color: #fff;"></i></button>'
+                        },
+                        type: 'image',
+                        mainClass: 'mfp-fade',
+                        removalDelay: 300
                     });
                 });
                 
                 $galleryRow.append(galleryItem);
                 
-                // Usar la primera imagen como fondo del hero
-                if (processedCount === 0) {
+                // Usar como fondo del hero si es la primera
+                if (idx === 0) {
                     $("#productHero").css("background-image", "url('" + url + "')");
                 }
             }
-            processedCount++;
             
-            // Si después de procesar todas no se encontró ninguna, usar placeholder
-            if (processedCount >= imagesToProcess.length && !foundAnyImage) {
-                var placeholderUrl = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"><rect fill="#1a1a2e" width="1920" height="1080"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="48" font-family="Arial">' + (n.Label || 'Sin imagen') + '</text></svg>');
-                $("#productHero").css("background-image", "url('" + placeholderUrl + "')");
+            // Si terminó de procesar y no encontró nada
+            if (totalProcessed >= imagesToProcess.length && !foundAny) {
+                var placeholder = getPlaceholderImage(n.Label);
+                resolvedUrls.push(placeholder);
+                $("#productHero").css("background-image", "url('" + placeholder + "')");
                 
-                // Añadir placeholder a la galería
                 var galleryItem = document.createElement("div");
                 galleryItem.setAttribute("class", "gallery-item");
                 var img = document.createElement("img");
-                img.setAttribute("src", placeholderUrl);
+                img.setAttribute("src", placeholder);
                 img.setAttribute("alt", n.Label);
                 galleryItem.appendChild(img);
+                
+                $(galleryItem).on('click', function() {
+                    $.magnificPopup.open({
+                        items: [{ src: placeholder }],
+                        type: 'image',
+                        mainClass: 'mfp-fade'
+                    });
+                });
+                
                 $galleryRow.append(galleryItem);
             }
         });
