@@ -32,48 +32,42 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style>
 		#paymentMethod {
-			background-color: #fff;
+			background: rgba(255,255,255,0.05);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-radius: 8px;
+			color: #ccc;
 			cursor: pointer;
 		}
+		#paymentMethod option {
+			background: #1a1a1a;
+			color: #ccc;
+		}
 		#paymentInfo {
-			background-color: #f8f9fa;
-			border-radius: 8px;
+			background: rgba(26,26,26,0.5);
+			border-radius: 12px;
 			padding: 15px;
 			margin-top: 10px;
 			display: none;
-		}
-		#paymentInfo .size-208 {
-			width: 34.5%;
-		}
-		#paymentInfo .size-209 {
-			width: 65.5%;
+			border: 1px solid rgba(255,255,255,0.06);
+			backdrop-filter: blur(10px);
 		}
 		.payment-details {
 			line-height: 1.8;
+			color: #ccc;
 		}
 		.payment-details strong {
-			color: #222;
-		}
-		.payment-details .hint {
-			color: #888;
-			font-size: 12px;
-			display: block;
-			margin-top: 5px;
+			color: #fff;
 		}
 		.payment-qr {
 			max-width: 150px;
 			margin-top: 10px;
-			border: 1px solid #ddd;
 			border-radius: 8px;
 			padding: 5px;
 			background: #fff;
 		}
-
-		/* ===== MEJORA 3: BARRA DE PROGRESO DE SCROLL ===== */
 		.scroll-progress {
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0; left: 0;
 			height: 3px;
 			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
 			z-index: 9999;
@@ -81,11 +75,16 @@
 			transition: width 0.1s ease;
 			border-radius: 0 2px 2px 0;
 		}
+		.bor10 {
+			background: rgba(26,26,26,0.4);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255,255,255,0.06);
+			border-radius: 16px;
+		}
 	</style>
 </head>
 <body class="animsition">
 
-	<!-- ===== BARRA DE PROGRESO DE SCROLL ===== -->
 	<div class="scroll-progress" id="scrollProgress"></div>
 
 	<!-- ===== HEADER ===== -->
@@ -93,32 +92,24 @@
 		<div class="container-menu-desktop">
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP.
-					</div>
+					<div class="left-top-bar headnotification" aria-live="polite">Disfruta del mejor contenido audiovisual. Paga en CUP.</div>
 					<div class="right-top-bar flex-w h-full"></div>
 				</div>
 			</div>
-
 			<div class="wrap-menu-desktop how-shadow1">
 				<nav role="navigation" aria-label="Menú principal" class="limiter-menu-desktop container">
-					<!-- Logo unificado -->
 					<a href="./" aria-label="CINEMARKET" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-						<div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);">
+						<div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(30,144,255,0.4);">
 							<i class="zmdi zmdi-movie" style="color: #fff; font-size: 22px;"></i>
 						</div>
 						<span style="font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">CINE</span>
 						<span style="font-size: 24px; font-weight: 600; color: #FFFFFF; text-shadow: 0 0 15px rgba(255,255,255,0.2);">MARKET</span>
 					</a>
-
 					<div class="menu-desktop">
 						<ul class="main-menu" role="menubar">
-							<li role="none">
-								<a href="contact.html" role="menuitem">Contacto</a>
-							</li>
+							<li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
 						</ul>
 					</div>
-
 					<div class="wrap-icon-header flex-w flex-r-m">
 						<button class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search" aria-label="Abrir búsqueda">
 							<i class="zmdi zmdi-search" aria-hidden="true"></i>
@@ -127,12 +118,10 @@
 				</nav>
 			</div>
 		</div>
-
 		<div class="wrap-header-mobile">
 			<div class="logo-mobile">
-				<!-- Logo móvil unificado -->
 				<a href="./" aria-label="CINEMARKET" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
-					<div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30, 144, 255, 0.4);">
+					<div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30,144,255,0.4);">
 						<i class="zmdi zmdi-movie" style="color: #fff; font-size: 18px;"></i>
 					</div>
 					<span style="font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">CINE</span>
@@ -144,39 +133,22 @@
 					<i class="zmdi zmdi-search" aria-hidden="true"></i>
 				</button>
 			</div>
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze" 
-			     role="button" tabindex="0" aria-label="Abrir menú móvil">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze" role="button" tabindex="0" aria-label="Abrir menú móvil">
+				<span class="hamburger-box"><span class="hamburger-inner"></span></span>
 			</div>
 		</div>
-
 		<div class="menu-mobile" role="navigation" aria-label="Menú móvil">
-			<ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar headnotification" aria-live="polite">
-						Disfruta del mejor contenido audiovisual. Paga en CUP.
-					</div>
-				</li>
-			</ul>
-			<ul class="main-menu-m" role="menubar">
-				<li role="none">
-					<a href="contact.html" role="menuitem">Contacto</a>
-				</li>
-			</ul>
+			<ul class="topbar-mobile"><li><div class="left-top-bar headnotification">Disfruta del mejor contenido audiovisual. Paga en CUP.</div></li></ul>
+			<ul class="main-menu-m" role="menubar"><li role="none"><a href="contact.html" role="menuitem">Contacto</a></li></ul>
 		</div>
-
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search" role="dialog" aria-label="Búsqueda" aria-modal="true">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search" aria-label="Cerrar búsqueda">
-					<img src="images/icons/icon-close2.png" alt="Cerrar" aria-hidden="true">
+					<img src="images/icons/icon-close2.png" alt="Cerrar">
 				</button>
 				<form class="wrap-search-header flex-w p-l-15" action="./" role="search">
-					<button class="flex-c-m trans-04" type="submit" aria-label="Buscar">
-						<i class="zmdi zmdi-search" aria-hidden="true"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Buscar título, actor, director..." aria-label="Escribe tu búsqueda">
+					<button class="flex-c-m trans-04" type="submit" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
+					<input class="plh3" type="text" name="search" placeholder="Buscar título, actor, director...">
 				</form>
 			</div>
 		</div>
@@ -185,11 +157,15 @@
 	<!-- ===== BREADCRUMB ===== -->
 	<nav aria-label="Ruta de navegación" class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="./" class="stext-109 cl8 hov-cl1 trans-04">
-				Inicio
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
-			<span class="stext-109 cl4">Cesta de Audiovisuales</span>
+			<ul class="breadcrumb-list">
+				<li class="breadcrumb-item">
+					<a href="./" class="breadcrumb-btn">Inicio</a>
+					<span class="breadcrumb-sep"><i class="fa fa-angle-right"></i></span>
+				</li>
+				<li class="breadcrumb-item">
+					<span class="breadcrumb-btn active">Cesta de Audiovisuales</span>
+				</li>
+			</ul>
 		</div>
 	</nav>
 
@@ -214,8 +190,8 @@
 									<tbody role="rowgroup"></tbody>
 								</table>
 							</div>
-							<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm" style="display: flex; justify-content: space-between;">
-								<button class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 clearcart" style="margin-left: auto;" aria-label="Vaciar carrito">Vaciar</button>
+							<div class="flex-w flex-sb-m p-t-18 p-b-15" style="display: flex; justify-content: flex-end;">
+								<button class="mica-btn mica-btn-danger clearcart" aria-label="Vaciar carrito">Vaciar</button>
 							</div>
 						</div>
 					</div>
@@ -225,20 +201,14 @@
 							<h4 class="mtext-109 cl2 p-b-30">Total de la Cesta</h4>
 
 							<div class="flex-w flex-t bor12 p-t-15 p-b-30">
-								<div class="size-208 w-full-ssm">
-									<span class="stext-110 cl2">Forma de Pago:</span>
-								</div>
-								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-									<p class="stext-111 cl6 p-t-2 paymethod">En el momento de la entrega o por transferencia en CUP.</p>
-								</div>
+								<div class="size-208 w-full-ssm"><span class="stext-110 cl2">Forma de Pago:</span></div>
+								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm"><p class="stext-111 cl6 p-t-2 paymethod">En el momento de la entrega o por transferencia en CUP.</p></div>
 							</div>
 
 							<div class="flex-w flex-t bor12 p-t-15 p-b-30">
-								<div class="size-208 w-full-ssm">
-									<span class="stext-110 cl2">Método de Pago:</span>
-								</div>
+								<div class="size-208 w-full-ssm"><span class="stext-110 cl2">Método de Pago:</span></div>
 								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-									<select id="paymentMethod" class="stext-111 cl2 plh3 size-121 bor8 p-lr-15" style="width: 100%; padding: 10px; border: 1px solid #e6e6e6; border-radius: 3px;">
+									<select id="paymentMethod" class="stext-111 cl2 size-121 p-lr-15" style="width: 100%; padding: 10px;">
 										<option value="Efectivo">💵 Efectivo (al recibir)</option>
 										<option value="Transfermobil">📱 Transfermóvil</option>
 										<option value="EnZona">📱 EnZona</option>
@@ -247,35 +217,23 @@
 							</div>
 
 							<div id="paymentInfo" class="flex-w flex-t p-t-15 p-b-30">
-								<div class="size-208 w-full-ssm">
-									<span class="stext-110 cl2">Datos para el pago:</span>
-								</div>
+								<div class="size-208 w-full-ssm"><span class="stext-110 cl2">Datos para el pago:</span></div>
 								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-									<div id="paymentDetails" class="payment-details stext-111 cl6 p-t-2">
-										<span style="color: #888;">Selecciona un método de pago</span>
-									</div>
+									<div id="paymentDetails" class="payment-details stext-111 p-t-2"><span style="color: #888;">Selecciona un método de pago</span></div>
 								</div>
 							</div>
 
 							<div class="flex-w flex-t bor12 p-t-15 p-b-30">
-								<div class="size-208 w-full-ssm">
-									<span class="stext-110 cl2">Envío:</span>
-								</div>
-								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-									<p class="stext-111 cl6 p-t-2 shipping">Acordar al realizar la orden. Entregas digitales inmediatas, físicas en el día.</p>
-								</div>
+								<div class="size-208 w-full-ssm"><span class="stext-110 cl2">Envío:</span></div>
+								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm"><p class="stext-111 cl6 p-t-2 shipping">Acordar al realizar la orden. Entregas digitales inmediatas, físicas en el día.</p></div>
 							</div>
 
 							<div class="flex-w flex-t p-t-27 p-b-33">
-								<div class="size-208">
-									<span class="mtext-101 cl2">Total:</span>
-								</div>
-								<div class="size-209 p-t-1">
-									<span class="mtext-110 cl2" aria-live="polite">0.00 CUP</span>
-								</div>
+								<div class="size-208"><span class="mtext-101 cl2">Total:</span></div>
+								<div class="size-209 p-t-1"><span class="mtext-110 cl2" aria-live="polite">0.00 CUP</span></div>
 							</div>
 
-							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" aria-label="Realizar pedido">Ordenar</button>
+							<button class="mica-btn mica-btn-primary pointer" aria-label="Realizar pedido" style="width: 100%;">Ordenar</button>
 						</div>
 					</div>
 				</div>
@@ -288,68 +246,34 @@
 		<div class="container">
 			<div class="p-t-20">
 				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
-				<p class="txt-center">
-					<a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
-				</p>
-				<p class="stext-107 cl6 txt-center" aria-live="polite">
-					Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados
-				</p>
+				<p class="txt-center"><a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a></p>
+				<p class="stext-107 cl6 txt-center">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados</p>
 			</div>
-			
 			<div class="qr-container">
 				<div style="text-align: center;">
 					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
-					<img src="/MERCADO/images/qr/qr-tienda.png" 
-					     alt="Código QR para acceder a CINEMARKET" 
-					     class="qr-code"
-					     onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
+					<img src="/MERCADO/images/qr/qr-tienda.png" alt="Código QR" class="qr-code" onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
 				</div>
 			</div>
 		</div>
 	</footer>
 
-	<!-- ===== BACK TO TOP ===== -->
 	<div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up" aria-hidden="true"></i>
-		</span>
+		<span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
 	</div>
 
-	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function () {
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</script>
+	<script>$(".js-select2").each(function(){$(this).select2({minimumResultsForSearch:20,dropdownParent:$(this).next('.dropDownSelect2')})})</script>
 	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function () {
-			$(this).css('position', 'relative');
-			$(this).css('overflow', 'hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
-			$(window).on('resize', function () {
-				ps.update();
-			})
-		});
-	</script>
+	<script>$('.js-pscroll').each(function(){$(this).css({position:'relative',overflow:'hidden'});var ps=new PerfectScrollbar(this,{wheelSpeed:1,scrollingThreshold:1000,wheelPropagation:false});$(window).on('resize',function(){ps.update()})})</script>
 	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/cart.js"></script>
-
-	<!-- ===== SCRIPT: BARRA DE PROGRESO DE SCROLL ===== -->
 	<script>
 	window.addEventListener('scroll', function() {
 		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
