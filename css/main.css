@@ -446,3 +446,60 @@ body::before {
     margin-top: auto;
     padding-top: 8px;
 }
+/* ===== BOTONES FLOTANTES MICA (Filtrar / Buscar) ===== */
+.mica-floating-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #CCCCCC;
+    font-family: Poppins-Medium, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+.mica-floating-btn i {
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.mica-floating-btn:hover {
+    background: rgba(30, 144, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.5);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+}
+
+/* Estado activo cuando se abre el panel */
+.mica-floating-btn.show-filter,
+.mica-floating-btn.show-search {
+    background: rgba(30, 144, 255, 0.25);
+    border-color: rgba(30, 144, 255, 0.6);
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+}
+
+/* Ocultar icono de filtro/búsqueda cuando está activo y mostrar el de cerrar */
+.mica-floating-btn .icon-close-filter,
+.mica-floating-btn .icon-close-search {
+    display: none;
+}
+
+.mica-floating-btn.show-filter .icon-filter,
+.mica-floating-btn.show-search .icon-search {
+    display: none;
+}
+
+.mica-floating-btn.show-filter .icon-close-filter,
+.mica-floating-btn.show-search .icon-close-search {
+    display: inline-block;
+}
