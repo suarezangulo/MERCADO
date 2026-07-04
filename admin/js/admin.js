@@ -197,7 +197,6 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA CON FALLBACK DE IMÁGENES =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -208,7 +207,7 @@ function renderProductTable() {
         return;
     }
 
-    // Generar HTML inicial con placeholders
+    // Generar HTML con placeholders
     let html = '';
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
@@ -224,7 +223,7 @@ function renderProductTable() {
         const uniqueExtensions = [...new Set(extensions)];
         
         html += `
-        <tr>
+        <tr data-index="${index}">
             <td>
                 <img id="${imgId}" 
                      src="" 
@@ -241,10 +240,10 @@ function renderProductTable() {
             <td>${p.Stock || 0}</td>
             <td>
                 <div class="actions-cell">
-                    <button class="btn btn-primary btn-sm" onclick="editProduct(${index})">
+                    <button class="btn btn-primary btn-sm edit-btn" data-index="${index}">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteProduct(${index})">
+                    <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
@@ -254,7 +253,33 @@ function renderProductTable() {
     });
     tbody.innerHTML = html;
 
-    // Verificar imágenes con fetch
+    // Asignar eventos a los botones de editar
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            console.log('Editar producto índice:', index);
+            if (typeof editProduct === 'function') {
+                editProduct(index);
+            } else {
+                console.error('editProduct no está definida');
+            }
+        });
+    });
+
+    // Asignar eventos a los botones de eliminar
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            console.log('Eliminar producto índice:', index);
+            if (typeof deleteProduct === 'function') {
+                deleteProduct(index);
+            } else {
+                console.error('deleteProduct no está definida');
+            }
+        });
+    });
+
+    // Verificar imágenes con fetch (código igual que antes)
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
@@ -305,7 +330,6 @@ function renderProductTable() {
         tryNextExtension();
     });
 }
-
 // ===== EDITAR PRODUCTO (FUNCIÓN GLOBAL) =====
 window.editProduct = function(index) {
     console.log('editProduct llamado con índice:', index);
