@@ -72,13 +72,7 @@
         $('#tab' + tabId.charAt(0).toUpperCase() + tabId.slice(1)).addClass('tabs__panel--active');
     });
 
-    // ===== FILTER TABS (categorías) =====
-    $(document).on('click', '.filters__tabs button', function() {
-        // La lógica de filtrado está en index.js, aquí solo añadimos clase activa
-        // Pero no duplicamos, se maneja en index.js
-    });
-
-    // ===== ANIMSITION (si existe) =====
+    // ===== ANIMSITION =====
     if ($.fn.animsition) {
         $('.animsition').animsition({
             inClass: 'fade-in',
@@ -101,12 +95,12 @@
         });
     }
 
-    // ===== PARALLAX (si existe) =====
+    // ===== PARALLAX =====
     if ($.fn.parallax100) {
         $('.parallax100').parallax100();
     }
 
-    // ===== SLICK (si existe) =====
+    // ===== SLICK =====
     if ($.fn.slick) {
         $('.slick2').slick({
             slidesToShow: 4,
