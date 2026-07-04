@@ -382,7 +382,7 @@ function updateStats() {
     document.getElementById('totalStock').textContent = totalStock;
 }
 
-// ===== ÚLTIMOS PRODUCTOS =====
+// ===== ÚLTIMOS PRODUCTOS (con fallback universal de imágenes) =====
 function updateRecentProducts() {
     const container = document.getElementById('recentProducts');
     const recent = products.slice(0, 5);
@@ -390,19 +390,61 @@ function updateRecentProducts() {
         container.innerHTML = '<span style="color: var(--text-muted);">No hay títulos aún.</span>';
         return;
     }
-    container.innerHTML = recent.map(p => {
+
+    // Generar HTML con placeholders de carga
+    let html = '';
+    const items = [];
+    recent.forEach((p, index) => {
+        const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         const firstImage = imagesList.length > 0 ? imagesList[0].trim() : '';
-        const baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : '';
-        const imagePath = baseName ? `../images/products/${baseName}` : '';
-        return `
+        const baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : `${slug}-0`;
+        const imgId = `recent-img-${slug}-${index}`;
+        const loadingId = `recent-loading-${slug}-${index}`;
+        
+        html += `
         <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border-color);">
-            ${imagePath ? `<img src="${imagePath}.webp" style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03);" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'45\'><rect fill=\'%23141414\' width=\'32\' height=\'45\'/><text x=\'50%\' y=\'50%\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23666\' font-size=\'10\'>?</text></svg>'">` :
-            `<span style="width:32px; height:45px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px;">?</span>`}
+            <div style="width:32px; height:45px; flex-shrink:0; position:relative;">
+                <img id="${imgId}" 
+                     src="" 
+                     alt="${p.Label}" 
+                     style="width:32px; height:45px; object-fit:cover; border-radius:4px; background:rgba(255,255,255,0.03); display:none;">
+                <div id="${loadingId}" style="width:32px; height:45px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px; position:absolute; top:0; left:0;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            </div>
             <span style="flex:1;">${p.Label}</span>
             <span style="color: var(--text-muted); font-size:13px;">${p.Price}</span>
         </div>
-    `}).join('');
+        `;
+        items.push({ slug, baseName, imgId, loadingId });
+    });
+    container.innerHTML = html;
+
+    // Resolver cada imagen con fallback de extensiones
+    items.forEach(item => {
+        const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        // Si la imagen del CSV tiene extensión, ponerla primero
+        const imagesList = recent.find(p => ToSlug(p.Label) === item.slug)?.Images || '';
+        const firstImage = imagesList.split(';').map(img => img.trim())[0] || '';
+        const csvExt = firstImage.includes('.') ? firstImage.split('.').pop().toLowerCase() : 'webp';
+        const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
+        
+        resolveImageUrl(item.baseName, orderedExtensions, (url) => {
+            const img = document.getElementById(item.imgId);
+            const loading = document.getElementById(item.loadingId);
+            if (loading) loading.style.display = 'none';
+            if (img) {
+                img.style.display = 'block';
+                if (url) {
+                    img.src = url;
+                } else {
+                    // Mostrar placeholder "?" si no se encontró ninguna imagen
+                    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="45"><rect fill="%23141414" width="32" height="45"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="10">?</text></svg>';
+                }
+            }
+        });
+    });
 }
 
 // ===== ABRIR FORMULARIO (con fallback de imágenes existentes) =====
