@@ -41,13 +41,18 @@ function addBreadCrumbItem(container, label, url, active) {
 function buildGallery(n) {
     var $galleryRow = $("#galleryRow");
     $galleryRow.empty();
-    var imagesToProcess = n.Images || [];
-    var processedCount = 0;
     
-    if (imagesToProcess.length === 0) {
-        var baseName = ToSlug(n.Label) + "-0";
-        imagesToProcess = [baseName + ".webp"];
+    var imagesToProcess = [];
+    if (n.Images && n.Images.length > 0) {
+        imagesToProcess = n.Images;
+    } else {
+        // Si no hay imágenes definidas, intentar con el slug
+        var slug = ToSlug(n.Label);
+        imagesToProcess = [slug + "-0.webp", slug + "-1.webp"];
     }
+    
+    var processedCount = 0;
+    var foundAnyImage = false;
     
     imagesToProcess.forEach(function(imgName, idx) {
         var baseName = imgName.replace(/\.[^.]+$/, '');
@@ -56,30 +61,50 @@ function buildGallery(n) {
         var orderedExtensions = [csvExt].concat(extensions.filter(function(ext) { return ext !== csvExt; }));
         
         resolveImageUrl(baseName, orderedExtensions, function(url) {
-            var resolvedUrl = url || ('./images/products/' + imgName);
-            var galleryItem = document.createElement("div");
-            galleryItem.setAttribute("class", "gallery-item");
-            var img = document.createElement("img");
-            img.setAttribute("src", resolvedUrl);
-            img.setAttribute("alt", n.Label + " - Imagen " + (idx + 1));
-            img.setAttribute("loading", "lazy");
-            galleryItem.appendChild(img);
-            
-            // Click para abrir lightbox
-            $(galleryItem).on('click', function() {
-                $.magnificPopup.open({
-                    items: { src: resolvedUrl },
-                    type: 'image'
+            if (url) {
+                foundAnyImage = true;
+                var galleryItem = document.createElement("div");
+                galleryItem.setAttribute("class", "gallery-item");
+                var img = document.createElement("img");
+                img.setAttribute("src", url);
+                img.setAttribute("alt", n.Label + " - Imagen " + (idx + 1));
+                img.setAttribute("loading", "lazy");
+                // Manejar error de carga
+                img.onerror = function() {
+                    this.style.display = 'none';
+                };
+                galleryItem.appendChild(img);
+                
+                $(galleryItem).on('click', function() {
+                    $.magnificPopup.open({
+                        items: { src: url },
+                        type: 'image'
+                    });
                 });
-            });
-            
-            $galleryRow.append(galleryItem);
-            
-            // Usar la primera imagen como fondo del hero
-            if (processedCount === 0) {
-                $("#productHero").css("background-image", "url('" + resolvedUrl + "')");
+                
+                $galleryRow.append(galleryItem);
+                
+                // Usar la primera imagen como fondo del hero
+                if (processedCount === 0) {
+                    $("#productHero").css("background-image", "url('" + url + "')");
+                }
             }
             processedCount++;
+            
+            // Si después de procesar todas no se encontró ninguna, usar placeholder
+            if (processedCount >= imagesToProcess.length && !foundAnyImage) {
+                var placeholderUrl = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080"><rect fill="#1a1a2e" width="1920" height="1080"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#666" font-size="48" font-family="Arial">' + (n.Label || 'Sin imagen') + '</text></svg>');
+                $("#productHero").css("background-image", "url('" + placeholderUrl + "')");
+                
+                // Añadir placeholder a la galería
+                var galleryItem = document.createElement("div");
+                galleryItem.setAttribute("class", "gallery-item");
+                var img = document.createElement("img");
+                img.setAttribute("src", placeholderUrl);
+                img.setAttribute("alt", n.Label);
+                galleryItem.appendChild(img);
+                $galleryRow.append(galleryItem);
+            }
         });
     });
 }
