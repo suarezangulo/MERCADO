@@ -1,28 +1,34 @@
 /* ============================================================
    ADMIN.CSS - Panel de Administración CINEMARKET
-   Estilo cinematográfico oscuro y elegante
+   Estilo Mica Windows 11 - Translúcido y moderno
    ============================================================ */
 
 /* ===== VARIABLES ===== */
 :root {
-    --primary: #e50914;
-    --primary-dark: #b20710;
-    --primary-glow: rgba(229, 9, 20, 0.3);
+    --primary: #1E90FF;
+    --primary-dark: #0066cc;
+    --primary-glow: rgba(30, 144, 255, 0.3);
+    --accent-red: #FF3B3B;
+    --accent-red-dark: #cc0000;
     --bg-dark: #0a0a0a;
-    --bg-card: #141414;
-    --bg-card-hover: #1f1f1f;
-    --bg-sidebar: #0d0d0d;
+    --bg-card: rgba(26, 26, 26, 0.7);
+    --bg-card-hover: rgba(40, 40, 40, 0.8);
+    --bg-sidebar: rgba(13, 13, 13, 0.85);
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.7);
     --text-muted: rgba(255, 255, 255, 0.4);
     --border-color: rgba(255, 255, 255, 0.06);
-    --border-glow: rgba(229, 9, 20, 0.2);
+    --border-glow: rgba(30, 144, 255, 0.2);
     --success: #2ecc71;
-    --danger: #e74c3c;
+    --danger: #FF3B3B;
     --warning: #f39c12;
-    --info: #3498db;
-    --radius: 12px;
+    --info: #1E90FF;
+    --radius: 16px;
+    --radius-sm: 12px;
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 8px 30px rgba(30, 144, 255, 0.3);
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== RESET Y BASE ===== */
@@ -34,11 +40,29 @@
 
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg-dark);
+    background: linear-gradient(135deg, #0a0a0a 0%, #0d1b2a 50%, #0a0a0a 100%);
+    background-attachment: fixed;
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
     overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(30, 144, 255, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(255, 59, 59, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+    animation: bgPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
 }
 
 /* ===== SCROLLBAR PERSONALIZADA ===== */
@@ -47,7 +71,7 @@ body {
     height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--bg-dark);
+    background: rgba(255, 255, 255, 0.03);
 }
 ::-webkit-scrollbar-thumb {
     background: var(--primary);
@@ -61,6 +85,8 @@ body {
 .sidebar {
     width: 280px;
     background: var(--bg-sidebar);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     height: 100vh;
     position: fixed;
     left: 0;
@@ -71,7 +97,7 @@ body {
     flex-direction: column;
     overflow-y: auto;
     z-index: 100;
-    transition: all 0.3s ease;
+    transition: all var(--transition-smooth);
 }
 
 .sidebar .brand {
@@ -86,7 +112,7 @@ body {
 .sidebar .brand .logo-icon {
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary), var(--accent-red));
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -106,20 +132,23 @@ body {
 }
 
 .sidebar .brand .logo-text span {
-    color: var(--primary);
-    -webkit-text-fill-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--accent-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* ===== USUARIO ===== */
 .sidebar .user-card {
-    background: linear-gradient(135deg, rgba(229, 9, 20, 0.15), rgba(229, 9, 20, 0.05));
-    border: 1px solid rgba(229, 9, 20, 0.15);
-    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.15), rgba(30, 144, 255, 0.05));
+    border: 1px solid rgba(30, 144, 255, 0.15);
+    border-radius: var(--radius-sm);
     padding: 16px 18px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
     gap: 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .sidebar .user-card .avatar {
@@ -134,6 +163,7 @@ body {
     font-weight: 700;
     color: #fff;
     flex-shrink: 0;
+    box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .sidebar .user-card .user-info .name {
@@ -162,20 +192,20 @@ body {
     padding: 13px 16px;
     color: var(--text-secondary);
     text-decoration: none;
-    border-radius: var(--radius);
-    transition: all 0.3s ease;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
     font-size: 14px;
     font-weight: 500;
     position: relative;
 }
 
 .sidebar nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(30, 144, 255, 0.08);
     color: var(--text-primary);
 }
 
 .sidebar nav ul li a.active {
-    background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.05));
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.2), rgba(30, 144, 255, 0.05));
     color: #fff;
     border-left: 3px solid var(--primary);
 }
@@ -199,6 +229,7 @@ body {
     font-weight: 700;
     padding: 2px 10px;
     border-radius: 20px;
+    box-shadow: 0 0 10px var(--primary-glow);
 }
 
 /* ===== BOTÓN CERRAR SESIÓN ===== */
@@ -207,10 +238,10 @@ body {
     padding: 13px 16px;
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     background: transparent;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     font-size: 14px;
     font-weight: 500;
     display: flex;
@@ -220,9 +251,9 @@ body {
 }
 
 .sidebar .logout-btn:hover {
-    background: rgba(229, 9, 20, 0.1);
-    border-color: var(--primary);
-    color: var(--primary);
+    background: rgba(255, 59, 59, 0.1);
+    border-color: var(--accent-red);
+    color: var(--accent-red);
 }
 
 .sidebar .logout-btn i {
@@ -236,7 +267,7 @@ body {
     flex: 1;
     padding: 35px 40px;
     min-height: 100vh;
-    background: var(--bg-dark);
+    background: transparent;
     overflow-y: auto;
     height: 100vh;
 }
@@ -255,6 +286,9 @@ body {
     font-size: 30px;
     font-weight: 800;
     letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .page-header h1 small {
@@ -262,6 +296,7 @@ body {
     color: var(--text-secondary);
     font-weight: 400;
     margin-left: 12px;
+    -webkit-text-fill-color: var(--text-secondary);
 }
 
 .page-header .actions {
@@ -274,16 +309,35 @@ body {
 .btn {
     padding: 10px 22px;
     border: none;
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     display: inline-flex;
     align-items: center;
     gap: 8px;
     text-decoration: none;
     letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.btn:active::after {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary {
@@ -294,6 +348,7 @@ body {
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px var(--primary-glow);
+    background: linear-gradient(135deg, #3aa3ff, var(--primary));
 }
 
 .btn-success {
@@ -306,12 +361,13 @@ body {
 }
 
 .btn-danger {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
     color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
 }
 .btn-danger:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 59, 59, 0.4);
 }
 
 .btn-warning {
@@ -342,15 +398,20 @@ body {
 /* ===== CARDS ===== */
 .card {
     background: var(--bg-card);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
     border-radius: var(--radius);
     padding: 28px 30px;
     margin-bottom: 25px;
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: all var(--transition-smooth);
+    box-shadow: var(--shadow);
 }
 
 .card:hover {
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(30, 144, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(30, 144, 255, 0.1);
 }
 
 .card .card-title {
@@ -378,13 +439,16 @@ body {
 
 .stat-card {
     background: var(--bg-card);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
     border-radius: var(--radius);
     padding: 24px 22px;
     border: 1px solid var(--border-color);
     text-align: left;
-    transition: all 0.3s ease;
+    transition: all var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 
 .stat-card::before {
@@ -398,8 +462,9 @@ body {
 }
 
 .stat-card:hover {
-    border-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+    border-color: rgba(30, 144, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(30, 144, 255, 0.1);
 }
 
 .stat-card .stat-icon {
@@ -412,6 +477,9 @@ body {
     font-size: 34px;
     font-weight: 800;
     letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .stat-card .label {
@@ -450,18 +518,18 @@ table tbody td {
 }
 
 table tbody tr {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(30, 144, 255, 0.05);
 }
 
 table .product-thumb {
     width: 45px;
     height: 65px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
 }
@@ -486,26 +554,26 @@ table .actions-cell {
 }
 
 .form-group label .required {
-    color: var(--primary);
+    color: var(--accent-red);
 }
 
 .form-control {
     width: 100%;
     padding: 13px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.04);
     color: #fff;
     font-size: 14px;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     outline: none;
     font-family: inherit;
 }
 
 .form-control:focus {
     border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 0 4px var(--primary-glow);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.2);
 }
 
 .form-control::placeholder {
@@ -540,23 +608,23 @@ select.form-control {
 /* ===== FILE UPLOAD ===== */
 .file-upload-area {
     border: 2px dashed var(--border-color);
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     padding: 40px 20px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     position: relative;
     background: rgba(255, 255, 255, 0.02);
 }
 
 .file-upload-area:hover {
     border-color: var(--primary);
-    background: rgba(229, 9, 20, 0.05);
+    background: rgba(30, 144, 255, 0.05);
 }
 
 .file-upload-area.dragover {
     border-color: var(--primary);
-    background: rgba(229, 9, 20, 0.08);
+    background: rgba(30, 144, 255, 0.08);
     box-shadow: 0 0 40px var(--primary-glow);
 }
 
@@ -599,10 +667,10 @@ select.form-control {
     position: relative;
     width: 100px;
     height: 140px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     overflow: hidden;
     border: 2px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 .image-preview-item:hover {
@@ -622,7 +690,7 @@ select.form-control {
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: var(--danger);
+    background: var(--accent-red);
     color: #fff;
     border: none;
     cursor: pointer;
@@ -630,7 +698,7 @@ select.form-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
@@ -642,8 +710,9 @@ select.form-control {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
     display: none;
     justify-content: center;
@@ -657,13 +726,15 @@ select.form-control {
 
 .modal {
     background: var(--bg-card);
-    border-radius: 16px;
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-radius: 20px;
     padding: 40px;
     max-width: 780px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     animation: modalFadeIn 0.4s ease;
     box-shadow: var(--shadow);
 }
@@ -705,7 +776,7 @@ select.form-control {
     color: var(--text-secondary);
     font-size: 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -742,7 +813,7 @@ select.form-control {
 
 .toast {
     padding: 16px 22px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     color: #fff;
     font-weight: 500;
     font-size: 14px;
@@ -753,19 +824,22 @@ select.form-control {
     align-items: center;
     gap: 12px;
     border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .toast-success {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-left: 3px solid var(--success);
 }
 .toast-error {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-left: 3px solid var(--accent-red);
 }
 .toast-warning {
-    background: linear-gradient(135deg, #f39c12, #e67e22);
+    border-left: 3px solid var(--warning);
 }
 .toast-info {
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-left: 3px solid var(--primary);
 }
 
 @keyframes toastSlideIn {
@@ -786,7 +860,7 @@ select.form-control {
     border: none;
     color: rgba(255,255,255,0.7);
     font-size: 20px;
-    transition: all 0.3s;
+    transition: all var(--transition-fast);
 }
 .toast .toast-close:hover {
     color: #fff;
@@ -863,16 +937,4 @@ select.form-control {
     .modal {
         padding: 20px;
     }
-}
-
-/* ===== LOGO UNIFICADO ===== */
-.sidebar .brand .logo-text {
-    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.sidebar .brand .logo-text span {
-    background: linear-gradient(135deg, #e50914, #ff4444);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
