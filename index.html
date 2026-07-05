@@ -76,8 +76,8 @@
             position: relative;
         }
 
-        /* ===== DROPDOWN DE FILTROS (izquierda) ===== */
-        .filter-dropdown {
+        /* ===== DROPDOWN DE FILTROS (con ambas clases para compatibilidad) ===== */
+        .filter-dropdown.panel-filter {
             position: absolute;
             top: calc(100% + 8px);
             left: 0;
@@ -96,7 +96,7 @@
             overflow-x: hidden;
             max-height: 70vh;
         }
-        .filter-dropdown.show {
+        .filter-dropdown.panel-filter.show {
             display: block;
             animation: fadeInDown 0.25s ease;
         }
@@ -276,7 +276,7 @@
 
             <div class="wrap-menu-desktop how-shadow1">
                 <nav role="navigation" aria-label="Menú principal" class="limiter-menu-desktop container">
-                    <!-- ===== NUEVO LOGO: IMPRESIONES MR ===== -->
+                    <!-- ===== LOGO ACTUALIZADO ===== -->
                     <a href="./" aria-label="IMPRESIONES MR" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                         <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(30,144,255,0.4);">
                             <i class="zmdi zmdi-print" style="color: #fff; font-size: 22px;"></i>
@@ -304,7 +304,6 @@
         <!-- Mobile header -->
         <div class="wrap-header-mobile">
             <div class="logo-mobile">
-                <!-- ===== NUEVO LOGO MÓVIL ===== -->
                 <a href="./" aria-label="IMPRESIONES MR" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
                     <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30,144,255,0.4);">
                         <i class="zmdi zmdi-print" style="color: #fff; font-size: 18px;"></i>
@@ -364,7 +363,6 @@
                                         var panel = document.querySelector('.panel-search');
                                         panel.classList.toggle('show');
                                         this.classList.toggle('show-search');
-                                        // Forzar actualización de estilos por si la clase no se aplica
                                         if (panel.classList.contains('show')) {
                                             panel.style.visibility = 'visible';
                                             panel.style.opacity = '1';
@@ -387,8 +385,8 @@
                             </div>
                         </div>
 
-                        <!-- Dropdown de filtros (flotante, izquierda) -->
-                        <div class="filter-dropdown" id="filterDropdown">
+                        <!-- Dropdown de filtros (flotante, izquierda) con ambas clases -->
+                        <div class="filter-dropdown panel-filter" id="filterDropdown">
                             <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
                         </div>
                     </div>
@@ -444,15 +442,12 @@
     <script src="js/index.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- ===== DESTRUIR CUALQUIER EVENTO DE MAIN.JS ===== -->
+    <!-- ===== DESTRUIR EVENTOS DE MAIN.JS PARA EL BOTÓN BUSCAR ===== -->
     <script>
         $(document).ready(function() {
-            // Eliminar cualquier evento click asociado al botón por su ID
             $('#searchButton').off('click');
-            // También eliminar eventos delegados que puedan afectarlo
             $(document).off('click', '#searchButton');
-            // Remover cualquier evento de todos los .mica-floating-btn para evitar conflictos
-            $('.mica-floating-btn').off('click');
+            // No desactivamos todos los .mica-floating-btn para no afectar al filtrar
         });
     </script>
 
