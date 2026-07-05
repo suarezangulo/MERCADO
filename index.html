@@ -74,10 +74,10 @@
             align-items: center;
             gap: 8px;
             position: relative;
-            flex-wrap: wrap; /* Para que en móvil no se desborden */
+            flex-wrap: wrap;
         }
 
-        /* ===== DROPDOWN DE FILTROS (con ambas clases para compatibilidad) ===== */
+        /* ===== DROPDOWN DE FILTROS ===== */
         .filter-dropdown.panel-filter {
             position: absolute;
             top: calc(100% + 8px);
@@ -116,7 +116,7 @@
             align-items: center;
         }
 
-        /* ===== PANEL DE BÚSQUEDA (a la derecha del botón) ===== */
+        /* ===== PANEL DE BÚSQUEDA ===== */
         .panel-search {
             position: absolute;
             top: 50%;
@@ -260,34 +260,54 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES ===== */
+        /* ===== AJUSTES PARA MÓVILES (CORREGIDO) ===== */
         @media (max-width: 768px) {
-            /* Eliminar padding lateral del contenedor principal */
+            /* Eliminar padding y márgenes que causan desbordamiento */
+            .bg0, .mica-surface {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                overflow: hidden;
+            }
+            
             .container {
                 padding-left: 10px !important;
                 padding-right: 10px !important;
                 max-width: 100% !important;
-            }
-            
-            /* Asegurar que las tarjetas ocupen el ancho completo */
-            .isotope-item {
                 width: 100% !important;
-                padding-left: 5px !important;
-                padding-right: 5px !important;
+                margin: 0 auto !important;
             }
             
-            /* Ajustar el grid de Isotope para que use una sola columna */
+            .row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
             
-            /* Espaciado entre tarjetas */
             .isotope-item {
-                margin-bottom: 15px !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
             
-            /* Botón de WhatsApp - ajustar posición para que no se salga */
+            .block2 {
+                width: 100% !important;
+            }
+            
+            .isotope-grid {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
             .whatsapp-btn {
                 bottom: 20px !important;
                 right: 20px !important;
@@ -295,21 +315,18 @@
                 height: 50px !important;
             }
             
-            /* Ajustar el panel de búsqueda en móvil */
             .panel-search {
                 width: 90vw !important;
                 max-width: 90vw !important;
                 right: -40px !important;
             }
             
-            /* Botones flotantes en móvil */
             .mica-floating-btn {
                 font-size: 12px !important;
                 padding: 6px 12px !important;
                 height: 34px !important;
             }
             
-            /* Contenedor de filtros en móvil */
             #filterButtonContainer {
                 gap: 6px !important;
                 flex-wrap: wrap !important;
