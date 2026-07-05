@@ -10,14 +10,12 @@
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="CINEMARKET">
 	
-	<!-- Open Graph -->
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://tutienda.com/">
 	<meta property="og:title" content="CINEMARKET - Detalle del título">
 	<meta property="og:description" content="Información completa del título audiovisual.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
 	
-	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -386,7 +384,13 @@
 			align-items: center;
 		}
 
-		/* ===== PANEL DE BÚSQUEDA ESTILO MICA (ARREGLO) ===== */
+		/* ===== BOTÓN FLOTANTE MICA (ALTURA FIJA) ===== */
+		.mica-floating-btn {
+			height: 38px !important;
+			flex-shrink: 0 !important;
+		}
+
+		/* ===== PANEL DE BÚSQUEDA (SIN BOTÓN) ===== */
 		.panel-search {
 			background: var(--mica-card) !important;
 			backdrop-filter: blur(24px) saturate(180%) !important;
@@ -397,7 +401,6 @@
 			margin-top: 10px !important;
 			box-shadow: var(--shadow-mica) !important;
 		}
-
 		.panel-search .dis-flex {
 			display: flex !important;
 			align-items: center !important;
@@ -407,12 +410,10 @@
 			border: 1px solid var(--border-mica) !important;
 			transition: border-color 0.3s ease !important;
 		}
-
 		.panel-search .dis-flex:focus-within {
 			border-color: var(--accent-blue) !important;
 			box-shadow: 0 0 20px var(--border-glow) !important;
 		}
-
 		.panel-search input {
 			background: transparent !important;
 			border: none !important;
@@ -423,31 +424,9 @@
 			width: 100% !important;
 			outline: none !important;
 		}
-
 		.panel-search input::placeholder {
 			color: var(--text-muted) !important;
 			font-weight: 300 !important;
-		}
-
-		.panel-search button[type="submit"] {
-			background: var(--accent-blue) !important;
-			border: none !important;
-			color: #fff !important;
-			width: 48px !important;
-			height: 48px !important;
-			border-radius: 50% !important;
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-			font-size: 24px !important;
-			cursor: pointer !important;
-			transition: all 0.3s ease !important;
-			flex-shrink: 0 !important;
-		}
-
-		.panel-search button[type="submit"]:hover {
-			background: #3aa3ff !important;
-			transform: scale(1.05) !important;
 		}
 	</style>
 </head>
