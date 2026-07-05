@@ -26,25 +26,31 @@ function initIsotope() {
     });
 }
 
-// ===== APLICAR FILTRO Y ORDEN (CON OBJETO) =====
+// ===== APLICAR FILTRO Y ORDEN (usando selectores de clase) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
+    if (!$grid.length) return;
 
-    var filterFn;
-    if (!currentFilter.category) {
-        filterFn = function() { return true; };
-    } else {
-        filterFn = function() {
-            var $item = $(this);
-            var show = $item.hasClass('category-' + currentFilter.category);
-            if (currentFilter.subcategory) {
-                show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
-            }
-            return show;
-        };
+    // Construir selector de filtro basado en clases
+    var filterSelector = '*';
+    if (currentFilter.category) {
+        filterSelector = '.category-' + currentFilter.category;
+        if (currentFilter.subcategory) {
+            filterSelector += '.subcategory-' + currentFilter.subcategory;
+        }
     }
 
-    var options = { filter: filterFn };
+    // Depuración
+    console.log('🔍 Aplicando filtro:', {
+        category: currentFilter.category,
+        subcategory: currentFilter.subcategory,
+        orderBy: currentFilter.orderBy,
+        selector: filterSelector
+    });
+
+    var options = {
+        filter: filterSelector
+    };
 
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
@@ -53,11 +59,11 @@ function applyFilterAndSort() {
         else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
         options.sortBy = sortBy;
         options.sortAscending = sortAsc;
+        console.log('📊 Ordenando por:', sortBy, sortAsc ? 'asc' : 'desc');
     }
 
     // Aplicar filtro y orden
     $grid.isotope(options);
-    // Forzar re-layout para asegurar que se actualice visualmente
     $grid.isotope('layout');
 }
 
@@ -140,8 +146,14 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Siempre aplicar filtro y orden (incluso si no hay categoría seleccionada)
+        // Siempre aplicar filtro y orden
         applyFilterAndSort();
+
+        // Depuración: mostrar clases de los items
+        console.log('📦 Items con clases:');
+        $('.isotope-item').each(function() {
+            console.log(this.className);
+        });
 
         new LazyLoad({
             elements_selector: "img[data-src]",
@@ -164,6 +176,7 @@ function addCategoryTag($container, label, filterValue, active) {
             currentFilter.category = filterValue;
             delete currentFilter.subcategory;
         }
+        console.log('🔄 Categoría seleccionada:', currentFilter.category);
         applyFilterAndSort();
         updateSubcategoryFilters();
         $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
@@ -182,6 +195,7 @@ function addOrderLi(container, label, orderValue, active) {
     a.addEventListener('click', function(e) {
         e.preventDefault();
         currentFilter.orderBy = orderValue;
+        console.log('🔄 Orden seleccionado:', orderValue);
         applyFilterAndSort();
         $(container).find('.filter-link').removeClass('filter-link-active');
         $(a).addClass('filter-link-active');
@@ -218,6 +232,7 @@ function updateSubcategoryFilters() {
             e.preventDefault();
             if (currentFilter.subcategory === normalizedSub) delete currentFilter.subcategory;
             else currentFilter.subcategory = normalizedSub;
+            console.log('🔄 Subcategoría seleccionada:', currentFilter.subcategory);
             applyFilterAndSort();
             updateSubcategoryFilters();
         });
