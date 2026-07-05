@@ -142,9 +142,8 @@ function loadData($, data) {
         addFilterLi(orderList, "Más económicos", "orderBy", false, () => sortProducts("price", "asc", "Más económicos"));
         addFilterLi(orderList, "Más costosos", "orderBy", false, () => sortProducts("price", "desc", "Más costosos"));
 
-        // Secciones dinámicas
+        // Sección Subcategorías (dinámica)
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
-        $filterContent.append('<div id="keywordSection" class="p-b-20"></div>');
 
         // ===== BOTONES DE CATEGORÍA =====
         var $catContainer = $('#categoryFiltersContainer');
@@ -234,18 +233,11 @@ function updateView() {
     }
 
     let subcategories = [];
-    let products = [];
     for (let i in categories) {
         let categoryKey = categories[i];
         let tCategory = filterTree[categoryKey];
         for (let subCategoryKey in tCategory) {
             subcategories.push(subCategoryKey);
-            if (currentTSubcategory != null && currentTSubcategory != subCategoryKey) continue;
-            let tSubcategory = tCategory[subCategoryKey];
-            for (let productKey in tSubcategory) {
-                let tProduct = tSubcategory[productKey];
-                if (tProduct != null && tProduct.length > 0) products.push(tProduct);                                  
-            }            
         }
     }
 
@@ -253,11 +245,8 @@ function updateView() {
         return subcategories.indexOf(valor) === indice;
     });
     
-    // Actualizar subcategorías
+    // Actualizar subcategorías en el dropdown
     updateFiltersInDropdown("Subcategorías", subcategories.sort(), false, "subcategory", "#subcategorySection");
-    // Palabras clave: limitar a 8 con "Ver más"
-    var allKeywords = getKeywords(products, 30);
-    updateKeywordsSection(allKeywords, "#keywordSection");
 
     if (googleAnalyticsId != null && googleAnalyticsId.length > 0) {
         if (currentCategory != null && currentCategory.length > 0 && currentCategory != gTagCategory) {
@@ -267,11 +256,6 @@ function updateView() {
         if (currentSubcategory != null && currentSubcategory.length > 0 && currentSubcategory != gTagSubCategory) {
             gtag('event', 'apply_filters', { 'event_category': 'Interacción del usuario', 'event_label': 'Subcategoría', 'value': currentSubcategory });
             gTagSubCategory = currentSubcategory;
-        }
-        var currentFeature = currentFilter["feature"];
-        if (currentFeature != null && currentFeature.length > 0 && currentFeature != gTagKeyword) {
-            gtag('event', 'apply_filters', { 'event_category': 'Interacción del usuario', 'event_label': 'Característica', 'value': currentFeature });
-            gTagKeyword = currentFeature;
         }
     }
 }
@@ -292,92 +276,34 @@ function updateFiltersInDropdown(title, collection, forTags, prevFilter, section
     let current = currentFilter[prevFilter];
     for (var i in collection) {
         let label = collection[i];
-        if (forTags) {
-            addFilterDiv(container, label, prevFilter, current == normalizeText(label));
-        } else {
-            let newA = document.createElement("a");
-            let aClass = "filter-link";
-            if (current == normalizeText(label)) aClass += " filter-link-active";
-            newA.setAttribute("class", aClass);
-            newA.setAttribute("href", "#");
-            newA.textContent = spanishFormat(label);
-            newA.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (currentFilter[prevFilter] == normalizeText(label))
-                    delete currentFilter[prevFilter];
-                else
-                    currentFilter[prevFilter] = normalizeText(label);
-                delete currentFilter["feature"];
-                $('.isotope-grid').isotope();
-            });
-            container.appendChild(newA);
-        }
-    }
-    $section.append(container);
-}
-
-// ===== SECCIÓN DE PALABRAS CLAVE CON "VER MÁS" =====
-function updateKeywordsSection(allKeywords, sectionId) {
-    var $section = $(sectionId);
-    if (!$section.length) return;
-    $section.empty();
-    if (allKeywords.length === 0) return;
-
-    var titleDiv = document.createElement("div");
-    titleDiv.setAttribute("class", "mtext-102 cl2 p-b-10");
-    titleDiv.textContent = "Palabras clave";
-    $section.append(titleDiv);
-
-    var container = document.createElement("div");
-    container.setAttribute("class", "flex-w p-t-4");
-    container.setAttribute("id", "keywordContainer");
-
-    var visibleCount = 8; // mostrar solo 8 inicialmente
-    var current = currentFilter["feature"];
-
-    allKeywords.forEach(function(label, idx) {
-        let el = document.createElement("a");
-        el.setAttribute("class", "filter-link");
-        if (current == normalizeText(label)) el.classList.add("filter-link-active");
-        el.setAttribute("href", "#");
-        el.textContent = spanishFormat(label);
-        el.addEventListener('click', function(e) {
+        let newA = document.createElement("a");
+        let aClass = "filter-link";
+        if (current == normalizeText(label)) aClass += " filter-link-active";
+        newA.setAttribute("class", aClass);
+        newA.setAttribute("href", "#");
+        newA.textContent = spanishFormat(label);
+        newA.addEventListener('click', function(e) {
             e.preventDefault();
-            if (currentFilter["feature"] == normalizeText(label))
-                delete currentFilter["feature"];
+            if (currentFilter[prevFilter] == normalizeText(label))
+                delete currentFilter[prevFilter];
             else
-                currentFilter["feature"] = normalizeText(label);
+                currentFilter[prevFilter] = normalizeText(label);
             $('.isotope-grid').isotope();
         });
-        if (idx >= visibleCount) el.style.display = "none";
-        container.appendChild(el);
-    });
-
-    $section.append(container);
-
-    // Botón "Ver más" si hay más de 8
-    if (allKeywords.length > visibleCount) {
-        var showMoreBtn = document.createElement("button");
-        showMoreBtn.setAttribute("class", "show-more-btn m-t-10");
-        showMoreBtn.textContent = "Ver más (" + (allKeywords.length - visibleCount) + ")";
-        showMoreBtn.addEventListener('click', function() {
-            var hidden = container.querySelectorAll('a[style*="display: none"]');
-            if (hidden.length > 0) {
-                hidden.forEach(function(el) { el.style.display = ''; });
-                showMoreBtn.textContent = "Ver menos";
-            } else {
-                var allLinks = container.querySelectorAll('a');
-                allLinks.forEach(function(el, i) {
-                    if (i >= visibleCount) el.style.display = "none";
-                });
-                showMoreBtn.textContent = "Ver más (" + (allKeywords.length - visibleCount) + ")";
-            }
-        });
-        $section.append(showMoreBtn);
+        container.appendChild(newA);
     }
+    $section.append(container);
 }
 
-// El resto de funciones (addCategoryTag, addFilterLi, addFilterDiv, addProductCard, sortProducts, extendFeatures, getKeywords, etc.) se mantienen igual que en la versión anterior.
+function extendFeatures(product) {
+    const words = product.Label.split(' ');
+    let featuresExtended = (product.Features || []).concat(words);
+    const splitedWords = featuresExtended
+        .flatMap(element => element.split('-'))
+        .filter(subword => subword.length > 1);
+    return splitedWords;
+}
+
 function addCategoryTag($container, label, filterValue, active) {
     let newButton = document.createElement("button");
     let aClass = "mica-pill-btn";
@@ -410,7 +336,6 @@ function addFilterLi(container, label, groupKey = null, active = false, action =
                 delete currentFilter[groupKey];
             else
                 currentFilter[groupKey] = normalizeText(label);
-            delete currentFilter["feature"];
             $('.isotope-grid').isotope();
         });
     }
@@ -421,24 +346,6 @@ function addFilterLi(container, label, groupKey = null, active = false, action =
     newLi.appendChild(newA);
     container.appendChild(newLi);
     $(newA).on('click', function (event) { event.preventDefault() });
-}
-
-function addFilterDiv(container, label, groupKey = null, active = false) {
-    let newA = document.createElement("a");
-    let aClass = "filter-link";
-    if (active) aClass += " filter-link-active";
-    newA.setAttribute("class", aClass);
-    newA.setAttribute("href", "#");
-    newA.textContent = spanishFormat(label);
-    newA.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (currentFilter[groupKey] == normalizeText(label))
-            delete currentFilter[groupKey];
-        else
-            currentFilter[groupKey] = normalizeText(label);
-        $('.isotope-grid').isotope();
-    });
-    container.appendChild(newA);
 }
 
 function addProductCard($container, product, categoryKey, subcategoryKey, filterClass) {
@@ -460,30 +367,6 @@ function sortProducts(sortBy, sortDirection, text) {
         item.removeClass('filter-link-active');
         if (item.text() == spanishFormat(text)) item.addClass('filter-link-active');              
     });
-}
-
-function extendFeatures(product) {
-    const words = product.Label.split(' ');
-    let featuresExtended = (product.Features || []).concat(words);
-    const splitedWords = featuresExtended
-        .flatMap(element => element.split('-'))
-        .filter(subword => subword.length > 1);
-    return splitedWords;
-}
-
-function getKeywords(products, numKeywords) {
-    const keywords = products.flatMap(product => product.map(word => word.toLowerCase()));
-    const frequency = keywords.reduce((obj, word) => {
-        obj[word] = (obj[word] || 0) + 1;
-        return obj;
-    }, {});
-    const numProducts = products.length;
-    const minFrequency = Math.ceil(numProducts * 0.05);
-    const maxFrequency = Math.floor(numProducts * 0.7);
-    const filteredKeywords = Object.keys(frequency)
-        .filter(word => frequency[word] >= minFrequency && frequency[word] <= maxFrequency);
-    filteredKeywords.sort((a, b) => frequency[b] - frequency[a]);
-    return filteredKeywords.slice(0, numKeywords);
 }
 
 // ===== INICIALIZACIÓN =====
