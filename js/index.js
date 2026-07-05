@@ -26,7 +26,7 @@ function initIsotope() {
     });
 }
 
-// ===== APLICAR FILTRO Y ORDEN (CON FUNCIÓN DE FILTRO) =====
+// ===== APLICAR FILTRO Y ORDEN (ENFOQUE CON OBJETO) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.length) return;
@@ -34,36 +34,35 @@ function applyFilterAndSort() {
     // 🔄 Recargar elementos para que Isotope los reconozca
     $grid.isotope('reloadItems');
 
-    // Construir función de filtro
-    var filterFn = function() {
-        var $item = $(this);
-        if (!currentFilter.category) return true;
-        var show = $item.hasClass('category-' + currentFilter.category);
+    // Construir selector de filtro (cadena)
+    var filterSelector = '*';
+    if (currentFilter.category) {
+        filterSelector = '.category-' + currentFilter.category;
         if (currentFilter.subcategory) {
-            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+            filterSelector += '.subcategory-' + currentFilter.subcategory;
         }
-        return show;
-    };
+    }
 
     console.log('🔍 Aplicando filtro:', currentFilter);
+    console.log('📌 Selector de filtro:', filterSelector);
 
-    // Aplicar filtro con función
-    $grid.isotope('filter', filterFn);
+    // Construir opciones de orden
+    var options = {
+        filter: filterSelector
+    };
 
-    // Ordenar si está definido
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
         if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
         else if (currentFilter.orderBy === 'price-desc') { sortBy = 'price'; sortAsc = false; }
         else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
-        
+        options.sortBy = sortBy;
+        options.sortAscending = sortAsc;
         console.log('📊 Ordenando por:', sortBy, sortAsc ? 'asc' : 'desc');
-        // Actualizar datos de orden y aplicar
-        $grid.isotope('updateSortData', $grid.find('.isotope-item'));
-        $grid.isotope('sort', sortBy, sortAsc);
     }
 
-    // Forzar re-layout
+    // Aplicar filtro y orden en una sola llamada
+    $grid.isotope(options);
     $grid.isotope('layout');
 }
 
