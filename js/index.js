@@ -31,18 +31,15 @@ function initIsotope() {
     debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== APLICAR FILTRO (SÓLO CON ISOTOPE) =====
+// ===== APLICAR FILTRO DE CATEGORÍA (SIN TOCAR BUSCADOR) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.data('isotope')) { debug('Error: Isotope no inicializado'); return; }
 
-    // Quitar cualquier filtro anterior del buscador (para que no interfiera)
-    $('[name="search-product"]').off('keyup');
-
-    // Aplicar filtro con función
+    // Filtrar con Isotope usando función
     $grid.isotope('filter', function() {
         var $item = $(this);
-        if (!currentFilter.category) return true; // mostrar todo
+        if (!currentFilter.category) return true;
         var show = $item.hasClass('category-' + currentFilter.category);
         if (currentFilter.subcategory) {
             show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
@@ -59,39 +56,13 @@ function applyFilterAndSort() {
         $grid.isotope({ sortBy: sortBy, sortAscending: sortAsc });
     }
 
-    // Forzar un layout inmediato para que las tarjetas suban
+    // Reorganizar layout
     $grid.isotope('layout');
 
-    // Volver a enganchar el evento de búsqueda (pero sin interferir)
-    $('[name="search-product"]').keyup(debounce(function() {
-        var text = $(this).val().toLowerCase();
-        $grid.isotope({
-            filter: function() {
-                var $item = $(this);
-                var label = $item.find('.js-name-b2').text().toLowerCase();
-                var features = $item.find('.cl4.stext-111').text().toLowerCase();
-                var matchesSearch = !text || label.includes(text) || features.includes(text);
-                // Además, debe cumplir el filtro de categoría actual
-                if (currentFilter.category) {
-                    var catMatch = $item.hasClass('category-' + currentFilter.category);
-                    if (currentFilter.subcategory) {
-                        catMatch = catMatch && $item.hasClass('subcategory-' + currentFilter.subcategory);
-                    }
-                    return matchesSearch && catMatch;
-                }
-                return matchesSearch;
-            }
-        });
-    }, 400));
-
-    // Mostrar conteo
-    setTimeout(function() {
-        var visible = $grid.find('.isotope-item').filter(function() {
-            return $(this).css('display') !== 'none';
-        }).length;
-        var total = $grid.find('.isotope-item').length;
-        debug('Filtro: ' + (currentFilter.category || 'todo') + ' | Visibles: ' + visible + '/' + total);
-    }, 100);
+    // Depuración
+    var visible = $grid.find('.isotope-item').filter(function() { return $(this).css('display') !== 'none'; }).length;
+    var total = $grid.find('.isotope-item').length;
+    debug('Filtro: ' + (currentFilter.category || 'todo') + ' | Visibles: ' + visible + '/' + total);
 }
 
 function loadData($, data) {
@@ -167,9 +138,10 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
+        // Aplicar filtro inicial si vino de URL
         if (currentFilter.category) applyFilterAndSort();
 
-        // Buscador (inicial, sin categoría)
+        // Buscador: siempre activo, respeta el filtro de categoría actual
         $('[name="search-product"]').keyup(debounce(function() {
             var text = $(this).val().toLowerCase();
             $('.isotope-grid').isotope({
@@ -198,7 +170,7 @@ function loadData($, data) {
     }, 600);
 }
 
-// ===== BOTONES DE CATEGORÍA (sin cambios) =====
+// ===== BOTONES DE CATEGORÍA =====
 function addCategoryTag($container, label, filterValue, active) {
     var btn = document.createElement("button");
     btn.className = "mica-pill-btn" + (active ? " active" : "");
@@ -293,7 +265,7 @@ function addProductCard($container, product, categoryKey, subcategoryKey, filter
     addProductCardBase($container, product, filterClass);
 }
 
-// ===== INICIALIZACIÓN (sin cambios) =====
+// ===== INICIALIZACIÓN =====
 (function ($) {
     "use strict";
     $.getJSON("./data/products-index.json", function (data) {
