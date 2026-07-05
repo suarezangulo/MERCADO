@@ -67,28 +67,37 @@
 			border-color: rgba(30, 144, 255, 0.5);
 			color: #fff; transform: translateY(-2px);
 		}
-		.mica-floating-btn.show-filter,
-		.mica-floating-btn.show-search {
-			background: rgba(30, 144, 255, 0.25);
-			border-color: rgba(30, 144, 255, 0.6);
-			color: #fff;
-		}
-		.mica-floating-btn .icon-close-filter,
-		.mica-floating-btn .icon-close-search { display: none; }
-		.mica-floating-btn.show-filter .icon-filter,
-		.mica-floating-btn.show-search .icon-search { display: none; }
-		.mica-floating-btn.show-filter .icon-close-filter,
-		.mica-floating-btn.show-search .icon-close-search { display: inline-block; }
 
-		/* ===== PANEL FILTRO (SIN OVERFLOW LATERAL) ===== */
-		.panel-filter {
-			width: 100%; overflow-x: hidden;
+		/* ===== DROPDOWN DE FILTROS (FLOTANTE) ===== */
+		.filter-dropdown {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			margin-top: 8px;
+			width: 340px;
+			max-width: calc(100vw - 40px);
+			background: rgba(20, 20, 20, 0.85);
+			backdrop-filter: blur(24px) saturate(180%);
+			-webkit-backdrop-filter: blur(24px) saturate(180%);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 16px;
+			box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+			padding: 20px;
+			display: none;
+			z-index: 1000;
+			overflow-y: auto;
+			max-height: 70vh;
 		}
-		.wrap-filter {
-			flex-wrap: wrap; overflow-x: auto;
+		.filter-dropdown.show {
+			display: block;
+			animation: fadeInDown 0.25s ease;
+		}
+		@keyframes fadeInDown {
+			from { opacity: 0; transform: translateY(-10px); }
+			to { opacity: 1; transform: translateY(0); }
 		}
 
-		/* ===== PÍLDORAS DE CATEGORÍA (DENTRO DEL PANEL) ===== */
+		/* ===== PÍLDORAS DE CATEGORÍA (DENTRO DEL DROPDOWN) ===== */
 		.mica-pill-btn {
 			padding: 6px 16px; border-radius: 20px;
 			background: rgba(26,26,26,0.5);
@@ -102,8 +111,7 @@
 			background: rgba(30,144,255,0.15);
 			border-color: rgba(30,144,255,0.4); color: #fff;
 		}
-		.mica-pill-btn.active,
-		.mica-pill-btn.how-active1 {
+		.mica-pill-btn.active {
 			background: linear-gradient(135deg, #1E90FF, #0066cc);
 			border-color: transparent; color: #fff; font-weight: 600;
 			box-shadow: 0 4px 15px rgba(30,144,255,0.3);
@@ -238,8 +246,8 @@
 		<div class="bg0 m-t-23 p-b-140">
 			<div class="container">
 				<div class="flex-w flex-sb-m p-b-52">
-					<!-- Solo los botones Filtrar y Buscar (categorías van dentro del panel) -->
-					<div class="flex-w flex-c-m m-tb-10" style="gap: 8px;">
+					<!-- Botones con dropdown de filtros -->
+					<div class="flex-w flex-c-m m-tb-10" style="gap: 8px; position: relative;" id="filterButtonContainer">
 						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
 							<i class="icon-filter zmdi zmdi-filter-list"></i>
 							<i class="icon-close-filter zmdi zmdi-close"></i>
@@ -250,18 +258,20 @@
 							<i class="icon-close-search zmdi zmdi-close"></i>
 							<span>Buscar</span>
 						</button>
+
+						<!-- Dropdown flotante de filtros -->
+						<div class="filter-dropdown" id="filterDropdown">
+							<div class="wrap-filter-dropdown" id="filterDropdownContent">
+								<!-- JS llenará esto con categorías, orden, subcategorías, palabras clave -->
+							</div>
+						</div>
 					</div>
 
+					<!-- Panel de búsqueda (se mantiene como antes) -->
 					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
 						<div class="bor8 dis-flex p-l-15">
 							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
 							<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Buscar título, actor, director...">
-						</div>
-					</div>
-
-					<div class="dis-none panel-filter w-full p-t-10">
-						<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm" role="group" aria-label="Filtros avanzados">
-							<!-- Las categorías, ordenar por, etc., se inyectan aquí vía JS -->
 						</div>
 					</div>
 				</div>
