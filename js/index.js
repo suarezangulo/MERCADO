@@ -31,21 +31,23 @@ function initIsotope() {
     debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== APLICAR FILTRO (con refuerzo manual) =====
+// ===== APLICAR FILTRO (SÓLO CON ISOTOPE) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.data('isotope')) { debug('Error: Isotope no inicializado'); return; }
 
-    // Aplicar filtro con Isotope (usando función)
+    // Quitar cualquier filtro anterior del buscador (para que no interfiera)
+    $('[name="search-product"]').off('keyup');
+
+    // Aplicar filtro con función
     $grid.isotope('filter', function() {
         var $item = $(this);
-        var cat = currentFilter.category;
-        var sub = currentFilter.subcategory;
-        if (!cat) return true; // Mostrar todo
-        var hasCategory = $item.hasClass('category-' + cat);
-        if (!sub) return hasCategory;
-        var hasSubcategory = $item.hasClass('subcategory-' + sub);
-        return hasCategory && hasSubcategory;
+        if (!currentFilter.category) return true; // mostrar todo
+        var show = $item.hasClass('category-' + currentFilter.category);
+        if (currentFilter.subcategory) {
+            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+        }
+        return show;
     });
 
     // Ordenar
@@ -57,32 +59,39 @@ function applyFilterAndSort() {
         $grid.isotope({ sortBy: sortBy, sortAscending: sortAsc });
     }
 
-    // ==== REFUERZO MANUAL: asegurar visibilidad ====
-    $grid.find('.isotope-item').each(function() {
-        var $item = $(this);
-        if (!currentFilter.category) {
-            $item.show();
-            return;
-        }
-        var show = $item.hasClass('category-' + currentFilter.category);
-        if (currentFilter.subcategory) {
-            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
-        }
-        if (show) {
-            $item.show();
-        } else {
-            $item.hide();
-        }
-    });
-
-    // Re-ordenar después de forzar visibilidad (por si acaso)
+    // Forzar un layout inmediato para que las tarjetas suban
     $grid.isotope('layout');
 
-    // Conteo para depuración
-    var visible = $grid.find('.isotope-item:visible').length;
-    var total = $grid.find('.isotope-item').length;
-    var cat = currentFilter.category || 'ninguna';
-    debug('Filtro: ' + cat + ' | Visibles: ' + visible + '/' + total);
+    // Volver a enganchar el evento de búsqueda (pero sin interferir)
+    $('[name="search-product"]').keyup(debounce(function() {
+        var text = $(this).val().toLowerCase();
+        $grid.isotope({
+            filter: function() {
+                var $item = $(this);
+                var label = $item.find('.js-name-b2').text().toLowerCase();
+                var features = $item.find('.cl4.stext-111').text().toLowerCase();
+                var matchesSearch = !text || label.includes(text) || features.includes(text);
+                // Además, debe cumplir el filtro de categoría actual
+                if (currentFilter.category) {
+                    var catMatch = $item.hasClass('category-' + currentFilter.category);
+                    if (currentFilter.subcategory) {
+                        catMatch = catMatch && $item.hasClass('subcategory-' + currentFilter.subcategory);
+                    }
+                    return matchesSearch && catMatch;
+                }
+                return matchesSearch;
+            }
+        });
+    }, 400));
+
+    // Mostrar conteo
+    setTimeout(function() {
+        var visible = $grid.find('.isotope-item').filter(function() {
+            return $(this).css('display') !== 'none';
+        }).length;
+        var total = $grid.find('.isotope-item').length;
+        debug('Filtro: ' + (currentFilter.category || 'todo') + ' | Visibles: ' + visible + '/' + total);
+    }, 100);
 }
 
 function loadData($, data) {
@@ -160,13 +169,23 @@ function loadData($, data) {
 
         if (currentFilter.category) applyFilterAndSort();
 
+        // Buscador (inicial, sin categoría)
         $('[name="search-product"]').keyup(debounce(function() {
             var text = $(this).val().toLowerCase();
             $('.isotope-grid').isotope({
                 filter: function() {
-                    var label = $(this).find('.js-name-b2').text().toLowerCase();
-                    var features = $(this).find('.cl4.stext-111').text().toLowerCase();
-                    return !text || label.includes(text) || features.includes(text);
+                    var $item = $(this);
+                    var label = $item.find('.js-name-b2').text().toLowerCase();
+                    var features = $item.find('.cl4.stext-111').text().toLowerCase();
+                    var matchesSearch = !text || label.includes(text) || features.includes(text);
+                    if (currentFilter.category) {
+                        var catMatch = $item.hasClass('category-' + currentFilter.category);
+                        if (currentFilter.subcategory) {
+                            catMatch = catMatch && $item.hasClass('subcategory-' + currentFilter.subcategory);
+                        }
+                        return matchesSearch && catMatch;
+                    }
+                    return matchesSearch;
                 }
             });
         }, 400));
@@ -179,7 +198,7 @@ function loadData($, data) {
     }, 600);
 }
 
-// ===== BOTONES DE CATEGORÍA =====
+// ===== BOTONES DE CATEGORÍA (sin cambios) =====
 function addCategoryTag($container, label, filterValue, active) {
     var btn = document.createElement("button");
     btn.className = "mica-pill-btn" + (active ? " active" : "");
@@ -274,7 +293,7 @@ function addProductCard($container, product, categoryKey, subcategoryKey, filter
     addProductCardBase($container, product, filterClass);
 }
 
-// ===== INICIALIZACIÓN =====
+// ===== INICIALIZACIÓN (sin cambios) =====
 (function ($) {
     "use strict";
     $.getJSON("./data/products-index.json", function (data) {
