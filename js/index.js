@@ -1,3 +1,11 @@
+// ===== PANEL DE DEPURACIÓN =====
+function debug(msg) {
+    var panel = document.getElementById('debugPanel');
+    if (panel) {
+        panel.innerHTML = msg;
+    }
+}
+
 // ===== VARIABLES GLOBALES =====
 var filterData = [];
 var filterTree = [];
@@ -7,10 +15,11 @@ var gTagSubCategory = "";
 
 // ===== INICIALIZAR ISOTOPE =====
 function initIsotope() {
-    if ($('.isotope-grid').data('isotope')) {
-        $('.isotope-grid').isotope('destroy');
+    var $grid = $('.isotope-grid');
+    if ($grid.data('isotope')) {
+        $grid.isotope('destroy');
     }
-    $('.isotope-grid').isotope({
+    $grid.isotope({
         itemSelector: '.isotope-item',
         layoutMode: 'fitRows',
         percentPosition: true,
@@ -23,10 +32,10 @@ function initIsotope() {
             update: '[data-update] parseFloat'
         }
     });
-    console.log('✅ Isotope inicializado');
+    debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== CONSTRUIR SELECTOR DE FILTRO =====
+// ===== SELECTOR DE FILTRO =====
 function getFilterSelector() {
     if (currentFilter.category && currentFilter.subcategory) {
         return '.category-' + currentFilter.category + '.subcategory-' + currentFilter.subcategory;
@@ -40,11 +49,11 @@ function getFilterSelector() {
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.data('isotope')) {
-        console.warn('⚠️ Isotope no está inicializado, se inicializa ahora.');
-        initIsotope();
+        debug('Error: Isotope no inicializado');
+        return;
     }
     var selector = getFilterSelector();
-    console.log('🔍 Aplicando filtro:', selector);
+    debug('Filtrando por: ' + selector);
     $grid.isotope({ filter: selector });
 
     if (currentFilter.orderBy) {
@@ -60,24 +69,14 @@ function loadData($, data) {
     let $topeContainer = $('.isotope-grid').first();
     let $filterContent = $('#filterDropdownContent');
 
-    // ===== SKELETONS =====
     $topeContainer.empty();
     for (let i = 0; i < 8; i++) {
         let skeleton = document.createElement("div");
         skeleton.setAttribute("class", "col-sm-6 col-md-4 col-lg-3 p-b-60");
-        skeleton.innerHTML = `
-            <div class="skeleton-card">
-                <div class="skeleton-image"></div>
-                <div class="skeleton-text">
-                    <div class="skeleton-title"></div>
-                    <div class="skeleton-desc"></div>
-                    <div class="skeleton-price"></div>
-                </div>
-            </div>`;
+        skeleton.innerHTML = `<div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-text"><div class="skeleton-title"></div><div class="skeleton-desc"></div><div class="skeleton-price"></div></div></div>`;
         $topeContainer.append(skeleton);
     }
 
-    // Obtener parámetros de URL
     var urlParams = new URLSearchParams(window.location.search);
     var categoryKeyParam = urlParams.get('category');
     if (categoryKeyParam) {
@@ -85,13 +84,10 @@ function loadData($, data) {
         var subcategoryKey = urlParams.get('subcategory');
         if (subcategoryKey) currentFilter.subcategory = subcategoryKey;
     }
-    var searchParam = urlParams.get('search');
-    $('[name="search-product"]').val(searchParam);
 
     setTimeout(function() {
         $topeContainer.find('.skeleton-card').parent().remove();
 
-        // Construir datos y tarjetas
         for (const categoryKey in data) {
             if (!filterTree[categoryKey]) filterTree[categoryKey] = {};
             filterData[normalizeText(categoryKey)] = categoryKey;
@@ -107,10 +103,10 @@ function loadData($, data) {
             }
         }
 
-        // Inicializar Isotope
+        debug('Productos cargados: ' + $('.isotope-item').length);
+
         initIsotope();
 
-        // Construir interfaz de filtros
         $filterContent.empty();
 
         // Categorías
@@ -144,12 +140,10 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Aplicar filtro inicial (si vino de URL)
         if (currentFilter.category) {
             applyFilterAndSort();
         }
 
-        // Búsqueda
         $('[name="search-product"]').keyup(debounce(function() {
             var text = $(this).val().toLowerCase();
             $('.isotope-grid').isotope({
@@ -163,12 +157,8 @@ function loadData($, data) {
 
         var lazyLoadInstance = new LazyLoad({
             elements_selector: "img[data-src]",
-            callback_loaded: function() {
-                $('.isotope-grid').isotope('layout');
-            }
+            callback_loaded: function() { $('.isotope-grid').isotope('layout'); }
         });
-
-        console.log('📦 Productos cargados:', $('.isotope-item').length);
 
     }, 600);
 }
@@ -179,6 +169,7 @@ function addCategoryTag($container, label, filterValue, active) {
     btn.className = "mica-pill-btn" + (active ? " active" : "");
     btn.textContent = spanishFormat(label);
     btn.addEventListener('click', function() {
+        debug('Clic en: ' + label + ' (valor: ' + filterValue + ')');
         if (filterValue === null) {
             delete currentFilter.category;
             delete currentFilter.subcategory;
@@ -194,7 +185,6 @@ function addCategoryTag($container, label, filterValue, active) {
     $container.append(btn);
 }
 
-// ===== ORDEN =====
 function addOrderLi(container, label, orderValue, active) {
     var li = document.createElement("li");
     li.className = "p-b-6";
@@ -213,7 +203,6 @@ function addOrderLi(container, label, orderValue, active) {
     container.appendChild(li);
 }
 
-// ===== SUBCATEGORÍAS =====
 function updateSubcategoryFilters() {
     var $section = $('#subcategorySection');
     $section.empty();
@@ -253,7 +242,6 @@ function updateSubcategoryFilters() {
     $section.append(container);
 }
 
-// ===== FUNCIONES AUXILIARES =====
 function debounce(fn, threshold) {
     var timeout;
     threshold = threshold || 100;
