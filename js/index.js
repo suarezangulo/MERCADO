@@ -1,9 +1,7 @@
 // ===== PANEL DE DEPURACIÓN =====
 function debug(msg) {
     var panel = document.getElementById('debugPanel');
-    if (panel) {
-        panel.innerHTML = msg;
-    }
+    if (panel) panel.innerHTML = msg;
 }
 
 // ===== VARIABLES GLOBALES =====
@@ -16,9 +14,7 @@ var gTagSubCategory = "";
 // ===== INICIALIZAR ISOTOPE =====
 function initIsotope() {
     var $grid = $('.isotope-grid');
-    if ($grid.data('isotope')) {
-        $grid.isotope('destroy');
-    }
+    if ($grid.data('isotope')) $grid.isotope('destroy');
     $grid.isotope({
         itemSelector: '.isotope-item',
         layoutMode: 'fitRows',
@@ -35,35 +31,27 @@ function initIsotope() {
     debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== SELECTOR DE FILTRO =====
-function getFilterSelector() {
-    if (currentFilter.category && currentFilter.subcategory) {
-        return '.category-' + currentFilter.category + '.subcategory-' + currentFilter.subcategory;
-    } else if (currentFilter.category) {
-        return '.category-' + currentFilter.category;
-    }
-    return '*';
-}
-
-// ===== APLICAR FILTRO Y ORDEN =====
+// ===== APLICAR FILTRO (CON FUNCIÓN) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
-    if (!$grid.data('isotope')) {
-        debug('Error: Isotope no inicializado');
-        return;
-    }
-    var selector = getFilterSelector();
+    if (!$grid.data('isotope')) { debug('Error: Isotope no inicializado'); return; }
 
-    // Depuración: contar cuántos elementos coinciden con el selector según jQuery
-    var matchingElements = $grid.find(selector).length;
+    // Función de filtro personalizada
+    $grid.isotope('filter', function() {
+        var $item = $(this);
+        var cat = currentFilter.category;
+        var sub = currentFilter.subcategory;
 
-    // Obtener clases del primer producto para comparar
-    var firstItem = $grid.find('.isotope-item').first();
-    var classes = firstItem.length ? firstItem.attr('class') : 'sin elementos';
+        if (!cat) return true; // Mostrar todo
 
-    // Aplicar filtro
-    $grid.isotope({ filter: selector });
+        var hasCategory = $item.hasClass('category-' + cat);
+        if (!sub) return hasCategory; // Solo filtrar por categoría
 
+        var hasSubcategory = $item.hasClass('subcategory-' + sub);
+        return hasCategory && hasSubcategory;
+    });
+
+    // Ordenar
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
         if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
@@ -72,15 +60,13 @@ function applyFilterAndSort() {
         $grid.isotope({ sortBy: sortBy, sortAscending: sortAsc });
     }
 
-    var visible = $grid.find('.isotope-item:visible').length;
+    // Mostrar conteo
+    var visible = $grid.find('.isotope-item').filter(function() {
+        return $(this).css('display') !== 'none';
+    }).length;
     var total = $grid.find('.isotope-item').length;
-
-    debug(
-        'Selector: ' + selector + '<br>' +
-        'Coincidencias jQuery: ' + matchingElements + '<br>' +
-        'Visibles Isotope: ' + visible + '/' + total + '<br>' +
-        'Clases 1er prod: ' + classes.substring(0, 80) + '...'
-    );
+    var cat = currentFilter.category || 'ninguna';
+    debug('Filtro activo: ' + cat + ' | Visibles: ' + visible + '/' + total);
 }
 
 function loadData($, data) {
@@ -156,9 +142,7 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        if (currentFilter.category) {
-            applyFilterAndSort();
-        }
+        if (currentFilter.category) applyFilterAndSort();
 
         $('[name="search-product"]').keyup(debounce(function() {
             var text = $(this).val().toLowerCase();
@@ -171,7 +155,7 @@ function loadData($, data) {
             });
         }, 400));
 
-        var lazyLoadInstance = new LazyLoad({
+        new LazyLoad({
             elements_selector: "img[data-src]",
             callback_loaded: function() { $('.isotope-grid').isotope('layout'); }
         });
@@ -244,11 +228,8 @@ function updateSubcategoryFilters() {
         a.textContent = sub;
         a.addEventListener('click', function(e) {
             e.preventDefault();
-            if (currentFilter.subcategory === normalizedSub) {
-                delete currentFilter.subcategory;
-            } else {
-                currentFilter.subcategory = normalizedSub;
-            }
+            if (currentFilter.subcategory === normalizedSub) delete currentFilter.subcategory;
+            else currentFilter.subcategory = normalizedSub;
             applyFilterAndSort();
             updateSubcategoryFilters();
         });
