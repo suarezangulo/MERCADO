@@ -26,10 +26,10 @@ function initIsotope() {
     });
 }
 
-// ===== APLICAR FILTRO Y ORDEN (SIN MÉTODOS INVÁLIDOS) =====
+// ===== APLICAR FILTRO Y ORDEN (SOLO CON OBJETOS) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
-    
+
     var filterFn;
     if (!currentFilter.category) {
         filterFn = function() { return true; };
@@ -44,9 +44,7 @@ function applyFilterAndSort() {
         };
     }
 
-    var options = {
-        filter: filterFn
-    };
+    var options = { filter: filterFn };
 
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
@@ -57,6 +55,7 @@ function applyFilterAndSort() {
         options.sortAscending = sortAsc;
     }
 
+    // ÚNICA llamada a Isotope, siempre con objeto
     $grid.isotope(options);
 }
 
@@ -135,25 +134,7 @@ function loadData($, data) {
 
         if (currentFilter.category) applyFilterAndSort();
 
-        $('[name="search-product"]').keyup(debounce(function() {
-            var text = $(this).val().toLowerCase();
-            $('.isotope-grid').isotope({
-                filter: function() {
-                    var $item = $(this);
-                    var label = $item.find('.js-name-b2').text().toLowerCase();
-                    var features = $item.find('.cl4.stext-111').text().toLowerCase();
-                    var matchesSearch = !text || label.includes(text) || features.includes(text);
-                    if (currentFilter.category) {
-                        var catMatch = $item.hasClass('category-' + currentFilter.category);
-                        if (currentFilter.subcategory) {
-                            catMatch = catMatch && $item.hasClass('subcategory-' + currentFilter.subcategory);
-                        }
-                        return matchesSearch && catMatch;
-                    }
-                    return matchesSearch;
-                }
-            });
-        }, 400));
+        // ===== BUSCADOR DESACTIVADO =====
 
         new LazyLoad({
             elements_selector: "img[data-src]",
