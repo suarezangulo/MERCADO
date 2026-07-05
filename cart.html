@@ -10,14 +10,12 @@
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="CINEMARKET">
 	
-	<!-- Open Graph -->
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://tutienda.com/">
 	<meta property="og:title" content="CINEMARKET - Tu tienda audiovisual en Cuba">
 	<meta property="og:description" content="Revisa tu cesta de compra. Títulos de calidad para tu entretenimiento.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
 	
-	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -31,7 +29,6 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<style>
-		/* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO DEL CONTENIDO ===== */
 		body {
 			display: flex;
 			flex-direction: column;
@@ -99,7 +96,6 @@
 			border-radius: 16px;
 		}
 
-		/* ===== ARREGLOS DE LA TABLA DEL CARRITO ===== */
 		.wrap-table-shopping-cart {
 			overflow-x: auto;
 			border-radius: 12px;
@@ -114,7 +110,6 @@
 			border-collapse: collapse;
 			color: #ccc;
 		}
-
 		.table-shopping-cart th,
 		.table-shopping-cart td {
 			padding: 15px 10px;
@@ -122,7 +117,6 @@
 			border-bottom: 1px solid rgba(255,255,255,0.06);
 			text-align: left;
 		}
-
 		.table-shopping-cart .table_head th {
 			background: rgba(0,0,0,0.3);
 			color: #aaa;
@@ -131,15 +125,12 @@
 			text-transform: uppercase;
 			letter-spacing: 0.5px;
 		}
-
-		/* Ancho fijo para columnas */
 		.table-shopping-cart .column-1 { width: 90px; }
 		.table-shopping-cart .column-2 { width: auto; }
 		.table-shopping-cart .column-3 { width: 100px; text-align: right; }
 		.table-shopping-cart .column-4 { width: 130px; text-align: center; }
 		.table-shopping-cart .column-5 { width: 110px; text-align: right; font-weight: 600; color: #fff; }
 
-		/* Imagen del producto: tamaño fijo y controlado */
 		.how-itemcart1 {
 			width: 60px;
 			height: 85px;
@@ -151,14 +142,11 @@
 			background: rgba(255,255,255,0.05);
 			border: 1px solid rgba(255,255,255,0.1);
 		}
-
 		.how-itemcart1 img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 		}
-
-		/* Nombre del producto enlace */
 		.table-shopping-cart .column-2 a {
 			color: #fff;
 			text-decoration: none;
@@ -168,15 +156,12 @@
 		.table-shopping-cart .column-2 a:hover {
 			color: #1E90FF;
 		}
-
-		/* Input de cantidad */
 		.wrap-num-product {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 2px;
 		}
-
 		.num-product {
 			width: 50px;
 			text-align: center;
@@ -187,7 +172,6 @@
 			font-size: 14px;
 			padding: 4px;
 		}
-
 		.btn-num-product-up,
 		.btn-num-product-down {
 			width: 28px;
@@ -202,20 +186,15 @@
 			justify-content: center;
 			transition: all 0.2s;
 		}
-
 		.btn-num-product-up:hover,
 		.btn-num-product-down:hover {
 			background: rgba(30,144,255,0.3);
 			color: #fff;
 		}
-
-		/* Fila vacía */
 		.table-shopping-cart .txt-center {
 			text-align: center;
 			color: #888;
 		}
-
-		/* Responsive: en móviles, scroll horizontal */
 		@media (max-width: 768px) {
 			.wrap-table-shopping-cart {
 				margin: 0 -15px;
@@ -226,7 +205,11 @@
 			}
 		}
 
-		/* ===== PANEL DE BÚSQUEDA ESTILO MICA (ARREGLO) ===== */
+		/* ===== PANEL DE BÚSQUEDA (SIN BOTÓN) Y BOTÓN FIJO ===== */
+		.mica-floating-btn {
+			height: 38px !important;
+			flex-shrink: 0 !important;
+		}
 		.panel-search {
 			background: var(--mica-card) !important;
 			backdrop-filter: blur(24px) saturate(180%) !important;
@@ -237,7 +220,6 @@
 			margin-top: 10px !important;
 			box-shadow: var(--shadow-mica) !important;
 		}
-
 		.panel-search .dis-flex {
 			display: flex !important;
 			align-items: center !important;
@@ -247,12 +229,10 @@
 			border: 1px solid var(--border-mica) !important;
 			transition: border-color 0.3s ease !important;
 		}
-
 		.panel-search .dis-flex:focus-within {
 			border-color: var(--accent-blue) !important;
 			box-shadow: 0 0 20px var(--border-glow) !important;
 		}
-
 		.panel-search input {
 			background: transparent !important;
 			border: none !important;
@@ -263,31 +243,9 @@
 			width: 100% !important;
 			outline: none !important;
 		}
-
 		.panel-search input::placeholder {
 			color: var(--text-muted) !important;
 			font-weight: 300 !important;
-		}
-
-		.panel-search button[type="submit"] {
-			background: var(--accent-blue) !important;
-			border: none !important;
-			color: #fff !important;
-			width: 48px !important;
-			height: 48px !important;
-			border-radius: 50% !important;
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-			font-size: 24px !important;
-			cursor: pointer !important;
-			transition: all 0.3s ease !important;
-			flex-shrink: 0 !important;
-		}
-
-		.panel-search button[type="submit"]:hover {
-			background: #3aa3ff !important;
-			transform: scale(1.05) !important;
 		}
 	</style>
 </head>
