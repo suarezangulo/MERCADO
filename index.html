@@ -356,9 +356,25 @@
 
                         <!-- Wrapper para el botón Buscar + panel -->
                         <div class="search-wrapper">
-                            <!-- Botón Buscar FUNCIONAL (con event.stopPropagation y return false) -->
-                            <button class="mica-floating-btn js-show-search" aria-label="Buscar productos" 
-                                    onclick="event.stopPropagation(); var panel = document.querySelector('.panel-search'); panel.classList.toggle('show'); this.classList.toggle('show-search'); return false;">
+                            <!-- Botón Buscar BLINDADO contra main.js -->
+                            <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
+                                    onclick="
+                                        event.stopPropagation();
+                                        event.stopImmediatePropagation();
+                                        var panel = document.querySelector('.panel-search');
+                                        var isShowing = panel.classList.contains('show');
+                                        if (isShowing) {
+                                            panel.classList.remove('show');
+                                            this.classList.remove('show-search');
+                                        } else {
+                                            panel.classList.add('show');
+                                            this.classList.add('show-search');
+                                            // Forzar visibilidad con display también
+                                            panel.style.visibility = 'visible';
+                                            panel.style.opacity = '1';
+                                        }
+                                        return false;
+                                    ">
                                 <i class="icon-search zmdi zmdi-search"></i>
                                 <i class="icon-close-search zmdi zmdi-close"></i>
                                 <span>Buscar</span>
@@ -429,11 +445,14 @@
     <script src="js/index.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- ===== DESACTIVAR EVENTOS DUPLICADOS DE MAIN.JS ===== -->
+    <!-- ===== DESTRUIR CUALQUIER EVENTO QUE MAIN.JS HAYA ASIGNADO ===== -->
     <script>
         $(document).ready(function() {
-            // Forzar que el botón de búsqueda solo use su onclick nativo
-            $('.js-show-search').off('click');
+            // Eliminar cualquier evento click asociado al botón por su ID
+            $('#searchButton').off('click');
+            // También eliminar eventos delegados que puedan afectarlo
+            $(document).off('click', '#searchButton');
+            $(document).off('click', '.mica-floating-btn');
         });
     </script>
 
