@@ -36,6 +36,7 @@
         /* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO ===== */
         body {
             display: flex; flex-direction: column; min-height: 100vh;
+            overflow-x: hidden; /* Evita scroll horizontal */
         }
         main, .mica-surface, .bg0 {
             flex: 1 0 auto;
@@ -260,45 +261,40 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES (DEFINITIVO) ===== */
+        /* ===== AJUSTES PARA MÓVILES (SEPARACIÓN EXACTA DE 2mm) ===== */
         @media (max-width: 768px) {
-            /* Forzar que el main ocupe todo el ancho disponible */
-            main.mica-surface {
-                width: 100% !important;
-                max-width: 100% !important;
+            /* El contenedor con fondo translúcido: padding de 2mm a cada lado */
+            .bg0 {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
-                box-sizing: border-box !important;
-                overflow: hidden !important;
+                box-sizing: border-box !important; /* El padding no suma al ancho */
+                width: 100% !important;
+                overflow: hidden !important; /* Evita desborde */
             }
-
-            /* Eliminar padding y márgenes que puedan desbordar */
-            .bg0 {
+            
+            /* El main no debe tener padding extra para no duplicar */
+            main.mica-surface {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
             }
-
+            
+            /* Contenedor interno sin padding, hereda el del .bg0 */
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
                 max-width: 100% !important;
                 width: 100% !important;
-                margin: 0 !important;
+                margin: 0 auto !important;
                 box-sizing: border-box !important;
             }
-
+            
+            /* Eliminar márgenes negativos de Bootstrap */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
             }
-
-            /* Tarjetas: 2mm de separación del fondo translúcido */
+            
+            /* Tarjetas: 2mm de separación respecto al fondo */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -308,51 +304,48 @@
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
             }
-
+            
             .isotope-item {
                 width: 100% !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
-                box-sizing: border-box !important;
             }
-
+            
             .block2 {
                 width: 100% !important;
-                box-sizing: border-box !important;
             }
-
+            
             .isotope-grid {
                 width: 100% !important;
                 margin: 0 !important;
-                box-sizing: border-box !important;
             }
-
+            
             .whatsapp-btn {
                 bottom: 20px !important;
                 right: 20px !important;
                 width: 50px !important;
                 height: 50px !important;
             }
-
+            
             .panel-search {
                 width: 90vw !important;
                 max-width: 90vw !important;
                 right: -40px !important;
             }
-
+            
             .mica-floating-btn {
                 font-size: 12px !important;
                 padding: 6px 12px !important;
                 height: 34px !important;
             }
-
+            
             #filterButtonContainer {
                 gap: 6px !important;
                 flex-wrap: wrap !important;
             }
-
+            
             .filter-dropdown.panel-filter {
                 width: 90vw !important;
                 left: 50% !important;
@@ -361,16 +354,21 @@
         }
 
         @media (max-width: 480px) {
-            main.mica-surface {
+            .bg0 {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
             }
-
+            
+            .container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 padding-left: 1.5mm !important;
                 padding-right: 1.5mm !important;
             }
-
+            
             .panel-search {
                 width: 95vw !important;
                 max-width: 95vw !important;
@@ -459,6 +457,7 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main role="main" aria-label="Contenido principal" class="mica-surface">
+        <!-- El fondo translúcido se aplica en .bg0, que ahora tiene el padding de 2mm -->
         <div class="bg0 m-t-23 p-b-140">
             <div class="container">
                 <div class="flex-w flex-sb-m p-b-52">
