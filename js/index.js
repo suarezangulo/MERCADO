@@ -1,7 +1,7 @@
 // ===== VARIABLES GLOBALES =====
 var filterData = [];
 var filterTree = [];
-var currentFilter = {};   // Ahora es un objeto simple: { category: 'novelas', subcategory: 'romance' }
+var currentFilter = {};
 var gTagCategory = "";
 var gTagSubCategory = "";
 
@@ -38,7 +38,6 @@ function applyFilterAndSort() {
     var selector = getFilterSelector();
     $grid.isotope({ filter: selector });
 
-    // Re-aplicar el orden actual si existe
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
         if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
@@ -99,6 +98,9 @@ function loadData($, data) {
             }
         }
 
+        // Inicializar Isotope directamente (sin imagesLoaded)
+        loadIsotope();
+
         // Llenar dropdown de filtros
         $filterContent.empty();
 
@@ -112,7 +114,6 @@ function loadData($, data) {
         catSection.appendChild(catContainer);
         $filterContent.append(catSection);
 
-        // Botones de categoría
         var $catContainer = $('#categoryFiltersContainer');
         addCategoryTag($catContainer, "Todos", null, !currentFilter.category);
         for (const cat in data) {
@@ -130,15 +131,12 @@ function loadData($, data) {
         addOrderLi(orderList, "Más económicos", "price-asc", currentFilter.orderBy === 'price-asc');
         addOrderLi(orderList, "Más costosos", "price-desc", currentFilter.orderBy === 'price-desc');
 
-        // Sección Subcategorías (dinámica)
+        // Sección Subcategorías
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Inicializar Isotope
-        $('.isotope-grid').imagesLoaded({}, function () {
-            loadIsotope();
-            applyFilterAndSort();
-        });
+        // Aplicar filtro inicial
+        applyFilterAndSort();
 
         // Búsqueda
         $('[name="search-product"]').keyup(debounce(function() {
@@ -177,7 +175,6 @@ function addCategoryTag($container, label, filterValue, active) {
         }
         applyFilterAndSort();
         updateSubcategoryFilters();
-        // Actualizar aspecto de los botones
         $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
         $(btn).addClass('active');
     });
@@ -196,7 +193,6 @@ function addOrderLi(container, label, orderValue, active) {
         e.preventDefault();
         currentFilter.orderBy = orderValue;
         applyFilterAndSort();
-        // Actualizar aspecto
         $(container).find('.filter-link').removeClass('filter-link-active');
         $(a).addClass('filter-link-active');
     });
@@ -244,7 +240,7 @@ function updateSubcategoryFilters() {
     $section.append(container);
 }
 
-// ===== FUNCIONES AUXILIARES (sin cambios) =====
+// ===== FUNCIONES AUXILIARES =====
 function debounce(fn, threshold) {
     var timeout;
     threshold = threshold || 100;
@@ -295,12 +291,10 @@ function addProductCard($container, product, categoryKey, subcategoryKey, filter
                 $(wrapMenu).css('top', posWrapHeader - $(this).scrollTop());
             }
         });
-        // Resto de inicialización (menú móvil, búsqueda modal, dropdown...)
         $('.btn-show-menu-mobile').on('click', function () {
             $(this).toggleClass('is-active');
             $('.menu-mobile').slideToggle();
         });
-        // Dropdown de filtros
         var $filterBtn = $('.js-show-filter');
         var $dropdown = $('#filterDropdown');
         $filterBtn.on('click', function (e) {
