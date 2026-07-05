@@ -115,7 +115,7 @@
 			align-items: center;
 		}
 
-		/* ===== PANEL DE BÚSQUEDA (a la derecha del botón, visible) ===== */
+		/* ===== PANEL DE BÚSQUEDA (a la derecha del botón) ===== */
 		.panel-search {
 			position: absolute;
 			top: 50%;
@@ -354,7 +354,19 @@
 
 						<!-- Wrapper para el botón Buscar + panel -->
 						<div class="search-wrapper">
-							<button class="mica-floating-btn js-show-search" aria-label="Buscar productos">
+							<!-- Botón Buscar con onclick directo -->
+							<button class="mica-floating-btn js-show-search" aria-label="Buscar productos" 
+									onclick="
+										var panel = document.querySelector('.panel-search');
+										panel.classList.toggle('show');
+										this.classList.toggle('show-search');
+										// Si el filtro está abierto, lo cerramos
+										var filterBtn = document.querySelector('.js-show-filter');
+										if (filterBtn.classList.contains('show-filter')) {
+											filterBtn.classList.remove('show-filter');
+											document.querySelector('.filter-dropdown').classList.remove('show');
+										}
+									">
 								<i class="icon-search zmdi zmdi-search"></i>
 								<i class="icon-close-search zmdi zmdi-close"></i>
 								<span>Buscar</span>
@@ -423,6 +435,7 @@
 	<script src="js/lazyload.min.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/main.js"></script>
 
 	<script>
 	window.addEventListener('scroll', function() {
