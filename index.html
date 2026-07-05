@@ -261,41 +261,43 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES (SOLUCIÓN DIRECTA) ===== */
+        /* ===== CENTRAR TODO EN MÓVILES ===== */
         @media (max-width: 768px) {
-            /* Aplicar padding de 2mm al body para separar todo el contenido de los bordes */
-            body {
-                padding-left: 2mm !important;
-                padding-right: 2mm !important;
+            /* Asegurar que main y bg0 sean flex y centren el contenido */
+            main.mica-surface {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .bg0 {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 2mm !important; /* 2mm de separación de los bordes */
+                box-sizing: border-box !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 auto !important;
                 box-sizing: border-box !important;
             }
-            
-            /* Quitar padding a los elementos que lo tenían para que hereden del body */
-            .bg0 {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                width: 100% !important;
-            }
-            
-            main.mica-surface {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            
-            .container {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 auto !important;
-            }
-            
+
+            /* Eliminar márgenes negativos de Bootstrap */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
+                width: 100% !important;
             }
-            
-            /* Tarjetas: 2mm de separación respecto al contenido (que ya tiene 2mm del body) */
+
+            /* Tarjetas: ocupar todo el ancho con separación de 2mm entre ellas y el borde del bg0 */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -305,7 +307,7 @@
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
             }
-            
+
             .isotope-item {
                 width: 100% !important;
                 padding-left: 0 !important;
@@ -313,40 +315,41 @@
                 margin-left: 0 !important;
                 margin-right: 0 !important;
             }
-            
+
             .block2 {
                 width: 100% !important;
             }
-            
+
             .isotope-grid {
                 width: 100% !important;
                 margin: 0 !important;
             }
-            
+
             .whatsapp-btn {
                 bottom: 20px !important;
                 right: 20px !important;
                 width: 50px !important;
                 height: 50px !important;
             }
-            
+
             .panel-search {
                 width: 90vw !important;
                 max-width: 90vw !important;
                 right: -40px !important;
             }
-            
+
             .mica-floating-btn {
                 font-size: 12px !important;
                 padding: 6px 12px !important;
                 height: 34px !important;
             }
-            
+
             #filterButtonContainer {
                 gap: 6px !important;
                 flex-wrap: wrap !important;
+                justify-content: flex-start !important;
             }
-            
+
             .filter-dropdown.panel-filter {
                 width: 90vw !important;
                 left: 50% !important;
@@ -355,16 +358,15 @@
         }
 
         @media (max-width: 480px) {
-            body {
-                padding-left: 2mm !important;
-                padding-right: 2mm !important;
+            .bg0 {
+                padding: 0 2mm !important;
             }
-            
+
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 padding-left: 1.5mm !important;
                 padding-right: 1.5mm !important;
             }
-            
+
             .panel-search {
                 width: 95vw !important;
                 max-width: 95vw !important;
@@ -453,6 +455,7 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main role="main" aria-label="Contenido principal" class="mica-surface">
+        <!-- .bg0 es el contenedor con el fondo translúcido (efecto mica) -->
         <div class="bg0 m-t-23 p-b-140">
             <div class="container">
                 <div class="flex-w flex-sb-m p-b-52">
