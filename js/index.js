@@ -224,8 +224,9 @@ function addCategoryTag($container, label, filterValue, active) {
             delete currentFilter.subcategory;
         }
         console.log('🔄 Categoría seleccionada:', currentFilter.category);
-        $('#searchInput').val('');
-        delete currentFilter.search;
+        // ❌ ELIMINAMOS estas líneas para NO borrar la búsqueda
+        // $('#searchInput').val('');
+        // delete currentFilter.search;
         applyFilterAndSort();
         updateSubcategoryFilters();
         $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
