@@ -5,35 +5,11 @@ var currentFilter = {};
 var gTagCategory = "";
 var gTagSubCategory = "";
 
-// ===== INICIALIZAR ISOTOPE =====
+// ===== INICIALIZAR / REINICIALIZAR ISOTOPE =====
 function initIsotope() {
     var $grid = $('.isotope-grid');
     if ($grid.data('isotope')) {
         $grid.isotope('destroy');
-    }
-    $grid.isotope({
-        itemSelector: '.isotope-item',
-        layoutMode: 'fitRows',
-        percentPosition: true,
-        sortBy: 'update',
-        sortAscending: false,
-        animationEngine: 'best-available',
-        masonry: { columnWidth: '.isotope-item' },
-        getSortData: {
-            price: '[data-price-usd] parseFloat',
-            update: '[data-update] parseFloat'
-        }
-    });
-}
-
-// ===== APLICAR FILTRO Y ORDEN (MÉTODOS ESTÁNDAR) =====
-function applyFilterAndSort() {
-    var $grid = $('.isotope-grid');
-    if (!$grid.length) return;
-
-    // Asegurar que Isotope está inicializado
-    if (!$grid.data('isotope')) {
-        initIsotope();
     }
 
     // Construir selector de filtro
@@ -45,24 +21,43 @@ function applyFilterAndSort() {
         }
     }
 
-    console.log('🔍 Aplicando filtro:', currentFilter);
-    console.log('📌 Selector de filtro:', filterSelector);
-
-    // Aplicar filtro
-    $grid.isotope('filter', filterSelector);
-
-    // Aplicar orden
-    if (currentFilter.orderBy) {
-        var sortBy = 'update', sortAsc = false;
-        if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
-        else if (currentFilter.orderBy === 'price-desc') { sortBy = 'price'; sortAsc = false; }
-        else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
-        console.log('📊 Ordenando por:', sortBy, sortAsc ? 'asc' : 'desc');
-        $grid.isotope('sort', sortBy, sortAsc);
+    // Configurar orden
+    var sortBy = 'update';
+    var sortAsc = false;
+    if (currentFilter.orderBy === 'price-asc') {
+        sortBy = 'price';
+        sortAsc = true;
+    } else if (currentFilter.orderBy === 'price-desc') {
+        sortBy = 'price';
+        sortAsc = false;
+    } else if (currentFilter.orderBy === 'update') {
+        sortBy = 'update';
+        sortAsc = false;
     }
 
-    // Forzar re-layout
+    console.log('🔍 Inicializando Isotope con filtro:', filterSelector, 'orden:', sortBy, sortAsc ? 'asc' : 'desc');
+
+    // Inicializar (o reinicializar) con las opciones actuales
+    $grid.isotope({
+        itemSelector: '.isotope-item',
+        layoutMode: 'fitRows',
+        percentPosition: true,
+        filter: filterSelector,
+        sortBy: sortBy,
+        sortAscending: sortAsc,
+        animationEngine: 'best-available',
+        masonry: { columnWidth: '.isotope-item' },
+        getSortData: {
+            price: '[data-price-usd] parseFloat',
+            update: '[data-update] parseFloat'
+        }
+    });
     $grid.isotope('layout');
+}
+
+// ===== APLICAR FILTRO Y ORDEN (simplemente reinicializa) =====
+function applyFilterAndSort() {
+    initIsotope();
 }
 
 function loadData($, data) {
@@ -108,9 +103,6 @@ function loadData($, data) {
             }
         }
 
-        // Inicializar Isotope
-        initIsotope();
-
         // Construir filtros en el dropdown
         $filterContent.empty();
 
@@ -145,8 +137,8 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Aplicar filtro inicial
-        applyFilterAndSort();
+        // Inicializar Isotope con los filtros actuales
+        initIsotope();
 
         new LazyLoad({
             elements_selector: "img[data-src]",
