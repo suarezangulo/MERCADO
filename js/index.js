@@ -53,7 +53,6 @@ function applyFilterAndSort() {
         return;
     }
     var selector = getFilterSelector();
-    debug('Filtrando por: ' + selector);
     $grid.isotope({ filter: selector });
 
     if (currentFilter.orderBy) {
@@ -63,6 +62,11 @@ function applyFilterAndSort() {
         else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
         $grid.isotope({ sortBy: sortBy, sortAscending: sortAsc });
     }
+
+    // Mostrar conteo en panel de depuración
+    var total = $grid.find('.isotope-item').length;
+    var visible = $grid.find('.isotope-item:visible').length;
+    debug('Filtro: ' + selector + ' | Visibles: ' + visible + ' de ' + total);
 }
 
 function loadData($, data) {
@@ -102,8 +106,6 @@ function loadData($, data) {
                 }
             }
         }
-
-        debug('Productos cargados: ' + $('.isotope-item').length);
 
         initIsotope();
 
@@ -169,7 +171,6 @@ function addCategoryTag($container, label, filterValue, active) {
     btn.className = "mica-pill-btn" + (active ? " active" : "");
     btn.textContent = spanishFormat(label);
     btn.addEventListener('click', function() {
-        debug('Clic en: ' + label + ' (valor: ' + filterValue + ')');
         if (filterValue === null) {
             delete currentFilter.category;
             delete currentFilter.subcategory;
