@@ -70,10 +70,10 @@
 		/* ===== CONTENEDOR DE BOTONES FLOTANTES ===== */
 		#filterButtonContainer {
 			margin-top: 20px !important;
-			position: relative;
 			display: flex;
 			align-items: center;
 			gap: 8px;
+			position: relative;
 		}
 
 		/* ===== DROPDOWN DE FILTROS (izquierda) ===== */
@@ -108,12 +108,19 @@
 			display: flex; flex-wrap: wrap; gap: 6px;
 		}
 
+		/* ===== CONTENEDOR DEL BOTÓN BUSCAR + PANEL ===== */
+		.search-wrapper {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+		}
+
 		/* ===== PANEL DE BÚSQUEDA (al lado derecho del botón Buscar) ===== */
 		.panel-search {
 			position: absolute;
 			top: 50%;
 			left: calc(100% + 8px);
-			transform: translateY(-50%);
+			transform: translateY(-50%) scale(0.96);
 			width: 300px;
 			max-width: 70vw;
 			background: var(--mica-card) !important;
@@ -126,7 +133,6 @@
 			display: none;
 			z-index: 999;
 			opacity: 0;
-			transform: translateY(-50%) scale(0.96);
 			transition: opacity 0.25s ease, transform 0.25s ease;
 		}
 		.panel-search.show {
@@ -337,27 +343,32 @@
 				<div class="flex-w flex-sb-m p-b-52">
 					<!-- Contenedor de botones y paneles flotantes -->
 					<div id="filterButtonContainer">
+						<!-- Botón Filtrar -->
 						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
 							<i class="icon-filter zmdi zmdi-filter-list"></i>
 							<i class="icon-close-filter zmdi zmdi-close"></i>
 							<span>Filtrar</span>
 						</button>
-						<button class="mica-floating-btn js-show-search" aria-label="Buscar productos" style="position: relative;">
-							<i class="icon-search zmdi zmdi-search"></i>
-							<i class="icon-close-search zmdi zmdi-close"></i>
-							<span>Buscar</span>
-						</button>
+
+						<!-- Wrapper para el botón Buscar + panel -->
+						<div class="search-wrapper">
+							<button class="mica-floating-btn js-show-search" aria-label="Buscar productos">
+								<i class="icon-search zmdi zmdi-search"></i>
+								<i class="icon-close-search zmdi zmdi-close"></i>
+								<span>Buscar</span>
+							</button>
+
+							<!-- Panel de búsqueda (flotante, a la derecha del botón) -->
+							<div class="panel-search" role="search">
+								<div class="dis-flex">
+									<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
+								</div>
+							</div>
+						</div>
 
 						<!-- Dropdown de filtros (flotante, izquierda) -->
 						<div class="filter-dropdown" id="filterDropdown">
 							<div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
-						</div>
-
-						<!-- Panel de búsqueda (flotante, a la derecha del botón) -->
-						<div class="panel-search" role="search">
-							<div class="dis-flex">
-								<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
-							</div>
 						</div>
 					</div>
 				</div>
