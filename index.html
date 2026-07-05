@@ -261,40 +261,41 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES (CORREGIDO) ===== */
+        /* ===== AJUSTES PARA MÓVILES (SOLUCIÓN DIRECTA) ===== */
         @media (max-width: 768px) {
-            /* El contenedor con el efecto translúcido es .bg0, aplicamos padding de 2mm a los lados */
-            .bg0 {
+            /* Aplicar padding de 2mm al body para separar todo el contenido de los bordes */
+            body {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
                 box-sizing: border-box !important;
-                width: 100% !important;
-                overflow: hidden !important;
             }
             
-            /* El main no debe tener padding extra para no duplicar */
+            /* Quitar padding a los elementos que lo tenían para que hereden del body */
+            .bg0 {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                width: 100% !important;
+            }
+            
             main.mica-surface {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
             }
             
-            /* El container debe ocupar el 100% sin padding */
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
                 max-width: 100% !important;
                 width: 100% !important;
                 margin: 0 auto !important;
-                box-sizing: border-box !important;
             }
             
-            /* Eliminar márgenes negativos de Bootstrap */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
             }
             
-            /* Tarjetas: 2mm de separación respecto al contenedor .bg0 */
+            /* Tarjetas: 2mm de separación respecto al contenido (que ya tiene 2mm del body) */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -354,14 +355,9 @@
         }
 
         @media (max-width: 480px) {
-            .bg0 {
+            body {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
-            }
-            
-            .container {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
             }
             
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
@@ -457,7 +453,6 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main role="main" aria-label="Contenido principal" class="mica-surface">
-        <!-- .bg0 es el contenedor con el fondo translúcido (efecto mica) -->
         <div class="bg0 m-t-23 p-b-140">
             <div class="container">
                 <div class="flex-w flex-sb-m p-b-52">
