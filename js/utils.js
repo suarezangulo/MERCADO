@@ -39,15 +39,14 @@ function resolveImageUrl(baseName, extensions, callback) {
     tryNext();
 }
 
-// ===== FUNCIÓN PARA GENERAR PLACEHOLDER =====
+// ===== FUNCIÓN PARA GENERAR PLACEHOLDER (igual que en admin.js) =====
 function getPlaceholderImage(label) {
-    var encodedLabel = encodeURIComponent(label || 'Sin imagen');
+    // Placeholder simple y robusto, sin texto dinámico que pueda romper el SVG
     return 'data:image/svg+xml,' + 
-        '%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="600"%3E' +
-        '%3Crect fill="%231a1a2e" width="400" height="600"/%3E' +
-        '%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23888" font-size="20" font-family="Arial"%3E' + 
-        encodedLabel + 
-        '%3C/text%3E%3C/svg%3E';
+        '%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="400"%3E' +
+        '%3Crect fill="%23141414" width="300" height="400"/%3E' +
+        '%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23666" font-size="24"%3E?%3C/text%3E' +
+        '%3C/svg%3E';
 }
 
 function splitTitle(n) {
@@ -204,22 +203,22 @@ function addProductCardBase(container, product, extraClass, mode) {
     var pic = document.createElement("div");
     pic.setAttribute("class", "block2-pic hov-img0");
     var img = document.createElement("img");
-    img.setAttribute("data-src", "./images/products/" + slug + "-0.webp");
     img.setAttribute("alt", "imagen");
     img.setAttribute("data-slug", slug);
     img.setAttribute("data-index", "0");
-    img.setAttribute("src", getPlaceholderImage(product.Label));
+    img.setAttribute("src", getPlaceholderImage(product.Label)); // Placeholder inicial
     pic.appendChild(img);
     
+    // Intentar cargar la imagen real
     (function(imgEl, productSlug, idx) {
         var baseName = productSlug + "-" + idx;
         var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
         resolveImageUrl(baseName, extensions, function(url) {
             if (url) {
-                imgEl.setAttribute('data-src', url);
                 imgEl.setAttribute('src', url);
                 imgEl.classList.add('loaded');
             }
+            // Si no se encuentra, ya está el placeholder
         });
     })(img, slug, 0);
     
