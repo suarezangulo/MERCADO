@@ -51,9 +51,9 @@ function loadIsotope() {
 
 function loadData($, data) {
     let $topeContainer = $('.isotope-grid').first();
-    let $filtersTag = $('.wrap-filter');
+    let $filterContent = $('#filterDropdownContent');
 
-    // ===== MEJORA 2: MOSTRAR SKELETONS MIENTRAS CARGA =====
+    // ===== SKELETONS =====
     $topeContainer.empty();
     for (let i = 0; i < 8; i++) {
         let skeleton = document.createElement("div");
@@ -80,32 +80,14 @@ function loadData($, data) {
             currentFilter['subcategory'] = subcategoryKey;
         }
     }
-
     var searchParam = urlParams.get('search');
     $('[name="search-product"]').val(searchParam);
 
-    // Pequeño retraso para que los skeletons sean visibles
     setTimeout(function() {
         // Eliminar skeletons
         $topeContainer.find('.skeleton-card').parent().remove();
 
-        // ===== SECCIÓN CATEGORÍAS (DENTRO DEL PANEL FILTRO) =====
-        var categorySection = document.createElement("div");
-        categorySection.setAttribute("class", "filter-col1 p-b-27");
-        categorySection.innerHTML = '<div class="mtext-102 cl2 p-b-15">Categorías</div>';
-        var categoryContainer = document.createElement("div");
-        categoryContainer.setAttribute("class", "flex-w p-t-4 m-r--5");
-        categoryContainer.setAttribute("id", "categoryFiltersContainer");
-        categorySection.appendChild(categoryContainer);
-        $filtersTag.prepend(categorySection); // Insertar al inicio del panel
-
-        // Ordenar por (ahora ocupa filter-col2)
-        let orderByFilter = addFiltersTag($filtersTag, 2, "Ordenar por");
-        addFilterLi(orderByFilter, "Recientes", "orderBy", true, () => sortProducts("update", "desc", "Recientes"));
-        addFilterLi(orderByFilter, "Más económicos", "orderBy", false, () => sortProducts("price", "asc", "Más económicos"));
-        addFilterLi(orderByFilter, "Más costosos", "orderBy", false, () => sortProducts("price", "desc", "Más costosos"));
-
-        // Construir datos de productos y árbol de filtros
+        // ===== CONSTRUIR DATOS (categorías, árbol de filtros, productos) =====
         for (const categoryKey in data) {
             if (filterTree[categoryKey] == null) filterTree[categoryKey] = [];
             filterData[normalizeText(categoryKey)] = categoryKey;
@@ -135,14 +117,43 @@ function loadData($, data) {
             }
         }
 
-        // ===== BOTONES DE CATEGORÍA (píldoras Mica) =====
+        // ===== LLENAR DROPDOWN DE FILTROS =====
+        $filterContent.empty();
+
+        // Sección Categorías
+        var catSection = document.createElement("div");
+        catSection.setAttribute("class", "p-b-20");
+        catSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Categorías</div>';
+        var catContainer = document.createElement("div");
+        catContainer.setAttribute("class", "flex-w p-t-4");
+        catContainer.setAttribute("id", "categoryFiltersContainer");
+        catSection.appendChild(catContainer);
+        $filterContent.append(catSection);
+
+        // Sección Ordenar por
+        var orderSection = document.createElement("div");
+        orderSection.setAttribute("class", "p-b-20");
+        orderSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Ordenar por</div>';
+        var orderList = document.createElement("ul");
+        orderList.setAttribute("class", "");
+        orderSection.appendChild(orderList);
+        $filterContent.append(orderSection);
+        addFilterLi(orderList, "Recientes", "orderBy", true, () => sortProducts("update", "desc", "Recientes"));
+        addFilterLi(orderList, "Más económicos", "orderBy", false, () => sortProducts("price", "asc", "Más económicos"));
+        addFilterLi(orderList, "Más costosos", "orderBy", false, () => sortProducts("price", "desc", "Más costosos"));
+
+        // Secciones dinámicas para subcategorías y palabras clave (se llenarán en updateView)
+        $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
+        $filterContent.append('<div id="keywordSection" class="p-b-20"></div>');
+
+        // ===== BOTONES DE CATEGORÍA =====
         var $catContainer = $('#categoryFiltersContainer');
         addCategoryTag($catContainer, "Todos", "*", categoryKeyParam == null || categoryKeyParam.length == 0);
         for (const categoryKey in data) {
             addCategoryTag($catContainer, categoryKey, categoryKey, normalizeText(categoryKey) == categoryKeyParam);
         }
 
-        // Eventos de Isotope y búsqueda
+        // Eventos
         $topeContainer.on('arrangeComplete', updateView);
         $('[name="search-product"]').keyup(debounce(function() {
             $('.isotope-grid').isotope();
@@ -157,10 +168,12 @@ function loadData($, data) {
             }
         });
         
-        // Inicializar Isotope después de cargar los productos
         $('.isotope-grid').imagesLoaded({}, function () {
             loadIsotope();
         });
+
+        // Disparar updateView inicial para llenar subcategorías y palabras clave
+        updateView();
     }, 600);
 }
 
@@ -196,8 +209,7 @@ function udpateViewFilter() {
     let anyFilter = false;
     if (currentFilter["subcategory"] != null && currentFilter["subcategory"].length > 0) anyFilter = true;
     if (!anyFilter && (currentFilter["feature"] != null && currentFilter["feature"].length > 0)) anyFilter = true;
-    if (anyFilter) $('.js-show-filter').addClass("show-filter");
-    else $('.js-show-filter').removeClass("show-filter");
+    // No usamos show-filter para botón, solo para indicar visual si se desea
 }
 
 function updateView() {    
@@ -248,11 +260,10 @@ function updateView() {
         return subcategories.indexOf(valor) === indice;
     });
     
-    // Ajuste de posiciones: subcategorías ahora en col3, palabras clave en col4
-    updateFilters("Subcategorías", 3, subcategories.sort(), false, "subcategory");
+    // Actualizar secciones dentro del dropdown
+    updateFiltersInDropdown("Subcategorías", subcategories.sort(), false, "subcategory", "#subcategorySection");
     var keywords = getKeywords(products, 15);
-    updateFilters("Palabras clave", 4, keywords, true, "feature");
-    udpateViewFilter();
+    updateFiltersInDropdown("Palabras clave", keywords, true, "feature", "#keywordSection");
 
     if (googleAnalyticsId != null && googleAnalyticsId.length > 0) {
         if (currentCategory != null && currentCategory.length > 0 && currentCategory != gTagCategory) {
@@ -283,6 +294,47 @@ function updateView() {
     }
 }
 
+function updateFiltersInDropdown(title, collection, forTags, prevFilter, sectionId) {
+    var $section = $(sectionId);
+    if (!$section.length) return;
+    $section.empty();
+    if (collection.length === 0) return;
+
+    var titleDiv = document.createElement("div");
+    titleDiv.setAttribute("class", "mtext-102 cl2 p-b-10");
+    titleDiv.textContent = title;
+    $section.append(titleDiv);
+
+    var container = document.createElement("div");
+    container.setAttribute("class", "flex-w p-t-4");
+    let current = currentFilter[prevFilter];
+    for (var i in collection) {
+        let label = collection[i];
+        if (forTags) {
+            addFilterDiv(container, label, prevFilter, current == normalizeText(label));
+        } else {
+            // Crear botón tipo píldora para subcategorías
+            let newA = document.createElement("a");
+            let aClass = "filter-link";
+            if (current == normalizeText(label)) aClass += " filter-link-active";
+            newA.setAttribute("class", aClass);
+            newA.setAttribute("href", "#");
+            newA.textContent = spanishFormat(label);
+            newA.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentFilter[prevFilter] == normalizeText(label))
+                    delete currentFilter[prevFilter];
+                else
+                    currentFilter[prevFilter] = normalizeText(label);
+                delete currentFilter["feature"];
+                $('.isotope-grid').isotope();
+            });
+            container.appendChild(newA);
+        }
+    }
+    $section.append(container);
+}
+
 function extendFeatures(product) {
     const words = product.Label.split(' ');
     let featuresExtended = (product.Features || []).concat(words);
@@ -307,22 +359,7 @@ function getKeywords(products, numKeywords) {
     return filteredKeywords.slice(0, numKeywords);
 }
 
-function updateFilters(title, pos, collection, forTags, prevFilter) {
-    let $filtersTag = $('.wrap-filter');
-    let filtersTag = addFiltersTag($filtersTag, pos, title, forTags);
-    filtersTag.innerHTML = "";    
-
-    let current = currentFilter[prevFilter];
-    for (var item in collection) {
-        let label = collection[item];
-        if (forTags)
-            addFilterDiv(filtersTag, label, prevFilter, current == normalizeText(label));
-        else
-            addFilterLi(filtersTag, label, prevFilter, current == normalizeText(label));
-    }
-}
-
-// ===== FUNCIÓN addCategoryTag CON PÍLDORAS MICA (AHORA DENTRO DEL PANEL) =====
+// ===== FUNCIÓN addCategoryTag (se mantiene igual, pero ahora está dentro del dropdown) =====
 function addCategoryTag($container, label, filterValue, active) {
     let newButton = document.createElement("button");
     let aClass = "mica-pill-btn";
@@ -337,50 +374,13 @@ function addCategoryTag($container, label, filterValue, active) {
         if (filterValue != "*") currentFilter["category"] = normalizeText(filterValue);
         $('.isotope-grid').isotope();
         // Actualizar estado activo en todas las píldoras
-        $('.mica-pill-btn').removeClass('active');
+        $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
         $(newButton).addClass('active');
     });
     $container.append(newButton);
-    
-    // Asegurar que el contenedor tenga display flex
-    $container.css({
-        'display': 'flex',
-        'flex-wrap': 'wrap',
-        'gap': '8px'
-    });
 }
 
-function addFiltersTag($container, col, label, forTags = false) {
-    let filterCol = "filter-col" + col;
-    let newDiv = $container.find("." + filterCol);
-    if (newDiv != null && newDiv.length > 0) {
-        newDiv = newDiv.first();
-        if (forTags) return newDiv.find("div")[1];
-        return newDiv.find("ul").first().get(0);
-    }
-    newDiv = document.createElement("div");
-    if (forTags) {
-        newDiv.setAttribute("class", filterCol + " p-b-27");
-    } else {
-        newDiv.setAttribute("class", filterCol + " p-r-15 p-b-27");
-    }
-    let newDiv1 = document.createElement("div");
-    newDiv1.setAttribute("class", "mtext-102 cl2 p-b-15");
-    newDiv1.textContent = spanishFormat(label);
-    newDiv.appendChild(newDiv1);  
-    $container.append(newDiv);
-    let containerElement;
-    if (forTags) {
-        containerElement = document.createElement("div");
-        containerElement.setAttribute("class", "flex-w p-t-4 m-r--5");
-        newDiv.appendChild(containerElement);
-        return containerElement;
-    }
-    containerElement = document.createElement("ul");
-    newDiv.appendChild(containerElement);  
-    return containerElement;    
-}
-
+// ===== FUNCIONES addFilterLi y addFilterDiv (adaptadas para el dropdown) =====
 function addFilterLi(container, label, groupKey = null, active = false, action = null) {
     let newLi = document.createElement("li");
     newLi.setAttribute("class", "p-b-6");
@@ -548,32 +548,39 @@ function sortProducts(sortBy, sortDirection, text) {
         $('.container-search-header').on('click', function (e) {
             e.stopPropagation();
         });
-        // Isotope se inicializa dentro de loadData, no aquí
-        $('.js-show-filter').on('click', function (event) {
+
+        // ===== LÓGICA DEL DROPDOWN DE FILTROS =====
+        var $filterBtn = $('.js-show-filter');
+        var $dropdown = $('#filterDropdown');
+
+        $filterBtn.on('click', function (event) {
             event.preventDefault();
-            $(this).toggleClass('show-filter');
-            $('.panel-filter').slideToggle(400);
-            if ($('.js-show-search').hasClass('show-search')) {
-                $('.js-show-search').removeClass('show-search');
-                $('.panel-search').slideUp(400);
+            event.stopPropagation();
+            $dropdown.toggleClass('show');
+            if ($dropdown.hasClass('show')) {
+                // Cerrar búsqueda si está abierta
+                if ($('.js-show-search').hasClass('show-search')) {
+                    $('.js-show-search').removeClass('show-search');
+                    $('.panel-search').slideUp(400);
+                }
             }
         });
+
+        // Cerrar al hacer clic fuera
+        $(document).on('click', function (event) {
+            if (!$(event.target).closest('#filterButtonContainer').length) {
+                $dropdown.removeClass('show');
+            }
+        });
+
+        // Búsqueda (se mantiene slide normal)
         $('.js-show-search').on('click', function (event) {
             event.preventDefault();
             $(this).toggleClass('show-search');
             $('.panel-search').slideToggle(400);
-            if ($('.js-show-filter').hasClass('show-filter')) {
-                $('.js-show-filter').removeClass('show-filter');
-                $('.panel-filter').slideUp(400);
+            if ($dropdown.hasClass('show')) {
+                $dropdown.removeClass('show');
             }
-        });
-        $('.btn-num-product-down').on('click', function () {
-            var numProduct = Number($(this).next().val());
-            if (numProduct > 0) $(this).next().val(numProduct - 1);
-        });
-        $('.btn-num-product-up').on('click', function () {
-            var numProduct = Number($(this).prev().val());
-            $(this).prev().val(numProduct + 1);
         });
     });
 })(jQuery);
