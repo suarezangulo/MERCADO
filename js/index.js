@@ -26,7 +26,7 @@ function initIsotope() {
     });
 }
 
-// ===== APLICAR FILTRO Y ORDEN (SOLO CON OBJETOS) =====
+// ===== APLICAR FILTRO Y ORDEN (CON OBJETO) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
 
@@ -55,8 +55,10 @@ function applyFilterAndSort() {
         options.sortAscending = sortAsc;
     }
 
-    // ÚNICA llamada a Isotope, siempre con objeto
+    // Aplicar filtro y orden
     $grid.isotope(options);
+    // Forzar re-layout para asegurar que se actualice visualmente
+    $grid.isotope('layout');
 }
 
 function loadData($, data) {
@@ -64,6 +66,7 @@ function loadData($, data) {
     let $filterContent = $('#filterDropdownContent');
 
     $topeContainer.empty();
+    // Mostrar skeletons mientras carga
     for (let i = 0; i < 8; i++) {
         let skeleton = document.createElement("div");
         skeleton.setAttribute("class", "col-sm-6 col-md-4 col-lg-3 p-b-60");
@@ -71,12 +74,17 @@ function loadData($, data) {
         $topeContainer.append(skeleton);
     }
 
+    // Leer parámetros de URL
     var urlParams = new URLSearchParams(window.location.search);
     var categoryKeyParam = urlParams.get('category');
     if (categoryKeyParam) {
         currentFilter.category = categoryKeyParam;
         var subcategoryKey = urlParams.get('subcategory');
         if (subcategoryKey) currentFilter.subcategory = subcategoryKey;
+    }
+    // Por defecto, ordenar por recientes (update descendente)
+    if (!currentFilter.orderBy) {
+        currentFilter.orderBy = 'update';
     }
 
     setTimeout(function() {
@@ -101,7 +109,7 @@ function loadData($, data) {
 
         $filterContent.empty();
 
-        // Categorías
+        // ---- Categorías ----
         var catSection = document.createElement("div");
         catSection.className = "p-b-20";
         catSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Categorías</div>';
@@ -117,7 +125,7 @@ function loadData($, data) {
             addCategoryTag($catContainer, cat, normalizeText(cat), currentFilter.category === normalizeText(cat));
         }
 
-        // Ordenar por
+        // ---- Ordenar ----
         var orderSection = document.createElement("div");
         orderSection.className = "p-b-20";
         orderSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Ordenar por</div>';
@@ -128,13 +136,12 @@ function loadData($, data) {
         addOrderLi(orderList, "Más económicos", "price-asc", currentFilter.orderBy === 'price-asc');
         addOrderLi(orderList, "Más costosos", "price-desc", currentFilter.orderBy === 'price-desc');
 
-        // Subcategorías
+        // ---- Subcategorías ----
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        if (currentFilter.category) applyFilterAndSort();
-
-        // ===== BUSCADOR DESACTIVADO =====
+        // Siempre aplicar filtro y orden (incluso si no hay categoría seleccionada)
+        applyFilterAndSort();
 
         new LazyLoad({
             elements_selector: "img[data-src]",
