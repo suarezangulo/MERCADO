@@ -260,36 +260,45 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES (SEPARACIÓN EXACTA DE 2mm) ===== */
+        /* ===== AJUSTES PARA MÓVILES (DEFINITIVO) ===== */
         @media (max-width: 768px) {
-            /* === FONDO TRANSLÚCIDO: 2mm de separación del borde de la pantalla === */
+            /* Forzar que el main ocupe todo el ancho disponible */
             main.mica-surface {
+                width: 100% !important;
+                max-width: 100% !important;
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
-                /* Eliminamos overflow hidden para que el padding sea visible */
+                box-sizing: border-box !important;
+                overflow: hidden !important;
             }
-            
-            /* El contenedor interno no debe tener padding extra para heredar del main */
+
+            /* Eliminar padding y márgenes que puedan desbordar */
             .bg0 {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
             }
-            
+
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
                 max-width: 100% !important;
                 width: 100% !important;
-                margin: 0 auto !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
             }
-            
-            /* Eliminar márgenes negativos de Bootstrap */
+
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
             }
-            
-            /* === TARJETAS: 2mm de separación del fondo translúcido === */
+
+            /* Tarjetas: 2mm de separación del fondo translúcido */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -297,49 +306,53 @@
                 padding-right: 2mm !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
+                box-sizing: border-box !important;
             }
-            
+
             .isotope-item {
                 width: 100% !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
+                box-sizing: border-box !important;
             }
-            
+
             .block2 {
                 width: 100% !important;
+                box-sizing: border-box !important;
             }
-            
+
             .isotope-grid {
                 width: 100% !important;
                 margin: 0 !important;
+                box-sizing: border-box !important;
             }
-            
+
             .whatsapp-btn {
                 bottom: 20px !important;
                 right: 20px !important;
                 width: 50px !important;
                 height: 50px !important;
             }
-            
+
             .panel-search {
                 width: 90vw !important;
                 max-width: 90vw !important;
                 right: -40px !important;
             }
-            
+
             .mica-floating-btn {
                 font-size: 12px !important;
                 padding: 6px 12px !important;
                 height: 34px !important;
             }
-            
+
             #filterButtonContainer {
                 gap: 6px !important;
                 flex-wrap: wrap !important;
             }
-            
+
             .filter-dropdown.panel-filter {
                 width: 90vw !important;
                 left: 50% !important;
@@ -352,17 +365,12 @@
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
             }
-            
-            .container {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            
+
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 padding-left: 1.5mm !important;
                 padding-right: 1.5mm !important;
             }
-            
+
             .panel-search {
                 width: 95vw !important;
                 max-width: 95vw !important;
