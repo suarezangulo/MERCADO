@@ -26,15 +26,17 @@ function initIsotope() {
     });
 }
 
-// ===== APLICAR FILTRO Y ORDEN (ENFOQUE CON OBJETO) =====
+// ===== APLICAR FILTRO Y ORDEN (MÉTODOS ESTÁNDAR) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.length) return;
 
-    // 🔄 Recargar elementos para que Isotope los reconozca
-    $grid.isotope('reloadItems');
+    // Asegurar que Isotope está inicializado
+    if (!$grid.data('isotope')) {
+        initIsotope();
+    }
 
-    // Construir selector de filtro (cadena)
+    // Construir selector de filtro
     var filterSelector = '*';
     if (currentFilter.category) {
         filterSelector = '.category-' + currentFilter.category;
@@ -46,23 +48,20 @@ function applyFilterAndSort() {
     console.log('🔍 Aplicando filtro:', currentFilter);
     console.log('📌 Selector de filtro:', filterSelector);
 
-    // Construir opciones de orden
-    var options = {
-        filter: filterSelector
-    };
+    // Aplicar filtro
+    $grid.isotope('filter', filterSelector);
 
+    // Aplicar orden
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
         if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
         else if (currentFilter.orderBy === 'price-desc') { sortBy = 'price'; sortAsc = false; }
         else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
-        options.sortBy = sortBy;
-        options.sortAscending = sortAsc;
         console.log('📊 Ordenando por:', sortBy, sortAsc ? 'asc' : 'desc');
+        $grid.isotope('sort', sortBy, sortAsc);
     }
 
-    // Aplicar filtro y orden en una sola llamada
-    $grid.isotope(options);
+    // Forzar re-layout
     $grid.isotope('layout');
 }
 
@@ -87,7 +86,6 @@ function loadData($, data) {
         var subcategoryKey = urlParams.get('subcategory');
         if (subcategoryKey) currentFilter.subcategory = subcategoryKey;
     }
-    // Por defecto, ordenar por recientes (update descendente)
     if (!currentFilter.orderBy) {
         currentFilter.orderBy = 'update';
     }
@@ -147,14 +145,8 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // 🔄 Aplicar filtro y orden (asegura que se muestren todos al inicio)
+        // Aplicar filtro inicial
         applyFilterAndSort();
-
-        // Depuración: mostrar clases
-        console.log('📦 Items con clases:');
-        $('.isotope-item').each(function() {
-            console.log(this.className);
-        });
 
         new LazyLoad({
             elements_selector: "img[data-src]",
