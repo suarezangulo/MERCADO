@@ -121,19 +121,16 @@ function spanishFormat(n) {
     return n;
 }
 
-// ===== FUNCIÓN NORMALIZAR CORREGIDA =====
+// ===== FUNCIÓN NORMALIZAR CORREGIDA (¡CLAVE!) =====
 function normalizeText(n) {
     if (n && n.trim().length > 0) {
         n = toEnglish(n);
-        // Eliminar caracteres no permitidos (solo letras, números, espacios y guiones)
+        n = n.toLowerCase(); // <--- CONVERTIR A MINÚSCULAS ANTES DE ELIMINAR CARACTERES
         n = n.replace(/[^a-z0-9\s-]/g, "");
-        // Reemplazar espacios por guiones
         n = n.replace(/\s+/g, "-");
-        // Eliminar guiones duplicados
         n = n.replace(/-+/g, "-");
-        // Eliminar guiones al inicio y final
         n = n.replace(/^-+/, "").replace(/-+$/, "");
-        return n.toLowerCase();
+        return n;
     }
     return "";
 }
@@ -166,7 +163,7 @@ function toMoneyStr(valor) {
     return "CUP$ " + valor.toFixed(2);
 }
 
-// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO (CORREGIDA) =====
+// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO =====
 function addProductCardBase(container, product, extraClass, mode) {
     extraClass = extraClass || "";
     mode = mode || 1;
