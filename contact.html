@@ -84,6 +84,70 @@
 		@media (max-width: 768px) {
 			.contact-card { padding: 30px 20px; }
 		}
+
+		/* ===== PANEL DE BÚSQUEDA ESTILO MICA (ARREGLO) ===== */
+		.panel-search {
+			background: var(--mica-card) !important;
+			backdrop-filter: blur(24px) saturate(180%) !important;
+			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+			border: 1px solid var(--border-mica) !important;
+			border-radius: var(--radius-lg) !important;
+			padding: 20px 25px !important;
+			margin-top: 10px !important;
+			box-shadow: var(--shadow-mica) !important;
+		}
+
+		.panel-search .dis-flex {
+			display: flex !important;
+			align-items: center !important;
+			background: rgba(255, 255, 255, 0.05) !important;
+			border-radius: 30px !important;
+			padding: 4px 4px 4px 20px !important;
+			border: 1px solid var(--border-mica) !important;
+			transition: border-color 0.3s ease !important;
+		}
+
+		.panel-search .dis-flex:focus-within {
+			border-color: var(--accent-blue) !important;
+			box-shadow: 0 0 20px var(--border-glow) !important;
+		}
+
+		.panel-search input {
+			background: transparent !important;
+			border: none !important;
+			color: #fff !important;
+			font-family: 'Poppins', sans-serif !important;
+			font-size: 16px !important;
+			padding: 12px 0 !important;
+			width: 100% !important;
+			outline: none !important;
+		}
+
+		.panel-search input::placeholder {
+			color: var(--text-muted) !important;
+			font-weight: 300 !important;
+		}
+
+		.panel-search button[type="submit"] {
+			background: var(--accent-blue) !important;
+			border: none !important;
+			color: #fff !important;
+			width: 48px !important;
+			height: 48px !important;
+			border-radius: 50% !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			font-size: 24px !important;
+			cursor: pointer !important;
+			transition: all 0.3s ease !important;
+			flex-shrink: 0 !important;
+		}
+
+		.panel-search button[type="submit"]:hover {
+			background: #3aa3ff !important;
+			transform: scale(1.05) !important;
+		}
 	</style>
 </head>
 <body class="animsition">
