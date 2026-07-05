@@ -5,8 +5,11 @@ var currentFilter = {};
 var gTagCategory = "";
 var gTagSubCategory = "";
 
-// ===== FUNCIÓN PRINCIPAL DE ISOTOPE =====
-function loadIsotope() {
+// ===== INICIALIZAR ISOTOPE =====
+function initIsotope() {
+    if ($('.isotope-grid').data('isotope')) {
+        $('.isotope-grid').isotope('destroy');
+    }
     $('.isotope-grid').isotope({
         itemSelector: '.isotope-item',
         layoutMode: 'fitRows',
@@ -20,9 +23,10 @@ function loadIsotope() {
             update: '[data-update] parseFloat'
         }
     });
+    console.log('✅ Isotope inicializado');
 }
 
-// ===== CONSTRUIR EL SELECTOR DE FILTRO =====
+// ===== CONSTRUIR SELECTOR DE FILTRO =====
 function getFilterSelector() {
     if (currentFilter.category && currentFilter.subcategory) {
         return '.category-' + currentFilter.category + '.subcategory-' + currentFilter.subcategory;
@@ -35,7 +39,12 @@ function getFilterSelector() {
 // ===== APLICAR FILTRO Y ORDEN =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
+    if (!$grid.data('isotope')) {
+        console.warn('⚠️ Isotope no está inicializado, se inicializa ahora.');
+        initIsotope();
+    }
     var selector = getFilterSelector();
+    console.log('🔍 Aplicando filtro:', selector);
     $grid.isotope({ filter: selector });
 
     if (currentFilter.orderBy) {
@@ -82,9 +91,9 @@ function loadData($, data) {
     setTimeout(function() {
         $topeContainer.find('.skeleton-card').parent().remove();
 
-        // Construir datos y árbol de filtros
+        // Construir datos y tarjetas
         for (const categoryKey in data) {
-            if (!filterTree[categoryKey]) filterTree[categoryKey] = [];
+            if (!filterTree[categoryKey]) filterTree[categoryKey] = {};
             filterData[normalizeText(categoryKey)] = categoryKey;
             const category = data[categoryKey];
             for (const subcategoryKey in category) {
@@ -98,13 +107,13 @@ function loadData($, data) {
             }
         }
 
-        // Inicializar Isotope directamente (sin imagesLoaded)
-        loadIsotope();
+        // Inicializar Isotope
+        initIsotope();
 
-        // Llenar dropdown de filtros
+        // Construir interfaz de filtros
         $filterContent.empty();
 
-        // Sección Categorías
+        // Categorías
         var catSection = document.createElement("div");
         catSection.className = "p-b-20";
         catSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Categorías</div>';
@@ -120,7 +129,7 @@ function loadData($, data) {
             addCategoryTag($catContainer, cat, normalizeText(cat), currentFilter.category === normalizeText(cat));
         }
 
-        // Sección Ordenar por
+        // Ordenar por
         var orderSection = document.createElement("div");
         orderSection.className = "p-b-20";
         orderSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Ordenar por</div>';
@@ -131,12 +140,14 @@ function loadData($, data) {
         addOrderLi(orderList, "Más económicos", "price-asc", currentFilter.orderBy === 'price-asc');
         addOrderLi(orderList, "Más costosos", "price-desc", currentFilter.orderBy === 'price-desc');
 
-        // Sección Subcategorías
+        // Subcategorías
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Aplicar filtro inicial
-        applyFilterAndSort();
+        // Aplicar filtro inicial (si vino de URL)
+        if (currentFilter.category) {
+            applyFilterAndSort();
+        }
 
         // Búsqueda
         $('[name="search-product"]').keyup(debounce(function() {
@@ -156,6 +167,8 @@ function loadData($, data) {
                 $('.isotope-grid').isotope('layout');
             }
         });
+
+        console.log('📦 Productos cargados:', $('.isotope-item').length);
 
     }, 600);
 }
