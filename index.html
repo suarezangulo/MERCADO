@@ -45,27 +45,20 @@
 		}
 		.mica-surface { min-height: 60vh; overflow: visible; }
 
-		/* ===== BOTONES FLOTANTES MICA (CON ALTURA FIJA) ===== */
+		/* ===== BOTONES FLOTANTES MICA ===== */
 		.mica-floating-btn {
-			display: inline-flex; 
-			align-items: center; 
-			gap: 6px;
-			padding: 8px 16px; 
-			border-radius: 25px;
+			display: inline-flex; align-items: center; gap: 6px;
+			padding: 8px 16px; border-radius: 25px;
 			background: rgba(26, 26, 26, 0.65);
 			backdrop-filter: blur(16px) saturate(150%);
 			-webkit-backdrop-filter: blur(16px) saturate(150%);
 			border: 1px solid rgba(255, 255, 255, 0.08);
-			color: #CCCCCC; 
-			font-family: Poppins-Medium, sans-serif;
-			font-size: 13px; 
-			cursor: pointer;
+			color: #CCCCCC; font-family: Poppins-Medium, sans-serif;
+			font-size: 13px; cursor: pointer;
 			transition: all 0.3s ease;
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-			white-space: nowrap; 
-			outline: none;
-			height: 38px; /* altura fija */
-			flex-shrink: 0; /* evita que se estire */
+			white-space: nowrap; outline: none;
+			height: 38px; flex-shrink: 0;
 		}
 		.mica-floating-btn i { font-size: 14px; }
 		.mica-floating-btn:hover {
@@ -74,7 +67,7 @@
 			color: #fff; transform: translateY(-2px);
 		}
 
-		/* ===== AUMENTAR SEPARACIÓN SUPERIOR DE BOTONES ===== */
+		/* ===== CONTENEDOR DE BOTONES FLOTANTES - MÁS SEPARACIÓN ===== */
 		#filterButtonContainer {
 			margin-top: 20px !important;
 		}
@@ -193,15 +186,15 @@
             object-fit: cover;
         }
 
-		/* ===== PANEL DE BÚSQUEDA ESTILO MICA (SIN BOTÓN) ===== */
+		/* ===== PANEL DE BÚSQUEDA - MÁS COMPACTO ===== */
 		.panel-search {
 			background: var(--mica-card) !important;
 			backdrop-filter: blur(24px) saturate(180%) !important;
 			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
 			border: 1px solid var(--border-mica) !important;
 			border-radius: var(--radius-lg) !important;
-			padding: 20px 25px !important;
-			margin-top: 10px !important;
+			padding: 15px 20px !important;
+			margin-top: 5px !important;
 			box-shadow: var(--shadow-mica) !important;
 		}
 		.panel-search .dis-flex {
@@ -209,7 +202,7 @@
 			align-items: center !important;
 			background: rgba(255, 255, 255, 0.05) !important;
 			border-radius: 30px !important;
-			padding: 4px 4px 4px 20px !important;
+			padding: 2px 2px 2px 16px !important;
 			border: 1px solid var(--border-mica) !important;
 			transition: border-color 0.3s ease !important;
 		}
@@ -222,8 +215,8 @@
 			border: none !important;
 			color: #fff !important;
 			font-family: 'Poppins', sans-serif !important;
-			font-size: 16px !important;
-			padding: 12px 0 !important;
+			font-size: 14px !important;
+			padding: 8px 0 !important;
 			width: 100% !important;
 			outline: none !important;
 		}
@@ -315,7 +308,7 @@
 	<main role="main" aria-label="Contenido principal" class="mica-surface">
 		<div class="bg0 m-t-23 p-b-140">
 			<div class="container">
-				<div class="flex-w flex-sb-m p-b-52 p-t-10">
+				<div class="flex-w flex-sb-m p-b-52">
 					<div class="flex-w flex-c-m m-tb-10" style="gap: 8px; position: relative;" id="filterButtonContainer">
 						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
 							<i class="icon-filter zmdi zmdi-filter-list"></i>
@@ -333,7 +326,7 @@
 						</div>
 					</div>
 
-					<!-- ===== PANEL DE BÚSQUEDA (SIN BOTÓN) ===== -->
+					<!-- ===== PANEL DE BÚSQUEDA ===== -->
 					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
 						<div class="dis-flex">
 							<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
