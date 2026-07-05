@@ -260,16 +260,21 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES (SEPARACIÓN DE 2mm) ===== */
+        /* ===== AJUSTES PARA MÓVILES (SEPARACIÓN EXACTA DE 2mm) ===== */
         @media (max-width: 768px) {
-            /* Fondo translúcido: 2mm de separación del borde de la pantalla */
-            .bg0, .mica-surface {
+            /* === FONDO TRANSLÚCIDO: 2mm de separación del borde de la pantalla === */
+            main.mica-surface {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
-                overflow: hidden;
+                /* Eliminamos overflow hidden para que el padding sea visible */
             }
             
-            /* Contenedor interno sin padding (hereda el del bg0) */
+            /* El contenedor interno no debe tener padding extra para heredar del main */
+            .bg0 {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
@@ -284,7 +289,7 @@
                 margin-right: 0 !important;
             }
             
-            /* Tarjetas: 2mm de separación del fondo translúcido */
+            /* === TARJETAS: 2mm de separación del fondo translúcido === */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -343,6 +348,11 @@
         }
 
         @media (max-width: 480px) {
+            main.mica-surface {
+                padding-left: 2mm !important;
+                padding-right: 2mm !important;
+            }
+            
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
