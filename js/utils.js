@@ -39,9 +39,8 @@ function resolveImageUrl(baseName, extensions, callback) {
     tryNext();
 }
 
-// ===== FUNCIÓN PARA GENERAR PLACEHOLDER (igual que en admin.js) =====
+// ===== FUNCIÓN PARA GENERAR PLACEHOLDER =====
 function getPlaceholderImage(label) {
-    // Placeholder simple y robusto, sin texto dinámico que pueda romper el SVG
     return 'data:image/svg+xml,' + 
         '%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="400"%3E' +
         '%3Crect fill="%23141414" width="300" height="400"/%3E' +
@@ -122,10 +121,18 @@ function spanishFormat(n) {
     return n;
 }
 
+// ===== FUNCIÓN NORMALIZAR CORREGIDA =====
 function normalizeText(n) {
     if (n && n.trim().length > 0) {
         n = toEnglish(n);
-        n = n.replace(/[^\w-]/g, "_");
+        // Eliminar caracteres no permitidos (solo letras, números, espacios y guiones)
+        n = n.replace(/[^a-z0-9\s-]/g, "");
+        // Reemplazar espacios por guiones
+        n = n.replace(/\s+/g, "-");
+        // Eliminar guiones duplicados
+        n = n.replace(/-+/g, "-");
+        // Eliminar guiones al inicio y final
+        n = n.replace(/^-+/, "").replace(/-+$/, "");
         return n.toLowerCase();
     }
     return "";
@@ -159,6 +166,7 @@ function toMoneyStr(valor) {
     return "CUP$ " + valor.toFixed(2);
 }
 
+// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO (CORREGIDA) =====
 function addProductCardBase(container, product, extraClass, mode) {
     extraClass = extraClass || "";
     mode = mode || 1;
@@ -169,12 +177,11 @@ function addProductCardBase(container, product, extraClass, mode) {
     }
     div.setAttribute("class", baseClass + extraClass);
 
-    if (product.Price) {
-        div.setAttribute("data-price", product.Price);
-    }
-    var precioOriginal = product.Price || "0.00 CUP";
-    var valorNumerico = parseFloat(precioOriginal) || 0;
-    div.setAttribute("data-price-usd", "0");
+    // Asignar precio real para ordenamiento
+    var precioNumerico = parseFloat(product.Price) || 0;
+    div.setAttribute("data-price", product.Price);
+    div.setAttribute("data-price-usd", precioNumerico);
+    
     if (product.Update) {
         var d = new Date(product.Update);
         var g = d.getTime();
@@ -206,10 +213,9 @@ function addProductCardBase(container, product, extraClass, mode) {
     img.setAttribute("alt", "imagen");
     img.setAttribute("data-slug", slug);
     img.setAttribute("data-index", "0");
-    img.setAttribute("src", getPlaceholderImage(product.Label)); // Placeholder inicial
+    img.setAttribute("src", getPlaceholderImage(product.Label));
     pic.appendChild(img);
     
-    // Intentar cargar la imagen real
     (function(imgEl, productSlug, idx) {
         var baseName = productSlug + "-" + idx;
         var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
@@ -218,7 +224,6 @@ function addProductCardBase(container, product, extraClass, mode) {
                 imgEl.setAttribute('src', url);
                 imgEl.classList.add('loaded');
             }
-            // Si no se encuentra, ya está el placeholder
         });
     })(img, slug, 0);
     
@@ -248,7 +253,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     featuresSpan.textContent = featuresText;
     child1.appendChild(featuresSpan);
 
-    var precioFormateado = toMoneyStr(valorNumerico);
+    var precioFormateado = toMoneyStr(precioNumerico);
     var precioContainer = document.createElement("div");
     precioContainer.setAttribute("class", "p-t-6");
     precioContainer.setAttribute("style", "line-height: 1.3; margin-top: 4px;");
@@ -508,7 +513,7 @@ var googleAnalyticsId = "";
     updateCartQty();
     prepareWhatsapp();
     
-    // ===== CARRITO: REDIRECCIÓN DESACTIVADA (ahora usa onclick en HTML) =====
+    // Redirección de carrito desactivada (ya se usa onclick en HTML)
     // $(".js-show-cart").click(function() {
     //     window.location.replace("./cart.html");
     // });
