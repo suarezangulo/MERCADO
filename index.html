@@ -356,22 +356,21 @@
 
                         <!-- Wrapper para el botón Buscar + panel -->
                         <div class="search-wrapper">
-                            <!-- Botón Buscar BLINDADO contra main.js -->
+                            <!-- Botón Buscar con toggle correcto -->
                             <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
                                     onclick="
                                         event.stopPropagation();
                                         event.stopImmediatePropagation();
                                         var panel = document.querySelector('.panel-search');
-                                        var isShowing = panel.classList.contains('show');
-                                        if (isShowing) {
-                                            panel.classList.remove('show');
-                                            this.classList.remove('show-search');
-                                        } else {
-                                            panel.classList.add('show');
-                                            this.classList.add('show-search');
-                                            // Forzar visibilidad con display también
+                                        panel.classList.toggle('show');
+                                        this.classList.toggle('show-search');
+                                        // Forzar actualización de estilos por si la clase no se aplica
+                                        if (panel.classList.contains('show')) {
                                             panel.style.visibility = 'visible';
                                             panel.style.opacity = '1';
+                                        } else {
+                                            panel.style.visibility = '';
+                                            panel.style.opacity = '';
                                         }
                                         return false;
                                     ">
@@ -445,14 +444,15 @@
     <script src="js/index.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- ===== DESTRUIR CUALQUIER EVENTO QUE MAIN.JS HAYA ASIGNADO ===== -->
+    <!-- ===== DESTRUIR CUALQUIER EVENTO DE MAIN.JS ===== -->
     <script>
         $(document).ready(function() {
             // Eliminar cualquier evento click asociado al botón por su ID
             $('#searchButton').off('click');
             // También eliminar eventos delegados que puedan afectarlo
             $(document).off('click', '#searchButton');
-            $(document).off('click', '.mica-floating-btn');
+            // Remover cualquier evento de todos los .mica-floating-btn para evitar conflictos
+            $('.mica-floating-btn').off('click');
         });
     </script>
 
