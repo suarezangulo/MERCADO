@@ -31,23 +31,25 @@ function initIsotope() {
     debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== APLICAR FILTRO DE CATEGORÍA (SIN TOCAR BUSCADOR) =====
+// ===== APLICAR FILTRO DE CATEGORÍA (usando objeto) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.data('isotope')) { debug('Error: Isotope no inicializado'); return; }
 
-    // Filtrar con Isotope usando función
-    $grid.isotope('filter', function() {
-        var $item = $(this);
-        if (!currentFilter.category) return true;
-        var show = $item.hasClass('category-' + currentFilter.category);
-        if (currentFilter.subcategory) {
-            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+    // Filtrar con Isotope usando objeto { filter: función }
+    $grid.isotope({
+        filter: function() {
+            var $item = $(this);
+            if (!currentFilter.category) return true;
+            var show = $item.hasClass('category-' + currentFilter.category);
+            if (currentFilter.subcategory) {
+                show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+            }
+            return show;
         }
-        return show;
     });
 
-    // Ordenar
+    // Ordenar (también con objeto)
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
         if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
@@ -60,9 +62,11 @@ function applyFilterAndSort() {
     $grid.isotope('layout');
 
     // Depuración
-    var visible = $grid.find('.isotope-item').filter(function() { return $(this).css('display') !== 'none'; }).length;
-    var total = $grid.find('.isotope-item').length;
-    debug('Filtro: ' + (currentFilter.category || 'todo') + ' | Visibles: ' + visible + '/' + total);
+    setTimeout(function() {
+        var visible = $grid.find('.isotope-item').filter(function() { return $(this).css('display') !== 'none'; }).length;
+        var total = $grid.find('.isotope-item').length;
+        debug('Filtro: ' + (currentFilter.category || 'todo') + ' | Visibles: ' + visible + '/' + total);
+    }, 100);
 }
 
 function loadData($, data) {
