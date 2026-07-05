@@ -67,13 +67,17 @@
 			color: #fff; transform: translateY(-2px);
 		}
 
-		/* ===== CONTENEDOR DE BOTONES FLOTANTES ===== */
+		/* ===== CONTENEDOR DE BOTONES Y PANELES ===== */
 		#filterButtonContainer {
 			margin-top: 20px !important;
 			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 8px;
 		}
 
-		/* ===== DROPDOWN DE FILTROS ===== */
+		/* ===== DROPDOWN DE FILTROS (izquierda) ===== */
 		.filter-dropdown {
 			position: absolute;
 			top: calc(100% + 8px);
@@ -105,57 +109,58 @@
 			display: flex; flex-wrap: wrap; gap: 6px;
 		}
 
-		/* ===== PANEL DE BÚSQUEDA FLOTANTE (superpuesto) ===== */
+		/* ===== PANEL DE BÚSQUEDA (derecha) ===== */
 		.panel-search {
-		    position: absolute;
-		    top: calc(100% + 8px);
-		    left: 0;
-		    width: 100%;
-		    max-width: 480px;
-		    background: var(--mica-card) !important;
-		    backdrop-filter: blur(24px) saturate(180%) !important;
-		    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-		    border: 1px solid var(--border-mica) !important;
-		    border-radius: var(--radius-lg) !important;
-		    padding: 15px 20px !important;
-		    box-shadow: var(--shadow-mica) !important;
-		    display: none;
-		    z-index: 999;
-		    opacity: 0;
-		    transform: translateY(-8px);
-		    transition: opacity 0.3s ease, transform 0.3s ease;
+			position: absolute;
+			top: calc(100% + 8px);
+			right: 0;
+			left: auto;
+			width: 320px;
+			max-width: calc(100vw - 40px);
+			background: var(--mica-card) !important;
+			backdrop-filter: blur(24px) saturate(180%) !important;
+			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+			border: 1px solid var(--border-mica) !important;
+			border-radius: var(--radius-lg) !important;
+			padding: 15px 20px !important;
+			box-shadow: var(--shadow-mica) !important;
+			display: none !important;
+			z-index: 999;
+			opacity: 0;
+			transform: translateY(-8px);
+			transition: opacity 0.3s ease, transform 0.3s ease;
 		}
 		.panel-search.show {
-		    display: block !important;
-		    opacity: 1;
-		    transform: translateY(0);
+			display: block !important;
+			opacity: 1;
+			transform: translateY(0);
 		}
 		.panel-search .dis-flex {
-		    display: flex !important;
-		    align-items: center !important;
-		    background: rgba(255, 255, 255, 0.05) !important;
-		    border-radius: 30px !important;
-		    padding: 2px 2px 2px 16px !important;
-		    border: 1px solid var(--border-mica) !important;
-		    transition: border-color 0.3s ease !important;
+			display: flex !important;
+			align-items: center !important;
+			background: rgba(255, 255, 255, 0.05) !important;
+			border-radius: 30px !important;
+			padding: 2px 2px 2px 16px !important;
+			border: 1px solid var(--border-mica) !important;
+			transition: border-color 0.3s ease !important;
 		}
 		.panel-search .dis-flex:focus-within {
-		    border-color: var(--accent-blue) !important;
-		    box-shadow: 0 0 20px var(--border-glow) !important;
+			border-color: var(--accent-blue) !important;
+			box-shadow: 0 0 20px var(--border-glow) !important;
 		}
 		.panel-search input {
-		    background: transparent !important;
-		    border: none !important;
-		    color: #fff !important;
-		    font-family: 'Poppins', sans-serif !important;
-		    font-size: 14px !important;
-		    padding: 8px 0 !important;
-		    width: 100% !important;
-		    outline: none !important;
+			background: transparent !important;
+			border: none !important;
+			color: #fff !important;
+			font-family: 'Poppins', sans-serif !important;
+			font-size: 14px !important;
+			padding: 8px 0 !important;
+			width: 100% !important;
+			outline: none !important;
 		}
 		.panel-search input::placeholder {
-		    color: var(--text-muted) !important;
-		    font-weight: 300 !important;
+			color: var(--text-muted) !important;
+			font-weight: 300 !important;
 		}
 
 		/* ===== PÍLDORAS DE CATEGORÍA ===== */
@@ -344,12 +349,12 @@
 							<span>Buscar</span>
 						</button>
 
-						<!-- Dropdown de filtros (flotante) -->
+						<!-- Dropdown de filtros (flotante a la izquierda) -->
 						<div class="filter-dropdown" id="filterDropdown">
 							<div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
 						</div>
 
-						<!-- Panel de búsqueda (flotante) -->
+						<!-- Panel de búsqueda (flotante a la derecha) -->
 						<div class="panel-search" role="search">
 							<div class="dis-flex">
 								<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
