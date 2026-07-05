@@ -13,14 +13,43 @@ function initIsotope() {
         $grid.isotope('destroy');
     }
 
-    // Construir selector de filtro
-    var filterSelector = '*';
-    if (currentFilter.category) {
-        filterSelector = '.category-' + currentFilter.category;
-        if (currentFilter.subcategory) {
-            filterSelector += '.subcategory-' + currentFilter.subcategory;
+    // Construir función de filtro combinada (categoría, subcategoría, búsqueda)
+    var filterFn = function() {
+        var $item = $(this);
+        var show = true;
+
+        // Filtro por categoría
+        if (currentFilter.category) {
+            show = show && $item.hasClass('category-' + currentFilter.category);
         }
-    }
+        // Filtro por subcategoría
+        if (currentFilter.subcategory) {
+            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+        }
+        // Filtro por búsqueda (si existe)
+        if (currentFilter.search && currentFilter.search.trim() !== '') {
+            var query = currentFilter.search.toLowerCase().trim();
+            var label = $item.find('.js-name-b2').text().trim().toLowerCase();
+            // Si no coincide con el label, intentamos con category/subcategory/features desde los datos guardados
+            if (label.indexOf(query) === -1) {
+                // Buscar en los datos del producto correspondiente
+                var productData = allProductsData.find(function(p) {
+                    return p.Label === $item.find('.js-name-b2').text().trim();
+                });
+                if (productData) {
+                    var match = false;
+                    if ((productData.Category || '').toLowerCase().indexOf(query) !== -1) match = true;
+                    if ((productData.SubCategory || '').toLowerCase().indexOf(query) !== -1) match = true;
+                    if ((productData.Features || []).join(' ').toLowerCase().indexOf(query) !== -1) match = true;
+                    if (!match) show = false;
+                } else {
+                    show = false;
+                }
+            }
+        }
+
+        return show;
+    };
 
     // Configurar orden
     var sortBy = 'update';
@@ -36,13 +65,13 @@ function initIsotope() {
         sortAsc = false;
     }
 
-    console.log('🔍 Inicializando Isotope con filtro:', filterSelector, 'orden:', sortBy, sortAsc ? 'asc' : 'desc');
+    console.log('🔍 Inicializando Isotope con filtro combinado. Categoría:', currentFilter.category, 'Subcat:', currentFilter.subcategory, 'Búsqueda:', currentFilter.search, 'Orden:', sortBy, sortAsc ? 'asc' : 'desc');
 
     $grid.isotope({
         itemSelector: '.isotope-item',
         layoutMode: 'fitRows',
         percentPosition: true,
-        filter: filterSelector,
+        filter: filterFn,
         sortBy: sortBy,
         sortAscending: sortAsc,
         animationEngine: 'best-available',
@@ -66,63 +95,17 @@ function setupSearch() {
     if (!$searchInput.length) return;
 
     $searchInput.on('input', function() {
-        var query = $(this).val().toLowerCase().trim();
-        if (query === '') {
-            // Mostrar todos los productos (restaurar filtro por categoría/subcategoría)
-            applyFilterAndSort();
-            return;
-        }
-
-        // Filtrar productos por coincidencia en Label, Category, SubCategory o Features
-        var matchedLabels = [];
-        allProductsData.forEach(function(product) {
-            var label = (product.Label || '').toLowerCase();
-            var category = (product.Category || '').toLowerCase();
-            var subcategory = (product.SubCategory || '').toLowerCase();
-            var features = (product.Features || []).join(' ').toLowerCase();
-
-            if (label.indexOf(query) !== -1 ||
-                category.indexOf(query) !== -1 ||
-                subcategory.indexOf(query) !== -1 ||
-                features.indexOf(query) !== -1) {
-                matchedLabels.push(product.Label);
-            }
-        });
-
-        // Aplicar filtro de Isotope: mostrar solo los items cuyo Label esté en matchedLabels
-        var $grid = $('.isotope-grid');
-        if (!$grid.length) return;
-
-        var filterFn = function() {
-            var $item = $(this);
-            var label = $item.find('.js-name-b2').text().trim();
-            return matchedLabels.indexOf(label) !== -1;
-        };
-
-        // Si hay filtro de categoría, combinarlo
-        var categoryFilter = currentFilter.category || null;
-        var subcategoryFilter = currentFilter.subcategory || null;
-
-        var finalFilterFn = function() {
-            var $item = $(this);
-            var show = true;
-            if (categoryFilter) {
-                show = show && $item.hasClass('category-' + categoryFilter);
-            }
-            if (subcategoryFilter) {
-                show = show && $item.hasClass('subcategory-' + subcategoryFilter);
-            }
-            if (query !== '') {
-                var label = $item.find('.js-name-b2').text().trim();
-                show = show && (matchedLabels.indexOf(label) !== -1);
-            }
-            return show;
-        };
-
-        $grid.isotope('reloadItems');
-        $grid.isotope('filter', finalFilterFn);
-        $grid.isotope('layout');
+        var query = $(this).val();
+        currentFilter.search = query; // Guardar en el filtro actual
+        console.log('🔎 Búsqueda en tiempo real:', query);
+        applyFilterAndSort(); // Re-inicializa Isotope con el nuevo filtro
     });
+
+    // Si el input tiene un valor inicial (por ejemplo, desde URL), lo aplicamos
+    if ($searchInput.val()) {
+        currentFilter.search = $searchInput.val();
+        applyFilterAndSort();
+    }
 }
 
 function loadData($, data) {
@@ -214,6 +197,14 @@ function loadData($, data) {
         // Configurar búsqueda en tiempo real
         setupSearch();
 
+        // Si hay un valor de búsqueda en la URL, lo aplicamos
+        var searchParam = urlParams.get('search');
+        if (searchParam) {
+            $('#searchInput').val(searchParam);
+            currentFilter.search = searchParam;
+            applyFilterAndSort();
+        }
+
         new LazyLoad({
             elements_selector: "img[data-src]",
             callback_loaded: function() { $('.isotope-grid').isotope('layout'); }
@@ -236,12 +227,13 @@ function addCategoryTag($container, label, filterValue, active) {
             delete currentFilter.subcategory;
         }
         console.log('🔄 Categoría seleccionada:', currentFilter.category);
+        // Limpiar búsqueda al seleccionar categoría
+        $('#searchInput').val('');
+        delete currentFilter.search;
         applyFilterAndSort();
         updateSubcategoryFilters();
         $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
         $(btn).addClass('active');
-        // Limpiar búsqueda al seleccionar categoría
-        $('#searchInput').val('');
     });
     $container.append(btn);
 }
