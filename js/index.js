@@ -155,7 +155,7 @@ function loadData($, data) {
         // Eventos
         $topeContainer.on('arrangeComplete', updateView);
         $('[name="search-product"]').keyup(debounce(function() {
-            $('.isotope-grid').isotope();
+            $('.isotope-grid').isotope('filter');
             updateViewSearch($(this));
         }, 400));
 
@@ -288,7 +288,7 @@ function updateFiltersInDropdown(title, collection, forTags, prevFilter, section
                 delete currentFilter[prevFilter];
             else
                 currentFilter[prevFilter] = normalizeText(label);
-            $('.isotope-grid').isotope();
+            $('.isotope-grid').isotope('filter');
         });
         container.appendChild(newA);
     }
@@ -316,7 +316,7 @@ function addCategoryTag($container, label, filterValue, active) {
         if (currentFilter["category"] == normalizeText(filterValue)) return;
         currentFilter = [];
         if (filterValue != "*") currentFilter["category"] = normalizeText(filterValue);
-        $('.isotope-grid').isotope();
+        $('.isotope-grid').isotope('filter');
         $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
         $(newButton).addClass('active');
     });
@@ -336,7 +336,7 @@ function addFilterLi(container, label, groupKey = null, active = false, action =
                 delete currentFilter[groupKey];
             else
                 currentFilter[groupKey] = normalizeText(label);
-            $('.isotope-grid').isotope();
+            $('.isotope-grid').isotope('filter');
         });
     }
     if (active) aClass += " filter-link-active";
