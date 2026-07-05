@@ -45,19 +45,27 @@
 		}
 		.mica-surface { min-height: 60vh; overflow: visible; }
 
-		/* ===== BOTONES FLOTANTES MICA ===== */
+		/* ===== BOTONES FLOTANTES MICA (CON ALTURA FIJA) ===== */
 		.mica-floating-btn {
-			display: inline-flex; align-items: center; gap: 6px;
-			padding: 8px 16px; border-radius: 25px;
+			display: inline-flex; 
+			align-items: center; 
+			gap: 6px;
+			padding: 8px 16px; 
+			border-radius: 25px;
 			background: rgba(26, 26, 26, 0.65);
 			backdrop-filter: blur(16px) saturate(150%);
 			-webkit-backdrop-filter: blur(16px) saturate(150%);
 			border: 1px solid rgba(255, 255, 255, 0.08);
-			color: #CCCCCC; font-family: Poppins-Medium, sans-serif;
-			font-size: 13px; cursor: pointer;
+			color: #CCCCCC; 
+			font-family: Poppins-Medium, sans-serif;
+			font-size: 13px; 
+			cursor: pointer;
 			transition: all 0.3s ease;
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-			white-space: nowrap; outline: none;
+			white-space: nowrap; 
+			outline: none;
+			height: 38px; /* altura fija */
+			flex-shrink: 0; /* evita que se estire */
 		}
 		.mica-floating-btn i { font-size: 14px; }
 		.mica-floating-btn:hover {
@@ -180,7 +188,7 @@
             object-fit: cover;
         }
 
-		/* ===== PANEL DE BÚSQUEDA ESTILO MICA (ARREGLO) ===== */
+		/* ===== PANEL DE BÚSQUEDA ESTILO MICA (SIN BOTÓN) ===== */
 		.panel-search {
 			background: var(--mica-card) !important;
 			backdrop-filter: blur(24px) saturate(180%) !important;
@@ -221,27 +229,6 @@
 		.panel-search input::placeholder {
 			color: var(--text-muted) !important;
 			font-weight: 300 !important;
-		}
-
-		.panel-search button[type="submit"] {
-			background: var(--accent-blue) !important;
-			border: none !important;
-			color: #fff !important;
-			width: 48px !important;
-			height: 48px !important;
-			border-radius: 50% !important;
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-			font-size: 24px !important;
-			cursor: pointer !important;
-			transition: all 0.3s ease !important;
-			flex-shrink: 0 !important;
-		}
-
-		.panel-search button[type="submit"]:hover {
-			background: #3aa3ff !important;
-			transform: scale(1.05) !important;
 		}
 	</style>
 </head>
@@ -345,13 +332,10 @@
 						</div>
 					</div>
 
-					<!-- ===== PANEL DE BÚSQUEDA ARREGLADO ===== -->
+					<!-- ===== PANEL DE BÚSQUEDA (SIN BOTÓN) ===== -->
 					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
 						<div class="dis-flex">
-							<input type="text" name="search-product" placeholder="Buscar título, actor, director..." aria-label="Búsqueda">
-							<button type="submit" aria-label="Buscar">
-								<i class="zmdi zmdi-search"></i>
-							</button>
+							<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
 						</div>
 					</div>
 				</div>
