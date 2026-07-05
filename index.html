@@ -1,237 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>IMPRESIONES MR - Catálogo de películas, series y más</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#0a0a0a">
-	
-	<meta name="description" content="Catálogo audiovisual en CUP.">
-	<meta name="keywords" content="películas, series, documentales, Cuba, CUP">
-	<meta name="robots" content="index, follow">
-	<meta name="author" content="IMPRESIONES MR">
-	
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://tutienda.com/">
-	<meta property="og:title" content="IMPRESIONES MR - Catálogo Audiovisual en CUP">
-	<meta property="og:description" content="Encuentra las mejores películas, series, documentales y más.">
-	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
-	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<style>
-		/* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO ===== */
-		body {
-			display: flex; flex-direction: column; min-height: 100vh;
-		}
-		main, .mica-surface, .bg0 {
-			flex: 1 0 auto;
-		}
-		footer, .bg3 {
-			flex-shrink: 0; position: relative; z-index: 10; clear: both; width: 100%;
-		}
-		.mica-surface { min-height: 60vh; overflow: visible; }
+    <title>IMPRESIONES MR - Catálogo de películas, series y más</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <meta name="description" content="Catálogo audiovisual en CUP.">
+    <meta name="keywords" content="películas, series, documentales, Cuba, CUP">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="IMPRESIONES MR">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tutienda.com/">
+    <meta property="og:title" content="IMPRESIONES MR - Catálogo Audiovisual en CUP">
+    <meta property="og:description" content="Encuentra las mejores películas, series, documentales y más.">
+    <meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
+    
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style>
+        /* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO ===== */
+        body {
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+        main, .mica-surface, .bg0 {
+            flex: 1 0 auto;
+        }
+        footer, .bg3 {
+            flex-shrink: 0; position: relative; z-index: 10; clear: both; width: 100%;
+        }
+        .mica-surface { min-height: 60vh; overflow: visible; }
 
-		/* ===== BOTONES FLOTANTES MICA ===== */
-		.mica-floating-btn {
-			display: inline-flex; align-items: center; gap: 6px;
-			padding: 8px 16px; border-radius: 25px;
-			background: rgba(26, 26, 26, 0.65);
-			backdrop-filter: blur(16px) saturate(150%);
-			-webkit-backdrop-filter: blur(16px) saturate(150%);
-			border: 1px solid rgba(255, 255, 255, 0.08);
-			color: #CCCCCC; font-family: Poppins-Medium, sans-serif;
-			font-size: 13px; cursor: pointer;
-			transition: all 0.3s ease;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-			white-space: nowrap; outline: none;
-			height: 38px; flex-shrink: 0;
-		}
-		.mica-floating-btn i { font-size: 14px; }
-		.mica-floating-btn:hover {
-			background: rgba(30, 144, 255, 0.2);
-			border-color: rgba(30, 144, 255, 0.5);
-			color: #fff; transform: translateY(-2px);
-		}
+        /* ===== BOTONES FLOTANTES MICA ===== */
+        .mica-floating-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px; border-radius: 25px;
+            background: rgba(26, 26, 26, 0.65);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #CCCCCC; font-family: Poppins-Medium, sans-serif;
+            font-size: 13px; cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            white-space: nowrap; outline: none;
+            height: 38px; flex-shrink: 0;
+        }
+        .mica-floating-btn i { font-size: 14px; }
+        .mica-floating-btn:hover {
+            background: rgba(30, 144, 255, 0.2);
+            border-color: rgba(30, 144, 255, 0.5);
+            color: #fff; transform: translateY(-2px);
+        }
 
-		/* ===== CONTENEDOR DE BOTONES FLOTANTES ===== */
-		#filterButtonContainer {
-			margin-top: 20px !important;
-			display: flex;
-			align-items: center;
-			gap: 8px;
-			position: relative;
-		}
+        /* ===== CONTENEDOR DE BOTONES FLOTANTES ===== */
+        #filterButtonContainer {
+            margin-top: 20px !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
 
-		/* ===== DROPDOWN DE FILTROS ===== */
-		.filter-dropdown {
-			position: absolute;
-			top: calc(100% + 8px);
-			left: 0;
-			width: 320px;
-			max-width: calc(100vw - 40px);
-			background: rgba(20, 20, 20, 0.92);
-			backdrop-filter: blur(24px) saturate(180%);
-			-webkit-backdrop-filter: blur(24px) saturate(180%);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			border-radius: 16px;
-			box-shadow: 0 12px 40px rgba(0,0,0,0.7);
-			padding: 20px;
-			display: none;
-			z-index: 1000;
-			overflow-y: auto;
-			overflow-x: hidden;
-			max-height: 70vh;
-		}
-		.filter-dropdown.show {
-			display: block;
-			animation: fadeInDown 0.25s ease;
-		}
-		@keyframes fadeInDown {
-			from { opacity: 0; transform: translateY(-10px); }
-			to { opacity: 1; transform: translateY(0); }
-		}
-		.filter-dropdown .flex-w {
-			display: flex; flex-wrap: wrap; gap: 6px;
-		}
+        /* ===== DROPDOWN DE FILTROS (izquierda) ===== */
+        .filter-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 320px;
+            max-width: calc(100vw - 40px);
+            background: rgba(20, 20, 20, 0.92);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+            padding: 20px;
+            display: none;
+            z-index: 1000;
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: 70vh;
+        }
+        .filter-dropdown.show {
+            display: block;
+            animation: fadeInDown 0.25s ease;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .filter-dropdown .flex-w {
+            display: flex; flex-wrap: wrap; gap: 6px;
+        }
 
-		/* ===== CONTENEDOR DEL BOTÓN BUSCAR + PANEL ===== */
-		.search-wrapper {
-			position: relative;
-			display: inline-flex;
-			align-items: center;
-		}
+        /* ===== CONTENEDOR DEL BOTÓN BUSCAR + PANEL ===== */
+        .search-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
 
-		/* ===== PANEL DE BÚSQUEDA (a la derecha del botón) ===== */
-		.panel-search {
-			position: absolute;
-			top: 50%;
-			right: 0;
-			transform: translateY(-50%) translateX(calc(100% + 8px)) scale(0.96);
-			width: 300px;
-			max-width: 70vw;
-			background: var(--mica-card) !important;
-			backdrop-filter: blur(24px) saturate(180%) !important;
-			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-			border: 1px solid var(--border-mica) !important;
-			border-radius: var(--radius-lg) !important;
-			padding: 10px 16px !important;
-			box-shadow: var(--shadow-mica) !important;
-			visibility: hidden;
-			opacity: 0;
-			z-index: 999;
-			transition: visibility 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-			pointer-events: none;
-		}
-		.panel-search.show {
-			visibility: visible;
-			opacity: 1;
-			transform: translateY(-50%) translateX(calc(100% + 8px)) scale(1);
-			pointer-events: auto;
-		}
-		.panel-search .dis-flex {
-			display: flex !important;
-			align-items: center !important;
-			background: rgba(255, 255, 255, 0.05) !important;
-			border-radius: 30px !important;
-			padding: 2px 2px 2px 16px !important;
-			border: 1px solid var(--border-mica) !important;
-			transition: border-color 0.3s ease !important;
-		}
-		.panel-search .dis-flex:focus-within {
-			border-color: var(--accent-blue) !important;
-			box-shadow: 0 0 20px var(--border-glow) !important;
-		}
-		.panel-search input {
-			background: transparent !important;
-			border: none !important;
-			color: #fff !important;
-			font-family: 'Poppins', sans-serif !important;
-			font-size: 14px !important;
-			padding: 6px 0 !important;
-			width: 100% !important;
-			outline: none !important;
-		}
-		.panel-search input::placeholder {
-			color: var(--text-muted) !important;
-			font-weight: 300 !important;
-		}
+        /* ===== PANEL DE BÚSQUEDA (a la derecha del botón) ===== */
+        .panel-search {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) translateX(calc(100% + 8px)) scale(0.96);
+            width: 300px;
+            max-width: 70vw;
+            background: var(--mica-card) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid var(--border-mica) !important;
+            border-radius: var(--radius-lg) !important;
+            padding: 10px 16px !important;
+            box-shadow: var(--shadow-mica) !important;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 999;
+            transition: visibility 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+        }
+        .panel-search.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(-50%) translateX(calc(100% + 8px)) scale(1);
+            pointer-events: auto;
+        }
+        .panel-search .dis-flex {
+            display: flex !important;
+            align-items: center !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 30px !important;
+            padding: 2px 2px 2px 16px !important;
+            border: 1px solid var(--border-mica) !important;
+            transition: border-color 0.3s ease !important;
+        }
+        .panel-search .dis-flex:focus-within {
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 0 20px var(--border-glow) !important;
+        }
+        .panel-search input {
+            background: transparent !important;
+            border: none !important;
+            color: #fff !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 14px !important;
+            padding: 6px 0 !important;
+            width: 100% !important;
+            outline: none !important;
+        }
+        .panel-search input::placeholder {
+            color: var(--text-muted) !important;
+            font-weight: 300 !important;
+        }
 
-		/* ===== PÍLDORAS DE CATEGORÍA ===== */
-		.mica-pill-btn {
-			padding: 6px 16px; border-radius: 20px;
-			background: rgba(26,26,26,0.5);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			border: 1px solid rgba(255,255,255,0.08);
-			color: #AAA; font-size: 12px; font-weight: 500;
-			cursor: pointer; transition: all 0.3s; white-space: nowrap;
-		}
-		.mica-pill-btn:hover {
-			background: rgba(30,144,255,0.15);
-			border-color: rgba(30,144,255,0.4); color: #fff;
-		}
-		.mica-pill-btn.active {
-			background: linear-gradient(135deg, #1E90FF, #0066cc);
-			border-color: transparent; color: #fff; font-weight: 600;
-			box-shadow: 0 4px 15px rgba(30,144,255,0.3);
-		}
+        /* ===== PÍLDORAS DE CATEGORÍA ===== */
+        .mica-pill-btn {
+            padding: 6px 16px; border-radius: 20px;
+            background: rgba(26,26,26,0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #AAA; font-size: 12px; font-weight: 500;
+            cursor: pointer; transition: all 0.3s; white-space: nowrap;
+        }
+        .mica-pill-btn:hover {
+            background: rgba(30,144,255,0.15);
+            border-color: rgba(30,144,255,0.4); color: #fff;
+        }
+        .mica-pill-btn.active {
+            background: linear-gradient(135deg, #1E90FF, #0066cc);
+            border-color: transparent; color: #fff; font-weight: 600;
+            box-shadow: 0 4px 15px rgba(30,144,255,0.3);
+        }
 
-		/* ===== FILTROS INTERNOS ===== */
-		.filter-link {
-			display: inline-flex; align-items: center; gap: 4px;
-			padding: 5px 12px; border-radius: 20px;
-			background: rgba(26,26,26,0.4); color: #aaa;
-			border: 1px solid rgba(255,255,255,0.05);
-			font-size: 12px; text-decoration: none;
-			transition: all 0.3s; cursor: pointer; white-space: nowrap;
-		}
-		.filter-link:hover {
-			background: rgba(30,144,255,0.15);
-			border-color: rgba(30,144,255,0.4); color: #fff;
-		}
-		.filter-link-active {
-			background: linear-gradient(135deg, #1E90FF, #0066cc);
-			border-color: transparent; color: #fff; font-weight: 600;
-		}
+        /* ===== FILTROS INTERNOS ===== */
+        .filter-link {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 5px 12px; border-radius: 20px;
+            background: rgba(26,26,26,0.4); color: #aaa;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px; text-decoration: none;
+            transition: all 0.3s; cursor: pointer; white-space: nowrap;
+        }
+        .filter-link:hover {
+            background: rgba(30,144,255,0.15);
+            border-color: rgba(30,144,255,0.4); color: #fff;
+        }
+        .filter-link-active {
+            background: linear-gradient(135deg, #1E90FF, #0066cc);
+            border-color: transparent; color: #fff; font-weight: 600;
+        }
 
-		/* ===== SKELETON LOADING ===== */
-		.skeleton-card {
-			background: rgba(26,26,26,0.5); border-radius: 16px;
-			overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
-		}
-		.skeleton-image {
-			width: 100%; height: 200px;
-			background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
-			background-size: 200% 100%; animation: shimmer 1.5s infinite;
-		}
-		.skeleton-text { padding: 15px; }
-		.skeleton-title { height: 18px; width: 80%; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 10px; animation: shimmer 1.5s infinite; }
-		.skeleton-desc { height: 14px; width: 100%; background: rgba(255,255,255,0.03); border-radius: 4px; margin-bottom: 8px; animation: shimmer 1.5s infinite; }
-		.skeleton-price { height: 22px; width: 40%; background: rgba(255,255,255,0.05); border-radius: 4px; animation: shimmer 1.5s infinite; }
-		@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        /* ===== SKELETON LOADING ===== */
+        .skeleton-card {
+            background: rgba(26,26,26,0.5); border-radius: 16px;
+            overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
+        }
+        .skeleton-image {
+            width: 100%; height: 200px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+            background-size: 200% 100%; animation: shimmer 1.5s infinite;
+        }
+        .skeleton-text { padding: 15px; }
+        .skeleton-title { height: 18px; width: 80%; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 10px; animation: shimmer 1.5s infinite; }
+        .skeleton-desc { height: 14px; width: 100%; background: rgba(255,255,255,0.03); border-radius: 4px; margin-bottom: 8px; animation: shimmer 1.5s infinite; }
+        .skeleton-price { height: 22px; width: 40%; background: rgba(255,255,255,0.05); border-radius: 4px; animation: shimmer 1.5s infinite; }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 
-		/* ===== BARRA DE PROGRESO ===== */
-		.scroll-progress {
-			position: fixed; top: 0; left: 0; height: 3px;
-			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
-			z-index: 9999; width: 0%; transition: width 0.1s;
-		}
+        /* ===== BARRA DE PROGRESO ===== */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, #1E90FF, #FF3B3B);
+            z-index: 9999; width: 0%; transition: width 0.1s;
+        }
 
-		/* ===== SEPARACIÓN UNIFORME ENTRE TARJETAS ===== */
+        /* ===== SEPARACIÓN UNIFORME ENTRE TARJETAS ===== */
         .isotope-grid {
             margin-top: 10px;
         }
@@ -242,7 +242,7 @@
             padding-bottom: 20px;
         }
 
-		/* ===== ALTURA UNIFORME PARA TARJETAS (IMAGEN Y PLACEHOLDER) ===== */
+        /* ===== ALTURA UNIFORME PARA TARJETAS (IMAGEN Y PLACEHOLDER) ===== */
         .block2-pic {
             position: relative;
             width: 100%;
@@ -258,209 +258,192 @@
             height: 100%;
             object-fit: cover;
         }
-	</style>
+    </style>
 </head>
 <body class="animsition">
 
-	<div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-	<!-- ===== HEADER ===== -->
-	<header role="banner" aria-label="Encabezado principal" class="header-v4">
-		<div class="container-menu-desktop">
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar headnotification" aria-live="polite">Disfruta del mejor contenido audiovisual. Paga en CUP.</div>
-					<div class="right-top-bar flex-w h-full"></div>
-				</div>
-			</div>
+    <!-- ===== HEADER ===== -->
+    <header role="banner" aria-label="Encabezado principal" class="header-v4">
+        <div class="container-menu-desktop">
+            <div class="top-bar">
+                <div class="content-topbar flex-sb-m h-full container">
+                    <div class="left-top-bar headnotification" aria-live="polite">Disfruta del mejor contenido audiovisual. Paga en CUP.</div>
+                    <div class="right-top-bar flex-w h-full"></div>
+                </div>
+            </div>
 
-			<div class="wrap-menu-desktop how-shadow1">
-				<nav role="navigation" aria-label="Menú principal" class="limiter-menu-desktop container">
-					<!-- ===== LOGO ACTUALIZADO ===== -->
-					<a href="./" aria-label="IMPRESIONES MR" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-						<div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(30,144,255,0.4);">
-							<i class="zmdi zmdi-print" style="color: #fff; font-size: 22px;"></i>
-						</div>
-						<span style="font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">IMPRESIONES</span>
-						<span style="font-size: 24px; font-weight: 600; color: #FFFFFF; text-shadow: 0 0 15px rgba(255,255,255,0.2);">MR</span>
-					</a>
+            <div class="wrap-menu-desktop how-shadow1">
+                <nav role="navigation" aria-label="Menú principal" class="limiter-menu-desktop container">
+                    <!-- ===== NUEVO LOGO: IMPRESIONES MR ===== -->
+                    <a href="./" aria-label="IMPRESIONES MR" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(30,144,255,0.4);">
+                            <i class="zmdi zmdi-print" style="color: #fff; font-size: 22px;"></i>
+                        </div>
+                        <span style="font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">IMPRESIONES</span>
+                        <span style="font-size: 24px; font-weight: 600; color: #FFFFFF; text-shadow: 0 0 15px rgba(255,255,255,0.2);">MR</span>
+                    </a>
 
-					<div class="menu-desktop">
-						<ul class="main-menu" role="menubar">
-							<li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
-							<li role="none"><a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;"><i class="zmdi zmdi-settings" style="font-size: 18px;"></i> Panel</a></li>
-						</ul>
-					</div>
+                    <div class="menu-desktop">
+                        <ul class="main-menu" role="menubar">
+                            <li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
+                            <li role="none"><a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;"><i class="zmdi zmdi-settings" style="font-size: 18px;"></i> Panel</a></li>
+                        </ul>
+                    </div>
 
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0" role="button" tabindex="0" aria-label="Carrito" onclick="window.location.href='cart.html'" style="cursor:pointer;">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
+                    <div class="wrap-icon-header flex-w flex-r-m">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0" role="button" tabindex="0" aria-label="Carrito" onclick="window.location.href='cart.html'" style="cursor:pointer;">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
 
-		<!-- Mobile header -->
-		<div class="wrap-header-mobile">
-			<div class="logo-mobile">
-				<a href="./" aria-label="IMPRESIONES MR" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
-					<div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30,144,255,0.4);">
-						<i class="zmdi zmdi-print" style="color: #fff; font-size: 18px;"></i>
-					</div>
-					<span style="font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">IMPRESIONES</span>
-					<span style="font-size: 18px; font-weight: 600; color: #FFFFFF;">MR</span>
-				</a>
-			</div>
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2" role="button" tabindex="0" aria-label="Carrito" onclick="window.location.href='cart.html'" style="cursor:pointer;"><i class="zmdi zmdi-shopping-cart"></i></div>
-			</div>
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze" role="button" tabindex="0" aria-label="Abrir menú móvil">
-				<span class="hamburger-box"><span class="hamburger-inner"></span></span>
-			</div>
-		</div>
+        <!-- Mobile header -->
+        <div class="wrap-header-mobile">
+            <div class="logo-mobile">
+                <!-- ===== NUEVO LOGO MÓVIL ===== -->
+                <a href="./" aria-label="IMPRESIONES MR" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                    <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #1E90FF, #FF3B3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(30,144,255,0.4);">
+                        <i class="zmdi zmdi-print" style="color: #fff; font-size: 18px;"></i>
+                    </div>
+                    <span style="font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #1E90FF, #FF3B3B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">IMPRESIONES</span>
+                    <span style="font-size: 18px; font-weight: 600; color: #FFFFFF;">MR</span>
+                </a>
+            </div>
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2" role="button" tabindex="0" aria-label="Carrito" onclick="window.location.href='cart.html'" style="cursor:pointer;"><i class="zmdi zmdi-shopping-cart"></i></div>
+            </div>
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze" role="button" tabindex="0" aria-label="Abrir menú móvil">
+                <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+            </div>
+        </div>
 
-		<div class="menu-mobile" role="navigation" aria-label="Menú móvil">
-			<ul class="topbar-mobile"><li><div class="left-top-bar headnotification">Disfruta del mejor contenido audiovisual. Paga en CUP.</div></li></ul>
-			<ul class="main-menu-m" role="menubar">
-				<li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
-				<li role="none"><a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;"><i class="zmdi zmdi-settings"></i> Panel</a></li>
-			</ul>
-		</div>
+        <div class="menu-mobile" role="navigation" aria-label="Menú móvil">
+            <ul class="topbar-mobile"><li><div class="left-top-bar headnotification">Disfruta del mejor contenido audiovisual. Paga en CUP.</div></li></ul>
+            <ul class="main-menu-m" role="menubar">
+                <li role="none"><a href="contact.html" role="menuitem">Contacto</a></li>
+                <li role="none"><a href="admin/login.html" role="menuitem" style="display: flex; align-items: center; gap: 6px;"><i class="zmdi zmdi-settings"></i> Panel</a></li>
+            </ul>
+        </div>
 
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search" role="dialog" aria-label="Búsqueda" aria-modal="true">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search" aria-label="Cerrar búsqueda"><img src="images/icons/icon-close2.png" alt="Cerrar"></button>
-				<form class="wrap-search-header flex-w p-l-15" action="./" role="search">
-					<button class="flex-c-m trans-04" type="submit" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
-					<input class="plh3" type="text" name="search" placeholder="Buscar título, actor, director...">
-				</form>
-			</div>
-		</div>
-	</header>
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search" role="dialog" aria-label="Búsqueda" aria-modal="true">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search" aria-label="Cerrar búsqueda"><img src="images/icons/icon-close2.png" alt="Cerrar"></button>
+                <form class="wrap-search-header flex-w p-l-15" action="./" role="search">
+                    <button class="flex-c-m trans-04" type="submit" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
+                    <input class="plh3" type="text" name="search" placeholder="Buscar título, actor, director...">
+                </form>
+            </div>
+        </div>
+    </header>
 
-	<!-- ===== MAIN CONTENT ===== -->
-	<main role="main" aria-label="Contenido principal" class="mica-surface">
-		<div class="bg0 m-t-23 p-b-140">
-			<div class="container">
-				<div class="flex-w flex-sb-m p-b-52">
-					<!-- Contenedor de botones y paneles flotantes -->
-					<div id="filterButtonContainer">
-						<!-- Botón Filtrar -->
-						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
-							<i class="icon-filter zmdi zmdi-filter-list"></i>
-							<i class="icon-close-filter zmdi zmdi-close"></i>
-							<span>Filtrar</span>
-						</button>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main role="main" aria-label="Contenido principal" class="mica-surface">
+        <div class="bg0 m-t-23 p-b-140">
+            <div class="container">
+                <div class="flex-w flex-sb-m p-b-52">
+                    <!-- Contenedor de botones y paneles flotantes -->
+                    <div id="filterButtonContainer">
+                        <!-- Botón Filtrar -->
+                        <button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
+                            <i class="icon-filter zmdi zmdi-filter-list"></i>
+                            <i class="icon-close-filter zmdi zmdi-close"></i>
+                            <span>Filtrar</span>
+                        </button>
 
-						<!-- Wrapper para el botón Buscar + panel -->
-						<div class="search-wrapper">
-							<!-- Botón Buscar con onclick directo y ID para respaldo -->
-							<button id="searchButton" class="mica-floating-btn js-show-search" aria-label="Buscar productos" 
-									onclick="toggleSearchPanel(this)">
-								<i class="icon-search zmdi zmdi-search"></i>
-								<i class="icon-close-search zmdi zmdi-close"></i>
-								<span>Buscar</span>
-							</button>
+                        <!-- Wrapper para el botón Buscar + panel -->
+                        <div class="search-wrapper">
+                            <!-- Botón Buscar FUNCIONAL (con event.stopPropagation y return false) -->
+                            <button class="mica-floating-btn js-show-search" aria-label="Buscar productos" 
+                                    onclick="event.stopPropagation(); var panel = document.querySelector('.panel-search'); panel.classList.toggle('show'); this.classList.toggle('show-search'); return false;">
+                                <i class="icon-search zmdi zmdi-search"></i>
+                                <i class="icon-close-search zmdi zmdi-close"></i>
+                                <span>Buscar</span>
+                            </button>
 
-							<!-- Panel de búsqueda (flotante, a la derecha del botón) -->
-							<div id="searchPanel" class="panel-search" role="search">
-								<div class="dis-flex">
-									<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
-								</div>
-							</div>
-						</div>
+                            <!-- Panel de búsqueda (flotante, a la derecha del botón) -->
+                            <div class="panel-search" role="search">
+                                <div class="dis-flex">
+                                    <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
+                                </div>
+                            </div>
+                        </div>
 
-						<!-- Dropdown de filtros (flotante, izquierda) -->
-						<div class="filter-dropdown" id="filterDropdown">
-							<div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
-						</div>
-					</div>
-				</div>
+                        <!-- Dropdown de filtros (flotante, izquierda) -->
+                        <div class="filter-dropdown" id="filterDropdown">
+                            <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
+                        </div>
+                    </div>
+                </div>
 
-				<div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
-				<div style="clear: both;"></div>
-			</div>
-		</div>
-	</main>
+                <div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </main>
 
-	<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
-		<div class="container">
-			<div class="p-t-20">
-				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
-				<p class="txt-center">
-					<a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
-					<span style="color: #888; margin: 0 10px;">|</span>
-					<a class="stext-107 cl1 txt-center" href="admin/login.html">Panel</a>
-				</p>
-				<p class="stext-107 cl6 txt-center">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados</p>
-			</div>
-			<div class="qr-container">
-				<div style="text-align: center;">
-					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
-					<img src="/MERCADO/images/qr/qr-tienda.png" alt="Código QR" class="qr-code" onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
-				</div>
-			</div>
-		</div>
-	</footer>
+    <footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
+        <div class="container">
+            <div class="p-t-20">
+                <div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
+                <p class="txt-center">
+                    <a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
+                    <span style="color: #888; margin: 0 10px;">|</span>
+                    <a class="stext-107 cl1 txt-center" href="admin/login.html">Panel</a>
+                </p>
+                <p class="stext-107 cl6 txt-center">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados</p>
+            </div>
+            <div class="qr-container">
+                <div style="text-align: center;">
+                    <span class="qr-label">📱 Escanea para visitar la tienda</span><br>
+                    <img src="/MERCADO/images/qr/qr-tienda.png" alt="Código QR" class="qr-code" onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
+                </div>
+            </div>
+        </div>
+    </footer>
 
-	<div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
-		<span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
-	</div>
+    <div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
+        <span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
+    </div>
 
-	<!-- scripts -->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<script src="vendor/bootstrap/js/popper.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="vendor/parallax100/parallax100.js"></script>
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
-	<script src="vendor/isotope/imagesloaded.pkgd.min.js"></script>
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script src="js/lazyload.min.js"></script>
-	<script src="js/utils.js"></script>
-	<script src="js/index.js"></script>
-	<script src="js/main.js"></script>
+    <!-- scripts -->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <script src="vendor/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="js/lazyload.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
 
-	<!-- ===== SCRIPT DE RESPALDO PARA EL BOTÓN BUSCAR ===== -->
-	<script>
-	// Función global para toggle desde el onclick
-	function toggleSearchPanel(btn) {
-		var panel = document.getElementById('searchPanel');
-		if (!panel) return;
-		panel.classList.toggle('show');
-		btn.classList.toggle('show-search');
-		// Cerrar filtro si está abierto
-		var filterBtn = document.querySelector('.js-show-filter');
-		if (filterBtn && filterBtn.classList.contains('show-filter')) {
-			filterBtn.classList.remove('show-filter');
-			var filterDropdown = document.getElementById('filterDropdown');
-			if (filterDropdown) filterDropdown.classList.remove('show');
-		}
-	}
+    <!-- ===== DESACTIVAR EVENTOS DUPLICADOS DE MAIN.JS ===== -->
+    <script>
+        $(document).ready(function() {
+            // Forzar que el botón de búsqueda solo use su onclick nativo
+            $('.js-show-search').off('click');
+        });
+    </script>
 
-	// Respaldo con jQuery por si el onclick falla
-	$(document).ready(function() {
-		$('#searchButton').off('click').on('click', function(e) {
-			e.preventDefault();
-			toggleSearchPanel(this);
-		});
-	});
-	</script>
-
-	<script>
-	window.addEventListener('scroll', function() {
-		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-		var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-		var progress = (scrollTop / scrollHeight) * 100;
-		document.getElementById('scrollProgress').style.width = progress + '%';
-	});
-	</script>
+    <script>
+    window.addEventListener('scroll', function() {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = (scrollTop / scrollHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+    });
+    </script>
 </body>
 </html>
