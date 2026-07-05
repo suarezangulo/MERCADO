@@ -68,15 +68,15 @@
 			color: #fff; transform: translateY(-2px);
 		}
 
-		/* ===== DROPDOWN DE FILTROS (FLOTANTE) ===== */
+		/* ===== DROPDOWN DE FILTROS (FLOTANTE, SCROLL VERTICAL) ===== */
 		.filter-dropdown {
 			position: absolute;
 			top: 100%;
 			left: 0;
 			margin-top: 8px;
-			width: 340px;
+			width: 320px;
 			max-width: calc(100vw - 40px);
-			background: rgba(20, 20, 20, 0.85);
+			background: rgba(20, 20, 20, 0.92);
 			backdrop-filter: blur(24px) saturate(180%);
 			-webkit-backdrop-filter: blur(24px) saturate(180%);
 			border: 1px solid rgba(255, 255, 255, 0.1);
@@ -86,7 +86,9 @@
 			display: none;
 			z-index: 1000;
 			overflow-y: auto;
+			overflow-x: hidden;
 			max-height: 70vh;
+			flex-wrap: wrap;
 		}
 		.filter-dropdown.show {
 			display: block;
@@ -97,7 +99,14 @@
 			to { opacity: 1; transform: translateY(0); }
 		}
 
-		/* ===== PÍLDORAS DE CATEGORÍA (DENTRO DEL DROPDOWN) ===== */
+		/* Contenedores internos con wrap */
+		.filter-dropdown .flex-w {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+		}
+
+		/* ===== PÍLDORAS DE CATEGORÍA ===== */
 		.mica-pill-btn {
 			padding: 6px 16px; border-radius: 20px;
 			background: rgba(26,26,26,0.5);
@@ -117,14 +126,14 @@
 			box-shadow: 0 4px 15px rgba(30,144,255,0.3);
 		}
 
-		/* ===== FILTROS INTERNOS MICA ===== */
+		/* ===== FILTROS INTERNOS (subcategorías, palabras clave) ===== */
 		.filter-link {
-			display: inline-flex; align-items: center; gap: 6px;
-			padding: 6px 14px; border-radius: 20px;
+			display: inline-flex; align-items: center; gap: 4px;
+			padding: 5px 12px; border-radius: 20px;
 			background: rgba(26,26,26,0.4); color: #aaa;
 			border: 1px solid rgba(255,255,255,0.05);
-			font-size: 13px; text-decoration: none;
-			transition: all 0.3s; cursor: pointer;
+			font-size: 12px; text-decoration: none;
+			transition: all 0.3s; cursor: pointer; white-space: nowrap;
 		}
 		.filter-link:hover {
 			background: rgba(30,144,255,0.15);
@@ -134,9 +143,22 @@
 			background: linear-gradient(135deg, #1E90FF, #0066cc);
 			border-color: transparent; color: #fff; font-weight: 600;
 		}
-		.filter-link-active-bor {
-			background: linear-gradient(135deg, #1E90FF, #0066cc) !important;
-			border-color: transparent !important; color: #fff !important; font-weight: 600;
+
+		/* ===== BOTÓN "VER MÁS" PARA PALABRAS CLAVE ===== */
+		.show-more-btn {
+			background: transparent;
+			border: 1px dashed rgba(255,255,255,0.2);
+			color: #888;
+			font-size: 12px;
+			padding: 5px 12px;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+		.show-more-btn:hover {
+			background: rgba(30,144,255,0.1);
+			border-color: rgba(30,144,255,0.4);
+			color: #fff;
 		}
 
 		/* ===== SKELETON LOADING ===== */
@@ -267,7 +289,7 @@
 						</div>
 					</div>
 
-					<!-- Panel de búsqueda (se mantiene como antes) -->
+					<!-- Panel de búsqueda -->
 					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
 						<div class="bor8 dis-flex p-l-15">
 							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
