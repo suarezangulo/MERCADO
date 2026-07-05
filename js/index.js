@@ -6,14 +6,38 @@ var gTagCategory = "";
 var gTagSubCategory = "";
 var allProductsData = []; // Guardamos todos los productos para el filtro de búsqueda
 
-// ===== INICIALIZAR / REINICIALIZAR ISOTOPE =====
+// ===== INICIALIZAR ISOTOPE (SIN FILTRO, SOLO ESTRUCTURA) =====
 function initIsotope() {
     var $grid = $('.isotope-grid');
     if ($grid.data('isotope')) {
         $grid.isotope('destroy');
     }
+    $grid.isotope({
+        itemSelector: '.isotope-item',
+        layoutMode: 'fitRows',
+        percentPosition: true,
+        sortBy: 'update',
+        sortAscending: false,
+        animationEngine: 'best-available',
+        masonry: { columnWidth: '.isotope-item' },
+        getSortData: {
+            price: '[data-price-usd] parseFloat',
+            update: '[data-update] parseFloat'
+        }
+    });
+    // Aplicar filtro y orden inicial
+    applyFilterAndSort();
+}
 
-    // Construir función de filtro combinada (categoría, subcategoría, búsqueda)
+// ===== APLICAR FILTRO Y ORDEN (USANDO MÉTODOS) =====
+function applyFilterAndSort() {
+    var $grid = $('.isotope-grid');
+    if (!$grid.length) return;
+
+    // Recargar items para asegurar que Isotope tenga los elementos actuales
+    $grid.isotope('reloadItems');
+
+    // Construir función de filtro combinada
     var filterFn = function() {
         var $item = $(this);
         var show = true;
@@ -32,7 +56,6 @@ function initIsotope() {
             var label = $item.find('.js-name-b2').text().trim().toLowerCase();
             // Si no coincide con el label, intentamos con category/subcategory/features desde los datos guardados
             if (label.indexOf(query) === -1) {
-                // Buscar en los datos del producto correspondiente
                 var productData = allProductsData.find(function(p) {
                     return p.Label === $item.find('.js-name-b2').text().trim();
                 });
@@ -51,42 +74,30 @@ function initIsotope() {
         return show;
     };
 
+    // Aplicar filtro
+    $grid.isotope('filter', filterFn);
+
     // Configurar orden
-    var sortBy = 'update';
-    var sortAsc = false;
-    if (currentFilter.orderBy === 'price-asc') {
-        sortBy = 'price';
-        sortAsc = true;
-    } else if (currentFilter.orderBy === 'price-desc') {
-        sortBy = 'price';
-        sortAsc = false;
-    } else if (currentFilter.orderBy === 'update') {
-        sortBy = 'update';
-        sortAsc = false;
+    if (currentFilter.orderBy) {
+        var sortBy = 'update';
+        var sortAsc = false;
+        if (currentFilter.orderBy === 'price-asc') {
+            sortBy = 'price';
+            sortAsc = true;
+        } else if (currentFilter.orderBy === 'price-desc') {
+            sortBy = 'price';
+            sortAsc = false;
+        } else if (currentFilter.orderBy === 'update') {
+            sortBy = 'update';
+            sortAsc = false;
+        }
+        // Actualizar datos de orden y aplicar
+        $grid.isotope('updateSortData', $grid.find('.isotope-item'));
+        $grid.isotope('sort', sortBy, sortAsc);
     }
 
-    console.log('🔍 Inicializando Isotope con filtro combinado. Categoría:', currentFilter.category, 'Subcat:', currentFilter.subcategory, 'Búsqueda:', currentFilter.search, 'Orden:', sortBy, sortAsc ? 'asc' : 'desc');
-
-    $grid.isotope({
-        itemSelector: '.isotope-item',
-        layoutMode: 'fitRows',
-        percentPosition: true,
-        filter: filterFn,
-        sortBy: sortBy,
-        sortAscending: sortAsc,
-        animationEngine: 'best-available',
-        masonry: { columnWidth: '.isotope-item' },
-        getSortData: {
-            price: '[data-price-usd] parseFloat',
-            update: '[data-update] parseFloat'
-        }
-    });
+    // Forzar re-layout
     $grid.isotope('layout');
-}
-
-// ===== APLICAR FILTRO Y ORDEN =====
-function applyFilterAndSort() {
-    initIsotope();
 }
 
 // ===== BÚSQUEDA EN TIEMPO REAL =====
@@ -96,12 +107,12 @@ function setupSearch() {
 
     $searchInput.on('input', function() {
         var query = $(this).val();
-        currentFilter.search = query; // Guardar en el filtro actual
+        currentFilter.search = query;
         console.log('🔎 Búsqueda en tiempo real:', query);
-        applyFilterAndSort(); // Re-inicializa Isotope con el nuevo filtro
+        applyFilterAndSort();
     });
 
-    // Si el input tiene un valor inicial (por ejemplo, desde URL), lo aplicamos
+    // Si el input tiene un valor inicial (ej. desde URL), lo aplicamos
     if ($searchInput.val()) {
         currentFilter.search = $searchInput.val();
         applyFilterAndSort();
@@ -191,7 +202,7 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Inicializar Isotope con los filtros actuales
+        // Inicializar Isotope (estructura) y luego aplicar filtros
         initIsotope();
 
         // Configurar búsqueda en tiempo real
