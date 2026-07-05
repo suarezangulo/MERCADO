@@ -26,44 +26,44 @@ function initIsotope() {
     });
 }
 
-// ===== APLICAR FILTRO Y ORDEN (usando selectores de clase) =====
+// ===== APLICAR FILTRO Y ORDEN (CON FUNCIÓN DE FILTRO) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.length) return;
 
-    // Construir selector de filtro basado en clases
-    var filterSelector = '*';
-    if (currentFilter.category) {
-        filterSelector = '.category-' + currentFilter.category;
+    // 🔄 Recargar elementos para que Isotope los reconozca
+    $grid.isotope('reloadItems');
+
+    // Construir función de filtro
+    var filterFn = function() {
+        var $item = $(this);
+        if (!currentFilter.category) return true;
+        var show = $item.hasClass('category-' + currentFilter.category);
         if (currentFilter.subcategory) {
-            filterSelector += '.subcategory-' + currentFilter.subcategory;
+            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
         }
-    }
-
-    // Depuración
-    console.log('🔍 Aplicando filtro:', {
-        category: currentFilter.category,
-        subcategory: currentFilter.subcategory,
-        orderBy: currentFilter.orderBy,
-        selector: filterSelector
-    });
-
-    var options = {
-        filter: filterSelector
+        return show;
     };
 
+    console.log('🔍 Aplicando filtro:', currentFilter);
+
+    // Aplicar filtro con función
+    $grid.isotope('filter', filterFn);
+
+    // Ordenar si está definido
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
         if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
         else if (currentFilter.orderBy === 'price-desc') { sortBy = 'price'; sortAsc = false; }
         else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
-        options.sortBy = sortBy;
-        options.sortAscending = sortAsc;
+        
         console.log('📊 Ordenando por:', sortBy, sortAsc ? 'asc' : 'desc');
+        // Actualizar datos de orden y aplicar
+        $grid.isotope('updateSortData', $grid.find('.isotope-item'));
+        $grid.isotope('sort', sortBy, sortAsc);
     }
 
-    // Aplicar filtro y orden
-    $grid.isotope(options);
+    // Forzar re-layout
     $grid.isotope('layout');
 }
 
@@ -111,8 +111,10 @@ function loadData($, data) {
             }
         }
 
+        // Inicializar Isotope
         initIsotope();
 
+        // Construir filtros en el dropdown
         $filterContent.empty();
 
         // ---- Categorías ----
@@ -146,10 +148,10 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Siempre aplicar filtro y orden
+        // 🔄 Aplicar filtro y orden (asegura que se muestren todos al inicio)
         applyFilterAndSort();
 
-        // Depuración: mostrar clases de los items
+        // Depuración: mostrar clases
         console.log('📦 Items con clases:');
         $('.isotope-item').each(function() {
             console.log(this.className);
