@@ -44,10 +44,8 @@
 			flex-shrink: 0; position: relative; z-index: 10; clear: both; width: 100%;
 		}
 		.mica-surface { min-height: 60vh; overflow: visible; }
-		.isotope-grid { position: relative !important; height: auto !important; overflow: visible !important; }
-		.isotope-item { position: relative !important; left: auto !important; top: auto !important; transform: none !important; margin-bottom: 20px; }
 
-		/* ===== BOTONES FLOTANTES MICA (TAMAÑO REDUCIDO) ===== */
+		/* ===== BOTONES FLOTANTES MICA ===== */
 		.mica-floating-btn {
 			display: inline-flex; align-items: center; gap: 6px;
 			padding: 8px 16px; border-radius: 25px;
@@ -70,24 +68,16 @@
 
 		/* ===== DROPDOWN DE FILTROS ===== */
 		.filter-dropdown {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			margin-top: 8px;
-			width: 320px;
-			max-width: calc(100vw - 40px);
+			position: absolute; top: 100%; left: 0; margin-top: 8px;
+			width: 320px; max-width: calc(100vw - 40px);
 			background: rgba(20, 20, 20, 0.92);
 			backdrop-filter: blur(24px) saturate(180%);
 			-webkit-backdrop-filter: blur(24px) saturate(180%);
 			border: 1px solid rgba(255, 255, 255, 0.1);
 			border-radius: 16px;
 			box-shadow: 0 12px 40px rgba(0,0,0,0.7);
-			padding: 20px;
-			display: none;
-			z-index: 1000;
-			overflow-y: auto;
-			overflow-x: hidden;
-			max-height: 70vh;
+			padding: 20px; display: none; z-index: 1000;
+			overflow-y: auto; overflow-x: hidden; max-height: 70vh;
 		}
 		.filter-dropdown.show {
 			display: block;
@@ -98,9 +88,7 @@
 			to { opacity: 1; transform: translateY(0); }
 		}
 		.filter-dropdown .flex-w {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 6px;
+			display: flex; flex-wrap: wrap; gap: 6px;
 		}
 
 		/* ===== PÍLDORAS DE CATEGORÍA ===== */
@@ -141,20 +129,36 @@
 			border-color: transparent; color: #fff; font-weight: 600;
 		}
 
+		/* ===== SKELETON LOADING ===== */
+		.skeleton-card {
+			background: rgba(26,26,26,0.5); border-radius: 16px;
+			overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
+		}
+		.skeleton-image {
+			width: 100%; height: 200px;
+			background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+			background-size: 200% 100%; animation: shimmer 1.5s infinite;
+		}
+		.skeleton-text { padding: 15px; }
+		.skeleton-title { height: 18px; width: 80%; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 10px; animation: shimmer 1.5s infinite; }
+		.skeleton-desc { height: 14px; width: 100%; background: rgba(255,255,255,0.03); border-radius: 4px; margin-bottom: 8px; animation: shimmer 1.5s infinite; }
+		.skeleton-price { height: 22px; width: 40%; background: rgba(255,255,255,0.05); border-radius: 4px; animation: shimmer 1.5s infinite; }
+		@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+		/* ===== BARRA DE PROGRESO ===== */
+		.scroll-progress {
+			position: fixed; top: 0; left: 0; height: 3px;
+			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
+			z-index: 9999; width: 0%; transition: width 0.1s;
+		}
+
 		/* ===== PANEL DE DEPURACIÓN ===== */
 		#debugPanel {
-			position: fixed;
-			bottom: 20px;
-			left: 20px;
-			background: rgba(0,0,0,0.8);
-			color: #0f0;
-			padding: 10px;
-			font-size: 11px;
-			z-index: 99999;
-			border-radius: 8px;
-			max-width: 80vw;
-			word-wrap: break-word;
-			font-family: monospace;
+			position: fixed; bottom: 20px; left: 20px;
+			background: rgba(0,0,0,0.8); color: #0f0;
+			padding: 10px; font-size: 11px; z-index: 99999;
+			border-radius: 8px; max-width: 80vw;
+			word-wrap: break-word; font-family: monospace;
 			pointer-events: none;
 		}
 	</style>
