@@ -6,15 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0a0a0a">
 	
-	<meta name="description" content="Catálogo audiovisual en CUP: películas (5 CUP) y capítulos de series, shows, documentales y novelas (2 CUP por capítulo).">
-	<meta name="keywords" content="películas, series, documentales, shows, novelas, cine, comprar, Cuba, CUP">
+	<meta name="description" content="Catálogo audiovisual en CUP.">
+	<meta name="keywords" content="películas, series, documentales, Cuba, CUP">
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="CINEMARKET">
 	
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://tutienda.com/">
 	<meta property="og:title" content="CINEMARKET - Catálogo Audiovisual en CUP">
-	<meta property="og:description" content="Encuentra las mejores películas, series, documentales y más. Precios fijos en CUP.">
+	<meta property="og:description" content="Encuentra las mejores películas, series, documentales y más.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
 	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
@@ -68,7 +68,7 @@
 			color: #fff; transform: translateY(-2px);
 		}
 
-		/* ===== DROPDOWN DE FILTROS (FLOTANTE, SCROLL VERTICAL) ===== */
+		/* ===== DROPDOWN DE FILTROS ===== */
 		.filter-dropdown {
 			position: absolute;
 			top: 100%;
@@ -97,7 +97,6 @@
 			from { opacity: 0; transform: translateY(-10px); }
 			to { opacity: 1; transform: translateY(0); }
 		}
-
 		.filter-dropdown .flex-w {
 			display: flex;
 			flex-wrap: wrap;
@@ -124,7 +123,7 @@
 			box-shadow: 0 4px 15px rgba(30,144,255,0.3);
 		}
 
-		/* ===== FILTROS INTERNOS (subcategorías, orden) ===== */
+		/* ===== FILTROS INTERNOS ===== */
 		.filter-link {
 			display: inline-flex; align-items: center; gap: 4px;
 			padding: 5px 12px; border-radius: 20px;
@@ -142,33 +141,30 @@
 			border-color: transparent; color: #fff; font-weight: 600;
 		}
 
-		/* ===== SKELETON LOADING ===== */
-		.skeleton-card {
-			background: rgba(26,26,26,0.5); border-radius: 16px;
-			overflow: hidden; border: 1px solid rgba(255,255,255,0.06);
-		}
-		.skeleton-image {
-			width: 100%; height: 200px;
-			background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
-			background-size: 200% 100%; animation: shimmer 1.5s infinite;
-		}
-		.skeleton-text { padding: 15px; }
-		.skeleton-title { height: 18px; width: 80%; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 10px; animation: shimmer 1.5s infinite; }
-		.skeleton-desc { height: 14px; width: 100%; background: rgba(255,255,255,0.03); border-radius: 4px; margin-bottom: 8px; animation: shimmer 1.5s infinite; }
-		.skeleton-price { height: 22px; width: 40%; background: rgba(255,255,255,0.05); border-radius: 4px; animation: shimmer 1.5s infinite; }
-		@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-
-		/* ===== BARRA DE PROGRESO ===== */
-		.scroll-progress {
-			position: fixed; top: 0; left: 0; height: 3px;
-			background: linear-gradient(90deg, #1E90FF, #FF3B3B);
-			z-index: 9999; width: 0%; transition: width 0.1s;
+		/* ===== PANEL DE DEPURACIÓN ===== */
+		#debugPanel {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			background: rgba(0,0,0,0.8);
+			color: #0f0;
+			padding: 10px;
+			font-size: 11px;
+			z-index: 99999;
+			border-radius: 8px;
+			max-width: 80vw;
+			word-wrap: break-word;
+			font-family: monospace;
+			pointer-events: none;
 		}
 	</style>
 </head>
 <body class="animsition">
 
 	<div class="scroll-progress" id="scrollProgress"></div>
+
+	<!-- Panel de depuración -->
+	<div id="debugPanel">Cargando...</div>
 
 	<!-- ===== HEADER ===== -->
 	<header role="banner" aria-label="Encabezado principal" class="header-v4">
@@ -249,7 +245,6 @@
 		<div class="bg0 m-t-23 p-b-140">
 			<div class="container">
 				<div class="flex-w flex-sb-m p-b-52">
-					<!-- Botones con dropdown de filtros -->
 					<div class="flex-w flex-c-m m-tb-10" style="gap: 8px; position: relative;" id="filterButtonContainer">
 						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
 							<i class="icon-filter zmdi zmdi-filter-list"></i>
@@ -262,15 +257,11 @@
 							<span>Buscar</span>
 						</button>
 
-						<!-- Dropdown flotante de filtros -->
 						<div class="filter-dropdown" id="filterDropdown">
-							<div class="wrap-filter-dropdown" id="filterDropdownContent">
-								<!-- JS llenará esto con categorías, orden, subcategorías -->
-							</div>
+							<div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
 						</div>
 					</div>
 
-					<!-- Panel de búsqueda -->
 					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
 						<div class="bor8 dis-flex p-l-15">
 							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
@@ -285,7 +276,6 @@
 		</div>
 	</main>
 
-	<!-- ===== FOOTER ===== -->
 	<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
 		<div class="container">
 			<div class="p-t-20">
