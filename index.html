@@ -67,23 +67,31 @@
 			color: #fff; transform: translateY(-2px);
 		}
 
-		/* ===== CONTENEDOR DE BOTONES FLOTANTES - MÁS SEPARACIÓN ===== */
+		/* ===== CONTENEDOR DE BOTONES FLOTANTES ===== */
 		#filterButtonContainer {
 			margin-top: 20px !important;
+			position: relative;
 		}
 
 		/* ===== DROPDOWN DE FILTROS ===== */
 		.filter-dropdown {
-			position: absolute; top: 100%; left: 0; margin-top: 8px;
-			width: 320px; max-width: calc(100vw - 40px);
+			position: absolute;
+			top: calc(100% + 8px);
+			left: 0;
+			width: 320px;
+			max-width: calc(100vw - 40px);
 			background: rgba(20, 20, 20, 0.92);
 			backdrop-filter: blur(24px) saturate(180%);
 			-webkit-backdrop-filter: blur(24px) saturate(180%);
 			border: 1px solid rgba(255, 255, 255, 0.1);
 			border-radius: 16px;
 			box-shadow: 0 12px 40px rgba(0,0,0,0.7);
-			padding: 20px; display: none; z-index: 1000;
-			overflow-y: auto; overflow-x: hidden; max-height: 70vh;
+			padding: 20px;
+			display: none;
+			z-index: 1000;
+			overflow-y: auto;
+			overflow-x: hidden;
+			max-height: 70vh;
 		}
 		.filter-dropdown.show {
 			display: block;
@@ -95,6 +103,59 @@
 		}
 		.filter-dropdown .flex-w {
 			display: flex; flex-wrap: wrap; gap: 6px;
+		}
+
+		/* ===== PANEL DE BÚSQUEDA FLOTANTE (superpuesto) ===== */
+		.panel-search {
+			position: absolute;
+			top: calc(100% + 8px);
+			left: 0;
+			width: 100%;
+			max-width: 480px;
+			background: var(--mica-card) !important;
+			backdrop-filter: blur(24px) saturate(180%) !important;
+			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+			border: 1px solid var(--border-mica) !important;
+			border-radius: var(--radius-lg) !important;
+			padding: 15px 20px !important;
+			box-shadow: var(--shadow-mica) !important;
+			display: none;
+			z-index: 999;
+			opacity: 0;
+			transform: translateY(-8px);
+			transition: opacity 0.3s ease, transform 0.3s ease;
+		}
+		.panel-search.show {
+			display: block;
+			opacity: 1;
+			transform: translateY(0);
+		}
+		.panel-search .dis-flex {
+			display: flex !important;
+			align-items: center !important;
+			background: rgba(255, 255, 255, 0.05) !important;
+			border-radius: 30px !important;
+			padding: 2px 2px 2px 16px !important;
+			border: 1px solid var(--border-mica) !important;
+			transition: border-color 0.3s ease !important;
+		}
+		.panel-search .dis-flex:focus-within {
+			border-color: var(--accent-blue) !important;
+			box-shadow: 0 0 20px var(--border-glow) !important;
+		}
+		.panel-search input {
+			background: transparent !important;
+			border: none !important;
+			color: #fff !important;
+			font-family: 'Poppins', sans-serif !important;
+			font-size: 14px !important;
+			padding: 8px 0 !important;
+			width: 100% !important;
+			outline: none !important;
+		}
+		.panel-search input::placeholder {
+			color: var(--text-muted) !important;
+			font-weight: 300 !important;
 		}
 
 		/* ===== PÍLDORAS DE CATEGORÍA ===== */
@@ -185,45 +246,6 @@
             height: 100%;
             object-fit: cover;
         }
-
-		/* ===== PANEL DE BÚSQUEDA - MÁS COMPACTO ===== */
-		.panel-search {
-			background: var(--mica-card) !important;
-			backdrop-filter: blur(24px) saturate(180%) !important;
-			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-			border: 1px solid var(--border-mica) !important;
-			border-radius: var(--radius-lg) !important;
-			padding: 15px 20px !important;
-			margin-top: 5px !important;
-			box-shadow: var(--shadow-mica) !important;
-		}
-		.panel-search .dis-flex {
-			display: flex !important;
-			align-items: center !important;
-			background: rgba(255, 255, 255, 0.05) !important;
-			border-radius: 30px !important;
-			padding: 2px 2px 2px 16px !important;
-			border: 1px solid var(--border-mica) !important;
-			transition: border-color 0.3s ease !important;
-		}
-		.panel-search .dis-flex:focus-within {
-			border-color: var(--accent-blue) !important;
-			box-shadow: 0 0 20px var(--border-glow) !important;
-		}
-		.panel-search input {
-			background: transparent !important;
-			border: none !important;
-			color: #fff !important;
-			font-family: 'Poppins', sans-serif !important;
-			font-size: 14px !important;
-			padding: 8px 0 !important;
-			width: 100% !important;
-			outline: none !important;
-		}
-		.panel-search input::placeholder {
-			color: var(--text-muted) !important;
-			font-weight: 300 !important;
-		}
 	</style>
 </head>
 <body class="animsition">
@@ -309,6 +331,7 @@
 		<div class="bg0 m-t-23 p-b-140">
 			<div class="container">
 				<div class="flex-w flex-sb-m p-b-52">
+					<!-- Contenedor de botones y paneles flotantes -->
 					<div class="flex-w flex-c-m m-tb-10" style="gap: 8px; position: relative;" id="filterButtonContainer">
 						<button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
 							<i class="icon-filter zmdi zmdi-filter-list"></i>
@@ -321,15 +344,16 @@
 							<span>Buscar</span>
 						</button>
 
+						<!-- Dropdown de filtros (flotante) -->
 						<div class="filter-dropdown" id="filterDropdown">
 							<div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
 						</div>
-					</div>
 
-					<!-- ===== PANEL DE BÚSQUEDA ===== -->
-					<div class="dis-none panel-search w-full p-t-10 p-b-15" role="search">
-						<div class="dis-flex">
-							<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
+						<!-- Panel de búsqueda (flotante) -->
+						<div class="panel-search" role="search">
+							<div class="dis-flex">
+								<input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
+							</div>
 						</div>
 					</div>
 				</div>
