@@ -508,4 +508,9 @@ var googleAnalyticsId = "";
 
     updateCartQty();
     prepareWhatsapp();
+    
+    // ===== CARRITO: REDIRECCIÓN DESACTIVADA (ahora usa onclick en HTML) =====
+    // $(".js-show-cart").click(function() {
+    //     window.location.replace("./cart.html");
+    // });
 })(jQuery);
