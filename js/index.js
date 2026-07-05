@@ -31,22 +31,19 @@ function initIsotope() {
     debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== APLICAR FILTRO (CON FUNCIÓN) =====
+// ===== APLICAR FILTRO (con refuerzo manual) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
     if (!$grid.data('isotope')) { debug('Error: Isotope no inicializado'); return; }
 
-    // Función de filtro personalizada
+    // Aplicar filtro con Isotope (usando función)
     $grid.isotope('filter', function() {
         var $item = $(this);
         var cat = currentFilter.category;
         var sub = currentFilter.subcategory;
-
         if (!cat) return true; // Mostrar todo
-
         var hasCategory = $item.hasClass('category-' + cat);
-        if (!sub) return hasCategory; // Solo filtrar por categoría
-
+        if (!sub) return hasCategory;
         var hasSubcategory = $item.hasClass('subcategory-' + sub);
         return hasCategory && hasSubcategory;
     });
@@ -60,13 +57,32 @@ function applyFilterAndSort() {
         $grid.isotope({ sortBy: sortBy, sortAscending: sortAsc });
     }
 
-    // Mostrar conteo
-    var visible = $grid.find('.isotope-item').filter(function() {
-        return $(this).css('display') !== 'none';
-    }).length;
+    // ==== REFUERZO MANUAL: asegurar visibilidad ====
+    $grid.find('.isotope-item').each(function() {
+        var $item = $(this);
+        if (!currentFilter.category) {
+            $item.show();
+            return;
+        }
+        var show = $item.hasClass('category-' + currentFilter.category);
+        if (currentFilter.subcategory) {
+            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+        }
+        if (show) {
+            $item.show();
+        } else {
+            $item.hide();
+        }
+    });
+
+    // Re-ordenar después de forzar visibilidad (por si acaso)
+    $grid.isotope('layout');
+
+    // Conteo para depuración
+    var visible = $grid.find('.isotope-item:visible').length;
     var total = $grid.find('.isotope-item').length;
     var cat = currentFilter.category || 'ninguna';
-    debug('Filtro activo: ' + cat + ' | Visibles: ' + visible + '/' + total);
+    debug('Filtro: ' + cat + ' | Visibles: ' + visible + '/' + total);
 }
 
 function loadData($, data) {
