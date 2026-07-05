@@ -51,7 +51,6 @@ function loadIsotope() {
 
 function loadData($, data) {
     let $topeContainer = $('.isotope-grid').first();
-    let $filterCategoriesTag = $('.filter-tope-group');
     let $filtersTag = $('.wrap-filter');
 
     // ===== MEJORA 2: MOSTRAR SKELETONS MIENTRAS CARGA =====
@@ -71,12 +70,6 @@ function loadData($, data) {
         $topeContainer.append(skeleton);
     }
 
-    // Ordenar por
-    let orderByFilter = addFiltersTag($filtersTag, 1, "Ordenar por");
-    addFilterLi(orderByFilter, "Recientes", "orderBy", true, () => sortProducts("update", "desc", "Recientes"));
-    addFilterLi(orderByFilter, "Más económicos", "orderBy", false, () => sortProducts("price", "asc", "Más económicos"));
-    addFilterLi(orderByFilter, "Más costosos", "orderBy", false, () => sortProducts("price", "desc", "Más costosos"));
-
     // Obtener parámetros de URL
     var urlParams = new URLSearchParams(window.location.search);
     var categoryKeyParam = urlParams.get('category');
@@ -95,13 +88,27 @@ function loadData($, data) {
     setTimeout(function() {
         // Eliminar skeletons
         $topeContainer.find('.skeleton-card').parent().remove();
-        
-        // Agregar categorías al tope
-        addCategoryTag($filterCategoriesTag, "Todos", "*", categoryKeyParam == null || categoryKeyParam.length == 0);
+
+        // ===== SECCIÓN CATEGORÍAS (DENTRO DEL PANEL FILTRO) =====
+        var categorySection = document.createElement("div");
+        categorySection.setAttribute("class", "filter-col1 p-b-27");
+        categorySection.innerHTML = '<div class="mtext-102 cl2 p-b-15">Categorías</div>';
+        var categoryContainer = document.createElement("div");
+        categoryContainer.setAttribute("class", "flex-w p-t-4 m-r--5");
+        categoryContainer.setAttribute("id", "categoryFiltersContainer");
+        categorySection.appendChild(categoryContainer);
+        $filtersTag.prepend(categorySection); // Insertar al inicio del panel
+
+        // Ordenar por (ahora ocupa filter-col2)
+        let orderByFilter = addFiltersTag($filtersTag, 2, "Ordenar por");
+        addFilterLi(orderByFilter, "Recientes", "orderBy", true, () => sortProducts("update", "desc", "Recientes"));
+        addFilterLi(orderByFilter, "Más económicos", "orderBy", false, () => sortProducts("price", "asc", "Más económicos"));
+        addFilterLi(orderByFilter, "Más costosos", "orderBy", false, () => sortProducts("price", "desc", "Más costosos"));
+
+        // Construir datos de productos y árbol de filtros
         for (const categoryKey in data) {
             if (filterTree[categoryKey] == null) filterTree[categoryKey] = [];
             filterData[normalizeText(categoryKey)] = categoryKey;
-            addCategoryTag($filterCategoriesTag, categoryKey, categoryKey, normalizeText(categoryKey) == categoryKeyParam);
             const category = data[categoryKey];
             for (const subcategoryKey in category) {
                 filterData[normalizeText(subcategoryKey)] = subcategoryKey;
@@ -128,6 +135,14 @@ function loadData($, data) {
             }
         }
 
+        // ===== BOTONES DE CATEGORÍA (píldoras Mica) =====
+        var $catContainer = $('#categoryFiltersContainer');
+        addCategoryTag($catContainer, "Todos", "*", categoryKeyParam == null || categoryKeyParam.length == 0);
+        for (const categoryKey in data) {
+            addCategoryTag($catContainer, categoryKey, categoryKey, normalizeText(categoryKey) == categoryKeyParam);
+        }
+
+        // Eventos de Isotope y búsqueda
         $topeContainer.on('arrangeComplete', updateView);
         $('[name="search-product"]').keyup(debounce(function() {
             $('.isotope-grid').isotope();
@@ -233,9 +248,10 @@ function updateView() {
         return subcategories.indexOf(valor) === indice;
     });
     
-    updateFilters("Subcategorías", 2, subcategories.sort(), false, "subcategory");
+    // Ajuste de posiciones: subcategorías ahora en col3, palabras clave en col4
+    updateFilters("Subcategorías", 3, subcategories.sort(), false, "subcategory");
     var keywords = getKeywords(products, 15);
-    updateFilters("Palabras clave", 3, keywords, true, "feature");
+    updateFilters("Palabras clave", 4, keywords, true, "feature");
     udpateViewFilter();
 
     if (googleAnalyticsId != null && googleAnalyticsId.length > 0) {
@@ -306,7 +322,7 @@ function updateFilters(title, pos, collection, forTags, prevFilter) {
     }
 }
 
-// ===== MEJORA 1: FUNCIÓN addCategoryTag CON PÍLDORAS MICA =====
+// ===== FUNCIÓN addCategoryTag CON PÍLDORAS MICA (AHORA DENTRO DEL PANEL) =====
 function addCategoryTag($container, label, filterValue, active) {
     let newButton = document.createElement("button");
     let aClass = "mica-pill-btn";
@@ -532,18 +548,7 @@ function sortProducts(sortBy, sortDirection, text) {
         $('.container-search-header').on('click', function (e) {
             e.stopPropagation();
         });
-        $('.isotope-grid').imagesLoaded({}, function () {
-            loadIsotope();
-        });
-        var isotopeButton = $('.filter-tope-group button');
-        $(isotopeButton).each(function () {
-            $(this).on('click', function () {
-                for (var i = 0; i < isotopeButton.length; i++) {
-                    $(isotopeButton[i]).removeClass('how-active1');
-                }
-                $(this).addClass('how-active1');
-            });
-        });
+        // Isotope se inicializa dentro de loadData, no aquí
         $('.js-show-filter').on('click', function (event) {
             event.preventDefault();
             $(this).toggleClass('show-filter');
