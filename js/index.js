@@ -53,6 +53,15 @@ function applyFilterAndSort() {
         return;
     }
     var selector = getFilterSelector();
+
+    // Depuración: contar cuántos elementos coinciden con el selector según jQuery
+    var matchingElements = $grid.find(selector).length;
+
+    // Obtener clases del primer producto para comparar
+    var firstItem = $grid.find('.isotope-item').first();
+    var classes = firstItem.length ? firstItem.attr('class') : 'sin elementos';
+
+    // Aplicar filtro
     $grid.isotope({ filter: selector });
 
     if (currentFilter.orderBy) {
@@ -63,10 +72,15 @@ function applyFilterAndSort() {
         $grid.isotope({ sortBy: sortBy, sortAscending: sortAsc });
     }
 
-    // Mostrar conteo en panel de depuración
-    var total = $grid.find('.isotope-item').length;
     var visible = $grid.find('.isotope-item:visible').length;
-    debug('Filtro: ' + selector + ' | Visibles: ' + visible + ' de ' + total);
+    var total = $grid.find('.isotope-item').length;
+
+    debug(
+        'Selector: ' + selector + '<br>' +
+        'Coincidencias jQuery: ' + matchingElements + '<br>' +
+        'Visibles Isotope: ' + visible + '/' + total + '<br>' +
+        'Clases 1er prod: ' + classes.substring(0, 80) + '...'
+    );
 }
 
 function loadData($, data) {
