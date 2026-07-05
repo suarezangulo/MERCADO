@@ -261,24 +261,22 @@
             object-fit: cover;
         }
 
-        /* ===== AJUSTES PARA MÓVILES (SEPARACIÓN EXACTA DE 2mm) ===== */
+        /* ===== AJUSTES PARA MÓVILES (SEPARACIÓN EXACTA) ===== */
         @media (max-width: 768px) {
-            /* El contenedor con fondo translúcido: padding de 2mm a cada lado */
-            .bg0 {
+            /* Contenedor translúcido de las tarjetas: 2mm de separación de la pantalla */
+            main.mica-surface {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
-                box-sizing: border-box !important; /* El padding no suma al ancho */
-                width: 100% !important;
-                overflow: hidden !important; /* Evita desborde */
+                box-sizing: border-box !important;
+                overflow: hidden !important;
             }
             
-            /* El main no debe tener padding extra para no duplicar */
-            main.mica-surface {
+            /* El contenedor interno no debe tener padding extra */
+            .bg0 {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
             }
             
-            /* Contenedor interno sin padding, hereda el del .bg0 */
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
@@ -294,7 +292,7 @@
                 margin-right: 0 !important;
             }
             
-            /* Tarjetas: 2mm de separación respecto al fondo */
+            /* Tarjetas: 2mm de separación respecto al contenedor (total 4mm desde el borde) */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -354,7 +352,7 @@
         }
 
         @media (max-width: 480px) {
-            .bg0 {
+            main.mica-surface {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
             }
@@ -457,7 +455,7 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main role="main" aria-label="Contenido principal" class="mica-surface">
-        <!-- El fondo translúcido se aplica en .bg0, que ahora tiene el padding de 2mm -->
+        <!-- El contenedor translúcido de las tarjetas es main.mica-surface, que ahora tiene padding de 2mm -->
         <div class="bg0 m-t-23 p-b-140">
             <div class="container">
                 <div class="flex-w flex-sb-m p-b-52">
