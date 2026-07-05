@@ -1,19 +1,16 @@
-// ===== PANEL DE DEPURACIÓN =====
-function debug(msg) {
-    var panel = document.getElementById('debugPanel');
-    if (panel) panel.innerHTML = msg;
-}
-
 // ===== VARIABLES GLOBALES =====
 var filterData = [];
 var filterTree = [];
-var currentFilter = {};   // { category: 'novelas', subcategory: 'romance', orderBy: 'update' }
+var currentFilter = {};
 var gTagCategory = "";
 var gTagSubCategory = "";
 
 // ===== INICIALIZAR ISOTOPE =====
 function initIsotope() {
     var $grid = $('.isotope-grid');
+    if ($grid.data('isotope')) {
+        $grid.isotope('destroy');
+    }
     $grid.isotope({
         itemSelector: '.isotope-item',
         layoutMode: 'fitRows',
@@ -27,53 +24,46 @@ function initIsotope() {
             update: '[data-update] parseFloat'
         }
     });
-    debug('Isotope listo. Productos: ' + $('.isotope-item').length);
 }
 
-// ===== APLICAR FILTRO Y ORDEN (solo con objetos) =====
+// ===== APLICAR FILTRO Y ORDEN (SIN MÉTODOS INVÁLIDOS) =====
 function applyFilterAndSort() {
     var $grid = $('.isotope-grid');
+    
+    var filterFn;
+    if (!currentFilter.category) {
+        filterFn = function() { return true; };
+    } else {
+        filterFn = function() {
+            var $item = $(this);
+            var show = $item.hasClass('category-' + currentFilter.category);
+            if (currentFilter.subcategory) {
+                show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
+            }
+            return show;
+        };
+    }
 
-    // Construir opciones de filtro y orden
-    var options = {};
-
-    // Filtro
-    options.filter = function() {
-        var $item = $(this);
-        if (!currentFilter.category) return true;               // Sin categoría: mostrar todo
-        var show = $item.hasClass('category-' + currentFilter.category);
-        if (currentFilter.subcategory) {
-            show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
-        }
-        return show;
+    var options = {
+        filter: filterFn
     };
 
-    // Orden
     if (currentFilter.orderBy) {
         var sortBy = 'update', sortAsc = false;
-        if (currentFilter.orderBy === 'price-asc')  { sortBy = 'price';  sortAsc = true;  }
-        else if (currentFilter.orderBy === 'price-desc') { sortBy = 'price';  sortAsc = false; }
-        else if (currentFilter.orderBy === 'update')      { sortBy = 'update'; sortAsc = false; }
+        if (currentFilter.orderBy === 'price-asc') { sortBy = 'price'; sortAsc = true; }
+        else if (currentFilter.orderBy === 'price-desc') { sortBy = 'price'; sortAsc = false; }
+        else if (currentFilter.orderBy === 'update') { sortBy = 'update'; sortAsc = false; }
         options.sortBy = sortBy;
         options.sortAscending = sortAsc;
     }
 
-    // Aplicar todo de una vez
     $grid.isotope(options);
-
-    // Conteo para depuración
-    var visible = $grid.find('.isotope-item').filter(function() {
-        return $(this).css('display') !== 'none';
-    }).length;
-    var total = $grid.find('.isotope-item').length;
-    debug('Filtro: ' + (currentFilter.category || 'todo') + ' | Visibles: ' + visible + '/' + total);
 }
 
 function loadData($, data) {
     let $topeContainer = $('.isotope-grid').first();
     let $filterContent = $('#filterDropdownContent');
 
-    // ===== SKELETONS =====
     $topeContainer.empty();
     for (let i = 0; i < 8; i++) {
         let skeleton = document.createElement("div");
@@ -93,7 +83,6 @@ function loadData($, data) {
     setTimeout(function() {
         $topeContainer.find('.skeleton-card').parent().remove();
 
-        // Construir tarjetas
         for (const categoryKey in data) {
             if (!filterTree[categoryKey]) filterTree[categoryKey] = {};
             filterData[normalizeText(categoryKey)] = categoryKey;
@@ -111,7 +100,6 @@ function loadData($, data) {
 
         initIsotope();
 
-        // ===== INTERFAZ DE FILTROS =====
         $filterContent.empty();
 
         // Categorías
@@ -145,10 +133,8 @@ function loadData($, data) {
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Filtro inicial si vino de URL
         if (currentFilter.category) applyFilterAndSort();
 
-        // ===== BUSCADOR =====
         $('[name="search-product"]').keyup(debounce(function() {
             var text = $(this).val().toLowerCase();
             $('.isotope-grid').isotope({
