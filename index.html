@@ -263,7 +263,7 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES (PADDING EN main.mica-surface + ESPACIADO) ===== */
+        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES ===== */
         @media (max-width: 768px) {
             /* Eliminar cualquier margen/padding del body y html */
             body, html {
@@ -273,7 +273,7 @@
                 width: 100% !important;
             }
 
-            /* 1. El contenedor con el fondo Mica (main.mica-surface) tendrá padding de 3px a los lados */
+            /* Contenedor con fondo Mica */
             main.mica-surface {
                 padding-left: 3px !important;
                 padding-right: 3px !important;
@@ -286,7 +286,6 @@
                 background: var(--mica-card) !important;
             }
 
-            /* 2. bg0: sin padding, ocupa el 100% del ancho del padre */
             .bg0 {
                 width: 100% !important;
                 padding: 0 !important;
@@ -294,7 +293,6 @@
                 box-sizing: border-box !important;
             }
 
-            /* 3. .container de Bootstrap: sin padding, ancho 100% */
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
@@ -304,14 +302,12 @@
                 box-sizing: border-box !important;
             }
 
-            /* 4. Eliminar márgenes negativos de Bootstrap */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 width: 100% !important;
             }
 
-            /* 5. Columnas: padding de 3px para separar las tarjetas del borde del contenedor Mica */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -323,7 +319,6 @@
                 width: 100% !important;
             }
 
-            /* 6. Tarjetas: ocupan el 100% de la columna */
             .isotope-item {
                 width: 100% !important;
                 padding: 0 !important;
@@ -340,50 +335,77 @@
                 margin: 0 !important;
             }
 
-            /* ===== NUEVO: AJUSTES DE ESPACIADO VERTICAL ===== */
-            /* Eliminar padding bottom del contenedor de botones (evita desbalance) */
+            /* ===== AJUSTES DE ESPACIADO VERTICAL ===== */
             .flex-w.flex-sb-m.p-b-52 {
                 padding-bottom: 0 !important;
             }
 
-            /* Espacio entre header y botones: 20px (ya existe en #filterButtonContainer) */
-            /* Espacio entre botones y tarjetas: igual, usando margin-bottom en el contenedor y margin-top en el grid */
             #filterButtonContainer {
                 margin-top: 20px !important;
-                margin-bottom: 20px !important; /* Este es el espacio entre botones y tarjetas */
+                margin-bottom: 20px !important;
             }
 
-            /* Asegurar que el grid tenga el mismo margen superior que el margen inferior de los botones */
             .isotope-grid {
                 margin-top: 20px !important;
             }
 
-            /* Separación vertical entre tarjetas: 20px (usando margin-bottom en lugar de padding) */
             .isotope-item {
                 margin-bottom: 20px !important;
-                padding-bottom: 0 !important; /* Evita duplicar espacio */
+                padding-bottom: 0 !important;
             }
 
-            /* También aplicar a las columnas de Bootstrap */
             .row.isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 padding-bottom: 0 !important;
                 margin-bottom: 20px !important;
             }
 
-            /* ===== FIN DE AJUSTES DE ESPACIADO ===== */
+            /* ===== CORRECCIÓN DE PANELES DESPLEGABLES EN MÓVIL ===== */
+            /* Filtros: centrado y ancho ajustado */
+            .filter-dropdown.panel-filter {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 90vw !important;
+                max-width: 90vw !important;
+                top: calc(100% + 8px) !important;
+            }
 
-            /* 7. Ajustes adicionales */
+            /* Búsqueda: centrado y debajo del botón */
+            .search-wrapper {
+                position: relative !important;
+            }
+
+            .panel-search {
+                left: 50% !important;
+                top: calc(100% + 8px) !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+                width: 90vw !important;
+                max-width: 90vw !important;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0.25s ease, opacity 0.25s ease;
+                pointer-events: none;
+            }
+
+            .panel-search.show {
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateX(-50%) scale(1) !important;
+                pointer-events: auto !important;
+            }
+
+            /* Asegurar que el z-index esté por encima */
+            .panel-search,
+            .filter-dropdown.panel-filter {
+                z-index: 1001 !important;
+            }
+
+            /* ===== AJUSTES ADICIONALES ===== */
             .whatsapp-btn {
                 bottom: 20px !important;
                 right: 20px !important;
                 width: 50px !important;
                 height: 50px !important;
-            }
-
-            .panel-search {
-                width: 90vw !important;
-                max-width: 90vw !important;
-                right: -40px !important;
             }
 
             .mica-floating-btn {
@@ -397,12 +419,6 @@
                 flex-wrap: wrap !important;
                 justify-content: flex-start !important;
             }
-
-            .filter-dropdown.panel-filter {
-                width: 90vw !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-            }
         }
 
         @media (max-width: 480px) {
@@ -414,10 +430,10 @@
                 padding-left: 2px !important;
                 padding-right: 2px !important;
             }
+            .filter-dropdown.panel-filter,
             .panel-search {
                 width: 95vw !important;
                 max-width: 95vw !important;
-                right: -30px !important;
             }
         }
     </style>
@@ -506,12 +522,14 @@
             <div class="container">
                 <div class="flex-w flex-sb-m p-b-52">
                     <div id="filterButtonContainer">
+                        <!-- Botón Filtrar -->
                         <button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
                             <i class="icon-filter zmdi zmdi-filter-list"></i>
                             <i class="icon-close-filter zmdi zmdi-close"></i>
                             <span>Filtrar</span>
                         </button>
 
+                        <!-- Wrapper para el botón Buscar + panel -->
                         <div class="search-wrapper">
                             <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
                                     onclick="
@@ -541,6 +559,7 @@
                             </div>
                         </div>
 
+                        <!-- Dropdown de filtros -->
                         <div class="filter-dropdown panel-filter" id="filterDropdown">
                             <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
                         </div>
