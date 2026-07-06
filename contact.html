@@ -53,18 +53,24 @@
 			border-radius: 0 2px 2px 0;
 		}
 
-		/* ===== TARJETA DE CONTACTO (ESTILOS BASE) ===== */
+		/* ===== TARJETA DE CONTACTO CON ESPACIADO MEJORADO ===== */
 		.contact-card {
 			background: rgba(26,26,26,0.5);
 			backdrop-filter: blur(16px);
 			-webkit-backdrop-filter: blur(16px);
 			border: 1px solid rgba(255,255,255,0.08);
 			border-radius: 20px;
-			padding: 50px 60px;
+			padding: 50px 60px 40px 60px; /* más padding abajo */
 			box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 			width: 100%;
 			max-width: 700px;
 			margin: 0 auto;
+		}
+		.contact-card h4 {
+			margin-bottom: 30px !important; /* separación del título al textarea */
+		}
+		.contact-card .m-b-30 {
+			margin-bottom: 30px !important; /* separación del textarea al botón */
 		}
 		.contact-textarea {
 			width: 100%;
@@ -95,8 +101,6 @@
 			align-items: center !important;
 			padding: 20px 0 !important;
 		}
-
-		/* El contenedor de la sección también debe centrar */
 		section.contact-section {
 			width: 100%;
 			display: flex;
@@ -107,7 +111,15 @@
 
 		/* Responsive */
 		@media (max-width: 768px) {
-			.contact-card { padding: 30px 20px; }
+			.contact-card { 
+				padding: 30px 20px 25px 20px; 
+			}
+			.contact-card h4 {
+				margin-bottom: 20px !important;
+			}
+			.contact-card .m-b-30 {
+				margin-bottom: 20px !important;
+			}
 			main.mica-surface { padding: 15px 0 !important; }
 		}
 
