@@ -263,7 +263,7 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES ===== */
+        /* ===== SOLUCIÓN DEFINITIVA: APLICAR PADDING DIRECTAMENTE AL .container ===== */
         @media (max-width: 768px) {
             /* Forzar body sin márgenes */
             body {
@@ -282,23 +282,14 @@
                 margin: 0 !important;
             }
 
-            /* Contenedor interno: tendrá el padding de 2mm y centrará su contenido */
-            .card-container-inner {
-                width: 100% !important;
-                max-width: 100% !important;
+            /* EL CONTENEDOR .container DE BOOTSTRAP: APLICAMOS EL PADDING DE 2mm AQUÍ */
+            .container {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
-                box-sizing: border-box !important;
-                margin: 0 !important;
-            }
-
-            /* El container de Bootstrap no tendrá padding */
-            .container {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
                 max-width: 100% !important;
                 width: 100% !important;
-                margin: 0 !important;
+                margin: 0 auto !important;
+                box-sizing: border-box !important;
             }
 
             /* Eliminar márgenes negativos de Bootstrap */
@@ -308,7 +299,7 @@
                 width: 100% !important;
             }
 
-            /* Tarjetas: padding de 2mm respecto al contenedor interno */
+            /* Tarjetas: padding de 2mm respecto al .container */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -369,7 +360,7 @@
         }
 
         @media (max-width: 480px) {
-            .card-container-inner {
+            .container {
                 padding-left: 2mm !important;
                 padding-right: 2mm !important;
             }
@@ -467,57 +458,53 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main role="main" aria-label="Contenido principal" class="mica-surface">
-        <!-- .bg0 es el contenedor con el fondo translúcido (efecto mica) -->
         <div class="bg0 m-t-23 p-b-140">
-            <!-- AÑADIMOS UN CONTENEDOR INTERNO CON EL PADDING DE 2mm -->
-            <div class="card-container-inner">
-                <div class="container">
-                    <div class="flex-w flex-sb-m p-b-52">
-                        <div id="filterButtonContainer">
-                            <button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
-                                <i class="icon-filter zmdi zmdi-filter-list"></i>
-                                <i class="icon-close-filter zmdi zmdi-close"></i>
-                                <span>Filtrar</span>
+            <div class="container">
+                <div class="flex-w flex-sb-m p-b-52">
+                    <div id="filterButtonContainer">
+                        <button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
+                            <i class="icon-filter zmdi zmdi-filter-list"></i>
+                            <i class="icon-close-filter zmdi zmdi-close"></i>
+                            <span>Filtrar</span>
+                        </button>
+
+                        <div class="search-wrapper">
+                            <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
+                                    onclick="
+                                        event.stopPropagation();
+                                        event.stopImmediatePropagation();
+                                        var panel = document.querySelector('.panel-search');
+                                        panel.classList.toggle('show');
+                                        this.classList.toggle('show-search');
+                                        if (panel.classList.contains('show')) {
+                                            panel.style.visibility = 'visible';
+                                            panel.style.opacity = '1';
+                                        } else {
+                                            panel.style.visibility = '';
+                                            panel.style.opacity = '';
+                                        }
+                                        return false;
+                                    ">
+                                <i class="icon-search zmdi zmdi-search"></i>
+                                <i class="icon-close-search zmdi zmdi-close"></i>
+                                <span>Buscar</span>
                             </button>
 
-                            <div class="search-wrapper">
-                                <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
-                                        onclick="
-                                            event.stopPropagation();
-                                            event.stopImmediatePropagation();
-                                            var panel = document.querySelector('.panel-search');
-                                            panel.classList.toggle('show');
-                                            this.classList.toggle('show-search');
-                                            if (panel.classList.contains('show')) {
-                                                panel.style.visibility = 'visible';
-                                                panel.style.opacity = '1';
-                                            } else {
-                                                panel.style.visibility = '';
-                                                panel.style.opacity = '';
-                                            }
-                                            return false;
-                                        ">
-                                    <i class="icon-search zmdi zmdi-search"></i>
-                                    <i class="icon-close-search zmdi zmdi-close"></i>
-                                    <span>Buscar</span>
-                                </button>
-
-                                <div class="panel-search" role="search">
-                                    <div class="dis-flex">
-                                        <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
-                                    </div>
+                            <div class="panel-search" role="search">
+                                <div class="dis-flex">
+                                    <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="filter-dropdown panel-filter" id="filterDropdown">
-                                <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
-                            </div>
+                        <div class="filter-dropdown panel-filter" id="filterDropdown">
+                            <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
                         </div>
                     </div>
-
-                    <div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
-                    <div style="clear: both;"></div>
                 </div>
+
+                <div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
+                <div style="clear: both;"></div>
             </div>
         </div>
     </main>
