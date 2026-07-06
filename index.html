@@ -342,7 +342,6 @@
             #filterButtonContainer {
                 margin-top: 20px !important;
                 margin-bottom: 20px !important;
-                width: 100% !important; /* Para que los paneles se centren respecto al ancho completo */
             }
 
             .isotope-grid {
@@ -375,9 +374,13 @@
                 display: block !important;
             }
 
-            /* ===== PANEL DE BÚSQUEDA CENTRADO DEBAJO DEL BOTÓN EN MÓVIL ===== */
+            /* ===== PANEL DE BÚSQUEDA CORREGIDO PARA MÓVIL ===== */
             .search-wrapper {
                 position: relative !important;
+                width: 100% !important; /* Ocupa todo el ancho */
+                display: flex !important;
+                justify-content: flex-end !important; /* Botón a la derecha */
+                align-items: center !important;
             }
 
             .panel-search {
@@ -391,8 +394,9 @@
                 opacity: 0;
                 transition: visibility 0.25s ease, opacity 0.25s ease;
                 pointer-events: none;
-                margin: 0 auto !important;
+                margin: 0 !important;
                 z-index: 9999 !important;
+                position: absolute !important;
             }
 
             .panel-search.show {
@@ -430,6 +434,12 @@
 
         /* ===== RESTAURAR ESTILOS DESKTOP PARA EL PANEL DE BÚSQUEDA ===== */
         @media (min-width: 769px) {
+            .search-wrapper {
+                display: inline-flex !important;
+                width: auto !important;
+                justify-content: flex-start !important;
+            }
+
             .panel-search {
                 left: auto !important;
                 right: 0 !important;
