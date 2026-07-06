@@ -78,7 +78,6 @@
             gap: 8px;
             position: relative;
             flex-wrap: wrap;
-            width: 100% !important;
         }
 
         /* ===== DROPDOWN DE FILTROS ===== */
@@ -113,13 +112,21 @@
             display: flex; flex-wrap: wrap; gap: 6px;
         }
 
-        /* ===== PANEL DE BÚSQUEDA ===== */
+        /* ===== CONTENEDOR DEL BOTÓN BUSCAR + PANEL ===== */
+        .search-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* ===== PANEL DE BÚSQUEDA (VERSIÓN DESKTOP) ===== */
         .panel-search {
             position: absolute;
-            top: calc(100% + 8px);
+            top: 50%;
             right: 0;
-            width: 320px;
-            max-width: calc(100vw - 40px);
+            transform: translateY(-50%) translateX(calc(100% + 8px)) scale(0.96);
+            width: 300px;
+            max-width: 70vw;
             background: var(--mica-card) !important;
             backdrop-filter: blur(24px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
@@ -127,16 +134,17 @@
             border-radius: var(--radius-lg) !important;
             padding: 10px 16px !important;
             box-shadow: var(--shadow-mica) !important;
-            display: none;
-            z-index: 999;
+            visibility: hidden;
             opacity: 0;
-            transition: opacity 0.25s ease;
+            z-index: 999;
+            transition: visibility 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
             pointer-events: none;
         }
         .panel-search.show {
-            display: block !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(-50%) translateX(calc(100% + 8px)) scale(1);
+            pointer-events: auto;
         }
         .panel-search .dis-flex {
             display: flex !important;
@@ -255,7 +263,7 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES ===== */
+        /* ===== SOLUCIÓN PARA MÓVILES (PANELES CENTRADOS) ===== */
         @media (max-width: 768px) {
             /* Eliminar cualquier margen/padding del body y html */
             body, html {
@@ -351,30 +359,31 @@
                 margin-bottom: 20px !important;
             }
 
-            /* ===== CORRECCIÓN DE PANELES DESPLEGABLES EN MÓVIL ===== */
-            /* Filtros: centrado y ancho ajustado */
+            /* ===== PANEL DE FILTROS CENTRADO EN MÓVIL ===== */
             .filter-dropdown.panel-filter {
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                width: calc(100% - 20px) !important;
-                max-width: calc(100% - 20px) !important;
+                width: 90vw !important;
+                max-width: 90vw !important;
                 top: calc(100% + 8px) !important;
-                right: auto !important;
             }
 
-            /* Búsqueda: centrado y debajo del botón */
+            /* ===== PANEL DE BÚSQUEDA CENTRADO DEBAJO DEL BOTÓN EN MÓVIL ===== */
+            .search-wrapper {
+                position: relative !important;
+            }
+
             .panel-search {
                 left: 50% !important;
                 top: calc(100% + 8px) !important;
                 right: auto !important;
                 transform: translateX(-50%) !important;
-                width: calc(100% - 20px) !important;
-                max-width: calc(100% - 20px) !important;
+                width: 90vw !important;
+                max-width: 90vw !important;
                 visibility: hidden;
                 opacity: 0;
                 transition: visibility 0.25s ease, opacity 0.25s ease;
                 pointer-events: none;
-                display: block !important; /* Para que sea visible con opacity */
             }
 
             .panel-search.show {
@@ -382,7 +391,6 @@
                 opacity: 1 !important;
                 transform: translateX(-50%) scale(1) !important;
                 pointer-events: auto !important;
-                display: block !important;
             }
 
             /* Asegurar que el z-index esté por encima */
@@ -412,6 +420,28 @@
             }
         }
 
+        /* ===== RESTAURAR ESTILOS DESKTOP PARA EL PANEL DE BÚSQUEDA ===== */
+        @media (min-width: 769px) {
+            .panel-search {
+                left: auto !important;
+                right: 0 !important;
+                top: 50% !important;
+                transform: translateY(-50%) translateX(calc(100% + 8px)) scale(0.96) !important;
+                width: 300px !important;
+                max-width: 70vw !important;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+                pointer-events: none;
+            }
+            .panel-search.show {
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(-50%) translateX(calc(100% + 8px)) scale(1) !important;
+                pointer-events: auto !important;
+            }
+        }
+
         @media (max-width: 480px) {
             main.mica-surface {
                 padding-left: 2px !important;
@@ -423,8 +453,8 @@
             }
             .filter-dropdown.panel-filter,
             .panel-search {
-                width: calc(100% - 16px) !important;
-                max-width: calc(100% - 16px) !important;
+                width: 95vw !important;
+                max-width: 95vw !important;
             }
         }
     </style>
@@ -520,32 +550,34 @@
                             <span>Filtrar</span>
                         </button>
 
-                        <!-- Botón Buscar (ya no usa wrapper) -->
-                        <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
-                                onclick="
-                                    event.stopPropagation();
-                                    event.stopImmediatePropagation();
-                                    var panel = document.querySelector('.panel-search');
-                                    panel.classList.toggle('show');
-                                    this.classList.toggle('show-search');
-                                    if (panel.classList.contains('show')) {
-                                        panel.style.visibility = 'visible';
-                                        panel.style.opacity = '1';
-                                    } else {
-                                        panel.style.visibility = '';
-                                        panel.style.opacity = '';
-                                    }
-                                    return false;
-                                ">
-                            <i class="icon-search zmdi zmdi-search"></i>
-                            <i class="icon-close-search zmdi zmdi-close"></i>
-                            <span>Buscar</span>
-                        </button>
+                        <!-- Wrapper para el botón Buscar + panel -->
+                        <div class="search-wrapper">
+                            <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
+                                    onclick="
+                                        event.stopPropagation();
+                                        event.stopImmediatePropagation();
+                                        var panel = document.querySelector('.panel-search');
+                                        panel.classList.toggle('show');
+                                        this.classList.toggle('show-search');
+                                        if (panel.classList.contains('show')) {
+                                            panel.style.visibility = 'visible';
+                                            panel.style.opacity = '1';
+                                        } else {
+                                            panel.style.visibility = '';
+                                            panel.style.opacity = '';
+                                        }
+                                        return false;
+                                    ">
+                                <i class="icon-search zmdi zmdi-search"></i>
+                                <i class="icon-close-search zmdi zmdi-close"></i>
+                                <span>Buscar</span>
+                            </button>
 
-                        <!-- Panel de búsqueda -->
-                        <div class="panel-search" role="search">
-                            <div class="dis-flex">
-                                <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
+                            <!-- Panel de búsqueda (se posiciona según desktop o móvil) -->
+                            <div class="panel-search" role="search">
+                                <div class="dis-flex">
+                                    <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
+                                </div>
                             </div>
                         </div>
 
