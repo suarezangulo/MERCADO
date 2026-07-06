@@ -263,69 +263,56 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA: PADDING EN EL CONTAINER Y TARJETAS A 100% ===== */
+        /* ===== SOLUCIÓN DEFINITIVA EN MÓVILES ===== */
         @media (max-width: 768px) {
-            body {
-                margin: 0 !important;
-                padding: 0 !important;
-                overflow-x: hidden !important;
-            }
-
+            /* 1. Contenedor translúcido (bg0): padding de 3px en los laterales para separarlo de la pantalla */
             .bg0 {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                width: 100% !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                background: var(--mica-card) !important;
-            }
-
-            .container {
                 padding-left: 3px !important;
                 padding-right: 3px !important;
+                box-sizing: border-box !important;
                 width: 100% !important;
+            }
+
+            /* 2. main sin padding para no interferir */
+            main.mica-surface {
+                padding: 0 !important;
+            }
+
+            /* 3. .container de Bootstrap: sin padding, ancho 100% para que herede el padding del bg0 */
+            .container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
                 max-width: 100% !important;
+                width: 100% !important;
                 margin: 0 !important;
                 box-sizing: border-box !important;
             }
 
+            /* 4. Eliminar márgenes negativos de Bootstrap */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
-                width: 100% !important;
             }
 
+            /* 5. Columnas: padding de 3px para separar las tarjetas del bg0 */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
+                padding-left: 3px !important;
+                padding-right: 3px !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
-                /* Forzar ancho completo */
-                width: 100% !important;
             }
 
             .isotope-item {
                 width: 100% !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
 
-            /* Asegurar que el bloque interno ocupe todo el ancho */
             .block2 {
                 width: 100% !important;
-                box-sizing: border-box !important;
-            }
-
-            /* Asegurar que la imagen ocupe el ancho completo */
-            .block2-pic {
-                width: 100% !important;
-                padding-top: 140% !important; /* Relación de aspecto */
             }
 
             .isotope-grid {
@@ -366,11 +353,14 @@
         }
 
         @media (max-width: 480px) {
-            .container {
+            .bg0 {
                 padding-left: 2px !important;
                 padding-right: 2px !important;
             }
-
+            .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
             .panel-search {
                 width: 95vw !important;
                 max-width: 95vw !important;
