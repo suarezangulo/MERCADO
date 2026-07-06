@@ -263,7 +263,7 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES (PADDING EN main.mica-surface) ===== */
+        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES (PADDING EN main.mica-surface + ESPACIADO) ===== */
         @media (max-width: 768px) {
             /* Eliminar cualquier margen/padding del body y html */
             body, html {
@@ -283,7 +283,7 @@
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
-                background: var(--mica-card) !important; /* Asegurar el fondo */
+                background: var(--mica-card) !important;
             }
 
             /* 2. bg0: sin padding, ocupa el 100% del ancho del padre */
@@ -339,6 +339,38 @@
                 width: 100% !important;
                 margin: 0 !important;
             }
+
+            /* ===== NUEVO: AJUSTES DE ESPACIADO VERTICAL ===== */
+            /* Eliminar padding bottom del contenedor de botones (evita desbalance) */
+            .flex-w.flex-sb-m.p-b-52 {
+                padding-bottom: 0 !important;
+            }
+
+            /* Espacio entre header y botones: 20px (ya existe en #filterButtonContainer) */
+            /* Espacio entre botones y tarjetas: igual, usando margin-bottom en el contenedor y margin-top en el grid */
+            #filterButtonContainer {
+                margin-top: 20px !important;
+                margin-bottom: 20px !important; /* Este es el espacio entre botones y tarjetas */
+            }
+
+            /* Asegurar que el grid tenga el mismo margen superior que el margen inferior de los botones */
+            .isotope-grid {
+                margin-top: 20px !important;
+            }
+
+            /* Separación vertical entre tarjetas: 20px (usando margin-bottom en lugar de padding) */
+            .isotope-item {
+                margin-bottom: 20px !important;
+                padding-bottom: 0 !important; /* Evita duplicar espacio */
+            }
+
+            /* También aplicar a las columnas de Bootstrap */
+            .row.isotope-grid .col-sm-6.col-md-4.col-lg-3 {
+                padding-bottom: 0 !important;
+                margin-bottom: 20px !important;
+            }
+
+            /* ===== FIN DE AJUSTES DE ESPACIADO ===== */
 
             /* 7. Ajustes adicionales */
             .whatsapp-btn {
@@ -565,33 +597,16 @@
     <script src="js/index.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- ===== SCRIPT DE DEPURACIÓN Y CORRECCIÓN DE EVENTOS ===== -->
     <script>
         $(document).ready(function() {
-            // 1. Corregir menú móvil
             $(".btn-show-menu-mobile").off("click").on("click", function(e) {
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 $(this).toggleClass("is-active");
                 $(".menu-mobile").slideToggle();
             });
-
-            // 2. Desactivar eventos duplicados del botón buscar
             $('#searchButton').off('click');
             $(document).off('click', '#searchButton');
-
-            // 3. DEPURACIÓN: Mostrar en consola los valores de padding de main.mica-surface
-            var $main = $('main.mica-surface');
-            if ($main.length) {
-                console.log('=== DEPURACIÓN DE ESPACIADO EN MÓVIL ===');
-                console.log('Padding izquierdo de main.mica-surface:', $main.css('padding-left'));
-                console.log('Padding derecho de main.mica-surface:', $main.css('padding-right'));
-                console.log('Ancho de main.mica-surface:', $main.css('width'));
-                console.log('Box-sizing de main.mica-surface:', $main.css('box-sizing'));
-                console.log('Padding izquierdo de .bg0:', $('.bg0').css('padding-left'));
-                console.log('Padding izquierdo de .container:', $('.container').css('padding-left'));
-                console.log('Padding izquierdo de .col-sm-6...:', $('.isotope-grid .col-sm-6.col-md-4.col-lg-3').first().css('padding-left'));
-            }
         });
     </script>
 
