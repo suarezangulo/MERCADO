@@ -60,17 +60,17 @@
 			-webkit-backdrop-filter: blur(16px);
 			border: 1px solid rgba(255,255,255,0.08);
 			border-radius: 20px;
-			padding: 50px 60px 40px 60px; /* más padding abajo */
+			padding: 50px 60px 40px 60px;
 			box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 			width: 100%;
 			max-width: 700px;
 			margin: 0 auto;
 		}
 		.contact-card h4 {
-			margin-bottom: 30px !important; /* separación del título al textarea */
+			margin-bottom: 30px !important;
 		}
 		.contact-card .m-b-30 {
-			margin-bottom: 30px !important; /* separación del textarea al botón */
+			margin-bottom: 30px !important;
 		}
 		.contact-textarea {
 			width: 100%;
@@ -129,79 +129,40 @@
 			flex-shrink: 0 !important;
 		}
 
-		/* ===== PANEL DE BÚSQUEDA (SIN BOTÓN) ===== */
-		.panel-search {
-			background: var(--mica-card) !important;
-			backdrop-filter: blur(24px) saturate(180%) !important;
-			-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-			border: 1px solid var(--border-mica) !important;
-			border-radius: var(--radius-lg) !important;
-			padding: 20px 25px !important;
-			margin-top: 10px !important;
-			box-shadow: var(--shadow-mica) !important;
-		}
-		.panel-search .dis-flex {
+		/* ===== MEJORA DEL HEADER: MÁS SEPARACIÓN ===== */
+		.limiter-menu-desktop {
+			width: 100% !important;
 			display: flex !important;
 			align-items: center !important;
-			background: rgba(255, 255, 255, 0.05) !important;
-			border-radius: 30px !important;
-			padding: 4px 4px 4px 20px !important;
-			border: 1px solid var(--border-mica) !important;
-			transition: border-color 0.3s ease !important;
+			justify-content: space-between !important;
 		}
-		.panel-search .dis-flex:focus-within {
-			border-color: var(--accent-blue) !important;
-			box-shadow: 0 0 20px var(--border-glow) !important;
+		.limiter-menu-desktop .logo {
+			flex-shrink: 0 !important;
 		}
-		.panel-search input {
-			background: transparent !important;
-			border: none !important;
-			color: #fff !important;
-			font-family: 'Poppins', sans-serif !important;
-			font-size: 16px !important;
-			padding: 12px 0 !important;
-			width: 100% !important;
-			outline: none !important;
+		.limiter-menu-desktop .menu-desktop {
+			flex: 1 !important;
+			display: flex !important;
+			justify-content: center !important;
 		}
-		.panel-search input::placeholder {
-			color: var(--text-muted) !important;
-			font-weight: 300 !important;
+		.main-menu {
+			display: flex !important;
+			align-items: center !important;
+			gap: 30px !important;
+			margin: 0 !important;
+			padding: 0 !important;
 		}
-		
-        /* ===== MEJORA DEL HEADER: MÁS SEPARACIÓN ===== */
-        .limiter-menu-desktop {
-            width: 100% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-        }
-        .limiter-menu-desktop .logo {
-            flex-shrink: 0 !important;
-        }
-        .limiter-menu-desktop .menu-desktop {
-            flex: 1 !important;
-            display: flex !important;
-            justify-content: center !important;
-        }
-        .main-menu {
-            display: flex !important;
-            align-items: center !important;
-            gap: 30px !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        .main-menu > li {
-            margin: 0 !important;
-            padding: 20px 0 !important;
-            list-style: none !important;
-        }
-        .wrap-icon-header {
-            flex-shrink: 0 !important;
-            margin-left: 20px !important;
-        }
-        .limiter-menu-desktop > a {
-            flex-shrink: 0 !important;
-        }
+		.main-menu > li {
+			margin: 0 !important;
+			padding: 20px 0 !important;
+			list-style: none !important;
+		}
+		.wrap-icon-header {
+			flex-shrink: 0 !important;
+			margin-left: 20px !important;
+		}
+		.limiter-menu-desktop > a {
+			flex-shrink: 0 !important;
+		}
 	</style>
 </head>
 <body class="animsition">
@@ -232,9 +193,6 @@
 						</ul>
 					</div>
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<button class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search" aria-label="Abrir búsqueda">
-							<i class="zmdi zmdi-search"></i>
-						</button>
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0" role="button" tabindex="0" aria-label="Carrito" onclick="window.location.href='cart.html'" style="cursor:pointer;">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
@@ -253,7 +211,6 @@
 				</a>
 			</div>
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<button class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search" aria-label="Abrir búsqueda"><i class="zmdi zmdi-search"></i></button>
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2" role="button" tabindex="0" aria-label="Carrito" onclick="window.location.href='cart.html'" style="cursor:pointer;"><i class="zmdi zmdi-shopping-cart"></i></div>
 			</div>
 			<div class="btn-show-menu-mobile hamburger hamburger--squeeze" role="button" tabindex="0" aria-label="Abrir menú móvil">
@@ -263,15 +220,6 @@
 		<div class="menu-mobile" role="navigation" aria-label="Menú móvil">
 			<ul class="topbar-mobile"><li><div class="left-top-bar headnotification">Disfruta del mejor contenido audiovisual. Paga en CUP.</div></li></ul>
 			<ul class="main-menu-m" role="menubar"><li role="none"><a href="contact.html" role="menuitem">Contacto</a></li></ul>
-		</div>
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search" role="dialog" aria-label="Búsqueda" aria-modal="true">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search" aria-label="Cerrar búsqueda"><img src="images/icons/icon-close2.png" alt="Cerrar"></button>
-				<form class="wrap-search-header flex-w p-l-15" action="./" role="search">
-					<button class="flex-c-m trans-04" type="submit" aria-label="Buscar"><i class="zmdi zmdi-search"></i></button>
-					<input class="plh3" type="text" name="search" placeholder="Buscar título, actor, director...">
-				</form>
-			</div>
 		</div>
 	</header>
 
