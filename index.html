@@ -73,12 +73,14 @@
         /* ===== CONTENEDOR DE BOTONES FLOTANTES ===== */
         #filterButtonContainer {
             margin-top: 20px !important;
+            margin-bottom: 20px !important;
             display: flex;
             align-items: center;
             gap: 8px;
             position: relative;
             flex-wrap: wrap;
             overflow: visible !important;
+            width: 100% !important;
         }
 
         /* ===== DROPDOWN DE FILTROS ===== */
@@ -264,7 +266,7 @@
             object-fit: cover;
         }
 
-        /* ===== ESTILOS PARA MÓVIL (con !important para sobrescribir) ===== */
+        /* ===== ESTILOS PARA MÓVIL (CON !important PARA SOBRESCRIBIR) ===== */
         @media (max-width: 768px) {
             body, html {
                 margin: 0 !important;
@@ -342,6 +344,10 @@
             #filterButtonContainer {
                 margin-top: 20px !important;
                 margin-bottom: 20px !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 4px !important;
+                width: 100% !important;
             }
 
             .isotope-grid {
@@ -374,15 +380,16 @@
                 display: block !important;
             }
 
-            /* ===== PANEL DE BÚSQUEDA CORREGIDO PARA MÓVIL ===== */
+            /* ===== CONTENEDOR DEL BOTÓN BUSCAR (ocupa el 100%) ===== */
             .search-wrapper {
-                position: relative !important;
-                width: 100% !important; /* Ocupa todo el ancho */
+                width: 100% !important;
                 display: flex !important;
-                justify-content: flex-end !important; /* Botón a la derecha */
+                justify-content: flex-end !important;
                 align-items: center !important;
+                position: relative !important;
             }
 
+            /* ===== PANEL DE BÚSQUEDA CENTRADO DEBAJO DEL BOTÓN ===== */
             .panel-search {
                 left: 50% !important;
                 right: auto !important;
@@ -434,6 +441,12 @@
 
         /* ===== RESTAURAR ESTILOS DESKTOP PARA EL PANEL DE BÚSQUEDA ===== */
         @media (min-width: 769px) {
+            #filterButtonContainer {
+                flex-direction: row !important;
+                align-items: center !important;
+                flex-wrap: wrap !important;
+            }
+
             .search-wrapper {
                 display: inline-flex !important;
                 width: auto !important;
