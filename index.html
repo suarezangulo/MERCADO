@@ -263,7 +263,7 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA: APLICAR PADDING DIRECTAMENTE AL .container ===== */
+        /* ===== SOLUCIÓN DEFINITIVA EN PÍXELES ===== */
         @media (max-width: 768px) {
             /* Forzar body sin márgenes */
             body {
@@ -282,10 +282,10 @@
                 margin: 0 !important;
             }
 
-            /* EL CONTENEDOR .container DE BOOTSTRAP: APLICAMOS EL PADDING DE 2mm AQUÍ */
+            /* EL CONTENEDOR .container DE BOOTSTRAP: 3px de separación de los bordes */
             .container {
-                padding-left: 2mm !important;
-                padding-right: 2mm !important;
+                padding-left: 3px !important;
+                padding-right: 3px !important;
                 max-width: 100% !important;
                 width: 100% !important;
                 margin: 0 auto !important;
@@ -299,12 +299,12 @@
                 width: 100% !important;
             }
 
-            /* Tarjetas: padding de 2mm respecto al .container */
+            /* Tarjetas: 3px de separación respecto al .container */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
-                padding-left: 2mm !important;
-                padding-right: 2mm !important;
+                padding-left: 3px !important;
+                padding-right: 3px !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
@@ -361,13 +361,13 @@
 
         @media (max-width: 480px) {
             .container {
-                padding-left: 2mm !important;
-                padding-right: 2mm !important;
+                padding-left: 3px !important;
+                padding-right: 3px !important;
             }
 
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
-                padding-left: 1.5mm !important;
-                padding-right: 1.5mm !important;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
             }
 
             .panel-search {
