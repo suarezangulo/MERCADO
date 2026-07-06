@@ -735,3 +735,26 @@ body::before {
     color: rgba(255, 255, 255, 0.4);
     font-size: 14px;
 }
+/* ===== MEJORA DEL HEADER: MÁS SEPARACIÓN ===== */
+.limiter-menu-desktop {
+    justify-content: space-between !important; /* Distribuye logo, menú y carrito */
+}
+
+.main-menu {
+    gap: 20px !important; /* Separa los elementos del menú (Contacto, Panel) */
+}
+
+.main-menu > li {
+    margin: 0 !important; /* Elimina márgenes antiguos para usar gap */
+    padding: 20px 0 !important; /* Mantén el padding vertical */
+}
+
+.main-menu > li > a {
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+/* Ajuste para el carrito */
+.wrap-icon-header {
+    margin-left: 20px !important; /* Espacio extra antes del carrito */
+}
