@@ -32,7 +32,7 @@ function addBreadCrumbItem(container, label, url, active) {
         li.appendChild(a);
         var sep = document.createElement("span");
         sep.setAttribute("class", "breadcrumb-sep");
-        sep.innerHTML = '<i class="fa fa-angle-right"></i>';
+        sep.innerHTML = '<i class="fa fa-chevron-right"></i>'; // Cambio aquí
         li.appendChild(sep);
     }
     container.appendChild(li);
