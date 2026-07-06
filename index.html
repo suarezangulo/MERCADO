@@ -78,6 +78,7 @@
             gap: 8px;
             position: relative;
             flex-wrap: wrap;
+            width: 100% !important;
         }
 
         /* ===== DROPDOWN DE FILTROS ===== */
@@ -112,21 +113,13 @@
             display: flex; flex-wrap: wrap; gap: 6px;
         }
 
-        /* ===== CONTENEDOR DEL BOTÓN BUSCAR + PANEL ===== */
-        .search-wrapper {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-        }
-
         /* ===== PANEL DE BÚSQUEDA ===== */
         .panel-search {
             position: absolute;
-            top: 50%;
+            top: calc(100% + 8px);
             right: 0;
-            transform: translateY(-50%) translateX(calc(100% + 8px)) scale(0.96);
-            width: 300px;
-            max-width: 70vw;
+            width: 320px;
+            max-width: calc(100vw - 40px);
             background: var(--mica-card) !important;
             backdrop-filter: blur(24px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
@@ -134,17 +127,16 @@
             border-radius: var(--radius-lg) !important;
             padding: 10px 16px !important;
             box-shadow: var(--shadow-mica) !important;
-            visibility: hidden;
-            opacity: 0;
+            display: none;
             z-index: 999;
-            transition: visibility 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+            opacity: 0;
+            transition: opacity 0.25s ease;
             pointer-events: none;
         }
         .panel-search.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(-50%) translateX(calc(100% + 8px)) scale(1);
-            pointer-events: auto;
+            display: block !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
         }
         .panel-search .dis-flex {
             display: flex !important;
@@ -364,27 +356,25 @@
             .filter-dropdown.panel-filter {
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                width: 90vw !important;
-                max-width: 90vw !important;
+                width: calc(100% - 20px) !important;
+                max-width: calc(100% - 20px) !important;
                 top: calc(100% + 8px) !important;
+                right: auto !important;
             }
 
             /* Búsqueda: centrado y debajo del botón */
-            .search-wrapper {
-                position: relative !important;
-            }
-
             .panel-search {
                 left: 50% !important;
                 top: calc(100% + 8px) !important;
                 right: auto !important;
                 transform: translateX(-50%) !important;
-                width: 90vw !important;
-                max-width: 90vw !important;
+                width: calc(100% - 20px) !important;
+                max-width: calc(100% - 20px) !important;
                 visibility: hidden;
                 opacity: 0;
                 transition: visibility 0.25s ease, opacity 0.25s ease;
                 pointer-events: none;
+                display: block !important; /* Para que sea visible con opacity */
             }
 
             .panel-search.show {
@@ -392,6 +382,7 @@
                 opacity: 1 !important;
                 transform: translateX(-50%) scale(1) !important;
                 pointer-events: auto !important;
+                display: block !important;
             }
 
             /* Asegurar que el z-index esté por encima */
@@ -432,8 +423,8 @@
             }
             .filter-dropdown.panel-filter,
             .panel-search {
-                width: 95vw !important;
-                max-width: 95vw !important;
+                width: calc(100% - 16px) !important;
+                max-width: calc(100% - 16px) !important;
             }
         }
     </style>
@@ -529,33 +520,32 @@
                             <span>Filtrar</span>
                         </button>
 
-                        <!-- Wrapper para el botón Buscar + panel -->
-                        <div class="search-wrapper">
-                            <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
-                                    onclick="
-                                        event.stopPropagation();
-                                        event.stopImmediatePropagation();
-                                        var panel = document.querySelector('.panel-search');
-                                        panel.classList.toggle('show');
-                                        this.classList.toggle('show-search');
-                                        if (panel.classList.contains('show')) {
-                                            panel.style.visibility = 'visible';
-                                            panel.style.opacity = '1';
-                                        } else {
-                                            panel.style.visibility = '';
-                                            panel.style.opacity = '';
-                                        }
-                                        return false;
-                                    ">
-                                <i class="icon-search zmdi zmdi-search"></i>
-                                <i class="icon-close-search zmdi zmdi-close"></i>
-                                <span>Buscar</span>
-                            </button>
+                        <!-- Botón Buscar (ya no usa wrapper) -->
+                        <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
+                                onclick="
+                                    event.stopPropagation();
+                                    event.stopImmediatePropagation();
+                                    var panel = document.querySelector('.panel-search');
+                                    panel.classList.toggle('show');
+                                    this.classList.toggle('show-search');
+                                    if (panel.classList.contains('show')) {
+                                        panel.style.visibility = 'visible';
+                                        panel.style.opacity = '1';
+                                    } else {
+                                        panel.style.visibility = '';
+                                        panel.style.opacity = '';
+                                    }
+                                    return false;
+                                ">
+                            <i class="icon-search zmdi zmdi-search"></i>
+                            <i class="icon-close-search zmdi zmdi-close"></i>
+                            <span>Buscar</span>
+                        </button>
 
-                            <div class="panel-search" role="search">
-                                <div class="dis-flex">
-                                    <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
-                                </div>
+                        <!-- Panel de búsqueda -->
+                        <div class="panel-search" role="search">
+                            <div class="dis-flex">
+                                <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
                             </div>
                         </div>
 
