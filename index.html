@@ -33,12 +33,21 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <style>
+        /* ===== RESET PARA MÓVILES ===== */
+        * {
+            box-sizing: border-box !important;
+        }
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
         /* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO ===== */
         body {
             display: flex; flex-direction: column; min-height: 100vh;
-            overflow-x: hidden;
-            margin: 0 !important;
-            padding: 0 !important;
         }
         main, .mica-surface, .bg0 {
             flex: 1 0 auto;
@@ -263,32 +272,56 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA EN PÍXELES ===== */
+        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES ===== */
         @media (max-width: 768px) {
-            /* Forzar body sin márgenes */
-            body {
-                margin: 0 !important;
-                padding: 0 !important;
-                overflow-x: hidden !important;
-            }
-
-            /* El contenedor principal de las tarjetas (bg0) será flex y centrará su contenido */
-            .bg0 {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
+            /* Forzar que todos los elementos tengan ancho completo y estén centrados */
+            .header-v4,
+            .wrap-menu-desktop,
+            .container-menu-desktop,
+            .wrap-header-mobile,
+            .top-bar,
+            .content-topbar,
+            .main-menu,
+            .wrap-icon-header,
+            .menu-mobile,
+            .bg0,
+            .container,
+            .row,
+            .isotope-grid,
+            .isotope-item,
+            .block2 {
                 width: 100% !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            /* EL CONTENEDOR .container DE BOOTSTRAP: 3px de separación de los bordes */
-            .container {
-                padding-left: 3px !important;
-                padding-right: 3px !important;
                 max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Header móvil: centrar contenido */
+            .wrap-header-mobile {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 0 10px !important;
+            }
+
+            .logo-mobile {
+                flex: 1 !important;
+            }
+
+            .wrap-icon-header {
+                display: flex !important;
+                gap: 10px !important;
+            }
+
+            /* El contenedor de las tarjetas: 4px de separación de los bordes */
+            .container {
+                padding-left: 4px !important;
+                padding-right: 4px !important;
                 width: 100% !important;
-                margin: 0 auto !important;
+                max-width: 100% !important;
                 box-sizing: border-box !important;
             }
 
@@ -296,15 +329,14 @@
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
-                width: 100% !important;
             }
 
-            /* Tarjetas: 3px de separación respecto al .container */
+            /* Tarjetas: 4px de separación entre ellas y el container */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
-                padding-left: 3px !important;
-                padding-right: 3px !important;
+                padding-left: 4px !important;
+                padding-right: 4px !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
@@ -314,8 +346,7 @@
                 width: 100% !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
+                margin: 0 !important;
             }
 
             .block2 {
@@ -323,7 +354,6 @@
             }
 
             .isotope-grid {
-                width: 100% !important;
                 margin: 0 !important;
             }
 
@@ -360,14 +390,18 @@
         }
 
         @media (max-width: 480px) {
+            .wrap-header-mobile {
+                padding: 0 6px !important;
+            }
+
             .container {
                 padding-left: 3px !important;
                 padding-right: 3px !important;
             }
 
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
+                padding-left: 3px !important;
+                padding-right: 3px !important;
             }
 
             .panel-search {
