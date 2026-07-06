@@ -263,34 +263,38 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES ===== */
+        /* ===== SOLUCIÓN DEFINITIVA PARA MÓVILES (PADDING EN main.mica-surface) ===== */
         @media (max-width: 768px) {
-            /* 1. Cuerpo sin márgenes ni padding */
-            body {
+            /* Eliminar cualquier margen/padding del body y html */
+            body, html {
                 margin: 0 !important;
                 padding: 0 !important;
                 overflow-x: hidden !important;
+                width: 100% !important;
             }
 
-            /* 2. Contenedor con fondo Mica (bg0) ocupa todo el ancho, sin padding */
+            /* 1. El contenedor con el fondo Mica (main.mica-surface) tendrá padding de 3px a los lados */
+            main.mica-surface {
+                padding-left: 3px !important;
+                padding-right: 3px !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                background: var(--mica-card) !important; /* Asegurar el fondo */
+            }
+
+            /* 2. bg0: sin padding, ocupa el 100% del ancho del padre */
             .bg0 {
                 width: 100% !important;
                 padding: 0 !important;
                 margin: 0 !important;
-                background: var(--mica-card) !important;
                 box-sizing: border-box !important;
             }
 
-            /* 3. NUEVO CONTENEDOR INTERNO: este tendrá el padding de 3px (separación de la pantalla) */
-            .card-container-inner {
-                padding-left: 3px !important;
-                padding-right: 3px !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-                margin: 0 !important;
-            }
-
-            /* 4. El .container de Bootstrap: sin padding, ancho 100% */
+            /* 3. .container de Bootstrap: sin padding, ancho 100% */
             .container {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
@@ -300,14 +304,14 @@
                 box-sizing: border-box !important;
             }
 
-            /* 5. Eliminar márgenes negativos de Bootstrap y cualquier padding extra */
+            /* 4. Eliminar márgenes negativos de Bootstrap */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 width: 100% !important;
             }
 
-            /* 6. Columnas: padding lateral de 3px para separar las tarjetas del contenedor */
+            /* 5. Columnas: padding de 3px para separar las tarjetas del borde del contenedor Mica */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -319,7 +323,7 @@
                 width: 100% !important;
             }
 
-            /* 7. Tarjetas: ocupan el 100% de la columna */
+            /* 6. Tarjetas: ocupan el 100% de la columna */
             .isotope-item {
                 width: 100% !important;
                 padding: 0 !important;
@@ -336,7 +340,7 @@
                 margin: 0 !important;
             }
 
-            /* 8. Ajustes adicionales para botones y demás */
+            /* 7. Ajustes adicionales */
             .whatsapp-btn {
                 bottom: 20px !important;
                 right: 20px !important;
@@ -370,7 +374,7 @@
         }
 
         @media (max-width: 480px) {
-            .card-container-inner {
+            main.mica-surface {
                 padding-left: 2px !important;
                 padding-right: 2px !important;
             }
@@ -467,55 +471,52 @@
     <!-- ===== MAIN CONTENT ===== -->
     <main role="main" aria-label="Contenido principal" class="mica-surface">
         <div class="bg0 m-t-23 p-b-140">
-            <!-- NUEVO CONTENEDOR INTERNO CON EL PADDING DE SEPARACIÓN -->
-            <div class="card-container-inner">
-                <div class="container">
-                    <div class="flex-w flex-sb-m p-b-52">
-                        <div id="filterButtonContainer">
-                            <button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
-                                <i class="icon-filter zmdi zmdi-filter-list"></i>
-                                <i class="icon-close-filter zmdi zmdi-close"></i>
-                                <span>Filtrar</span>
+            <div class="container">
+                <div class="flex-w flex-sb-m p-b-52">
+                    <div id="filterButtonContainer">
+                        <button class="mica-floating-btn js-show-filter" aria-label="Filtrar productos">
+                            <i class="icon-filter zmdi zmdi-filter-list"></i>
+                            <i class="icon-close-filter zmdi zmdi-close"></i>
+                            <span>Filtrar</span>
+                        </button>
+
+                        <div class="search-wrapper">
+                            <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
+                                    onclick="
+                                        event.stopPropagation();
+                                        event.stopImmediatePropagation();
+                                        var panel = document.querySelector('.panel-search');
+                                        panel.classList.toggle('show');
+                                        this.classList.toggle('show-search');
+                                        if (panel.classList.contains('show')) {
+                                            panel.style.visibility = 'visible';
+                                            panel.style.opacity = '1';
+                                        } else {
+                                            panel.style.visibility = '';
+                                            panel.style.opacity = '';
+                                        }
+                                        return false;
+                                    ">
+                                <i class="icon-search zmdi zmdi-search"></i>
+                                <i class="icon-close-search zmdi zmdi-close"></i>
+                                <span>Buscar</span>
                             </button>
 
-                            <div class="search-wrapper">
-                                <button id="searchButton" class="mica-floating-btn" aria-label="Buscar productos" 
-                                        onclick="
-                                            event.stopPropagation();
-                                            event.stopImmediatePropagation();
-                                            var panel = document.querySelector('.panel-search');
-                                            panel.classList.toggle('show');
-                                            this.classList.toggle('show-search');
-                                            if (panel.classList.contains('show')) {
-                                                panel.style.visibility = 'visible';
-                                                panel.style.opacity = '1';
-                                            } else {
-                                                panel.style.visibility = '';
-                                                panel.style.opacity = '';
-                                            }
-                                            return false;
-                                        ">
-                                    <i class="icon-search zmdi zmdi-search"></i>
-                                    <i class="icon-close-search zmdi zmdi-close"></i>
-                                    <span>Buscar</span>
-                                </button>
-
-                                <div class="panel-search" role="search">
-                                    <div class="dis-flex">
-                                        <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
-                                    </div>
+                            <div class="panel-search" role="search">
+                                <div class="dis-flex">
+                                    <input type="text" id="searchInput" placeholder="Buscar título, actor, director..." aria-label="Búsqueda en tiempo real">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="filter-dropdown panel-filter" id="filterDropdown">
-                                <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
-                            </div>
+                        <div class="filter-dropdown panel-filter" id="filterDropdown">
+                            <div class="wrap-filter-dropdown" id="filterDropdownContent"></div>
                         </div>
                     </div>
-
-                    <div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
-                    <div style="clear: both;"></div>
                 </div>
+
+                <div class="row isotope-grid" role="list" aria-label="Lista de títulos"></div>
+                <div style="clear: both;"></div>
             </div>
         </div>
     </main>
@@ -564,19 +565,33 @@
     <script src="js/index.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- ===== DESACTIVAR EVENTOS DUPLICADOS DEL BOTÓN BUSCAR ===== -->
+    <!-- ===== SCRIPT DE DEPURACIÓN Y CORRECCIÓN DE EVENTOS ===== -->
     <script>
         $(document).ready(function() {
-            // Corregir menú móvil
+            // 1. Corregir menú móvil
             $(".btn-show-menu-mobile").off("click").on("click", function(e) {
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 $(this).toggleClass("is-active");
                 $(".menu-mobile").slideToggle();
             });
-            // Desactivar cualquier evento que main.js haya asignado al botón buscar
+
+            // 2. Desactivar eventos duplicados del botón buscar
             $('#searchButton').off('click');
             $(document).off('click', '#searchButton');
+
+            // 3. DEPURACIÓN: Mostrar en consola los valores de padding de main.mica-surface
+            var $main = $('main.mica-surface');
+            if ($main.length) {
+                console.log('=== DEPURACIÓN DE ESPACIADO EN MÓVIL ===');
+                console.log('Padding izquierdo de main.mica-surface:', $main.css('padding-left'));
+                console.log('Padding derecho de main.mica-surface:', $main.css('padding-right'));
+                console.log('Ancho de main.mica-surface:', $main.css('width'));
+                console.log('Box-sizing de main.mica-surface:', $main.css('box-sizing'));
+                console.log('Padding izquierdo de .bg0:', $('.bg0').css('padding-left'));
+                console.log('Padding izquierdo de .container:', $('.container').css('padding-left'));
+                console.log('Padding izquierdo de .col-sm-6...:', $('.isotope-grid .col-sm-6.col-md-4.col-lg-3').first().css('padding-left'));
+            }
         });
     </script>
 
