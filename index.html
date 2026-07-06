@@ -78,6 +78,7 @@
             gap: 8px;
             position: relative;
             flex-wrap: wrap;
+            overflow: visible !important; /* Asegurar que no corte los paneles */
         }
 
         /* ===== DROPDOWN DE FILTROS ===== */
@@ -263,9 +264,8 @@
             object-fit: cover;
         }
 
-        /* ===== ESTILOS PARA MÓVIL (CON !important PARA SOBRESCRIBIR DESKTOP) ===== */
+        /* ===== ESTILOS PARA MÓVIL (con !important para sobrescribir) ===== */
         @media (max-width: 768px) {
-            /* ... (estilos de espaciado y fondo que ya funcionan) ... */
             body, html {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -358,31 +358,40 @@
                 margin-bottom: 20px !important;
             }
 
-            /* ===== PANEL DE FILTROS CENTRADO EN MÓVIL (ya funcionaba) ===== */
+            /* ===== PANEL DE FILTROS CENTRADO EN MÓVIL ===== */
             .filter-dropdown.panel-filter {
                 left: 50% !important;
+                right: auto !important;
                 transform: translateX(-50%) !important;
                 width: 90vw !important;
                 max-width: 90vw !important;
                 top: calc(100% + 8px) !important;
+                margin: 0 auto !important;
+                display: none; /* controlado por JS */
             }
 
-            /* ===== PANEL DE BÚSQUEDA CENTRADO DEBAJO DEL BOTÓN EN MÓVIL (CON !important) ===== */
+            .filter-dropdown.panel-filter.show {
+                display: block !important;
+            }
+
+            /* ===== PANEL DE BÚSQUEDA CENTRADO DEBAJO DEL BOTÓN EN MÓVIL ===== */
             .search-wrapper {
                 position: relative !important;
             }
 
             .panel-search {
                 left: 50% !important;
-                top: calc(100% + 8px) !important;
                 right: auto !important;
-                transform: translateX(-50%) !important; /* Solo centrado, sin scale ni translateY */
+                top: calc(100% + 8px) !important;
+                transform: translateX(-50%) !important;
                 width: 90vw !important;
                 max-width: 90vw !important;
                 visibility: hidden;
                 opacity: 0;
                 transition: visibility 0.25s ease, opacity 0.25s ease;
                 pointer-events: none;
+                margin: 0 auto !important;
+                z-index: 9999 !important;
             }
 
             .panel-search.show {
@@ -394,7 +403,7 @@
 
             .panel-search,
             .filter-dropdown.panel-filter {
-                z-index: 1001 !important;
+                z-index: 10000 !important;
             }
 
             /* ===== AJUSTES ADICIONALES ===== */
