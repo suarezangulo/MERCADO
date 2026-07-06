@@ -263,16 +263,14 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA: PADDING EN EL CONTAINER ===== */
+        /* ===== SOLUCIÓN DEFINITIVA: PADDING EN EL CONTAINER Y TARJETAS A 100% ===== */
         @media (max-width: 768px) {
-            /* Forzar body sin márgenes */
             body {
                 margin: 0 !important;
                 padding: 0 !important;
                 overflow-x: hidden !important;
             }
 
-            /* El contenedor con fondo translúcido (bg0) ocupa todo el ancho sin padding */
             .bg0 {
                 display: flex !important;
                 flex-direction: column !important;
@@ -280,10 +278,9 @@
                 width: 100% !important;
                 padding: 0 !important;
                 margin: 0 !important;
-                background: var(--mica-card) !important; /* Asegurar el fondo */
+                background: var(--mica-card) !important;
             }
 
-            /* EL CONTENEDOR .container DE BOOTSTRAP: PADDING LATERAL DE 3px */
             .container {
                 padding-left: 3px !important;
                 padding-right: 3px !important;
@@ -293,14 +290,12 @@
                 box-sizing: border-box !important;
             }
 
-            /* Eliminar márgenes negativos de Bootstrap y padding de columnas */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 width: 100% !important;
             }
 
-            /* Tarjetas: sin padding lateral para que ocupen todo el ancho interior del container */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -309,6 +304,8 @@
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
+                /* Forzar ancho completo */
+                width: 100% !important;
             }
 
             .isotope-item {
@@ -319,8 +316,16 @@
                 margin-right: 0 !important;
             }
 
+            /* Asegurar que el bloque interno ocupe todo el ancho */
             .block2 {
                 width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Asegurar que la imagen ocupe el ancho completo */
+            .block2-pic {
+                width: 100% !important;
+                padding-top: 140% !important; /* Relación de aspecto */
             }
 
             .isotope-grid {
