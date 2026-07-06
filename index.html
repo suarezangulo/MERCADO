@@ -263,7 +263,7 @@
             object-fit: cover;
         }
 
-        /* ===== SOLUCIÓN DEFINITIVA: MARGEN EN EL CONTAINER ===== */
+        /* ===== SOLUCIÓN DEFINITIVA: PADDING EN EL CONTAINER ===== */
         @media (max-width: 768px) {
             /* Forzar body sin márgenes */
             body {
@@ -283,25 +283,24 @@
                 background: var(--mica-card) !important; /* Asegurar el fondo */
             }
 
-            /* EL CONTENEDOR .container DE BOOTSTRAP: MARGEN LATERAL DE 3px */
+            /* EL CONTENEDOR .container DE BOOTSTRAP: PADDING LATERAL DE 3px */
             .container {
-                margin-left: 3px !important;
-                margin-right: 3px !important;
-                width: auto !important;
-                max-width: calc(100% - 6px) !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
+                padding-left: 3px !important;
+                padding-right: 3px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
                 box-sizing: border-box !important;
             }
 
-            /* Eliminar márgenes negativos de Bootstrap */
+            /* Eliminar márgenes negativos de Bootstrap y padding de columnas */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 width: 100% !important;
             }
 
-            /* Tarjetas: 3px de separación respecto al .container (aunque ya no es necesario, pero lo dejamos) */
+            /* Tarjetas: sin padding lateral para que ocupen todo el ancho interior del container */
             .isotope-grid .col-sm-6.col-md-4.col-lg-3 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
@@ -363,9 +362,8 @@
 
         @media (max-width: 480px) {
             .container {
-                margin-left: 2px !important;
-                margin-right: 2px !important;
-                max-width: calc(100% - 4px) !important;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
             }
 
             .panel-search {
