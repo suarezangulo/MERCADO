@@ -735,3 +735,21 @@ body::before {
     color: rgba(255, 255, 255, 0.4);
     font-size: 14px;
 }
+/* ===== ELIMINAR EL SEPARADOR POR DEFECTO DE BOOTSTRAP ===== */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* ===== USAR ICONO DE FONTAWESOME EN SU LUGAR ===== */
+.breadcrumb-item + .breadcrumb-item .breadcrumb-sep {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 8px !important;
+}
+
+.breadcrumb-item + .breadcrumb-item .breadcrumb-sep i {
+    font-size: 16px !important;
+    color: #1E90FF !important;
+    /* o el estilo que quieras: degradado, brillo, etc. */
+}
