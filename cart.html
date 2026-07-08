@@ -281,6 +281,30 @@
         .limiter-menu-desktop > a {
             flex-shrink: 0 !important;
         }
+
+        /* ===== BREADCRUMB ICONO LLAMATIVO ===== */
+        .breadcrumb-sep i {
+            display: inline-block !important;
+            font-size: 20px !important;
+            background: linear-gradient(135deg, #1E90FF, #FF3B3B) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: drop-shadow(0 0 10px rgba(30, 144, 255, 0.5)) drop-shadow(0 0 20px rgba(255, 59, 59, 0.3));
+            animation: pulse-icon 2s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes pulse-icon {
+            0% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(30,144,255,0.4)); }
+            50% { transform: scale(1.2); filter: drop-shadow(0 0 20px rgba(30,144,255,0.8)) drop-shadow(0 0 30px rgba(255,59,59,0.4)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(30,144,255,0.4)); }
+        }
+
+        .breadcrumb-item:hover .breadcrumb-sep i {
+            transform: scale(1.4) rotate(10deg);
+            filter: drop-shadow(0 0 30px rgba(30,144,255,0.9));
+            transition: 0.4s ease;
+        }
 	</style>
 </head>
 <body class="animsition">
