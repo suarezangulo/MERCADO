@@ -3,6 +3,10 @@ function addCartItem(n, t, i) {
     if (n == null || t == null || i == null) return !1;
     let e = document.createElement("tr");
     e.setAttribute("class", "table_row");
+    // Guardar el rango en un atributo data en la fila para recuperarlo luego
+    if (t.range) {
+        e.setAttribute("data-range", JSON.stringify(t.range));
+    }
     let r = document.createElement("td");
     r.setAttribute("class", "column-1");
     let u = document.createElement("div");
@@ -41,43 +45,14 @@ function addCartItem(n, t, i) {
     var precioStr = t.price ? t.price : i.Price;
     var valorNumerico = parseFloat(precioStr) || 0;
     r.textContent = toMoneyStr(valorNumerico);
+    // Guardar el precio en un atributo data para recalcular
+    e.setAttribute("data-price", valorNumerico);
     e.appendChild(r);
+    // La columna de cantidad se omite (siempre es 1)
+    // En su lugar, añadimos directamente la columna de total
     r = document.createElement("td");
     r.setAttribute("class", "column-4");
-    u = document.createElement("div");
-    u.setAttribute("class", "wrap-num-product flex-w m-l-auto m-r-0");
-    let o = document.createElement("div");
-    o.setAttribute("class", "btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m");
-    let s = document.createElement("i");
-    s.setAttribute("class", "fs-16 zmdi zmdi-minus");
-    o.appendChild(s);
-    u.appendChild(o);
-    let f = document.createElement("input");
-    f.setAttribute("class", "mtext-104 cl3 txt-center num-product");
-    f.setAttribute("type", "number");
-    f.setAttribute("name", "num-" + i.slug);
-    f.setAttribute("value", t.qty);
-    f.setAttribute("min", 0);
-    f.setAttribute("max", 99);
-    f.setAttribute("price", precioStr);
-    f.setAttribute("label", displayName);
-    // Guardar el rango en el atributo data-range para usarlo al actualizar
-    if (t.range) {
-        f.setAttribute("data-range", JSON.stringify(t.range));
-    }
-    f.addEventListener("input", () => updateCartTotals());
-    u.appendChild(f);
-    o = document.createElement("div");
-    o.setAttribute("class", "btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m");
-    s = document.createElement("i");
-    s.setAttribute("class", "fs-16 zmdi zmdi-plus");
-    o.appendChild(s);
-    u.appendChild(o);
-    r.appendChild(u);
-    e.appendChild(r);
-    r = document.createElement("td");
-    r.setAttribute("class", "column-5");
-    let subtotal = valorNumerico * t.qty;
+    let subtotal = valorNumerico * 1; // Siempre 1
     r.textContent = toMoneyStr(subtotal);
     e.appendChild(r);
     n.append(e);
@@ -127,10 +102,6 @@ function updateCart() {
     t.appendChild(n);
     n = document.createElement("th");
     n.setAttribute("class", "column-4");
-    n.textContent = "Cantidad";
-    t.appendChild(n);
-    n = document.createElement("th");
-    n.setAttribute("class", "column-5");
     n.textContent = "Total";
     t.appendChild(n);
     i.append(t);
@@ -140,7 +111,7 @@ function updateCart() {
     if (!r.items || r.items.length === 0) {
         let row = document.createElement("tr");
         let cell = document.createElement("td");
-        cell.setAttribute("colspan", "5");
+        cell.setAttribute("colspan", "4");
         cell.setAttribute("class", "stext-102 cl6 p-t-20 p-b-20 txt-center");
         cell.textContent = "No hay productos en tu cesta";
         row.appendChild(cell);
@@ -168,22 +139,6 @@ function updateCart() {
         removeCartItem(r, id);
     }
 
-    $(".btn-num-product-down").on("click", function() {
-        let input = $(this).next();
-        var val = Number(input.val());
-        if (val > 0) {
-            input.val(val - 1).change();
-            updateCartTotals();
-        }
-    });
-    $(".btn-num-product-up").on("click", function() {
-        let input = $(this).prev();
-        var val = Number(input.val());
-        if (val < 99) {
-            input.val(val + 1).change();
-            updateCartTotals();
-        }
-    });
     updateCartTotals(!1);
 }
 
@@ -198,26 +153,31 @@ function updateCartTotals(guardarEnStorage = true) {
     let itemsActualizados = { items: [] };
     let totalCUP = 0;
 
-    $(".num-product").each(function(index, elemento) {
-        let productId = $(elemento).attr("name").substring(4);
-        let cantidad = parseFloat($(elemento).val()) || 0;
-        let precioStr = $(elemento).attr("price");
-        let valorNumerico = parseFloat(precioStr) || 0;
-        let subtotalOriginal = valorNumerico * cantidad;
-
-        totalCUP += subtotalOriginal;
-
-        // Guardar el rango si existe
-        let rangeAttr = $(elemento).attr("data-range");
-        let itemData = { productId: productId, qty: cantidad };
+    // Recorremos las filas de la tabla (sin inputs de cantidad)
+    $(".table-shopping-cart tbody tr").each(function() {
+        let $row = $(this);
+        // Obtener el precio desde data-price (más fiable que texto)
+        let valorNumerico = parseFloat($row.data('price')) || 0;
+        let subtotal = valorNumerico; // cantidad siempre 1
+        totalCUP += subtotal;
+        // Actualizar la celda de total (columna 4, índice 3)
+        $row.find("td:eq(3)").text(toMoneyStr(subtotal));
+        // Obtener productId desde el enlace
+        let productId = $row.find("td:eq(1) a").attr("href").split("=")[1];
+        // Obtener el rango desde data-range de la fila
+        let rangeAttr = $row.data('range');
+        let itemData = { productId: productId, qty: "1" };
         if (rangeAttr) {
-            itemData.range = JSON.parse(rangeAttr);
-            itemData.price = valorNumerico;
+            // Si es un string, parsearlo (si se guardó como JSON)
+            if (typeof rangeAttr === 'string') {
+                try { rangeAttr = JSON.parse(rangeAttr); } catch(e) { rangeAttr = null; }
+            }
+            if (rangeAttr && typeof rangeAttr === 'object') {
+                itemData.range = rangeAttr;
+                itemData.price = valorNumerico;
+            }
         }
         itemsActualizados.items.push(itemData);
-
-        let celdaTotalProducto = $(this).parent().parent().next();
-        celdaTotalProducto.text(toMoneyStr(subtotalOriginal));
     });
 
     let totalText = toMoneyStr(totalCUP);
@@ -293,19 +253,18 @@ function sendOrder() {
     let totalCUP = 0;
     let items = [];
 
-    $(".num-product").each(function(index, elemento) {
-        let nombre = $(elemento).attr("label");
-        let cantidad = parseFloat($(elemento).val());
-        if (cantidad > 0) {
-            let precioStr = $(elemento).attr("price");
-            let valorNumerico = parseFloat(precioStr) || 0;
-            let subtotal = valorNumerico * cantidad;
+    // Recorremos la tabla para obtener los productos
+    $(".table-shopping-cart tbody tr").each(function() {
+        let $row = $(this);
+        let nombre = $row.find("td:eq(1) a").text();
+        let valorNumerico = parseFloat($row.data('price')) || 0;
+        let cantidad = 1; // Siempre 1
+        let subtotal = valorNumerico * cantidad;
 
-            productos.push({ nombre: nombre, cantidad: cantidad, precioUnitario: valorNumerico, subtotal: subtotal });
-            totalCUP += subtotal;
-            let slug = $(elemento).attr("name").substring(4);
-            items.push({ id: slug, name: nombre, quantity: cantidad, price: valorNumerico, currency: 'CUP' });
-        }
+        productos.push({ nombre: nombre, cantidad: cantidad, precioUnitario: valorNumerico, subtotal: subtotal });
+        totalCUP += subtotal;
+        let slug = $row.find("td:eq(1) a").attr("href").split("=")[1];
+        items.push({ id: slug, name: nombre, quantity: cantidad, price: valorNumerico, currency: 'CUP' });
     });
 
     let mensaje = "📦 *NUEVO PEDIDO*\n------------------------------\n\n";
