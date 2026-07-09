@@ -210,12 +210,18 @@ function getCiclon(n, t) {
     return u;
 }
 
-// ===== NUEVA FUNCIÓN PARA CONSTRUIR EL SELECTOR DE CAPÍTULOS =====
+// ===== FUNCIÓN PARA CONSTRUIR EL SELECTOR DE CAPÍTULOS =====
 function buildEpisodeSelector(product, $btn) {
+    console.log('🔍 buildEpisodeSelector llamado con producto:', product);
+    console.log('🔍 Type:', product.Type, 'Episodes:', product.Episodes);
+    
+    // Verificar si el producto tiene capítulos
     if (product.Type !== "episode" || !product.Episodes || product.Episodes < 2) {
-        return; // Solo mostrar si tiene capítulos y más de 1
+        console.log('❌ Producto NO tiene capítulos o no cumple condiciones.');
+        return;
     }
-
+    
+    console.log('✅ Producto tiene capítulos. Construyendo selector...');
     var totalEpisodes = parseInt(product.Episodes);
     var pricePerEpisode = null;
 
@@ -235,17 +241,27 @@ function buildEpisodeSelector(product, $btn) {
         var totalPrice = parseFloat(product.Price) || 0;
         pricePerEpisode = totalPrice / totalEpisodes;
     }
+    console.log('💰 Precio por capítulo:', pricePerEpisode);
 
     // Crear el contenedor si no existe
     var container = document.getElementById('episodeSelectorContainer');
     if (!container) {
+        console.log('🆘 Contenedor #episodeSelectorContainer no encontrado, creándolo...');
         container = document.createElement('div');
         container.id = 'episodeSelectorContainer';
         container.style.marginTop = '20px';
-        // Insertar después del botón de agregar o en un lugar adecuado
-        $btn.closest('.product-actions').after(container);
+        // Insertar después del bloque .product-actions
+        var actions = document.querySelector('.product-actions');
+        if (actions) {
+            actions.parentNode.insertBefore(container, actions.nextSibling);
+        } else {
+            // Fallback: insertar al final del .product-info-col
+            var infoCol = document.querySelector('.product-info-col');
+            if (infoCol) infoCol.appendChild(container);
+        }
     }
 
+    // Generar el HTML del selector
     container.innerHTML = `
         <div style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 12px; padding: 15px 20px; backdrop-filter: blur(10px);">
             <label style="font-weight: 600; color: #fff; display: block; margin-bottom: 10px;">Seleccionar capítulos:</label>
@@ -272,7 +288,6 @@ function buildEpisodeSelector(product, $btn) {
         var from = parseInt(document.getElementById('episodeFrom').value) || 1;
         var to = parseInt(document.getElementById('episodeTo').value) || 1;
 
-        // Validar y corregir valores
         if (from < 1) from = 1;
         if (to > totalEpisodes) to = totalEpisodes;
         if (from > to) from = to;
@@ -290,18 +305,15 @@ function buildEpisodeSelector(product, $btn) {
         document.getElementById('episodePriceDisplay').textContent = toMoneyStr(price);
         document.getElementById('episodeCountDisplay').textContent = count + ' capítulos';
 
-        // Actualizar el botón de agregar para mostrar el precio calculado
         $btn.attr('data-episode-price', price);
         $btn.attr('data-episode-range', JSON.stringify(currentRange));
-        // Cambiar el texto del botón para reflejar el precio
-        var label = product.Label;
         $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(price) + ')');
     }
 
     // Eventos
-    $('#episodeFrom').on('change', updatePrice);
-    $('#episodeTo').on('change', updatePrice);
-    $('#selectAllEpisodes').on('click', function(e) {
+    $('#episodeFrom').off('change').on('change', updatePrice);
+    $('#episodeTo').off('change').on('change', updatePrice);
+    $('#selectAllEpisodes').off('click').on('click', function(e) {
         e.preventDefault();
         document.getElementById('episodeFrom').value = 1;
         document.getElementById('episodeTo').value = totalEpisodes;
@@ -310,10 +322,9 @@ function buildEpisodeSelector(product, $btn) {
 
     // Inicializar
     updatePrice();
-
-    // Guardar referencia al precio base por si se necesita
     $btn.attr('data-base-price', product.Price);
     $btn.attr('data-episode-active', 'true');
+    console.log('✅ Selector de capítulos construido correctamente.');
 }
 
 (function(n) {
@@ -372,59 +383,67 @@ function buildEpisodeSelector(product, $btn) {
             $btn.attr("product-id", t);
             $btn.attr("product-label", r);
 
-            // ===== SELECTOR DE CAPÍTULOS =====
+            // ===== CONSTRUIR SELECTOR DE CAPÍTULOS =====
             buildEpisodeSelector(i, $btn);
 
-            // ===== EVENTO CLICK DEL BOTÓN =====
-            $btn.off('click').on('click', function(e) {
+            // ===== EVENTO CLICK DEL BOTÓN (CON DELEGACIÓN) =====
+            // Usamos delegación para asegurar que funcione incluso si el botón se regenera
+            $(document).off('click', '.js-addcart-detail').on('click', '.js-addcart-detail', function(e) {
                 e.preventDefault();
-                console.log('🛒 Click en Agregar');
+                var $this = $(this);
+                var productId = $this.attr('product-id');
+                var productLabel = $this.attr('product-label');
+                console.log('🛒 Click en Agregar - productId:', productId);
 
                 var extraData = {};
                 var priceToUse = null;
                 var rangeData = null;
 
                 // Si el producto tiene selector de capítulos activo
-                if ($btn.attr('data-episode-active') === 'true') {
-                    var priceAttr = $btn.attr('data-episode-price');
-                    var rangeAttr = $btn.attr('data-episode-range');
+                if ($this.attr('data-episode-active') === 'true') {
+                    var priceAttr = $this.attr('data-episode-price');
+                    var rangeAttr = $this.attr('data-episode-range');
                     console.log('📊 data-episode-price:', priceAttr);
                     console.log('📊 data-episode-range:', rangeAttr);
                     if (priceAttr && rangeAttr) {
                         priceToUse = parseFloat(priceAttr);
-                        rangeData = JSON.parse(rangeAttr);
-                        extraData.range = rangeData;
-                        extraData.price = priceToUse;
-                        console.log('📊 ExtraData:', extraData);
+                        try {
+                            rangeData = JSON.parse(rangeAttr);
+                        } catch(e) {
+                            rangeData = null;
+                        }
+                        if (rangeData) {
+                            extraData.range = rangeData;
+                            extraData.price = priceToUse;
+                            console.log('📊 ExtraData:', extraData);
+                        }
                     }
                 }
 
                 // Llamar a addToCart con extraData
-                var wasRemoved = addToCart(t, r, 1, true, extraData);
+                var wasRemoved = addToCart(productId, productLabel, 1, true, extraData);
                 console.log('🛒 addToCart resultado:', wasRemoved);
                 updateCartQty();
 
                 if (wasRemoved) {
-                    $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
-                    // Si tenía selector, restaurar el precio mostrado
-                    if ($btn.attr('data-episode-active') === 'true') {
-                        var currentPrice = $btn.attr('data-episode-price');
+                    $this.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
+                    if ($this.attr('data-episode-active') === 'true') {
+                        var currentPrice = $this.attr('data-episode-price');
                         if (currentPrice) {
-                            $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(parseFloat(currentPrice)) + ')');
+                            $this.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(parseFloat(currentPrice)) + ')');
                         }
                     }
                 } else {
-                    $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
+                    $this.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
                     setTimeout(function() {
-                        if (inCart(t)) {
-                            $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
+                        if (inCart(productId)) {
+                            $this.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
                         } else {
-                            $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
-                            // Restaurar precio si aplica
-                            if ($btn.attr('data-episode-active') === 'true') {
-                                var currPrice = $btn.attr('data-episode-price');
+                            $this.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
+                            if ($this.attr('data-episode-active') === 'true') {
+                                var currPrice = $this.attr('data-episode-price');
                                 if (currPrice) {
-                                    $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(parseFloat(currPrice)) + ')');
+                                    $this.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(parseFloat(currPrice)) + ')');
                                 }
                             }
                         }
