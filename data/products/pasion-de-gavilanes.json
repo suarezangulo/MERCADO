@@ -2,13 +2,9 @@
   "Category": "Novelas",
   "SubCategory": "Romance",
   "Label": "Pasión de Gavilanes",
-  "Type": "episode",
-  "Episodes": 200,
   "Images": [
     "pasion-de-gavilanes-0.webp",
-    "pasion-de-gavilanes-1.webp",
-    "pasion-de-gavilanes-2.webp",
-    "pasion-de-gavilanes-3.webp"
+    "pasion-de-gavilanes-1.webp"
   ],
   "Description": "Tres hermanos llegan a un pueblo colombiano para vengar la muerte de su hermana, pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión, intriga y amor.",
   "Price": "400.00 CUP",
@@ -16,8 +12,9 @@
   "Features": [
     "Director: Rodrigo Triana",
     "Año: 2003",
+    "Episodios: 200",
     "Actores: Danna García, Mario Cimarro, Paola Rey"
   ],
-  "Date": "2026-07-03T22:33:22.130Z",
-  "Update": "2026-07-03T22:33:22.130Z"
+  "Date": "2026-07-09T11:21:16.759Z",
+  "Update": "2026-07-09T11:21:16.759Z"
 }
