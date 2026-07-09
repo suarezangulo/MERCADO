@@ -467,7 +467,6 @@ function openProductForm(product = null) {
         document.getElementById('productCategory').value = product.Category || '';
         document.getElementById('productSubcategory').value = product.SubCategory || '';
         document.getElementById('productPrice').value = product.Price ? product.Price.replace(' CUP', '') : '';
-        document.getElementById('productStock').value = product.Stock || 0;
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
         
