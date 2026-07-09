@@ -32,8 +32,8 @@ function generateProducts() {
     if (!fs.existsSync(CSV_FILE)) {
         console.error('❌ No se encuentra el archivo CSV:', CSV_FILE);
         console.log('📌 Creando archivo CSV vacío...');
-        // Crear CSV con encabezados
-        const headers = 'Category,SubCategory,Label,Price,Stock,Description,Features,Images\n';
+        // Crear CSV con encabezados actualizados (sin Stock, con Type, Episodes, PricePerEpisode)
+        const headers = 'Category,SubCategory,Label,Price,Description,Features,Images,Type,Episodes,PricePerEpisode\n';
         fs.writeFileSync(CSV_FILE, headers, 'utf8');
         console.log('✅ Archivo CSV creado con encabezados. Agrega tus productos.');
         // Crear índice vacío
@@ -71,7 +71,7 @@ function generateProducts() {
                     features = row.Features.split(';').map(f => f.trim());
                 }
                 
-                // Crear el objeto del producto
+                // Crear el objeto del producto (sin Stock)
                 const product = {
                     Category: row.Category.trim(),
                     SubCategory: row.SubCategory.trim(),
@@ -79,8 +79,10 @@ function generateProducts() {
                     Images: images,
                     Description: row.Description ? row.Description.replace(/\\n/g, '\n') : '',
                     Price: row.Price.trim(),
-                    Stock: parseInt(row.Stock) || 0,
                     Features: features,
+                    Type: row.Type ? row.Type.trim() : '',
+                    Episodes: parseInt(row.Episodes) || 0,
+                    PricePerEpisode: row.PricePerEpisode ? row.PricePerEpisode.trim() : '',
                     Date: new Date().toISOString(),
                     Update: new Date().toISOString()
                 };
@@ -90,7 +92,7 @@ function generateProducts() {
                 fs.writeFileSync(filePath, JSON.stringify(product, null, 2), 'utf8');
                 console.log(`✅ ${slug}.json creado`);
                 
-                // Agregar al índice
+                // Agregar al índice (también incluye los nuevos campos)
                 if (!index[product.Category]) index[product.Category] = {};
                 if (!index[product.Category][product.SubCategory]) index[product.Category][product.SubCategory] = [];
                 
@@ -98,6 +100,9 @@ function generateProducts() {
                     Label: product.Label,
                     Price: product.Price,
                     Features: product.Features,
+                    Type: product.Type,
+                    Episodes: product.Episodes,
+                    PricePerEpisode: product.PricePerEpisode,
                     Date: product.Date,
                     Update: product.Update
                 });
