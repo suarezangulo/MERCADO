@@ -57,9 +57,11 @@ function splitTitle(n) {
     return i === 1 ? [n, ""] : [u, f];
 }
 
-function addToCart(n, t, i, r) {
+// ===== FUNCIÓN AGREGAR AL CARRITO (MODIFICADA PARA SOPORTAR CAPÍTULOS) =====
+function addToCart(n, t, i, r, extraData) {
     i = i || 1;
     r = r || false;
+    extraData = extraData || {};
     var u = getCart();
     var f = false;
     var e = u.items.findIndex(function(item) { return item.productId === n; });
@@ -68,10 +70,26 @@ function addToCart(n, t, i, r) {
             u.items.splice(e, 1);
             f = true;
         } else {
-            u.items[e] = { productId: n, qty: i };
+            // Si el producto ya está, actualizamos con los nuevos datos (range, price)
+            u.items[e] = {
+                productId: n,
+                qty: i,
+                range: extraData.range || null,
+                price: extraData.price || null
+            };
         }
     } else {
-        u.items.push({ productId: n, qty: i.toString() });
+        var newItem = {
+            productId: n,
+            qty: i.toString()
+        };
+        if (extraData.range) {
+            newItem.range = extraData.range;
+        }
+        if (extraData.price !== undefined && extraData.price !== null) {
+            newItem.price = extraData.price;
+        }
+        u.items.push(newItem);
         if (typeof googleAnalyticsId !== 'undefined' && googleAnalyticsId !== null && googleAnalyticsId.length > 0) {
             gtag("event", "add_to_cart", { items: [{ id: n, name: t, quantity: i }] });
         }
@@ -125,7 +143,7 @@ function spanishFormat(n) {
 function normalizeText(n) {
     if (n && n.trim().length > 0) {
         n = toEnglish(n);
-        n = n.toLowerCase(); // <--- CONVERTIR A MINÚSCULAS ANTES DE ELIMINAR CARACTERES
+        n = n.toLowerCase();
         n = n.replace(/[^a-z0-9\s-]/g, "");
         n = n.replace(/\s+/g, "-");
         n = n.replace(/-+/g, "-");
@@ -174,7 +192,6 @@ function addProductCardBase(container, product, extraClass, mode) {
     }
     div.setAttribute("class", baseClass + extraClass);
 
-    // Asignar precio real para ordenamiento
     var precioNumerico = parseFloat(product.Price) || 0;
     div.setAttribute("data-price", product.Price);
     div.setAttribute("data-price-usd", precioNumerico);
