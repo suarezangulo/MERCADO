@@ -753,3 +753,12 @@ body::before {
     color: #1E90FF !important;
     /* o el estilo que quieras: degradado, brillo, etc. */
 }
+/* ===== MÁS ESPACIO ENTRE HEADER Y CONTENIDO ===== */
+.bg0 {
+    padding-top: 40px !important; /* Aumento el espacio desde el header */
+}
+
+/* Opcional: también puedo dar más margen al breadcrumb si lo prefieres */
+.bread-crumb {
+    margin-top: 10px !important;
+}
