@@ -486,6 +486,27 @@
 		    filter: drop-shadow(0 0 30px rgba(30,144,255,0.9));
 		    transition: 0.4s ease;
 		}
+
+		/* ===== ESTILOS PARA EL SELECTOR DE CAPÍTULOS ===== */
+		#episodeSelectorContainer {
+			display: block !important;
+			margin-top: 20px !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+		}
+		#episodeSelectorContainer .mica-btn {
+			padding: 4px 16px !important;
+			font-size: 13px !important;
+		}
+		#episodeSelectorContainer input[type="number"] {
+			width: 60px !important;
+			padding: 6px 10px !important;
+			background: rgba(255,255,255,0.05) !important;
+			border: 1px solid var(--border-mica) !important;
+			border-radius: 6px !important;
+			color: #fff !important;
+			text-align: center !important;
+		}
 	</style>
 </head>
 <body class="animsition">
@@ -618,7 +639,7 @@
 							</button>
 						</div>
 						<!-- ===== CONTENEDOR PARA EL SELECTOR DE CAPÍTULOS ===== -->
-						<div id="episodeSelectorContainer" style="margin-top: 15px;"></div>
+						<div id="episodeSelectorContainer" style="margin-top: 20px;"></div>
 					</div>
 				</div>
 			</div>
