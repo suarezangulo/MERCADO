@@ -61,7 +61,7 @@ const CATEGORIES = {
         'Programas de cocina', 'Programas de entrevistas'
     ],
     'Novelas': [
-        'Dramas', 'Narcotráfico', 'Acción',
+        'Cortas', 'Largas', 'Dramas (coreanos, turcos, etc.)',
         'Romance', 'Históricas', 'Juveniles'
     ],
     'Doramas': [
@@ -291,6 +291,10 @@ async function loadProducts() {
             headers.forEach((header, index) => {
                 product[header] = values[index] || '';
             });
+            // Asegurar que los nuevos campos existan
+            if (!product.Type) product.Type = '';
+            if (!product.Episodes) product.Episodes = '';
+            if (!product.PricePerEpisode) product.PricePerEpisode = '';
             products.push(product);
         }
         renderProductTable();
@@ -332,11 +336,11 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA (SIN STOCK) =====
+// ===== RENDER TABLA (CON TIPO Y CAPÍTULOS) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:50px; color: var(--text-muted);">
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:50px; color: var(--text-muted);">
             <i class="fas fa-film" style="font-size:48px; display:block; margin-bottom:16px; opacity:0.3;"></i>
             No hay títulos en el catálogo. ¡Crea uno ahora!
         </td></tr>`;
@@ -354,6 +358,11 @@ function renderProductTable() {
         const baseName = imageName.replace(/\.[^.]+$/, '');
         const imgId = `img-${slug}-${index}`;
         
+        // Determinar si tiene capítulos
+        const hasEpisodes = p.Type === 'episode' && p.Episodes && parseInt(p.Episodes) > 0;
+        const episodesDisplay = hasEpisodes ? p.Episodes : '-';
+        const typeDisplay = p.Type === 'episode' ? 'Serie' : (p.Type === 'movie' ? 'Película' : '-');
+        
         html += `
         <tr data-index="${index}">
             <td>
@@ -369,6 +378,8 @@ function renderProductTable() {
             <td><strong>${p.Label}</strong></td>
             <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
             <td style="color: var(--text-secondary);">${p.Price}</td>
+            <td><span style="color: var(--text-secondary);">${typeDisplay}</span></td>
+            <td><span style="color: var(--text-secondary);">${episodesDisplay}</span></td>
             <td>
                 <div class="actions-cell">
                     <button class="btn btn-primary btn-sm edit-btn" data-index="${index}">
@@ -398,6 +409,7 @@ function renderProductTable() {
         });
     });
 
+    // Cargar imágenes con fallback
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
@@ -463,8 +475,6 @@ function updateStats() {
     document.getElementById('totalProducts').textContent = products.length;
     const categories = new Set(products.map(p => p.Category));
     document.getElementById('totalCategories').textContent = categories.size;
-    // La tarjeta de stock se puede ocultar, pero la dejamos a 0
-    document.getElementById('totalStock').textContent = 0;
 }
 
 // ===== ÚLTIMOS PRODUCTOS =====
@@ -524,7 +534,7 @@ function updateRecentProducts() {
     });
 }
 
-// ===== ABRIR FORMULARIO =====
+// ===== ABRIR FORMULARIO (CON NUEVOS CAMPOS) =====
 function openProductForm(product = null) {
     editingProduct = product;
     uploadedImages = [];
@@ -547,6 +557,12 @@ function openProductForm(product = null) {
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
         
+        // NUEVOS CAMPOS
+        document.getElementById('productType').value = product.Type || '';
+        document.getElementById('productEpisodes').value = product.Episodes || '';
+        document.getElementById('productPricePerEpisode').value = product.PricePerEpisode || '';
+        
+        // Cargar imágenes existentes
         const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
         existingImages = imagesList;
         
@@ -585,6 +601,9 @@ function openProductForm(product = null) {
         title.innerHTML = '<i class="fas fa-plus-circle"></i> Nuevo Título';
         submitBtn.innerHTML = '<i class="fas fa-save"></i> Guardar Título';
         document.getElementById('productForm').reset();
+        document.getElementById('productType').value = '';
+        document.getElementById('productEpisodes').value = '';
+        document.getElementById('productPricePerEpisode').value = '';
     }
 
     populateCategorySelects();
@@ -630,14 +649,12 @@ function populateCategorySelects() {
     const currentCat = catSelect.value;
     const currentSub = subSelect.value;
 
-    // Llenar categorías
     catSelect.innerHTML = '<option value="">Seleccionar...</option>';
     Object.keys(CATEGORIES).forEach(cat => {
         const selected = (cat === currentCat) ? 'selected' : '';
         catSelect.innerHTML += `<option value="${cat}" ${selected}>${cat}</option>`;
     });
 
-    // Llenar subcategorías si hay categoría seleccionada
     if (currentCat && CATEGORIES[currentCat]) {
         subSelect.innerHTML = '<option value="">Seleccionar...</option>';
         CATEGORIES[currentCat].forEach(sub => {
@@ -690,7 +707,7 @@ function removeNewImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO (SIN STOCK) =====
+// ===== GUARDAR PRODUCTO (CON NUEVOS CAMPOS) =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
@@ -701,6 +718,11 @@ async function saveProduct() {
         .split('\n')
         .filter(f => f.trim())
         .join(';');
+    
+    // NUEVOS CAMPOS
+    const type = document.getElementById('productType').value;
+    const episodes = document.getElementById('productEpisodes').value.trim();
+    const pricePerEpisode = document.getElementById('productPricePerEpisode').value.trim();
 
     if (!label || !category || !subcategory || !price) {
         showToast('Completa todos los campos obligatorios.', 'warning');
@@ -726,7 +748,7 @@ async function saveProduct() {
     const escapedDescription = description.includes(',') ? `"${description}"` : description;
     const escapedFeatures = features.includes(',') ? `"${features}"` : features;
     
-    // CSV sin stock
+    // CSV sin stock, con nuevos campos
     const csvRow = [
         category,
         subcategory,
@@ -734,7 +756,10 @@ async function saveProduct() {
         `${parseFloat(price).toFixed(2)} CUP`,
         escapedDescription,
         escapedFeatures,
-        imagesNames
+        imagesNames,
+        type,
+        episodes,
+        pricePerEpisode
     ].join(',');
 
     try {
@@ -743,19 +768,65 @@ async function saveProduct() {
         const headers = lines[0];
         let bodyLines = lines.slice(1);
 
-        if (editingProduct) {
-            const index = bodyLines.findIndex(line => line.includes(editingProduct.Label));
-            if (index > -1) {
-                bodyLines[index] = csvRow;
+        // Verificar si el CSV tiene las nuevas columnas, si no, actualizar cabecera
+        const expectedHeaders = ['Category', 'SubCategory', 'Label', 'Price', 'Description', 'Features', 'Images', 'Type', 'Episodes', 'PricePerEpisode'];
+        const currentHeaders = headers.split(',').map(h => h.trim());
+        let csvHeaders = currentHeaders;
+        let needsHeaderUpdate = false;
+        for (const h of expectedHeaders) {
+            if (!currentHeaders.includes(h)) {
+                needsHeaderUpdate = true;
+                csvHeaders.push(h);
+            }
+        }
+        if (needsHeaderUpdate) {
+            // Reconstruir el CSV con la nueva cabecera y rellenar los campos faltantes
+            // Para simplificar, si falta alguna columna, la añadimos al final
+            const newHeader = csvHeaders.join(',');
+            // Reconstruir bodyLines con las nuevas columnas vacías donde corresponda
+            const newBodyLines = bodyLines.map(line => {
+                const values = parseCSVLine(line);
+                const newValues = [];
+                csvHeaders.forEach(header => {
+                    const idx = currentHeaders.indexOf(header);
+                    if (idx !== -1) {
+                        newValues.push(values[idx] || '');
+                    } else {
+                        newValues.push(''); // nueva columna vacía
+                    }
+                });
+                return newValues.join(',');
+            });
+            // Si estamos editando, reemplazar la línea correspondiente
+            if (editingProduct) {
+                // Buscar la línea por Label (podría ser más seguro por slug, pero usamos Label)
+                const index = newBodyLines.findIndex(line => line.includes(label));
+                if (index !== -1) {
+                    newBodyLines[index] = csvRow;
+                } else {
+                    newBodyLines.push(csvRow);
+                }
+            } else {
+                newBodyLines.push(csvRow);
+            }
+            const newCSV = [newHeader, ...newBodyLines].join('\n');
+            await updateCSV(newCSV);
+        } else {
+            // Si la cabecera está actualizada, proceder normalmente
+            if (editingProduct) {
+                const index = bodyLines.findIndex(line => line.includes(editingProduct.Label));
+                if (index > -1) {
+                    bodyLines[index] = csvRow;
+                } else {
+                    bodyLines.push(csvRow);
+                }
             } else {
                 bodyLines.push(csvRow);
             }
-        } else {
-            bodyLines.push(csvRow);
+            const newCSV = [headers, ...bodyLines].join('\n');
+            await updateCSV(newCSV);
         }
-
-        const newCSV = [headers, ...bodyLines].join('\n');
-        await updateCSV(newCSV);
+        
         showToast(`"${label}" guardado exitosamente`, 'success');
         closeModal('productModal');
         await loadProducts();
