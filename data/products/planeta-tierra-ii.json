@@ -8,13 +8,15 @@
   ],
   "Description": "La secuela del aclamado documental de la BBC. Utilizando tecnología de vanguardia, el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable.",
   "Price": "12.00 CUP",
-  "Stock": 0,
   "Features": [
     "Narrador: David Attenborough",
     "Año: 2016",
     "Episodios: 6",
     "Duración: 50 min por episodio"
   ],
+  "Type": "Documental",
+  "Episodes": 6,
+  "PricePerEpisode": "2.00 CUP",
   "Date": "2026-07-09T11:22:53.164Z",
   "Update": "2026-07-09T11:22:53.164Z"
 }
