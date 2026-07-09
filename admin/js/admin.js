@@ -38,23 +38,118 @@ let products = [];
 let editingProduct = null;
 let uploadedImages = [];
 let existingImages = [];
-let imageCache = {}; // Cache de imágenes resueltas
+let imageCache = {};
 
-// ===== FUNCIÓN UNIVERSAL PARA RESOLVER UNA IMAGEN (con fallback de extensiones) =====
+// ===== LISTA FIJA DE CATEGORÍAS Y SUBCATEGORÍAS =====
+const CATEGORIES = {
+    'Películas': [
+        'Acción', 'Aventura', 'Animación / Infantil', 'Bélico', 'Ciencia Ficción',
+        'Cine Clásico', 'Cine de Culto', 'Comedia', 'Comedia Romántica', 'Crimen',
+        'Drama', 'Fantasía', 'Histórico', 'Música / Musical', 'Misterio',
+        'Romance', 'Suspenso / Thriller', 'Terror', 'Western', 'Documental',
+        'Cortometrajes'
+    ],
+    'Series': [
+        'Acción', 'Animación', 'Comedia', 'Ciencia Ficción', 'Crimen',
+        'Drama', 'Fantasía', 'Histórico', 'Misterio', 'Romance',
+        'Suspenso', 'Terror', 'Reality / Telerrealidad', 'Talk Show',
+        'Miniseries', 'Antología'
+    ],
+    'Shows': [
+        'Reality Shows', 'Talk Shows', 'Concursos / Juegos', 'Talent Shows',
+        'Stand-up Comedy', 'Programas de variedades', 'Programas de viajes',
+        'Programas de cocina', 'Programas de entrevistas'
+    ],
+    'Novelas': [
+        'Dramas', 'Narcotráfico', 'Acción',
+        'Romance', 'Históricas', 'Juveniles'
+    ],
+    'Doramas': [
+        'Romance', 'Comedia', 'Drama', 'Fantasía', 'Histórico',
+        'Suspenso / Thriller', 'Terror', 'Ciencia Ficción', 'Melodrama',
+        'Juvenil / Escolar', 'Familiar', 'Musical', 'Deportes',
+        'Acción / Aventura', 'Vida Cotidiana (Slice of Life)'
+    ],
+    'Anime / Manga': [
+        'Anime (Series)', 'Anime (Películas)', 'Manga (Cómics japoneses)',
+        'Manhwa (Cómics coreanos)', 'Webtoons',
+        'Anime (Acción)', 'Anime (Comedia)', 'Anime (Drama)',
+        'Anime (Fantasía)', 'Anime (Ciencia Ficción)',
+        'Anime (Romance)', 'Anime (Terror)', 'Anime (Slice of Life)'
+    ],
+    'Música': [
+        'Álbumes (Completos)', 'Canciones / Sencillos', 'Conciertos / En Vivo',
+        'Bandas Sonoras (Soundtracks)', 'Clásica', 'Jazz', 'Rock', 'Pop',
+        'Electrónica / Dance', 'Reggaetón / Urbano', 'Salsa / Tropical',
+        'Bachata / Merengue', 'Boleros / Baladas', 'Instrumental',
+        'Música Infantil', 'Podcasts Musicales', 'Gospel / Cristiana',
+        'Reggae', 'Folclórica / Tradicional'
+    ],
+    'Juegos (Videojuegos)': [
+        'Acción', 'Aventura', 'Estrategia', 'Deportes / Carreras',
+        'Simulación', 'RPG (Rol)', 'MMO (Multijugador Masivo)',
+        'Indie', 'Terror / Survival Horror', 'Plataformas',
+        'Puzzles / Lógica', 'Arcade', 'Educativos', 'Juegos de Mesa',
+        'Juegos de Cartas'
+    ],
+    'Deportes': [
+        'Fútbol', 'Baloncesto', 'Béisbol', 'Tenis',
+        'Deportes de combate (Boxeo, MMA)', 'Motor (F1, MotoGP)',
+        'Deportes extremos', 'Fitness / Entrenamiento',
+        'Documentales deportivos', 'Partidos grabados', 'Resúmenes deportivos'
+    ],
+    'Documentales': [
+        'Naturaleza / Vida Salvaje', 'Historia', 'Ciencia / Tecnología',
+        'Sociedad / Cultura', 'Biografías', 'Viajes / Aventura',
+        'Arte', 'Política', 'Música', 'Criminalística', 'Deportes'
+    ],
+    'Infantil': [
+        'Películas Infantiles', 'Series Infantiles', 'Cuentos / Audiocuentos',
+        'Canciones Infantiles', 'Juegos Educativos', 'Programas Educativos',
+        'Aprendizaje Temprano'
+    ],
+    'Educativo / Formación': [
+        'Cursos (Idiomas, Programación, etc.)', 'Tutoriales (DIY, Manualidades, Cocina, etc.)',
+        'Material Didáctico (Matemáticas, Ciencias, etc.)',
+        'Conferencias / Charlas', 'Autoayuda / Desarrollo Personal',
+        'Salud / Bienestar', 'Finanzas / Inversiones', 'Fotografía / Diseño'
+    ],
+    'Software y Herramientas': [
+        'Aplicaciones móviles', 'Programas de escritorio',
+        'Herramientas de diseño', 'Utilidades', 'Seguridad / Antivirus',
+        'Sistemas Operativos'
+    ],
+    'Podcasts': [
+        'Entrevistas', 'Historia', 'Ciencia y Tecnología', 'Comedia',
+        'Cultura', 'Política', 'Deportes', 'Salud / Bienestar', 'True Crime'
+    ],
+    'Religión y Espiritualidad': [
+        'Música Gospel', 'Documentales religiosos', 'Conferencias / Charlas',
+        'Contenido de meditación'
+    ],
+    'Audiolibros y Literatura': [
+        'Novelas (literarias)', 'Cuentos', 'Poesía', 'Autoayuda',
+        'Negocios / Finanzas', 'Historia', 'Infantiles'
+    ],
+    'Otros / Miscelánea': [
+        'Contenido 3D / VR', 'Realidad Aumentada', 'Contenido Publicitario',
+        'Promociones', 'Combos / Paquetes', 'Plantillas (diseño, documentos, etc.)',
+        'eBooks / Literatura Digital', 'Comics / Novelas Gráficas'
+    ]
+};
+
+// ===== FUNCIÓN UNIVERSAL PARA RESOLVER UNA IMAGEN =====
 function resolveImageUrl(baseName, extensions, callback) {
     if (!baseName) return callback(null);
-    // Si ya está en caché, usarlo
     if (imageCache[baseName]) {
         callback(imageCache[baseName]);
         return;
     }
-    // Extensiones por defecto si no se proporcionan
     const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
     let index = 0;
     
     function tryNext() {
         if (index >= extList.length) {
-            // No se encontró ninguna
             imageCache[baseName] = null;
             callback(null);
             return;
@@ -237,18 +332,17 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA (con fallback universal) =====
+// ===== RENDER TABLA (SIN STOCK) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:50px; color: var(--text-muted);">
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:50px; color: var(--text-muted);">
             <i class="fas fa-film" style="font-size:48px; display:block; margin-bottom:16px; opacity:0.3;"></i>
             No hay títulos en el catálogo. ¡Crea uno ahora!
         </td></tr>`;
         return;
     }
 
-    // Generar HTML inicial con placeholders
     let html = '';
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
@@ -275,7 +369,6 @@ function renderProductTable() {
             <td><strong>${p.Label}</strong></td>
             <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
             <td style="color: var(--text-secondary);">${p.Price}</td>
-            <td>${p.Stock || 0}</td>
             <td>
                 <div class="actions-cell">
                     <button class="btn btn-primary btn-sm edit-btn" data-index="${index}">
@@ -291,26 +384,20 @@ function renderProductTable() {
     });
     tbody.innerHTML = html;
 
-    // Asignar eventos a los botones
     document.querySelectorAll('.edit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.dataset.index);
-            if (typeof editProduct === 'function') {
-                editProduct(index);
-            }
+            editProduct(index);
         });
     });
 
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.dataset.index);
-            if (typeof deleteProduct === 'function') {
-                deleteProduct(index);
-            }
+            deleteProduct(index);
         });
     });
 
-    // Resolver imágenes con fallback
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
@@ -324,7 +411,6 @@ function renderProductTable() {
         const imgElement = document.getElementById(imgId);
         const loadingElement = document.getElementById(loadingId);
         
-        // Obtener extensiones posibles
         const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
         const csvExt = imageName.split('.').pop().toLowerCase();
         const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
@@ -341,7 +427,6 @@ function renderProductTable() {
 
 // ===== FUNCIONES GLOBALES PARA BOTONES =====
 window.editProduct = function(index) {
-    console.log('editProduct llamado con índice:', index);
     const product = products[index];
     if (product) {
         openProductForm(product);
@@ -373,16 +458,16 @@ window.deleteProduct = function(index) {
     })();
 };
 
-// ===== ACTUALIZAR ESTADÍSTICAS =====
+// ===== ACTUALIZAR ESTADÍSTICAS (SIN STOCK) =====
 function updateStats() {
     document.getElementById('totalProducts').textContent = products.length;
     const categories = new Set(products.map(p => p.Category));
     document.getElementById('totalCategories').textContent = categories.size;
-    const totalStock = products.reduce((sum, p) => sum + (parseInt(p.Stock) || 0), 0);
-    document.getElementById('totalStock').textContent = totalStock;
+    // La tarjeta de stock se puede ocultar, pero la dejamos a 0
+    document.getElementById('totalStock').textContent = 0;
 }
 
-// ===== ÚLTIMOS PRODUCTOS (con fallback universal de imágenes) =====
+// ===== ÚLTIMOS PRODUCTOS =====
 function updateRecentProducts() {
     const container = document.getElementById('recentProducts');
     const recent = products.slice(0, 5);
@@ -391,7 +476,6 @@ function updateRecentProducts() {
         return;
     }
 
-    // Generar HTML con placeholders de carga
     let html = '';
     const items = [];
     recent.forEach((p, index) => {
@@ -421,10 +505,8 @@ function updateRecentProducts() {
     });
     container.innerHTML = html;
 
-    // Resolver cada imagen con fallback de extensiones
     items.forEach(item => {
         const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
-        // Si la imagen del CSV tiene extensión, ponerla primero
         const imagesList = recent.find(p => ToSlug(p.Label) === item.slug)?.Images || '';
         const firstImage = imagesList.split(';').map(img => img.trim())[0] || '';
         const csvExt = firstImage.includes('.') ? firstImage.split('.').pop().toLowerCase() : 'webp';
@@ -436,18 +518,13 @@ function updateRecentProducts() {
             if (loading) loading.style.display = 'none';
             if (img) {
                 img.style.display = 'block';
-                if (url) {
-                    img.src = url;
-                } else {
-                    // Mostrar placeholder "?" si no se encontró ninguna imagen
-                    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="45"><rect fill="%23141414" width="32" height="45"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="10">?</text></svg>';
-                }
+                img.src = url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="45"><rect fill="%23141414" width="32" height="45"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="10">?</text></svg>';
             }
         });
     });
 }
 
-// ===== ABRIR FORMULARIO (con fallback de imágenes existentes) =====
+// ===== ABRIR FORMULARIO =====
 function openProductForm(product = null) {
     editingProduct = product;
     uploadedImages = [];
@@ -470,14 +547,11 @@ function openProductForm(product = null) {
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
         
-        // Cargar imágenes existentes con fallback de extensiones
         const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
         existingImages = imagesList;
         
-        // Mostrar un spinner mientras se resuelven las imágenes
         container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> Cargando imágenes...</div>';
         
-        // Resolver cada imagen y mostrarla cuando esté lista
         let resolvedCount = 0;
         imagesList.forEach((imgName, idx) => {
             const baseName = imgName.replace(/\.[^.]+$/, '');
@@ -486,7 +560,6 @@ function openProductForm(product = null) {
             const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
             
             resolveImageUrl(baseName, orderedExtensions, (url) => {
-                // Limpiar el spinner la primera vez que se resuelve una imagen
                 if (resolvedCount === 0) {
                     container.innerHTML = '';
                 }
@@ -496,13 +569,7 @@ function openProductForm(product = null) {
                 div.className = 'image-preview-item';
                 const img = document.createElement('img');
                 img.alt = `Imagen ${idx+1}`;
-                if (url) {
-                    img.src = url;
-                    console.log(`✅ Imagen resuelta: ${url}`);
-                } else {
-                    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
-                    console.warn(`❌ No se encontró imagen para: ${baseName}`);
-                }
+                img.src = url || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="140"><rect fill="%23141414" width="100" height="140"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-size="14">?</text></svg>';
                 div.appendChild(img);
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'remove-image';
@@ -526,13 +593,10 @@ function openProductForm(product = null) {
 
 function removeExistingImage(index) {
     existingImages.splice(index, 1);
-    // Reconstruir previsualización (simplificado: recargar el modal)
     const product = editingProduct;
     if (product) {
-        // Limpiar y volver a cargar
         const container = document.getElementById('imagePreviewContainer');
         container.innerHTML = '';
-        // Volver a cargar las imágenes existentes (sin fallback, se resolverán de nuevo)
         existingImages.forEach((imgName, idx) => {
             const baseName = imgName.replace(/\.[^.]+$/, '');
             const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
@@ -559,26 +623,27 @@ function removeExistingImage(index) {
     }
 }
 
+// ===== POBLAR SELECTS CON LISTA FIJA =====
 function populateCategorySelects() {
     const catSelect = document.getElementById('productCategory');
     const subSelect = document.getElementById('productSubcategory');
     const currentCat = catSelect.value;
     const currentSub = subSelect.value;
 
-    const categories = [...new Set(products.map(p => p.Category))];
+    // Llenar categorías
     catSelect.innerHTML = '<option value="">Seleccionar...</option>';
-    categories.forEach(cat => {
-        catSelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+    Object.keys(CATEGORIES).forEach(cat => {
+        const selected = (cat === currentCat) ? 'selected' : '';
+        catSelect.innerHTML += `<option value="${cat}" ${selected}>${cat}</option>`;
     });
-    if (currentCat) catSelect.value = currentCat;
 
-    if (currentCat) {
-        const subs = [...new Set(products.filter(p => p.Category === currentCat).map(p => p.SubCategory))];
+    // Llenar subcategorías si hay categoría seleccionada
+    if (currentCat && CATEGORIES[currentCat]) {
         subSelect.innerHTML = '<option value="">Seleccionar...</option>';
-        subs.forEach(sub => {
-            subSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
+        CATEGORIES[currentCat].forEach(sub => {
+            const selected = (sub === currentSub) ? 'selected' : '';
+            subSelect.innerHTML += `<option value="${sub}" ${selected}>${sub}</option>`;
         });
-        if (currentSub) subSelect.value = currentSub;
     } else {
         subSelect.innerHTML = '<option value="">Primero selecciona una categoría</option>';
     }
@@ -587,10 +652,9 @@ function populateCategorySelects() {
 document.getElementById('productCategory').addEventListener('change', function() {
     const subSelect = document.getElementById('productSubcategory');
     const cat = this.value;
-    if (cat) {
-        const subs = [...new Set(products.filter(p => p.Category === cat).map(p => p.SubCategory))];
+    if (cat && CATEGORIES[cat]) {
         subSelect.innerHTML = '<option value="">Seleccionar...</option>';
-        subs.forEach(sub => {
+        CATEGORIES[cat].forEach(sub => {
             subSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
         });
     } else {
@@ -626,13 +690,12 @@ function removeNewImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO =====
+// ===== GUARDAR PRODUCTO (SIN STOCK) =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
     const subcategory = document.getElementById('productSubcategory').value;
     const price = document.getElementById('productPrice').value.trim();
-    const stock = parseInt(document.getElementById('productStock').value) || 0;
     const description = document.getElementById('productDescription').value.trim();
     const features = document.getElementById('productFeatures').value
         .split('\n')
@@ -663,12 +726,12 @@ async function saveProduct() {
     const escapedDescription = description.includes(',') ? `"${description}"` : description;
     const escapedFeatures = features.includes(',') ? `"${features}"` : features;
     
+    // CSV sin stock
     const csvRow = [
         category,
         subcategory,
         label,
         `${parseFloat(price).toFixed(2)} CUP`,
-        stock,
         escapedDescription,
         escapedFeatures,
         imagesNames
@@ -761,7 +824,7 @@ function showView(view) {
     if (activeLink) activeLink.classList.add('active');
 }
 
-// ===== CERRAR SESIÓN (FUNCIÓN GLOBAL) =====
+// ===== CERRAR SESIÓN =====
 window.logout = function() {
     console.log('Cerrando sesión...');
     sessionStorage.removeItem('adminUser');
@@ -775,7 +838,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadProducts();
     showView('dashboard');
 
-    // Botón de nuevo producto
     const createBtn = document.getElementById('createProductBtn');
     if (createBtn) {
         createBtn.addEventListener('click', () => openProductForm(null));
@@ -783,7 +845,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('No se encontró #createProductBtn');
     }
 
-    // Botón de guardar producto
     const submitBtn = document.getElementById('submitProductBtn');
     if (submitBtn) {
         submitBtn.addEventListener('click', saveProduct);
@@ -791,7 +852,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('No se encontró #submitProductBtn');
     }
 
-    // Botón de cerrar sesión
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', window.logout);
@@ -800,7 +860,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('No se encontró #logoutBtn');
     }
 
-    // Cerrar modal al hacer clic fuera
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -811,7 +870,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ===== EXPONER FUNCIONES GLOBALMENTE (por si acaso) =====
+// ===== EXPONER FUNCIONES GLOBALMENTE =====
 window.editProduct = editProduct;
 window.deleteProduct = deleteProduct;
 window.logout = logout;
