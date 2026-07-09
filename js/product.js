@@ -136,8 +136,7 @@ function buildDetailsGrid(n) {
             }
         });
     }
-    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' });
-    details.push({ label: 'Stock', value: (n.Stock || 0) + ' unidades' });
+    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' }); 
     details.push({ label: 'Categoría', value: n.Category + ' / ' + n.SubCategory });
     
     details.forEach(function(detail) {
