@@ -8,13 +8,15 @@
   ],
   "Description": "Adaptación estadounidense de la serie británica. Sigue la vida cotidiana de los empleados de la empresa Dunder Mifflin, liderados por el excéntrico Michael Scott. Una comedia de oficina que se convirtió en un fenómeno cultural.",
   "Price": "12.00 CUP",
-  "Stock": 0,
   "Features": [
     "Creador: Greg Daniels",
     "Año: 2005",
     "Episodios: 6",
     "Actores: Steve Carell, John Krasinski, Jenna Fischer"
   ],
+  "Type": "Show",
+  "Episodes": 6,
+  "PricePerEpisode": "2.00 CUP",
   "Date": "2026-07-09T11:22:53.164Z",
   "Update": "2026-07-09T11:22:53.164Z"
 }
