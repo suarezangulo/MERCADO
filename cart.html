@@ -5,14 +5,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0a0a0a">
-	<meta name="description" content="Revisa tu cesta de títulos en CINEMARKET. Precios en CUP.">
+	<meta name="description" content="Revisa tu cesta de títulos en IMPRESIONES MR. Precios en CUP.">
 	<meta name="keywords" content="carrito, cesta, películas, series, comprar, Cuba, CUP">
 	<meta name="robots" content="index, follow">
-	<meta name="author" content="CINEMARKET">
+	<meta name="author" content="IMPRESIONES MR">
 	
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://tutienda.com/">
-	<meta property="og:title" content="CINEMARKET - Tu tienda audiovisual en Cuba">
+	<meta property="og:title" content="IMPRESIONES MR - Tu tienda audiovisual en Cuba">
 	<meta property="og:description" content="Revisa tu cesta de compra. Títulos de calidad para tu entretenimiento.">
 	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
 	
@@ -305,6 +305,51 @@
             filter: drop-shadow(0 0 30px rgba(30,144,255,0.9));
             transition: 0.4s ease;
         }
+
+		/* ===== ESPACIADO MEJORADO PARA EL CARRITO ===== */
+
+		/* 1. Separación del breadcrumb a la tabla */
+		.wrap-table-shopping-cart {
+			margin-top: 25px !important;
+		}
+
+		/* 2. Espacio entre la tabla y el botón Vaciar */
+		.flex-w.flex-sb-m.p-t-18.p-b-15 {
+			margin-top: 20px !important;
+			padding-top: 15px !important;
+			padding-bottom: 15px !important;
+		}
+
+		/* 3. Espacio entre el botón Vaciar y el resumen */
+		.bor10 {
+			margin-top: 35px !important;
+			padding: 35px 45px !important;
+		}
+
+		/* 4. Espaciado interno del resumen */
+		.bor10 .flex-w.flex-t {
+			margin-bottom: 18px !important;
+			padding-top: 12px !important;
+			padding-bottom: 12px !important;
+		}
+
+		/* 5. Espaciado del botón Ordenar */
+		.mica-btn-primary.pointer {
+			margin-top: 25px !important;
+		}
+
+		/* 6. Ajuste en móvil */
+		@media (max-width: 768px) {
+			.bor10 {
+				padding: 25px 20px !important;
+			}
+			.wrap-table-shopping-cart {
+				margin-top: 15px !important;
+			}
+			.bor10 {
+				margin-top: 25px !important;
+			}
+		}
 	</style>
 </head>
 <body class="animsition">
