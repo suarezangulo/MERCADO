@@ -106,7 +106,7 @@
 
 		.table-shopping-cart {
 			width: 100%;
-			min-width: 600px;
+			min-width: 500px; /* Ajustado porque quitamos una columna */
 			border-collapse: collapse;
 			color: #ccc;
 		}
@@ -127,9 +127,8 @@
 		}
 		.table-shopping-cart .column-1 { width: 90px; }
 		.table-shopping-cart .column-2 { width: auto; }
-		.table-shopping-cart .column-3 { width: 100px; text-align: right; }
-		.table-shopping-cart .column-4 { width: 130px; text-align: center; }
-		.table-shopping-cart .column-5 { width: 110px; text-align: right; font-weight: 600; color: #fff; }
+		.table-shopping-cart .column-3 { width: 120px; text-align: right; }
+		.table-shopping-cart .column-4 { width: 120px; text-align: right; font-weight: 600; color: #fff; }
 
 		.how-itemcart1 {
 			width: 60px;
@@ -156,40 +155,11 @@
 		.table-shopping-cart .column-2 a:hover {
 			color: #1E90FF;
 		}
-		.wrap-num-product {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 2px;
-		}
-		.num-product {
-			width: 50px;
-			text-align: center;
-			background: rgba(255,255,255,0.05);
-			border: 1px solid rgba(255,255,255,0.15);
-			border-radius: 4px;
-			color: #fff;
-			font-size: 14px;
-			padding: 4px;
-		}
+		/* Eliminamos los estilos de cantidad ya que no se usan */
+		.num-product,
 		.btn-num-product-up,
 		.btn-num-product-down {
-			width: 28px;
-			height: 28px;
-			border-radius: 50%;
-			background: rgba(255,255,255,0.08);
-			border: none;
-			color: #ccc;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: all 0.2s;
-		}
-		.btn-num-product-up:hover,
-		.btn-num-product-down:hover {
-			background: rgba(30,144,255,0.3);
-			color: #fff;
+			display: none !important;
 		}
 		.table-shopping-cart .txt-center {
 			text-align: center;
@@ -201,7 +171,7 @@
 				border-radius: 0;
 			}
 			.table-shopping-cart {
-				min-width: 550px;
+				min-width: 450px;
 			}
 		}
 
@@ -307,38 +277,26 @@
         }
 
 		/* ===== ESPACIADO MEJORADO PARA EL CARRITO ===== */
-
-		/* 1. Separación del breadcrumb a la tabla */
 		.wrap-table-shopping-cart {
 			margin-top: 25px !important;
 		}
-
-		/* 2. Espacio entre la tabla y el botón Vaciar */
 		.flex-w.flex-sb-m.p-t-18.p-b-15 {
 			margin-top: 20px !important;
 			padding-top: 15px !important;
 			padding-bottom: 15px !important;
 		}
-
-		/* 3. Espacio entre el botón Vaciar y el resumen */
 		.bor10 {
 			margin-top: 35px !important;
 			padding: 35px 45px !important;
 		}
-
-		/* 4. Espaciado interno del resumen */
 		.bor10 .flex-w.flex-t {
 			margin-bottom: 18px !important;
 			padding-top: 12px !important;
 			padding-bottom: 12px !important;
 		}
-
-		/* 5. Espaciado del botón Ordenar */
 		.mica-btn-primary.pointer {
 			margin-top: 25px !important;
 		}
-
-		/* 6. Ajuste en móvil */
 		@media (max-width: 768px) {
 			.bor10 {
 				padding: 25px 20px !important;
@@ -453,8 +411,7 @@
 											<th class="column-1" role="columnheader">Título</th>
 											<th class="column-2" role="columnheader"></th>
 											<th class="column-3" role="columnheader">Precio</th>
-											<th class="column-4" role="columnheader">Cantidad</th>
-											<th class="column-5" role="columnheader">Total</th>
+											<th class="column-4" role="columnheader">Total</th>
 										</tr>
 									</thead>
 									<tbody role="rowgroup"></tbody>
