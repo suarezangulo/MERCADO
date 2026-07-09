@@ -27,13 +27,19 @@ function addCartItem(n, t, i) {
     aElement = document.createElement("a");
     aElement.setAttribute("class", "cl2");
     aElement.setAttribute("href", "product.html?id=" + i.slug);
-    aElement.textContent = i.Label;
+    // Mostrar el rango de capítulos si existe
+    var displayName = i.Label;
+    if (t.range) {
+        displayName += ' (Capítulos ' + t.range.from + '-' + t.range.to + ')';
+    }
+    aElement.textContent = displayName;
     r.appendChild(aElement);
     e.appendChild(r);
     r = document.createElement("td");
     r.setAttribute("class", "column-3");
-    let precioStr = i.Price;
-    let valorNumerico = parseFloat(precioStr) || 0;
+    // Usar el precio calculado si existe, sino el precio base
+    var precioStr = t.price ? t.price : i.Price;
+    var valorNumerico = parseFloat(precioStr) || 0;
     r.textContent = toMoneyStr(valorNumerico);
     e.appendChild(r);
     r = document.createElement("td");
@@ -53,8 +59,12 @@ function addCartItem(n, t, i) {
     f.setAttribute("value", t.qty);
     f.setAttribute("min", 0);
     f.setAttribute("max", 99);
-    f.setAttribute("price", i.Price);
-    f.setAttribute("label", i.Label);
+    f.setAttribute("price", precioStr);
+    f.setAttribute("label", displayName);
+    // Guardar el rango en el atributo data-range para usarlo al actualizar
+    if (t.range) {
+        f.setAttribute("data-range", JSON.stringify(t.range));
+    }
     f.addEventListener("input", () => updateCartTotals());
     u.appendChild(f);
     o = document.createElement("div");
@@ -197,7 +207,15 @@ function updateCartTotals(guardarEnStorage = true) {
 
         totalCUP += subtotalOriginal;
 
-        itemsActualizados.items.push({ productId: productId, qty: cantidad });
+        // Guardar el rango si existe
+        let rangeAttr = $(elemento).attr("data-range");
+        let itemData = { productId: productId, qty: cantidad };
+        if (rangeAttr) {
+            itemData.range = JSON.parse(rangeAttr);
+            itemData.price = valorNumerico;
+        }
+        itemsActualizados.items.push(itemData);
+
         let celdaTotalProducto = $(this).parent().parent().next();
         celdaTotalProducto.text(toMoneyStr(subtotalOriginal));
     });
@@ -285,7 +303,8 @@ function sendOrder() {
 
             productos.push({ nombre: nombre, cantidad: cantidad, precioUnitario: valorNumerico, subtotal: subtotal });
             totalCUP += subtotal;
-            items.push({ id: ToSlug(nombre), name: nombre, quantity: cantidad, price: valorNumerico, currency: 'CUP' });
+            let slug = $(elemento).attr("name").substring(4);
+            items.push({ id: slug, name: nombre, quantity: cantidad, price: valorNumerico, currency: 'CUP' });
         }
     });
 
