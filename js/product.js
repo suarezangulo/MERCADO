@@ -32,7 +32,7 @@ function addBreadCrumbItem(container, label, url, active) {
         li.appendChild(a);
         var sep = document.createElement("span");
         sep.setAttribute("class", "breadcrumb-sep");
-        sep.innerHTML = '<i class="fa fa-chevron-right"></i>'; // Cambio aquí
+        sep.innerHTML = '<i class="fa fa-chevron-right"></i>';
         li.appendChild(sep);
     }
     container.appendChild(li);
@@ -136,7 +136,11 @@ function buildDetailsGrid(n) {
             }
         });
     }
-    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' }); 
+    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' });
+    // Mostrar precio por capítulo si existe
+    if (n.PricePerEpisode) {
+        details.push({ label: 'Precio por capítulo', value: n.PricePerEpisode });
+    }
     details.push({ label: 'Categoría', value: n.Category + ' / ' + n.SubCategory });
     
     details.forEach(function(detail) {
@@ -210,6 +214,114 @@ function getCiclon(n, t) {
     return u;
 }
 
+// ===== FUNCIÓN PARA CREAR EL SELECTOR DE CAPÍTULOS =====
+function buildEpisodeSelector(product) {
+    // Si no tiene capítulos, no hacemos nada
+    if (!product.Type || product.Type !== 'episode') {
+        // Ocultar el contenedor si existe
+        $('#episodeSelectorContainer').hide();
+        return;
+    }
+
+    const totalEpisodes = product.Episodes || 0;
+    if (totalEpisodes <= 1) {
+        $('#episodeSelectorContainer').hide();
+        return;
+    }
+
+    // Obtener precio por capítulo: si existe PricePerEpisode, usarlo; si no, calcularlo
+    let pricePerEpisode = 0;
+    if (product.PricePerEpisode) {
+        pricePerEpisode = parseFloat(product.PricePerEpisode) || 0;
+    } else {
+        // Si no hay precio por capítulo definido, calcularlo del precio total
+        const totalPrice = parseFloat(product.Price) || 0;
+        pricePerEpisode = totalPrice / totalEpisodes;
+        // Redondear a 2 decimales
+        pricePerEpisode = Math.round(pricePerEpisode * 100) / 100;
+    }
+
+    // Guardar precio por capítulo en el producto para usarlo luego
+    product._pricePerEpisode = pricePerEpisode;
+
+    // Crear el HTML del selector
+    const container = $('#episodeSelectorContainer');
+    container.show();
+    container.html(`
+        <div style="background: var(--mica-card); backdrop-filter: blur(16px); border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border-mica); margin-top: 20px;">
+            <h4 style="color: #fff; margin-bottom: 12px; font-weight: 600;">Seleccionar capítulos</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+                <button id="selectAllEpisodes" class="mica-btn mica-btn-primary" style="padding: 6px 16px; font-size: 13px;">Todos</button>
+                <span style="color: var(--text-secondary);">Desde</span>
+                <input type="number" id="episodeFrom" value="1" min="1" max="${totalEpisodes}" style="width: 60px; padding: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 6px; color: #fff; text-align: center;">
+                <span style="color: var(--text-secondary);">Hasta</span>
+                <input type="number" id="episodeTo" value="${totalEpisodes}" min="1" max="${totalEpisodes}" style="width: 60px; padding: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 6px; color: #fff; text-align: center;">
+                <span style="color: var(--text-secondary); margin-left: 8px;">Total: <span id="episodeCountDisplay" style="font-weight: 600; color: #fff;">${totalEpisodes}</span> capítulos</span>
+                <span style="color: var(--text-secondary); margin-left: 8px;">Precio: <span id="episodePriceDisplay" style="font-weight: 700; color: var(--accent-blue);">${toMoneyStr(product.Price ? parseFloat(product.Price) : 0)}</span></span>
+            </div>
+        </div>
+    `);
+
+    // Guardar referencia al botón de agregar
+    const $addBtn = $('.js-addcart-detail');
+    let currentRange = { from: 1, to: totalEpisodes, total: totalEpisodes };
+
+    // Función para actualizar el precio y el botón
+    function updateEpisodeSelection() {
+        let from = parseInt($('#episodeFrom').val()) || 1;
+        let to = parseInt($('#episodeTo').val()) || totalEpisodes;
+        // Validar límites
+        if (from < 1) from = 1;
+        if (to > totalEpisodes) to = totalEpisodes;
+        if (from > to) {
+            // Intercambiar si desde > hasta
+            let temp = from;
+            from = to;
+            to = temp;
+        }
+        $('#episodeFrom').val(from);
+        $('#episodeTo').val(to);
+
+        const total = to - from + 1;
+        currentRange = { from, to, total };
+        const calculatedPrice = pricePerEpisode * total;
+
+        // Actualizar display
+        $('#episodeCountDisplay').text(total);
+        $('#episodePriceDisplay').text(toMoneyStr(calculatedPrice));
+
+        // Actualizar el botón "Agregar" con el precio calculado
+        if ($addBtn.length) {
+            // Guardar el precio calculado en el botón para usarlo al agregar
+            $addBtn.data('calculated-price', calculatedPrice);
+            $addBtn.data('range', currentRange);
+            // Cambiar el texto del botón para mostrar el precio
+            $addBtn.html(`<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (${toMoneyStr(calculatedPrice)})`);
+        }
+    }
+
+    // Eventos
+    $('#episodeFrom, #episodeTo').on('input', function() {
+        updateEpisodeSelection();
+    });
+
+    $('#selectAllEpisodes').on('click', function(e) {
+        e.preventDefault();
+        $('#episodeFrom').val(1);
+        $('#episodeTo').val(totalEpisodes);
+        updateEpisodeSelection();
+    });
+
+    // Inicializar
+    updateEpisodeSelection();
+
+    // Almacenar la selección para usarla en el evento click del botón
+    $addBtn.data('has-episodes', true);
+    $addBtn.data('range', currentRange);
+    $addBtn.data('calculated-price', parseFloat(product.Price) || 0);
+}
+
+// ===== INICIALIZACIÓN =====
 (function(n) {
     "use strict";
     n(document).ready(function() {
@@ -259,26 +371,46 @@ function getCiclon(n, t) {
             let desc = spanishFormat(i.Description || '');
             n("#productDescriptionNetflix").text(desc);
 
-            let stock = i.Stock || 0;
+            // === NUEVO: Mostrar selector de capítulos si aplica ===
+            buildEpisodeSelector(i);
+
+            // === MODIFICAR EL BOTÓN PARA USAR LA SELECCIÓN DE CAPÍTULOS ===
             var $btn = n(".js-addcart-detail");
             $btn.attr("product-id", t);
             $btn.attr("product-label", r);
-            
-            if (stock <= 0) {
-                $btn.prop('disabled', true).text('Sin stock');
-                $btn.css({ opacity: '0.6', cursor: 'not-allowed' });
-            }
 
+            // Si hay capítulos, el botón ya fue modificado por buildEpisodeSelector
+            // pero necesitamos sobreescribir el click para usar la selección
             $btn.off('click').on('click', function(e) {
                 e.preventDefault();
                 if ($btn.prop('disabled')) return;
-                
+
+                // Verificar si tiene capítulos
+                var hasEpisodes = $btn.data('has-episodes') || false;
                 var qty = 1;
-                var wasRemoved = addToCart(t, r, qty, true);
+                var extraData = {};
+
+                if (hasEpisodes) {
+                    var range = $btn.data('range');
+                    var calculatedPrice = $btn.data('calculated-price');
+                    if (range && calculatedPrice !== undefined) {
+                        extraData = {
+                            range: range,
+                            price: calculatedPrice
+                        };
+                    }
+                }
+
+                var wasRemoved = addToCart(t, r, qty, true, extraData);
                 updateCartQty();
                 
                 if (wasRemoved) {
                     $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
+                    // Si tiene capítulos, restaurar el texto con el precio
+                    if (hasEpisodes && $btn.data('calculated-price') !== undefined) {
+                        let price = $btn.data('calculated-price');
+                        $btn.html(`<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (${toMoneyStr(price)})`);
+                    }
                 } else {
                     $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
                     setTimeout(function() {
@@ -286,13 +418,27 @@ function getCiclon(n, t) {
                             $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
                         } else {
                             $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
+                            // Si tiene capítulos, restaurar el texto con el precio
+                            if (hasEpisodes && $btn.data('calculated-price') !== undefined) {
+                                let price = $btn.data('calculated-price');
+                                $btn.html(`<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (${toMoneyStr(price)})`);
+                            }
                         }
                     }, 2500);
                 }
             });
 
-            if (inCart(t) && stock > 0) {
-                $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
+            // Si el producto ya está en el carrito, marcar el botón
+            if (inCart(t)) {
+                // Verificar si el item tiene un rango específico
+                var cart = getCart();
+                var item = cart.items.find(item => item.productId === t);
+                if (item && item.range) {
+                    // Si tiene rango, mostramos el precio calculado
+                    $btn.html(`<i class="zmdi zmdi-check"></i> Agregado ✓`);
+                } else {
+                    $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
+                }
             }
 
             buildRelatedProducts(i);
