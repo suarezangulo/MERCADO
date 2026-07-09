@@ -136,11 +136,7 @@ function buildDetailsGrid(n) {
             }
         });
     }
-    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' });
-    // Mostrar precio por capítulo si existe
-    if (n.PricePerEpisode) {
-        details.push({ label: 'Precio por capítulo', value: n.PricePerEpisode });
-    }
+    details.push({ label: 'Precio', value: n.Price || '0.00 CUP' }); 
     details.push({ label: 'Categoría', value: n.Category + ' / ' + n.SubCategory });
     
     details.forEach(function(detail) {
@@ -214,124 +210,124 @@ function getCiclon(n, t) {
     return u;
 }
 
-// ===== FUNCIÓN PARA CREAR EL SELECTOR DE CAPÍTULOS =====
-function buildEpisodeSelector(product) {
-    // Si no tiene capítulos, no hacemos nada
-    if (!product.Type || product.Type !== 'episode') {
-        // Ocultar el contenedor si existe
-        $('#episodeSelectorContainer').hide();
-        return;
+// ===== NUEVA FUNCIÓN PARA CONSTRUIR EL SELECTOR DE CAPÍTULOS =====
+function buildEpisodeSelector(product, $btn) {
+    if (product.Type !== "episode" || !product.Episodes || product.Episodes < 2) {
+        return; // Solo mostrar si tiene capítulos y más de 1
     }
 
-    const totalEpisodes = product.Episodes || 0;
-    if (totalEpisodes <= 1) {
-        $('#episodeSelectorContainer').hide();
-        return;
+    var totalEpisodes = parseInt(product.Episodes);
+    var pricePerEpisode = null;
+
+    // Buscar precio por capítulo en Features
+    if (product.Features) {
+        var priceFeature = product.Features.find(function(f) {
+            return f.toLowerCase().includes('precio por capítulo') || f.toLowerCase().includes('costo por episodio');
+        });
+        if (priceFeature) {
+            var match = priceFeature.match(/[0-9.]+/);
+            if (match) pricePerEpisode = parseFloat(match[0]);
+        }
     }
 
-    // Obtener precio por capítulo: si existe PricePerEpisode, usarlo; si no, calcularlo
-    let pricePerEpisode = 0;
-    if (product.PricePerEpisode) {
-        pricePerEpisode = parseFloat(product.PricePerEpisode) || 0;
-    } else {
-        // Si no hay precio por capítulo definido, calcularlo del precio total
-        const totalPrice = parseFloat(product.Price) || 0;
+    // Si no se encontró, calcular como Price / TotalEpisodes
+    if (pricePerEpisode === null || isNaN(pricePerEpisode)) {
+        var totalPrice = parseFloat(product.Price) || 0;
         pricePerEpisode = totalPrice / totalEpisodes;
-        // Redondear a 2 decimales
-        pricePerEpisode = Math.round(pricePerEpisode * 100) / 100;
     }
 
-    // Guardar precio por capítulo en el producto para usarlo luego
-    product._pricePerEpisode = pricePerEpisode;
+    // Crear el contenedor si no existe
+    var container = document.getElementById('episodeSelectorContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'episodeSelectorContainer';
+        container.style.marginTop = '20px';
+        // Insertar después del botón de agregar o en un lugar adecuado
+        $btn.closest('.product-actions').after(container);
+    }
 
-    // Crear el HTML del selector
-    const container = $('#episodeSelectorContainer');
-    container.show();
-    container.html(`
-        <div style="background: var(--mica-card); backdrop-filter: blur(16px); border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border-mica); margin-top: 20px;">
-            <h4 style="color: #fff; margin-bottom: 12px; font-weight: 600;">Seleccionar capítulos</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-                <button id="selectAllEpisodes" class="mica-btn mica-btn-primary" style="padding: 6px 16px; font-size: 13px;">Todos</button>
+    container.innerHTML = `
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 12px; padding: 15px 20px; backdrop-filter: blur(10px);">
+            <label style="font-weight: 600; color: #fff; display: block; margin-bottom: 10px;">Seleccionar capítulos:</label>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <button id="selectAllEpisodes" class="mica-btn mica-btn-primary" style="padding: 4px 16px; font-size: 13px;">Todos</button>
                 <span style="color: var(--text-secondary);">Desde</span>
-                <input type="number" id="episodeFrom" value="1" min="1" max="${totalEpisodes}" style="width: 60px; padding: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 6px; color: #fff; text-align: center;">
+                <input type="number" id="episodeFrom" value="1" min="1" max="${totalEpisodes}" style="width: 60px; padding: 6px 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 6px; color: #fff; text-align: center;">
                 <span style="color: var(--text-secondary);">Hasta</span>
-                <input type="number" id="episodeTo" value="${totalEpisodes}" min="1" max="${totalEpisodes}" style="width: 60px; padding: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 6px; color: #fff; text-align: center;">
-                <span style="color: var(--text-secondary); margin-left: 8px;">Total: <span id="episodeCountDisplay" style="font-weight: 600; color: #fff;">${totalEpisodes}</span> capítulos</span>
-                <span style="color: var(--text-secondary); margin-left: 8px;">Precio: <span id="episodePriceDisplay" style="font-weight: 700; color: var(--accent-blue);">${toMoneyStr(product.Price ? parseFloat(product.Price) : 0)}</span></span>
+                <input type="number" id="episodeTo" value="${totalEpisodes}" min="1" max="${totalEpisodes}" style="width: 60px; padding: 6px 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 6px; color: #fff; text-align: center;">
+                <span id="episodePriceDisplay" style="font-weight: bold; color: var(--accent-blue); margin-left: 10px;">${toMoneyStr(pricePerEpisode * totalEpisodes)}</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
+                <span id="episodeCountDisplay">${totalEpisodes} capítulos</span>
             </div>
         </div>
-    `);
+    `;
 
-    // Guardar referencia al botón de agregar
-    const $addBtn = $('.js-addcart-detail');
-    let currentRange = { from: 1, to: totalEpisodes, total: totalEpisodes };
+    // Variables para guardar la selección actual
+    var currentRange = { from: 1, to: totalEpisodes, total: totalEpisodes };
+    var currentPrice = pricePerEpisode * totalEpisodes;
 
-    // Función para actualizar el precio y el botón
-    function updateEpisodeSelection() {
-        let from = parseInt($('#episodeFrom').val()) || 1;
-        let to = parseInt($('#episodeTo').val()) || totalEpisodes;
-        // Validar límites
+    // Función para recalcular
+    function updatePrice() {
+        var from = parseInt(document.getElementById('episodeFrom').value) || 1;
+        var to = parseInt(document.getElementById('episodeTo').value) || 1;
+
+        // Validar y corregir valores
         if (from < 1) from = 1;
         if (to > totalEpisodes) to = totalEpisodes;
-        if (from > to) {
-            // Intercambiar si desde > hasta
-            let temp = from;
-            from = to;
-            to = temp;
-        }
-        $('#episodeFrom').val(from);
-        $('#episodeTo').val(to);
+        if (from > to) from = to;
+        if (to < from) to = from;
 
-        const total = to - from + 1;
-        currentRange = { from, to, total };
-        const calculatedPrice = pricePerEpisode * total;
+        document.getElementById('episodeFrom').value = from;
+        document.getElementById('episodeTo').value = to;
 
-        // Actualizar display
-        $('#episodeCountDisplay').text(total);
-        $('#episodePriceDisplay').text(toMoneyStr(calculatedPrice));
+        var count = to - from + 1;
+        var price = pricePerEpisode * count;
 
-        // Actualizar el botón "Agregar" con el precio calculado
-        if ($addBtn.length) {
-            // Guardar el precio calculado en el botón para usarlo al agregar
-            $addBtn.data('calculated-price', calculatedPrice);
-            $addBtn.data('range', currentRange);
-            // Cambiar el texto del botón para mostrar el precio
-            $addBtn.html(`<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (${toMoneyStr(calculatedPrice)})`);
-        }
+        currentRange = { from: from, to: to, total: count };
+        currentPrice = price;
+
+        document.getElementById('episodePriceDisplay').textContent = toMoneyStr(price);
+        document.getElementById('episodeCountDisplay').textContent = count + ' capítulos';
+
+        // Actualizar el botón de agregar para mostrar el precio calculado
+        $btn.attr('data-episode-price', price);
+        $btn.attr('data-episode-range', JSON.stringify(currentRange));
+        // Cambiar el texto del botón para reflejar el precio
+        var label = product.Label;
+        $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(price) + ')');
     }
 
     // Eventos
-    $('#episodeFrom, #episodeTo').on('input', function() {
-        updateEpisodeSelection();
-    });
-
+    $('#episodeFrom').on('change', updatePrice);
+    $('#episodeTo').on('change', updatePrice);
     $('#selectAllEpisodes').on('click', function(e) {
         e.preventDefault();
-        $('#episodeFrom').val(1);
-        $('#episodeTo').val(totalEpisodes);
-        updateEpisodeSelection();
+        document.getElementById('episodeFrom').value = 1;
+        document.getElementById('episodeTo').value = totalEpisodes;
+        updatePrice();
     });
 
     // Inicializar
-    updateEpisodeSelection();
+    updatePrice();
 
-    // Almacenar la selección para usarla en el evento click del botón
-    $addBtn.data('has-episodes', true);
-    $addBtn.data('range', currentRange);
-    $addBtn.data('calculated-price', parseFloat(product.Price) || 0);
+    // Guardar referencia al precio base por si se necesita
+    $btn.attr('data-base-price', product.Price);
+    $btn.attr('data-episode-active', 'true');
 }
 
-// ===== INICIALIZACIÓN =====
 (function(n) {
     "use strict";
     n(document).ready(function() {
         var i = new URLSearchParams(window.location.search),
             t = i.get("id");
+        console.log('🔍 Product ID:', t);
         if (!t) {
             $(".product-description-netflix").html("<p>Producto no encontrado.</p>");
             return;
         }
         n.getJSON("./data/products/" + t + ".json", function(i) {
+            console.log('📦 Producto cargado:', i);
             let r = spanishFormat(i.Label);
             document.title = r + " - CINEMARKET";
             n("head").append('<meta property="og:title" content="' + spanishFormat(r) + '">');
@@ -371,45 +367,51 @@ function buildEpisodeSelector(product) {
             let desc = spanishFormat(i.Description || '');
             n("#productDescriptionNetflix").text(desc);
 
-            // === NUEVO: Mostrar selector de capítulos si aplica ===
-            buildEpisodeSelector(i);
-
-            // === MODIFICAR EL BOTÓN PARA USAR LA SELECCIÓN DE CAPÍTULOS ===
+            // ===== BOTÓN AGREGAR =====
             var $btn = n(".js-addcart-detail");
             $btn.attr("product-id", t);
             $btn.attr("product-label", r);
 
-            // Si hay capítulos, el botón ya fue modificado por buildEpisodeSelector
-            // pero necesitamos sobreescribir el click para usar la selección
+            // ===== SELECTOR DE CAPÍTULOS =====
+            buildEpisodeSelector(i, $btn);
+
+            // ===== EVENTO CLICK DEL BOTÓN =====
             $btn.off('click').on('click', function(e) {
                 e.preventDefault();
-                if ($btn.prop('disabled')) return;
+                console.log('🛒 Click en Agregar');
 
-                // Verificar si tiene capítulos
-                var hasEpisodes = $btn.data('has-episodes') || false;
-                var qty = 1;
                 var extraData = {};
+                var priceToUse = null;
+                var rangeData = null;
 
-                if (hasEpisodes) {
-                    var range = $btn.data('range');
-                    var calculatedPrice = $btn.data('calculated-price');
-                    if (range && calculatedPrice !== undefined) {
-                        extraData = {
-                            range: range,
-                            price: calculatedPrice
-                        };
+                // Si el producto tiene selector de capítulos activo
+                if ($btn.attr('data-episode-active') === 'true') {
+                    var priceAttr = $btn.attr('data-episode-price');
+                    var rangeAttr = $btn.attr('data-episode-range');
+                    console.log('📊 data-episode-price:', priceAttr);
+                    console.log('📊 data-episode-range:', rangeAttr);
+                    if (priceAttr && rangeAttr) {
+                        priceToUse = parseFloat(priceAttr);
+                        rangeData = JSON.parse(rangeAttr);
+                        extraData.range = rangeData;
+                        extraData.price = priceToUse;
+                        console.log('📊 ExtraData:', extraData);
                     }
                 }
 
-                var wasRemoved = addToCart(t, r, qty, true, extraData);
+                // Llamar a addToCart con extraData
+                var wasRemoved = addToCart(t, r, 1, true, extraData);
+                console.log('🛒 addToCart resultado:', wasRemoved);
                 updateCartQty();
-                
+
                 if (wasRemoved) {
                     $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
-                    // Si tiene capítulos, restaurar el texto con el precio
-                    if (hasEpisodes && $btn.data('calculated-price') !== undefined) {
-                        let price = $btn.data('calculated-price');
-                        $btn.html(`<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (${toMoneyStr(price)})`);
+                    // Si tenía selector, restaurar el precio mostrado
+                    if ($btn.attr('data-episode-active') === 'true') {
+                        var currentPrice = $btn.attr('data-episode-price');
+                        if (currentPrice) {
+                            $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(parseFloat(currentPrice)) + ')');
+                        }
                     }
                 } else {
                     $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
@@ -418,31 +420,26 @@ function buildEpisodeSelector(product) {
                             $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
                         } else {
                             $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar');
-                            // Si tiene capítulos, restaurar el texto con el precio
-                            if (hasEpisodes && $btn.data('calculated-price') !== undefined) {
-                                let price = $btn.data('calculated-price');
-                                $btn.html(`<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (${toMoneyStr(price)})`);
+                            // Restaurar precio si aplica
+                            if ($btn.attr('data-episode-active') === 'true') {
+                                var currPrice = $btn.attr('data-episode-price');
+                                if (currPrice) {
+                                    $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(parseFloat(currPrice)) + ')');
+                                }
                             }
                         }
                     }, 2500);
                 }
             });
 
-            // Si el producto ya está en el carrito, marcar el botón
+            // Si el producto ya está en el carrito, actualizar el botón
             if (inCart(t)) {
-                // Verificar si el item tiene un rango específico
-                var cart = getCart();
-                var item = cart.items.find(item => item.productId === t);
-                if (item && item.range) {
-                    // Si tiene rango, mostramos el precio calculado
-                    $btn.html(`<i class="zmdi zmdi-check"></i> Agregado ✓`);
-                } else {
-                    $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
-                }
+                $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
             }
 
             buildRelatedProducts(i);
         }).fail(function() {
+            console.error('❌ Error al cargar el producto');
             $(".product-description-netflix").html("<p>Producto no disponible.</p>");
         });
     });
