@@ -181,7 +181,7 @@ function toMoneyStr(valor) {
     return "CUP$ " + valor.toFixed(2);
 }
 
-// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO =====
+// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO (CORREGIDA PARA USAR IMAGES) =====
 function addProductCardBase(container, product, extraClass, mode) {
     extraClass = extraClass || "";
     mode = mode || 1;
@@ -221,6 +221,22 @@ function addProductCardBase(container, product, extraClass, mode) {
     link.setAttribute("class", "stext-104 cl3 hov-cl1 trans-04 js-name-b2");
     link.setAttribute("href", "product.html?id=" + slug);
 
+    // ===== OBTENER NOMBRE BASE DE LA IMAGEN DESDE product.Images =====
+    var imagesArray = [];
+    if (product.Images) {
+        if (Array.isArray(product.Images)) {
+            imagesArray = product.Images;
+        } else {
+            imagesArray = product.Images.split(';').map(img => img.trim());
+        }
+    }
+    var firstImage = imagesArray.length > 0 ? imagesArray[0] : null;
+    var baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : null;
+    if (!baseName) {
+        // Fallback: usar slug + "-0"
+        baseName = slug + "-0";
+    }
+
     var pic = document.createElement("div");
     pic.setAttribute("class", "block2-pic hov-img0");
     var img = document.createElement("img");
@@ -230,8 +246,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     img.setAttribute("src", getPlaceholderImage(product.Label));
     pic.appendChild(img);
     
-    (function(imgEl, productSlug, idx) {
-        var baseName = productSlug + "-" + idx;
+    (function(imgEl, baseName, idx) {
         var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
         resolveImageUrl(baseName, extensions, function(url) {
             if (url) {
@@ -239,7 +254,7 @@ function addProductCardBase(container, product, extraClass, mode) {
                 imgEl.classList.add('loaded');
             }
         });
-    })(img, slug, 0);
+    })(img, baseName, 0);
     
     link.appendChild(pic);
     block.appendChild(link);
@@ -259,7 +274,11 @@ function addProductCardBase(container, product, extraClass, mode) {
 
     var featuresText = "";
     if (product.Features != null) {
-        featuresText = spanishFormat(product.Features.join(", "));
+        if (Array.isArray(product.Features)) {
+            featuresText = spanishFormat(product.Features.join(", "));
+        } else {
+            featuresText = spanishFormat(product.Features);
+        }
     }
     var featuresSpan = document.createElement("span");
     featuresSpan.setAttribute("class", "cl4 stext-111");
