@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:47:37.691Z",
-        "Update": "2026-07-10T09:47:37.691Z"
+        "Date": "2026-07-10T09:51:57.253Z",
+        "Update": "2026-07-10T09:51:57.253Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "",
-        "Date": "2026-07-10T09:47:37.692Z",
-        "Update": "2026-07-10T09:47:37.692Z"
+        "Date": "2026-07-10T09:51:57.254Z",
+        "Update": "2026-07-10T09:51:57.254Z"
       }
     ]
   },
@@ -49,24 +49,27 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:47:37.692Z",
-        "Update": "2026-07-10T09:47:37.692Z"
+        "Date": "2026-07-10T09:51:57.254Z",
+        "Update": "2026-07-10T09:51:57.254Z"
       }
     ]
   },
-  "2.00 CUP": {
-    "Naturaleza": [
+  "Documentales": {
+    "Naturaleza / Vida Salvaje": [
       {
         "Label": "Planeta Tierra II",
         "Price": "12.00 CUP",
         "Features": [
-          "el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable."
+          "Narrador: David Attenborough",
+          "Año: 2016",
+          "Episodios: 6",
+          "Duración: 50 min por episodio"
         ],
-        "Type": "planeta-tierra-ii-0.webp;planeta-tierra-ii-1.webp",
-        "Episodes": 0,
-        "PricePerEpisode": "6",
-        "Date": "2026-07-10T09:47:37.692Z",
-        "Update": "2026-07-10T09:47:37.692Z"
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T09:51:57.254Z",
+        "Update": "2026-07-10T09:51:57.254Z"
       }
     ]
   },
@@ -81,8 +84,8 @@
         "Type": "John Krasinski",
         "Episodes": 0,
         "PricePerEpisode": "the-office-t1-0.webp;the-office-t1-1.webp",
-        "Date": "2026-07-10T09:47:37.692Z",
-        "Update": "2026-07-10T09:47:37.692Z"
+        "Date": "2026-07-10T09:51:57.254Z",
+        "Update": "2026-07-10T09:51:57.254Z"
       }
     ]
   },
@@ -97,8 +100,8 @@
         "Type": "Director: Rodrigo Triana;Año: 2003;Episodios: 200;Actores: Danna García",
         "Episodes": 0,
         "PricePerEpisode": "Paola Rey",
-        "Date": "2026-07-10T09:47:37.692Z",
-        "Update": "2026-07-10T09:47:37.692Z"
+        "Date": "2026-07-10T09:51:57.254Z",
+        "Update": "2026-07-10T09:51:57.254Z"
       }
     ]
   }
