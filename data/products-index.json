@@ -13,24 +13,25 @@
         "Type": "movie",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:35:09.990Z",
-        "Update": "2026-07-10T09:35:09.990Z"
+        "Date": "2026-07-10T09:39:11.890Z",
+        "Update": "2026-07-10T09:39:11.890Z"
       }
-    ]
-  },
-  "Director: Damien Chazelle;Año: 2016;Duración: 128 min;Actores: Ryan Gosling": {
+    ],
     "Drama": [
       {
         "Label": "La La Land",
         "Price": "5.00 CUP",
         "Features": [
-          "una aspirante a actriz"
+          "Director: Damien Chazelle",
+          "Año: 2016",
+          "Duración: 128 min",
+          "Actores: Ryan Gosling, Emma Stone, John Legend"
         ],
-        "Type": "un pianista de jazz",
+        "Type": "movie",
         "Episodes": 0,
-        "PricePerEpisode": "música y pasión que cautivó al mundo.",
-        "Date": "2026-07-10T09:35:09.991Z",
-        "Update": "2026-07-10T09:35:09.991Z"
+        "PricePerEpisode": "",
+        "Date": "2026-07-10T09:39:11.891Z",
+        "Update": "2026-07-10T09:39:11.891Z"
       }
     ]
   },
@@ -45,8 +46,8 @@
         "Type": "Creador: Daniel Abraham",
         "Episodes": 0,
         "PricePerEpisode": "Dominique Tipper",
-        "Date": "2026-07-10T09:35:09.991Z",
-        "Update": "2026-07-10T09:35:09.991Z"
+        "Date": "2026-07-10T09:39:11.891Z",
+        "Update": "2026-07-10T09:39:11.891Z"
       }
     ]
   },
@@ -61,8 +62,8 @@
         "Type": "planeta-tierra-ii-0.webp;planeta-tierra-ii-1.webp",
         "Episodes": 0,
         "PricePerEpisode": "6",
-        "Date": "2026-07-10T09:35:09.991Z",
-        "Update": "2026-07-10T09:35:09.991Z"
+        "Date": "2026-07-10T09:39:11.891Z",
+        "Update": "2026-07-10T09:39:11.891Z"
       }
     ]
   },
@@ -77,8 +78,8 @@
         "Type": "John Krasinski",
         "Episodes": 0,
         "PricePerEpisode": "the-office-t1-0.webp;the-office-t1-1.webp",
-        "Date": "2026-07-10T09:35:09.992Z",
-        "Update": "2026-07-10T09:35:09.992Z"
+        "Date": "2026-07-10T09:39:11.891Z",
+        "Update": "2026-07-10T09:39:11.891Z"
       }
     ]
   },
@@ -93,8 +94,8 @@
         "Type": "Director: Rodrigo Triana;Año: 2003;Episodios: 200;Actores: Danna García",
         "Episodes": 0,
         "PricePerEpisode": "Paola Rey",
-        "Date": "2026-07-10T09:35:09.992Z",
-        "Update": "2026-07-10T09:35:09.992Z"
+        "Date": "2026-07-10T09:39:11.892Z",
+        "Update": "2026-07-10T09:39:11.892Z"
       }
     ]
   }
