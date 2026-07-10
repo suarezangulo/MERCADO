@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "",
-        "Date": "2026-07-10T11:59:22.942Z",
-        "Update": "2026-07-10T11:59:22.942Z"
+        "Date": "2026-07-10T11:59:44.212Z",
+        "Update": "2026-07-10T11:59:44.213Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:59:22.942Z",
-        "Update": "2026-07-10T11:59:22.942Z"
+        "Date": "2026-07-10T11:59:44.213Z",
+        "Update": "2026-07-10T11:59:44.213Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.943Z",
-        "Update": "2026-07-10T11:59:22.943Z"
+        "Date": "2026-07-10T11:59:44.213Z",
+        "Update": "2026-07-10T11:59:44.213Z"
       }
     ]
   },
@@ -68,13 +68,13 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.943Z",
-        "Update": "2026-07-10T11:59:22.943Z"
+        "Date": "2026-07-10T11:59:44.214Z",
+        "Update": "2026-07-10T11:59:44.214Z"
       }
     ]
   },
   "Shows": {
-    "Comedia": [
+    "Stand-up Comedy": [
       {
         "Label": "The Office (Temporada 1)",
         "Price": "12.00",
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.943Z",
-        "Update": "2026-07-10T11:59:22.943Z"
+        "Date": "2026-07-10T11:59:44.214Z",
+        "Update": "2026-07-10T11:59:44.214Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.944Z",
-        "Update": "2026-07-10T11:59:22.944Z"
+        "Date": "2026-07-10T11:59:44.214Z",
+        "Update": "2026-07-10T11:59:44.214Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
@@ -121,8 +121,8 @@
         "Type": "episode",
         "Episodes": 59,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.944Z",
-        "Update": "2026-07-10T11:59:22.944Z"
+        "Date": "2026-07-10T11:59:44.214Z",
+        "Update": "2026-07-10T11:59:44.214Z"
       },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
@@ -134,8 +134,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.944Z",
-        "Update": "2026-07-10T11:59:22.944Z"
+        "Date": "2026-07-10T11:59:44.214Z",
+        "Update": "2026-07-10T11:59:44.214Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -147,8 +147,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.944Z",
-        "Update": "2026-07-10T11:59:22.944Z"
+        "Date": "2026-07-10T11:59:44.215Z",
+        "Update": "2026-07-10T11:59:44.215Z"
       },
       {
         "Label": "ADELA",
@@ -160,8 +160,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.945Z",
-        "Update": "2026-07-10T11:59:22.945Z"
+        "Date": "2026-07-10T11:59:44.215Z",
+        "Update": "2026-07-10T11:59:44.215Z"
       },
       {
         "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
@@ -173,8 +173,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:59:22.945Z",
-        "Update": "2026-07-10T11:59:22.945Z"
+        "Date": "2026-07-10T11:59:44.215Z",
+        "Update": "2026-07-10T11:59:44.215Z"
       }
     ]
   }
