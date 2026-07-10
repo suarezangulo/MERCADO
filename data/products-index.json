@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:29:16.408Z",
-        "Update": "2026-07-10T11:29:16.408Z"
+        "Date": "2026-07-10T11:38:35.547Z",
+        "Update": "2026-07-10T11:38:35.547Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:29:16.409Z",
-        "Update": "2026-07-10T11:29:16.409Z"
+        "Date": "2026-07-10T11:38:35.548Z",
+        "Update": "2026-07-10T11:38:35.548Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.409Z",
-        "Update": "2026-07-10T11:29:16.409Z"
+        "Date": "2026-07-10T11:38:35.548Z",
+        "Update": "2026-07-10T11:38:35.548Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.409Z",
-        "Update": "2026-07-10T11:29:16.409Z"
+        "Date": "2026-07-10T11:38:35.548Z",
+        "Update": "2026-07-10T11:38:35.548Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.409Z",
-        "Update": "2026-07-10T11:29:16.409Z"
+        "Date": "2026-07-10T11:38:35.548Z",
+        "Update": "2026-07-10T11:38:35.548Z"
       }
     ]
   },
@@ -106,25 +106,24 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.410Z",
-        "Update": "2026-07-10T11:29:16.410Z"
-      }
-    ],
-    "Dramas (coreanos": [
-      {
-        "Label": "turcos",
-        "Price": "etc.)",
-        "Features": [
-          "118.00 CUP"
-        ],
-        "Type": "Episodios: 59;Título original: 20 Dakika",
-        "Episodes": 20,
-        "PricePerEpisode": "episode",
-        "Date": "2026-07-10T11:29:16.410Z",
-        "Update": "2026-07-10T11:29:16.410Z"
+        "Date": "2026-07-10T11:38:35.549Z",
+        "Update": "2026-07-10T11:38:35.549Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
+      {
+        "Label": "20 MINUTOS - 20 DAKIKA",
+        "Price": "118.00",
+        "Features": [
+          "Episodios: 59",
+          "Título original: 20 Dakika"
+        ],
+        "Type": "episode",
+        "Episodes": 59,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T11:38:35.549Z",
+        "Update": "2026-07-10T11:38:35.549Z"
+      },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
         "Price": "26.00",
@@ -135,8 +134,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.410Z",
-        "Update": "2026-07-10T11:29:16.410Z"
+        "Date": "2026-07-10T11:38:35.549Z",
+        "Update": "2026-07-10T11:38:35.549Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -148,8 +147,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.411Z",
-        "Update": "2026-07-10T11:29:16.411Z"
+        "Date": "2026-07-10T11:38:35.549Z",
+        "Update": "2026-07-10T11:38:35.549Z"
       },
       {
         "Label": "ADELA",
@@ -161,8 +160,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.411Z",
-        "Update": "2026-07-10T11:29:16.411Z"
+        "Date": "2026-07-10T11:38:35.550Z",
+        "Update": "2026-07-10T11:38:35.550Z"
       },
       {
         "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
@@ -174,8 +173,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:29:16.411Z",
-        "Update": "2026-07-10T11:29:16.411Z"
+        "Date": "2026-07-10T11:38:35.550Z",
+        "Update": "2026-07-10T11:38:35.550Z"
       }
     ]
   }
