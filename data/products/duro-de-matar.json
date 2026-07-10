@@ -6,7 +6,7 @@
     "duro-de-matar-0.jpg"
   ],
   "Description": "El policía neoyorquino John McClane viaja a Los Ángeles para reunirse con su esposa durante la víspera de Navidad. Pero su visita se convierte en una pesadilla cuando un grupo de terroristas toma el edificio donde ella trabaja. McClane deberá usar todo su ingenio para sobrevivir y salvar a los rehenes.",
-  "Price": "5.00 CUP",
+  "Price": "5.00",
   "Features": [
     "Director: John McTiernan",
     "Año: 1988",
@@ -14,8 +14,8 @@
     "Actores: Bruce Willis, Alan Rickman, Bonnie Bedelia"
   ],
   "Type": "movie",
-  "Episodes": 1,
+  "Episodes": 0,
   "PricePerEpisode": "5",
-  "Date": "2026-07-10T10:09:06.361Z",
-  "Update": "2026-07-10T10:09:06.361Z"
+  "Date": "2026-07-10T10:56:05.475Z",
+  "Update": "2026-07-10T10:56:05.476Z"
 }

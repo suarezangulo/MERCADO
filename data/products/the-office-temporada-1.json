@@ -1,15 +1,13 @@
 {
   "Category": "Shows",
-  "SubCategory": "Stand-up Comedy",
+  "SubCategory": "Comedia",
   "Label": "The Office (Temporada 1)",
   "Images": [
-    "Creador: Greg Daniels",
-    "Año: 2005",
-    "Episodios: 6",
-    "Actores: Steve Carell"
+    "the-office-t1-0.webp",
+    "the-office-t1-1.webp"
   ],
   "Description": "Adaptación estadounidense de la serie británica. Sigue la vida cotidiana de los empleados de la empresa Dunder Mifflin, liderados por el excéntrico Michael Scott. Una comedia de oficina que se convirtió en un fenómeno cultural.",
-  "Price": "12.00 CUP",
+  "Price": "12.00",
   "Features": [
     "Creador: Greg Daniels",
     "Año: 2005",
@@ -19,6 +17,6 @@
   "Type": "episode",
   "Episodes": 6,
   "PricePerEpisode": "2",
-  "Date": "2026-07-10T10:09:06.362Z",
-  "Update": "2026-07-10T10:09:06.362Z"
+  "Date": "2026-07-10T10:56:05.477Z",
+  "Update": "2026-07-10T10:56:05.477Z"
 }

@@ -3,10 +3,11 @@
   "SubCategory": "Ciencia Ficción",
   "Label": "The Expanse (Temporada 1)",
   "Images": [
-    "Marte y el Cinturón de Asteroides desencadena una guerra. Basada en la exitosa serie de novelas de James S.A. Corey."
+    "the-expanse-t1-0.webp",
+    "the-expanse-t1-1.webp"
   ],
   "Description": "Cientos de años en el futuro, la humanidad ha colonizado el Sistema Solar. Una conspiración que amenaza la paz entre la Tierra, Marte y el Cinturón de Asteroides desencadena una guerra. Basada en la exitosa serie de novelas de James S.A. Corey.",
-  "Price": "20.00 CUP",
+  "Price": "20.00",
   "Features": [
     "Creador: Daniel Abraham, Ty Franck",
     "Año: 2015",
@@ -16,6 +17,6 @@
   "Type": "episode",
   "Episodes": 10,
   "PricePerEpisode": "2",
-  "Date": "2026-07-10T10:09:06.361Z",
-  "Update": "2026-07-10T10:09:06.361Z"
+  "Date": "2026-07-10T10:56:05.476Z",
+  "Update": "2026-07-10T10:56:05.476Z"
 }

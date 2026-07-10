@@ -2,16 +2,174 @@
   "Películas": {
     "Acción": [
       {
-        "Label": "Prueba",
-        "Price": "prueba",
+        "Label": "Duro de Matar",
+        "Price": "5.00",
         "Features": [
-          "Prueba prueba, prueba"
+          "Director: John McTiernan",
+          "Año: 1988",
+          "Duración: 132 min",
+          "Actores: Bruce Willis, Alan Rickman, Bonnie Bedelia"
         ],
-        "Type": "",
+        "Type": "movie",
         "Episodes": 0,
-        "PricePerEpisode": "",
-        "Date": "2026-07-10T10:16:33.560Z",
-        "Update": "2026-07-10T10:16:33.560Z"
+        "PricePerEpisode": "5",
+        "Date": "2026-07-10T10:56:05.475Z",
+        "Update": "2026-07-10T10:56:05.476Z"
+      }
+    ],
+    "Drama": [
+      {
+        "Label": "La La Land",
+        "Price": "5.00",
+        "Features": [
+          "Director: Damien Chazelle",
+          "Año: 2016",
+          "Duración: 128 min",
+          "Actores: Ryan Gosling, Emma Stone, John Legend"
+        ],
+        "Type": "movie",
+        "Episodes": 0,
+        "PricePerEpisode": "5",
+        "Date": "2026-07-10T10:56:05.476Z",
+        "Update": "2026-07-10T10:56:05.476Z"
+      }
+    ]
+  },
+  "Series": {
+    "Ciencia Ficción": [
+      {
+        "Label": "The Expanse (Temporada 1)",
+        "Price": "20.00",
+        "Features": [
+          "Creador: Daniel Abraham, Ty Franck",
+          "Año: 2015",
+          "Episodios: 10",
+          "Actores: Steven Strait, Dominique Tipper, Wes Chatham"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T10:56:05.476Z",
+        "Update": "2026-07-10T10:56:05.476Z"
+      }
+    ]
+  },
+  "Documentales": {
+    "Naturaleza": [
+      {
+        "Label": "Planeta Tierra II",
+        "Price": "12.00",
+        "Features": [
+          "Narrador: David Attenborough",
+          "Año: 2016",
+          "Episodios: 6",
+          "Duración: 50 min por episodio"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T10:56:05.477Z",
+        "Update": "2026-07-10T10:56:05.477Z"
+      }
+    ]
+  },
+  "Shows": {
+    "Comedia": [
+      {
+        "Label": "The Office (Temporada 1)",
+        "Price": "12.00",
+        "Features": [
+          "Creador: Greg Daniels",
+          "Año: 2005",
+          "Episodios: 6",
+          "Actores: Steve Carell, John Krasinski, Jenna Fischer"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T10:56:05.477Z",
+        "Update": "2026-07-10T10:56:05.477Z"
+      }
+    ]
+  },
+  "Novelas": {
+    "Romance": [
+      {
+        "Label": "Pasión de Gavilanes",
+        "Price": "400.00",
+        "Features": [
+          "Director: Rodrigo Triana",
+          "Año: 2003",
+          "Episodios: 200",
+          "Actores: Danna García, Mario Cimarro, Paola Rey"
+        ],
+        "Type": "episode",
+        "Episodes": 200,
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T10:56:05.477Z",
+        "Update": "2026-07-10T10:56:05.477Z"
+      }
+    ],
+    "Dramas (coreanos": [
+      {
+        "Label": "turcos",
+        "Price": "etc.)",
+        "Features": [
+          "118.00"
+        ],
+        "Type": "Episodios: 59; Título original: 20 Dakika",
+        "Episodes": 20,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T10:56:05.477Z",
+        "Update": "2026-07-10T10:56:05.477Z"
+      },
+      {
+        "Label": "turcos",
+        "Price": "etc.)",
+        "Features": [
+          "26.00"
+        ],
+        "Type": "Episodios: 13; Título original: Yok Olan",
+        "Episodes": 46,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T10:56:05.478Z",
+        "Update": "2026-07-10T10:56:05.478Z"
+      },
+      {
+        "Label": "turcos",
+        "Price": "etc.)",
+        "Features": [
+          "20.00"
+        ],
+        "Type": "Episodios: 10; Título original: Karanlığın Uçurumu",
+        "Episodes": 0,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T10:56:05.478Z",
+        "Update": "2026-07-10T10:56:05.478Z"
+      },
+      {
+        "Label": "turcos",
+        "Price": "etc.)",
+        "Features": [
+          "156.00"
+        ],
+        "Type": "Episodios: 78; Título original: O Hayat Benim",
+        "Episodes": 0,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T10:56:05.478Z",
+        "Update": "2026-07-10T10:56:05.478Z"
+      },
+      {
+        "Label": "turcos",
+        "Price": "etc.)",
+        "Features": [
+          "80.00"
+        ],
+        "Type": "Episodios: 40; Título original: Muhteşem İkili",
+        "Episodes": 0,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T10:56:05.478Z",
+        "Update": "2026-07-10T10:56:05.478Z"
       }
     ]
   }

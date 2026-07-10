@@ -3,10 +3,11 @@
   "SubCategory": "Drama",
   "Label": "La La Land",
   "Images": [
-    "y Sebastian"
+    "la-la-land-0.webp",
+    "la-la-land-1.webp"
   ],
   "Description": "Mia, una aspirante a actriz, y Sebastian, un pianista de jazz, se enamoran en Los Ángeles mientras persiguen sus sueños. Pero el éxito y la vida los pondrán a prueba. Una historia de amor, música y pasión que cautivó al mundo.",
-  "Price": "5.00 CUP",
+  "Price": "5.00",
   "Features": [
     "Director: Damien Chazelle",
     "Año: 2016",
@@ -15,7 +16,7 @@
   ],
   "Type": "movie",
   "Episodes": 0,
-  "PricePerEpisode": "",
-  "Date": "2026-07-10T10:09:06.361Z",
-  "Update": "2026-07-10T10:09:06.361Z"
+  "PricePerEpisode": "5",
+  "Date": "2026-07-10T10:56:05.476Z",
+  "Update": "2026-07-10T10:56:05.476Z"
 }
