@@ -10,11 +10,11 @@
           "Duración: 132 min",
           "Actores: Bruce Willis, Alan Rickman, Bonnie Bedelia"
         ],
-        "Type": "Película",
+        "Type": "movie",
         "Episodes": 1,
-        "PricePerEpisode": "5.00 CUP",
-        "Date": "2026-07-09T11:22:53.163Z",
-        "Update": "2026-07-09T11:22:53.163Z"
+        "PricePerEpisode": "5",
+        "Date": "2026-07-10T07:14:47.050Z",
+        "Update": "2026-07-10T07:14:47.050Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "Película",
         "Episodes": 1,
         "PricePerEpisode": "5.00 CUP",
-        "Date": "2026-07-09T11:22:53.163Z",
-        "Update": "2026-07-09T11:22:53.163Z"
+        "Date": "2026-07-10T07:14:47.050Z",
+        "Update": "2026-07-10T07:14:47.050Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "Serie",
         "Episodes": 10,
         "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-09T11:22:53.164Z",
-        "Update": "2026-07-09T11:22:53.164Z"
+        "Date": "2026-07-10T07:14:47.051Z",
+        "Update": "2026-07-10T07:14:47.051Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "Documental",
         "Episodes": 6,
         "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-09T11:22:53.164Z",
-        "Update": "2026-07-09T11:22:53.164Z"
+        "Date": "2026-07-10T07:14:47.051Z",
+        "Update": "2026-07-10T07:14:47.051Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "Show",
         "Episodes": 6,
         "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-09T11:22:53.164Z",
-        "Update": "2026-07-09T11:22:53.164Z"
+        "Date": "2026-07-10T07:14:47.051Z",
+        "Update": "2026-07-10T07:14:47.051Z"
       }
     ]
   },
@@ -103,11 +103,11 @@
           "Episodios: 200",
           "Actores: Danna García, Mario Cimarro, Paola Rey"
         ],
-        "Type": "Telenovela",
+        "Type": "episode",
         "Episodes": 200,
-        "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-09T11:22:53.164Z",
-        "Update": "2026-07-09T11:22:53.164Z"
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T07:14:47.051Z",
+        "Update": "2026-07-10T07:14:47.051Z"
       }
     ]
   }
