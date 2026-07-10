@@ -147,7 +147,7 @@ function resolveImageUrl(baseName, extensions, callback) {
     }
     const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
     let index = 0;
-    
+
     function tryNext() {
         if (index >= extList.length) {
             imageCache[baseName] = null;
@@ -187,18 +187,18 @@ async function fetchCSV() {
     });
     if (!response.ok) throw new Error('Error al obtener CSV');
     const data = await response.json();
-    
+
     const binaryString = atob(data.content);
     const bytes = new Uint8Array(binaryString.length);
     for (let i = 0; i < binaryString.length; i++) {
         bytes[i] = binaryString.charCodeAt(i);
     }
     let content = new TextDecoder('utf-8').decode(bytes);
-    
+
     if (content.charCodeAt(0) === 0xFEFF) {
         content = content.slice(1);
     }
-    
+
     return { content, sha: data.sha };
 }
 
@@ -207,12 +207,12 @@ async function updateCSV(csvContent) {
     if (!token) throw new Error('Token no disponible');
     const { sha } = await fetchCSV();
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`;
-    
+
     const contentWithBOM = '\uFEFF' + csvContent;
     const encoder = new TextEncoder();
     const data = encoder.encode(contentWithBOM);
     const base64 = btoa(String.fromCharCode(...data));
-    
+
     const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -237,13 +237,13 @@ async function uploadImage(file, slug, index) {
     const fileName = `${slug}-${index}.${extension}`;
     const path = `images/products/${fileName}`;
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
-    
+
     const reader = new FileReader();
     const fileData = await new Promise((resolve) => {
         reader.onload = () => resolve(reader.result.split(',')[1]);
         reader.readAsDataURL(file);
     });
-    
+
     const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -272,7 +272,7 @@ async function loadProducts() {
             document.getElementById('productCount').textContent = 0;
             return;
         }
-        
+
         const lines = content.split('\n').filter(line => line.trim());
         if (lines.length === 0) {
             products = [];
@@ -282,7 +282,7 @@ async function loadProducts() {
             document.getElementById('productCount').textContent = 0;
             return;
         }
-        
+
         const headers = lines[0].split(',').map(h => h.trim());
         products = [];
         for (let i = 1; i < lines.length; i++) {
@@ -291,7 +291,6 @@ async function loadProducts() {
             headers.forEach((header, index) => {
                 product[header] = values[index] || '';
             });
-            // Asegurar que los nuevos campos existan
             if (!product.Type) product.Type = '';
             if (!product.Episodes) product.Episodes = '';
             if (!product.PricePerEpisode) product.PricePerEpisode = '';
@@ -313,7 +312,7 @@ function parseCSVLine(line) {
     for (let i = 0; i < line.length; i++) {
         const char = line[i];
         if (insideQuotes) {
-            if (char === '"' && line[i+1] === '"') {
+            if (char === '"' && line[i + 1] === '"') {
                 current += '"';
                 i++;
             } else if (char === '"') {
@@ -336,7 +335,7 @@ function parseCSVLine(line) {
     return result;
 }
 
-// ===== RENDER TABLA (CON TIPO Y CAPÍTULOS) =====
+// ===== RENDER TABLA =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -357,12 +356,11 @@ function renderProductTable() {
         }
         const baseName = imageName.replace(/\.[^.]+$/, '');
         const imgId = `img-${slug}-${index}`;
-        
-        // Determinar si tiene capítulos
+
         const hasEpisodes = p.Type === 'episode' && p.Episodes && parseInt(p.Episodes) > 0;
         const episodesDisplay = hasEpisodes ? p.Episodes : '-';
         const typeDisplay = p.Type === 'episode' ? 'Serie' : (p.Type === 'movie' ? 'Película' : '-');
-        
+
         html += `
         <tr data-index="${index}">
             <td>
@@ -409,7 +407,6 @@ function renderProductTable() {
         });
     });
 
-    // Cargar imágenes con fallback
     products.forEach((p, index) => {
         const slug = ToSlug(p.Label);
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
@@ -422,11 +419,11 @@ function renderProductTable() {
         const loadingId = `${imgId}-loading`;
         const imgElement = document.getElementById(imgId);
         const loadingElement = document.getElementById(loadingId);
-        
+
         const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
         const csvExt = imageName.split('.').pop().toLowerCase();
         const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
-        
+
         resolveImageUrl(baseName, orderedExtensions, (url) => {
             if (loadingElement) loadingElement.style.display = 'none';
             if (imgElement) {
@@ -437,7 +434,7 @@ function renderProductTable() {
     });
 }
 
-// ===== FUNCIONES GLOBALES PARA BOTONES =====
+// ===== FUNCIONES GLOBALES =====
 window.editProduct = function(index) {
     const product = products[index];
     if (product) {
@@ -470,7 +467,7 @@ window.deleteProduct = function(index) {
     })();
 };
 
-// ===== ACTUALIZAR ESTADÍSTICAS (SIN STOCK) =====
+// ===== ACTUALIZAR ESTADÍSTICAS =====
 function updateStats() {
     document.getElementById('totalProducts').textContent = products.length;
     const categories = new Set(products.map(p => p.Category));
@@ -495,7 +492,7 @@ function updateRecentProducts() {
         const baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : `${slug}-0`;
         const imgId = `recent-img-${slug}-${index}`;
         const loadingId = `recent-loading-${slug}-${index}`;
-        
+
         html += `
         <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border-color);">
             <div style="width:32px; height:45px; flex-shrink:0; position:relative;">
@@ -521,7 +518,7 @@ function updateRecentProducts() {
         const firstImage = imagesList.split(';').map(img => img.trim())[0] || '';
         const csvExt = firstImage.includes('.') ? firstImage.split('.').pop().toLowerCase() : 'webp';
         const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
-        
+
         resolveImageUrl(item.baseName, orderedExtensions, (url) => {
             const img = document.getElementById(item.imgId);
             const loading = document.getElementById(item.loadingId);
@@ -534,7 +531,17 @@ function updateRecentProducts() {
     });
 }
 
-// ===== ABRIR FORMULARIO (CON NUEVOS CAMPOS) =====
+// ===== ESCAPAR CAMPO PARA CSV =====
+function escapeCSV(field) {
+    if (field === undefined || field === null) return '';
+    const str = String(field);
+    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+        return '"' + str.replace(/"/g, '""') + '"';
+    }
+    return str;
+}
+
+// ===== ABRIR FORMULARIO =====
 function openProductForm(product = null) {
     editingProduct = product;
     uploadedImages = [];
@@ -556,31 +563,28 @@ function openProductForm(product = null) {
         document.getElementById('productPrice').value = product.Price ? product.Price.replace(' CUP', '') : '';
         document.getElementById('productDescription').value = product.Description || '';
         document.getElementById('productFeatures').value = (product.Features || '').split(';').join('\n');
-        
-        // NUEVOS CAMPOS
         document.getElementById('productType').value = product.Type || '';
         document.getElementById('productEpisodes').value = product.Episodes || '';
         document.getElementById('productPricePerEpisode').value = product.PricePerEpisode || '';
-        
-        // Cargar imágenes existentes
+
         const imagesList = product.Images ? product.Images.split(';').map(img => img.trim()) : [];
         existingImages = imagesList;
-        
+
         container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> Cargando imágenes...</div>';
-        
+
         let resolvedCount = 0;
         imagesList.forEach((imgName, idx) => {
             const baseName = imgName.replace(/\.[^.]+$/, '');
             const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
             const csvExt = imgName.split('.').pop().toLowerCase();
             const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
-            
+
             resolveImageUrl(baseName, orderedExtensions, (url) => {
                 if (resolvedCount === 0) {
                     container.innerHTML = '';
                 }
                 resolvedCount++;
-                
+
                 const div = document.createElement('div');
                 div.className = 'image-preview-item';
                 const img = document.createElement('img');
@@ -621,7 +625,7 @@ function removeExistingImage(index) {
             const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
             const csvExt = imgName.split('.').pop().toLowerCase();
             const orderedExtensions = [csvExt, ...extensions.filter(ext => ext !== csvExt)];
-            
+
             resolveImageUrl(baseName, orderedExtensions, (url) => {
                 const div = document.createElement('div');
                 div.className = 'image-preview-item';
@@ -642,7 +646,7 @@ function removeExistingImage(index) {
     }
 }
 
-// ===== POBLAR SELECTS CON LISTA FIJA =====
+// ===== POBLAR SELECTS =====
 function populateCategorySelects() {
     const catSelect = document.getElementById('productCategory');
     const subSelect = document.getElementById('productSubcategory');
@@ -683,7 +687,7 @@ document.getElementById('productCategory').addEventListener('change', function()
 document.getElementById('imageUpload').addEventListener('change', function(e) {
     const files = this.files;
     const container = document.getElementById('imagePreviewContainer');
-    
+
     for (const file of files) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -707,7 +711,7 @@ function removeNewImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO (CON NUEVOS CAMPOS) =====
+// ===== GUARDAR PRODUCTO (CORREGIDO) =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
@@ -718,15 +722,29 @@ async function saveProduct() {
         .split('\n')
         .filter(f => f.trim())
         .join(';');
-    
-    // NUEVOS CAMPOS
     const type = document.getElementById('productType').value;
-    const episodes = document.getElementById('productEpisodes').value.trim();
-    const pricePerEpisode = document.getElementById('productPricePerEpisode').value.trim();
+    let episodes = document.getElementById('productEpisodes').value.trim();
+    let pricePerEpisode = document.getElementById('productPricePerEpisode').value.trim();
 
     if (!label || !category || !subcategory || !price) {
         showToast('Completa todos los campos obligatorios.', 'warning');
         return;
+    }
+
+    // Normalizar tipo
+    let normalizedType = type;
+    if (['Película', 'película', 'movie', 'Movie'].includes(type)) normalizedType = 'movie';
+    else if (['Serie', 'serie', 'episode', 'Episode', 'Telenovela', 'Documental', 'Show'].includes(type)) normalizedType = 'episode';
+    else normalizedType = type;
+
+    let normalizedEpisodes = parseInt(episodes) || 0;
+    let normalizedPricePerEpisode = pricePerEpisode.trim() !== '' ? parseFloat(pricePerEpisode).toFixed(2) : '';
+
+    if (normalizedType === 'movie') {
+        normalizedEpisodes = 0;
+        normalizedPricePerEpisode = '';
+    } else if (normalizedEpisodes > 0 && !normalizedPricePerEpisode) {
+        normalizedPricePerEpisode = (parseFloat(price) / normalizedEpisodes).toFixed(2);
     }
 
     const slug = ToSlug(label);
@@ -745,21 +763,25 @@ async function saveProduct() {
     const allImages = [...existingImages, ...uploadedNames];
     const imagesNames = allImages.join(';');
 
-    const escapedDescription = description.includes(',') ? `"${description}"` : description;
-    const escapedFeatures = features.includes(',') ? `"${features}"` : features;
-    
-    // CSV sin stock, con nuevos campos
+    // Escapar todos los campos de texto
+    const escapedCategory = escapeCSV(category);
+    const escapedSubCategory = escapeCSV(subcategory);
+    const escapedLabel = escapeCSV(label);
+    const escapedDescription = escapeCSV(description);
+    const escapedFeatures = escapeCSV(features);
+    const escapedType = escapeCSV(normalizedType);
+
     const csvRow = [
-        category,
-        subcategory,
-        label,
-        `${parseFloat(price).toFixed(2)} CUP`,
+        escapedCategory,
+        escapedSubCategory,
+        escapedLabel,
+        parseFloat(price).toFixed(2),
         escapedDescription,
         escapedFeatures,
         imagesNames,
-        type,
-        episodes,
-        pricePerEpisode
+        escapedType,
+        normalizedEpisodes,
+        normalizedPricePerEpisode
     ].join(',');
 
     try {
@@ -768,7 +790,6 @@ async function saveProduct() {
         const headers = lines[0];
         let bodyLines = lines.slice(1);
 
-        // Verificar si el CSV tiene las nuevas columnas, si no, actualizar cabecera
         const expectedHeaders = ['Category', 'SubCategory', 'Label', 'Price', 'Description', 'Features', 'Images', 'Type', 'Episodes', 'PricePerEpisode'];
         const currentHeaders = headers.split(',').map(h => h.trim());
         let csvHeaders = currentHeaders;
@@ -780,10 +801,7 @@ async function saveProduct() {
             }
         }
         if (needsHeaderUpdate) {
-            // Reconstruir el CSV con la nueva cabecera y rellenar los campos faltantes
-            // Para simplificar, si falta alguna columna, la añadimos al final
             const newHeader = csvHeaders.join(',');
-            // Reconstruir bodyLines con las nuevas columnas vacías donde corresponda
             const newBodyLines = bodyLines.map(line => {
                 const values = parseCSVLine(line);
                 const newValues = [];
@@ -792,14 +810,12 @@ async function saveProduct() {
                     if (idx !== -1) {
                         newValues.push(values[idx] || '');
                     } else {
-                        newValues.push(''); // nueva columna vacía
+                        newValues.push('');
                     }
                 });
                 return newValues.join(',');
             });
-            // Si estamos editando, reemplazar la línea correspondiente
             if (editingProduct) {
-                // Buscar la línea por Label (podría ser más seguro por slug, pero usamos Label)
                 const index = newBodyLines.findIndex(line => line.includes(label));
                 if (index !== -1) {
                     newBodyLines[index] = csvRow;
@@ -812,7 +828,6 @@ async function saveProduct() {
             const newCSV = [newHeader, ...newBodyLines].join('\n');
             await updateCSV(newCSV);
         } else {
-            // Si la cabecera está actualizada, proceder normalmente
             if (editingProduct) {
                 const index = bodyLines.findIndex(line => line.includes(editingProduct.Label));
                 if (index > -1) {
@@ -826,7 +841,7 @@ async function saveProduct() {
             const newCSV = [headers, ...bodyLines].join('\n');
             await updateCSV(newCSV);
         }
-        
+
         showToast(`"${label}" guardado exitosamente`, 'success');
         closeModal('productModal');
         await loadProducts();
