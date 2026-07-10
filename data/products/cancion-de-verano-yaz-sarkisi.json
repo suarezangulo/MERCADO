@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CANCIÓN DE VERANO - YAZ SARKISI",
+  "Images": [
+    "cancion-de-verano-yaz-sarkisi-0.webp",
+    "cancion-de-verano-yaz-sarkisi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "48.00",
+  "Features": [
+    "Episodios: 24",
+    "Título original: Yaz Şarkısı"
+  ],
+  "Type": "episode",
+  "Episodes": 24,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.429Z",
+  "Update": "2026-07-10T12:29:54.429Z"
+}

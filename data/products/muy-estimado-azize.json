@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "MUY ESTIMADO - AZIZE",
+  "Images": [
+    "muy-estimado-azize-0.webp",
+    "muy-estimado-azize-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "36.00",
+  "Features": [
+    "Episodios: 18",
+    "Título original: Azize"
+  ],
+  "Type": "episode",
+  "Episodes": 18,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.444Z",
+  "Update": "2026-07-10T12:29:54.444Z"
+}

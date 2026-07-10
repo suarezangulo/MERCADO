@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL PAÑUELO ROJO - KIRMIZI MENDIL",
+  "Images": [
+    "el-panuelo-rojo-kirmizi-mendil-0.webp",
+    "el-panuelo-rojo-kirmizi-mendil-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "176.00",
+  "Features": [
+    "Episodios: 88",
+    "Título original: Kırmızı Mendil"
+  ],
+  "Type": "episode",
+  "Episodes": 88,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.434Z",
+  "Update": "2026-07-10T12:29:54.434Z"
+}

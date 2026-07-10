@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "NO TE ENTREGARÉ A NADIE - SENI KIMSEYE VERMEM",
+  "Images": [
+    "no-te-entregare-a-nadie-seni-kimseye-vermem-0.webp",
+    "no-te-entregare-a-nadie-seni-kimseye-vermem-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "90.00",
+  "Features": [
+    "Episodios: 45",
+    "Título original: Seni Kimseye Vermem"
+  ],
+  "Type": "episode",
+  "Episodes": 45,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.445Z",
+  "Update": "2026-07-10T12:29:54.445Z"
+}

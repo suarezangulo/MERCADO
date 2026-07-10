@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL PATIO - AVLU",
+  "Images": [
+    "el-patio-avlu-0.webp",
+    "el-patio-avlu-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "290.00",
+  "Features": [
+    "Episodios: 145",
+    "Título original: Avlu"
+  ],
+  "Type": "episode",
+  "Episodes": 145,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.434Z",
+  "Update": "2026-07-10T12:29:54.434Z"
+}

@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL FUEGO DEL DESTINO - KADERIN ATESI",
+  "Images": [
+    "el-fuego-del-destino-kaderin-atesi-0.webp",
+    "el-fuego-del-destino-kaderin-atesi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "96.00",
+  "Features": [
+    "Episodios: 48",
+    "Título original: Kaderin Ateşi"
+  ],
+  "Type": "episode",
+  "Episodes": 48,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.433Z",
+  "Update": "2026-07-10T12:29:54.433Z"
+}

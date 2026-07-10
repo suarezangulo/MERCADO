@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL CORAZÓN DE RÜZGAR - RÜZGARIN KALBI",
+  "Images": [
+    "el-corazon-de-ruzgar-ruzgarin-kalbi-0.webp",
+    "el-corazon-de-ruzgar-ruzgarin-kalbi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "54.00",
+  "Features": [
+    "Episodios: 27",
+    "Título original: Rüzgarın Kalbi"
+  ],
+  "Type": "episode",
+  "Episodes": 27,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.433Z",
+  "Update": "2026-07-10T12:29:54.433Z"
+}

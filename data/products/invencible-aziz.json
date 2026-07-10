@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "INVENCIBLE - A.Z.I.Z",
+  "Images": [
+    "invencible-a-z-i-z-0.webp",
+    "invencible-a-z-i-z-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "182.00",
+  "Features": [
+    "Episodios: 91",
+    "Título original: A.Z.I.Z"
+  ],
+  "Type": "episode",
+  "Episodes": 91,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.439Z",
+  "Update": "2026-07-10T12:29:54.439Z"
+}

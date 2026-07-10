@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "PUNTO CIEGO - KÖR NOKTA",
+  "Images": [
+    "punto-ciego-kor-nokta-0.webp",
+    "punto-ciego-kor-nokta-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "40.00",
+  "Features": [
+    "Episodios: 20",
+    "Título original: Kör Nokta"
+  ],
+  "Type": "episode",
+  "Episodes": 20,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.446Z",
+  "Update": "2026-07-10T12:29:54.446Z"
+}

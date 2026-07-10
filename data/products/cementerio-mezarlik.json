@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CEMENTERIO - MEZARLIK",
+  "Images": [
+    "cementerio-mezarlik-0.webp",
+    "cementerio-mezarlik-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "24.00",
+  "Features": [
+    "Episodios: 12",
+    "Título original: Mezarlık"
+  ],
+  "Type": "episode",
+  "Episodes": 12,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.429Z",
+  "Update": "2026-07-10T12:29:54.429Z"
+}

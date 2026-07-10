@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "SELIM Y SAHRA - SELIM VE SAHRA",
+  "Images": [
+    "selim-y-sahra-selim-ve-sahra-0.webp",
+    "selim-y-sahra-selim-ve-sahra-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "70.00",
+  "Features": [
+    "Episodios: 35",
+    "Título original: Selim ve Sahra"
+  ],
+  "Type": "episode",
+  "Episodes": 35,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.448Z",
+  "Update": "2026-07-10T12:29:54.448Z"
+}

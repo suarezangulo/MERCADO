@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "LA VERDAD - MARASLI",
+  "Images": [
+    "la-verdad-marasli-0.webp",
+    "la-verdad-marasli-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "120.00",
+  "Features": [
+    "Episodios: 60",
+    "Título original: Maraşlı"
+  ],
+  "Type": "episode",
+  "Episodes": 60,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.441Z",
+  "Update": "2026-07-10T12:29:54.441Z"
+}

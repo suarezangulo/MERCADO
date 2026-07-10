@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "VOLVER A CASA - REGRESO A CASA - EVE DÖNÜS",
+  "Images": [
+    "volver-a-casa-regreso-a-casa-eve-donus-0.webp",
+    "volver-a-casa-regreso-a-casa-eve-donus-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "132.00",
+  "Features": [
+    "Episodios: 66",
+    "Título original: Eve Dönüş"
+  ],
+  "Type": "episode",
+  "Episodes": 66,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.452Z",
+  "Update": "2026-07-10T12:29:54.452Z"
+}

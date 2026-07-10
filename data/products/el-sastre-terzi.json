@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL SASTRE - TERZI",
+  "Images": [
+    "el-sastre-terzi-0.webp",
+    "el-sastre-terzi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "46.00",
+  "Features": [
+    "Episodios: 23",
+    "Título original: Terzi"
+  ],
+  "Type": "episode",
+  "Episodes": 23,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.435Z",
+  "Update": "2026-07-10T12:29:54.435Z"
+}

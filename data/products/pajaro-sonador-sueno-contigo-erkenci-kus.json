@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "PÁJARO SOÑADOR - SUEÑO CONTIGO - ERKENCI KUS",
+  "Images": [
+    "pajaro-sonador-sueno-contigo-erkenci-kus-0.webp",
+    "pajaro-sonador-sueno-contigo-erkenci-kus-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "260.00",
+  "Features": [
+    "Episodios: 130",
+    "Título original: Erkenci Kuş"
+  ],
+  "Type": "episode",
+  "Episodes": 130,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.447Z",
+  "Update": "2026-07-10T12:29:54.447Z"
+}

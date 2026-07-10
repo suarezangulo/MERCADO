@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "AMOR DE FAMILIA - NUESTRA HISTORIA - BIZIM HIKAYE",
+  "Images": [
+    "amor-de-familia-nuestra-historia-bizim-hikaye-0.webp",
+    "amor-de-familia-nuestra-historia-bizim-hikaye-1.webp"
+  ],
+  "Description": "Adaptación turca de 'Shameless'. Sigue la vida de una familia disfuncional que lucha por sobrevivir en Estambul, liderada por una madre fuerte que debe cuidar de sus hijos mientras su padre es alcohólico.",
+  "Price": "400.00",
+  "Features": [
+    "Episodios: 200",
+    "Título original: Bizim Hikaye"
+  ],
+  "Type": "episode",
+  "Episodes": 200,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.426Z",
+  "Update": "2026-07-10T12:29:54.426Z"
+}

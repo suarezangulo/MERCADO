@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "TRAMPA - TUZAK",
+  "Images": [
+    "trampa-tuzak-0.webp",
+    "trampa-tuzak-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "44.00",
+  "Features": [
+    "Episodios: 22",
+    "Título original: Tuzak"
+  ],
+  "Type": "episode",
+  "Episodes": 22,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.450Z",
+  "Update": "2026-07-10T12:29:54.450Z"
+}

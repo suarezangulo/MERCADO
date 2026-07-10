@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "MI LADO IZQUIERDO - SOL YANIM",
+  "Images": [
+    "mi-lado-izquierdo-sol-yanim-0.webp",
+    "mi-lado-izquierdo-sol-yanim-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "72.00",
+  "Features": [
+    "Episodios: 36",
+    "Título original: Sol Yanım"
+  ],
+  "Type": "episode",
+  "Episodes": 36,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.443Z",
+  "Update": "2026-07-10T12:29:54.443Z"
+}

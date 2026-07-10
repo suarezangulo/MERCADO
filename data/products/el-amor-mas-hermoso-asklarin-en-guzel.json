@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL AMOR MÁS HERMOSO - ASKLARIN EN GÜZEL",
+  "Images": [
+    "el-amor-mas-hermoso-asklarin-en-guzel-0.webp",
+    "el-amor-mas-hermoso-asklarin-en-guzel-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "100.00",
+  "Features": [
+    "Episodios: 50",
+    "Título original: Aşkların En Güzel"
+  ],
+  "Type": "episode",
+  "Episodes": 50,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.432Z",
+  "Update": "2026-07-10T12:29:54.432Z"
+}

@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "AMOR SIN PALABRAS - HAYAT",
+  "Images": [
+    "amor-sin-palabras-hayat-0.webp",
+    "amor-sin-palabras-hayat-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "164.00",
+  "Features": [
+    "Episodios: 82",
+    "Título original: Hayat"
+  ],
+  "Type": "episode",
+  "Episodes": 82,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.427Z",
+  "Update": "2026-07-10T12:29:54.427Z"
+}

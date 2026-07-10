@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "MADRE, TODO POR MI HIJA - ANNE",
+  "Images": [
+    "madre-todo-por-mi-hija-anne-0.webp",
+    "madre-todo-por-mi-hija-anne-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "222.00",
+  "Features": [
+    "Episodios: 111",
+    "Título original: Anne"
+  ],
+  "Type": "episode",
+  "Episodes": 111,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.442Z",
+  "Update": "2026-07-10T12:29:54.442Z"
+}

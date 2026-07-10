@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "METAMORFOSIS - BASKALASIM",
+  "Images": [
+    "metamorfosis-baskalasim-0.webp",
+    "metamorfosis-baskalasim-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "20.00",
+  "Features": [
+    "Episodios: 10",
+    "Título original: Başkalaşım"
+  ],
+  "Type": "episode",
+  "Episodes": 10,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.443Z",
+  "Update": "2026-07-10T12:29:54.443Z"
+}

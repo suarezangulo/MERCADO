@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "FAMILIA - AILE",
+  "Images": [
+    "familia-aile-0.webp",
+    "familia-aile-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "190.00",
+  "Features": [
+    "Episodios: 95",
+    "Título original: Aile"
+  ],
+  "Type": "episode",
+  "Episodes": 95,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.437Z",
+  "Update": "2026-07-10T12:29:54.437Z"
+}

@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CRASH – ÇARPISMA",
+  "Images": [
+    "crash-carpisma-0.webp",
+    "crash-carpisma-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "136.00",
+  "Features": [
+    "Episodios: 68",
+    "Título original: Çarpışma"
+  ],
+  "Type": "episode",
+  "Episodes": 68,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.431Z",
+  "Update": "2026-07-10T12:29:54.431Z"
+}

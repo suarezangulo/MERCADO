@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "RAMO - ADALETIN BU MU DÜNYA",
+  "Images": [
+    "ramo-adaletin-bu-mu-dunya-0.webp",
+    "ramo-adaletin-bu-mu-dunya-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "90.00",
+  "Features": [
+    "Episodios: 45",
+    "Título original: Adaletin Bu Mu Dünya"
+  ],
+  "Type": "episode",
+  "Episodes": 45,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.447Z",
+  "Update": "2026-07-10T12:29:54.447Z"
+}

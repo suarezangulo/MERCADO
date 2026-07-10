@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EZEL",
+  "Images": [
+    "ezel-0.webp",
+    "ezel-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "302.00",
+  "Features": [
+    "Episodios: 151",
+    "Título original: Ezel"
+  ],
+  "Type": "episode",
+  "Episodes": 151,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.437Z",
+  "Update": "2026-07-10T12:29:54.437Z"
+}

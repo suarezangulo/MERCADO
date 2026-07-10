@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "QUIÉREME SIEMPRE - HEP BENI SEV",
+  "Images": [
+    "quiereme-siempre-hep-beni-sev-0.webp",
+    "quiereme-siempre-hep-beni-sev-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "80.00",
+  "Features": [
+    "Episodios: 40",
+    "Título original: Hep Beni Sev"
+  ],
+  "Type": "episode",
+  "Episodes": 40,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.447Z",
+  "Update": "2026-07-10T12:29:54.447Z"
+}

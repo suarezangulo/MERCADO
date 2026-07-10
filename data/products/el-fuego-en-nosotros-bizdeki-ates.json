@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL FUEGO EN NOSOTROS - BIZDEKI ATES",
+  "Images": [
+    "el-fuego-en-nosotros-bizdeki-ates-0.webp",
+    "el-fuego-en-nosotros-bizdeki-ates-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "40.00",
+  "Features": [
+    "Episodios: 20",
+    "Título original: Bizdeki Ateş"
+  ],
+  "Type": "episode",
+  "Episodes": 20,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.433Z",
+  "Update": "2026-07-10T12:29:54.433Z"
+}

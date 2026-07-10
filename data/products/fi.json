@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "FI",
+  "Images": [
+    "fi-0.webp",
+    "fi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "70.00",
+  "Features": [
+    "Episodios: 35",
+    "Título original: Fi"
+  ],
+  "Type": "episode",
+  "Episodes": 35,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.437Z",
+  "Update": "2026-07-10T12:29:54.437Z"
+}

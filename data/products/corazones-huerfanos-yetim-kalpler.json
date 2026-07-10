@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CORAZONES HUÉRFANOS - YETIM KALPLER",
+  "Images": [
+    "corazones-huerfanos-yetim-kalpler-0.webp",
+    "corazones-huerfanos-yetim-kalpler-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "68.00",
+  "Features": [
+    "Episodios: 34",
+    "Título original: Yetim Kalpler"
+  ],
+  "Type": "episode",
+  "Episodes": 34,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.431Z",
+  "Update": "2026-07-10T12:29:54.431Z"
+}

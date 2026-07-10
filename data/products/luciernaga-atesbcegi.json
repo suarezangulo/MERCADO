@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "LUCIÉRNAGA - ATESBÖCEGI",
+  "Images": [
+    "lucirnaga-atesbocegi-0.webp",
+    "lucirnaga-atesbocegi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "102.00",
+  "Features": [
+    "Episodios: 51",
+    "Título original: Ateşböceği"
+  ],
+  "Type": "episode",
+  "Episodes": 51,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.442Z",
+  "Update": "2026-07-10T12:29:54.442Z"
+}

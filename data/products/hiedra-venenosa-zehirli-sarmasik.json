@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "HIEDRA VENENOSA - ZEHIRLI SARMASIK",
+  "Images": [
+    "hiedra-venenosa-zehirli-sarmasik-0.webp",
+    "hiedra-venenosa-zehirli-sarmasik-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "46.00",
+  "Features": [
+    "Episodios: 23",
+    "Título original: Zehirli Sarmaşık"
+  ],
+  "Type": "episode",
+  "Episodes": 23,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.439Z",
+  "Update": "2026-07-10T12:29:54.439Z"
+}

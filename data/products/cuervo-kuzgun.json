@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CUERVO - KUZGUN",
+  "Images": [
+    "cuervo-kuzgun-0.webp",
+    "cuervo-kuzgun-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "142.00",
+  "Features": [
+    "Episodios: 71",
+    "Título original: Kuzgun"
+  ],
+  "Type": "episode",
+  "Episodes": 71,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.432Z",
+  "Update": "2026-07-10T12:29:54.432Z"
+}

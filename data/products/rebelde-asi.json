@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "REBELDE - ASI",
+  "Images": [
+    "rebelde-asi-0.webp",
+    "rebelde-asi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "286.00",
+  "Features": [
+    "Episodios: 143",
+    "Título original: Asi"
+  ],
+  "Type": "episode",
+  "Episodes": 143,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.447Z",
+  "Update": "2026-07-10T12:29:54.447Z"
+}

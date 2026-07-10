@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "PLOMO - KURSUN",
+  "Images": [
+    "plomo-kursun-0.webp",
+    "plomo-kursun-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "44.00",
+  "Features": [
+    "Episodios: 22",
+    "Título original: Kurşun"
+  ],
+  "Type": "episode",
+  "Episodes": 22,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.446Z",
+  "Update": "2026-07-10T12:29:54.446Z"
+}

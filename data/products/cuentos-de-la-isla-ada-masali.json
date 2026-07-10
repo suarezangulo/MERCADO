@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CUENTOS DE LA ISLA - ADA MASALI",
+  "Images": [
+    "cuentos-de-la-isla-ada-masali-0.webp",
+    "cuentos-de-la-isla-ada-masali-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "166.00",
+  "Features": [
+    "Episodios: 83",
+    "Título original: Ada Masalı"
+  ],
+  "Type": "episode",
+  "Episodes": 83,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.431Z",
+  "Update": "2026-07-10T12:29:54.431Z"
+}

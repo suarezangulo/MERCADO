@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "AMOR ETERNO - KARA SEVDA",
+  "Images": [
+    "amor-eterno-kara-sevda-0.webp",
+    "amor-eterno-kara-sevda-1.webp"
+  ],
+  "Description": "Un amor imposible entre Kemal, un joven de clase media, y Nihan, una mujer de clase alta. Separados por la familia de ella, Kemal regresa años después rico y buscando venganza, pero el amor sigue latente.",
+  "Price": "916.00",
+  "Features": [
+    "Episodios: 458",
+    "Título original: Kara Sevda"
+  ],
+  "Type": "episode",
+  "Episodes": 458,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.427Z",
+  "Update": "2026-07-10T12:29:54.427Z"
+}

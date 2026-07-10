@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "FERHAT Y SIRIN - FERHAT ILE SIRIN",
+  "Images": [
+    "ferhat-y-sirin-ferhat-ile-sirin-0.webp",
+    "ferhat-y-sirin-ferhat-ile-sirin-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "30.00",
+  "Features": [
+    "Episodios: 15",
+    "Título original: Ferhat ile Şirin"
+  ],
+  "Type": "episode",
+  "Episodes": 15,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.437Z",
+  "Update": "2026-07-10T12:29:54.437Z"
+}

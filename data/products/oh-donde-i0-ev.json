@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "OH DÓNDE - I0. EV",
+  "Images": [
+    "oh-donde-i0-ev-0.webp",
+    "oh-donde-i0-ev-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "42.00",
+  "Features": [
+    "Episodios: 21",
+    "Título original: 10. Ev"
+  ],
+  "Type": "episode",
+  "Episodes": 21,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.445Z",
+  "Update": "2026-07-10T12:29:54.445Z"
+}

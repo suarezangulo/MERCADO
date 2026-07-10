@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "NADA ES LO QUE PARECE - ICERDE",
+  "Images": [
+    "nada-es-lo-que-parece-icerde-0.webp",
+    "nada-es-lo-que-parece-icerde-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "202.00",
+  "Features": [
+    "Episodios: 101",
+    "Título original: İçerde"
+  ],
+  "Type": "episode",
+  "Episodes": 101,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.444Z",
+  "Update": "2026-07-10T12:29:54.444Z"
+}

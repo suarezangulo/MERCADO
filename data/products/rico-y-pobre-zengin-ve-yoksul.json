@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "RICO Y POBRE - ZENGIN VE YOKSUL",
+  "Images": [
+    "rico-y-pobre-zengin-ve-yoksul-0.webp",
+    "rico-y-pobre-zengin-ve-yoksul-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "64.00",
+  "Features": [
+    "Episodios: 32",
+    "Título original: Zengin ve Yoksul"
+  ],
+  "Type": "episode",
+  "Episodes": 32,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.447Z",
+  "Update": "2026-07-10T12:29:54.447Z"
+}

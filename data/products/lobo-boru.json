@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "LOBO - BÓRÚ",
+  "Images": [
+    "lobo-boru-0.webp",
+    "lobo-boru-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "12.00",
+  "Features": [
+    "Episodios: 6",
+    "Título original: Börü"
+  ],
+  "Type": "episode",
+  "Episodes": 6,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.441Z",
+  "Update": "2026-07-10T12:29:54.441Z"
+}

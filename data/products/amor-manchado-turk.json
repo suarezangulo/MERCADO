@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "AMOR MANCHADO - TURK",
+  "Images": [
+    "amor-manchado-turk-0.webp",
+    "amor-manchado-turk-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "60.00",
+  "Features": [
+    "Episodios: 30",
+    "Título original: Türk"
+  ],
+  "Type": "episode",
+  "Episodes": 30,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.427Z",
+  "Update": "2026-07-10T12:29:54.427Z"
+}

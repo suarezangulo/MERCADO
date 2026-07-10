@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CUKUR - EL NIÑO",
+  "Images": [
+    "cukur-el-nino-0.webp",
+    "cukur-el-nino-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "312.00",
+  "Features": [
+    "Episodios: 156",
+    "Título original: Çukur"
+  ],
+  "Type": "episode",
+  "Episodes": 156,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.432Z",
+  "Update": "2026-07-10T12:29:54.432Z"
+}

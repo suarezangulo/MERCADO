@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "PLATÓNICO HOTEL LUNA AZUL -PLATONIK MAVI DOLUNAY OTEL",
+  "Images": [
+    "platonico-hotel-luna-azul-platonik-mavi-dolunay-otel-0.webp",
+    "platonico-hotel-luna-azul-platonik-mavi-dolunay-otel-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "16.00",
+  "Features": [
+    "Episodios: 8",
+    "Título original: Platonik Mavi Dolunay Otel"
+  ],
+  "Type": "episode",
+  "Episodes": 8,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.446Z",
+  "Update": "2026-07-10T12:29:54.446Z"
+}

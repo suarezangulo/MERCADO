@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL PADRE - BABA",
+  "Images": [
+    "el-padre-baba-0.webp",
+    "el-padre-baba-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "448.00",
+  "Features": [
+    "Episodios: 224",
+    "Título original: Baba"
+  ],
+  "Type": "episode",
+  "Episodes": 224,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.434Z",
+  "Update": "2026-07-10T12:29:54.434Z"
+}

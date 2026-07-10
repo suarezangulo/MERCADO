@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "ALEF",
+  "Images": [
+    "alef-0.webp",
+    "alef-1.webp"
+  ],
+  "Description": "Dos detectives, Kemal y Settar, se unen para investigar una serie de misteriosos asesinatos en Estambul, tras el descubrimiento de un cuerpo en el Bósforo. La serie, de marcado tono thriller, explora los secretos y las tensiones culturales de la ciudad.",
+  "Price": "16.00",
+  "Features": [
+    "Episodios: 8",
+    "Género: Crimen, Thriller"
+  ],
+  "Type": "episode",
+  "Episodes": 8,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.425Z",
+  "Update": "2026-07-10T12:29:54.425Z"
+}

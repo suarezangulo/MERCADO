@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "HOLDING",
+  "Images": [
+    "holding-0.webp",
+    "holding-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "40.00",
+  "Features": [
+    "Episodios: 20",
+    "Título original: Holding"
+  ],
+  "Type": "episode",
+  "Episodes": 20,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.439Z",
+  "Update": "2026-07-10T12:29:54.439Z"
+}

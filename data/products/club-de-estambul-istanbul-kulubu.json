@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "CLUB DE ESTAMBUL – ISTANBUL KULÜBÜ",
+  "Images": [
+    "club-de-estambul-istanbul-kulubu-0.webp",
+    "club-de-estambul-istanbul-kulubu-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "20.00",
+  "Features": [
+    "Episodios: 10",
+    "Título original: İstanbul Kulübü"
+  ],
+  "Type": "episode",
+  "Episodes": 10,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.430Z",
+  "Update": "2026-07-10T12:29:54.430Z"
+}

@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "MERYEM",
+  "Images": [
+    "meryem-0.webp",
+    "meryem-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "188.00",
+  "Features": [
+    "Episodios: 94",
+    "Título original: Meryem"
+  ],
+  "Type": "episode",
+  "Episodes": 94,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.443Z",
+  "Update": "2026-07-10T12:29:54.443Z"
+}

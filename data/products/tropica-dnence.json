@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "TROPICA - DÖNENCE",
+  "Images": [
+    "tropica-donence-0.webp",
+    "tropica-donence-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "90.00",
+  "Features": [
+    "Episodios: 45",
+    "Título original: Dönence"
+  ],
+  "Type": "episode",
+  "Episodes": 45,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.450Z",
+  "Update": "2026-07-10T12:29:54.450Z"
+}

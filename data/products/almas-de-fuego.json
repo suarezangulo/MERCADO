@@ -1,0 +1,19 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "ALMAS DE FUEGO",
+  "Images": [
+    "almas-de-fuego-0.webp",
+    "almas-de-fuego-1.webp"
+  ],
+  "Description": "La trama comienza cuando cinco amigos encuentran y crían a un bebé. El caos se desata cuando un hombre peligroso descubre al bebé y una mujer que lo busca muere accidentalmente. Con el tiempo, los amigos deberán enfrentar las consecuencias de su decisión.",
+  "Price": "124.00",
+  "Features": [
+    "Episodios: 62"
+  ],
+  "Type": "episode",
+  "Episodes": 62,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.425Z",
+  "Update": "2026-07-10T12:29:54.425Z"
+}

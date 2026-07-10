@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "LOVE IS IN THE AIR – SEN ÇAL KAPIMI",
+  "Images": [
+    "love-is-in-the-air-sen-cal-kapimi-0.webp",
+    "love-is-in-the-air-sen-cal-kapimi-1.webp"
+  ],
+  "Description": "Eda y Serkan: una historia de amor que comienza con un acuerdo falso y se convierte en una pasión real.",
+  "Price": "322.00",
+  "Features": [
+    "Episodios: 161",
+    "Título original: Sen Çal Kapımı"
+  ],
+  "Type": "episode",
+  "Episodes": 161,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.442Z",
+  "Update": "2026-07-10T12:29:54.442Z"
+}

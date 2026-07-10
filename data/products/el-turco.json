@@ -1,0 +1,19 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL TURCO",
+  "Images": [
+    "el-turco-0.webp",
+    "el-turco-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "12.00",
+  "Features": [
+    "Episodios: 6"
+  ],
+  "Type": "episode",
+  "Episodes": 6,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.435Z",
+  "Update": "2026-07-10T12:29:54.435Z"
+}

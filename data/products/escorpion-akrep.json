@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "ESCORPIÓN – AKREP",
+  "Images": [
+    "escorpion-akrep-0.webp",
+    "escorpion-akrep-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "168.00",
+  "Features": [
+    "Episodios: 84",
+    "Título original: Akrep"
+  ],
+  "Type": "episode",
+  "Episodes": 84,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.436Z",
+  "Update": "2026-07-10T12:29:54.436Z"
+}

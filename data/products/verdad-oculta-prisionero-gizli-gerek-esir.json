@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "VERDAD OCULTA - PRISIONERO - GIZLI GERÇEK - ESIR",
+  "Images": [
+    "verdad-oculta-prisionero-gizli-gercek-esir-0.webp",
+    "verdad-oculta-prisionero-gizli-gercek-esir-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "150.00",
+  "Features": [
+    "Episodios: 75",
+    "Título original: Gizli Gerçek - Esir"
+  ],
+  "Type": "episode",
+  "Episodes": 75,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.452Z",
+  "Update": "2026-07-10T12:29:54.452Z"
+}

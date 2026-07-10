@@ -1,0 +1,19 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "MADRASTRA",
+  "Images": [
+    "madrastra-0.webp",
+    "madrastra-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "80.00",
+  "Features": [
+    "Episodios: 40"
+  ],
+  "Type": "episode",
+  "Episodes": 40,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.442Z",
+  "Update": "2026-07-10T12:29:54.442Z"
+}

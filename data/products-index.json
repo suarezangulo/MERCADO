@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "",
-        "Date": "2026-07-10T12:12:20.381Z",
-        "Update": "2026-07-10T12:12:20.381Z"
+        "Date": "2026-07-10T12:29:54.421Z",
+        "Update": "2026-07-10T12:29:54.421Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T12:12:20.381Z",
-        "Update": "2026-07-10T12:12:20.381Z"
+        "Date": "2026-07-10T12:29:54.422Z",
+        "Update": "2026-07-10T12:29:54.422Z"
       }
     ]
   },
@@ -49,13 +49,13 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.382Z",
-        "Update": "2026-07-10T12:12:20.382Z"
+        "Date": "2026-07-10T12:29:54.422Z",
+        "Update": "2026-07-10T12:29:54.422Z"
       }
     ]
   },
   "Documentales": {
-    "Naturaleza / Vida Salvaje": [
+    "Naturaleza": [
       {
         "Label": "Planeta Tierra II",
         "Price": "12.00",
@@ -68,13 +68,13 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.382Z",
-        "Update": "2026-07-10T12:12:20.382Z"
+        "Date": "2026-07-10T12:29:54.422Z",
+        "Update": "2026-07-10T12:29:54.422Z"
       }
     ]
   },
   "Shows": {
-    "Stand-up Comedy": [
+    "Comedia": [
       {
         "Label": "The Office (Temporada 1)",
         "Price": "12.00",
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.382Z",
-        "Update": "2026-07-10T12:12:20.382Z"
+        "Date": "2026-07-10T12:29:54.423Z",
+        "Update": "2026-07-10T12:29:54.423Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.382Z",
-        "Update": "2026-07-10T12:12:20.382Z"
+        "Date": "2026-07-10T12:29:54.423Z",
+        "Update": "2026-07-10T12:29:54.423Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
@@ -121,8 +121,8 @@
         "Type": "episode",
         "Episodes": 59,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.383Z",
-        "Update": "2026-07-10T12:12:20.383Z"
+        "Date": "2026-07-10T12:29:54.423Z",
+        "Update": "2026-07-10T12:29:54.423Z"
       },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
@@ -134,8 +134,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.383Z",
-        "Update": "2026-07-10T12:12:20.383Z"
+        "Date": "2026-07-10T12:29:54.423Z",
+        "Update": "2026-07-10T12:29:54.423Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -152,8 +152,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.383Z",
-        "Update": "2026-07-10T12:12:20.383Z"
+        "Date": "2026-07-10T12:29:54.424Z",
+        "Update": "2026-07-10T12:29:54.424Z"
       },
       {
         "Label": "ADELA",
@@ -165,8 +165,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.383Z",
-        "Update": "2026-07-10T12:12:20.383Z"
+        "Date": "2026-07-10T12:29:54.424Z",
+        "Update": "2026-07-10T12:29:54.424Z"
       },
       {
         "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
@@ -178,8 +178,2839 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:12:20.384Z",
-        "Update": "2026-07-10T12:12:20.384Z"
+        "Date": "2026-07-10T12:29:54.424Z",
+        "Update": "2026-07-10T12:29:54.424Z"
+      },
+      {
+        "Label": "AL MARGEN DE LA LEY - YASANIN KENARINDA",
+        "Price": "48.00",
+        "Features": [
+          "Episodios: 24",
+          "Título original: Yaşanın Kenarında"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.425Z",
+        "Update": "2026-07-10T12:29:54.425Z"
+      },
+      {
+        "Label": "ALAS DE AMOR - ASK KANATLARI",
+        "Price": "138.00",
+        "Features": [
+          "Episodios: 69",
+          "Título original: Aşk Kanatları"
+        ],
+        "Type": "episode",
+        "Episodes": 69,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.425Z",
+        "Update": "2026-07-10T12:29:54.425Z"
+      },
+      {
+        "Label": "ALAS ROTAS - KIRIK KANATLAR",
+        "Price": "302.00",
+        "Features": [
+          "Episodios: 151",
+          "Título original: Kırık Kanatlar"
+        ],
+        "Type": "episode",
+        "Episodes": 151,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.425Z",
+        "Update": "2026-07-10T12:29:54.425Z"
+      },
+      {
+        "Label": "ALEF",
+        "Price": "16.00",
+        "Features": [
+          "Episodios: 8",
+          "Género: Crimen, Thriller"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.425Z",
+        "Update": "2026-07-10T12:29:54.425Z"
+      },
+      {
+        "Label": "ALMAS DE FUEGO",
+        "Price": "124.00",
+        "Features": [
+          "Episodios: 62"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.425Z",
+        "Update": "2026-07-10T12:29:54.425Z"
+      },
+      {
+        "Label": "ALMAS HERIDAS - (INOCENTES) - MASUMLAR",
+        "Price": "214.00",
+        "Features": [
+          "Episodios: 107",
+          "Título original: Masumlar"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.425Z",
+        "Update": "2026-07-10T12:29:54.425Z"
+      },
+      {
+        "Label": "AMAR ES PRIMAVERA - ILKBAHARDA ASK",
+        "Price": "230.00",
+        "Features": [
+          "Episodios: 115",
+          "Título original: İlkbaharda Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 115,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.426Z",
+        "Update": "2026-07-10T12:29:54.426Z"
+      },
+      {
+        "Label": "AMOR DE CONTRABANDO - KARA PARA ASK",
+        "Price": "334.00",
+        "Features": [
+          "Episodios: 167",
+          "Título original: Kara Para Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 167,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.426Z",
+        "Update": "2026-07-10T12:29:54.426Z"
+      },
+      {
+        "Label": "AMOR DE FAMILIA - NUESTRA HISTORIA - BIZIM HIKAYE",
+        "Price": "400.00",
+        "Features": [
+          "Episodios: 200",
+          "Título original: Bizim Hikaye"
+        ],
+        "Type": "episode",
+        "Episodes": 200,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.426Z",
+        "Update": "2026-07-10T12:29:54.426Z"
+      },
+      {
+        "Label": "AMOR EN BLANCO Y NEGRO - SIYAH BEYAZ ASK",
+        "Price": "128.00",
+        "Features": [
+          "Episodios: 64",
+          "Título original: Siyah Beyaz Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 64,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.426Z",
+        "Update": "2026-07-10T12:29:54.426Z"
+      },
+      {
+        "Label": "AMOR EN EL AIRE - ME ROBASTE EL CORAZÓN - LLAMAS A MI PUERTA",
+        "Price": "284.00",
+        "Features": [
+          "Episodios: 142",
+          "Título original: Sen Çal Kapımı"
+        ],
+        "Type": "episode",
+        "Episodes": 142,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.426Z",
+        "Update": "2026-07-10T12:29:54.426Z"
+      },
+      {
+        "Label": "AMOR EN GUERRA - SURA & SEYIT",
+        "Price": "92.00",
+        "Features": [
+          "Episodios: 46",
+          "Título original: Sura & Seyit"
+        ],
+        "Type": "episode",
+        "Episodes": 46,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.426Z",
+        "Update": "2026-07-10T12:29:54.426Z"
+      },
+      {
+        "Label": "AMOR EN LA AZOTEA - ÇATI KATI ASKI",
+        "Price": "120.00",
+        "Features": [
+          "Episodios: 60",
+          "Título original: Çatı Katı Aşkı"
+        ],
+        "Type": "episode",
+        "Episodes": 60,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR ETERNO - KARA SEVDA",
+        "Price": "916.00",
+        "Features": [
+          "Episodios: 458",
+          "Título original: Kara Sevda"
+        ],
+        "Type": "episode",
+        "Episodes": 458,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR IMPOSIBLE - GÜLCEMAL",
+        "Price": "44.00",
+        "Features": [
+          "Episodios: 22",
+          "Título original: Gülcemal"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR INVENCIBLE - YENILMEZ ASK",
+        "Price": "192.00",
+        "Features": [
+          "Episodios: 96",
+          "Título original: Yenilmez Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 96,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR LOGICA VENFANZA – ASK MANTIK INTIKAM",
+        "Price": "214.00",
+        "Features": [
+          "Episodios: 107",
+          "Título original: Aşk Mantık İntikam"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR MANCHADO - TURK",
+        "Price": "60.00",
+        "Features": [
+          "Episodios: 30",
+          "Título original: Türk"
+        ],
+        "Type": "episode",
+        "Episodes": 30,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR OBSTINADO - INADINA ASK",
+        "Price": "194.00",
+        "Features": [
+          "Episodios: 97",
+          "Título original: İnatçı Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 97,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR SIN PALABRAS - HAYAT",
+        "Price": "164.00",
+        "Features": [
+          "Episodios: 82",
+          "Título original: Hayat"
+        ],
+        "Type": "episode",
+        "Episodes": 82,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.427Z",
+        "Update": "2026-07-10T12:29:54.427Z"
+      },
+      {
+        "Label": "AMOR Y ODIO - ASK VE MAVI",
+        "Price": "538.00",
+        "Features": [
+          "Episodios: 269",
+          "Título original: Aşk ve Mavi"
+        ],
+        "Type": "episode",
+        "Episodes": 269,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.428Z",
+        "Update": "2026-07-10T12:29:54.428Z"
+      },
+      {
+        "Label": "AMOR Y PECADO - ASK VE GÜNAH",
+        "Price": "240.00",
+        "Features": [
+          "Episodios: 120",
+          "Título original: Aşk ve Günah"
+        ],
+        "Type": "episode",
+        "Episodes": 120,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.428Z",
+        "Update": "2026-07-10T12:29:54.428Z"
+      },
+      {
+        "Label": "AMOR Y VENGANZA - CEZUR",
+        "Price": "214.00",
+        "Features": [
+          "Episodios: 107",
+          "Título original: Cezur"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.428Z",
+        "Update": "2026-07-10T12:29:54.428Z"
+      },
+      {
+        "Label": "AMORES CRUZADOS - INTERSECCIÓN - KAVSAK",
+        "Price": "150.00",
+        "Features": [
+          "Episodios: 75",
+          "Título original: Kavşak"
+        ],
+        "Type": "episode",
+        "Episodes": 75,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.428Z",
+        "Update": "2026-07-10T12:29:54.428Z"
+      },
+      {
+        "Label": "BONDAD - LA TRAICIÓN - EL AMOR Y LA VENGANZA - IYILIK, IHANET VE INTIKAM",
+        "Price": "148.00",
+        "Features": [
+          "Episodios: 74",
+          "Título original: İyilik, İhanet ve İntikam"
+        ],
+        "Type": "episode",
+        "Episodes": 74,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.428Z",
+        "Update": "2026-07-10T12:29:54.428Z"
+      },
+      {
+        "Label": "CANCIÓN DE VERANO - YAZ SARKISI",
+        "Price": "48.00",
+        "Features": [
+          "Episodios: 24",
+          "Título original: Yaz Şarkısı"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.429Z",
+        "Update": "2026-07-10T12:29:54.429Z"
+      },
+      {
+        "Label": "CARTA DE DESPEDIDA - VEDA MEKTUBU",
+        "Price": "152.00",
+        "Features": [
+          "Episodios: 76",
+          "Título original: Veda Mektubu"
+        ],
+        "Type": "episode",
+        "Episodes": 76,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.429Z",
+        "Update": "2026-07-10T12:29:54.429Z"
+      },
+      {
+        "Label": "CEMENTERIO - MEZARLIK",
+        "Price": "24.00",
+        "Features": [
+          "Episodios: 12",
+          "Título original: Mezarlık"
+        ],
+        "Type": "episode",
+        "Episodes": 12,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.429Z",
+        "Update": "2026-07-10T12:29:54.429Z"
+      },
+      {
+        "Label": "CENNET TODO VUELVE – CENNETIN GÖZYASLARI",
+        "Price": "318.00",
+        "Features": [
+          "Episodios: 159",
+          "Título original: Cennet'in Gözyaşları"
+        ],
+        "Type": "episode",
+        "Episodes": 159,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.429Z",
+        "Update": "2026-07-10T12:29:54.429Z"
+      },
+      {
+        "Label": "CHOQUE - CRASH - CARPRISMA",
+        "Price": "136.00",
+        "Features": [
+          "Episodios: 68",
+          "Título original: Çarpışma"
+        ],
+        "Type": "episode",
+        "Episodes": 68,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.429Z",
+        "Update": "2026-07-10T12:29:54.429Z"
+      },
+      {
+        "Label": "CIUDAD CRUEL – ZALIM ISTANBUL",
+        "Price": "216.00",
+        "Features": [
+          "Episodios: 108",
+          "Título original: Zalim İstanbul"
+        ],
+        "Type": "episode",
+        "Episodes": 108,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.429Z",
+        "Update": "2026-07-10T12:29:54.429Z"
+      },
+      {
+        "Label": "CIUDAD DEL MIRZA - MIRZAPUR TEMP. 1, 2, 3 x 29 FIN",
+        "Price": "58.00",
+        "Features": [
+          "Episodios: 29",
+          "Título original: Mirzapur"
+        ],
+        "Type": "episode",
+        "Episodes": 29,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.430Z",
+        "Update": "2026-07-10T12:29:54.430Z"
+      },
+      {
+        "Label": "CLUB DE ESTAMBUL – ISTANBUL KULÜBÜ",
+        "Price": "20.00",
+        "Features": [
+          "Episodios: 10",
+          "Título original: İstanbul Kulübü"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.430Z",
+        "Update": "2026-07-10T12:29:54.430Z"
+      },
+      {
+        "Label": "CLUB ESTAMBUL - ISTANBUL KULÜBÜ",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: İstanbul Kulübü"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.430Z",
+        "Update": "2026-07-10T12:29:54.430Z"
+      },
+      {
+        "Label": "COLLAR POLVORIENTO - CHICOS DE BARRIO - TOZLUVAKA",
+        "Price": "160.00",
+        "Features": [
+          "Episodios: 80",
+          "Título original: Tozluvaka"
+        ],
+        "Type": "episode",
+        "Episodes": 80,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.430Z",
+        "Update": "2026-07-10T12:29:54.430Z"
+      },
+      {
+        "Label": "COMBINACIÓN PERFECTA - MÜKEMMEL UYUM",
+        "Price": "66.00",
+        "Features": [
+          "Episodios: 33",
+          "Título original: Mükemmel Uyum"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "COMO VUELA EL CUERVO - LAS ALAS DE LA AMBICIÓN - KUS UÇUSU",
+        "Price": "48.00",
+        "Features": [
+          "Episodios: 24",
+          "Título original: Kuş Uçuşu"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CON OLOR A FRESA – ÇILEK KOKUSU",
+        "Price": "110.00",
+        "Features": [
+          "Episodios: 55",
+          "Título original: Çilek Kokusu"
+        ],
+        "Type": "episode",
+        "Episodes": 55,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CONVIRTIÉNDOSE EN UNA DAMA - GÖNÜLCELEN",
+        "Price": "224.00",
+        "Features": [
+          "Episodios: 112",
+          "Título original: Gönülcelen"
+        ],
+        "Type": "episode",
+        "Episodes": 112,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CORAZONES HUÉRFANOS - YETIM KALPLER",
+        "Price": "68.00",
+        "Features": [
+          "Episodios: 34",
+          "Título original: Yetim Kalpler"
+        ],
+        "Type": "episode",
+        "Episodes": 34,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CORAZÓN HERIDO - HERIDAS DEL CORAZÓN – KALP YARASI",
+        "Price": "214.00",
+        "Features": [
+          "Episodios: 107",
+          "Título original: Kalp Yarasi"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CRASH – ÇARPISMA",
+        "Price": "136.00",
+        "Features": [
+          "Episodios: 68",
+          "Título original: Çarpışma"
+        ],
+        "Type": "episode",
+        "Episodes": 68,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CUENTOS DE INVIERNO - KIS MASALI",
+        "Price": "66.00",
+        "Features": [
+          "Episodios: 33",
+          "Título original: Kış Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CUENTOS DE LA ISLA - ADA MASALI",
+        "Price": "166.00",
+        "Features": [
+          "Episodios: 83",
+          "Título original: Ada Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 83,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.431Z",
+        "Update": "2026-07-10T12:29:54.431Z"
+      },
+      {
+        "Label": "CUERVO - KUZGUN",
+        "Price": "142.00",
+        "Features": [
+          "Episodios: 71",
+          "Título original: Kuzgun"
+        ],
+        "Type": "episode",
+        "Episodes": 71,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "CUESTIÓN DE HONOR - NAMUS MESELESI",
+        "Price": "122.00",
+        "Features": [
+          "Episodios: 61",
+          "Título original: Namus Meselesi"
+        ],
+        "Type": "episode",
+        "Episodes": 61,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "CUKUR - EL NIÑO",
+        "Price": "312.00",
+        "Features": [
+          "Episodios: 156",
+          "Título original: Çukur"
+        ],
+        "Type": "episode",
+        "Episodes": 156,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "DE QUIÉN HUÍMOS MAMÁ - KIZIM NEREDE",
+        "Price": "14.00",
+        "Features": [
+          "Episodios: 7",
+          "Título original: Kızım Nerede"
+        ],
+        "Type": "episode",
+        "Episodes": 7,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "DONDE ESTÁ MI HIJA - KIZIM NEREDE",
+        "Price": "124.00",
+        "Features": [
+          "Episodios: 62",
+          "Título original: Kızım Nerede"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "DULCE VENGANZA - TATLI INTIKAM",
+        "Price": "196.00",
+        "Features": [
+          "Episodios: 98",
+          "Título original: Tatlı İntikam"
+        ],
+        "Type": "episode",
+        "Episodes": 98,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "EL JOVEN GENIO SINA - GENÇ DAHI SINA",
+        "Price": "20.00",
+        "Features": [
+          "Episodios: 10",
+          "Título original: Genç Dahi Sina"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "EL AMOR MÁS HERMOSO - ASKLARIN EN GÜZEL",
+        "Price": "100.00",
+        "Features": [
+          "Episodios: 50",
+          "Título original: Aşkların En Güzel"
+        ],
+        "Type": "episode",
+        "Episodes": 50,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.432Z",
+        "Update": "2026-07-10T12:29:54.432Z"
+      },
+      {
+        "Label": "EL CAMINO DE LA VIDA - HAYAT YOLU",
+        "Price": "64.00",
+        "Features": [
+          "Episodios: 32",
+          "Título original: Hayat Yolu"
+        ],
+        "Type": "episode",
+        "Episodes": 32,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL CORAZÓN DE LA CIUDAD – BU SEHIR ARKANDAN GELECEK",
+        "Price": "66.00",
+        "Features": [
+          "Episodios: 33",
+          "Título original: Bu Şehir Arkandan Gelecek"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL CORAZÓN DE RÜZGAR - RÜZGARIN KALBI",
+        "Price": "54.00",
+        "Features": [
+          "Episodios: 27",
+          "Título original: Rüzgarın Kalbi"
+        ],
+        "Type": "episode",
+        "Episodes": 27,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL CUERVO - KUZGUN",
+        "Price": "142.00",
+        "Features": [
+          "Episodios: 71",
+          "Título original: Kuzgun"
+        ],
+        "Type": "episode",
+        "Episodes": 71,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL DESTINO - KADER",
+        "Price": "60.00",
+        "Features": [
+          "Episodios: 30",
+          "Título original: Kader"
+        ],
+        "Type": "episode",
+        "Episodes": 30,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL FUEGO DEL DESTINO - KADERIN ATESI",
+        "Price": "96.00",
+        "Features": [
+          "Episodios: 48",
+          "Título original: Kaderin Ateşi"
+        ],
+        "Type": "episode",
+        "Episodes": 48,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL FUEGO EN NOSOTROS - BIZDEKI ATES",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: Bizdeki Ateş"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL FÉNIX – ZÜMRÜDÜANKA",
+        "Price": "100.00",
+        "Features": [
+          "Episodios: 50",
+          "Título original: Zümrüdüanka"
+        ],
+        "Type": "episode",
+        "Episodes": 50,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL HOMBRE EQUIVOCADO - BAY YANLIS",
+        "Price": "28.00",
+        "Features": [
+          "Episodios: 14",
+          "Título original: Bay Yanlış"
+        ],
+        "Type": "episode",
+        "Episodes": 14,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.433Z",
+        "Update": "2026-07-10T12:29:54.433Z"
+      },
+      {
+        "Label": "EL JARDÍN SECRETO - GIZLI BAHÇE",
+        "Price": "36.00",
+        "Features": [
+          "Episodios: 18",
+          "Título original: Gizli Bahçe"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL JUEGO DE MI DESTINO - AMOR Y TRAICIÓN - KADERIMIN OYUNU",
+        "Price": "170.00",
+        "Features": [
+          "Episodios: 85",
+          "Título original: Kaderimin Oyunu"
+        ],
+        "Type": "episode",
+        "Episodes": 85,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL LEGADO DE AMOR - EMANET",
+        "Price": "0.00",
+        "Features": [
+          "Episodios: ?",
+          "Título original: Emanet"
+        ],
+        "Type": "episode",
+        "Episodes": 0,
+        "PricePerEpisode": "0.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL NIÑO – ÇOCUK",
+        "Price": "124.00",
+        "Features": [
+          "Episodios: 62",
+          "Título original: Çocuk"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL OLOR DE UN NIÑO - BIR ÇOCUGUN KOKUSU",
+        "Price": "72.00",
+        "Features": [
+          "Episodios: 36",
+          "Título original: Bir Çocuğun Kokusu"
+        ],
+        "Type": "episode",
+        "Episodes": 36,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL PADRE - BABA",
+        "Price": "448.00",
+        "Features": [
+          "Episodios: 224",
+          "Título original: Baba"
+        ],
+        "Type": "episode",
+        "Episodes": 224,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL PATIO - AVLU",
+        "Price": "290.00",
+        "Features": [
+          "Episodios: 145",
+          "Título original: Avlu"
+        ],
+        "Type": "episode",
+        "Episodes": 145,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL PAÑUELO ROJO - KIRMIZI MENDIL",
+        "Price": "176.00",
+        "Features": [
+          "Episodios: 88",
+          "Título original: Kırmızı Mendil"
+        ],
+        "Type": "episode",
+        "Episodes": 88,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL POZO - CUKUR",
+        "Price": "310.00",
+        "Features": [
+          "Episodios: 155",
+          "Título original: Çukur"
+        ],
+        "Type": "episode",
+        "Episodes": 155,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.434Z",
+        "Update": "2026-07-10T12:29:54.434Z"
+      },
+      {
+        "Label": "EL PRECIO DEL AMOR - ASKIN BEDELI",
+        "Price": "52.00",
+        "Features": [
+          "Episodios: 26",
+          "Título original: Aşkın Bedeli"
+        ],
+        "Type": "episode",
+        "Episodes": 26,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EL SASTRE - TERZI",
+        "Price": "46.00",
+        "Features": [
+          "Episodios: 23",
+          "Título original: Terzi"
+        ],
+        "Type": "episode",
+        "Episodes": 23,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EL SECRETO - SIR",
+        "Price": "76.00",
+        "Features": [
+          "Episodios: 38",
+          "Título original: Sır"
+        ],
+        "Type": "episode",
+        "Episodes": 38,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EL SECRETO DE FERIHA – ADINI FERIHA KOYDUM",
+        "Price": "332.00",
+        "Features": [
+          "Episodios: 166",
+          "Título original: Adını Feriha Koydum"
+        ],
+        "Type": "episode",
+        "Episodes": 166,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EL TURCO",
+        "Price": "12.00",
+        "Features": [
+          "Episodios: 6"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EN BUSCA DE MI HIJA - HÍCRAN",
+        "Price": "254.00",
+        "Features": [
+          "Episodios: 127",
+          "Título original: Hıçran"
+        ],
+        "Type": "episode",
+        "Episodes": 127,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EN LAS BUENAS Y EN LAS MALAS - IYI GÜNDE KÖTÜ GÜNDE",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: İyi Günde Kötü Günde"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "EN TODAS PARTES TÚ – HER YERDE SEN",
+        "Price": "108.00",
+        "Features": [
+          "Episodios: 54",
+          "Título original: Her Yerde Sen"
+        ],
+        "Type": "episode",
+        "Episodes": 54,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.435Z",
+        "Update": "2026-07-10T12:29:54.435Z"
+      },
+      {
+        "Label": "ENAMORADOS ANÓNIMOS - ANONIM ÂSIKLAR",
+        "Price": "16.00",
+        "Features": [
+          "Episodios: 8",
+          "Título original: Anonim Âşıklar"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ENTRE DOS AMORES - IKI ASK ARASINDA",
+        "Price": "238.00",
+        "Features": [
+          "Episodios: 119",
+          "Título original: İki Aşk Arasında"
+        ],
+        "Type": "episode",
+        "Episodes": 119,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ENTRE EL AMOR Y LA VENGANZA - HERCAI",
+        "Price": "0.00",
+        "Features": [
+          "Episodios: ?",
+          "Título original: Hercai"
+        ],
+        "Type": "episode",
+        "Episodes": 0,
+        "PricePerEpisode": "0.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ESCONDIÉNDO A NUESTRA MADRE - ANNEMIZI SAKLARKEN",
+        "Price": "48.00",
+        "Features": [
+          "Episodios: 24",
+          "Título original: Annemizi Saklarken"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ESCORPIÓN – AKREP",
+        "Price": "168.00",
+        "Features": [
+          "Episodios: 84",
+          "Título original: Akrep"
+        ],
+        "Type": "episode",
+        "Episodes": 84,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ESCÓNDEME - PERDIDOS EN EL AMOR - ASKTA KAYBOLANLAR",
+        "Price": "130.00",
+        "Features": [
+          "Episodios: 65",
+          "Título original: Aşkta Kaybolanlar"
+        ],
+        "Type": "episode",
+        "Episodes": 65,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ESCÚCHAME - BENI DINLE",
+        "Price": "120.00",
+        "Features": [
+          "Episodios: 60",
+          "Título original: Beni Dinle"
+        ],
+        "Type": "episode",
+        "Episodes": 60,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.436Z",
+        "Update": "2026-07-10T12:29:54.436Z"
+      },
+      {
+        "Label": "ESMIRNA – GÜNESIN KIZLARI",
+        "Price": "206.00",
+        "Features": [
+          "Episodios: 103",
+          "Título original: Güneşin Kızları"
+        ],
+        "Type": "episode",
+        "Episodes": 103,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "EXILIO AZUL - ATRAPADA EN LA JAULA AZUL - MAVIYE SÜRGÜN",
+        "Price": "156.00",
+        "Features": [
+          "Episodios: 78",
+          "Título original: Maviye Sürgün"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "EZEL",
+        "Price": "302.00",
+        "Features": [
+          "Episodios: 151",
+          "Título original: Ezel"
+        ],
+        "Type": "episode",
+        "Episodes": 151,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "FAMILIA - AILE",
+        "Price": "190.00",
+        "Features": [
+          "Episodios: 95",
+          "Título original: Aile"
+        ],
+        "Type": "episode",
+        "Episodes": 95,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "FATMAGÜL - FATMAGÜL'ÜN SUÇU NE",
+        "Price": "162.00",
+        "Features": [
+          "Episodios: 81",
+          "Título original: Fatmagül'ün Suçu Ne"
+        ],
+        "Type": "episode",
+        "Episodes": 81,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "FERHAT Y SIRIN - FERHAT ILE SIRIN",
+        "Price": "30.00",
+        "Features": [
+          "Episodios: 15",
+          "Título original: Ferhat ile Şirin"
+        ],
+        "Type": "episode",
+        "Episodes": 15,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "FI",
+        "Price": "70.00",
+        "Features": [
+          "Episodios: 35",
+          "Título original: Fi"
+        ],
+        "Type": "episode",
+        "Episodes": 35,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "FUEGO FUEGO – ATES ATES",
+        "Price": "182.00",
+        "Features": [
+          "Episodios: 91",
+          "Título original: Ateş Ateş"
+        ],
+        "Type": "episode",
+        "Episodes": 91,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "GRANDES MENTIRAS - BÜYÜK YALANLAR",
+        "Price": "74.00",
+        "Features": [
+          "Episodios: 37",
+          "Título original: Büyük Yalanlar"
+        ],
+        "Type": "episode",
+        "Episodes": 37,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.437Z",
+        "Update": "2026-07-10T12:29:54.437Z"
+      },
+      {
+        "Label": "GRITOS DE AMOR – ASK ÇIGLIKLARI",
+        "Price": "92.00",
+        "Features": [
+          "Episodios: 46",
+          "Título original: Aşk Çığlıkları"
+        ],
+        "Type": "episode",
+        "Episodes": 46,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "GUERRA DE ROSAS - GÜLLERIN SAVASI",
+        "Price": "296.00",
+        "Features": [
+          "Episodios: 148",
+          "Título original: Güllerin Savaşı"
+        ],
+        "Type": "episode",
+        "Episodes": 148,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "GÖNÜL",
+        "Price": "38.00",
+        "Features": [
+          "Episodios: 19",
+          "Título original: Gönül"
+        ],
+        "Type": "episode",
+        "Episodes": 19,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "HABITACIÓN 309 - No. 309",
+        "Price": "404.00",
+        "Features": [
+          "Episodios: 202",
+          "Título original: No. 309"
+        ],
+        "Type": "episode",
+        "Episodes": 202,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "HASTA EL FINAL - NO ME DEJES IR - ASLA VAZGECMEN",
+        "Price": "344.00",
+        "Features": [
+          "Episodios: 172",
+          "Título original: Asla Vazgeçmem"
+        ],
+        "Type": "episode",
+        "Episodes": 172,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "HAY SULTÁN - ABDULKA DIR GEGLANI HAZRETLEZLERI",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: Hazretleri"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "HERIDA DEL CORAZÓN - KALP YARASI",
+        "Price": "214.00",
+        "Features": [
+          "Episodios: 107",
+          "Título original: Kalp Yarasi"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "HERMANAS - KARDESLER",
+        "Price": "16.00",
+        "Features": [
+          "Episodios: 8",
+          "Título original: Kardeşler"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.438Z",
+        "Update": "2026-07-10T12:29:54.438Z"
+      },
+      {
+        "Label": "HERMOSAS CAMPESINAS - GÜZEL KÖYLÜ",
+        "Price": "212.00",
+        "Features": [
+          "Episodios: 106",
+          "Título original: Güzel Köylü"
+        ],
+        "Type": "episode",
+        "Episodes": 106,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "HIEDRA VENENOSA - ZEHIRLI SARMASIK",
+        "Price": "46.00",
+        "Features": [
+          "Episodios: 23",
+          "Título original: Zehirli Sarmaşık"
+        ],
+        "Type": "episode",
+        "Episodes": 23,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "HIJO, DÓNDE ESTÁS - OGUL, NEREDESIN",
+        "Price": "90.00",
+        "Features": [
+          "Episodios: 45",
+          "Título original: Oğul, Neredesin"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "HOLDING",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: Holding"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "HONOR Y RESPETO - KÜBRA",
+        "Price": "32.00",
+        "Features": [
+          "Episodios: 16",
+          "Título original: Kübra"
+        ],
+        "Type": "episode",
+        "Episodes": 16,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "IDENTIDAD OCULTA - SOL DE INVIERNO - KIS GÜNESI",
+        "Price": "60.00",
+        "Features": [
+          "Episodios: 30",
+          "Título original: Kış Güneşi"
+        ],
+        "Type": "episode",
+        "Episodes": 30,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "INFIEL - TRAICIONADA - SADAKATSIZ",
+        "Price": "210.00",
+        "Features": [
+          "Episodios: 105",
+          "Título original: Sadakatsiz"
+        ],
+        "Type": "episode",
+        "Episodes": 105,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "INVENCIBLE - A.Z.I.Z",
+        "Price": "182.00",
+        "Features": [
+          "Episodios: 91",
+          "Título original: A.Z.I.Z"
+        ],
+        "Type": "episode",
+        "Episodes": 91,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "INVIERNO – KIS MASALI",
+        "Price": "66.00",
+        "Features": [
+          "Episodios: 33",
+          "Título original: Kış Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.439Z",
+        "Update": "2026-07-10T12:29:54.439Z"
+      },
+      {
+        "Label": "JAULA DORADA - ALTIN KAFES",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: Altın Kafes"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "JUEGO DE AMOR - SEVEN NE YAPMAZ",
+        "Price": "66.00",
+        "Features": [
+          "Episodios: 33",
+          "Título original: Seven Ne Yapmaz"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "JUEGO DESDE LA MIRADA DEL HOMBRE - EGO - ERKEÚN GÓZÚNDEN OYUN",
+        "Price": "26.00",
+        "Features": [
+          "Episodios: 13",
+          "Título original: Ego - Erkeğin Gözünden Oyun"
+        ],
+        "Type": "episode",
+        "Episodes": 13,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "JUEGOS DEL DESTINO – KADER OYUNLARI",
+        "Price": "116.00",
+        "Features": [
+          "Episodios: 58",
+          "Título original: Kader Oyunları"
+        ],
+        "Type": "episode",
+        "Episodes": 58,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "KOSEM LA SULTANA - MUHTESEM YÜZYIL KÖSEM",
+        "Price": "230.00",
+        "Features": [
+          "Episodios: 115",
+          "Título original: Muhteşem Yüzyıl Kösem"
+        ],
+        "Type": "episode",
+        "Episodes": 115,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "LA HIJA DEL EMBAJADOR – SEN ÇAL KAPIMI",
+        "Price": "328.00",
+        "Features": [
+          "Episodios: 164",
+          "Título original: Sen Çal Kapımı"
+        ],
+        "Type": "episode",
+        "Episodes": 164,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "LA HISTORIA DE BLANCO Y NEGRO QUE SE TRASNFORMA EN GRIS - PIYASA",
+        "Price": "12.00",
+        "Features": [
+          "Episodios: 6",
+          "Título original: Piyasa"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.440Z",
+        "Update": "2026-07-10T12:29:54.440Z"
+      },
+      {
+        "Label": "LA HISTORIA DE NUNCA ACABAR – HIÇ BITMEYEN HIKAYE",
+        "Price": "44.00",
+        "Features": [
+          "Episodios: 22",
+          "Título original: Hiç Bitmeyen Hikaye"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LA NIÑA DEL VALLE VERDE – YESIL VADI’NIN KIZI",
+        "Price": "280.00",
+        "Features": [
+          "Episodios: 140",
+          "Título original: Yeşil Vadi'nin Kızı"
+        ],
+        "Type": "episode",
+        "Episodes": 140,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LA NOVIA DE ESTAMBUL - ETERNAMENTE - ISTANBULLU GELIN",
+        "Price": "658.00",
+        "Features": [
+          "Episodios: 329",
+          "Título original: İstanbullu Gelin"
+        ],
+        "Type": "episode",
+        "Episodes": 329,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LA SEÑORA FAZILET Y SUS HIJAS - FAZILET HANIM VE KIZLARI",
+        "Price": "330.00",
+        "Features": [
+          "Episodios: 165",
+          "Título original: Fazilet Hanım ve Kızları"
+        ],
+        "Type": "episode",
+        "Episodes": 165,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LA TRAICIÓN - LA GRAN MENTIRA - IYILIK",
+        "Price": "170.00",
+        "Features": [
+          "Episodios: 85",
+          "Título original: İyilik"
+        ],
+        "Type": "episode",
+        "Episodes": 85,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LA VERDAD - MARASLI",
+        "Price": "120.00",
+        "Features": [
+          "Episodios: 60",
+          "Título original: Maraşlı"
+        ],
+        "Type": "episode",
+        "Episodes": 60,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LATIDOS DEL CORAZÓN - KALP ATISI",
+        "Price": "148.00",
+        "Features": [
+          "Episodios: 74",
+          "Título original: Kalp Atışı"
+        ],
+        "Type": "episode",
+        "Episodes": 74,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LLAMAS DEL DESTINO – ALEV ALEV",
+        "Price": "56.00",
+        "Features": [
+          "Episodios: 28",
+          "Título original: Alev Alev"
+        ],
+        "Type": "episode",
+        "Episodes": 28,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LOBO - BÓRÚ",
+        "Price": "12.00",
+        "Features": [
+          "Episodios: 6",
+          "Título original: Börü"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.441Z",
+        "Update": "2026-07-10T12:29:54.441Z"
+      },
+      {
+        "Label": "LOBO - BÖRÜ",
+        "Price": "12.00",
+        "Features": [
+          "Episodios: 6",
+          "Título original: Börü"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "LOVE IS IN THE AIR – SEN ÇAL KAPIMI",
+        "Price": "322.00",
+        "Features": [
+          "Episodios: 161",
+          "Título original: Sen Çal Kapımı"
+        ],
+        "Type": "episode",
+        "Episodes": 161,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "LUCIÉRNAGA - ATESBÖCEGI",
+        "Price": "102.00",
+        "Features": [
+          "Episodios: 51",
+          "Título original: Ateşböceği"
+        ],
+        "Type": "episode",
+        "Episodes": 51,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "LUNA LLENA - DONULAY",
+        "Price": "138.00",
+        "Features": [
+          "Episodios: 69",
+          "Título original: Dolunay"
+        ],
+        "Type": "episode",
+        "Episodes": 69,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "MADRASTRA",
+        "Price": "80.00",
+        "Features": [
+          "Episodios: 40"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "MADRE, TODO POR MI HIJA - ANNE",
+        "Price": "222.00",
+        "Features": [
+          "Episodios: 111",
+          "Título original: Anne"
+        ],
+        "Type": "episode",
+        "Episodes": 111,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "MADRES E HIJAS - ANNE VE KAZLARI",
+        "Price": "52.00",
+        "Features": [
+          "Episodios: 26",
+          "Título original: Anne ve Kızları"
+        ],
+        "Type": "episode",
+        "Episodes": 26,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "MARTÍN PESCADOR - UNA NUEVA VIDA - YENI BIR HAYAT",
+        "Price": "742.00",
+        "Features": [
+          "Episodios: 371",
+          "Título original: Yeni Bir Hayat"
+        ],
+        "Type": "episode",
+        "Episodes": 371,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "MEDCEZIR",
+        "Price": "326.00",
+        "Features": [
+          "Episodios: 163",
+          "Título original: Medcezir"
+        ],
+        "Type": "episode",
+        "Episodes": 163,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.442Z",
+        "Update": "2026-07-10T12:29:54.442Z"
+      },
+      {
+        "Label": "MERYEM",
+        "Price": "188.00",
+        "Features": [
+          "Episodios: 94",
+          "Título original: Meryem"
+        ],
+        "Type": "episode",
+        "Episodes": 94,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "METAMORFOSIS - BASKALASIM",
+        "Price": "20.00",
+        "Features": [
+          "Episodios: 10",
+          "Título original: Başkalaşım"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MI HOGAR MI DESTINO - DOGDUGUN EV KADERINDIR",
+        "Price": "276.00",
+        "Features": [
+          "Episodios: 138",
+          "Título original: Doğduğun Ev Kaderindir"
+        ],
+        "Type": "episode",
+        "Episodes": 138,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MI LADO IZQUIERDO - SOL YANIM",
+        "Price": "72.00",
+        "Features": [
+          "Episodios: 36",
+          "Título original: Sol Yanım"
+        ],
+        "Type": "episode",
+        "Episodes": 36,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MI MENTIRA MÁS DULCE – TATLI YALANIM",
+        "Price": "152.00",
+        "Features": [
+          "Episodios: 76",
+          "Título original: Tatlı Yalanım"
+        ],
+        "Type": "episode",
+        "Episodes": 76,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MI NOMBRE ES FARAH - ME LLAMO FARAH - ADIM FARAH",
+        "Price": "178.00",
+        "Features": [
+          "Episodios: 89",
+          "Título original: Adım Farah"
+        ],
+        "Type": "episode",
+        "Episodes": 89,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MI VIDA - BENIM HAYATIM",
+        "Price": "36.00",
+        "Features": [
+          "Episodios: 18",
+          "Título original: Benim Hayatım"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MISERICORDIA - MERHAMET",
+        "Price": "162.00",
+        "Features": [
+          "Episodios: 81",
+          "Título original: Merhamet"
+        ],
+        "Type": "episode",
+        "Episodes": 81,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MUNDOS OPUESTOS - KIZILCIK SERBETI",
+        "Price": "428.00",
+        "Features": [
+          "Episodios: 214",
+          "Título original: Kızılcık Şerbeti"
+        ],
+        "Type": "episode",
+        "Episodes": 214,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.443Z",
+        "Update": "2026-07-10T12:29:54.443Z"
+      },
+      {
+        "Label": "MUY ESTIMADO - AZIZE",
+        "Price": "36.00",
+        "Features": [
+          "Episodios: 18",
+          "Título original: Azize"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.444Z",
+        "Update": "2026-07-10T12:29:54.444Z"
+      },
+      {
+        "Label": "MÁS ALLÁ DEL AMOR - SORBETE DE ARÁNDANOS - KIZIZLCIK SERBETI",
+        "Price": "428.00",
+        "Features": [
+          "Episodios: 214",
+          "Título original: Kızılcık Şerbeti"
+        ],
+        "Type": "episode",
+        "Episodes": 214,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.444Z",
+        "Update": "2026-07-10T12:29:54.444Z"
+      },
+      {
+        "Label": "MÁS HERMOSA QUE TÚ - SENDEN DAHA GÜZEL",
+        "Price": "84.00",
+        "Features": [
+          "Episodios: 42",
+          "Título original: Senden Daha Güzel"
+        ],
+        "Type": "episode",
+        "Episodes": 42,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.444Z",
+        "Update": "2026-07-10T12:29:54.444Z"
+      },
+      {
+        "Label": "NADA ES LO QUE PARECE - ICERDE",
+        "Price": "202.00",
+        "Features": [
+          "Episodios: 101",
+          "Título original: İçerde"
+        ],
+        "Type": "episode",
+        "Episodes": 101,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.444Z",
+        "Update": "2026-07-10T12:29:54.444Z"
+      },
+      {
+        "Label": "NADIE SABE - SECRETOS DE AMOR - KIMSE BILMEZ",
+        "Price": "176.00",
+        "Features": [
+          "Episodios: 88",
+          "Título original: Kimse Bilmez"
+        ],
+        "Type": "episode",
+        "Episodes": 88,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.444Z",
+        "Update": "2026-07-10T12:29:54.444Z"
+      },
+      {
+        "Label": "NIDO DE VÍBORA - SEN BENIMSIN",
+        "Price": "70.00",
+        "Features": [
+          "Episodios: 35",
+          "Título original: Sen Benimsin"
+        ],
+        "Type": "episode",
+        "Episodes": 35,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.444Z",
+        "Update": "2026-07-10T12:29:54.444Z"
+      },
+      {
+        "Label": "NIÑO - EL ES MI HIJO - ÇOCUK",
+        "Price": "124.00",
+        "Features": [
+          "Episodios: 62",
+          "Título original: Çocuk"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "NO LLORES POR MI - BENIM IÇIN AGLAMA",
+        "Price": "32.00",
+        "Features": [
+          "Episodios: 16",
+          "Título original: Benim İçin Ağlama"
+        ],
+        "Type": "episode",
+        "Episodes": 16,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "NO ME DEJES IR – ASLA VAZGEÇMEM",
+        "Price": "240.00",
+        "Features": [
+          "Episodios: 120",
+          "Título original: Asla Vazgeçmem"
+        ],
+        "Type": "episode",
+        "Episodes": 120,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "NO PUEDES CONFIAR EN LOS HOMBRES - EGO",
+        "Price": "26.00",
+        "Features": [
+          "Episodios: 13",
+          "Título original: Ego"
+        ],
+        "Type": "episode",
+        "Episodes": 13,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "NO TE ENTREGARÉ A NADIE - SENI KIMSEYE VERMEM",
+        "Price": "90.00",
+        "Features": [
+          "Episodios: 45",
+          "Título original: Seni Kimseye Vermem"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "OH DÓNDE - I0. EV",
+        "Price": "42.00",
+        "Features": [
+          "Episodios: 21",
+          "Título original: 10. Ev"
+        ],
+        "Type": "episode",
+        "Episodes": 21,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "PALOMA ESCLAVA DEL DESTINO - GUVERCIN",
+        "Price": "32.00",
+        "Features": [
+          "Episodios: 16",
+          "Título original: Güvercin"
+        ],
+        "Type": "episode",
+        "Episodes": 16,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "PAN NEGRO - VIDA ROBADA - KARASEVDA EKMEGI",
+        "Price": "200.00",
+        "Features": [
+          "Episodios: 100",
+          "Título original: Karasevda Ekmeği"
+        ],
+        "Type": "episode",
+        "Episodes": 100,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.445Z"
+      },
+      {
+        "Label": "PERLA NEGRA – SIYAH INC",
+        "Price": "134.00",
+        "Features": [
+          "Episodios: 67",
+          "Título original: Siyah İnci"
+        ],
+        "Type": "episode",
+        "Episodes": 67,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.445Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PIEDAD - MERHAMET",
+        "Price": "162.00",
+        "Features": [
+          "Episodios: 81",
+          "Título original: Merhamet"
+        ],
+        "Type": "episode",
+        "Episodes": 81,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PIEDRA DE LOS DESEOS - DILEK TASI",
+        "Price": "134.00",
+        "Features": [
+          "Episodios: 67",
+          "Título original: Dilek Taşı"
+        ],
+        "Type": "episode",
+        "Episodes": 67,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PLATÓNICO HOTEL LUNA AZUL -PLATONIK MAVI DOLUNAY OTEL",
+        "Price": "16.00",
+        "Features": [
+          "Episodios: 8",
+          "Título original: Platonik Mavi Dolunay Otel"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PLOMO - KURSUN",
+        "Price": "44.00",
+        "Features": [
+          "Episodios: 22",
+          "Título original: Kurşun"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PROPUESTA INDECENTE - INCE INCE YASEMINCE",
+        "Price": "128.00",
+        "Features": [
+          "Episodios: 64",
+          "Título original: İnce İnce Yasemince"
+        ],
+        "Type": "episode",
+        "Episodes": 64,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PUNTO CIEGO - KÖR NOKTA",
+        "Price": "40.00",
+        "Features": [
+          "Episodios: 20",
+          "Título original: Kör Nokta"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PURPÚRA COMO EL MAR - VIOLETA COMO EL MAR - DENIZ KADAR MOR",
+        "Price": "24.00",
+        "Features": [
+          "Episodios: 12",
+          "Título original: Deniz Kadar Mor"
+        ],
+        "Type": "episode",
+        "Episodes": 12,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PÁJARO HERIDO - YARALI KUS",
+        "Price": "400.00",
+        "Features": [
+          "Episodios: 200",
+          "Título original: Yaralı Kuş"
+        ],
+        "Type": "episode",
+        "Episodes": 200,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.446Z",
+        "Update": "2026-07-10T12:29:54.446Z"
+      },
+      {
+        "Label": "PÁJARO SOÑADOR - SUEÑO CONTIGO - ERKENCI KUS",
+        "Price": "260.00",
+        "Features": [
+          "Episodios: 130",
+          "Título original: Erkenci Kuş"
+        ],
+        "Type": "episode",
+        "Episodes": 130,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "QUIÉN TE LLEVÓ - SENI KIMLER ALDI",
+        "Price": "80.00",
+        "Features": [
+          "Episodios: 40",
+          "Título original: Seni Kimler Aldı"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "QUIÉREME SIEMPRE - HEP BENI SEV",
+        "Price": "80.00",
+        "Features": [
+          "Episodios: 40",
+          "Título original: Hep Beni Sev"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "QUÉ PASA SI AMAS DEMASIADO - ÇOK SEVERSEN NE OLUR",
+        "Price": "80.00",
+        "Features": [
+          "Episodios: 40",
+          "Título original: Çok Seversen Ne Olur"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "RAMO - ADALETIN BU MU DÜNYA",
+        "Price": "90.00",
+        "Features": [
+          "Episodios: 45",
+          "Título original: Adaletin Bu Mu Dünya"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "REBELDE - ASI",
+        "Price": "286.00",
+        "Features": [
+          "Episodios: 143",
+          "Título original: Asi"
+        ],
+        "Type": "episode",
+        "Episodes": 143,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "RECUERDA CORAZÓN - GÖNÜL",
+        "Price": "76.00",
+        "Features": [
+          "Episodios: 38",
+          "Título original: Gönül"
+        ],
+        "Type": "episode",
+        "Episodes": 38,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "RICO Y POBRE - ZENGIN VE YOKSUL",
+        "Price": "64.00",
+        "Features": [
+          "Episodios: 32",
+          "Título original: Zengin ve Yoksul"
+        ],
+        "Type": "episode",
+        "Episodes": 32,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.447Z",
+        "Update": "2026-07-10T12:29:54.447Z"
+      },
+      {
+        "Label": "RIVALES DE SANGRE - KANLI RAKIPLER",
+        "Price": "100.00",
+        "Features": [
+          "Episodios: 50",
+          "Título original: Kanlı Rakipler"
+        ],
+        "Type": "episode",
+        "Episodes": 50,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SAFIR - SAKLI KALEN ASK HIKAYESI",
+        "Price": "178.00",
+        "Features": [
+          "Episodios: 89",
+          "Título original: Saklı Kalen Aşk Hikayesi"
+        ],
+        "Type": "episode",
+        "Episodes": 89,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SECRETOS DE LA VIDA- HAYATIN SIRLARI",
+        "Price": "66.00",
+        "Features": [
+          "Episodios: 33",
+          "Título original: Hayatın Sırları"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SECRETOS DE SANGRE - SECRETOS DE FAMILIA – YARGI",
+        "Price": "218.00",
+        "Features": [
+          "Episodios: 109",
+          "Título original: Yargı"
+        ],
+        "Type": "episode",
+        "Episodes": 109,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SECRETOS DE UN ÁNGEL - BIR PERI MASALI",
+        "Price": "232.00",
+        "Features": [
+          "Episodios: 116",
+          "Título original: Bir Peri Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 116,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SECRETOS PROHIBIDOS - MI PADRE Y SU FAMILIA - BABAM VE AILESI",
+        "Price": "82.00",
+        "Features": [
+          "Episodios: 41",
+          "Título original: Babam ve Ailesi"
+        ],
+        "Type": "episode",
+        "Episodes": 41,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SELIM Y SAHRA - SELIM VE SAHRA",
+        "Price": "70.00",
+        "Features": [
+          "Episodios: 35",
+          "Título original: Selim ve Sahra"
+        ],
+        "Type": "episode",
+        "Episodes": 35,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SELIN UN AMOR INOLVIDABLE - UNUTULMAZ BIR ASK SELIN",
+        "Price": "90.00",
+        "Features": [
+          "Episodios: 45",
+          "Título original: Unutulmaz Bir Aşk Selin"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SI YO FUERA UNA NUEVE -BIR BULUT OSLAM",
+        "Price": "126.00",
+        "Features": [
+          "Episodios: 63",
+          "Título original: Bir Bulut Oslama"
+        ],
+        "Type": "episode",
+        "Episodes": 63,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.448Z",
+        "Update": "2026-07-10T12:29:54.448Z"
+      },
+      {
+        "Label": "SONRÍE A TU DESTINO - KADERINE GÜLÜMSE",
+        "Price": "28.00",
+        "Features": [
+          "Episodios: 14",
+          "Título original: Kaderine Gülümse"
+        ],
+        "Type": "episode",
+        "Episodes": 14,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "SU NOMBRE ES ZEHRA - ADI ZEHRA",
+        "Price": "28.00",
+        "Features": [
+          "Episodios: 14",
+          "Título original: Adı Zehra"
+        ],
+        "Type": "episode",
+        "Episodes": 14,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TE ALQUILO MI AMOR - AMOR POR ALQUILER - KIRALIK ASK",
+        "Price": "320.00",
+        "Features": [
+          "Episodios: 160",
+          "Título original: Kiralık Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 160,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TE AMAS - SEVERSIN BIR ASK HIKAYESIT",
+        "Price": "122.00",
+        "Features": [
+          "Episodios: 61",
+          "Título original: Seversin Bir Aşk Hikayesi"
+        ],
+        "Type": "episode",
+        "Episodes": 61,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TIERRA DE SECRETOS- KARAGÜL",
+        "Price": "662.00",
+        "Features": [
+          "Episodios: 331",
+          "Título original: Karagül"
+        ],
+        "Type": "episode",
+        "Episodes": 331,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TODAVÍA TENGO ESPERANZA - UMUTUM HALA VAR",
+        "Price": "132.00",
+        "Features": [
+          "Episodios: 66",
+          "Título original: Umutum Hala Var"
+        ],
+        "Type": "episode",
+        "Episodes": 66,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TODO AMOR ESCONDE UN SECRETO - GÜNES",
+        "Price": "206.00",
+        "Features": [
+          "Episodios: 103",
+          "Título original: Güneş"
+        ],
+        "Type": "episode",
+        "Episodes": 103,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TODO POR MI FAMILIA (1) - KARDESLERIM",
+        "Price": "308.00",
+        "Features": [
+          "Episodios: 154",
+          "Título original: Kardeşlerim"
+        ],
+        "Type": "episode",
+        "Episodes": 154,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TODO POR MI HIJA - Y TÚ, QUIÉN ERES - KIZIM",
+        "Price": "76.00",
+        "Features": [
+          "Episodios: 38",
+          "Título original: Kızım"
+        ],
+        "Type": "episode",
+        "Episodes": 38,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.449Z",
+        "Update": "2026-07-10T12:29:54.449Z"
+      },
+      {
+        "Label": "TODO SOBRE EL MATRIMONIO – EVLILIK HAKKINDA HER SEY",
+        "Price": "210.00",
+        "Features": [
+          "Episodios: 105",
+          "Título original: Evlilik Hakkında Her Şey"
+        ],
+        "Type": "episode",
+        "Episodes": 105,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TOMA MI MANO – ELIMI BIRAKMA",
+        "Price": "322.00",
+        "Features": [
+          "Episodios: 161",
+          "Título original: Elimi Bırakma"
+        ],
+        "Type": "episode",
+        "Episodes": 161,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TRAICIÓN SECRETA - STILETTO VENDETTA",
+        "Price": "156.00",
+        "Features": [
+          "Episodios: 78",
+          "Título original: Stiletto Vendetta"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TRAMPA - TUZAK",
+        "Price": "44.00",
+        "Features": [
+          "Episodios: 22",
+          "Título original: Tuzak"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TRAMPA DE AMOR – ASK TUZAGI",
+        "Price": "174.00",
+        "Features": [
+          "Episodios: 87",
+          "Título original: Aşk Tuzağı"
+        ],
+        "Type": "episode",
+        "Episodes": 87,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TRAMPAS DE AMOR - AFILI ASK",
+        "Price": "272.00",
+        "Features": [
+          "Episodios: 136",
+          "Título original: Afili Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 136,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TROPICA - DÖNENCE",
+        "Price": "90.00",
+        "Features": [
+          "Episodios: 45",
+          "Título original: Dönence"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "TÍO NEGRO O TÍO OSCURO - KARADAYI",
+        "Price": "230.00",
+        "Features": [
+          "Episodios: 115",
+          "Título original: Karadayı"
+        ],
+        "Type": "episode",
+        "Episodes": 115,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.450Z",
+        "Update": "2026-07-10T12:29:54.450Z"
+      },
+      {
+        "Label": "UN POCO DE LUZ DEL DÍA - LA LUZ DE MI VIDA - GIRO DEL DESTINO - BIR KÜCÜK GÜNDÜZ ISIGI",
+        "Price": "218.00",
+        "Features": [
+          "Episodios: 109",
+          "Título original: Bir Küçük Gündüz Işığı"
+        ],
+        "Type": "episode",
+        "Episodes": 109,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UN POLICÍA DE ANKARA - BEHZAT C",
+        "Price": "18.00",
+        "Features": [
+          "Episodios: 9",
+          "Título original: Behzat C"
+        ],
+        "Type": "episode",
+        "Episodes": 9,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UNA CANCIÓN INTERMINABLE - BITMEYEN SARKI",
+        "Price": "64.00",
+        "Features": [
+          "Episodios: 32",
+          "Título original: Bitmeyen Şarkı"
+        ],
+        "Type": "episode",
+        "Episodes": 32,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UNA HISTORIA DE AMOR - BIR ASK HIKAYESI",
+        "Price": "116.00",
+        "Features": [
+          "Episodios: 58",
+          "Título original: Bir Aşk Hikayesi"
+        ],
+        "Type": "episode",
+        "Episodes": 58,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UNA MADRE CONTRA LA INJUSTICIA - GÜLPERI",
+        "Price": "174.00",
+        "Features": [
+          "Episodios: 87",
+          "Título original: Gülperi"
+        ],
+        "Type": "episode",
+        "Episodes": 87,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UNA PARTE DE MI - NO TE ENAMORES – BENIM ADIM GÜLTEPE",
+        "Price": "296.00",
+        "Features": [
+          "Episodios: 148",
+          "Título original: Benim Adım Gültepe"
+        ],
+        "Type": "episode",
+        "Episodes": 148,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UNA VIDA PERFECTA - MI MARAVILLOSA VIDA - HARIKA HAYATIM",
+        "Price": "194.00",
+        "Features": [
+          "Episodios: 97",
+          "Título original: Harika Hayatım"
+        ],
+        "Type": "episode",
+        "Episodes": 97,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "UNO DE NOSOTROS - BIZDEN BIRI",
+        "Price": "36.00",
+        "Features": [
+          "Episodios: 18",
+          "Título original: Bizden Biri"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.451Z",
+        "Update": "2026-07-10T12:29:54.451Z"
+      },
+      {
+        "Label": "VENGANZA Y AMOR - SUHAN",
+        "Price": "156.00",
+        "Features": [
+          "Episodios: 78",
+          "Título original: Suhan"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "VERDAD OCULTA - PRISIONERO - GIZLI GERÇEK - ESIR",
+        "Price": "150.00",
+        "Features": [
+          "Episodios: 75",
+          "Título original: Gizli Gerçek - Esir"
+        ],
+        "Type": "episode",
+        "Episodes": 75,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "VIOLETA COMO EL MAR - PURPÚRA COMO EL MAR - DENIZ GIBI MENEKSELER",
+        "Price": "24.00",
+        "Features": [
+          "Episodios: 12",
+          "Título original: Deniz Gibi Menekşeler"
+        ],
+        "Type": "episode",
+        "Episodes": 12,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "VIVIENDO UN SUEÑO - MARAL",
+        "Price": "68.00",
+        "Features": [
+          "Episodios: 34",
+          "Título original: Maral"
+        ],
+        "Type": "episode",
+        "Episodes": 34,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "VIVIENDO UN SUEÑO - MARAL; MI HISTORIA MAS HERMOSA- MARAL; EN GÚZEL HIKAYEM",
+        "Price": "68.00",
+        "Features": [
+          "Episodios: 34",
+          "Título original: Maral - En Güzel Hikayem"
+        ],
+        "Type": "episode",
+        "Episodes": 34,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "VOLVER A CASA - REGRESO A CASA - EVE DÖNÜS",
+        "Price": "132.00",
+        "Features": [
+          "Episodios: 66",
+          "Título original: Eve Dönüş"
+        ],
+        "Type": "episode",
+        "Episodes": 66,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "Y TÚ, ¿QUIÉN ERES – KIMSIN SEN",
+        "Price": "74.00",
+        "Features": [
+          "Episodios: 37",
+          "Título original: Kimsin Sen"
+        ],
+        "Type": "episode",
+        "Episodes": 37,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
+      },
+      {
+        "Label": "ÉPICO - DESTAN",
+        "Price": "182.00",
+        "Features": [
+          "Episodios: 91",
+          "Título original: Destan"
+        ],
+        "Type": "episode",
+        "Episodes": 91,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T12:29:54.452Z",
+        "Update": "2026-07-10T12:29:54.452Z"
       }
     ]
   }

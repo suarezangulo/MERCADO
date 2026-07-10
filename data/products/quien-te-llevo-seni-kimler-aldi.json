@@ -1,0 +1,20 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "QUIÉN TE LLEVÓ - SENI KIMLER ALDI",
+  "Images": [
+    "quien-te-llevo-seni-kimler-aldi-0.webp",
+    "quien-te-llevo-seni-kimler-aldi-1.webp"
+  ],
+  "Description": "Sinopsis no disponible",
+  "Price": "80.00",
+  "Features": [
+    "Episodios: 40",
+    "Título original: Seni Kimler Aldı"
+  ],
+  "Type": "episode",
+  "Episodes": 40,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-10T12:29:54.447Z",
+  "Update": "2026-07-10T12:29:54.447Z"
+}
