@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:41:03.789Z",
-        "Update": "2026-07-10T11:41:03.789Z"
+        "Date": "2026-07-10T11:52:34.205Z",
+        "Update": "2026-07-10T11:52:34.205Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:41:03.790Z",
-        "Update": "2026-07-10T11:41:03.790Z"
+        "Date": "2026-07-10T11:52:34.205Z",
+        "Update": "2026-07-10T11:52:34.205Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.790Z",
-        "Update": "2026-07-10T11:41:03.790Z"
+        "Date": "2026-07-10T11:52:34.205Z",
+        "Update": "2026-07-10T11:52:34.205Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.790Z",
-        "Update": "2026-07-10T11:41:03.790Z"
+        "Date": "2026-07-10T11:52:34.205Z",
+        "Update": "2026-07-10T11:52:34.205Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.791Z",
-        "Update": "2026-07-10T11:41:03.791Z"
+        "Date": "2026-07-10T11:52:34.206Z",
+        "Update": "2026-07-10T11:52:34.206Z"
       }
     ]
   },
@@ -106,37 +106,24 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.791Z",
-        "Update": "2026-07-10T11:41:03.791Z"
-      }
-    ],
-    "Dramas (coreanos": [
-      {
-        "Label": "turcos",
-        "Price": "etc.)",
-        "Features": [
-          "5.00 CUP"
-        ],
-        "Type": "80.00 CUP",
-        "Episodes": 0,
-        "PricePerEpisode": "un policía de la unidad contra el crimen organizado",
-        "Date": "2026-07-10T11:41:03.791Z",
-        "Update": "2026-07-10T11:41:03.791Z"
-      },
-      {
-        "Label": "turcos",
-        "Price": "etc.)",
-        "Features": [
-          "80.00 CUP"
-        ],
-        "Type": "Episodios: 40;Título original: Muhteşem İkili",
-        "Episodes": 0,
-        "PricePerEpisode": "episode",
-        "Date": "2026-07-10T11:41:03.792Z",
-        "Update": "2026-07-10T11:41:03.792Z"
+        "Date": "2026-07-10T11:52:34.206Z",
+        "Update": "2026-07-10T11:52:34.206Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
+      {
+        "Label": "20 MINUTOS - 20 DAKIKA",
+        "Price": "118.00",
+        "Features": [
+          "Episodios: 59",
+          "Título original: 20 Dakika"
+        ],
+        "Type": "episode",
+        "Episodes": 59,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T11:52:34.206Z",
+        "Update": "2026-07-10T11:52:34.206Z"
+      },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
         "Price": "26.00",
@@ -147,8 +134,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.791Z",
-        "Update": "2026-07-10T11:41:03.791Z"
+        "Date": "2026-07-10T11:52:34.206Z",
+        "Update": "2026-07-10T11:52:34.206Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -160,8 +147,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.792Z",
-        "Update": "2026-07-10T11:41:03.792Z"
+        "Date": "2026-07-10T11:52:34.206Z",
+        "Update": "2026-07-10T11:52:34.206Z"
       },
       {
         "Label": "ADELA",
@@ -173,8 +160,21 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:41:03.792Z",
-        "Update": "2026-07-10T11:41:03.792Z"
+        "Date": "2026-07-10T11:52:34.207Z",
+        "Update": "2026-07-10T11:52:34.207Z"
+      },
+      {
+        "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
+        "Price": "80.00",
+        "Features": [
+          "Episodios: 40",
+          "Título original: Muhteşem İkili"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-10T11:52:34.207Z",
+        "Update": "2026-07-10T11:52:34.207Z"
       }
     ]
   }
