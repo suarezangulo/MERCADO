@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:23:50.215Z",
-        "Update": "2026-07-10T09:23:50.215Z"
+        "Date": "2026-07-10T09:27:57.252Z",
+        "Update": "2026-07-10T09:27:57.252Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "Película",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:23:50.215Z",
-        "Update": "2026-07-10T09:23:50.215Z"
+        "Date": "2026-07-10T09:27:57.252Z",
+        "Update": "2026-07-10T09:27:57.252Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "Serie",
         "Episodes": 10,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:23:50.216Z",
-        "Update": "2026-07-10T09:23:50.216Z"
+        "Date": "2026-07-10T09:27:57.253Z",
+        "Update": "2026-07-10T09:27:57.253Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "Documental",
         "Episodes": 6,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:23:50.216Z",
-        "Update": "2026-07-10T09:23:50.216Z"
+        "Date": "2026-07-10T09:27:57.253Z",
+        "Update": "2026-07-10T09:27:57.253Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "Show",
         "Episodes": 6,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:23:50.216Z",
-        "Update": "2026-07-10T09:23:50.216Z"
+        "Date": "2026-07-10T09:27:57.253Z",
+        "Update": "2026-07-10T09:27:57.253Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "Telenovela",
         "Episodes": 200,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:23:50.216Z",
-        "Update": "2026-07-10T09:23:50.216Z"
+        "Date": "2026-07-10T09:27:57.253Z",
+        "Update": "2026-07-10T09:27:57.253Z"
       }
     ],
     "Dramas (coreanos": [
@@ -117,23 +117,11 @@
         "Features": [
           "118.00 CUP"
         ],
-        "Type": "Episodios: 59; Título original: 20 Dakika",
-        "Episodes": 20,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T09:23:50.217Z",
-        "Update": "2026-07-10T09:23:50.217Z"
-      },
-      {
-        "Label": "turcos",
-        "Price": "etc.)",
-        "Features": [
-          "344.00 CUP"
-        ],
-        "Type": "Episodios: 172; Título original: Asla Vazgeçmem",
+        "Type": "20-minutos-20-dakika-0.webp;20-minutos-20-dakika-1.webp",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T09:23:50.217Z",
-        "Update": "2026-07-10T09:23:50.217Z"
+        "PricePerEpisode": "59",
+        "Date": "2026-07-10T09:27:57.253Z",
+        "Update": "2026-07-10T09:27:57.253Z"
       },
       {
         "Label": "turcos",
@@ -141,11 +129,11 @@
         "Features": [
           "40.00 CUP"
         ],
-        "Type": "Episodios: 20; Título original: Hazretleri",
+        "Type": "hay-sultan-abdulka-dir-geglani-hazretle zleri-0.webp;hay-sultan-abdulka-dir-geglani-hazretle-zleri-1.webp",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T09:23:50.217Z",
-        "Update": "2026-07-10T09:23:50.217Z"
+        "PricePerEpisode": "20",
+        "Date": "2026-07-10T09:27:57.254Z",
+        "Update": "2026-07-10T09:27:57.254Z"
       }
     ]
   }
