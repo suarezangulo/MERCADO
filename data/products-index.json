@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:39:11.890Z",
-        "Update": "2026-07-10T09:39:11.890Z"
+        "Date": "2026-07-10T09:47:37.691Z",
+        "Update": "2026-07-10T09:47:37.691Z"
       }
     ],
     "Drama": [
@@ -30,24 +30,27 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "",
-        "Date": "2026-07-10T09:39:11.891Z",
-        "Update": "2026-07-10T09:39:11.891Z"
+        "Date": "2026-07-10T09:47:37.692Z",
+        "Update": "2026-07-10T09:47:37.692Z"
       }
     ]
   },
-  "Wes Chatham": {
+  "Series": {
     "Ciencia Ficción": [
       {
         "Label": "The Expanse (Temporada 1)",
         "Price": "20.00 CUP",
         "Features": [
-          "la humanidad ha colonizado el Sistema Solar. Una conspiración que amenaza la paz entre la Tierra"
+          "Creador: Daniel Abraham, Ty Franck",
+          "Año: 2015",
+          "Episodios: 10",
+          "Actores: Steven Strait, Dominique Tipper, Wes Chatham"
         ],
-        "Type": "Creador: Daniel Abraham",
-        "Episodes": 0,
-        "PricePerEpisode": "Dominique Tipper",
-        "Date": "2026-07-10T09:39:11.891Z",
-        "Update": "2026-07-10T09:39:11.891Z"
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T09:47:37.692Z",
+        "Update": "2026-07-10T09:47:37.692Z"
       }
     ]
   },
@@ -62,8 +65,8 @@
         "Type": "planeta-tierra-ii-0.webp;planeta-tierra-ii-1.webp",
         "Episodes": 0,
         "PricePerEpisode": "6",
-        "Date": "2026-07-10T09:39:11.891Z",
-        "Update": "2026-07-10T09:39:11.891Z"
+        "Date": "2026-07-10T09:47:37.692Z",
+        "Update": "2026-07-10T09:47:37.692Z"
       }
     ]
   },
@@ -78,8 +81,8 @@
         "Type": "John Krasinski",
         "Episodes": 0,
         "PricePerEpisode": "the-office-t1-0.webp;the-office-t1-1.webp",
-        "Date": "2026-07-10T09:39:11.891Z",
-        "Update": "2026-07-10T09:39:11.891Z"
+        "Date": "2026-07-10T09:47:37.692Z",
+        "Update": "2026-07-10T09:47:37.692Z"
       }
     ]
   },
@@ -94,8 +97,8 @@
         "Type": "Director: Rodrigo Triana;Año: 2003;Episodios: 200;Actores: Danna García",
         "Episodes": 0,
         "PricePerEpisode": "Paola Rey",
-        "Date": "2026-07-10T09:39:11.892Z",
-        "Update": "2026-07-10T09:39:11.892Z"
+        "Date": "2026-07-10T09:47:37.692Z",
+        "Update": "2026-07-10T09:47:37.692Z"
       }
     ]
   }
