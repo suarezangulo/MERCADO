@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:38:35.547Z",
-        "Update": "2026-07-10T11:38:35.547Z"
+        "Date": "2026-07-10T11:39:21.425Z",
+        "Update": "2026-07-10T11:39:21.425Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:38:35.548Z",
-        "Update": "2026-07-10T11:38:35.548Z"
+        "Date": "2026-07-10T11:39:21.425Z",
+        "Update": "2026-07-10T11:39:21.425Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.548Z",
-        "Update": "2026-07-10T11:38:35.548Z"
+        "Date": "2026-07-10T11:39:21.425Z",
+        "Update": "2026-07-10T11:39:21.425Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.548Z",
-        "Update": "2026-07-10T11:38:35.548Z"
+        "Date": "2026-07-10T11:39:21.426Z",
+        "Update": "2026-07-10T11:39:21.426Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.548Z",
-        "Update": "2026-07-10T11:38:35.548Z"
+        "Date": "2026-07-10T11:39:21.426Z",
+        "Update": "2026-07-10T11:39:21.426Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.549Z",
-        "Update": "2026-07-10T11:38:35.549Z"
+        "Date": "2026-07-10T11:39:21.426Z",
+        "Update": "2026-07-10T11:39:21.426Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
@@ -121,8 +121,8 @@
         "Type": "episode",
         "Episodes": 59,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.549Z",
-        "Update": "2026-07-10T11:38:35.549Z"
+        "Date": "2026-07-10T11:39:21.426Z",
+        "Update": "2026-07-10T11:39:21.426Z"
       },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
@@ -134,8 +134,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.549Z",
-        "Update": "2026-07-10T11:38:35.549Z"
+        "Date": "2026-07-10T11:39:21.426Z",
+        "Update": "2026-07-10T11:39:21.426Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -147,8 +147,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.549Z",
-        "Update": "2026-07-10T11:38:35.549Z"
+        "Date": "2026-07-10T11:39:21.427Z",
+        "Update": "2026-07-10T11:39:21.427Z"
       },
       {
         "Label": "ADELA",
@@ -160,21 +160,22 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.550Z",
-        "Update": "2026-07-10T11:38:35.550Z"
-      },
+        "Date": "2026-07-10T11:39:21.427Z",
+        "Update": "2026-07-10T11:39:21.427Z"
+      }
+    ],
+    "Dramas (coreanos": [
       {
-        "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
-        "Price": "80.00",
+        "Label": "turcos",
+        "Price": "etc.)",
         "Features": [
-          "Episodios: 40",
-          "Título original: Muhteşem İkili"
+          "80.00 CUP"
         ],
-        "Type": "episode",
-        "Episodes": 40,
-        "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:38:35.550Z",
-        "Update": "2026-07-10T11:38:35.550Z"
+        "Type": "Episodios: 40;Título original: Muhteşem İkili",
+        "Episodes": 0,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T11:39:21.427Z",
+        "Update": "2026-07-10T11:39:21.427Z"
       }
     ]
   }
