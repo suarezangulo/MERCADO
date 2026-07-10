@@ -3,18 +3,21 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ÉPICO - DESTAN",
   "Images": [
-    "epico-destan-0.webp",
-    "epico-destan-1.webp"
+    "epico-destan-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La trama se desarrolla en las estepas de Asia Central del siglo VIII, donde Akkiz, una guerrera huérfana, busca venganza contra Alpagu Khan, responsable de la muerte de su padre. En su camino se cruza con Batuga, el hijo discapacitado del Khan, quien finge locura para sobrevivir.\nAmbos unen fuerzas para desafiar al poder imperial y restaurar la justicia en el reino de los Gök Turks. La historia mezcla mitología turca y ficción épica, sin basarse en hechos reales.",
   "Price": "182.00",
   "Features": [
+    "Directores: Emir Khalilzadeh, Fethi Bayram, Metin Günay, Ali Aytaç Sakal.",
+    "Guionistas: Nehir Erdem, Ayşe Ferda Eryılmaz, İhsan Yıldırım, Eda Karakoç, Mustafa Dinç, Nermin Aslan.",
+    "Actores: Ebru Şahin como Akkiz, una guerrera legendaria de las montañas. Edip Tepeli como Batuga, príncipe discapacitado del Palacio Gök. Selim Bayraktar como Alpagu Khan, gobernante del Jaganato Gök. Participaciones de Deniz Turunç, Elif Doğan, y otros actores secundarios.",
     "Episodios: 91",
-    "Título original: Destan"
+    "Título original: Destan",
+    "Año: 2021-2022"
   ],
   "Type": "episode",
   "Episodes": 91,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-10T19:22:02.136Z",
-  "Update": "2026-07-10T19:22:02.136Z"
+  "Date": "2026-07-10T20:09:45.119Z",
+  "Update": "2026-07-10T20:09:45.119Z"
 }
