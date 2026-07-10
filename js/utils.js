@@ -221,7 +221,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     link.setAttribute("class", "stext-104 cl3 hov-cl1 trans-04 js-name-b2");
     link.setAttribute("href", "product.html?id=" + slug);
 
-    // ===== OBTENER NOMBRE BASE DE LA IMAGEN DESDE product.Images =====
+    // ===== 🔧 OBTENER EL NOMBRE BASE DE LA IMAGEN DESDE product.Images =====
     var imagesArray = [];
     if (product.Images) {
         if (Array.isArray(product.Images)) {
