@@ -1,10 +1,10 @@
 {
   "Category": "Documentales",
-  "SubCategory": "Naturaleza",
+  "SubCategory": "Naturaleza / Vida Salvaje",
   "Label": "Planeta Tierra II",
   "Images": [
-    "planeta-tierra-ii-0.webp",
-    "planeta-tierra-ii-1.webp"
+    "planeta-tierra-ii-0.jpg",
+    "planeta-tierra-ii-1.jpg"
   ],
   "Description": "La secuela del aclamado documental de la BBC. Utilizando tecnología de vanguardia, el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable.",
   "Price": "12.00",
@@ -17,6 +17,6 @@
   "Type": "episode",
   "Episodes": 6,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-10T17:48:01.041Z",
-  "Update": "2026-07-10T17:48:01.041Z"
+  "Date": "2026-07-10T17:56:15.016Z",
+  "Update": "2026-07-10T17:56:15.016Z"
 }
