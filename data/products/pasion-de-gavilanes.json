@@ -3,7 +3,10 @@
   "SubCategory": "Romance",
   "Label": "Pasión de Gavilanes",
   "Images": [
-    "intriga y amor."
+    "pasion-de-gavilanes-0.webp",
+    "pasion-de-gavilanes-1.webp",
+    "pasion-de-gavilanes-2.webp",
+    "pasion-de-gavilanes-3.webp"
   ],
   "Description": "Tres hermanos llegan a un pueblo colombiano para vengar la muerte de su hermana, pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión, intriga y amor.",
   "Price": "400.00 CUP",
@@ -16,6 +19,6 @@
   "Type": "episode",
   "Episodes": 200,
   "PricePerEpisode": "2",
-  "Date": "2026-07-10T10:01:44.640Z",
-  "Update": "2026-07-10T10:01:44.640Z"
+  "Date": "2026-07-10T10:07:30.053Z",
+  "Update": "2026-07-10T10:07:30.053Z"
 }
