@@ -1,22 +1,18 @@
 {
-  "Category": "Series",
+  "Category": "Wes Chatham",
   "SubCategory": "Ciencia Ficción",
   "Label": "The Expanse (Temporada 1)",
   "Images": [
-    "the-expanse-t1-0.webp",
-    "the-expanse-t1-1.webp"
+    "Marte y el Cinturón de Asteroides desencadena una guerra. Basada en la exitosa serie de novelas de James S.A. Corey."
   ],
-  "Description": "Cientos de años en el futuro, la humanidad ha colonizado el Sistema Solar. Una conspiración que amenaza la paz entre la Tierra, Marte y el Cinturón de Asteroides desencadena una guerra. Basada en la exitosa serie de novelas de James S.A. Corey.",
+  "Description": "Cientos de años en el futuro",
   "Price": "20.00 CUP",
   "Features": [
-    "Creador: Daniel Abraham, Ty Franck",
-    "Año: 2015",
-    "Episodios: 10",
-    "Actores: Steven Strait, Dominique Tipper, Wes Chatham"
+    "la humanidad ha colonizado el Sistema Solar. Una conspiración que amenaza la paz entre la Tierra"
   ],
-  "Type": "Serie",
-  "Episodes": 10,
-  "PricePerEpisode": "2",
-  "Date": "2026-07-10T09:27:57.253Z",
-  "Update": "2026-07-10T09:27:57.253Z"
+  "Type": "Creador: Daniel Abraham",
+  "Episodes": 0,
+  "PricePerEpisode": "Dominique Tipper",
+  "Date": "2026-07-10T09:35:09.991Z",
+  "Update": "2026-07-10T09:35:09.991Z"
 }

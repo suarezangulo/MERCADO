@@ -13,127 +13,88 @@
         "Type": "movie",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:27:57.252Z",
-        "Update": "2026-07-10T09:27:57.252Z"
+        "Date": "2026-07-10T09:35:09.990Z",
+        "Update": "2026-07-10T09:35:09.990Z"
       }
-    ],
+    ]
+  },
+  "Director: Damien Chazelle;Año: 2016;Duración: 128 min;Actores: Ryan Gosling": {
     "Drama": [
       {
         "Label": "La La Land",
         "Price": "5.00 CUP",
         "Features": [
-          "Director: Damien Chazelle",
-          "Año: 2016",
-          "Duración: 128 min",
-          "Actores: Ryan Gosling, Emma Stone, John Legend"
+          "una aspirante a actriz"
         ],
-        "Type": "Película",
-        "Episodes": 1,
-        "PricePerEpisode": "5",
-        "Date": "2026-07-10T09:27:57.252Z",
-        "Update": "2026-07-10T09:27:57.252Z"
+        "Type": "un pianista de jazz",
+        "Episodes": 0,
+        "PricePerEpisode": "música y pasión que cautivó al mundo.",
+        "Date": "2026-07-10T09:35:09.991Z",
+        "Update": "2026-07-10T09:35:09.991Z"
       }
     ]
   },
-  "Series": {
+  "Wes Chatham": {
     "Ciencia Ficción": [
       {
         "Label": "The Expanse (Temporada 1)",
         "Price": "20.00 CUP",
         "Features": [
-          "Creador: Daniel Abraham, Ty Franck",
-          "Año: 2015",
-          "Episodios: 10",
-          "Actores: Steven Strait, Dominique Tipper, Wes Chatham"
+          "la humanidad ha colonizado el Sistema Solar. Una conspiración que amenaza la paz entre la Tierra"
         ],
-        "Type": "Serie",
-        "Episodes": 10,
-        "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:27:57.253Z",
-        "Update": "2026-07-10T09:27:57.253Z"
+        "Type": "Creador: Daniel Abraham",
+        "Episodes": 0,
+        "PricePerEpisode": "Dominique Tipper",
+        "Date": "2026-07-10T09:35:09.991Z",
+        "Update": "2026-07-10T09:35:09.991Z"
       }
     ]
   },
-  "Documentales": {
+  "2.00 CUP": {
     "Naturaleza": [
       {
         "Label": "Planeta Tierra II",
         "Price": "12.00 CUP",
         "Features": [
-          "Narrador: David Attenborough",
-          "Año: 2016",
-          "Episodios: 6",
-          "Duración: 50 min por episodio"
+          "el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable."
         ],
-        "Type": "Documental",
-        "Episodes": 6,
-        "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:27:57.253Z",
-        "Update": "2026-07-10T09:27:57.253Z"
+        "Type": "planeta-tierra-ii-0.webp;planeta-tierra-ii-1.webp",
+        "Episodes": 0,
+        "PricePerEpisode": "6",
+        "Date": "2026-07-10T09:35:09.991Z",
+        "Update": "2026-07-10T09:35:09.991Z"
       }
     ]
   },
-  "Shows": {
+  "Show": {
     "Comedia": [
       {
         "Label": "The Office (Temporada 1)",
         "Price": "12.00 CUP",
         "Features": [
-          "Creador: Greg Daniels",
-          "Año: 2005",
-          "Episodios: 6",
-          "Actores: Steve Carell, John Krasinski, Jenna Fischer"
+          "liderados por el excéntrico Michael Scott. Una comedia de oficina que se convirtió en un fenómeno cultural."
         ],
-        "Type": "Show",
-        "Episodes": 6,
-        "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:27:57.253Z",
-        "Update": "2026-07-10T09:27:57.253Z"
+        "Type": "John Krasinski",
+        "Episodes": 0,
+        "PricePerEpisode": "the-office-t1-0.webp;the-office-t1-1.webp",
+        "Date": "2026-07-10T09:35:09.992Z",
+        "Update": "2026-07-10T09:35:09.992Z"
       }
     ]
   },
-  "Novelas": {
+  "pasion-de-gavilanes-0.webp;pasion-de-gavilanes-1.webp;pasion-de-gavilanes-2.webp;pasion-de-gavilanes-3.webp": {
     "Romance": [
       {
         "Label": "Pasión de Gavilanes",
         "Price": "400.00 CUP",
         "Features": [
-          "Director: Rodrigo Triana",
-          "Año: 2003",
-          "Episodios: 200",
-          "Actores: Danna García, Mario Cimarro, Paola Rey"
+          "pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión"
         ],
-        "Type": "Telenovela",
-        "Episodes": 200,
-        "PricePerEpisode": "2",
-        "Date": "2026-07-10T09:27:57.253Z",
-        "Update": "2026-07-10T09:27:57.253Z"
-      }
-    ],
-    "Dramas (coreanos": [
-      {
-        "Label": "turcos",
-        "Price": "etc.)",
-        "Features": [
-          "118.00 CUP"
-        ],
-        "Type": "20-minutos-20-dakika-0.webp;20-minutos-20-dakika-1.webp",
+        "Type": "Director: Rodrigo Triana;Año: 2003;Episodios: 200;Actores: Danna García",
         "Episodes": 0,
-        "PricePerEpisode": "59",
-        "Date": "2026-07-10T09:27:57.253Z",
-        "Update": "2026-07-10T09:27:57.253Z"
-      },
-      {
-        "Label": "turcos",
-        "Price": "etc.)",
-        "Features": [
-          "40.00 CUP"
-        ],
-        "Type": "hay-sultan-abdulka-dir-geglani-hazretle zleri-0.webp;hay-sultan-abdulka-dir-geglani-hazretle-zleri-1.webp",
-        "Episodes": 0,
-        "PricePerEpisode": "20",
-        "Date": "2026-07-10T09:27:57.254Z",
-        "Update": "2026-07-10T09:27:57.254Z"
+        "PricePerEpisode": "Paola Rey",
+        "Date": "2026-07-10T09:35:09.992Z",
+        "Update": "2026-07-10T09:35:09.992Z"
       }
     ]
   }

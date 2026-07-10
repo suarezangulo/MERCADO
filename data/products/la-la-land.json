@@ -1,22 +1,18 @@
 {
-  "Category": "Películas",
+  "Category": "Director: Damien Chazelle;Año: 2016;Duración: 128 min;Actores: Ryan Gosling",
   "SubCategory": "Drama",
   "Label": "La La Land",
   "Images": [
-    "la-la-land-0.webp",
-    "la-la-land-1.webp"
+    "y Sebastian"
   ],
-  "Description": "Mia, una aspirante a actriz, y Sebastian, un pianista de jazz, se enamoran en Los Ángeles mientras persiguen sus sueños. Pero el éxito y la vida los pondrán a prueba. Una historia de amor, música y pasión que cautivó al mundo.",
+  "Description": "Mia",
   "Price": "5.00 CUP",
   "Features": [
-    "Director: Damien Chazelle",
-    "Año: 2016",
-    "Duración: 128 min",
-    "Actores: Ryan Gosling, Emma Stone, John Legend"
+    "una aspirante a actriz"
   ],
-  "Type": "Película",
-  "Episodes": 1,
-  "PricePerEpisode": "5",
-  "Date": "2026-07-10T09:27:57.252Z",
-  "Update": "2026-07-10T09:27:57.252Z"
+  "Type": "un pianista de jazz",
+  "Episodes": 0,
+  "PricePerEpisode": "música y pasión que cautivó al mundo.",
+  "Date": "2026-07-10T09:35:09.991Z",
+  "Update": "2026-07-10T09:35:09.991Z"
 }
