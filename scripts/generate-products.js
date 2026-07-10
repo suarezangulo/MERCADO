@@ -7,7 +7,7 @@ const CSV_FILE = './data/catalogo.csv';
 const OUTPUT_INDEX = './data/products-index.json';
 const OUTPUT_DIR = './data/products/';
 
-// ===== FUNCIÓN PARA CREAR SLUG (convertir acentos) =====
+// ===== FUNCIÓN PARA CREAR SLUG =====
 function toSlug(text) {
     if (!text) return '';
     const map = {
@@ -27,51 +27,55 @@ function toSlug(text) {
 // ===== LEER CSV Y GENERAR JSON =====
 function generateProducts() {
     const results = [];
-    
-    // Verificar que el archivo CSV existe
+
     if (!fs.existsSync(CSV_FILE)) {
         console.error('❌ No se encuentra el archivo CSV:', CSV_FILE);
-        console.log('📌 Creando archivo CSV vacío...');
-        // Crear CSV con encabezados actualizados (sin Stock, con Type, Episodes, PricePerEpisode)
         const headers = 'Category,SubCategory,Label,Price,Description,Features,Images,Type,Episodes,PricePerEpisode\n';
         fs.writeFileSync(CSV_FILE, headers, 'utf8');
-        console.log('✅ Archivo CSV creado con encabezados. Agrega tus productos.');
-        // Crear índice vacío
+        console.log('✅ CSV creado con encabezados.');
         fs.writeFileSync(OUTPUT_INDEX, JSON.stringify({}, null, 2), 'utf8');
         return;
     }
 
-    fs.createReadStream(CSV_FILE)
-        .pipe(csv({ separator: ',' }))
-        .on('data', (data) => results.push(data))
+    // Leer el archivo con opciones para limpiar encabezados y manejar BOM
+    fs.createReadStream(CSV_FILE, { encoding: 'utf8' })
+        .pipe(csv({
+            separator: ',',
+            mapHeaders: ({ header }) => header.trim() // elimina espacios o BOM
+        }))
+        .on('data', (data) => {
+            // Depuración: si la primera fila no tiene Category, muestra las claves
+            if (!data.Category) {
+                console.error('⚠️ Error: El CSV no tiene columna "Category". Claves detectadas:', Object.keys(data));
+                console.error('   Contenido de la primera fila:', JSON.stringify(data, null, 2));
+                process.exit(1);
+            }
+            results.push(data);
+        })
         .on('end', () => {
             console.log(`📄 Leídos ${results.length} registros.`);
-            
-            // Asegurar que existe la carpeta de salida
+
             if (!fs.existsSync(OUTPUT_DIR)) {
                 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
             }
-            
+
             const index = {};
-            
-            results.forEach((row, i) => {
+
+            results.forEach((row) => {
                 const slug = toSlug(row.Label);
-                
-                // Procesar imágenes
+
                 let images = [];
                 if (row.Images && row.Images.trim()) {
                     images = row.Images.split(';').map(img => img.trim());
                 } else {
                     images = [`/images/products/${slug}-0.webp`];
                 }
-                
-                // Procesar características
+
                 let features = [];
                 if (row.Features && row.Features.trim()) {
                     features = row.Features.split(';').map(f => f.trim());
                 }
-                
-                // Crear el objeto del producto (sin Stock)
+
                 const product = {
                     Category: row.Category.trim(),
                     SubCategory: row.SubCategory.trim(),
@@ -86,16 +90,14 @@ function generateProducts() {
                     Date: new Date().toISOString(),
                     Update: new Date().toISOString()
                 };
-                
-                // Guardar archivo individual
+
                 const filePath = path.join(OUTPUT_DIR, `${slug}.json`);
                 fs.writeFileSync(filePath, JSON.stringify(product, null, 2), 'utf8');
                 console.log(`✅ ${slug}.json creado`);
-                
-                // Agregar al índice (también incluye los nuevos campos)
+
                 if (!index[product.Category]) index[product.Category] = {};
                 if (!index[product.Category][product.SubCategory]) index[product.Category][product.SubCategory] = [];
-                
+
                 index[product.Category][product.SubCategory].push({
                     Label: product.Label,
                     Price: product.Price,
@@ -107,8 +109,7 @@ function generateProducts() {
                     Update: product.Update
                 });
             });
-            
-            // Guardar índice
+
             fs.writeFileSync(OUTPUT_INDEX, JSON.stringify(index, null, 2), 'utf8');
             console.log(`✅ Índice guardado en ${OUTPUT_INDEX}`);
             console.log(`🎉 ¡Proceso completado! Se generaron ${results.length} productos.`);
