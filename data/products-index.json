@@ -12,9 +12,9 @@
         ],
         "Type": "movie",
         "Episodes": 0,
-        "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:56:19.500Z",
-        "Update": "2026-07-10T11:56:19.500Z"
+        "PricePerEpisode": "",
+        "Date": "2026-07-10T11:59:22.942Z",
+        "Update": "2026-07-10T11:59:22.942Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T11:56:19.501Z",
-        "Update": "2026-07-10T11:56:19.501Z"
+        "Date": "2026-07-10T11:59:22.942Z",
+        "Update": "2026-07-10T11:59:22.942Z"
       }
     ]
   },
@@ -49,13 +49,13 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.501Z",
-        "Update": "2026-07-10T11:56:19.501Z"
+        "Date": "2026-07-10T11:59:22.943Z",
+        "Update": "2026-07-10T11:59:22.943Z"
       }
     ]
   },
   "Documentales": {
-    "Naturaleza": [
+    "Naturaleza / Vida Salvaje": [
       {
         "Label": "Planeta Tierra II",
         "Price": "12.00",
@@ -68,8 +68,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.501Z",
-        "Update": "2026-07-10T11:56:19.501Z"
+        "Date": "2026-07-10T11:59:22.943Z",
+        "Update": "2026-07-10T11:59:22.943Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.501Z",
-        "Update": "2026-07-10T11:56:19.501Z"
+        "Date": "2026-07-10T11:59:22.943Z",
+        "Update": "2026-07-10T11:59:22.943Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.502Z",
-        "Update": "2026-07-10T11:56:19.502Z"
+        "Date": "2026-07-10T11:59:22.944Z",
+        "Update": "2026-07-10T11:59:22.944Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
@@ -121,8 +121,8 @@
         "Type": "episode",
         "Episodes": 59,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.502Z",
-        "Update": "2026-07-10T11:56:19.502Z"
+        "Date": "2026-07-10T11:59:22.944Z",
+        "Update": "2026-07-10T11:59:22.944Z"
       },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
@@ -134,8 +134,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.502Z",
-        "Update": "2026-07-10T11:56:19.502Z"
+        "Date": "2026-07-10T11:59:22.944Z",
+        "Update": "2026-07-10T11:59:22.944Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -147,8 +147,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.502Z",
-        "Update": "2026-07-10T11:56:19.502Z"
+        "Date": "2026-07-10T11:59:22.944Z",
+        "Update": "2026-07-10T11:59:22.944Z"
       },
       {
         "Label": "ADELA",
@@ -160,8 +160,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.503Z",
-        "Update": "2026-07-10T11:56:19.503Z"
+        "Date": "2026-07-10T11:59:22.945Z",
+        "Update": "2026-07-10T11:59:22.945Z"
       },
       {
         "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
@@ -173,8 +173,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T11:56:19.503Z",
-        "Update": "2026-07-10T11:56:19.503Z"
+        "Date": "2026-07-10T11:59:22.945Z",
+        "Update": "2026-07-10T11:59:22.945Z"
       }
     ]
   }
