@@ -6,15 +6,20 @@
     "abismo-de-oscuridad-karanligin-ucurumu-0.webp",
     "abismo-de-oscuridad-karanligin-ucurumu-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Un exjefe de policía llamado Mehmet, con la habilidad de percibir la maldad oculta, regresa como consultor tras perderlo todo. Al investigar crímenes marcados por símbolos antiguos en Estambul, descubre que el misterio está ligado a su propia infancia y a enemigos del pasado. La historia explora justicia, venganza y la lucha contra la oscuridad interior.",
   "Price": "20.00",
   "Features": [
+    "Dirección: Evrim Yöney y Seyit Özcan Giden.",
+    "Guion: Sevinç Yavuz.",
     "Episodios: 10",
-    "Título original: Karanlığın Uçurumu"
+    "Título original: Karanlığın Uçurumu.",
+    "Actores: Berk Hakman como Mehmet, Elifcan Ongurlar como Canan, Anıl İlter como Ünal, Beril Kayar como Rana.",
+    "Otros actores destacados: Levent Sülün, Edip Saner, Gökçe Eyüboğlu.",
+    "Año: 2023"
   ],
   "Type": "episode",
   "Episodes": 10,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-10T12:01:07.695Z",
-  "Update": "2026-07-10T12:01:07.695Z"
+  "Date": "2026-07-10T12:12:20.383Z",
+  "Update": "2026-07-10T12:12:20.383Z"
 }

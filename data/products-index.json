@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "",
-        "Date": "2026-07-10T12:01:07.693Z",
-        "Update": "2026-07-10T12:01:07.693Z"
+        "Date": "2026-07-10T12:12:20.381Z",
+        "Update": "2026-07-10T12:12:20.381Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-10T12:01:07.693Z",
-        "Update": "2026-07-10T12:01:07.693Z"
+        "Date": "2026-07-10T12:12:20.381Z",
+        "Update": "2026-07-10T12:12:20.381Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.693Z",
-        "Update": "2026-07-10T12:01:07.693Z"
+        "Date": "2026-07-10T12:12:20.382Z",
+        "Update": "2026-07-10T12:12:20.382Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.694Z",
-        "Update": "2026-07-10T12:01:07.694Z"
+        "Date": "2026-07-10T12:12:20.382Z",
+        "Update": "2026-07-10T12:12:20.382Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.694Z",
-        "Update": "2026-07-10T12:01:07.694Z"
+        "Date": "2026-07-10T12:12:20.382Z",
+        "Update": "2026-07-10T12:12:20.382Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.694Z",
-        "Update": "2026-07-10T12:01:07.694Z"
+        "Date": "2026-07-10T12:12:20.382Z",
+        "Update": "2026-07-10T12:12:20.382Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
@@ -121,8 +121,8 @@
         "Type": "episode",
         "Episodes": 59,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.695Z",
-        "Update": "2026-07-10T12:01:07.695Z"
+        "Date": "2026-07-10T12:12:20.383Z",
+        "Update": "2026-07-10T12:12:20.383Z"
       },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
@@ -134,21 +134,26 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.695Z",
-        "Update": "2026-07-10T12:01:07.695Z"
+        "Date": "2026-07-10T12:12:20.383Z",
+        "Update": "2026-07-10T12:12:20.383Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
         "Price": "20.00",
         "Features": [
+          "Dirección: Evrim Yöney y Seyit Özcan Giden.",
+          "Guion: Sevinç Yavuz.",
           "Episodios: 10",
-          "Título original: Karanlığın Uçurumu"
+          "Título original: Karanlığın Uçurumu.",
+          "Actores: Berk Hakman como Mehmet, Elifcan Ongurlar como Canan, Anıl İlter como Ünal, Beril Kayar como Rana.",
+          "Otros actores destacados: Levent Sülün, Edip Saner, Gökçe Eyüboğlu.",
+          "Año: 2023"
         ],
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.695Z",
-        "Update": "2026-07-10T12:01:07.695Z"
+        "Date": "2026-07-10T12:12:20.383Z",
+        "Update": "2026-07-10T12:12:20.383Z"
       },
       {
         "Label": "ADELA",
@@ -160,8 +165,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.695Z",
-        "Update": "2026-07-10T12:01:07.695Z"
+        "Date": "2026-07-10T12:12:20.383Z",
+        "Update": "2026-07-10T12:12:20.383Z"
       },
       {
         "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
@@ -173,8 +178,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-10T12:01:07.696Z",
-        "Update": "2026-07-10T12:01:07.696Z"
+        "Date": "2026-07-10T12:12:20.384Z",
+        "Update": "2026-07-10T12:12:20.384Z"
       }
     ]
   }
