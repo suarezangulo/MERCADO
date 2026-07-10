@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T10:56:05.475Z",
-        "Update": "2026-07-10T10:56:05.476Z"
+        "Date": "2026-07-10T11:12:35.406Z",
+        "Update": "2026-07-10T11:12:35.406Z"
       }
     ],
     "Drama": [
@@ -30,8 +30,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T10:56:05.476Z",
-        "Update": "2026-07-10T10:56:05.476Z"
+        "Date": "2026-07-10T11:12:35.407Z",
+        "Update": "2026-07-10T11:12:35.407Z"
       }
     ]
   },
@@ -49,8 +49,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T10:56:05.476Z",
-        "Update": "2026-07-10T10:56:05.476Z"
+        "Date": "2026-07-10T11:12:35.407Z",
+        "Update": "2026-07-10T11:12:35.407Z"
       }
     ]
   },
@@ -68,8 +68,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T10:56:05.477Z",
-        "Update": "2026-07-10T10:56:05.477Z"
+        "Date": "2026-07-10T11:12:35.407Z",
+        "Update": "2026-07-10T11:12:35.407Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T10:56:05.477Z",
-        "Update": "2026-07-10T10:56:05.477Z"
+        "Date": "2026-07-10T11:12:35.407Z",
+        "Update": "2026-07-10T11:12:35.407Z"
       }
     ]
   },
@@ -106,8 +106,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2",
-        "Date": "2026-07-10T10:56:05.477Z",
-        "Update": "2026-07-10T10:56:05.477Z"
+        "Date": "2026-07-10T11:12:35.408Z",
+        "Update": "2026-07-10T11:12:35.408Z"
       }
     ],
     "Dramas (coreanos": [
@@ -120,8 +120,8 @@
         "Type": "Episodios: 59; Título original: 20 Dakika",
         "Episodes": 20,
         "PricePerEpisode": "episode",
-        "Date": "2026-07-10T10:56:05.477Z",
-        "Update": "2026-07-10T10:56:05.477Z"
+        "Date": "2026-07-10T11:12:35.408Z",
+        "Update": "2026-07-10T11:12:35.408Z"
       },
       {
         "Label": "turcos",
@@ -132,8 +132,8 @@
         "Type": "Episodios: 13; Título original: Yok Olan",
         "Episodes": 46,
         "PricePerEpisode": "episode",
-        "Date": "2026-07-10T10:56:05.478Z",
-        "Update": "2026-07-10T10:56:05.478Z"
+        "Date": "2026-07-10T11:12:35.408Z",
+        "Update": "2026-07-10T11:12:35.408Z"
       },
       {
         "Label": "turcos",
@@ -144,8 +144,8 @@
         "Type": "Episodios: 10; Título original: Karanlığın Uçurumu",
         "Episodes": 0,
         "PricePerEpisode": "episode",
-        "Date": "2026-07-10T10:56:05.478Z",
-        "Update": "2026-07-10T10:56:05.478Z"
+        "Date": "2026-07-10T11:12:35.408Z",
+        "Update": "2026-07-10T11:12:35.408Z"
       },
       {
         "Label": "turcos",
@@ -156,8 +156,8 @@
         "Type": "Episodios: 78; Título original: O Hayat Benim",
         "Episodes": 0,
         "PricePerEpisode": "episode",
-        "Date": "2026-07-10T10:56:05.478Z",
-        "Update": "2026-07-10T10:56:05.478Z"
+        "Date": "2026-07-10T11:12:35.409Z",
+        "Update": "2026-07-10T11:12:35.409Z"
       },
       {
         "Label": "turcos",
@@ -168,8 +168,20 @@
         "Type": "Episodios: 40; Título original: Muhteşem İkili",
         "Episodes": 0,
         "PricePerEpisode": "episode",
-        "Date": "2026-07-10T10:56:05.478Z",
-        "Update": "2026-07-10T10:56:05.478Z"
+        "Date": "2026-07-10T11:12:35.409Z",
+        "Update": "2026-07-10T11:12:35.409Z"
+      },
+      {
+        "Label": "turcos",
+        "Price": "etc.)",
+        "Features": [
+          "2.00 CUP"
+        ],
+        "Type": "Título original: Muhteşem İkili",
+        "Episodes": 0,
+        "PricePerEpisode": "episode",
+        "Date": "2026-07-10T11:12:35.409Z",
+        "Update": "2026-07-10T11:12:35.409Z"
       }
     ]
   }
