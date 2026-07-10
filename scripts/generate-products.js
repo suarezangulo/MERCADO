@@ -37,14 +37,12 @@ function generateProducts() {
         return;
     }
 
-    // Leer el archivo con opciones para limpiar encabezados y manejar BOM
     fs.createReadStream(CSV_FILE, { encoding: 'utf8' })
         .pipe(csv({
             separator: ',',
-            mapHeaders: ({ header }) => header.trim() // elimina espacios o BOM
+            mapHeaders: ({ header }) => header.trim()
         }))
         .on('data', (data) => {
-            // Depuración: si la primera fila no tiene Category, muestra las claves
             if (!data.Category) {
                 console.error('⚠️ Error: El CSV no tiene columna "Category". Claves detectadas:', Object.keys(data));
                 console.error('   Contenido de la primera fila:', JSON.stringify(data, null, 2));
@@ -68,7 +66,8 @@ function generateProducts() {
                 if (row.Images && row.Images.trim()) {
                     images = row.Images.split(';').map(img => img.trim());
                 } else {
-                    images = [`/images/products/${slug}-0.webp`];
+                    // Fallback: si no hay imágenes en el CSV, usar slug-0.webp
+                    images = [`${slug}-0.webp`];
                 }
 
                 let features = [];
@@ -80,7 +79,7 @@ function generateProducts() {
                     Category: row.Category.trim(),
                     SubCategory: row.SubCategory.trim(),
                     Label: row.Label.trim(),
-                    Images: images,
+                    Images: images,               // ← Ahora se guarda como array
                     Description: row.Description ? row.Description.replace(/\\n/g, '\n') : '',
                     Price: row.Price.trim(),
                     Features: features,
@@ -95,12 +94,15 @@ function generateProducts() {
                 fs.writeFileSync(filePath, JSON.stringify(product, null, 2), 'utf8');
                 console.log(`✅ ${slug}.json creado`);
 
+                // ===== CONSTRUIR ÍNDICE CON IMAGES Y DESCRIPTION =====
                 if (!index[product.Category]) index[product.Category] = {};
                 if (!index[product.Category][product.SubCategory]) index[product.Category][product.SubCategory] = [];
 
                 index[product.Category][product.SubCategory].push({
                     Label: product.Label,
                     Price: product.Price,
+                    Description: product.Description,  // ← Ahora incluido
+                    Images: product.Images,            // ← Ahora incluido (array)
                     Features: product.Features,
                     Type: product.Type,
                     Episodes: product.Episodes,
