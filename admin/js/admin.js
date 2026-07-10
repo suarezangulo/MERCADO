@@ -1,6 +1,6 @@
 // ============================================================
 // ADMIN.JS - Panel de administración con GitHub API
-// Versión con fallback universal de extensiones
+// Versión con corrección de guardado CSV (escape de campos)
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -711,7 +711,7 @@ function removeNewImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO (CORREGIDO) =====
+// ===== GUARDAR PRODUCTO (VERSIÓN CORREGIDA Y SIMPLIFICADA) =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
@@ -731,7 +731,7 @@ async function saveProduct() {
         return;
     }
 
-    // Normalizar tipo
+    // --- Normalizar tipo y episodios ---
     let normalizedType = type;
     if (['Película', 'película', 'movie', 'Movie'].includes(type)) normalizedType = 'movie';
     else if (['Serie', 'serie', 'episode', 'Episode', 'Telenovela', 'Documental', 'Show'].includes(type)) normalizedType = 'episode';
@@ -747,9 +747,9 @@ async function saveProduct() {
         normalizedPricePerEpisode = (parseFloat(price) / normalizedEpisodes).toFixed(2);
     }
 
+    // --- Subir imágenes nuevas ---
     const slug = ToSlug(label);
     const uploadedNames = [];
-
     try {
         for (let i = 0; i < uploadedImages.length; i++) {
             const result = await uploadImage(uploadedImages[i], slug, existingImages.length + i);
@@ -763,7 +763,7 @@ async function saveProduct() {
     const allImages = [...existingImages, ...uploadedNames];
     const imagesNames = allImages.join(';');
 
-    // Escapar todos los campos de texto
+    // --- Escapar todos los campos de texto ---
     const escapedCategory = escapeCSV(category);
     const escapedSubCategory = escapeCSV(subcategory);
     const escapedLabel = escapeCSV(label);
@@ -771,6 +771,7 @@ async function saveProduct() {
     const escapedFeatures = escapeCSV(features);
     const escapedType = escapeCSV(normalizedType);
 
+    // --- Construir la línea CSV completa (orden fijo) ---
     const csvRow = [
         escapedCategory,
         escapedSubCategory,
@@ -784,63 +785,52 @@ async function saveProduct() {
         normalizedPricePerEpisode
     ].join(',');
 
+    // --- Leer el CSV actual, reemplazar o añadir la línea ---
     try {
         const { content } = await fetchCSV();
         const lines = content.split('\n').filter(line => line.trim());
-        const headers = lines[0];
+        let headers = lines[0];
         let bodyLines = lines.slice(1);
 
+        // Verificar que la cabecera tenga las 10 columnas esperadas
         const expectedHeaders = ['Category', 'SubCategory', 'Label', 'Price', 'Description', 'Features', 'Images', 'Type', 'Episodes', 'PricePerEpisode'];
         const currentHeaders = headers.split(',').map(h => h.trim());
-        let csvHeaders = currentHeaders;
-        let needsHeaderUpdate = false;
-        for (const h of expectedHeaders) {
-            if (!currentHeaders.includes(h)) {
-                needsHeaderUpdate = true;
-                csvHeaders.push(h);
-            }
-        }
-        if (needsHeaderUpdate) {
-            const newHeader = csvHeaders.join(',');
+        if (currentHeaders.length !== 10 || !currentHeaders.every((h, i) => h === expectedHeaders[i])) {
+            // Si la cabecera no coincide, la reemplazamos por la esperada
+            headers = expectedHeaders.join(',');
+            // Reconstruir las líneas con el orden correcto
             const newBodyLines = bodyLines.map(line => {
                 const values = parseCSVLine(line);
                 const newValues = [];
-                csvHeaders.forEach(header => {
+                expectedHeaders.forEach(header => {
                     const idx = currentHeaders.indexOf(header);
-                    if (idx !== -1) {
-                        newValues.push(values[idx] || '');
-                    } else {
-                        newValues.push('');
-                    }
+                    newValues.push(idx !== -1 ? (values[idx] || '') : '');
                 });
                 return newValues.join(',');
             });
-            if (editingProduct) {
-                const index = newBodyLines.findIndex(line => line.includes(label));
-                if (index !== -1) {
-                    newBodyLines[index] = csvRow;
-                } else {
-                    newBodyLines.push(csvRow);
-                }
-            } else {
-                newBodyLines.push(csvRow);
-            }
-            const newCSV = [newHeader, ...newBodyLines].join('\n');
-            await updateCSV(newCSV);
-        } else {
-            if (editingProduct) {
-                const index = bodyLines.findIndex(line => line.includes(editingProduct.Label));
-                if (index > -1) {
-                    bodyLines[index] = csvRow;
-                } else {
-                    bodyLines.push(csvRow);
-                }
-            } else {
-                bodyLines.push(csvRow);
-            }
-            const newCSV = [headers, ...bodyLines].join('\n');
-            await updateCSV(newCSV);
+            bodyLines = newBodyLines;
         }
+
+        // Buscar la línea a reemplazar usando el slug (para evitar falsos positivos)
+        const slugToFind = slug;
+        let replaced = false;
+        for (let i = 0; i < bodyLines.length; i++) {
+            const lineValues = parseCSVLine(bodyLines[i]);
+            const labelFromCSV = lineValues[2] ? lineValues[2].trim() : ''; // Columna Label (índice 2)
+            if (ToSlug(labelFromCSV) === slugToFind) {
+                bodyLines[i] = csvRow;
+                replaced = true;
+                break;
+            }
+        }
+        if (!replaced) {
+            // Si no se encontró, se añade al final
+            bodyLines.push(csvRow);
+        }
+
+        // Reconstruir el CSV completo
+        const newCSV = [headers, ...bodyLines].join('\n');
+        await updateCSV(newCSV);
 
         showToast(`"${label}" guardado exitosamente`, 'success');
         closeModal('productModal');
