@@ -1,1 +1,18 @@
-{}
+{
+  "Películas": {
+    "Acción": [
+      {
+        "Label": "Prueba",
+        "Price": "prueba",
+        "Features": [
+          "Prueba prueba, prueba"
+        ],
+        "Type": "",
+        "Episodes": 0,
+        "PricePerEpisode": "",
+        "Date": "2026-07-10T10:16:33.560Z",
+        "Update": "2026-07-10T10:16:33.560Z"
+      }
+    ]
+  }
+}
