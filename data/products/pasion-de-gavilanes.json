@@ -1,18 +1,21 @@
 {
-  "Category": "pasion-de-gavilanes-0.webp;pasion-de-gavilanes-1.webp;pasion-de-gavilanes-2.webp;pasion-de-gavilanes-3.webp",
+  "Category": "Novelas",
   "SubCategory": "Romance",
   "Label": "Pasión de Gavilanes",
   "Images": [
     "intriga y amor."
   ],
-  "Description": "Tres hermanos llegan a un pueblo colombiano para vengar la muerte de su hermana",
+  "Description": "Tres hermanos llegan a un pueblo colombiano para vengar la muerte de su hermana, pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión",
   "Price": "400.00 CUP",
   "Features": [
-    "pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión"
+    "Director: Rodrigo Triana",
+    "Año: 2003",
+    "Episodios: 200",
+    "Actores: Danna García, Mario Cimarro, Paola Rey"
   ],
-  "Type": "Director: Rodrigo Triana;Año: 2003;Episodios: 200;Actores: Danna García",
-  "Episodes": 0,
-  "PricePerEpisode": "Paola Rey",
-  "Date": "2026-07-10T09:55:50.681Z",
-  "Update": "2026-07-10T09:55:50.681Z"
+  "Type": "episode",
+  "Episodes": 200,
+  "PricePerEpisode": "2",
+  "Date": "2026-07-10T09:59:57.615Z",
+  "Update": "2026-07-10T09:59:57.615Z"
 }
