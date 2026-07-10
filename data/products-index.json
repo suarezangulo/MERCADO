@@ -13,8 +13,8 @@
         "Type": "movie",
         "Episodes": 1,
         "PricePerEpisode": "5",
-        "Date": "2026-07-10T08:10:16.378Z",
-        "Update": "2026-07-10T08:10:16.378Z"
+        "Date": "2026-07-10T09:08:51.281Z",
+        "Update": "2026-07-10T09:08:51.282Z"
       }
     ],
     "Drama": [
@@ -29,9 +29,9 @@
         ],
         "Type": "Película",
         "Episodes": 1,
-        "PricePerEpisode": "5.00 CUP",
-        "Date": "2026-07-10T08:10:16.379Z",
-        "Update": "2026-07-10T08:10:16.379Z"
+        "PricePerEpisode": "5",
+        "Date": "2026-07-10T09:08:51.282Z",
+        "Update": "2026-07-10T09:08:51.282Z"
       }
     ]
   },
@@ -48,9 +48,9 @@
         ],
         "Type": "Serie",
         "Episodes": 10,
-        "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-10T08:10:16.379Z",
-        "Update": "2026-07-10T08:10:16.379Z"
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T09:08:51.282Z",
+        "Update": "2026-07-10T09:08:51.282Z"
       }
     ]
   },
@@ -67,9 +67,9 @@
         ],
         "Type": "Documental",
         "Episodes": 6,
-        "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-10T08:10:16.379Z",
-        "Update": "2026-07-10T08:10:16.379Z"
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T09:08:51.283Z",
+        "Update": "2026-07-10T09:08:51.283Z"
       }
     ]
   },
@@ -86,9 +86,9 @@
         ],
         "Type": "Show",
         "Episodes": 6,
-        "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-10T08:10:16.379Z",
-        "Update": "2026-07-10T08:10:16.379Z"
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T09:08:51.283Z",
+        "Update": "2026-07-10T09:08:51.283Z"
       }
     ]
   },
@@ -105,9 +105,9 @@
         ],
         "Type": "Telenovela",
         "Episodes": 200,
-        "PricePerEpisode": "2.00 CUP",
-        "Date": "2026-07-10T08:10:16.379Z",
-        "Update": "2026-07-10T08:10:16.379Z"
+        "PricePerEpisode": "2",
+        "Date": "2026-07-10T09:08:51.283Z",
+        "Update": "2026-07-10T09:08:51.283Z"
       }
     ],
     "Dramas (coreanos": [
@@ -120,8 +120,8 @@
         "Type": "Episodios: 59; Título original: 20 Dakika",
         "Episodes": 20,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.380Z",
-        "Update": "2026-07-10T08:10:16.380Z"
+        "Date": "2026-07-10T09:08:51.283Z",
+        "Update": "2026-07-10T09:08:51.283Z"
       },
       {
         "Label": "turcos",
@@ -132,8 +132,8 @@
         "Type": "Episodios: 13; Título original: Yok Olan",
         "Episodes": 46,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.380Z",
-        "Update": "2026-07-10T08:10:16.380Z"
+        "Date": "2026-07-10T09:08:51.284Z",
+        "Update": "2026-07-10T09:08:51.284Z"
       },
       {
         "Label": "turcos",
@@ -144,8 +144,8 @@
         "Type": "Episodios: 10; Título original: Karanlığın Uçurumu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.380Z",
-        "Update": "2026-07-10T08:10:16.380Z"
+        "Date": "2026-07-10T09:08:51.284Z",
+        "Update": "2026-07-10T09:08:51.284Z"
       },
       {
         "Label": "turcos",
@@ -156,8 +156,8 @@
         "Type": "Episodios: 78; Título original: O Hayat Benim",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.380Z",
-        "Update": "2026-07-10T08:10:16.380Z"
+        "Date": "2026-07-10T09:08:51.284Z",
+        "Update": "2026-07-10T09:08:51.284Z"
       },
       {
         "Label": "turcos",
@@ -168,8 +168,8 @@
         "Type": "Episodios: 40; Título original: Muhteşem İkili",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.381Z",
-        "Update": "2026-07-10T08:10:16.381Z"
+        "Date": "2026-07-10T09:08:51.285Z",
+        "Update": "2026-07-10T09:08:51.285Z"
       },
       {
         "Label": "turcos",
@@ -180,8 +180,8 @@
         "Type": "Episodios: 24; Título original: Yaşanın Kenarında",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.381Z",
-        "Update": "2026-07-10T08:10:16.381Z"
+        "Date": "2026-07-10T09:08:51.285Z",
+        "Update": "2026-07-10T09:08:51.285Z"
       },
       {
         "Label": "turcos",
@@ -192,8 +192,8 @@
         "Type": "Episodios: 69; Título original: Aşk Kanatları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.381Z",
-        "Update": "2026-07-10T08:10:16.381Z"
+        "Date": "2026-07-10T09:08:51.285Z",
+        "Update": "2026-07-10T09:08:51.285Z"
       },
       {
         "Label": "turcos",
@@ -204,8 +204,8 @@
         "Type": "Episodios: 151; Título original: Kırık Kanatlar",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.381Z",
-        "Update": "2026-07-10T08:10:16.381Z"
+        "Date": "2026-07-10T09:08:51.286Z",
+        "Update": "2026-07-10T09:08:51.286Z"
       },
       {
         "Label": "turcos",
@@ -216,8 +216,8 @@
         "Type": "Episodios: 8; Género: Crimen, Thriller",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.381Z",
-        "Update": "2026-07-10T08:10:16.381Z"
+        "Date": "2026-07-10T09:08:51.286Z",
+        "Update": "2026-07-10T09:08:51.286Z"
       },
       {
         "Label": "turcos",
@@ -228,8 +228,8 @@
         "Type": "Episodios: 62",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.382Z",
-        "Update": "2026-07-10T08:10:16.382Z"
+        "Date": "2026-07-10T09:08:51.286Z",
+        "Update": "2026-07-10T09:08:51.286Z"
       },
       {
         "Label": "turcos",
@@ -240,8 +240,8 @@
         "Type": "Episodios: 107; Título original: Masumlar",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.382Z",
-        "Update": "2026-07-10T08:10:16.382Z"
+        "Date": "2026-07-10T09:08:51.286Z",
+        "Update": "2026-07-10T09:08:51.286Z"
       },
       {
         "Label": "turcos",
@@ -252,8 +252,8 @@
         "Type": "Episodios: 115; Título original: İlkbaharda Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.382Z",
-        "Update": "2026-07-10T08:10:16.382Z"
+        "Date": "2026-07-10T09:08:51.287Z",
+        "Update": "2026-07-10T09:08:51.287Z"
       },
       {
         "Label": "turcos",
@@ -264,8 +264,8 @@
         "Type": "Episodios: 167; Título original: Kara Para Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.382Z",
-        "Update": "2026-07-10T08:10:16.382Z"
+        "Date": "2026-07-10T09:08:51.287Z",
+        "Update": "2026-07-10T09:08:51.287Z"
       },
       {
         "Label": "turcos",
@@ -276,8 +276,8 @@
         "Type": "Episodios: 200; Título original: Bizim Hikaye",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.383Z",
-        "Update": "2026-07-10T08:10:16.383Z"
+        "Date": "2026-07-10T09:08:51.287Z",
+        "Update": "2026-07-10T09:08:51.287Z"
       },
       {
         "Label": "turcos",
@@ -288,8 +288,8 @@
         "Type": "Episodios: 64; Título original: Siyah Beyaz Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.383Z",
-        "Update": "2026-07-10T08:10:16.383Z"
+        "Date": "2026-07-10T09:08:51.287Z",
+        "Update": "2026-07-10T09:08:51.287Z"
       },
       {
         "Label": "turcos",
@@ -300,8 +300,8 @@
         "Type": "Episodios: 142; Título original: Sen Çal Kapımı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.383Z",
-        "Update": "2026-07-10T08:10:16.383Z"
+        "Date": "2026-07-10T09:08:51.287Z",
+        "Update": "2026-07-10T09:08:51.287Z"
       },
       {
         "Label": "turcos",
@@ -312,8 +312,8 @@
         "Type": "Episodios: 46; Título original: Sura & Seyit",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.383Z",
-        "Update": "2026-07-10T08:10:16.383Z"
+        "Date": "2026-07-10T09:08:51.288Z",
+        "Update": "2026-07-10T09:08:51.288Z"
       },
       {
         "Label": "turcos",
@@ -324,8 +324,8 @@
         "Type": "Episodios: 60; Título original: Çatı Katı Aşkı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.383Z",
-        "Update": "2026-07-10T08:10:16.383Z"
+        "Date": "2026-07-10T09:08:51.288Z",
+        "Update": "2026-07-10T09:08:51.288Z"
       },
       {
         "Label": "turcos",
@@ -336,8 +336,8 @@
         "Type": "Episodios: 458; Título original: Kara Sevda",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.384Z",
-        "Update": "2026-07-10T08:10:16.384Z"
+        "Date": "2026-07-10T09:08:51.288Z",
+        "Update": "2026-07-10T09:08:51.288Z"
       },
       {
         "Label": "turcos",
@@ -348,8 +348,8 @@
         "Type": "Episodios: 22; Título original: Gülcemal",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.384Z",
-        "Update": "2026-07-10T08:10:16.384Z"
+        "Date": "2026-07-10T09:08:51.288Z",
+        "Update": "2026-07-10T09:08:51.288Z"
       },
       {
         "Label": "turcos",
@@ -360,8 +360,8 @@
         "Type": "Episodios: 96; Título original: Yenilmez Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.384Z",
-        "Update": "2026-07-10T08:10:16.384Z"
+        "Date": "2026-07-10T09:08:51.288Z",
+        "Update": "2026-07-10T09:08:51.288Z"
       },
       {
         "Label": "turcos",
@@ -372,8 +372,8 @@
         "Type": "Episodios: 107; Título original: Aşk Mantık İntikam",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.384Z",
-        "Update": "2026-07-10T08:10:16.384Z"
+        "Date": "2026-07-10T09:08:51.289Z",
+        "Update": "2026-07-10T09:08:51.289Z"
       },
       {
         "Label": "turcos",
@@ -384,8 +384,8 @@
         "Type": "Episodios: 30; Título original: Türk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.384Z",
-        "Update": "2026-07-10T08:10:16.384Z"
+        "Date": "2026-07-10T09:08:51.289Z",
+        "Update": "2026-07-10T09:08:51.289Z"
       },
       {
         "Label": "turcos",
@@ -396,8 +396,8 @@
         "Type": "Episodios: 97; Título original: İnatçı Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.385Z",
-        "Update": "2026-07-10T08:10:16.385Z"
+        "Date": "2026-07-10T09:08:51.289Z",
+        "Update": "2026-07-10T09:08:51.289Z"
       },
       {
         "Label": "turcos",
@@ -408,8 +408,8 @@
         "Type": "Episodios: 82; Título original: Hayat",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.385Z",
-        "Update": "2026-07-10T08:10:16.385Z"
+        "Date": "2026-07-10T09:08:51.289Z",
+        "Update": "2026-07-10T09:08:51.289Z"
       },
       {
         "Label": "turcos",
@@ -420,8 +420,8 @@
         "Type": "Episodios: 269; Título original: Aşk ve Mavi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.385Z",
-        "Update": "2026-07-10T08:10:16.385Z"
+        "Date": "2026-07-10T09:08:51.289Z",
+        "Update": "2026-07-10T09:08:51.289Z"
       },
       {
         "Label": "turcos",
@@ -432,8 +432,8 @@
         "Type": "Episodios: 120; Título original: Aşk ve Günah",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.385Z",
-        "Update": "2026-07-10T08:10:16.385Z"
+        "Date": "2026-07-10T09:08:51.290Z",
+        "Update": "2026-07-10T09:08:51.290Z"
       },
       {
         "Label": "turcos",
@@ -444,8 +444,8 @@
         "Type": "Episodios: 107; Título original: Cezur",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.385Z",
-        "Update": "2026-07-10T08:10:16.385Z"
+        "Date": "2026-07-10T09:08:51.290Z",
+        "Update": "2026-07-10T09:08:51.290Z"
       },
       {
         "Label": "turcos",
@@ -456,20 +456,20 @@
         "Type": "Episodios: 75; Título original: Kavşak",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.386Z",
-        "Update": "2026-07-10T08:10:16.386Z"
+        "Date": "2026-07-10T09:08:51.290Z",
+        "Update": "2026-07-10T09:08:51.290Z"
       },
       {
         "Label": "turcos",
         "Price": "etc.)",
         "Features": [
-          "148.00 CUP"
+          "IHANET VE INTIKAM"
         ],
-        "Type": "Episodios: 74; Título original: İyilik, İhanet ve İntikam",
+        "Type": "Basada en el k-drama 'La casa de la reina'. Cuenta la historia de Neslihan, quien vive una aparente felicidad familiar con su esposo Murat y sus dos hijos. Un día es rescatada por una joven, Damla, de quien se hace amiga sin saber que es la amante de su esposo.",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.386Z",
-        "Update": "2026-07-10T08:10:16.386Z"
+        "PricePerEpisode": "bondad-la-traicion-el-amor-y-la-venganza-iyilik-ihanet-ve-intikam-0.webp;bondad-la-traicion-el-amor-y-la-venganza-iyilik-ihanet-ve-intikam-1.webp",
+        "Date": "2026-07-10T09:08:51.290Z",
+        "Update": "2026-07-10T09:08:51.291Z"
       },
       {
         "Label": "turcos",
@@ -480,8 +480,8 @@
         "Type": "Episodios: 24; Título original: Yaz Şarkısı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.386Z",
-        "Update": "2026-07-10T08:10:16.386Z"
+        "Date": "2026-07-10T09:08:51.291Z",
+        "Update": "2026-07-10T09:08:51.291Z"
       },
       {
         "Label": "turcos",
@@ -492,8 +492,8 @@
         "Type": "Episodios: 76; Título original: Veda Mektubu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.387Z",
-        "Update": "2026-07-10T08:10:16.387Z"
+        "Date": "2026-07-10T09:08:51.291Z",
+        "Update": "2026-07-10T09:08:51.291Z"
       },
       {
         "Label": "turcos",
@@ -504,8 +504,8 @@
         "Type": "Episodios: 12; Título original: Mezarlık",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.387Z",
-        "Update": "2026-07-10T08:10:16.387Z"
+        "Date": "2026-07-10T09:08:51.291Z",
+        "Update": "2026-07-10T09:08:51.291Z"
       },
       {
         "Label": "turcos",
@@ -516,8 +516,8 @@
         "Type": "Episodios: 159; Título original: Cennet'in Gözyaşları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.387Z",
-        "Update": "2026-07-10T08:10:16.387Z"
+        "Date": "2026-07-10T09:08:51.291Z",
+        "Update": "2026-07-10T09:08:51.291Z"
       },
       {
         "Label": "turcos",
@@ -528,8 +528,8 @@
         "Type": "Episodios: 68; Título original: Çarpışma",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.387Z",
-        "Update": "2026-07-10T08:10:16.387Z"
+        "Date": "2026-07-10T09:08:51.292Z",
+        "Update": "2026-07-10T09:08:51.292Z"
       },
       {
         "Label": "turcos",
@@ -540,20 +540,20 @@
         "Type": "Episodios: 108; Título original: Zalim İstanbul",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.388Z",
-        "Update": "2026-07-10T08:10:16.388Z"
+        "Date": "2026-07-10T09:08:51.292Z",
+        "Update": "2026-07-10T09:08:51.292Z"
       },
       {
         "Label": "turcos",
         "Price": "etc.)",
         "Features": [
-          "58.00 CUP"
+          "2"
         ],
-        "Type": "Episodios: 29; Título original: Mirzapur",
+        "Type": "58.00 CUP",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.388Z",
-        "Update": "2026-07-10T08:10:16.388Z"
+        "PricePerEpisode": "Episodios: 29; Título original: Mirzapur",
+        "Date": "2026-07-10T09:08:51.292Z",
+        "Update": "2026-07-10T09:08:51.292Z"
       },
       {
         "Label": "turcos",
@@ -564,8 +564,8 @@
         "Type": "Episodios: 10; Título original: İstanbul Kulübü",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.388Z",
-        "Update": "2026-07-10T08:10:16.388Z"
+        "Date": "2026-07-10T09:08:51.292Z",
+        "Update": "2026-07-10T09:08:51.292Z"
       },
       {
         "Label": "turcos",
@@ -576,8 +576,8 @@
         "Type": "Episodios: 20; Título original: İstanbul Kulübü",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.388Z",
-        "Update": "2026-07-10T08:10:16.388Z"
+        "Date": "2026-07-10T09:08:51.292Z",
+        "Update": "2026-07-10T09:08:51.292Z"
       },
       {
         "Label": "turcos",
@@ -588,8 +588,8 @@
         "Type": "Episodios: 80; Título original: Tozluvaka",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.388Z",
-        "Update": "2026-07-10T08:10:16.388Z"
+        "Date": "2026-07-10T09:08:51.293Z",
+        "Update": "2026-07-10T09:08:51.293Z"
       },
       {
         "Label": "turcos",
@@ -600,8 +600,8 @@
         "Type": "Episodios: 33; Título original: Mükemmel Uyum",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.389Z",
-        "Update": "2026-07-10T08:10:16.389Z"
+        "Date": "2026-07-10T09:08:51.293Z",
+        "Update": "2026-07-10T09:08:51.293Z"
       },
       {
         "Label": "turcos",
@@ -612,8 +612,8 @@
         "Type": "Episodios: 24; Título original: Kuş Uçuşu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.389Z",
-        "Update": "2026-07-10T08:10:16.389Z"
+        "Date": "2026-07-10T09:08:51.293Z",
+        "Update": "2026-07-10T09:08:51.293Z"
       },
       {
         "Label": "turcos",
@@ -624,8 +624,8 @@
         "Type": "Episodios: 55; Título original: Çilek Kokusu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.389Z",
-        "Update": "2026-07-10T08:10:16.389Z"
+        "Date": "2026-07-10T09:08:51.293Z",
+        "Update": "2026-07-10T09:08:51.293Z"
       },
       {
         "Label": "turcos",
@@ -636,8 +636,8 @@
         "Type": "Episodios: 112; Título original: Gönülcelen",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.389Z",
-        "Update": "2026-07-10T08:10:16.389Z"
+        "Date": "2026-07-10T09:08:51.293Z",
+        "Update": "2026-07-10T09:08:51.293Z"
       },
       {
         "Label": "turcos",
@@ -648,8 +648,8 @@
         "Type": "Episodios: 34; Título original: Yetim Kalpler",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.389Z",
-        "Update": "2026-07-10T08:10:16.389Z"
+        "Date": "2026-07-10T09:08:51.294Z",
+        "Update": "2026-07-10T09:08:51.294Z"
       },
       {
         "Label": "turcos",
@@ -660,8 +660,8 @@
         "Type": "Episodios: 107; Título original: Kalp Yarasi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.389Z",
-        "Update": "2026-07-10T08:10:16.389Z"
+        "Date": "2026-07-10T09:08:51.294Z",
+        "Update": "2026-07-10T09:08:51.294Z"
       },
       {
         "Label": "turcos",
@@ -672,8 +672,8 @@
         "Type": "Episodios: 68; Título original: Çarpışma",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.390Z",
-        "Update": "2026-07-10T08:10:16.390Z"
+        "Date": "2026-07-10T09:08:51.294Z",
+        "Update": "2026-07-10T09:08:51.294Z"
       },
       {
         "Label": "turcos",
@@ -684,8 +684,8 @@
         "Type": "Episodios: 33; Título original: Kış Masalı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.390Z",
-        "Update": "2026-07-10T08:10:16.390Z"
+        "Date": "2026-07-10T09:08:51.294Z",
+        "Update": "2026-07-10T09:08:51.294Z"
       },
       {
         "Label": "turcos",
@@ -696,8 +696,8 @@
         "Type": "Episodios: 83; Título original: Ada Masalı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.390Z",
-        "Update": "2026-07-10T08:10:16.390Z"
+        "Date": "2026-07-10T09:08:51.294Z",
+        "Update": "2026-07-10T09:08:51.294Z"
       },
       {
         "Label": "turcos",
@@ -708,8 +708,8 @@
         "Type": "Episodios: 71; Título original: Kuzgun",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.390Z",
-        "Update": "2026-07-10T08:10:16.390Z"
+        "Date": "2026-07-10T09:08:51.294Z",
+        "Update": "2026-07-10T09:08:51.294Z"
       },
       {
         "Label": "turcos",
@@ -720,8 +720,8 @@
         "Type": "Episodios: 61; Título original: Namus Meselesi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.390Z",
-        "Update": "2026-07-10T08:10:16.390Z"
+        "Date": "2026-07-10T09:08:51.295Z",
+        "Update": "2026-07-10T09:08:51.295Z"
       },
       {
         "Label": "turcos",
@@ -732,8 +732,8 @@
         "Type": "Episodios: 156; Título original: Çukur",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.391Z",
-        "Update": "2026-07-10T08:10:16.391Z"
+        "Date": "2026-07-10T09:08:51.295Z",
+        "Update": "2026-07-10T09:08:51.295Z"
       },
       {
         "Label": "turcos",
@@ -744,8 +744,8 @@
         "Type": "Episodios: 7; Título original: Kızım Nerede",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.391Z",
-        "Update": "2026-07-10T08:10:16.391Z"
+        "Date": "2026-07-10T09:08:51.295Z",
+        "Update": "2026-07-10T09:08:51.295Z"
       },
       {
         "Label": "turcos",
@@ -756,8 +756,8 @@
         "Type": "Episodios: 62; Título original: Kızım Nerede",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.391Z",
-        "Update": "2026-07-10T08:10:16.391Z"
+        "Date": "2026-07-10T09:08:51.295Z",
+        "Update": "2026-07-10T09:08:51.295Z"
       },
       {
         "Label": "turcos",
@@ -768,8 +768,8 @@
         "Type": "Episodios: 98; Título original: Tatlı İntikam",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.391Z",
-        "Update": "2026-07-10T08:10:16.391Z"
+        "Date": "2026-07-10T09:08:51.295Z",
+        "Update": "2026-07-10T09:08:51.295Z"
       },
       {
         "Label": "turcos",
@@ -780,8 +780,8 @@
         "Type": "Episodios: 10; Título original: Genç Dahi Sina",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.392Z",
-        "Update": "2026-07-10T08:10:16.392Z"
+        "Date": "2026-07-10T09:08:51.296Z",
+        "Update": "2026-07-10T09:08:51.296Z"
       },
       {
         "Label": "turcos",
@@ -792,8 +792,8 @@
         "Type": "Episodios: 50; Título original: Aşkların En Güzel",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.392Z",
-        "Update": "2026-07-10T08:10:16.392Z"
+        "Date": "2026-07-10T09:08:51.296Z",
+        "Update": "2026-07-10T09:08:51.296Z"
       },
       {
         "Label": "turcos",
@@ -804,8 +804,8 @@
         "Type": "Episodios: 32; Título original: Hayat Yolu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.392Z",
-        "Update": "2026-07-10T08:10:16.392Z"
+        "Date": "2026-07-10T09:08:51.296Z",
+        "Update": "2026-07-10T09:08:51.296Z"
       },
       {
         "Label": "turcos",
@@ -816,8 +816,8 @@
         "Type": "Episodios: 33; Título original: Bu Şehir Arkandan Gelecek",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.392Z",
-        "Update": "2026-07-10T08:10:16.392Z"
+        "Date": "2026-07-10T09:08:51.296Z",
+        "Update": "2026-07-10T09:08:51.296Z"
       },
       {
         "Label": "turcos",
@@ -828,8 +828,8 @@
         "Type": "Episodios: 27; Título original: Rüzgarın Kalbi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.392Z",
-        "Update": "2026-07-10T08:10:16.392Z"
+        "Date": "2026-07-10T09:08:51.296Z",
+        "Update": "2026-07-10T09:08:51.296Z"
       },
       {
         "Label": "turcos",
@@ -840,8 +840,8 @@
         "Type": "Episodios: 71; Título original: Kuzgun",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.392Z",
-        "Update": "2026-07-10T08:10:16.392Z"
+        "Date": "2026-07-10T09:08:51.297Z",
+        "Update": "2026-07-10T09:08:51.297Z"
       },
       {
         "Label": "turcos",
@@ -852,8 +852,8 @@
         "Type": "Episodios: 30; Título original: Kader",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.393Z",
-        "Update": "2026-07-10T08:10:16.393Z"
+        "Date": "2026-07-10T09:08:51.297Z",
+        "Update": "2026-07-10T09:08:51.297Z"
       },
       {
         "Label": "turcos",
@@ -864,8 +864,8 @@
         "Type": "Episodios: 48; Título original: Kaderin Ateşi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.393Z",
-        "Update": "2026-07-10T08:10:16.393Z"
+        "Date": "2026-07-10T09:08:51.297Z",
+        "Update": "2026-07-10T09:08:51.297Z"
       },
       {
         "Label": "turcos",
@@ -876,8 +876,8 @@
         "Type": "Episodios: 20; Título original: Bizdeki Ateş",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.393Z",
-        "Update": "2026-07-10T08:10:16.393Z"
+        "Date": "2026-07-10T09:08:51.297Z",
+        "Update": "2026-07-10T09:08:51.297Z"
       },
       {
         "Label": "turcos",
@@ -888,8 +888,8 @@
         "Type": "Episodios: 50; Título original: Zümrüdüanka",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.393Z",
-        "Update": "2026-07-10T08:10:16.393Z"
+        "Date": "2026-07-10T09:08:51.297Z",
+        "Update": "2026-07-10T09:08:51.297Z"
       },
       {
         "Label": "turcos",
@@ -900,8 +900,8 @@
         "Type": "Episodios: 14; Título original: Bay Yanlış",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.393Z",
-        "Update": "2026-07-10T08:10:16.393Z"
+        "Date": "2026-07-10T09:08:51.297Z",
+        "Update": "2026-07-10T09:08:51.297Z"
       },
       {
         "Label": "turcos",
@@ -912,8 +912,8 @@
         "Type": "Episodios: 18; Título original: Gizli Bahçe",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.393Z",
-        "Update": "2026-07-10T08:10:16.393Z"
+        "Date": "2026-07-10T09:08:51.298Z",
+        "Update": "2026-07-10T09:08:51.298Z"
       },
       {
         "Label": "turcos",
@@ -924,8 +924,8 @@
         "Type": "Episodios: 85; Título original: Kaderimin Oyunu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.394Z",
-        "Update": "2026-07-10T08:10:16.394Z"
+        "Date": "2026-07-10T09:08:51.298Z",
+        "Update": "2026-07-10T09:08:51.298Z"
       },
       {
         "Label": "turcos",
@@ -936,8 +936,8 @@
         "Type": "Episodios: ?; Título original: Emanet",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.394Z",
-        "Update": "2026-07-10T08:10:16.394Z"
+        "Date": "2026-07-10T09:08:51.298Z",
+        "Update": "2026-07-10T09:08:51.298Z"
       },
       {
         "Label": "turcos",
@@ -948,8 +948,8 @@
         "Type": "Episodios: 62; Título original: Çocuk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.394Z",
-        "Update": "2026-07-10T08:10:16.394Z"
+        "Date": "2026-07-10T09:08:51.298Z",
+        "Update": "2026-07-10T09:08:51.298Z"
       },
       {
         "Label": "turcos",
@@ -960,8 +960,8 @@
         "Type": "Episodios: 36; Título original: Bir Çocuğun Kokusu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.394Z",
-        "Update": "2026-07-10T08:10:16.394Z"
+        "Date": "2026-07-10T09:08:51.298Z",
+        "Update": "2026-07-10T09:08:51.298Z"
       },
       {
         "Label": "turcos",
@@ -972,8 +972,8 @@
         "Type": "Episodios: 224; Título original: Baba",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.395Z",
-        "Update": "2026-07-10T08:10:16.395Z"
+        "Date": "2026-07-10T09:08:51.298Z",
+        "Update": "2026-07-10T09:08:51.298Z"
       },
       {
         "Label": "turcos",
@@ -984,8 +984,8 @@
         "Type": "Episodios: 145; Título original: Avlu",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.395Z",
-        "Update": "2026-07-10T08:10:16.395Z"
+        "Date": "2026-07-10T09:08:51.299Z",
+        "Update": "2026-07-10T09:08:51.299Z"
       },
       {
         "Label": "turcos",
@@ -996,8 +996,8 @@
         "Type": "Episodios: 88; Título original: Kırmızı Mendil",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.395Z",
-        "Update": "2026-07-10T08:10:16.395Z"
+        "Date": "2026-07-10T09:08:51.299Z",
+        "Update": "2026-07-10T09:08:51.299Z"
       },
       {
         "Label": "turcos",
@@ -1008,8 +1008,8 @@
         "Type": "Episodios: 155; Título original: Çukur",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.395Z",
-        "Update": "2026-07-10T08:10:16.395Z"
+        "Date": "2026-07-10T09:08:51.299Z",
+        "Update": "2026-07-10T09:08:51.299Z"
       },
       {
         "Label": "turcos",
@@ -1020,8 +1020,8 @@
         "Type": "Episodios: 26; Título original: Aşkın Bedeli",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.395Z",
-        "Update": "2026-07-10T08:10:16.395Z"
+        "Date": "2026-07-10T09:08:51.299Z",
+        "Update": "2026-07-10T09:08:51.299Z"
       },
       {
         "Label": "turcos",
@@ -1032,8 +1032,8 @@
         "Type": "Episodios: 23; Título original: Terzi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.395Z",
-        "Update": "2026-07-10T08:10:16.395Z"
+        "Date": "2026-07-10T09:08:51.299Z",
+        "Update": "2026-07-10T09:08:51.299Z"
       },
       {
         "Label": "turcos",
@@ -1044,8 +1044,8 @@
         "Type": "Episodios: 38; Título original: Sır",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.396Z",
-        "Update": "2026-07-10T08:10:16.396Z"
+        "Date": "2026-07-10T09:08:51.299Z",
+        "Update": "2026-07-10T09:08:51.299Z"
       },
       {
         "Label": "turcos",
@@ -1056,8 +1056,8 @@
         "Type": "Episodios: 166; Título original: Adını Feriha Koydum",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.396Z",
-        "Update": "2026-07-10T08:10:16.396Z"
+        "Date": "2026-07-10T09:08:51.300Z",
+        "Update": "2026-07-10T09:08:51.300Z"
       },
       {
         "Label": "turcos",
@@ -1068,8 +1068,8 @@
         "Type": "Episodios: 6",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.396Z",
-        "Update": "2026-07-10T08:10:16.396Z"
+        "Date": "2026-07-10T09:08:51.300Z",
+        "Update": "2026-07-10T09:08:51.300Z"
       },
       {
         "Label": "turcos",
@@ -1080,8 +1080,8 @@
         "Type": "Episodios: 127; Título original: Hıçran",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.396Z",
-        "Update": "2026-07-10T08:10:16.396Z"
+        "Date": "2026-07-10T09:08:51.300Z",
+        "Update": "2026-07-10T09:08:51.300Z"
       },
       {
         "Label": "turcos",
@@ -1092,8 +1092,8 @@
         "Type": "Episodios: 20; Título original: İyi Günde Kötü Günde",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.396Z",
-        "Update": "2026-07-10T08:10:16.396Z"
+        "Date": "2026-07-10T09:08:51.300Z",
+        "Update": "2026-07-10T09:08:51.300Z"
       },
       {
         "Label": "turcos",
@@ -1104,8 +1104,8 @@
         "Type": "Episodios: 54; Título original: Her Yerde Sen",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.300Z",
+        "Update": "2026-07-10T09:08:51.300Z"
       },
       {
         "Label": "turcos",
@@ -1116,8 +1116,8 @@
         "Type": "Episodios: 8; Título original: Anonim Âşıklar",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.301Z",
+        "Update": "2026-07-10T09:08:51.301Z"
       },
       {
         "Label": "turcos",
@@ -1128,8 +1128,8 @@
         "Type": "Episodios: 119; Título original: İki Aşk Arasında",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.301Z",
+        "Update": "2026-07-10T09:08:51.301Z"
       },
       {
         "Label": "turcos",
@@ -1140,8 +1140,8 @@
         "Type": "Episodios: ?; Título original: Hercai",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.301Z",
+        "Update": "2026-07-10T09:08:51.301Z"
       },
       {
         "Label": "turcos",
@@ -1152,8 +1152,8 @@
         "Type": "Episodios: 24; Título original: Annemizi Saklarken",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.301Z",
+        "Update": "2026-07-10T09:08:51.301Z"
       },
       {
         "Label": "turcos",
@@ -1164,8 +1164,8 @@
         "Type": "Episodios: 84; Título original: Akrep",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.301Z",
+        "Update": "2026-07-10T09:08:51.301Z"
       },
       {
         "Label": "turcos",
@@ -1176,8 +1176,8 @@
         "Type": "Episodios: 65; Título original: Aşkta Kaybolanlar",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.397Z",
-        "Update": "2026-07-10T08:10:16.397Z"
+        "Date": "2026-07-10T09:08:51.301Z",
+        "Update": "2026-07-10T09:08:51.301Z"
       },
       {
         "Label": "turcos",
@@ -1188,8 +1188,8 @@
         "Type": "Episodios: 60; Título original: Beni Dinle",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.398Z",
-        "Update": "2026-07-10T08:10:16.398Z"
+        "Date": "2026-07-10T09:08:51.302Z",
+        "Update": "2026-07-10T09:08:51.302Z"
       },
       {
         "Label": "turcos",
@@ -1200,8 +1200,8 @@
         "Type": "Episodios: 103; Título original: Güneşin Kızları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.398Z",
-        "Update": "2026-07-10T08:10:16.398Z"
+        "Date": "2026-07-10T09:08:51.302Z",
+        "Update": "2026-07-10T09:08:51.302Z"
       },
       {
         "Label": "turcos",
@@ -1212,8 +1212,8 @@
         "Type": "Episodios: 78; Título original: Maviye Sürgün",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.398Z",
-        "Update": "2026-07-10T08:10:16.398Z"
+        "Date": "2026-07-10T09:08:51.302Z",
+        "Update": "2026-07-10T09:08:51.302Z"
       },
       {
         "Label": "turcos",
@@ -1224,8 +1224,8 @@
         "Type": "Episodios: 151; Título original: Ezel",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.398Z",
-        "Update": "2026-07-10T08:10:16.398Z"
+        "Date": "2026-07-10T09:08:51.302Z",
+        "Update": "2026-07-10T09:08:51.302Z"
       },
       {
         "Label": "turcos",
@@ -1236,8 +1236,8 @@
         "Type": "Episodios: 95; Título original: Aile",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.398Z",
-        "Update": "2026-07-10T08:10:16.398Z"
+        "Date": "2026-07-10T09:08:51.302Z",
+        "Update": "2026-07-10T09:08:51.302Z"
       },
       {
         "Label": "turcos",
@@ -1248,8 +1248,8 @@
         "Type": "Episodios: 81; Título original: Fatmagül'ün Suçu Ne",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.399Z",
-        "Update": "2026-07-10T08:10:16.399Z"
+        "Date": "2026-07-10T09:08:51.303Z",
+        "Update": "2026-07-10T09:08:51.303Z"
       },
       {
         "Label": "turcos",
@@ -1260,8 +1260,8 @@
         "Type": "Episodios: 15; Título original: Ferhat ile Şirin",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.399Z",
-        "Update": "2026-07-10T08:10:16.399Z"
+        "Date": "2026-07-10T09:08:51.303Z",
+        "Update": "2026-07-10T09:08:51.303Z"
       },
       {
         "Label": "turcos",
@@ -1272,8 +1272,8 @@
         "Type": "Episodios: 35; Título original: Fi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.399Z",
-        "Update": "2026-07-10T08:10:16.399Z"
+        "Date": "2026-07-10T09:08:51.303Z",
+        "Update": "2026-07-10T09:08:51.303Z"
       },
       {
         "Label": "turcos",
@@ -1284,8 +1284,8 @@
         "Type": "Episodios: 91; Título original: Ateş Ateş",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.399Z",
-        "Update": "2026-07-10T08:10:16.399Z"
+        "Date": "2026-07-10T09:08:51.303Z",
+        "Update": "2026-07-10T09:08:51.303Z"
       },
       {
         "Label": "turcos",
@@ -1296,8 +1296,8 @@
         "Type": "Episodios: 37; Título original: Büyük Yalanlar",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.399Z",
-        "Update": "2026-07-10T08:10:16.399Z"
+        "Date": "2026-07-10T09:08:51.303Z",
+        "Update": "2026-07-10T09:08:51.303Z"
       },
       {
         "Label": "turcos",
@@ -1308,8 +1308,8 @@
         "Type": "Episodios: 46; Título original: Aşk Çığlıkları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.400Z",
-        "Update": "2026-07-10T08:10:16.400Z"
+        "Date": "2026-07-10T09:08:51.303Z",
+        "Update": "2026-07-10T09:08:51.303Z"
       },
       {
         "Label": "turcos",
@@ -1320,8 +1320,8 @@
         "Type": "Episodios: 148; Título original: Güllerin Savaşı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.400Z",
-        "Update": "2026-07-10T08:10:16.400Z"
+        "Date": "2026-07-10T09:08:51.304Z",
+        "Update": "2026-07-10T09:08:51.304Z"
       },
       {
         "Label": "turcos",
@@ -1332,8 +1332,8 @@
         "Type": "Episodios: 19; Título original: Gönül",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.400Z",
-        "Update": "2026-07-10T08:10:16.400Z"
+        "Date": "2026-07-10T09:08:51.304Z",
+        "Update": "2026-07-10T09:08:51.304Z"
       },
       {
         "Label": "turcos",
@@ -1344,8 +1344,8 @@
         "Type": "Episodios: 202; Título original: No. 309",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.400Z",
-        "Update": "2026-07-10T08:10:16.400Z"
+        "Date": "2026-07-10T09:08:51.304Z",
+        "Update": "2026-07-10T09:08:51.304Z"
       },
       {
         "Label": "turcos",
@@ -1356,8 +1356,8 @@
         "Type": "Episodios: 172; Título original: Asla Vazgeçmem",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.400Z",
-        "Update": "2026-07-10T08:10:16.400Z"
+        "Date": "2026-07-10T09:08:51.304Z",
+        "Update": "2026-07-10T09:08:51.304Z"
       },
       {
         "Label": "turcos",
@@ -1368,8 +1368,8 @@
         "Type": "Episodios: 20; Título original: Hazretleri",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.400Z",
-        "Update": "2026-07-10T08:10:16.400Z"
+        "Date": "2026-07-10T09:08:51.304Z",
+        "Update": "2026-07-10T09:08:51.304Z"
       },
       {
         "Label": "turcos",
@@ -1380,8 +1380,8 @@
         "Type": "Episodios: 107; Título original: Kalp Yarasi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.401Z",
-        "Update": "2026-07-10T08:10:16.401Z"
+        "Date": "2026-07-10T09:08:51.305Z",
+        "Update": "2026-07-10T09:08:51.305Z"
       },
       {
         "Label": "turcos",
@@ -1392,8 +1392,8 @@
         "Type": "Episodios: 8; Título original: Kardeşler",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.401Z",
-        "Update": "2026-07-10T08:10:16.401Z"
+        "Date": "2026-07-10T09:08:51.305Z",
+        "Update": "2026-07-10T09:08:51.305Z"
       },
       {
         "Label": "turcos",
@@ -1404,8 +1404,8 @@
         "Type": "Episodios: 106; Título original: Güzel Köylü",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.401Z",
-        "Update": "2026-07-10T08:10:16.401Z"
+        "Date": "2026-07-10T09:08:51.305Z",
+        "Update": "2026-07-10T09:08:51.305Z"
       },
       {
         "Label": "turcos",
@@ -1416,20 +1416,20 @@
         "Type": "Episodios: 23; Título original: Zehirli Sarmaşık",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.401Z",
-        "Update": "2026-07-10T08:10:16.401Z"
+        "Date": "2026-07-10T09:08:51.305Z",
+        "Update": "2026-07-10T09:08:51.305Z"
       },
       {
         "Label": "turcos",
         "Price": "etc.)",
         "Features": [
-          "90.00 CUP"
+          "DÓNDE ESTÁS - OGUL"
         ],
-        "Type": "Episodios: 45; Título original: Oğul, Neredesin",
+        "Type": "90.00 CUP",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.401Z",
-        "Update": "2026-07-10T08:10:16.401Z"
+        "PricePerEpisode": "Episodios: 45; Título original: Oğul, Neredesin",
+        "Date": "2026-07-10T09:08:51.305Z",
+        "Update": "2026-07-10T09:08:51.305Z"
       },
       {
         "Label": "turcos",
@@ -1440,8 +1440,8 @@
         "Type": "Episodios: 20; Título original: Holding",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.402Z",
-        "Update": "2026-07-10T08:10:16.402Z"
+        "Date": "2026-07-10T09:08:51.305Z",
+        "Update": "2026-07-10T09:08:51.306Z"
       },
       {
         "Label": "turcos",
@@ -1452,8 +1452,8 @@
         "Type": "Episodios: 16; Título original: Kübra",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.402Z",
-        "Update": "2026-07-10T08:10:16.402Z"
+        "Date": "2026-07-10T09:08:51.306Z",
+        "Update": "2026-07-10T09:08:51.306Z"
       },
       {
         "Label": "turcos",
@@ -1464,8 +1464,8 @@
         "Type": "Episodios: 30; Título original: Kış Güneşi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.402Z",
-        "Update": "2026-07-10T08:10:16.402Z"
+        "Date": "2026-07-10T09:08:51.306Z",
+        "Update": "2026-07-10T09:08:51.306Z"
       },
       {
         "Label": "turcos",
@@ -1476,8 +1476,8 @@
         "Type": "Episodios: 105; Título original: Sadakatsiz",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.402Z",
-        "Update": "2026-07-10T08:10:16.402Z"
+        "Date": "2026-07-10T09:08:51.306Z",
+        "Update": "2026-07-10T09:08:51.306Z"
       },
       {
         "Label": "turcos",
@@ -1488,8 +1488,8 @@
         "Type": "Episodios: 91; Título original: A.Z.I.Z",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.402Z",
-        "Update": "2026-07-10T08:10:16.402Z"
+        "Date": "2026-07-10T09:08:51.306Z",
+        "Update": "2026-07-10T09:08:51.306Z"
       },
       {
         "Label": "turcos",
@@ -1500,8 +1500,8 @@
         "Type": "Episodios: 33; Título original: Kış Masalı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.403Z",
-        "Update": "2026-07-10T08:10:16.403Z"
+        "Date": "2026-07-10T09:08:51.307Z",
+        "Update": "2026-07-10T09:08:51.307Z"
       },
       {
         "Label": "turcos",
@@ -1512,8 +1512,8 @@
         "Type": "Episodios: 20; Título original: Altın Kafes",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.404Z",
-        "Update": "2026-07-10T08:10:16.404Z"
+        "Date": "2026-07-10T09:08:51.307Z",
+        "Update": "2026-07-10T09:08:51.307Z"
       },
       {
         "Label": "turcos",
@@ -1524,8 +1524,8 @@
         "Type": "Episodios: 33; Título original: Seven Ne Yapmaz",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.404Z",
-        "Update": "2026-07-10T08:10:16.404Z"
+        "Date": "2026-07-10T09:08:51.307Z",
+        "Update": "2026-07-10T09:08:51.307Z"
       },
       {
         "Label": "turcos",
@@ -1536,8 +1536,8 @@
         "Type": "Episodios: 13; Título original: Ego - Erkeğin Gözünden Oyun",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.404Z",
-        "Update": "2026-07-10T08:10:16.404Z"
+        "Date": "2026-07-10T09:08:51.307Z",
+        "Update": "2026-07-10T09:08:51.307Z"
       },
       {
         "Label": "turcos",
@@ -1548,8 +1548,8 @@
         "Type": "Episodios: 58; Título original: Kader Oyunları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.404Z",
-        "Update": "2026-07-10T08:10:16.404Z"
+        "Date": "2026-07-10T09:08:51.307Z",
+        "Update": "2026-07-10T09:08:51.307Z"
       },
       {
         "Label": "turcos",
@@ -1560,8 +1560,8 @@
         "Type": "Episodios: 115; Título original: Muhteşem Yüzyıl Kösem",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.404Z",
-        "Update": "2026-07-10T08:10:16.404Z"
+        "Date": "2026-07-10T09:08:51.308Z",
+        "Update": "2026-07-10T09:08:51.308Z"
       },
       {
         "Label": "turcos",
@@ -1572,8 +1572,8 @@
         "Type": "Episodios: 164; Título original: Sen Çal Kapımı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.405Z",
-        "Update": "2026-07-10T08:10:16.405Z"
+        "Date": "2026-07-10T09:08:51.308Z",
+        "Update": "2026-07-10T09:08:51.308Z"
       },
       {
         "Label": "turcos",
@@ -1584,8 +1584,8 @@
         "Type": "Episodios: 6; Título original: Piyasa",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.405Z",
-        "Update": "2026-07-10T08:10:16.405Z"
+        "Date": "2026-07-10T09:08:51.308Z",
+        "Update": "2026-07-10T09:08:51.308Z"
       },
       {
         "Label": "turcos",
@@ -1596,8 +1596,8 @@
         "Type": "Episodios: 22; Título original: Hiç Bitmeyen Hikaye",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.405Z",
-        "Update": "2026-07-10T08:10:16.405Z"
+        "Date": "2026-07-10T09:08:51.308Z",
+        "Update": "2026-07-10T09:08:51.308Z"
       },
       {
         "Label": "turcos",
@@ -1608,8 +1608,8 @@
         "Type": "Episodios: 140; Título original: Yeşil Vadi'nin Kızı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.405Z",
-        "Update": "2026-07-10T08:10:16.405Z"
+        "Date": "2026-07-10T09:08:51.308Z",
+        "Update": "2026-07-10T09:08:51.308Z"
       },
       {
         "Label": "turcos",
@@ -1620,8 +1620,8 @@
         "Type": "Episodios: 329; Título original: İstanbullu Gelin",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.406Z",
-        "Update": "2026-07-10T08:10:16.406Z"
+        "Date": "2026-07-10T09:08:51.308Z",
+        "Update": "2026-07-10T09:08:51.308Z"
       },
       {
         "Label": "turcos",
@@ -1632,8 +1632,8 @@
         "Type": "Episodios: 165; Título original: Fazilet Hanım ve Kızları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.406Z",
-        "Update": "2026-07-10T08:10:16.406Z"
+        "Date": "2026-07-10T09:08:51.309Z",
+        "Update": "2026-07-10T09:08:51.309Z"
       },
       {
         "Label": "turcos",
@@ -1644,8 +1644,8 @@
         "Type": "Episodios: 85; Título original: İyilik",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.406Z",
-        "Update": "2026-07-10T08:10:16.406Z"
+        "Date": "2026-07-10T09:08:51.309Z",
+        "Update": "2026-07-10T09:08:51.309Z"
       },
       {
         "Label": "turcos",
@@ -1656,8 +1656,8 @@
         "Type": "Episodios: 60; Título original: Maraşlı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.406Z",
-        "Update": "2026-07-10T08:10:16.406Z"
+        "Date": "2026-07-10T09:08:51.309Z",
+        "Update": "2026-07-10T09:08:51.309Z"
       },
       {
         "Label": "turcos",
@@ -1668,8 +1668,8 @@
         "Type": "Episodios: 74; Título original: Kalp Atışı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.406Z",
-        "Update": "2026-07-10T08:10:16.406Z"
+        "Date": "2026-07-10T09:08:51.309Z",
+        "Update": "2026-07-10T09:08:51.309Z"
       },
       {
         "Label": "turcos",
@@ -1680,8 +1680,8 @@
         "Type": "Episodios: 28; Título original: Alev Alev",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.407Z",
-        "Update": "2026-07-10T08:10:16.407Z"
+        "Date": "2026-07-10T09:08:51.309Z",
+        "Update": "2026-07-10T09:08:51.309Z"
       },
       {
         "Label": "turcos",
@@ -1692,8 +1692,8 @@
         "Type": "Episodios: 6; Título original: Börü",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.407Z",
-        "Update": "2026-07-10T08:10:16.407Z"
+        "Date": "2026-07-10T09:08:51.309Z",
+        "Update": "2026-07-10T09:08:51.309Z"
       },
       {
         "Label": "turcos",
@@ -1704,8 +1704,8 @@
         "Type": "Episodios: 6; Título original: Börü",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.407Z",
-        "Update": "2026-07-10T08:10:16.407Z"
+        "Date": "2026-07-10T09:08:51.310Z",
+        "Update": "2026-07-10T09:08:51.310Z"
       },
       {
         "Label": "turcos",
@@ -1716,8 +1716,8 @@
         "Type": "Episodios: 161; Título original: Sen Çal Kapımı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.407Z",
-        "Update": "2026-07-10T08:10:16.407Z"
+        "Date": "2026-07-10T09:08:51.310Z",
+        "Update": "2026-07-10T09:08:51.310Z"
       },
       {
         "Label": "turcos",
@@ -1728,8 +1728,8 @@
         "Type": "Episodios: 51; Título original: Ateşböceği",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.407Z",
-        "Update": "2026-07-10T08:10:16.407Z"
+        "Date": "2026-07-10T09:08:51.310Z",
+        "Update": "2026-07-10T09:08:51.310Z"
       },
       {
         "Label": "turcos",
@@ -1740,8 +1740,8 @@
         "Type": "Episodios: 69; Título original: Dolunay",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.408Z",
-        "Update": "2026-07-10T08:10:16.408Z"
+        "Date": "2026-07-10T09:08:51.310Z",
+        "Update": "2026-07-10T09:08:51.310Z"
       },
       {
         "Label": "turcos",
@@ -1752,20 +1752,20 @@
         "Type": "Episodios: 40",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.408Z",
-        "Update": "2026-07-10T08:10:16.408Z"
+        "Date": "2026-07-10T09:08:51.310Z",
+        "Update": "2026-07-10T09:08:51.310Z"
       },
       {
         "Label": "turcos",
         "Price": "etc.)",
         "Features": [
-          "222.00 CUP"
+          "TODO POR MI HIJA - ANNE"
         ],
-        "Type": "Episodios: 111; Título original: Anne",
+        "Type": "Sinopsis no disponible",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.408Z",
-        "Update": "2026-07-10T08:10:16.408Z"
+        "PricePerEpisode": "madre-todo-por-mi-hija-anne-0.webp;madre-todo-por-mi-hija-anne-1.webp",
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1776,8 +1776,8 @@
         "Type": "Episodios: 26; Título original: Anne ve Kızları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.408Z",
-        "Update": "2026-07-10T08:10:16.408Z"
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1788,8 +1788,8 @@
         "Type": "Episodios: 371; Título original: Yeni Bir Hayat",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.409Z",
-        "Update": "2026-07-10T08:10:16.409Z"
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1800,8 +1800,8 @@
         "Type": "Episodios: 163; Título original: Medcezir",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.409Z",
-        "Update": "2026-07-10T08:10:16.409Z"
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1812,8 +1812,8 @@
         "Type": "Episodios: 94; Título original: Meryem",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.409Z",
-        "Update": "2026-07-10T08:10:16.409Z"
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1824,8 +1824,8 @@
         "Type": "Episodios: 10; Título original: Başkalaşım",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.409Z",
-        "Update": "2026-07-10T08:10:16.409Z"
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1836,8 +1836,8 @@
         "Type": "Episodios: 138; Título original: Doğduğun Ev Kaderindir",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.409Z",
-        "Update": "2026-07-10T08:10:16.409Z"
+        "Date": "2026-07-10T09:08:51.311Z",
+        "Update": "2026-07-10T09:08:51.311Z"
       },
       {
         "Label": "turcos",
@@ -1848,8 +1848,8 @@
         "Type": "Episodios: 36; Título original: Sol Yanım",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.312Z",
+        "Update": "2026-07-10T09:08:51.312Z"
       },
       {
         "Label": "turcos",
@@ -1860,8 +1860,8 @@
         "Type": "Episodios: 76; Título original: Tatlı Yalanım",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.312Z",
+        "Update": "2026-07-10T09:08:51.312Z"
       },
       {
         "Label": "turcos",
@@ -1872,8 +1872,8 @@
         "Type": "Episodios: 89; Título original: Adım Farah",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.312Z",
+        "Update": "2026-07-10T09:08:51.312Z"
       },
       {
         "Label": "turcos",
@@ -1884,8 +1884,8 @@
         "Type": "Episodios: 18; Título original: Benim Hayatım",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.312Z",
+        "Update": "2026-07-10T09:08:51.312Z"
       },
       {
         "Label": "turcos",
@@ -1896,8 +1896,8 @@
         "Type": "Episodios: 81; Título original: Merhamet",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.312Z",
+        "Update": "2026-07-10T09:08:51.312Z"
       },
       {
         "Label": "turcos",
@@ -1908,8 +1908,8 @@
         "Type": "Episodios: 214; Título original: Kızılcık Şerbeti",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.312Z",
+        "Update": "2026-07-10T09:08:51.312Z"
       },
       {
         "Label": "turcos",
@@ -1920,8 +1920,8 @@
         "Type": "Episodios: 18; Título original: Azize",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.410Z",
-        "Update": "2026-07-10T08:10:16.410Z"
+        "Date": "2026-07-10T09:08:51.313Z",
+        "Update": "2026-07-10T09:08:51.313Z"
       },
       {
         "Label": "turcos",
@@ -1932,8 +1932,8 @@
         "Type": "Episodios: 214; Título original: Kızılcık Şerbeti",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.411Z",
-        "Update": "2026-07-10T08:10:16.411Z"
+        "Date": "2026-07-10T09:08:51.313Z",
+        "Update": "2026-07-10T09:08:51.313Z"
       },
       {
         "Label": "turcos",
@@ -1944,8 +1944,8 @@
         "Type": "Episodios: 42; Título original: Senden Daha Güzel",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.411Z",
-        "Update": "2026-07-10T08:10:16.411Z"
+        "Date": "2026-07-10T09:08:51.313Z",
+        "Update": "2026-07-10T09:08:51.313Z"
       },
       {
         "Label": "turcos",
@@ -1956,8 +1956,8 @@
         "Type": "Episodios: 101; Título original: İçerde",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.411Z",
-        "Update": "2026-07-10T08:10:16.411Z"
+        "Date": "2026-07-10T09:08:51.313Z",
+        "Update": "2026-07-10T09:08:51.313Z"
       },
       {
         "Label": "turcos",
@@ -1968,8 +1968,8 @@
         "Type": "Episodios: 88; Título original: Kimse Bilmez",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.411Z",
-        "Update": "2026-07-10T08:10:16.411Z"
+        "Date": "2026-07-10T09:08:51.313Z",
+        "Update": "2026-07-10T09:08:51.313Z"
       },
       {
         "Label": "turcos",
@@ -1980,8 +1980,8 @@
         "Type": "Episodios: 35; Título original: Sen Benimsin",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.411Z",
-        "Update": "2026-07-10T08:10:16.411Z"
+        "Date": "2026-07-10T09:08:51.314Z",
+        "Update": "2026-07-10T09:08:51.314Z"
       },
       {
         "Label": "turcos",
@@ -1992,8 +1992,8 @@
         "Type": "Episodios: 62; Título original: Çocuk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.412Z",
-        "Update": "2026-07-10T08:10:16.412Z"
+        "Date": "2026-07-10T09:08:51.314Z",
+        "Update": "2026-07-10T09:08:51.314Z"
       },
       {
         "Label": "turcos",
@@ -2004,8 +2004,8 @@
         "Type": "Episodios: 16; Título original: Benim İçin Ağlama",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.412Z",
-        "Update": "2026-07-10T08:10:16.412Z"
+        "Date": "2026-07-10T09:08:51.314Z",
+        "Update": "2026-07-10T09:08:51.314Z"
       },
       {
         "Label": "turcos",
@@ -2016,8 +2016,8 @@
         "Type": "Episodios: 120; Título original: Asla Vazgeçmem",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.412Z",
-        "Update": "2026-07-10T08:10:16.412Z"
+        "Date": "2026-07-10T09:08:51.314Z",
+        "Update": "2026-07-10T09:08:51.314Z"
       },
       {
         "Label": "turcos",
@@ -2028,8 +2028,8 @@
         "Type": "Episodios: 13; Título original: Ego",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.412Z",
-        "Update": "2026-07-10T08:10:16.412Z"
+        "Date": "2026-07-10T09:08:51.314Z",
+        "Update": "2026-07-10T09:08:51.314Z"
       },
       {
         "Label": "turcos",
@@ -2040,8 +2040,8 @@
         "Type": "Episodios: 45; Título original: Seni Kimseye Vermem",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.412Z",
-        "Update": "2026-07-10T08:10:16.412Z"
+        "Date": "2026-07-10T09:08:51.315Z",
+        "Update": "2026-07-10T09:08:51.315Z"
       },
       {
         "Label": "turcos",
@@ -2052,8 +2052,8 @@
         "Type": "Episodios: 21; Título original: 10. Ev",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.412Z",
-        "Update": "2026-07-10T08:10:16.412Z"
+        "Date": "2026-07-10T09:08:51.315Z",
+        "Update": "2026-07-10T09:08:51.315Z"
       },
       {
         "Label": "turcos",
@@ -2064,8 +2064,8 @@
         "Type": "Episodios: 16; Título original: Güvercin",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.413Z",
-        "Update": "2026-07-10T08:10:16.413Z"
+        "Date": "2026-07-10T09:08:51.315Z",
+        "Update": "2026-07-10T09:08:51.315Z"
       },
       {
         "Label": "turcos",
@@ -2076,8 +2076,8 @@
         "Type": "Episodios: 100; Título original: Karasevda Ekmeği",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.413Z",
-        "Update": "2026-07-10T08:10:16.413Z"
+        "Date": "2026-07-10T09:08:51.315Z",
+        "Update": "2026-07-10T09:08:51.315Z"
       },
       {
         "Label": "turcos",
@@ -2088,8 +2088,8 @@
         "Type": "Episodios: 67; Título original: Siyah İnci",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.413Z",
-        "Update": "2026-07-10T08:10:16.413Z"
+        "Date": "2026-07-10T09:08:51.315Z",
+        "Update": "2026-07-10T09:08:51.315Z"
       },
       {
         "Label": "turcos",
@@ -2100,8 +2100,8 @@
         "Type": "Episodios: 81; Título original: Merhamet",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.413Z",
-        "Update": "2026-07-10T08:10:16.413Z"
+        "Date": "2026-07-10T09:08:51.316Z",
+        "Update": "2026-07-10T09:08:51.316Z"
       },
       {
         "Label": "turcos",
@@ -2112,8 +2112,8 @@
         "Type": "Episodios: 67; Título original: Dilek Taşı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.413Z",
-        "Update": "2026-07-10T08:10:16.413Z"
+        "Date": "2026-07-10T09:08:51.316Z",
+        "Update": "2026-07-10T09:08:51.316Z"
       },
       {
         "Label": "turcos",
@@ -2124,8 +2124,8 @@
         "Type": "Episodios: 8; Título original: Platonik Mavi Dolunay Otel",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.414Z",
-        "Update": "2026-07-10T08:10:16.414Z"
+        "Date": "2026-07-10T09:08:51.316Z",
+        "Update": "2026-07-10T09:08:51.316Z"
       },
       {
         "Label": "turcos",
@@ -2136,8 +2136,8 @@
         "Type": "Episodios: 22; Título original: Kurşun",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.414Z",
-        "Update": "2026-07-10T08:10:16.414Z"
+        "Date": "2026-07-10T09:08:51.316Z",
+        "Update": "2026-07-10T09:08:51.316Z"
       },
       {
         "Label": "turcos",
@@ -2148,8 +2148,8 @@
         "Type": "Episodios: 64; Título original: İnce İnce Yasemince",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.414Z",
-        "Update": "2026-07-10T08:10:16.414Z"
+        "Date": "2026-07-10T09:08:51.316Z",
+        "Update": "2026-07-10T09:08:51.316Z"
       },
       {
         "Label": "turcos",
@@ -2160,8 +2160,8 @@
         "Type": "Episodios: 20; Título original: Kör Nokta",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.414Z",
-        "Update": "2026-07-10T08:10:16.414Z"
+        "Date": "2026-07-10T09:08:51.316Z",
+        "Update": "2026-07-10T09:08:51.316Z"
       },
       {
         "Label": "turcos",
@@ -2172,8 +2172,8 @@
         "Type": "Episodios: 12; Título original: Deniz Kadar Mor",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.415Z",
-        "Update": "2026-07-10T08:10:16.415Z"
+        "Date": "2026-07-10T09:08:51.317Z",
+        "Update": "2026-07-10T09:08:51.317Z"
       },
       {
         "Label": "turcos",
@@ -2184,8 +2184,8 @@
         "Type": "Episodios: 200; Título original: Yaralı Kuş",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.415Z",
-        "Update": "2026-07-10T08:10:16.415Z"
+        "Date": "2026-07-10T09:08:51.317Z",
+        "Update": "2026-07-10T09:08:51.317Z"
       },
       {
         "Label": "turcos",
@@ -2196,8 +2196,8 @@
         "Type": "Episodios: 130; Título original: Erkenci Kuş",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.415Z",
-        "Update": "2026-07-10T08:10:16.415Z"
+        "Date": "2026-07-10T09:08:51.317Z",
+        "Update": "2026-07-10T09:08:51.317Z"
       },
       {
         "Label": "turcos",
@@ -2208,8 +2208,8 @@
         "Type": "Episodios: 40; Título original: Seni Kimler Aldı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.416Z",
-        "Update": "2026-07-10T08:10:16.416Z"
+        "Date": "2026-07-10T09:08:51.318Z",
+        "Update": "2026-07-10T09:08:51.318Z"
       },
       {
         "Label": "turcos",
@@ -2220,8 +2220,8 @@
         "Type": "Episodios: 40; Título original: Hep Beni Sev",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.416Z",
-        "Update": "2026-07-10T08:10:16.416Z"
+        "Date": "2026-07-10T09:08:51.318Z",
+        "Update": "2026-07-10T09:08:51.318Z"
       },
       {
         "Label": "turcos",
@@ -2232,8 +2232,8 @@
         "Type": "Episodios: 40; Título original: Çok Seversen Ne Olur",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.416Z",
-        "Update": "2026-07-10T08:10:16.416Z"
+        "Date": "2026-07-10T09:08:51.318Z",
+        "Update": "2026-07-10T09:08:51.318Z"
       },
       {
         "Label": "turcos",
@@ -2244,8 +2244,8 @@
         "Type": "Episodios: 45; Título original: Adaletin Bu Mu Dünya",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.416Z",
-        "Update": "2026-07-10T08:10:16.416Z"
+        "Date": "2026-07-10T09:08:51.318Z",
+        "Update": "2026-07-10T09:08:51.318Z"
       },
       {
         "Label": "turcos",
@@ -2256,8 +2256,8 @@
         "Type": "Episodios: 143; Título original: Asi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.416Z",
-        "Update": "2026-07-10T08:10:16.416Z"
+        "Date": "2026-07-10T09:08:51.318Z",
+        "Update": "2026-07-10T09:08:51.318Z"
       },
       {
         "Label": "turcos",
@@ -2268,8 +2268,8 @@
         "Type": "Episodios: 38; Título original: Gönül",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.417Z",
-        "Update": "2026-07-10T08:10:16.417Z"
+        "Date": "2026-07-10T09:08:51.318Z",
+        "Update": "2026-07-10T09:08:51.318Z"
       },
       {
         "Label": "turcos",
@@ -2280,8 +2280,8 @@
         "Type": "Episodios: 32; Título original: Zengin ve Yoksul",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.417Z",
-        "Update": "2026-07-10T08:10:16.417Z"
+        "Date": "2026-07-10T09:08:51.319Z",
+        "Update": "2026-07-10T09:08:51.319Z"
       },
       {
         "Label": "turcos",
@@ -2292,8 +2292,8 @@
         "Type": "Episodios: 50; Título original: Kanlı Rakipler",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.417Z",
-        "Update": "2026-07-10T08:10:16.417Z"
+        "Date": "2026-07-10T09:08:51.319Z",
+        "Update": "2026-07-10T09:08:51.319Z"
       },
       {
         "Label": "turcos",
@@ -2304,8 +2304,8 @@
         "Type": "Episodios: 89; Título original: Saklı Kalen Aşk Hikayesi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.417Z",
-        "Update": "2026-07-10T08:10:16.417Z"
+        "Date": "2026-07-10T09:08:51.319Z",
+        "Update": "2026-07-10T09:08:51.319Z"
       },
       {
         "Label": "turcos",
@@ -2316,8 +2316,8 @@
         "Type": "Episodios: 33; Título original: Hayatın Sırları",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.417Z",
-        "Update": "2026-07-10T08:10:16.417Z"
+        "Date": "2026-07-10T09:08:51.319Z",
+        "Update": "2026-07-10T09:08:51.319Z"
       },
       {
         "Label": "turcos",
@@ -2328,8 +2328,8 @@
         "Type": "Episodios: 109; Título original: Yargı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.417Z",
-        "Update": "2026-07-10T08:10:16.417Z"
+        "Date": "2026-07-10T09:08:51.319Z",
+        "Update": "2026-07-10T09:08:51.319Z"
       },
       {
         "Label": "turcos",
@@ -2340,8 +2340,8 @@
         "Type": "Episodios: 116; Título original: Bir Peri Masalı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.418Z",
-        "Update": "2026-07-10T08:10:16.418Z"
+        "Date": "2026-07-10T09:08:51.319Z",
+        "Update": "2026-07-10T09:08:51.319Z"
       },
       {
         "Label": "turcos",
@@ -2352,8 +2352,8 @@
         "Type": "Episodios: 41; Título original: Babam ve Ailesi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.418Z",
-        "Update": "2026-07-10T08:10:16.418Z"
+        "Date": "2026-07-10T09:08:51.320Z",
+        "Update": "2026-07-10T09:08:51.320Z"
       },
       {
         "Label": "turcos",
@@ -2364,8 +2364,8 @@
         "Type": "Episodios: 35; Título original: Selim ve Sahra",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.418Z",
-        "Update": "2026-07-10T08:10:16.418Z"
+        "Date": "2026-07-10T09:08:51.320Z",
+        "Update": "2026-07-10T09:08:51.320Z"
       },
       {
         "Label": "turcos",
@@ -2376,8 +2376,8 @@
         "Type": "Episodios: 45; Título original: Unutulmaz Bir Aşk Selin",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.418Z",
-        "Update": "2026-07-10T08:10:16.418Z"
+        "Date": "2026-07-10T09:08:51.320Z",
+        "Update": "2026-07-10T09:08:51.320Z"
       },
       {
         "Label": "turcos",
@@ -2388,8 +2388,8 @@
         "Type": "Episodios: 63; Título original: Bir Bulut Oslama",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.418Z",
-        "Update": "2026-07-10T08:10:16.418Z"
+        "Date": "2026-07-10T09:08:51.320Z",
+        "Update": "2026-07-10T09:08:51.320Z"
       },
       {
         "Label": "turcos",
@@ -2400,8 +2400,8 @@
         "Type": "Episodios: 14; Título original: Kaderine Gülümse",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.418Z",
-        "Update": "2026-07-10T08:10:16.418Z"
+        "Date": "2026-07-10T09:08:51.320Z",
+        "Update": "2026-07-10T09:08:51.320Z"
       },
       {
         "Label": "turcos",
@@ -2412,8 +2412,8 @@
         "Type": "Episodios: 14; Título original: Adı Zehra",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.419Z",
-        "Update": "2026-07-10T08:10:16.419Z"
+        "Date": "2026-07-10T09:08:51.320Z",
+        "Update": "2026-07-10T09:08:51.320Z"
       },
       {
         "Label": "turcos",
@@ -2424,8 +2424,8 @@
         "Type": "Episodios: 160; Título original: Kiralık Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.419Z",
-        "Update": "2026-07-10T08:10:16.419Z"
+        "Date": "2026-07-10T09:08:51.321Z",
+        "Update": "2026-07-10T09:08:51.321Z"
       },
       {
         "Label": "turcos",
@@ -2436,8 +2436,8 @@
         "Type": "Episodios: 61; Título original: Seversin Bir Aşk Hikayesi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.419Z",
-        "Update": "2026-07-10T08:10:16.419Z"
+        "Date": "2026-07-10T09:08:51.321Z",
+        "Update": "2026-07-10T09:08:51.321Z"
       },
       {
         "Label": "turcos",
@@ -2448,8 +2448,8 @@
         "Type": "Episodios: 331; Título original: Karagül",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.419Z",
-        "Update": "2026-07-10T08:10:16.419Z"
+        "Date": "2026-07-10T09:08:51.321Z",
+        "Update": "2026-07-10T09:08:51.321Z"
       },
       {
         "Label": "turcos",
@@ -2460,8 +2460,8 @@
         "Type": "Episodios: 66; Título original: Umutum Hala Var",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.419Z",
-        "Update": "2026-07-10T08:10:16.419Z"
+        "Date": "2026-07-10T09:08:51.321Z",
+        "Update": "2026-07-10T09:08:51.321Z"
       },
       {
         "Label": "turcos",
@@ -2472,8 +2472,8 @@
         "Type": "Episodios: 103; Título original: Güneş",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.420Z",
-        "Update": "2026-07-10T08:10:16.420Z"
+        "Date": "2026-07-10T09:08:51.321Z",
+        "Update": "2026-07-10T09:08:51.321Z"
       },
       {
         "Label": "turcos",
@@ -2484,20 +2484,20 @@
         "Type": "Episodios: 154; Título original: Kardeşlerim",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.420Z",
-        "Update": "2026-07-10T08:10:16.420Z"
+        "Date": "2026-07-10T09:08:51.322Z",
+        "Update": "2026-07-10T09:08:51.322Z"
       },
       {
         "Label": "turcos",
         "Price": "etc.)",
         "Features": [
-          "76.00 CUP"
+          "QUIÉN ERES - KIZIM"
         ],
-        "Type": "Episodios: 38; Título original: Kızım",
+        "Type": "Sinopsis no disponible",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.420Z",
-        "Update": "2026-07-10T08:10:16.420Z"
+        "PricePerEpisode": "todo-por-mi-hija-y-tu-quien-eres-kizim-0.webp;todo-por-mi-hija-y-tu-quien-eres-kizim-1.webp",
+        "Date": "2026-07-10T09:08:51.323Z",
+        "Update": "2026-07-10T09:08:51.323Z"
       },
       {
         "Label": "turcos",
@@ -2508,8 +2508,8 @@
         "Type": "Episodios: 105; Título original: Evlilik Hakkında Her Şey",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.420Z",
-        "Update": "2026-07-10T08:10:16.420Z"
+        "Date": "2026-07-10T09:08:51.323Z",
+        "Update": "2026-07-10T09:08:51.323Z"
       },
       {
         "Label": "turcos",
@@ -2520,8 +2520,8 @@
         "Type": "Episodios: 161; Título original: Elimi Bırakma",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.420Z",
-        "Update": "2026-07-10T08:10:16.420Z"
+        "Date": "2026-07-10T09:08:51.323Z",
+        "Update": "2026-07-10T09:08:51.323Z"
       },
       {
         "Label": "turcos",
@@ -2532,8 +2532,8 @@
         "Type": "Episodios: 78; Título original: Stiletto Vendetta",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.420Z",
-        "Update": "2026-07-10T08:10:16.420Z"
+        "Date": "2026-07-10T09:08:51.323Z",
+        "Update": "2026-07-10T09:08:51.323Z"
       },
       {
         "Label": "turcos",
@@ -2544,8 +2544,8 @@
         "Type": "Episodios: 22; Título original: Tuzak",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.421Z",
-        "Update": "2026-07-10T08:10:16.421Z"
+        "Date": "2026-07-10T09:08:51.324Z",
+        "Update": "2026-07-10T09:08:51.324Z"
       },
       {
         "Label": "turcos",
@@ -2556,8 +2556,8 @@
         "Type": "Episodios: 87; Título original: Aşk Tuzağı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.421Z",
-        "Update": "2026-07-10T08:10:16.421Z"
+        "Date": "2026-07-10T09:08:51.324Z",
+        "Update": "2026-07-10T09:08:51.324Z"
       },
       {
         "Label": "turcos",
@@ -2568,8 +2568,8 @@
         "Type": "Episodios: 136; Título original: Afili Aşk",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.421Z",
-        "Update": "2026-07-10T08:10:16.421Z"
+        "Date": "2026-07-10T09:08:51.324Z",
+        "Update": "2026-07-10T09:08:51.324Z"
       },
       {
         "Label": "turcos",
@@ -2580,8 +2580,8 @@
         "Type": "Episodios: 45; Título original: Dönence",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.421Z",
-        "Update": "2026-07-10T08:10:16.421Z"
+        "Date": "2026-07-10T09:08:51.325Z",
+        "Update": "2026-07-10T09:08:51.325Z"
       },
       {
         "Label": "turcos",
@@ -2592,8 +2592,8 @@
         "Type": "Episodios: 115; Título original: Karadayı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.422Z",
-        "Update": "2026-07-10T08:10:16.422Z"
+        "Date": "2026-07-10T09:08:51.325Z",
+        "Update": "2026-07-10T09:08:51.325Z"
       },
       {
         "Label": "turcos",
@@ -2604,8 +2604,8 @@
         "Type": "Episodios: 109; Título original: Bir Küçük Gündüz Işığı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.422Z",
-        "Update": "2026-07-10T08:10:16.422Z"
+        "Date": "2026-07-10T09:08:51.325Z",
+        "Update": "2026-07-10T09:08:51.325Z"
       },
       {
         "Label": "turcos",
@@ -2616,8 +2616,8 @@
         "Type": "Episodios: 9; Título original: Behzat C",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.422Z",
-        "Update": "2026-07-10T08:10:16.422Z"
+        "Date": "2026-07-10T09:08:51.325Z",
+        "Update": "2026-07-10T09:08:51.325Z"
       },
       {
         "Label": "turcos",
@@ -2628,8 +2628,8 @@
         "Type": "Episodios: 32; Título original: Bitmeyen Şarkı",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.422Z",
-        "Update": "2026-07-10T08:10:16.422Z"
+        "Date": "2026-07-10T09:08:51.325Z",
+        "Update": "2026-07-10T09:08:51.325Z"
       },
       {
         "Label": "turcos",
@@ -2640,8 +2640,8 @@
         "Type": "Episodios: 58; Título original: Bir Aşk Hikayesi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.423Z",
-        "Update": "2026-07-10T08:10:16.423Z"
+        "Date": "2026-07-10T09:08:51.326Z",
+        "Update": "2026-07-10T09:08:51.326Z"
       },
       {
         "Label": "turcos",
@@ -2652,8 +2652,8 @@
         "Type": "Episodios: 87; Título original: Gülperi",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.423Z",
-        "Update": "2026-07-10T08:10:16.423Z"
+        "Date": "2026-07-10T09:08:51.326Z",
+        "Update": "2026-07-10T09:08:51.326Z"
       },
       {
         "Label": "turcos",
@@ -2664,8 +2664,8 @@
         "Type": "Episodios: 148; Título original: Benim Adım Gültepe",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.423Z",
-        "Update": "2026-07-10T08:10:16.423Z"
+        "Date": "2026-07-10T09:08:51.326Z",
+        "Update": "2026-07-10T09:08:51.326Z"
       },
       {
         "Label": "turcos",
@@ -2676,8 +2676,8 @@
         "Type": "Episodios: 97; Título original: Harika Hayatım",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.423Z",
-        "Update": "2026-07-10T08:10:16.423Z"
+        "Date": "2026-07-10T09:08:51.326Z",
+        "Update": "2026-07-10T09:08:51.326Z"
       },
       {
         "Label": "turcos",
@@ -2688,8 +2688,8 @@
         "Type": "Episodios: 18; Título original: Bizden Biri",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.423Z",
-        "Update": "2026-07-10T08:10:16.423Z"
+        "Date": "2026-07-10T09:08:51.326Z",
+        "Update": "2026-07-10T09:08:51.326Z"
       },
       {
         "Label": "turcos",
@@ -2700,8 +2700,8 @@
         "Type": "Episodios: 78; Título original: Suhan",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.424Z",
-        "Update": "2026-07-10T08:10:16.424Z"
+        "Date": "2026-07-10T09:08:51.327Z",
+        "Update": "2026-07-10T09:08:51.327Z"
       },
       {
         "Label": "turcos",
@@ -2712,8 +2712,8 @@
         "Type": "Episodios: 75; Título original: Gizli Gerçek - Esir",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.424Z",
-        "Update": "2026-07-10T08:10:16.424Z"
+        "Date": "2026-07-10T09:08:51.327Z",
+        "Update": "2026-07-10T09:08:51.327Z"
       },
       {
         "Label": "turcos",
@@ -2724,8 +2724,8 @@
         "Type": "Episodios: 12; Título original: Deniz Gibi Menekşeler",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.424Z",
-        "Update": "2026-07-10T08:10:16.424Z"
+        "Date": "2026-07-10T09:08:51.327Z",
+        "Update": "2026-07-10T09:08:51.327Z"
       },
       {
         "Label": "turcos",
@@ -2736,8 +2736,8 @@
         "Type": "Episodios: 34; Título original: Maral",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.424Z",
-        "Update": "2026-07-10T08:10:16.424Z"
+        "Date": "2026-07-10T09:08:51.327Z",
+        "Update": "2026-07-10T09:08:51.327Z"
       },
       {
         "Label": "turcos",
@@ -2748,8 +2748,8 @@
         "Type": "Episodios: 34; Título original: Maral - En Güzel Hikayem",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.424Z",
-        "Update": "2026-07-10T08:10:16.424Z"
+        "Date": "2026-07-10T09:08:51.327Z",
+        "Update": "2026-07-10T09:08:51.327Z"
       },
       {
         "Label": "turcos",
@@ -2760,20 +2760,20 @@
         "Type": "Episodios: 66; Título original: Eve Dönüş",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.425Z",
-        "Update": "2026-07-10T08:10:16.425Z"
+        "Date": "2026-07-10T09:08:51.328Z",
+        "Update": "2026-07-10T09:08:51.328Z"
       },
       {
         "Label": "turcos",
         "Price": "etc.)",
         "Features": [
-          "74.00 CUP"
+          "¿QUIÉN ERES – KIMSIN SEN"
         ],
-        "Type": "Episodios: 37; Título original: Kimsin Sen",
+        "Type": "Sinopsis no disponible",
         "Episodes": 0,
-        "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.425Z",
-        "Update": "2026-07-10T08:10:16.425Z"
+        "PricePerEpisode": "y-tu-quien-eres-kimsin-sen-0.webp;y-tu-quien-eres-kimsin-sen-1.webp",
+        "Date": "2026-07-10T09:08:51.328Z",
+        "Update": "2026-07-10T09:08:51.328Z"
       },
       {
         "Label": "turcos",
@@ -2784,8 +2784,8 @@
         "Type": "Episodios: 91; Título original: Destan",
         "Episodes": 0,
         "PricePerEpisode": "Telenovela",
-        "Date": "2026-07-10T08:10:16.425Z",
-        "Update": "2026-07-10T08:10:16.425Z"
+        "Date": "2026-07-10T09:08:51.328Z",
+        "Update": "2026-07-10T09:08:51.328Z"
       }
     ]
   }
