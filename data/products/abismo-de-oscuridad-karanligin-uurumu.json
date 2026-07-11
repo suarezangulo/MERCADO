@@ -9,17 +9,14 @@
   "Description": "Un exjefe de policía llamado Mehmet, con la habilidad de percibir la maldad oculta, regresa como consultor tras perderlo todo. Al investigar crímenes marcados por símbolos antiguos en Estambul, descubre que el misterio está ligado a su propia infancia y a enemigos del pasado. La historia explora justicia, venganza y la lucha contra la oscuridad interior.",
   "Price": "20.00",
   "Features": [
-    "Dirección: Evrim Yöney y Seyit Özcan Giden.",
-    "Guion: Sevinç Yavuz.",
     "Episodios: 10",
-    "Título original: Karanlığın Uçurumu.",
-    "Actores: Berk Hakman como Mehmet, Elifcan Ongurlar como Canan, Anıl İlter como Ünal, Beril Kayar como Rana.",
-    "Otros actores destacados: Levent Sülün, Edip Saner, Gökçe Eyüboğlu.",
-    "Año: 2023"
+    "Título original: Karanlığın Uçurumu",
+    "Año: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 10,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:37:49.422Z",
-  "Update": "2026-07-11T04:37:49.422Z"
+  "Date": "2026-07-11T04:39:07.447Z",
+  "Update": "2026-07-11T04:39:07.447Z"
 }
