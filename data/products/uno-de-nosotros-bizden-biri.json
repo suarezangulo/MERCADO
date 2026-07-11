@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "UNO DE NOSOTROS - BIZDEN BIRI",
   "Images": [
-    "uno-de-nosotros-bizden-biri-0.webp",
-    "uno-de-nosotros-bizden-biri-1.webp"
+    "uno-de-nosotros-bizden-biri-0.jpg",
+    "uno-de-nosotros-bizden-biri-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Cuenta la historia de Adam, hijo de un sacerdote católico, y Havva, hija de una familia turca muy tradicional. A pesar de provenir de mundos completamente distintos, sus caminos se cruzan y surge entre ellos un amor inesperado. Sin embargo, las diferencias culturales, religiosas y familiares se convierten en grandes obstáculos que ponen a prueba su relación.",
   "Price": "36.00",
   "Features": [
     "Episodios: 18",
-    "Título original: Bizden Biri"
+    "Título original: Bizden Biri",
+    "Año: 2021",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 18,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T03:12:43.869Z",
-  "Update": "2026-07-11T03:12:43.869Z"
+  "Date": "2026-07-11T03:18:27.279Z",
+  "Update": "2026-07-11T03:18:27.279Z"
 }
