@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ADELA",
   "Images": [
-    "adela-0.webp",
-    "adela-1.webp"
+    "adela-0.jpg",
+    "adela-1.jpg"
   ],
   "Description": "Adela es la adaptación del drama turco 'O Hayat Benim' (Esa es mi vida). La trama gira en torno a dos hermanas, Adela y Andreea, que fueron criadas en un hogar pobre de un barrio marginal. Mientras Adela es capaz de renunciar a todo por su hermana, Andreea siente que todo lo que es de Adela también es suyo.",
   "Price": "156.00",
   "Features": [
     "Episodios: 78",
-    "Título original: O Hayat Benim"
+    "Título original: O Hayat Benim",
+    "Año: 2021–2022",
+    "País: Rumanía"
   ],
   "Type": "episode",
   "Episodes": 78,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T15:40:57.228Z",
-  "Update": "2026-07-11T15:40:57.228Z"
+  "Date": "2026-07-11T15:48:28.110Z",
+  "Update": "2026-07-11T15:48:28.110Z"
 }
