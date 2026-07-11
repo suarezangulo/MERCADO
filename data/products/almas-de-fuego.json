@@ -3,17 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ALMAS DE FUEGO",
   "Images": [
-    "almas-de-fuego-0.webp",
-    "almas-de-fuego-1.webp"
+    "almas-de-fuego-0.jpg",
+    "almas-de-fuego-1.jpg"
   ],
-  "Description": "La trama comienza cuando cinco amigos encuentran y crían a un bebé. El caos se desata cuando un hombre peligroso descubre al bebé y una mujer que lo busca muere accidentalmente. Con el tiempo, los amigos deberán enfrentar las consecuencias de su decisión.",
+  "Description": "La historia sigue a Han (Birkan Sokullu), un hombre atrapado entre sus responsabilidades familiares y sus propios conflictos emocionales. Su vida cambia al conocer a İnci, desencadenando una trama intensa sobre el amor, los traumas del pasado y la complejidad de los vínculos humanos.",
   "Price": "124.00",
   "Features": [
-    "Episodios: 62"
+    "Episodios: 62",
+    "Título original: Masumlar Apartmanı",
+    "Año: 2020–2022",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 62,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T16:29:16.871Z",
-  "Update": "2026-07-11T16:29:16.871Z"
+  "Date": "2026-07-11T16:34:23.084Z",
+  "Update": "2026-07-11T16:34:23.084Z"
 }
