@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "TROPICA - DÖNENCE",
   "Images": [
-    "tropica-donence-0.webp",
-    "tropica-donence-1.webp"
+    "tropica-dnence-0.jpg",
+    "tropica-dnence-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Durante el verano, Gece planea estudiar en la universidad y tocar música con su novio Emir en Estambul. Sin embargo, su familia se muda a Foça para ayudar a su hermana Gülce, quien tiene Asperger y no soporta el bullicio de la ciudad. Allí, Gece conoce a Özgür, un instructor de surf que también cuida de su hermano con Asperger. Entre ellos surge una conexión especial que la obliga a replantearse su vida y sus sentimientos, mientras la llegada inesperada de Emir complica aún más la situación.",
   "Price": "90.00",
   "Features": [
     "Episodios: 45",
-    "Título original: Dönence"
+    "Título original: Dönence",
+    "Año: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 45,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:10:34.917Z",
-  "Update": "2026-07-11T04:10:34.917Z"
+  "Date": "2026-07-11T04:13:39.321Z",
+  "Update": "2026-07-11T04:13:39.321Z"
 }
