@@ -3,18 +3,23 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "Y TÚ, ¿QUIÉN ERES – KIMSIN SEN",
   "Images": [
-    "y-tu-quien-eres-kimsin-sen-0.webp",
+    "y-tu-quien-eres-kimsin-sen-0.jpg",
     "y-tu-quien-eres-kimsin-sen-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Tekin, un detective privado poco reconocido, recibe un encargo de una viuda adinerada para localizar a su hija desaparecida. Lo que parece un caso sencillo se convierte en una trama llena de enredos, persecuciones y humor absurdo, donde Tekin y su compañero İsmail se enfrentan a situaciones cada vez más disparatadas. La película mezcla elementos de comedia slapstick con un falso tono de investigación policial.",
   "Price": "74.00",
   "Features": [
     "Episodios: 37",
-    "Título original: Kimsin Sen"
+    "Año: 2012",
+    "País: Turquía",
+    "Título original: Kimsin Sen",
+    "Director: Ozan Açiktan",
+    "Guion: Tolga Çevik, Ozan Açiktan, Ahmet Levent Pala",
+    "Actores: Tolga Çevik, Köksal Engür, Pelin Körmükçü, Toprak Sergen, Zeynep Özder, Çetin Altay, Mahir İpek, Aziz Sarvan."
   ],
   "Type": "episode",
   "Episodes": 37,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T01:33:51.683Z",
-  "Update": "2026-07-11T01:33:51.683Z"
+  "Date": "2026-07-11T01:48:41.053Z",
+  "Update": "2026-07-11T01:48:41.053Z"
 }
