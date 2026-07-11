@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "AL MARGEN DE LA LEY - YASANIN KENARINDA",
   "Images": [
-    "al-margen-de-la-ley-yasanin-kenarinda-0.webp",
-    "al-margen-de-la-ley-yasanin-kenarinda-1.webp"
+    "al-margen-de-la-ley-yasanin-kenarinda-0.jpg",
+    "al-margen-de-la-ley-yasanin-kenarinda-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La serie sigue a Ali Kemal Ateş, un agente secreto que trabaja infiltrado en organizaciones criminales mientras intenta proteger a su familia y mantener su identidad oculta. La trama mezcla acción, espionaje y drama personal, mostrando cómo Ali Kemal se mueve “al margen de la ley” para cumplir con su misión.",
   "Price": "48.00",
   "Features": [
     "Episodios: 24",
-    "Título original: Yaşanın Kenarında"
+    "Título original: Kayıt Dışı",
+    "Año: 2017",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 24,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T15:59:40.771Z",
-  "Update": "2026-07-11T15:59:40.771Z"
+  "Date": "2026-07-11T16:04:12.847Z",
+  "Update": "2026-07-11T16:04:12.847Z"
 }
