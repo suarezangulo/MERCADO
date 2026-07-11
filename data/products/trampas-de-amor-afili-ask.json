@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "TRAMPAS DE AMOR - AFILI ASK",
   "Images": [
-    "trampas-de-amor-afili-ask-0.webp",
-    "trampas-de-amor-afili-ask-1.webp"
+    "trampas-de-amor-afili-ask-0.jpg",
+    "trampas-de-amor-afili-ask-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Afili Aşk (en español Trampas de Amor) es una comedia romántica turca que mezcla humor, enredos y sentimientos genuinos. La historia sigue a Ayşe Yılmaz, una joven soñadora que, para escapar de un matrimonio forzado, inventa una relación con Kerem Yiğiter, un empresario atractivo y mujeriego. Lo que comienza como una mentira se convierte en una convivencia llena de situaciones divertidas, malentendidos y, poco a poco, un amor verdadero.",
   "Price": "272.00",
   "Features": [
     "Episodios: 136",
-    "Título original: Afili Aşk"
+    "Título original: Afili Aşk",
+    "Año: 2019–2020",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 136,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:08:40.733Z",
-  "Update": "2026-07-11T04:08:40.733Z"
+  "Date": "2026-07-11T04:10:34.917Z",
+  "Update": "2026-07-11T04:10:34.917Z"
 }
