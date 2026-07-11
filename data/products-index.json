@@ -17,8 +17,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "",
-        "Date": "2026-07-11T13:31:21.122Z",
-        "Update": "2026-07-11T13:31:21.122Z"
+        "Date": "2026-07-11T15:32:45.477Z",
+        "Update": "2026-07-11T15:32:45.477Z"
       }
     ],
     "Drama": [
@@ -39,8 +39,8 @@
         "Type": "movie",
         "Episodes": 0,
         "PricePerEpisode": "5.00",
-        "Date": "2026-07-11T13:31:21.122Z",
-        "Update": "2026-07-11T13:31:21.122Z"
+        "Date": "2026-07-11T15:32:45.478Z",
+        "Update": "2026-07-11T15:32:45.478Z"
       }
     ]
   },
@@ -63,8 +63,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.122Z",
-        "Update": "2026-07-11T13:31:21.122Z"
+        "Date": "2026-07-11T15:32:45.478Z",
+        "Update": "2026-07-11T15:32:45.478Z"
       }
     ]
   },
@@ -87,8 +87,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.123Z",
-        "Update": "2026-07-11T13:31:21.123Z"
+        "Date": "2026-07-11T15:32:45.478Z",
+        "Update": "2026-07-11T15:32:45.478Z"
       }
     ]
   },
@@ -112,8 +112,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.123Z",
-        "Update": "2026-07-11T13:31:21.123Z"
+        "Date": "2026-07-11T15:32:45.478Z",
+        "Update": "2026-07-11T15:32:45.478Z"
       }
     ]
   },
@@ -138,8 +138,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.123Z",
-        "Update": "2026-07-11T13:31:21.123Z"
+        "Date": "2026-07-11T15:32:45.479Z",
+        "Update": "2026-07-11T15:32:45.479Z"
       }
     ],
     "Dramas (coreanos, turcos, etc.)": [
@@ -160,26 +160,28 @@
         "Type": "episode",
         "Episodes": 59,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.123Z",
-        "Update": "2026-07-11T13:31:21.123Z"
+        "Date": "2026-07-11T15:32:45.479Z",
+        "Update": "2026-07-11T15:32:45.479Z"
       },
       {
         "Label": "46 DESAPARECIÉNDO - YOK OLAN",
         "Price": "26.00",
-        "Description": "Murat, un brillante profesor de genética, se siente consumido por la culpa tras la muerte de su padre y el estado vegetativo de su hermana Ezo. Decidido a encontrar una cura, se adentra en un peligroso camino que combina la ciencia con rituales chamánicos. Al probar una poción en sí mismo, libera un alter ego vengativo que no puede controlar.",
+        "Description": "Yok Olan (en español 46 Desapareciendo) es una serie turca de suspenso psicológico que explora los límites de la mente humana y las consecuencias de la obsesión científica. La trama gira en torno a Murat Günay, un profesor de genética que desarrolla un suero experimental capaz de alterar la personalidad y liberar impulsos reprimidos. Lo que comienza como un proyecto científico se convierte en una pesadilla cuando Murat empieza a perder el control sobre sí mismo y su entorno.",
         "Images": [
-          "46-desapareciendo-yok-olan-0.webp",
-          "46-desapareciendo-yok-olan-1.webp"
+          "46-desapareciendo-yok-olan-0.jpg",
+          "46-desapareciendo-yok-olan-1.jpg"
         ],
         "Features": [
           "Episodios: 13",
-          "Título original: Yok Olan"
+          "Título original: Yok Olan",
+          "Año: 2016",
+          "País: Turquía"
         ],
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.124Z",
-        "Update": "2026-07-11T13:31:21.124Z"
+        "Date": "2026-07-11T15:32:45.479Z",
+        "Update": "2026-07-11T15:32:45.479Z"
       },
       {
         "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
@@ -198,8 +200,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.124Z",
-        "Update": "2026-07-11T13:31:21.124Z"
+        "Date": "2026-07-11T15:32:45.480Z",
+        "Update": "2026-07-11T15:32:45.480Z"
       },
       {
         "Label": "ADELA",
@@ -216,8 +218,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.124Z",
-        "Update": "2026-07-11T13:31:21.124Z"
+        "Date": "2026-07-11T15:32:45.480Z",
+        "Update": "2026-07-11T15:32:45.480Z"
       },
       {
         "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
@@ -234,8 +236,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.125Z",
-        "Update": "2026-07-11T13:31:21.125Z"
+        "Date": "2026-07-11T15:32:45.480Z",
+        "Update": "2026-07-11T15:32:45.480Z"
       },
       {
         "Label": "AL MARGEN DE LA LEY - YASANIN KENARINDA",
@@ -252,8 +254,8 @@
         "Type": "episode",
         "Episodes": 24,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.125Z",
-        "Update": "2026-07-11T13:31:21.125Z"
+        "Date": "2026-07-11T15:32:45.480Z",
+        "Update": "2026-07-11T15:32:45.480Z"
       },
       {
         "Label": "ALAS DE AMOR - ASK KANATLARI",
@@ -270,8 +272,8 @@
         "Type": "episode",
         "Episodes": 69,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.125Z",
-        "Update": "2026-07-11T13:31:21.125Z"
+        "Date": "2026-07-11T15:32:45.481Z",
+        "Update": "2026-07-11T15:32:45.481Z"
       },
       {
         "Label": "ALAS ROTAS - KIRIK KANATLAR",
@@ -288,8 +290,8 @@
         "Type": "episode",
         "Episodes": 151,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.125Z",
-        "Update": "2026-07-11T13:31:21.125Z"
+        "Date": "2026-07-11T15:32:45.481Z",
+        "Update": "2026-07-11T15:32:45.481Z"
       },
       {
         "Label": "ALEF",
@@ -306,8 +308,8 @@
         "Type": "episode",
         "Episodes": 8,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.125Z",
-        "Update": "2026-07-11T13:31:21.125Z"
+        "Date": "2026-07-11T15:32:45.481Z",
+        "Update": "2026-07-11T15:32:45.481Z"
       },
       {
         "Label": "ALMAS DE FUEGO",
@@ -323,8 +325,8 @@
         "Type": "episode",
         "Episodes": 62,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.126Z",
-        "Update": "2026-07-11T13:31:21.126Z"
+        "Date": "2026-07-11T15:32:45.481Z",
+        "Update": "2026-07-11T15:32:45.481Z"
       },
       {
         "Label": "ALMAS HERIDAS - (INOCENTES) - MASUMLAR",
@@ -341,8 +343,8 @@
         "Type": "episode",
         "Episodes": 107,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.126Z",
-        "Update": "2026-07-11T13:31:21.126Z"
+        "Date": "2026-07-11T15:32:45.482Z",
+        "Update": "2026-07-11T15:32:45.482Z"
       },
       {
         "Label": "AMAR ES PRIMAVERA - ILKBAHARDA ASK",
@@ -359,8 +361,8 @@
         "Type": "episode",
         "Episodes": 115,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.126Z",
-        "Update": "2026-07-11T13:31:21.126Z"
+        "Date": "2026-07-11T15:32:45.482Z",
+        "Update": "2026-07-11T15:32:45.482Z"
       },
       {
         "Label": "AMOR DE CONTRABANDO - KARA PARA ASK",
@@ -377,8 +379,8 @@
         "Type": "episode",
         "Episodes": 167,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.126Z",
-        "Update": "2026-07-11T13:31:21.126Z"
+        "Date": "2026-07-11T15:32:45.482Z",
+        "Update": "2026-07-11T15:32:45.482Z"
       },
       {
         "Label": "AMOR DE FAMILIA - NUESTRA HISTORIA - BIZIM HIKAYE",
@@ -395,8 +397,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.126Z",
-        "Update": "2026-07-11T13:31:21.126Z"
+        "Date": "2026-07-11T15:32:45.483Z",
+        "Update": "2026-07-11T15:32:45.483Z"
       },
       {
         "Label": "AMOR EN BLANCO Y NEGRO - SIYAH BEYAZ ASK",
@@ -413,8 +415,8 @@
         "Type": "episode",
         "Episodes": 64,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.127Z",
-        "Update": "2026-07-11T13:31:21.127Z"
+        "Date": "2026-07-11T15:32:45.483Z",
+        "Update": "2026-07-11T15:32:45.483Z"
       },
       {
         "Label": "AMOR EN EL AIRE - ME ROBASTE EL CORAZÓN - LLAMAS A MI PUERTA",
@@ -431,8 +433,8 @@
         "Type": "episode",
         "Episodes": 142,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.127Z",
-        "Update": "2026-07-11T13:31:21.127Z"
+        "Date": "2026-07-11T15:32:45.483Z",
+        "Update": "2026-07-11T15:32:45.483Z"
       },
       {
         "Label": "AMOR EN GUERRA - SURA & SEYIT",
@@ -449,8 +451,8 @@
         "Type": "episode",
         "Episodes": 46,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.127Z",
-        "Update": "2026-07-11T13:31:21.127Z"
+        "Date": "2026-07-11T15:32:45.483Z",
+        "Update": "2026-07-11T15:32:45.483Z"
       },
       {
         "Label": "AMOR EN LA AZOTEA - ÇATI KATI ASKI",
@@ -467,8 +469,8 @@
         "Type": "episode",
         "Episodes": 60,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.127Z",
-        "Update": "2026-07-11T13:31:21.127Z"
+        "Date": "2026-07-11T15:32:45.483Z",
+        "Update": "2026-07-11T15:32:45.483Z"
       },
       {
         "Label": "AMOR ETERNO - KARA SEVDA",
@@ -485,8 +487,8 @@
         "Type": "episode",
         "Episodes": 458,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.128Z",
-        "Update": "2026-07-11T13:31:21.128Z"
+        "Date": "2026-07-11T15:32:45.484Z",
+        "Update": "2026-07-11T15:32:45.484Z"
       },
       {
         "Label": "AMOR IMPOSIBLE - GÜLCEMAL",
@@ -503,8 +505,8 @@
         "Type": "episode",
         "Episodes": 22,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.128Z",
-        "Update": "2026-07-11T13:31:21.128Z"
+        "Date": "2026-07-11T15:32:45.484Z",
+        "Update": "2026-07-11T15:32:45.484Z"
       },
       {
         "Label": "AMOR INVENCIBLE - YENILMEZ ASK",
@@ -521,8 +523,8 @@
         "Type": "episode",
         "Episodes": 96,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.128Z",
-        "Update": "2026-07-11T13:31:21.128Z"
+        "Date": "2026-07-11T15:32:45.484Z",
+        "Update": "2026-07-11T15:32:45.484Z"
       },
       {
         "Label": "AMOR LOGICA VENFANZA – ASK MANTIK INTIKAM",
@@ -539,8 +541,8 @@
         "Type": "episode",
         "Episodes": 107,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.128Z",
-        "Update": "2026-07-11T13:31:21.128Z"
+        "Date": "2026-07-11T15:32:45.484Z",
+        "Update": "2026-07-11T15:32:45.484Z"
       },
       {
         "Label": "AMOR MANCHADO - TURK",
@@ -557,8 +559,8 @@
         "Type": "episode",
         "Episodes": 30,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.128Z",
-        "Update": "2026-07-11T13:31:21.128Z"
+        "Date": "2026-07-11T15:32:45.484Z",
+        "Update": "2026-07-11T15:32:45.484Z"
       },
       {
         "Label": "AMOR OBSTINADO - INADINA ASK",
@@ -575,8 +577,8 @@
         "Type": "episode",
         "Episodes": 97,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.128Z",
-        "Update": "2026-07-11T13:31:21.128Z"
+        "Date": "2026-07-11T15:32:45.484Z",
+        "Update": "2026-07-11T15:32:45.484Z"
       },
       {
         "Label": "AMOR SIN PALABRAS - HAYAT",
@@ -593,8 +595,8 @@
         "Type": "episode",
         "Episodes": 82,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.129Z",
-        "Update": "2026-07-11T13:31:21.129Z"
+        "Date": "2026-07-11T15:32:45.485Z",
+        "Update": "2026-07-11T15:32:45.485Z"
       },
       {
         "Label": "AMOR Y ODIO - ASK VE MAVI",
@@ -611,8 +613,8 @@
         "Type": "episode",
         "Episodes": 269,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.129Z",
-        "Update": "2026-07-11T13:31:21.129Z"
+        "Date": "2026-07-11T15:32:45.485Z",
+        "Update": "2026-07-11T15:32:45.485Z"
       },
       {
         "Label": "AMOR Y PECADO - ASK VE GÜNAH",
@@ -629,8 +631,8 @@
         "Type": "episode",
         "Episodes": 120,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.129Z",
-        "Update": "2026-07-11T13:31:21.129Z"
+        "Date": "2026-07-11T15:32:45.485Z",
+        "Update": "2026-07-11T15:32:45.485Z"
       },
       {
         "Label": "AMOR Y VENGANZA - CEZUR",
@@ -647,8 +649,8 @@
         "Type": "episode",
         "Episodes": 107,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.129Z",
-        "Update": "2026-07-11T13:31:21.129Z"
+        "Date": "2026-07-11T15:32:45.485Z",
+        "Update": "2026-07-11T15:32:45.485Z"
       },
       {
         "Label": "AMORES CRUZADOS - INTERSECCIÓN - KAVSAK",
@@ -665,8 +667,8 @@
         "Type": "episode",
         "Episodes": 75,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.129Z",
-        "Update": "2026-07-11T13:31:21.129Z"
+        "Date": "2026-07-11T15:32:45.485Z",
+        "Update": "2026-07-11T15:32:45.485Z"
       },
       {
         "Label": "BONDAD - LA TRAICIÓN - EL AMOR Y LA VENGANZA - IYILIK, IHANET VE INTIKAM",
@@ -683,8 +685,8 @@
         "Type": "episode",
         "Episodes": 74,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.130Z",
-        "Update": "2026-07-11T13:31:21.130Z"
+        "Date": "2026-07-11T15:32:45.485Z",
+        "Update": "2026-07-11T15:32:45.485Z"
       },
       {
         "Label": "CANCIÓN DE VERANO - YAZ SARKISI",
@@ -701,8 +703,8 @@
         "Type": "episode",
         "Episodes": 24,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.130Z",
-        "Update": "2026-07-11T13:31:21.130Z"
+        "Date": "2026-07-11T15:32:45.486Z",
+        "Update": "2026-07-11T15:32:45.486Z"
       },
       {
         "Label": "CARTA DE DESPEDIDA - VEDA MEKTUBU",
@@ -719,8 +721,8 @@
         "Type": "episode",
         "Episodes": 76,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.130Z",
-        "Update": "2026-07-11T13:31:21.130Z"
+        "Date": "2026-07-11T15:32:45.486Z",
+        "Update": "2026-07-11T15:32:45.486Z"
       },
       {
         "Label": "CEMENTERIO - MEZARLIK",
@@ -737,8 +739,8 @@
         "Type": "episode",
         "Episodes": 12,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.131Z",
-        "Update": "2026-07-11T13:31:21.131Z"
+        "Date": "2026-07-11T15:32:45.487Z",
+        "Update": "2026-07-11T15:32:45.487Z"
       },
       {
         "Label": "CENNET TODO VUELVE – CENNETIN GÖZYASLARI",
@@ -755,8 +757,8 @@
         "Type": "episode",
         "Episodes": 159,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.131Z",
-        "Update": "2026-07-11T13:31:21.131Z"
+        "Date": "2026-07-11T15:32:45.487Z",
+        "Update": "2026-07-11T15:32:45.487Z"
       },
       {
         "Label": "CHOQUE - CRASH - CARPRISMA",
@@ -773,8 +775,8 @@
         "Type": "episode",
         "Episodes": 68,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.131Z",
-        "Update": "2026-07-11T13:31:21.131Z"
+        "Date": "2026-07-11T15:32:45.487Z",
+        "Update": "2026-07-11T15:32:45.487Z"
       },
       {
         "Label": "CIUDAD CRUEL – ZALIM ISTANBUL",
@@ -791,8 +793,8 @@
         "Type": "episode",
         "Episodes": 108,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.131Z",
-        "Update": "2026-07-11T13:31:21.131Z"
+        "Date": "2026-07-11T15:32:45.487Z",
+        "Update": "2026-07-11T15:32:45.487Z"
       },
       {
         "Label": "CIUDAD DEL MIRZA - MIRZAPUR TEMP. 1, 2, 3 x 29 FIN",
@@ -809,8 +811,8 @@
         "Type": "episode",
         "Episodes": 29,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.131Z",
-        "Update": "2026-07-11T13:31:21.131Z"
+        "Date": "2026-07-11T15:32:45.487Z",
+        "Update": "2026-07-11T15:32:45.487Z"
       },
       {
         "Label": "CLUB DE ESTAMBUL – ISTANBUL KULÜBÜ",
@@ -827,8 +829,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.131Z",
-        "Update": "2026-07-11T13:31:21.131Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "CLUB ESTAMBUL - ISTANBUL KULÜBÜ",
@@ -845,8 +847,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "COLLAR POLVORIENTO - CHICOS DE BARRIO - TOZLUVAKA",
@@ -863,8 +865,8 @@
         "Type": "episode",
         "Episodes": 80,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "COMBINACIÓN PERFECTA - MÜKEMMEL UYUM",
@@ -881,8 +883,8 @@
         "Type": "episode",
         "Episodes": 33,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "COMO VUELA EL CUERVO - LAS ALAS DE LA AMBICIÓN - KUS UÇUSU",
@@ -899,8 +901,8 @@
         "Type": "episode",
         "Episodes": 24,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "CON OLOR A FRESA – ÇILEK KOKUSU",
@@ -917,8 +919,8 @@
         "Type": "episode",
         "Episodes": 55,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "CONVIRTIÉNDOSE EN UNA DAMA - GÖNÜLCELEN",
@@ -935,8 +937,8 @@
         "Type": "episode",
         "Episodes": 112,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.488Z",
+        "Update": "2026-07-11T15:32:45.488Z"
       },
       {
         "Label": "CORAZONES HUÉRFANOS - YETIM KALPLER",
@@ -953,8 +955,8 @@
         "Type": "episode",
         "Episodes": 34,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.132Z",
-        "Update": "2026-07-11T13:31:21.132Z"
+        "Date": "2026-07-11T15:32:45.489Z",
+        "Update": "2026-07-11T15:32:45.489Z"
       },
       {
         "Label": "CORAZÓN HERIDO - HERIDAS DEL CORAZÓN – KALP YARASI",
@@ -971,8 +973,8 @@
         "Type": "episode",
         "Episodes": 107,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.489Z",
+        "Update": "2026-07-11T15:32:45.489Z"
       },
       {
         "Label": "CRASH – ÇARPISMA",
@@ -989,8 +991,8 @@
         "Type": "episode",
         "Episodes": 68,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.489Z",
+        "Update": "2026-07-11T15:32:45.489Z"
       },
       {
         "Label": "CUENTOS DE INVIERNO - KIS MASALI",
@@ -1007,8 +1009,8 @@
         "Type": "episode",
         "Episodes": 33,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.489Z",
+        "Update": "2026-07-11T15:32:45.489Z"
       },
       {
         "Label": "CUENTOS DE LA ISLA - ADA MASALI",
@@ -1025,8 +1027,8 @@
         "Type": "episode",
         "Episodes": 83,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.489Z",
+        "Update": "2026-07-11T15:32:45.489Z"
       },
       {
         "Label": "CUERVO - KUZGUN",
@@ -1043,8 +1045,8 @@
         "Type": "episode",
         "Episodes": 71,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.489Z",
+        "Update": "2026-07-11T15:32:45.489Z"
       },
       {
         "Label": "CUESTIÓN DE HONOR - NAMUS MESELESI",
@@ -1061,8 +1063,8 @@
         "Type": "episode",
         "Episodes": 61,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "CUKUR - EL NIÑO",
@@ -1079,8 +1081,8 @@
         "Type": "episode",
         "Episodes": 156,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.133Z",
-        "Update": "2026-07-11T13:31:21.133Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "DE QUIÉN HUÍMOS MAMÁ - KIZIM NEREDE",
@@ -1097,8 +1099,8 @@
         "Type": "episode",
         "Episodes": 7,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "DONDE ESTÁ MI HIJA - KIZIM NEREDE",
@@ -1115,8 +1117,8 @@
         "Type": "episode",
         "Episodes": 62,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "DULCE VENGANZA - TATLI INTIKAM",
@@ -1133,8 +1135,8 @@
         "Type": "episode",
         "Episodes": 98,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "EL JOVEN GENIO SINA - GENÇ DAHI SINA",
@@ -1151,8 +1153,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "EL AMOR MÁS HERMOSO - ASKLARIN EN GÜZEL",
@@ -1169,8 +1171,8 @@
         "Type": "episode",
         "Episodes": 50,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.490Z",
+        "Update": "2026-07-11T15:32:45.490Z"
       },
       {
         "Label": "EL CAMINO DE LA VIDA - HAYAT YOLU",
@@ -1187,8 +1189,8 @@
         "Type": "episode",
         "Episodes": 32,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.491Z",
+        "Update": "2026-07-11T15:32:45.491Z"
       },
       {
         "Label": "EL CORAZÓN DE LA CIUDAD – BU SEHIR ARKANDAN GELECEK",
@@ -1205,8 +1207,8 @@
         "Type": "episode",
         "Episodes": 33,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.134Z",
-        "Update": "2026-07-11T13:31:21.134Z"
+        "Date": "2026-07-11T15:32:45.491Z",
+        "Update": "2026-07-11T15:32:45.491Z"
       },
       {
         "Label": "EL CORAZÓN DE RÜZGAR - RÜZGARIN KALBI",
@@ -1223,8 +1225,8 @@
         "Type": "episode",
         "Episodes": 27,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.491Z",
+        "Update": "2026-07-11T15:32:45.491Z"
       },
       {
         "Label": "EL CUERVO - KUZGUN",
@@ -1241,8 +1243,8 @@
         "Type": "episode",
         "Episodes": 71,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.491Z",
+        "Update": "2026-07-11T15:32:45.491Z"
       },
       {
         "Label": "EL DESTINO - KADER",
@@ -1259,8 +1261,8 @@
         "Type": "episode",
         "Episodes": 30,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.491Z",
+        "Update": "2026-07-11T15:32:45.491Z"
       },
       {
         "Label": "EL FUEGO DEL DESTINO - KADERIN ATESI",
@@ -1277,8 +1279,8 @@
         "Type": "episode",
         "Episodes": 48,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.491Z",
+        "Update": "2026-07-11T15:32:45.491Z"
       },
       {
         "Label": "EL FUEGO EN NOSOTROS - BIZDEKI ATES",
@@ -1295,8 +1297,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL FÉNIX – ZÜMRÜDÜANKA",
@@ -1313,8 +1315,8 @@
         "Type": "episode",
         "Episodes": 50,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL HOMBRE EQUIVOCADO - BAY YANLIS",
@@ -1331,8 +1333,8 @@
         "Type": "episode",
         "Episodes": 14,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL JARDÍN SECRETO - GIZLI BAHÇE",
@@ -1349,8 +1351,8 @@
         "Type": "episode",
         "Episodes": 18,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.135Z",
-        "Update": "2026-07-11T13:31:21.135Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL JUEGO DE MI DESTINO - AMOR Y TRAICIÓN - KADERIMIN OYUNU",
@@ -1367,8 +1369,8 @@
         "Type": "episode",
         "Episodes": 85,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL LEGADO DE AMOR - EMANET",
@@ -1385,8 +1387,8 @@
         "Type": "episode",
         "Episodes": 0,
         "PricePerEpisode": "0.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL NIÑO – ÇOCUK",
@@ -1403,8 +1405,8 @@
         "Type": "episode",
         "Episodes": 62,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL OLOR DE UN NIÑO - BIR ÇOCUGUN KOKUSU",
@@ -1421,8 +1423,8 @@
         "Type": "episode",
         "Episodes": 36,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.492Z",
+        "Update": "2026-07-11T15:32:45.492Z"
       },
       {
         "Label": "EL PADRE - BABA",
@@ -1439,8 +1441,8 @@
         "Type": "episode",
         "Episodes": 224,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL PATIO - AVLU",
@@ -1457,8 +1459,8 @@
         "Type": "episode",
         "Episodes": 145,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL PAÑUELO ROJO - KIRMIZI MENDIL",
@@ -1475,8 +1477,8 @@
         "Type": "episode",
         "Episodes": 88,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.136Z",
-        "Update": "2026-07-11T13:31:21.136Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL POZO - CUKUR",
@@ -1493,8 +1495,8 @@
         "Type": "episode",
         "Episodes": 155,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL PRECIO DEL AMOR - ASKIN BEDELI",
@@ -1511,8 +1513,8 @@
         "Type": "episode",
         "Episodes": 26,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL SASTRE - TERZI",
@@ -1529,8 +1531,8 @@
         "Type": "episode",
         "Episodes": 23,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL SECRETO - SIR",
@@ -1547,8 +1549,8 @@
         "Type": "episode",
         "Episodes": 38,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.493Z",
+        "Update": "2026-07-11T15:32:45.493Z"
       },
       {
         "Label": "EL SECRETO DE FERIHA – ADINI FERIHA KOYDUM",
@@ -1565,8 +1567,8 @@
         "Type": "episode",
         "Episodes": 166,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "EL TURCO",
@@ -1582,8 +1584,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "EN BUSCA DE MI HIJA - HÍCRAN",
@@ -1600,8 +1602,8 @@
         "Type": "episode",
         "Episodes": 127,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "EN LAS BUENAS Y EN LAS MALAS - IYI GÜNDE KÖTÜ GÜNDE",
@@ -1618,8 +1620,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.137Z",
-        "Update": "2026-07-11T13:31:21.137Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "EN TODAS PARTES TÚ – HER YERDE SEN",
@@ -1636,8 +1638,8 @@
         "Type": "episode",
         "Episodes": 54,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "ENAMORADOS ANÓNIMOS - ANONIM ÂSIKLAR",
@@ -1654,8 +1656,8 @@
         "Type": "episode",
         "Episodes": 8,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "ENTRE DOS AMORES - IKI ASK ARASINDA",
@@ -1672,8 +1674,8 @@
         "Type": "episode",
         "Episodes": 119,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.494Z",
+        "Update": "2026-07-11T15:32:45.494Z"
       },
       {
         "Label": "ENTRE EL AMOR Y LA VENGANZA - HERCAI",
@@ -1690,8 +1692,8 @@
         "Type": "episode",
         "Episodes": 0,
         "PricePerEpisode": "0.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.495Z",
+        "Update": "2026-07-11T15:32:45.495Z"
       },
       {
         "Label": "ESCONDIÉNDO A NUESTRA MADRE - ANNEMIZI SAKLARKEN",
@@ -1708,8 +1710,8 @@
         "Type": "episode",
         "Episodes": 24,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.495Z",
+        "Update": "2026-07-11T15:32:45.495Z"
       },
       {
         "Label": "ESCORPIÓN – AKREP",
@@ -1726,8 +1728,8 @@
         "Type": "episode",
         "Episodes": 84,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.495Z",
+        "Update": "2026-07-11T15:32:45.495Z"
       },
       {
         "Label": "ESCÓNDEME - PERDIDOS EN EL AMOR - ASKTA KAYBOLANLAR",
@@ -1744,8 +1746,8 @@
         "Type": "episode",
         "Episodes": 65,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.138Z",
-        "Update": "2026-07-11T13:31:21.138Z"
+        "Date": "2026-07-11T15:32:45.495Z",
+        "Update": "2026-07-11T15:32:45.495Z"
       },
       {
         "Label": "ESCÚCHAME - BENI DINLE",
@@ -1762,8 +1764,8 @@
         "Type": "episode",
         "Episodes": 60,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.495Z",
+        "Update": "2026-07-11T15:32:45.495Z"
       },
       {
         "Label": "ESMIRNA – GÜNESIN KIZLARI",
@@ -1780,8 +1782,8 @@
         "Type": "episode",
         "Episodes": 103,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.495Z",
+        "Update": "2026-07-11T15:32:45.495Z"
       },
       {
         "Label": "EXILIO AZUL - ATRAPADA EN LA JAULA AZUL - MAVIYE SÜRGÜN",
@@ -1798,8 +1800,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.496Z",
+        "Update": "2026-07-11T15:32:45.496Z"
       },
       {
         "Label": "EZEL",
@@ -1816,8 +1818,8 @@
         "Type": "episode",
         "Episodes": 151,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.496Z",
+        "Update": "2026-07-11T15:32:45.496Z"
       },
       {
         "Label": "FAMILIA - AILE",
@@ -1834,8 +1836,8 @@
         "Type": "episode",
         "Episodes": 95,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.496Z",
+        "Update": "2026-07-11T15:32:45.496Z"
       },
       {
         "Label": "FATMAGÜL - FATMAGÜL'ÜN SUÇU NE",
@@ -1852,8 +1854,8 @@
         "Type": "episode",
         "Episodes": 81,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.496Z",
+        "Update": "2026-07-11T15:32:45.496Z"
       },
       {
         "Label": "FERHAT Y SIRIN - FERHAT ILE SIRIN",
@@ -1870,8 +1872,8 @@
         "Type": "episode",
         "Episodes": 15,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.139Z",
-        "Update": "2026-07-11T13:31:21.139Z"
+        "Date": "2026-07-11T15:32:45.496Z",
+        "Update": "2026-07-11T15:32:45.496Z"
       },
       {
         "Label": "FI",
@@ -1888,8 +1890,8 @@
         "Type": "episode",
         "Episodes": 35,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.496Z",
+        "Update": "2026-07-11T15:32:45.496Z"
       },
       {
         "Label": "FUEGO FUEGO – ATES ATES",
@@ -1906,8 +1908,8 @@
         "Type": "episode",
         "Episodes": 91,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "GRANDES MENTIRAS - BÜYÜK YALANLAR",
@@ -1924,8 +1926,8 @@
         "Type": "episode",
         "Episodes": 37,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "GRITOS DE AMOR – ASK ÇIGLIKLARI",
@@ -1942,8 +1944,8 @@
         "Type": "episode",
         "Episodes": 46,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "GUERRA DE ROSAS - GÜLLERIN SAVASI",
@@ -1960,8 +1962,8 @@
         "Type": "episode",
         "Episodes": 148,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "GÖNÜL",
@@ -1978,8 +1980,8 @@
         "Type": "episode",
         "Episodes": 19,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "HABITACIÓN 309 - No. 309",
@@ -1996,8 +1998,8 @@
         "Type": "episode",
         "Episodes": 202,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "HASTA EL FINAL - NO ME DEJES IR - ASLA VAZGECMEN",
@@ -2014,8 +2016,8 @@
         "Type": "episode",
         "Episodes": 172,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.140Z",
-        "Update": "2026-07-11T13:31:21.140Z"
+        "Date": "2026-07-11T15:32:45.497Z",
+        "Update": "2026-07-11T15:32:45.497Z"
       },
       {
         "Label": "HAY SULTÁN - ABDULKA DIR GEGLANI HAZRETLEZLERI",
@@ -2032,8 +2034,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.498Z",
+        "Update": "2026-07-11T15:32:45.498Z"
       },
       {
         "Label": "HERIDA DEL CORAZÓN - KALP YARASI",
@@ -2050,8 +2052,8 @@
         "Type": "episode",
         "Episodes": 107,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.498Z",
+        "Update": "2026-07-11T15:32:45.498Z"
       },
       {
         "Label": "HERMANAS - KARDESLER",
@@ -2068,8 +2070,8 @@
         "Type": "episode",
         "Episodes": 8,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.498Z",
+        "Update": "2026-07-11T15:32:45.498Z"
       },
       {
         "Label": "HERMOSAS CAMPESINAS - GÜZEL KÖYLÜ",
@@ -2086,8 +2088,8 @@
         "Type": "episode",
         "Episodes": 106,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.498Z",
+        "Update": "2026-07-11T15:32:45.498Z"
       },
       {
         "Label": "HIEDRA VENENOSA - ZEHIRLI SARMASIK",
@@ -2104,8 +2106,8 @@
         "Type": "episode",
         "Episodes": 23,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.498Z",
+        "Update": "2026-07-11T15:32:45.498Z"
       },
       {
         "Label": "HIJO, DÓNDE ESTÁS - OGUL, NEREDESIN",
@@ -2122,8 +2124,8 @@
         "Type": "episode",
         "Episodes": 45,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.498Z",
+        "Update": "2026-07-11T15:32:45.498Z"
       },
       {
         "Label": "HOLDING",
@@ -2140,8 +2142,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.141Z",
-        "Update": "2026-07-11T13:31:21.141Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "HONOR Y RESPETO - KÜBRA",
@@ -2158,8 +2160,8 @@
         "Type": "episode",
         "Episodes": 16,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "IDENTIDAD OCULTA - SOL DE INVIERNO - KIS GÜNESI",
@@ -2176,8 +2178,8 @@
         "Type": "episode",
         "Episodes": 30,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "INFIEL - TRAICIONADA - SADAKATSIZ",
@@ -2194,8 +2196,8 @@
         "Type": "episode",
         "Episodes": 105,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "INVENCIBLE - A.Z.I.Z",
@@ -2212,8 +2214,8 @@
         "Type": "episode",
         "Episodes": 91,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "INVIERNO – KIS MASALI",
@@ -2230,8 +2232,8 @@
         "Type": "episode",
         "Episodes": 33,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "JAULA DORADA - ALTIN KAFES",
@@ -2248,8 +2250,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.499Z",
+        "Update": "2026-07-11T15:32:45.499Z"
       },
       {
         "Label": "JUEGO DE AMOR - SEVEN NE YAPMAZ",
@@ -2266,8 +2268,8 @@
         "Type": "episode",
         "Episodes": 33,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.142Z",
-        "Update": "2026-07-11T13:31:21.142Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "JUEGO DESDE LA MIRADA DEL HOMBRE - EGO - ERKEÚN GÓZÚNDEN OYUN",
@@ -2284,8 +2286,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "JUEGOS DEL DESTINO – KADER OYUNLARI",
@@ -2302,8 +2304,8 @@
         "Type": "episode",
         "Episodes": 58,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "KOSEM LA SULTANA - MUHTESEM YÜZYIL KÖSEM",
@@ -2320,8 +2322,8 @@
         "Type": "episode",
         "Episodes": 115,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "LA HISTORIA DE BLANCO Y NEGRO QUE SE TRASNFORMA EN GRIS - PIYASA",
@@ -2338,8 +2340,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "LA HISTORIA DE NUNCA ACABAR – HIÇ BITMEYEN HIKAYE",
@@ -2356,8 +2358,8 @@
         "Type": "episode",
         "Episodes": 22,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "LA NIÑA DEL VALLE VERDE – YESIL VADI’NIN KIZI",
@@ -2374,8 +2376,8 @@
         "Type": "episode",
         "Episodes": 140,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.500Z",
+        "Update": "2026-07-11T15:32:45.500Z"
       },
       {
         "Label": "LA NOVIA DE ESTAMBUL - ETERNAMENTE - ISTANBULLU GELIN",
@@ -2392,8 +2394,8 @@
         "Type": "episode",
         "Episodes": 329,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LA SEÑORA FAZILET Y SUS HIJAS - FAZILET HANIM VE KIZLARI",
@@ -2410,8 +2412,8 @@
         "Type": "episode",
         "Episodes": 165,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.143Z",
-        "Update": "2026-07-11T13:31:21.143Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LA TRAICIÓN - LA GRAN MENTIRA - IYILIK",
@@ -2428,8 +2430,8 @@
         "Type": "episode",
         "Episodes": 85,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LA VERDAD - MARASLI",
@@ -2446,8 +2448,8 @@
         "Type": "episode",
         "Episodes": 60,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LATIDOS DEL CORAZÓN - KALP ATISI",
@@ -2464,8 +2466,8 @@
         "Type": "episode",
         "Episodes": 74,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LLAMAS DEL DESTINO – ALEV ALEV",
@@ -2482,8 +2484,8 @@
         "Type": "episode",
         "Episodes": 28,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LOBO - BÓRÚ",
@@ -2500,8 +2502,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.501Z",
+        "Update": "2026-07-11T15:32:45.501Z"
       },
       {
         "Label": "LOBO - BÖRÜ",
@@ -2518,8 +2520,8 @@
         "Type": "episode",
         "Episodes": 6,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "LOVE IS IN THE AIR – SEN ÇAL KAPIMI",
@@ -2537,8 +2539,8 @@
         "Type": "episode",
         "Episodes": 161,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.144Z",
-        "Update": "2026-07-11T13:31:21.144Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "LUCIÉRNAGA - ATESBÖCEGI",
@@ -2555,8 +2557,8 @@
         "Type": "episode",
         "Episodes": 51,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "LUNA LLENA - DONULAY",
@@ -2573,8 +2575,8 @@
         "Type": "episode",
         "Episodes": 69,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "MADRASTRA",
@@ -2590,8 +2592,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "MADRE, TODO POR MI HIJA - ANNE",
@@ -2608,8 +2610,8 @@
         "Type": "episode",
         "Episodes": 111,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "MADRES E HIJAS - ANNE VE KAZLARI",
@@ -2626,8 +2628,8 @@
         "Type": "episode",
         "Episodes": 26,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.502Z",
+        "Update": "2026-07-11T15:32:45.502Z"
       },
       {
         "Label": "MARTÍN PESCADOR - UNA NUEVA VIDA - YENI BIR HAYAT",
@@ -2644,8 +2646,8 @@
         "Type": "episode",
         "Episodes": 371,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.503Z",
+        "Update": "2026-07-11T15:32:45.503Z"
       },
       {
         "Label": "MEDCEZIR",
@@ -2662,8 +2664,8 @@
         "Type": "episode",
         "Episodes": 163,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.145Z",
-        "Update": "2026-07-11T13:31:21.145Z"
+        "Date": "2026-07-11T15:32:45.503Z",
+        "Update": "2026-07-11T15:32:45.503Z"
       },
       {
         "Label": "MERYEM",
@@ -2680,8 +2682,8 @@
         "Type": "episode",
         "Episodes": 94,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.146Z",
-        "Update": "2026-07-11T13:31:21.146Z"
+        "Date": "2026-07-11T15:32:45.503Z",
+        "Update": "2026-07-11T15:32:45.503Z"
       },
       {
         "Label": "METAMORFOSIS - BASKALASIM",
@@ -2698,8 +2700,8 @@
         "Type": "episode",
         "Episodes": 10,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.146Z",
-        "Update": "2026-07-11T13:31:21.146Z"
+        "Date": "2026-07-11T15:32:45.503Z",
+        "Update": "2026-07-11T15:32:45.503Z"
       },
       {
         "Label": "MI HOGAR MI DESTINO - DOGDUGUN EV KADERINDIR",
@@ -2716,8 +2718,8 @@
         "Type": "episode",
         "Episodes": 138,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.146Z",
-        "Update": "2026-07-11T13:31:21.146Z"
+        "Date": "2026-07-11T15:32:45.503Z",
+        "Update": "2026-07-11T15:32:45.503Z"
       },
       {
         "Label": "MI LADO IZQUIERDO - SOL YANIM",
@@ -2734,8 +2736,8 @@
         "Type": "episode",
         "Episodes": 36,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.146Z",
-        "Update": "2026-07-11T13:31:21.146Z"
+        "Date": "2026-07-11T15:32:45.503Z",
+        "Update": "2026-07-11T15:32:45.503Z"
       },
       {
         "Label": "MI MENTIRA MÁS DULCE – TATLI YALANIM",
@@ -2752,8 +2754,8 @@
         "Type": "episode",
         "Episodes": 76,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.146Z",
-        "Update": "2026-07-11T13:31:21.146Z"
+        "Date": "2026-07-11T15:32:45.504Z",
+        "Update": "2026-07-11T15:32:45.504Z"
       },
       {
         "Label": "MI NOMBRE ES FARAH - ME LLAMO FARAH - ADIM FARAH",
@@ -2770,8 +2772,8 @@
         "Type": "episode",
         "Episodes": 89,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.504Z",
+        "Update": "2026-07-11T15:32:45.504Z"
       },
       {
         "Label": "MI VIDA - BENIM HAYATIM",
@@ -2788,8 +2790,8 @@
         "Type": "episode",
         "Episodes": 18,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.504Z",
+        "Update": "2026-07-11T15:32:45.504Z"
       },
       {
         "Label": "MISERICORDIA - MERHAMET",
@@ -2806,8 +2808,8 @@
         "Type": "episode",
         "Episodes": 81,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.504Z",
+        "Update": "2026-07-11T15:32:45.504Z"
       },
       {
         "Label": "MUNDOS OPUESTOS - KIZILCIK SERBETI",
@@ -2824,8 +2826,8 @@
         "Type": "episode",
         "Episodes": 214,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.504Z",
+        "Update": "2026-07-11T15:32:45.504Z"
       },
       {
         "Label": "MUY ESTIMADO - AZIZE",
@@ -2842,8 +2844,8 @@
         "Type": "episode",
         "Episodes": 18,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.504Z",
+        "Update": "2026-07-11T15:32:45.504Z"
       },
       {
         "Label": "MÁS ALLÁ DEL AMOR - SORBETE DE ARÁNDANOS - KIZIZLCIK SERBETI",
@@ -2860,8 +2862,8 @@
         "Type": "episode",
         "Episodes": 214,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "MÁS HERMOSA QUE TÚ - SENDEN DAHA GÜZEL",
@@ -2878,8 +2880,8 @@
         "Type": "episode",
         "Episodes": 42,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.147Z",
-        "Update": "2026-07-11T13:31:21.147Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "NADA ES LO QUE PARECE - ICERDE",
@@ -2896,8 +2898,8 @@
         "Type": "episode",
         "Episodes": 101,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "NADIE SABE - SECRETOS DE AMOR - KIMSE BILMEZ",
@@ -2914,8 +2916,8 @@
         "Type": "episode",
         "Episodes": 88,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "NIDO DE VÍBORA - SEN BENIMSIN",
@@ -2932,8 +2934,8 @@
         "Type": "episode",
         "Episodes": 35,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "NIÑO - EL ES MI HIJO - ÇOCUK",
@@ -2950,8 +2952,8 @@
         "Type": "episode",
         "Episodes": 62,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "NO LLORES POR MI - BENIM IÇIN AGLAMA",
@@ -2968,8 +2970,8 @@
         "Type": "episode",
         "Episodes": 16,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.505Z",
+        "Update": "2026-07-11T15:32:45.505Z"
       },
       {
         "Label": "NO ME DEJES IR – ASLA VAZGEÇMEM",
@@ -2986,8 +2988,8 @@
         "Type": "episode",
         "Episodes": 120,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "NO PUEDES CONFIAR EN LOS HOMBRES - EGO",
@@ -3004,8 +3006,8 @@
         "Type": "episode",
         "Episodes": 13,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.148Z",
-        "Update": "2026-07-11T13:31:21.148Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "NO TE ENTREGARÉ A NADIE - SENI KIMSEYE VERMEM",
@@ -3022,8 +3024,8 @@
         "Type": "episode",
         "Episodes": 45,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.149Z",
-        "Update": "2026-07-11T13:31:21.149Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "OH DÓNDE - I0. EV",
@@ -3040,8 +3042,8 @@
         "Type": "episode",
         "Episodes": 21,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.149Z",
-        "Update": "2026-07-11T13:31:21.149Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "PALOMA ESCLAVA DEL DESTINO - GUVERCIN",
@@ -3058,8 +3060,8 @@
         "Type": "episode",
         "Episodes": 16,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.149Z",
-        "Update": "2026-07-11T13:31:21.149Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "PAN NEGRO - VIDA ROBADA - KARASEVDA EKMEGI",
@@ -3076,8 +3078,8 @@
         "Type": "episode",
         "Episodes": 100,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.149Z",
-        "Update": "2026-07-11T13:31:21.149Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "PERLA NEGRA – SIYAH INC",
@@ -3094,8 +3096,8 @@
         "Type": "episode",
         "Episodes": 67,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.149Z",
-        "Update": "2026-07-11T13:31:21.149Z"
+        "Date": "2026-07-11T15:32:45.506Z",
+        "Update": "2026-07-11T15:32:45.506Z"
       },
       {
         "Label": "PIEDAD - MERHAMET",
@@ -3112,8 +3114,8 @@
         "Type": "episode",
         "Episodes": 81,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.149Z",
-        "Update": "2026-07-11T13:31:21.149Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PIEDRA DE LOS DESEOS - DILEK TASI",
@@ -3130,8 +3132,8 @@
         "Type": "episode",
         "Episodes": 67,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PLATÓNICO HOTEL LUNA AZUL -PLATONIK MAVI DOLUNAY OTEL",
@@ -3148,8 +3150,8 @@
         "Type": "episode",
         "Episodes": 8,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PLOMO - KURSUN",
@@ -3166,8 +3168,8 @@
         "Type": "episode",
         "Episodes": 22,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PROPUESTA INDECENTE - INCE INCE YASEMINCE",
@@ -3184,8 +3186,8 @@
         "Type": "episode",
         "Episodes": 64,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PUNTO CIEGO - KÖR NOKTA",
@@ -3202,8 +3204,8 @@
         "Type": "episode",
         "Episodes": 20,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PURPÚRA COMO EL MAR - VIOLETA COMO EL MAR - DENIZ KADAR MOR",
@@ -3220,8 +3222,8 @@
         "Type": "episode",
         "Episodes": 12,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.507Z",
+        "Update": "2026-07-11T15:32:45.507Z"
       },
       {
         "Label": "PÁJARO HERIDO - YARALI KUS",
@@ -3238,8 +3240,8 @@
         "Type": "episode",
         "Episodes": 200,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.150Z",
-        "Update": "2026-07-11T13:31:21.150Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "PÁJARO SOÑADOR - SUEÑO CONTIGO - ERKENCI KUS",
@@ -3256,8 +3258,8 @@
         "Type": "episode",
         "Episodes": 130,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.151Z",
-        "Update": "2026-07-11T13:31:21.151Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "QUIÉN TE LLEVÓ - SENI KIMLER ALDI",
@@ -3274,8 +3276,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.151Z",
-        "Update": "2026-07-11T13:31:21.151Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "QUIÉREME SIEMPRE - HEP BENI SEV",
@@ -3292,8 +3294,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.151Z",
-        "Update": "2026-07-11T13:31:21.151Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "QUÉ PASA SI AMAS DEMASIADO - ÇOK SEVERSEN NE OLUR",
@@ -3310,8 +3312,8 @@
         "Type": "episode",
         "Episodes": 40,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.151Z",
-        "Update": "2026-07-11T13:31:21.151Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "RAMO - ADALETIN BU MU DÜNYA",
@@ -3328,8 +3330,8 @@
         "Type": "episode",
         "Episodes": 45,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.151Z",
-        "Update": "2026-07-11T13:31:21.151Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "REBELDE - ASI",
@@ -3346,8 +3348,8 @@
         "Type": "episode",
         "Episodes": 143,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.151Z",
-        "Update": "2026-07-11T13:31:21.151Z"
+        "Date": "2026-07-11T15:32:45.508Z",
+        "Update": "2026-07-11T15:32:45.508Z"
       },
       {
         "Label": "RECUERDA CORAZÓN - GÖNÜL",
@@ -3364,8 +3366,8 @@
         "Type": "episode",
         "Episodes": 38,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "RICO Y POBRE - ZENGIN VE YOKSUL",
@@ -3382,8 +3384,8 @@
         "Type": "episode",
         "Episodes": 32,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "RIVALES DE SANGRE - KANLI RAKIPLER",
@@ -3400,8 +3402,8 @@
         "Type": "episode",
         "Episodes": 50,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "SAFIR - SAKLI KALEN ASK HIKAYESI",
@@ -3418,8 +3420,8 @@
         "Type": "episode",
         "Episodes": 89,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "SECRETOS DE LA VIDA- HAYATIN SIRLARI",
@@ -3436,8 +3438,8 @@
         "Type": "episode",
         "Episodes": 33,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "SECRETOS DE SANGRE - SECRETOS DE FAMILIA – YARGI",
@@ -3454,8 +3456,8 @@
         "Type": "episode",
         "Episodes": 109,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "SECRETOS DE UN ÁNGEL - BIR PERI MASALI",
@@ -3472,8 +3474,8 @@
         "Type": "episode",
         "Episodes": 116,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.152Z",
-        "Update": "2026-07-11T13:31:21.152Z"
+        "Date": "2026-07-11T15:32:45.509Z",
+        "Update": "2026-07-11T15:32:45.509Z"
       },
       {
         "Label": "SECRETOS PROHIBIDOS - MI PADRE Y SU FAMILIA - BABAM VE AILESI",
@@ -3490,8 +3492,8 @@
         "Type": "episode",
         "Episodes": 41,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.153Z",
-        "Update": "2026-07-11T13:31:21.153Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "SELIM Y SAHRA - SELIM VE SAHRA",
@@ -3508,8 +3510,8 @@
         "Type": "episode",
         "Episodes": 35,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.153Z",
-        "Update": "2026-07-11T13:31:21.153Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "SELIN UN AMOR INOLVIDABLE - UNUTULMAZ BIR ASK SELIN",
@@ -3526,8 +3528,8 @@
         "Type": "episode",
         "Episodes": 45,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.153Z",
-        "Update": "2026-07-11T13:31:21.153Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "SI YO FUERA UNA NUEVE -BIR BULUT OSLAM",
@@ -3544,8 +3546,8 @@
         "Type": "episode",
         "Episodes": 63,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.153Z",
-        "Update": "2026-07-11T13:31:21.153Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "SONRÍE A TU DESTINO - KADERINE GÜLÜMSE",
@@ -3562,8 +3564,8 @@
         "Type": "episode",
         "Episodes": 14,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.153Z",
-        "Update": "2026-07-11T13:31:21.153Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "SU NOMBRE ES ZEHRA - ADI ZEHRA",
@@ -3580,8 +3582,8 @@
         "Type": "episode",
         "Episodes": 14,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.153Z",
-        "Update": "2026-07-11T13:31:21.153Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "TE ALQUILO MI AMOR - AMOR POR ALQUILER - KIRALIK ASK",
@@ -3598,8 +3600,8 @@
         "Type": "episode",
         "Episodes": 160,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.510Z",
+        "Update": "2026-07-11T15:32:45.510Z"
       },
       {
         "Label": "TE AMAS - SEVERSIN BIR ASK HIKAYESIT",
@@ -3616,8 +3618,8 @@
         "Type": "episode",
         "Episodes": 61,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TIERRA DE SECRETOS- KARAGÜL",
@@ -3634,8 +3636,8 @@
         "Type": "episode",
         "Episodes": 331,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TODAVÍA TENGO ESPERANZA - UMUTUM HALA VAR",
@@ -3652,8 +3654,8 @@
         "Type": "episode",
         "Episodes": 66,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TODO AMOR ESCONDE UN SECRETO - GÜNES",
@@ -3670,8 +3672,8 @@
         "Type": "episode",
         "Episodes": 103,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TODO POR MI FAMILIA (1) - KARDESLERIM",
@@ -3688,8 +3690,8 @@
         "Type": "episode",
         "Episodes": 154,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TODO POR MI HIJA - Y TÚ, QUIÉN ERES - KIZIM",
@@ -3706,8 +3708,8 @@
         "Type": "episode",
         "Episodes": 38,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.154Z",
-        "Update": "2026-07-11T13:31:21.154Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TODO SOBRE EL MATRIMONIO – EVLILIK HAKKINDA HER SEY",
@@ -3724,8 +3726,8 @@
         "Type": "episode",
         "Episodes": 105,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.511Z",
+        "Update": "2026-07-11T15:32:45.511Z"
       },
       {
         "Label": "TOMA MI MANO – ELIMI BIRAKMA",
@@ -3742,8 +3744,8 @@
         "Type": "episode",
         "Episodes": 161,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "TRAICIÓN SECRETA - STILETTO VENDETTA",
@@ -3760,8 +3762,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "TRAMPA - TUZAK",
@@ -3779,8 +3781,8 @@
         "Type": "episode",
         "Episodes": 22,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "TRAMPA DE AMOR – ASK TUZAGI",
@@ -3798,8 +3800,8 @@
         "Type": "episode",
         "Episodes": 87,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "TRAMPAS DE AMOR - AFILI ASK",
@@ -3818,8 +3820,8 @@
         "Type": "episode",
         "Episodes": 136,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "TROPICA - DÖNENCE",
@@ -3838,8 +3840,8 @@
         "Type": "episode",
         "Episodes": 45,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.155Z",
-        "Update": "2026-07-11T13:31:21.155Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "TÍO NEGRO O TÍO OSCURO - KARADAYI",
@@ -3858,8 +3860,8 @@
         "Type": "episode",
         "Episodes": 115,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.156Z",
-        "Update": "2026-07-11T13:31:21.156Z"
+        "Date": "2026-07-11T15:32:45.512Z",
+        "Update": "2026-07-11T15:32:45.512Z"
       },
       {
         "Label": "UN POCO DE LUZ DEL DÍA - LA LUZ DE MI VIDA - GIRO DEL DESTINO - BIR KÜCÜK GÜNDÜZ ISIGI",
@@ -3878,8 +3880,8 @@
         "Type": "episode",
         "Episodes": 109,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.156Z",
-        "Update": "2026-07-11T13:31:21.156Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UN POLICÍA DE ANKARA - BEHZAT C",
@@ -3899,8 +3901,8 @@
         "Type": "episode",
         "Episodes": 9,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.156Z",
-        "Update": "2026-07-11T13:31:21.156Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UNA CANCIÓN INTERMINABLE - BITMEYEN SARKI",
@@ -3919,8 +3921,8 @@
         "Type": "episode",
         "Episodes": 32,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.156Z",
-        "Update": "2026-07-11T13:31:21.156Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UNA HISTORIA DE AMOR - BIR ASK HIKAYESI",
@@ -3939,8 +3941,8 @@
         "Type": "episode",
         "Episodes": 58,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.156Z",
-        "Update": "2026-07-11T13:31:21.156Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UNA MADRE CONTRA LA INJUSTICIA - GÜLPERI",
@@ -3959,8 +3961,8 @@
         "Type": "episode",
         "Episodes": 87,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.156Z",
-        "Update": "2026-07-11T13:31:21.156Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UNA PARTE DE MI - NO TE ENAMORES – BENIM ADIM GÜLTEPE",
@@ -3979,8 +3981,8 @@
         "Type": "episode",
         "Episodes": 148,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UNA VIDA PERFECTA - MI MARAVILLOSA VIDA - HARIKA HAYATIM",
@@ -3999,8 +4001,8 @@
         "Type": "episode",
         "Episodes": 97,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.513Z",
+        "Update": "2026-07-11T15:32:45.513Z"
       },
       {
         "Label": "UNO DE NOSOTROS - BIZDEN BIRI",
@@ -4019,8 +4021,8 @@
         "Type": "episode",
         "Episodes": 18,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "VENGANZA Y AMOR - SUHAN",
@@ -4039,8 +4041,8 @@
         "Type": "episode",
         "Episodes": 78,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "VERDAD OCULTA - PRISIONERO - GIZLI GERÇEK - ESIR",
@@ -4059,8 +4061,8 @@
         "Type": "episode",
         "Episodes": 75,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "VIOLETA COMO EL MAR - PURPÚRA COMO EL MAR - DENIZ GIBI MENEKSELER",
@@ -4079,8 +4081,8 @@
         "Type": "episode",
         "Episodes": 12,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "VOLVER A CASA - REGRESO A CASA - EVE DÖNÜS",
@@ -4099,8 +4101,8 @@
         "Type": "episode",
         "Episodes": 66,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.157Z",
-        "Update": "2026-07-11T13:31:21.157Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "Y TÚ, ¿QUIÉN ERES – KIMSIN SEN",
@@ -4119,8 +4121,8 @@
         "Type": "episode",
         "Episodes": 37,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.158Z",
-        "Update": "2026-07-11T13:31:21.158Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "ÉPICO - DESTAN",
@@ -4140,8 +4142,8 @@
         "Type": "episode",
         "Episodes": 91,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.158Z",
-        "Update": "2026-07-11T13:31:21.158Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       },
       {
         "Label": "LA HIJA DEL EMBAJADOR – SEFIRIN KIZI",
@@ -4160,8 +4162,8 @@
         "Type": "episode",
         "Episodes": 164,
         "PricePerEpisode": "2.00",
-        "Date": "2026-07-11T13:31:21.158Z",
-        "Update": "2026-07-11T13:31:21.158Z"
+        "Date": "2026-07-11T15:32:45.514Z",
+        "Update": "2026-07-11T15:32:45.514Z"
       }
     ]
   }

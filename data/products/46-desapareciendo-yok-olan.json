@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "46 DESAPARECIÉNDO - YOK OLAN",
   "Images": [
-    "46-desapareciendo-yok-olan-0.webp",
-    "46-desapareciendo-yok-olan-1.webp"
+    "46-desapareciendo-yok-olan-0.jpg",
+    "46-desapareciendo-yok-olan-1.jpg"
   ],
-  "Description": "Murat, un brillante profesor de genética, se siente consumido por la culpa tras la muerte de su padre y el estado vegetativo de su hermana Ezo. Decidido a encontrar una cura, se adentra en un peligroso camino que combina la ciencia con rituales chamánicos. Al probar una poción en sí mismo, libera un alter ego vengativo que no puede controlar.",
+  "Description": "Yok Olan (en español 46 Desapareciendo) es una serie turca de suspenso psicológico que explora los límites de la mente humana y las consecuencias de la obsesión científica. La trama gira en torno a Murat Günay, un profesor de genética que desarrolla un suero experimental capaz de alterar la personalidad y liberar impulsos reprimidos. Lo que comienza como un proyecto científico se convierte en una pesadilla cuando Murat empieza a perder el control sobre sí mismo y su entorno.",
   "Price": "26.00",
   "Features": [
     "Episodios: 13",
-    "Título original: Yok Olan"
+    "Título original: Yok Olan",
+    "Año: 2016",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 13,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T13:31:21.124Z",
-  "Update": "2026-07-11T13:31:21.124Z"
+  "Date": "2026-07-11T15:32:45.479Z",
+  "Update": "2026-07-11T15:32:45.479Z"
 }
