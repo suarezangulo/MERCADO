@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "VOLVER A CASA - REGRESO A CASA - EVE DÖNÜS",
   "Images": [
-    "volver-a-casa-regreso-a-casa-eve-donus-0.webp",
-    "volver-a-casa-regreso-a-casa-eve-donus-1.webp"
+    "volver-a-casa-regreso-a-casa-eve-dnus-0.webp",
+    "volver-a-casa-regreso-a-casa-eve-dnus-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Mustafa y su esposa Esma, obreros humildes que viven con su hija pequeña, llevan una vida tranquila al margen de la política. Tras el golpe militar del 12 de septiembre de 1980 en Turquía, Mustafa es denunciado falsamente como miembro de una organización clandestina y es detenido. Durante 22 días sufre brutales torturas, compartiendo celda con un maestro llamado Hoca. La película expone el trauma social y humano de la represión política de aquella época.",
   "Price": "132.00",
   "Features": [
     "Episodios: 66",
-    "Título original: Eve Dönüş"
+    "Título original: Eve Dönüş",
+    "Año: 2006",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 66,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T02:34:03.730Z",
-  "Update": "2026-07-11T02:34:03.730Z"
+  "Date": "2026-07-11T02:44:18.248Z",
+  "Update": "2026-07-11T02:44:18.248Z"
 }
