@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "TRAMPA DE AMOR – ASK TUZAGI",
   "Images": [
-    "trampa-de-amor-ask-tuzagi-0.webp",
-    "trampa-de-amor-ask-tuzagi-1.webp"
+    "trampa-de-amor-ask-tuzagi-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Ask Tuzagi (en español Trampa de Amor) es una serie turca que mezcla romance y drama con tintes de suspenso. La trama se centra en Demir, un hombre marcado por las traiciones del pasado, que decide tender una “trampa” emocional para vengarse de quienes lo dañaron. Sin embargo, su plan se complica cuando conoce a Zeynep, una mujer que despierta en él sentimientos genuinos y lo enfrenta al dilema entre el amor verdadero y la venganza.",
   "Price": "174.00",
   "Features": [
     "Episodios: 87",
-    "Título original: Aşk Tuzağı"
+    "Título original: Aşk Tuzağı",
+    "Año: 2014",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 87,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:06:42.437Z",
-  "Update": "2026-07-11T04:06:42.437Z"
+  "Date": "2026-07-11T04:08:40.733Z",
+  "Update": "2026-07-11T04:08:40.733Z"
 }
