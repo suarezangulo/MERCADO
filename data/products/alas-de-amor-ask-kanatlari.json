@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ALAS DE AMOR - ASK KANATLARI",
   "Images": [
-    "alas-de-amor-ask-kanatlari-0.webp",
-    "alas-de-amor-ask-kanatlari-1.webp"
+    "alas-de-amor-ask-kanatlari-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Leyla, una joven que se casa por conveniencia y pronto descubre que su matrimonio la atrapa en una vida que no desea. Al huir con su hijo, conoce a Alper, un hombre marcado por la pérdida y la traición. Entre ellos surge un amor inesperado, pero deberán enfrentarse a secretos, venganzas y obstáculos familiares.",
   "Price": "138.00",
   "Features": [
     "Episodios: 69",
-    "Título original: Aşk Kanatları"
+    "Título original: Bana Sevmeyi Anlat",
+    "Año: 2016–2017",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 69,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T16:04:12.848Z",
-  "Update": "2026-07-11T16:04:12.848Z"
+  "Date": "2026-07-11T16:14:25.338Z",
+  "Update": "2026-07-11T16:14:25.338Z"
 }
