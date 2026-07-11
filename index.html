@@ -719,4 +719,32 @@
     <script src="vendor/isotope/isotope.pkgd.min.js"></script>
     <script src="vendor/isotope/imagesloaded.pkgd.min.js"></script>
     <script src="vendor/sweetalert/sweetalert.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="js/lazyload.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".btn-show-menu-mobile").off("click").on("click", function(e) {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                $(this).toggleClass("is-active");
+                $(".menu-mobile").slideToggle();
+            });
+            $('#searchButton').off('click');
+            $(document).off('click', '#searchButton');
+        });
+    </script>
+
+    <script>
+    window.addEventListener('scroll', function() {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = (scrollTop / scrollHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+    });
+    </script>
+</body>
+</html>
