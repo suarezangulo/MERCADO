@@ -3,7 +3,9 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ÉPICO - DESTAN",
   "Images": [
-    "epico-destan-0.webp"
+    "epico-destan-0.jpg",
+    "epico-destan-1.webp",
+    "epico-destan-2.webp"
   ],
   "Description": "La trama se desarrolla en las estepas de Asia Central del siglo VIII, donde Akkiz, una guerrera huérfana, busca venganza contra Alpagu Khan, responsable de la muerte de su padre. En su camino se cruza con Batuga, el hijo discapacitado del Khan, quien finge locura para sobrevivir.",
   "Price": "182.00",
@@ -16,6 +18,6 @@
   "Type": "episode",
   "Episodes": 91,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T02:08:07.103Z",
-  "Update": "2026-07-11T02:08:07.103Z"
+  "Date": "2026-07-11T02:22:24.064Z",
+  "Update": "2026-07-11T02:22:24.064Z"
 }
