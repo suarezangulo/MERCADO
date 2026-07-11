@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "UNA CANCIÓN INTERMINABLE - BITMEYEN SARKI",
   "Images": [
-    "una-cancion-interminable-bitmeyen-sarki-0.webp",
-    "una-cancion-interminable-bitmeyen-sarki-1.webp"
+    "una-cancion-interminable-bitmeyen-sarki-0.jpg",
+    "una-cancion-interminable-bitmeyen-sarki-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Bitmeyen Şarkı (en español Una Canción Interminable) es una serie turca de drama y romance que narra la historia de Feraye, una mujer que lucha por sobrevivir en un mundo lleno de injusticias mientras protege a su hijo. Su vida cambia cuando conoce a Yaman, un hombre poderoso y enigmático que se convierte en parte fundamental de su destino. La trama se centra en el amor, el sacrificio y la esperanza frente a las adversidades.",
   "Price": "64.00",
   "Features": [
     "Episodios: 32",
-    "Título original: Bitmeyen Şarkı"
+    "Título original: Bitmeyen Şarkı",
+    "Año: 2010–2011",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 32,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:20:56.451Z",
-  "Update": "2026-07-11T04:20:56.451Z"
+  "Date": "2026-07-11T04:22:31.893Z",
+  "Update": "2026-07-11T04:22:31.893Z"
 }
