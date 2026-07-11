@@ -6,18 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0a0a0a">
     
-    <meta name="description" content="Catálogo audiovisual en CUP.">
-    <meta name="keywords" content="películas, series, documentales, Cuba, CUP">
+    <!-- ===== META DESCRIPTION & KEYWORDS ===== -->
+    <meta name="description" content="🎬 Catálogo audiovisual en CUP. Películas, series, documentales, novelas turcas y más. Precios en moneda cubana.">
+    <meta name="keywords" content="películas, series, documentales, novelas turcas, Cuba, CUP, audiovisual, IMPRESIONES MR">
     <meta name="robots" content="index, follow">
     <meta name="author" content="IMPRESIONES MR">
     
+    <!-- ===== OPEN GRAPH (para compartir en redes sociales) ===== -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tutienda.com/">
+    <meta property="og:url" content="https://suarezangulo.github.io/MERCADO/">
     <meta property="og:title" content="IMPRESIONES MR - Catálogo Audiovisual en CUP">
-    <meta property="og:description" content="Encuentra las mejores películas, series, documentales y más.">
-    <meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
+    <meta property="og:description" content="🎬 Encuentra las mejores películas, series, documentales y novelas turcas. Catálogo actualizado, precios en CUP.">
+    <meta property="og:image" content="https://suarezangulo.github.io/MERCADO/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="IMPRESIONES MR">
+    <meta property="og:locale" content="es_ES">
     
+    <!-- ===== TWITTER CARDS (para Twitter/X) ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IMPRESIONES MR - Catálogo Audiovisual en CUP">
+    <meta name="twitter:description" content="🎬 Encuentra películas, series, documentales y novelas turcas en CUP. Catálogo actualizado.">
+    <meta name="twitter:image" content="https://suarezangulo.github.io/MERCADO/images/og-image.jpg">
+    
+    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    
+    <!-- ===== CSS ===== -->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -32,6 +47,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    
     <style>
         /* ===== CORRECCIÓN: FOOTER SIEMPRE DEBAJO ===== */
         body {
@@ -510,7 +526,7 @@
         .main-menu {
             display: flex !important;
             align-items: center !important;
-            gap: 30px !important; /* Aumento la separación entre Contacto y Panel */
+            gap: 30px !important;
             margin: 0 !important;
             padding: 0 !important;
         }
@@ -689,7 +705,7 @@
         <span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
     </div>
 
-    <!-- scripts -->
+    <!-- ===== SCRIPTS ===== -->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.min.js"></script>
@@ -703,32 +719,4 @@
     <script src="vendor/isotope/isotope.pkgd.min.js"></script>
     <script src="vendor/isotope/imagesloaded.pkgd.min.js"></script>
     <script src="vendor/sweetalert/sweetalert.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="js/lazyload.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $(".btn-show-menu-mobile").off("click").on("click", function(e) {
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-                $(this).toggleClass("is-active");
-                $(".menu-mobile").slideToggle();
-            });
-            $('#searchButton').off('click');
-            $(document).off('click', '#searchButton');
-        });
-    </script>
-
-    <script>
-    window.addEventListener('scroll', function() {
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var progress = (scrollTop / scrollHeight) * 100;
-        document.getElementById('scrollProgress').style.width = progress + '%';
-    });
-    </script>
-</body>
-</html>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js
