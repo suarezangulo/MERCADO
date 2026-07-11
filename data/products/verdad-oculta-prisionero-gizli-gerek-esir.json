@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "VERDAD OCULTA - PRISIONERO - GIZLI GERÇEK - ESIR",
   "Images": [
-    "verdad-oculta-prisionero-gizli-gercek-esir-0.webp",
-    "verdad-oculta-prisionero-gizli-gercek-esir-1.webp"
+    "verdad-oculta-prisionero-gizli-gerek-esir-0.jpg",
+    "verdad-oculta-prisionero-gizli-gerek-esir-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia gira en torno a Kemal, un hombre injustamente acusado de asesinato y condenado a prisión. Tras años de encierro, logra escapar para demostrar su inocencia y descubrir la verdad detrás de una conspiración que involucra a poderosos empresarios y funcionarios corruptos. En su búsqueda se cruza con Elif, una periodista decidida a destapar el caso, y juntos enfrentan una red de mentiras, traiciones y secretos que pondrán en riesgo sus vidas.",
   "Price": "150.00",
   "Features": [
     "Episodios: 75",
-    "Título original: Gizli Gerçek - Esir"
+    "Título original: Gizli Gerçek - Esir",
+    "Año: 2011",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 75,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T03:02:20.242Z",
-  "Update": "2026-07-11T03:02:20.242Z"
+  "Date": "2026-07-11T03:06:41.002Z",
+  "Update": "2026-07-11T03:06:41.002Z"
 }
