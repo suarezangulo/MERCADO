@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "TRAMPA - TUZAK",
   "Images": [
-    "trampa-tuzak-0.webp",
-    "trampa-tuzak-1.webp"
+    "trampa-tuzak-0.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Tuzak (en español, Trampa) es una serie turca de suspenso y drama que explora la venganza, la justicia y los dilemas morales. La historia sigue a Umut, un abogado brillante que busca vengarse de una poderosa familia responsable de la ruina de su infancia. Sin embargo, su plan se complica cuando se enamora de Ceren, la hija del hombre al que intenta destruir. Entre secretos, traiciones y emociones intensas, ambos deberán decidir si el amor puede sobrevivir a la venganza.",
   "Price": "44.00",
   "Features": [
     "Episodios: 22",
-    "Título original: Tuzak"
+    "Título original: Tuzak",
+    "Año: 2022–2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 22,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T03:20:41.761Z",
-  "Update": "2026-07-11T03:20:41.761Z"
+  "Date": "2026-07-11T04:06:42.436Z",
+  "Update": "2026-07-11T04:06:42.436Z"
 }
