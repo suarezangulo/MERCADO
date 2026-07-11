@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "20 MINUTOS - 20 DAKIKA",
   "Images": [
-    "20-minutos-20-dakika-0.webp",
-    "20-minutos-20-dakika-1.webp"
+    "20-minutos-20-dakika-0.jpg",
+    "20-minutos-20-dakika-1.jpg"
   ],
-  "Description": "La historia sigue a Melek, una pastelera felizmente casada y madre de dos hijos. Su vida da un vuelco cuando es acusada injustamente del intento de asesinato de un joven y condenada a 20 años de prisión. Su marido, Ali, un profesor de universidad, está convencido de su inocencia y se obsesiona con la idea de sacarla de la cárcel, planeando una peligrosa fuga.",
+  "Description": "20 Dakika (en español 20 Minutos) es una serie turca de suspenso y drama que narra la historia de Melek Halaskar, una mujer que lleva una vida tranquila junto a su esposo Ali y sus dos hijos, hasta que es acusada de asesinato y condenada a 20 años de prisión. Ali, convencido de su inocencia, emprende una lucha desesperada contra el sistema judicial para demostrar la verdad y liberar a su esposa. La trama se centra en el amor, la justicia y los sacrificios que una familia está dispuesta a hacer frente a la adversidad.",
   "Price": "118.00",
   "Features": [
     "Episodios: 59",
-    "Título original: 20 Dakika"
+    "Título original: 20 Dakika",
+    "Año: 2013",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 59,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:39:07.446Z",
-  "Update": "2026-07-11T04:39:07.446Z"
+  "Date": "2026-07-11T13:31:21.123Z",
+  "Update": "2026-07-11T13:31:21.123Z"
 }
