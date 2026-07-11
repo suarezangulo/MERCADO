@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "UNA MADRE CONTRA LA INJUSTICIA - GÜLPERI",
   "Images": [
-    "una-madre-contra-la-injusticia-gulperi-0.webp",
-    "una-madre-contra-la-injusticia-gulperi-1.webp"
+    "una-madre-contra-la-injusticia-gulperi-0.jpg",
+    "una-madre-contra-la-injusticia-gulperi-1.jpg"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Gülperi (en español Una Madre contra la Injusticia) es una serie turca de drama que narra la lucha de una madre por recuperar a sus hijos tras quedar viuda y enfrentarse a la hostilidad de su familia política. La historia muestra cómo Gülperi, una mujer fuerte y resiliente, desafía las normas sociales y legales para proteger a sus hijos y darles un futuro digno, enfrentándose a juicios, prejuicios y poderosos enemigos.",
   "Price": "174.00",
   "Features": [
     "Episodios: 87",
-    "Título original: Gülperi"
+    "Título original: Gülperi",
+    "Año: 2018–2019",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 87,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-11T04:24:15.845Z",
-  "Update": "2026-07-11T04:24:15.845Z"
+  "Date": "2026-07-11T04:25:42.918Z",
+  "Update": "2026-07-11T04:25:42.918Z"
 }
