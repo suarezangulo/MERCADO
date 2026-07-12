@@ -126,7 +126,7 @@
 			letter-spacing: 0.5px;
 		}
 		.table-shopping-cart .column-1 { width: 90px; }
-		.table-shopping-cart .column-2 { width: auto; }
+		.table-shopping-cart .column-2 { width: auto; min-width: 250px; }
 		.table-shopping-cart .column-3 { width: 120px; text-align: right; }
 		.table-shopping-cart .column-4 { width: 120px; text-align: right; font-weight: 600; color: #fff; }
 
@@ -164,6 +164,27 @@
 			text-align: center;
 			color: #888;
 		}
+		
+		/* ===== ESTILOS PARA EL SELECTOR DE CAPÍTULOS EN CARRITO ===== */
+		.cart-episode-selector input[type="number"] {
+			width: 50px !important;
+			padding: 4px 6px !important;
+			background: rgba(255,255,255,0.05) !important;
+			border: 1px solid rgba(255,255,255,0.1) !important;
+			border-radius: 4px !important;
+			color: #fff !important;
+			text-align: center !important;
+			font-size: 13px !important;
+		}
+		.cart-episode-selector input[type="number"]:focus {
+			border-color: #1E90FF !important;
+			outline: none !important;
+		}
+		.cart-episode-selector input[type="number"]::-webkit-inner-spin-button,
+		.cart-episode-selector input[type="number"]::-webkit-outer-spin-button {
+			opacity: 1;
+		}
+		
 		@media (max-width: 768px) {
 			.wrap-table-shopping-cart {
 				margin: 0 -15px;
@@ -171,6 +192,14 @@
 			}
 			.table-shopping-cart {
 				min-width: 450px;
+			}
+			.cart-episode-selector {
+				gap: 4px !important;
+				padding: 4px 8px !important;
+			}
+			.cart-episode-selector input[type="number"] {
+				width: 40px !important;
+				font-size: 12px !important;
 			}
 		}
 
@@ -266,7 +295,7 @@
 			100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(30,144,255,0.4)); }
 		}
 
-		.breadcrumb-item:hover .breadcrumb-sep i {
+		 .breadcrumb-item:hover .breadcrumb-sep i {
 			transform: scale(1.4) rotate(10deg);
 			filter: drop-shadow(0 0 30px rgba(30,144,255,0.9));
 			transition: 0.4s ease;
