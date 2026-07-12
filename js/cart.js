@@ -12,21 +12,30 @@ function addCartItem(n, t, i) {
     e.setAttribute("data-price-per-episode", i.PricePerEpisode || 0);
     e.setAttribute("data-base-price", i.Price || 0);
     
+    // Determinar rango de capítulos
+    var totalEpisodes = parseInt(i.Episodes) || 0;
+    var rangeFrom = 1;
+    var rangeTo = totalEpisodes;
+    var currentPrice = parseFloat(i.Price) || 0;
+    
     if (t.range) {
-        e.setAttribute("data-range-from", t.range.from || 1);
-        e.setAttribute("data-range-to", t.range.to || i.Episodes || 0);
-        e.setAttribute("data-range", JSON.stringify(t.range));
-    } else {
-        e.setAttribute("data-range-from", 1);
-        e.setAttribute("data-range-to", i.Episodes || 0);
+        rangeFrom = parseInt(t.range.from) || 1;
+        rangeTo = parseInt(t.range.to) || totalEpisodes;
+        if (t.price) {
+            currentPrice = parseFloat(t.price) || currentPrice;
+        }
     }
     
-    if (t.price) {
-        e.setAttribute("data-current-price", t.price);
-    } else {
-        e.setAttribute("data-current-price", i.Price || 0);
-    }
+    // Validar rango
+    if (rangeFrom < 1) rangeFrom = 1;
+    if (rangeTo > totalEpisodes) rangeTo = totalEpisodes;
+    if (rangeFrom > rangeTo) rangeFrom = rangeTo;
     
+    e.setAttribute("data-range-from", rangeFrom);
+    e.setAttribute("data-range-to", rangeTo);
+    e.setAttribute("data-current-price", currentPrice);
+    
+    // ===== COLUMNA 1: IMAGEN =====
     let r = document.createElement("td");
     r.setAttribute("class", "column-1");
     let u = document.createElement("div");
@@ -36,7 +45,7 @@ function addCartItem(n, t, i) {
     h.setAttribute("alt", "imagen del artículo");
     h.setAttribute("loading", "lazy");
 
-    // ===== RESOLUCIÓN DE IMAGEN =====
+    // Resolución de imagen
     var imagesArray = [];
     if (i.Images) {
         if (Array.isArray(i.Images)) {
@@ -72,19 +81,21 @@ function addCartItem(n, t, i) {
     var aElement = document.createElement("a");
     aElement.setAttribute("class", "cl2");
     aElement.setAttribute("href", "product.html?id=" + i.slug);
+    
+    // Mostrar nombre con rango
     var displayName = i.Label;
-    if (t.range && i.Type === 'episode') {
-        displayName += ' (Capítulos ' + t.range.from + '-' + t.range.to + ')';
+    if (i.Type === 'episode' && totalEpisodes > 1) {
+        if (rangeFrom === 1 && rangeTo === totalEpisodes) {
+            displayName += ' (Todos los capítulos)';
+        } else {
+            displayName += ' (Capítulos ' + rangeFrom + '-' + rangeTo + ')';
+        }
     }
     aElement.textContent = displayName;
     nameContainer.appendChild(aElement);
     
     // ===== SELECTOR DE CAPÍTULOS (solo si es tipo "episode" y tiene más de 1 episodio) =====
-    var totalEpisodes = parseInt(i.Episodes) || 0;
     if (i.Type === 'episode' && totalEpisodes > 1) {
-        var rangeFrom = t.range ? parseInt(t.range.from) : 1;
-        var rangeTo = t.range ? parseInt(t.range.to) : totalEpisodes;
-        
         var episodeSelector = document.createElement("div");
         episodeSelector.className = 'cart-episode-selector';
         episodeSelector.style.cssText = 'display: flex; align-items: center; gap: 8px; margin-top: 6px; flex-wrap: wrap; background: rgba(255,255,255,0.03); padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);';
@@ -124,7 +135,7 @@ function addCartItem(n, t, i) {
         countDisplay.style.cssText = 'color: #1E90FF; font-size: 12px; font-weight: 600; margin-left: 4px;';
         episodeSelector.appendChild(countDisplay);
         
-        // Eventos para actualizar precio en tiempo real
+        // Función para actualizar precio al cambiar rango
         function updateEpisodePrice(row) {
             var from = parseInt(row.find('.cart-episode-from').val()) || 1;
             var to = parseInt(row.find('.cart-episode-to').val()) || 1;
@@ -145,13 +156,17 @@ function addCartItem(n, t, i) {
             // Si no hay precio por episodio, calcular del precio base
             if (pricePerEpisode === 0) {
                 var basePrice = parseFloat(row.data('base-price')) || 0;
-                pricePerEpisode = basePrice / total;
-                totalPrice = count * pricePerEpisode;
+                if (total > 0) {
+                    pricePerEpisode = basePrice / total;
+                    totalPrice = count * pricePerEpisode;
+                } else {
+                    totalPrice = basePrice;
+                }
             }
             
             row.find('.cart-episode-count').text(count + ' capítulos');
             
-            // Actualizar columna de precio y total
+            // Actualizar columnas de precio y total
             var precioStr = totalPrice.toFixed(2);
             row.find('td:eq(2)').text(toMoneyStr(parseFloat(precioStr)));
             row.find('td:eq(3)').text(toMoneyStr(parseFloat(precioStr)));
@@ -164,12 +179,10 @@ function addCartItem(n, t, i) {
             // Actualizar el nombre
             var label = row.data('product-label') || '';
             var nameLink = row.find('td:eq(1) a');
-            if (count > 0 && count < total) {
-                nameLink.text(label + ' (Capítulos ' + from + '-' + to + ')');
-            } else if (count === total) {
+            if (count === total) {
                 nameLink.text(label + ' (Todos los capítulos)');
             } else {
-                nameLink.text(label);
+                nameLink.text(label + ' (Capítulos ' + from + '-' + to + ')');
             }
             
             // Recalcular total general
@@ -195,9 +208,7 @@ function addCartItem(n, t, i) {
     // ===== COLUMNA 3: PRECIO =====
     r = document.createElement("td");
     r.setAttribute("class", "column-3");
-    var currentPrice = parseFloat(e.getAttribute('data-current-price')) || 0;
     r.textContent = toMoneyStr(currentPrice);
-    e.setAttribute("data-current-price", currentPrice);
     e.appendChild(r);
 
     // ===== COLUMNA 4: TOTAL =====
@@ -205,6 +216,7 @@ function addCartItem(n, t, i) {
     r.setAttribute("class", "column-4");
     r.textContent = toMoneyStr(currentPrice);
     e.appendChild(r);
+    
     n.append(e);
     return !0;
 }
@@ -234,38 +246,39 @@ function cargarProductSlugs(callback) {
 }
 
 function updateCart() {
-    let i = $(".table-shopping-cart");
-    i.empty();
+    let table = $(".table-shopping-cart");
+    table.empty();
     
-    let t = document.createElement("tr");
-    t.setAttribute("class", "table_head");
-    let n = document.createElement("th");
-    n.setAttribute("class", "column-1");
-    n.textContent = "Artículo";
-    t.appendChild(n);
-    n = document.createElement("th");
-    n.setAttribute("class", "column-2");
-    t.appendChild(n);
-    n = document.createElement("th");
-    n.setAttribute("class", "column-3");
-    n.textContent = "Precio";
-    t.appendChild(n);
-    n = document.createElement("th");
-    n.setAttribute("class", "column-4");
-    n.textContent = "Total";
-    t.appendChild(n);
-    i.append(t);
+    // Cabecera
+    let header = document.createElement("tr");
+    header.setAttribute("class", "table_head");
+    let th1 = document.createElement("th");
+    th1.setAttribute("class", "column-1");
+    th1.textContent = "Artículo";
+    header.appendChild(th1);
+    let th2 = document.createElement("th");
+    th2.setAttribute("class", "column-2");
+    header.appendChild(th2);
+    let th3 = document.createElement("th");
+    th3.setAttribute("class", "column-3");
+    th3.textContent = "Precio";
+    header.appendChild(th3);
+    let th4 = document.createElement("th");
+    th4.setAttribute("class", "column-4");
+    th4.textContent = "Total";
+    header.appendChild(th4);
+    table.append(header);
 
-    let r = getCart();
+    let cart = getCart();
     
-    if (!r.items || r.items.length === 0) {
+    if (!cart.items || cart.items.length === 0) {
         let row = document.createElement("tr");
         let cell = document.createElement("td");
         cell.setAttribute("colspan", "4");
         cell.setAttribute("class", "stext-102 cl6 p-t-20 p-b-20 txt-center");
         cell.textContent = "No hay productos en tu cesta";
         row.appendChild(cell);
-        i.append(row);
+        table.append(row);
         updateCartTotals(false);
         return;
     }
@@ -278,41 +291,52 @@ function updateCart() {
     }
 
     let itemsNoEncontrados = [];
-    for (let item of r.items) {
+    for (let item of cart.items) {
         if (productSlugs[item.productId]) {
-            addCartItem(i, item, productSlugs[item.productId]);
+            addCartItem(table, item, productSlugs[item.productId]);
         } else {
             itemsNoEncontrados.push(item.productId);
         }
     }
     for (let id of itemsNoEncontrados) {
-        removeCartItem(r, id);
+        removeCartItem(cart, id);
     }
 
-    updateCartTotals(false);
+    // Forzar actualización del total
+    setTimeout(function() {
+        updateCartTotals(false);
+    }, 100);
 }
 
 function clearCart() {
-    let n = getCart();
-    n.items = [];
-    addStorage("cart", n);
+    let cart = getCart();
+    cart.items = [];
+    addStorage("cart", cart);
     updateCart();
 }
 
 function updateCartTotals(guardarEnStorage = true) {
     let itemsActualizados = { items: [] };
     let totalCUP = 0;
+    let hasItems = false;
 
     $(".table-shopping-cart tbody tr").each(function() {
         let $row = $(this);
+        let productId = $row.data('product-id');
         
-        // Obtener el precio actual (puede venir del selector de capítulos)
+        // Saltar filas vacías o de mensaje
+        if (!productId) return;
+        
+        hasItems = true;
+        
+        // Obtener el precio actual desde data-current-price
         let currentPrice = parseFloat($row.data('current-price')) || 0;
         
-        // Si no tiene current-price, usar el precio de la columna
+        // Si no tiene current-price, intentar obtener de la columna de precio
         if (currentPrice === 0) {
             var priceText = $row.find("td:eq(2)").text().replace(/[^0-9.]/g, '');
             currentPrice = parseFloat(priceText) || 0;
+            $row.data('current-price', currentPrice);
         }
         
         let subtotal = currentPrice;
@@ -321,13 +345,9 @@ function updateCartTotals(guardarEnStorage = true) {
         // Actualizar columna total (columna 4, índice 3)
         $row.find("td:eq(3)").text(toMoneyStr(subtotal));
         
-        // Obtener productId
-        let productId = $row.data('product-id') || $row.find("td:eq(1) a").attr("href").split("=")[1];
-        
-        // Obtener rango actualizado
+        // Obtener rango actual
         let rangeFrom = parseInt($row.data('range-from')) || 1;
         let rangeTo = parseInt($row.data('range-to')) || 0;
-        let totalEpisodes = parseInt($row.data('total-episodes')) || 0;
         
         let itemData = { 
             productId: productId, 
@@ -342,27 +362,35 @@ function updateCartTotals(guardarEnStorage = true) {
         itemsActualizados.items.push(itemData);
     });
 
+    // Mostrar total
     let totalText = toMoneyStr(totalCUP);
     $("span.mtext-110.cl2").css("white-space", "pre-line").text(totalText);
+    
+    // Si no hay items, mostrar 0.00
+    if (!hasItems) {
+        $("span.mtext-110.cl2").css("white-space", "pre-line").text("CUP$ 0.00");
+    }
 
     if (guardarEnStorage) {
         addStorage("cart", itemsActualizados);
     }
 }
 
-function removeCartItemFromView(n, t) {
-    let i = getCart();
-    t.remove();
-    removeCartItem(i, n);
-    updateCartTotals(false);
+function removeCartItemFromView(productId, rowElement) {
+    let cart = getCart();
+    rowElement.remove();
+    removeCartItem(cart, productId);
+    // Recalcular total después de eliminar
+    setTimeout(function() {
+        updateCartTotals(false);
+    }, 50);
 }
 
-function removeCartItem(n, t) {
-    n.items = n.items.filter(function(n) {
-        return n.productId !== t;
+function removeCartItem(cart, productId) {
+    cart.items = cart.items.filter(function(item) {
+        return item.productId !== productId;
     });
-    addStorage("cart", n);
-    updateCartTotals(false);
+    addStorage("cart", cart);
 }
 
 function mostrarInfoPago(metodo) {
@@ -414,10 +442,12 @@ function sendOrder() {
     
     let productos = [];
     let totalCUP = 0;
-    let items = [];
 
     $(".table-shopping-cart tbody tr").each(function() {
         let $row = $(this);
+        let productId = $row.data('product-id');
+        if (!productId) return;
+        
         let nombre = $row.find("td:eq(1) a").text();
         let valorNumerico = parseFloat($row.data('current-price')) || 0;
         
@@ -430,10 +460,13 @@ function sendOrder() {
         let cantidad = 1;
         let subtotal = valorNumerico * cantidad;
 
-        productos.push({ nombre: nombre, cantidad: cantidad, precioUnitario: valorNumerico, subtotal: subtotal });
+        productos.push({ 
+            nombre: nombre, 
+            cantidad: cantidad, 
+            precioUnitario: valorNumerico, 
+            subtotal: subtotal 
+        });
         totalCUP += subtotal;
-        let slug = $row.data('product-id') || $row.find("td:eq(1) a").attr("href").split("=")[1];
-        items.push({ id: slug, name: nombre, quantity: cantidad, price: valorNumerico, currency: 'CUP' });
     });
 
     let mensaje = "📦 *NUEVO PEDIDO*\n------------------------------\n\n";
