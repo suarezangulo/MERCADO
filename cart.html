@@ -495,7 +495,7 @@
 			<div class="p-t-20">
 				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
 				<p class="txt-center"><a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a></p>
-				<p class="stext-107 cl6 txt-center">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados</p>
+				<p class="stext-107 cl6 txt-center">Copyright &copy; <span id="currentYearFooter"></span> Todos los derechos reservados</p>
 			</div>
 			<div class="qr-container">
 				<div style="text-align: center;">
@@ -522,6 +522,17 @@
 	<script src="js/main.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/cart.js"></script>
+	
+	<!-- ===== SCRIPT PARA EL AÑO DEL FOOTER (SIN document.write) ===== -->
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		var yearSpan = document.getElementById('currentYearFooter');
+		if (yearSpan) {
+			yearSpan.textContent = new Date().getFullYear();
+		}
+	});
+	</script>
+	
 	<script>
 	window.addEventListener('scroll', function() {
 		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
