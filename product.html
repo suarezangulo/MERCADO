@@ -672,130 +672,140 @@
 	</main>
 
 	<!-- ===== FOOTER ===== -->
-	<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
-		<div class="container">
-			<div class="p-t-20">
-				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
-				<p class="txt-center">
-					<a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
-					<span style="color: #888; margin: 0 10px;">|</span>
-					<a class="stext-107 cl1 txt-center" href="index.html">Inicio</a>
-				</p>
-				<p class="stext-107 cl6 txt-center" aria-live="polite">
-					Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados
-				</p>
-			</div>
-			
-			<div class="qr-container">
-				<div style="text-align: center;">
-					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
-					<img src="/MERCADO/images/qr/qr-tienda.png" 
-					     alt="Código QR para acceder a CINEMARKET" 
-					     class="qr-code"
-					     onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
-				</div>
+<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
+	<div class="container">
+		<div class="p-t-20">
+			<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
+			<p class="txt-center">
+				<a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a>
+				<span style="color: #888; margin: 0 10px;">|</span>
+				<a class="stext-107 cl1 txt-center" href="index.html">Inicio</a>
+			</p>
+			<p class="stext-107 cl6 txt-center" aria-live="polite">
+				Copyright &copy; <span id="currentYearFooter"></span> Todos los derechos reservados
+			</p>
+		</div>
+		
+		<div class="qr-container">
+			<div style="text-align: center;">
+				<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
+				<img src="/MERCADO/images/qr/qr-tienda.png" 
+				     alt="Código QR para acceder a CINEMARKET" 
+				     class="qr-code"
+				     onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
 			</div>
 		</div>
-	</footer>
-
-	<!-- ===== BACK TO TOP ===== -->
-	<div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up" aria-hidden="true"></i>
-		</span>
 	</div>
+</footer>
 
-	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<script src="vendor/bootstrap/js/popper.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="vendor/parallax100/parallax100.js"></script>
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	
-	<!-- ===== SWEETALERT (necesario para las notificaciones) ===== -->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
-	
-	<script src="js/lazyload.min.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/utils.js"></script>
-	<script src="js/product.js"></script>
+<!-- ===== BACK TO TOP ===== -->
+<div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
+	<span class="symbol-btn-back-to-top">
+		<i class="zmdi zmdi-chevron-up" aria-hidden="true"></i>
+	</span>
+</div>
 
-	<!-- ===== SCRIPT PARA FLECHAS DEL LIGHTBOX (BOTONES MICA) ===== -->
-	<script>
-	$(document).ready(function() {
-		$(document).on('mfpOpen', function() {
-			$('.mfp-arrow').remove();
-			
-			var $leftArrow = $('<button>', {
-				'class': 'mfp-arrow-left-custom',
-				'html': '<i class="fa fa-chevron-left"></i>',
-				'css': {
-					'position': 'fixed', 'top': '50%', 'left': '20px',
-					'transform': 'translateY(-50%)', 'width': '50px', 'height': '50px',
-					'border-radius': '50%', 'background': 'rgba(26, 26, 26, 0.7)',
-					'backdrop-filter': 'blur(10px)', '-webkit-backdrop-filter': 'blur(10px)',
-					'border': '1px solid rgba(255, 255, 255, 0.15)', 'color': '#fff',
-					'font-size': '20px', 'cursor': 'pointer', 'z-index': '9999',
-					'display': 'flex', 'align-items': 'center', 'justify-content': 'center',
-					'transition': 'all 0.3s ease', 'opacity': '0.8'
-				},
-				'click': function() { $.magnificPopup.instance.prev(); },
-				'mouseenter': function() {
-					$(this).css({ 'background': 'rgba(30, 144, 255, 0.5)', 'border-color': 'rgba(30, 144, 255, 0.6)', 'opacity': '1' });
-				},
-				'mouseleave': function() {
-					$(this).css({ 'background': 'rgba(26, 26, 26, 0.7)', 'border-color': 'rgba(255, 255, 255, 0.15)', 'opacity': '0.8' });
-				}
-			});
-			
-			var $rightArrow = $('<button>', {
-				'class': 'mfp-arrow-right-custom',
-				'html': '<i class="fa fa-chevron-right"></i>',
-				'css': {
-					'position': 'fixed', 'top': '50%', 'right': '20px',
-					'transform': 'translateY(-50%)', 'width': '50px', 'height': '50px',
-					'border-radius': '50%', 'background': 'rgba(26, 26, 26, 0.7)',
-					'backdrop-filter': 'blur(10px)', '-webkit-backdrop-filter': 'blur(10px)',
-					'border': '1px solid rgba(255, 255, 255, 0.15)', 'color': '#fff',
-					'font-size': '20px', 'cursor': 'pointer', 'z-index': '9999',
-					'display': 'flex', 'align-items': 'center', 'justify-content': 'center',
-					'transition': 'all 0.3s ease', 'opacity': '0.8'
-				},
-				'click': function() { $.magnificPopup.instance.next(); },
-				'mouseenter': function() {
-					$(this).css({ 'background': 'rgba(30, 144, 255, 0.5)', 'border-color': 'rgba(30, 144, 255, 0.6)', 'opacity': '1' });
-				},
-				'mouseleave': function() {
-					$(this).css({ 'background': 'rgba(26, 26, 26, 0.7)', 'border-color': 'rgba(255, 255, 255, 0.15)', 'opacity': '0.8' });
-				}
-			});
-			
-			$('body').append($leftArrow, $rightArrow);
-			
-			if ($(window).width() < 768) {
-				$leftArrow.css({ 'width': '40px', 'height': '40px', 'left': '10px', 'font-size': '16px' });
-				$rightArrow.css({ 'width': '40px', 'height': '40px', 'right': '10px', 'font-size': '16px' });
+<!-- ===== SCRIPT PARA EL AÑO DEL FOOTER (SIN document.write) ===== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	var yearSpan = document.getElementById('currentYearFooter');
+	if (yearSpan) {
+		yearSpan.textContent = new Date().getFullYear();
+	}
+});
+</script>
+
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<script src="vendor/bootstrap/js/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/slick/slick.min.js"></script>
+<script src="vendor/parallax100/parallax100.js"></script>
+<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+<!-- ===== SWEETALERT (necesario para las notificaciones) ===== -->
+<script src="vendor/sweetalert/sweetalert.min.js"></script>
+
+<script src="js/lazyload.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/product.js"></script>
+
+<!-- ===== SCRIPT PARA FLECHAS DEL LIGHTBOX (BOTONES MICA) ===== -->
+<script>
+$(document).ready(function() {
+	$(document).on('mfpOpen', function() {
+		$('.mfp-arrow').remove();
+		
+		var $leftArrow = $('<button>', {
+			'class': 'mfp-arrow-left-custom',
+			'html': '<i class="fa fa-chevron-left"></i>',
+			'css': {
+				'position': 'fixed', 'top': '50%', 'left': '20px',
+				'transform': 'translateY(-50%)', 'width': '50px', 'height': '50px',
+				'border-radius': '50%', 'background': 'rgba(26, 26, 26, 0.7)',
+				'backdrop-filter': 'blur(10px)', '-webkit-backdrop-filter': 'blur(10px)',
+				'border': '1px solid rgba(255, 255, 255, 0.15)', 'color': '#fff',
+				'font-size': '20px', 'cursor': 'pointer', 'z-index': '9999',
+				'display': 'flex', 'align-items': 'center', 'justify-content': 'center',
+				'transition': 'all 0.3s ease', 'opacity': '0.8'
+			},
+			'click': function() { $.magnificPopup.instance.prev(); },
+			'mouseenter': function() {
+				$(this).css({ 'background': 'rgba(30, 144, 255, 0.5)', 'border-color': 'rgba(30, 144, 255, 0.6)', 'opacity': '1' });
+			},
+			'mouseleave': function() {
+				$(this).css({ 'background': 'rgba(26, 26, 26, 0.7)', 'border-color': 'rgba(255, 255, 255, 0.15)', 'opacity': '0.8' });
 			}
 		});
 		
-		$(document).on('mfpClose', function() {
-			$('.mfp-arrow-left-custom, .mfp-arrow-right-custom').remove();
+		var $rightArrow = $('<button>', {
+			'class': 'mfp-arrow-right-custom',
+			'html': '<i class="fa fa-chevron-right"></i>',
+			'css': {
+				'position': 'fixed', 'top': '50%', 'right': '20px',
+				'transform': 'translateY(-50%)', 'width': '50px', 'height': '50px',
+				'border-radius': '50%', 'background': 'rgba(26, 26, 26, 0.7)',
+				'backdrop-filter': 'blur(10px)', '-webkit-backdrop-filter': 'blur(10px)',
+				'border': '1px solid rgba(255, 255, 255, 0.15)', 'color': '#fff',
+				'font-size': '20px', 'cursor': 'pointer', 'z-index': '9999',
+				'display': 'flex', 'align-items': 'center', 'justify-content': 'center',
+				'transition': 'all 0.3s ease', 'opacity': '0.8'
+			},
+			'click': function() { $.magnificPopup.instance.next(); },
+			'mouseenter': function() {
+				$(this).css({ 'background': 'rgba(30, 144, 255, 0.5)', 'border-color': 'rgba(30, 144, 255, 0.6)', 'opacity': '1' });
+			},
+			'mouseleave': function() {
+				$(this).css({ 'background': 'rgba(26, 26, 26, 0.7)', 'border-color': 'rgba(255, 255, 255, 0.15)', 'opacity': '0.8' });
+			}
 		});
+		
+		$('body').append($leftArrow, $rightArrow);
+		
+		if ($(window).width() < 768) {
+			$leftArrow.css({ 'width': '40px', 'height': '40px', 'left': '10px', 'font-size': '16px' });
+			$rightArrow.css({ 'width': '40px', 'height': '40px', 'right': '10px', 'font-size': '16px' });
+		}
 	});
-	</script>
+	
+	$(document).on('mfpClose', function() {
+		$('.mfp-arrow-left-custom, .mfp-arrow-right-custom').remove();
+	});
+});
+</script>
 
-	<!-- ===== SCRIPT: BARRA DE PROGRESO DE SCROLL ===== -->
-	<script>
-	window.addEventListener('scroll', function() {
-		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-		var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-		var progress = (scrollTop / scrollHeight) * 100;
-		document.getElementById('scrollProgress').style.width = progress + '%';
-	});
-	</script>
+<!-- ===== SCRIPT: BARRA DE PROGRESO DE SCROLL ===== -->
+<script>
+window.addEventListener('scroll', function() {
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+	var progress = (scrollTop / scrollHeight) * 100;
+	document.getElementById('scrollProgress').style.width = progress + '%';
+});
+</script>
 </body>
 </html>
