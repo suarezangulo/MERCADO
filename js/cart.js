@@ -3,7 +3,6 @@ function addCartItem(n, t, i) {
     if (n == null || t == null || i == null) return !1;
     let e = document.createElement("tr");
     e.setAttribute("class", "table_row");
-    // Guardar el rango en un atributo data en la fila para recuperarlo luego
     if (t.range) {
         e.setAttribute("data-range", JSON.stringify(t.range));
     }
@@ -15,23 +14,39 @@ function addCartItem(n, t, i) {
     let h = document.createElement("img");
     h.setAttribute("alt", "imagen del artículo");
     h.setAttribute("loading", "lazy");
-    var baseName = i.slug + "-0";
+
+    // ===== RESOLUCIÓN DE IMAGEN CORREGIDA (USANDO i.Images) =====
+    var imagesArray = [];
+    if (i.Images) {
+        if (Array.isArray(i.Images)) {
+            imagesArray = i.Images;
+        } else {
+            imagesArray = i.Images.split(';').map(img => img.trim());
+        }
+    }
+    var firstImage = imagesArray.length > 0 ? imagesArray[0] : null;
+    var baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : i.slug + "-0";
     var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+
+    // Placeholder inicial
     h.setAttribute("src", getPlaceholderImage(i.Label));
+
+    // Intentar resolver la imagen real con múltiples extensiones
     resolveImageUrl(baseName, extensions, function(url) {
         if (url) {
             h.setAttribute("src", url);
         }
     });
+
     u.appendChild(h);
     r.appendChild(u);
     e.appendChild(r);
+
     r = document.createElement("td");
     r.setAttribute("class", "column-2");
     aElement = document.createElement("a");
     aElement.setAttribute("class", "cl2");
     aElement.setAttribute("href", "product.html?id=" + i.slug);
-    // Mostrar el rango de capítulos si existe
     var displayName = i.Label;
     if (t.range) {
         displayName += ' (Capítulos ' + t.range.from + '-' + t.range.to + ')';
@@ -39,20 +54,18 @@ function addCartItem(n, t, i) {
     aElement.textContent = displayName;
     r.appendChild(aElement);
     e.appendChild(r);
+
     r = document.createElement("td");
     r.setAttribute("class", "column-3");
-    // Usar el precio calculado si existe, sino el precio base
     var precioStr = t.price ? t.price : i.Price;
     var valorNumerico = parseFloat(precioStr) || 0;
     r.textContent = toMoneyStr(valorNumerico);
-    // Guardar el precio en un atributo data para recalcular
     e.setAttribute("data-price", valorNumerico);
     e.appendChild(r);
-    // La columna de cantidad se omite (siempre es 1)
-    // En su lugar, añadimos directamente la columna de total
+
     r = document.createElement("td");
     r.setAttribute("class", "column-4");
-    let subtotal = valorNumerico * 1; // Siempre 1
+    let subtotal = valorNumerico * 1;
     r.textContent = toMoneyStr(subtotal);
     e.appendChild(r);
     n.append(e);
@@ -153,22 +166,16 @@ function updateCartTotals(guardarEnStorage = true) {
     let itemsActualizados = { items: [] };
     let totalCUP = 0;
 
-    // Recorremos las filas de la tabla (sin inputs de cantidad)
     $(".table-shopping-cart tbody tr").each(function() {
         let $row = $(this);
-        // Obtener el precio desde data-price (más fiable que texto)
         let valorNumerico = parseFloat($row.data('price')) || 0;
-        let subtotal = valorNumerico; // cantidad siempre 1
+        let subtotal = valorNumerico;
         totalCUP += subtotal;
-        // Actualizar la celda de total (columna 4, índice 3)
         $row.find("td:eq(3)").text(toMoneyStr(subtotal));
-        // Obtener productId desde el enlace
         let productId = $row.find("td:eq(1) a").attr("href").split("=")[1];
-        // Obtener el rango desde data-range de la fila
         let rangeAttr = $row.data('range');
         let itemData = { productId: productId, qty: "1" };
         if (rangeAttr) {
-            // Si es un string, parsearlo (si se guardó como JSON)
             if (typeof rangeAttr === 'string') {
                 try { rangeAttr = JSON.parse(rangeAttr); } catch(e) { rangeAttr = null; }
             }
@@ -253,12 +260,11 @@ function sendOrder() {
     let totalCUP = 0;
     let items = [];
 
-    // Recorremos la tabla para obtener los productos
     $(".table-shopping-cart tbody tr").each(function() {
         let $row = $(this);
         let nombre = $row.find("td:eq(1) a").text();
         let valorNumerico = parseFloat($row.data('price')) || 0;
-        let cantidad = 1; // Siempre 1
+        let cantidad = 1;
         let subtotal = valorNumerico * cantidad;
 
         productos.push({ nombre: nombre, cantidad: cantidad, precioUnitario: valorNumerico, subtotal: subtotal });
