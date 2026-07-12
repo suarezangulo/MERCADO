@@ -283,52 +283,64 @@
 	</main>
 
 	<!-- ===== FOOTER ===== -->
-	<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
-		<div class="container">
-			<div class="p-t-20">
-				<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
-				<p class="txt-center"><a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a></p>
-				<p class="stext-107 cl6 txt-center">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados</p>
-			</div>
-			<div class="qr-container">
-				<div style="text-align: center;">
-					<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
-					<img src="/MERCADO/images/qr/qr-tienda.png" alt="Código QR" class="qr-code" onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
-				</div>
+<footer role="contentinfo" aria-label="Pie de página" class="bg3 p-t-50 p-b-32">
+	<div class="container">
+		<div class="p-t-20">
+			<div class="flex-c-m flex-w p-b-30 foot txt-center"></div>
+			<p class="txt-center"><a class="stext-107 cl1 txt-center" href="contact.html">Contacto</a></p>
+			<p class="stext-107 cl6 txt-center">Copyright &copy; <span id="currentYearFooter"></span> Todos los derechos reservados</p>
+		</div>
+		<div class="qr-container">
+			<div style="text-align: center;">
+				<span class="qr-label">📱 Escanea para visitar la tienda</span><br>
+				<img src="/MERCADO/images/qr/qr-tienda.png" alt="Código QR" class="qr-code" onclick="window.open('/MERCADO/images/qr/qr-tienda.png', '_blank')">
 			</div>
 		</div>
-	</footer>
-
-	<div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
-		<span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
 	</div>
+</footer>
 
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<script>$(".js-select2").each(function(){$(this).select2({minimumResultsForSearch:20,dropdownParent:$(this).next('.dropDownSelect2')})})</script>
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>$('.js-pscroll').each(function(){$(this).css({position:'relative',overflow:'hidden'});var ps=new PerfectScrollbar(this,{wheelSpeed:1,scrollingThreshold:1000,wheelPropagation:false});$(window).on('resize',function(){ps.update()})})</script>
-	<script src="js/main.js"></script>
-	<script src="js/utils.js"></script>
-	<script>
-		$('button.pointer').off('click');
-		$('button.pointer').on('click', function () {
-			const message = $('textarea[name="msg"]').val();
-			let enlace = "https://wa.me/+" + contactCell + "?text=" + encodeURIComponent(message);
-			window.open(enlace);
-		});
-	</script>
-	<script>
-	window.addEventListener('scroll', function() {
-		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-		var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-		var progress = (scrollTop / scrollHeight) * 100;
-		document.getElementById('scrollProgress').style.width = progress + '%';
+<div class="btn-back-to-top" id="myBtn" role="button" tabindex="0" aria-label="Volver arriba">
+	<span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
+</div>
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script>$(".js-select2").each(function(){$(this).select2({minimumResultsForSearch:20,dropdownParent:$(this).next('.dropDownSelect2')})})</script>
+<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>$('.js-pscroll').each(function(){$(this).css({position:'relative',overflow:'hidden'});var ps=new PerfectScrollbar(this,{wheelSpeed:1,scrollingThreshold:1000,wheelPropagation:false});$(window).on('resize',function(){ps.update()})})</script>
+<script src="js/main.js"></script>
+<script src="js/utils.js"></script>
+
+<!-- ===== SCRIPT PARA EL AÑO DEL FOOTER (SIN document.write) ===== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	var yearSpan = document.getElementById('currentYearFooter');
+	if (yearSpan) {
+		yearSpan.textContent = new Date().getFullYear();
+	}
+});
+</script>
+
+<script>
+	$('button.pointer').off('click');
+	$('button.pointer').on('click', function () {
+		const message = $('textarea[name="msg"]').val();
+		let enlace = "https://wa.me/+" + contactCell + "?text=" + encodeURIComponent(message);
+		window.open(enlace);
 	});
-	</script>
+</script>
+
+<script>
+window.addEventListener('scroll', function() {
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+	var progress = (scrollTop / scrollHeight) * 100;
+	document.getElementById('scrollProgress').style.width = progress + '%';
+});
+</script>
 </body>
 </html>
