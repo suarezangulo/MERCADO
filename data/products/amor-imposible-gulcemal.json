@@ -6,15 +6,17 @@
     "amor-imposible-gulcemal-0.webp",
     "amor-imposible-gulcemal-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Gülcemal (título internacional en español: Amor Imposible) es un drama turco intenso y oscuro que narra la historia de un hombre marcado por el abandono, el odio y la sed de venganza, cuyo destino cambia al enamorarse de la mujer que menos esperaba.",
   "Price": "44.00",
   "Features": [
     "Episodios: 22",
-    "Título original: Gülcemal"
+    "Título original: Gülcemal",
+    "Año: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 22,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-13T16:50:15.624Z",
-  "Update": "2026-07-13T16:50:15.624Z"
+  "Date": "2026-07-13T16:58:16.008Z",
+  "Update": "2026-07-13T16:58:16.008Z"
 }
