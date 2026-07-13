@@ -1,6 +1,7 @@
 // ============================================================
 // ADMIN.JS - Panel de administración con GitHub API
 // Versión con corrección de guardado CSV (escape de campos)
+// Y manejo robusto de saltos de línea en CSV
 // ============================================================
 
 // ===== VERIFICACIÓN DE SESIÓN Y TOKEN =====
@@ -260,7 +261,85 @@ async function uploadImage(file, slug, index) {
     return { fileName, extension };
 }
 
-// ===== CARGAR PRODUCTOS =====
+// ===== FUNCIÓN PARA DIVIDIR CSV RESPETANDO COMILLAS =====
+function splitCSVLines(csvContent) {
+    const lines = [];
+    let current = '';
+    let insideQuotes = false;
+    
+    for (let i = 0; i < csvContent.length; i++) {
+        const char = csvContent[i];
+        
+        if (char === '"') {
+            if (i + 1 < csvContent.length && csvContent[i + 1] === '"') {
+                current += '""';
+                i++;
+            } else {
+                insideQuotes = !insideQuotes;
+                current += char;
+            }
+        } else if (char === '\n' && !insideQuotes) {
+            if (current.trim()) {
+                lines.push(current);
+            }
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    
+    if (current.trim()) {
+        lines.push(current);
+    }
+    
+    return lines;
+}
+
+// ===== FUNCIÓN PARA PARSEAR LÍNEA CSV RESPETANDO COMILLAS =====
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let insideQuotes = false;
+    let i = 0;
+    
+    while (i < line.length) {
+        const char = line[i];
+        
+        if (insideQuotes) {
+            if (char === '"') {
+                if (i + 1 < line.length && line[i + 1] === '"') {
+                    current += '"';
+                    i += 2;
+                } else {
+                    insideQuotes = false;
+                    i++;
+                }
+            } else {
+                current += char;
+                i++;
+            }
+        } else {
+            if (char === '"') {
+                insideQuotes = true;
+                i++;
+            } else if (char === ',') {
+                result.push(current.trim());
+                current = '';
+                i++;
+            } else if (char === '\r') {
+                i++;
+            } else {
+                current += char;
+                i++;
+            }
+        }
+    }
+    
+    result.push(current.trim());
+    return result;
+}
+
+// ===== CARGAR PRODUCTOS (CON MANEJO ROBUSTO DE CSV) =====
 async function loadProducts() {
     try {
         const { content } = await fetchCSV();
@@ -273,7 +352,8 @@ async function loadProducts() {
             return;
         }
 
-        const lines = content.split('\n').filter(line => line.trim());
+        // ✅ Usar splitCSVLines en lugar de split('\n')
+        const lines = splitCSVLines(content);
         if (lines.length === 0) {
             products = [];
             renderProductTable();
@@ -291,10 +371,13 @@ async function loadProducts() {
             headers.forEach((header, index) => {
                 product[header] = values[index] || '';
             });
-            if (!product.Type) product.Type = '';
-            if (!product.Episodes) product.Episodes = '';
-            if (!product.PricePerEpisode) product.PricePerEpisode = '';
-            products.push(product);
+            
+            // ✅ SOLO agregar productos que tengan nombre (protección contra "Sin nombre")
+            if (product.Label && product.Label.trim() !== '') {
+                products.push(product);
+            } else {
+                console.warn('⚠️ Producto sin nombre encontrado en línea', i, ':', lines[i].substring(0, 100));
+            }
         }
         renderProductTable();
         updateStats();
@@ -305,37 +388,7 @@ async function loadProducts() {
     }
 }
 
-function parseCSVLine(line) {
-    const result = [];
-    let current = '';
-    let insideQuotes = false;
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if (insideQuotes) {
-            if (char === '"' && line[i + 1] === '"') {
-                current += '"';
-                i++;
-            } else if (char === '"') {
-                insideQuotes = false;
-            } else {
-                current += char;
-            }
-        } else {
-            if (char === '"') {
-                insideQuotes = true;
-            } else if (char === ',') {
-                result.push(current.trim());
-                current = '';
-            } else {
-                current += char;
-            }
-        }
-    }
-    result.push(current.trim());
-    return result;
-}
-
-// ===== RENDER TABLA =====
+// ===== RENDER TABLA (CON PROTECCIÓN PARA PRODUCTOS SIN NOMBRE) =====
 function renderProductTable() {
     const tbody = document.getElementById('productTableBody');
     if (!products.length) {
@@ -348,7 +401,8 @@ function renderProductTable() {
 
     let html = '';
     products.forEach((p, index) => {
-        const slug = ToSlug(p.Label);
+        const hasName = p.Label && p.Label.trim() !== '';
+        const slug = hasName ? ToSlug(p.Label) : 'sin-nombre-' + index;
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
         if (!imageName.includes('.')) {
@@ -361,19 +415,28 @@ function renderProductTable() {
         const episodesDisplay = hasEpisodes ? p.Episodes : '-';
         const typeDisplay = p.Type === 'episode' ? 'Serie' : (p.Type === 'movie' ? 'Película' : '-');
 
+        // ✅ Botón de eliminar solo si tiene nombre
+        const deleteButton = hasName ? 
+            `<button class="btn btn-danger btn-sm delete-btn" data-index="${index}">
+                <i class="fas fa-trash"></i>
+            </button>` :
+            `<button class="btn btn-secondary btn-sm" disabled style="opacity:0.4; cursor:not-allowed; pointer-events:none;" title="No se puede eliminar un producto sin nombre">
+                <i class="fas fa-trash"></i>
+            </button>`;
+
         html += `
         <tr data-index="${index}">
             <td>
                 <img id="${imgId}" 
                      src="" 
-                     alt="${p.Label}" 
+                     alt="${p.Label || 'Sin nombre'}" 
                      class="product-thumb" 
                      style="display:none;">
                 <div id="${imgId}-loading" style="width:45px; height:65px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; border:1px dashed var(--border-color); border-radius:4px;">
                     <i class="fas fa-spinner fa-spin"></i>
                 </div>
             </td>
-            <td><strong>${p.Label}</strong></td>
+            <td><strong>${p.Label || '⚠️ Sin nombre'}</strong></td>
             <td><span style="color: var(--text-secondary);">${p.Category}</span> / ${p.SubCategory}</td>
             <td style="color: var(--text-secondary);">${p.Price}</td>
             <td><span style="color: var(--text-secondary);">${typeDisplay}</span></td>
@@ -383,9 +446,7 @@ function renderProductTable() {
                     <button class="btn btn-primary btn-sm edit-btn" data-index="${index}">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    ${deleteButton}
                 </div>
             </td>
         </tr>
@@ -407,8 +468,10 @@ function renderProductTable() {
         });
     });
 
+    // Cargar imágenes
     products.forEach((p, index) => {
-        const slug = ToSlug(p.Label);
+        const hasName = p.Label && p.Label.trim() !== '';
+        const slug = hasName ? ToSlug(p.Label) : 'sin-nombre-' + index;
         const imagesList = p.Images ? p.Images.split(';').map(img => img.trim()) : [];
         let imageName = imagesList.length > 0 ? imagesList[0] : `${slug}-0.webp`;
         if (!imageName.includes('.')) {
@@ -419,6 +482,8 @@ function renderProductTable() {
         const loadingId = `${imgId}-loading`;
         const imgElement = document.getElementById(imgId);
         const loadingElement = document.getElementById(loadingId);
+
+        if (!imgElement) return;
 
         const extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
         const csvExt = imageName.split('.').pop().toLowerCase();
@@ -444,25 +509,54 @@ window.editProduct = function(index) {
     }
 };
 
+// ===== ELIMINAR PRODUCTO CON PROTECCIONES =====
 window.deleteProduct = function(index) {
     const product = products[index];
-    if (!product) return;
+    
+    // ✅ VALIDACIÓN 1: Producto existe
+    if (!product) {
+        showToast('❌ Producto no encontrado', 'error');
+        return;
+    }
+    
+    // ✅ VALIDACIÓN 2: Producto tiene nombre
+    if (!product.Label || product.Label.trim() === '') {
+        showToast('⚠️ No se puede eliminar un producto sin nombre', 'warning');
+        return;
+    }
+    
+    // ✅ VALIDACIÓN 3: Producto existe en el array de productos
+    const productExists = products.some(p => p.Label === product.Label);
+    if (!productExists) {
+        showToast('⚠️ El producto ya no existe en el catálogo', 'warning');
+        return;
+    }
+    
+    // ✅ Confirmación con nombre visible
     if (!confirm(`¿Eliminar "${product.Label}" definitivamente?`)) return;
 
     (async function() {
         try {
             const { content } = await fetchCSV();
-            const lines = content.split('\n').filter(line => line.trim());
+            const lines = splitCSVLines(content);
             const headers = lines[0];
             let bodyLines = lines.slice(1);
 
-            bodyLines = bodyLines.filter(line => !line.includes(product.Label));
+            // Filtrar eliminando la línea que coincide con el producto
+            bodyLines = bodyLines.filter(line => {
+                const values = parseCSVLine(line);
+                const label = values[2] ? values[2].trim() : '';
+                return label !== product.Label;
+            });
+            
             const newCSV = [headers, ...bodyLines].join('\n');
             await updateCSV(newCSV);
-            showToast(`"${product.Label}" eliminado`, 'success');
+            showToast(`✅ "${product.Label}" eliminado correctamente`, 'success');
             await loadProducts();
+            updateStats();
+            updateRecentProducts();
         } catch (error) {
-            showToast('Error al eliminar: ' + error.message, 'error');
+            showToast('❌ Error al eliminar: ' + error.message, 'error');
         }
     })();
 };
@@ -711,7 +805,7 @@ function removeNewImage(btn, fileName) {
     if (index > -1) uploadedImages.splice(index, 1);
 }
 
-// ===== GUARDAR PRODUCTO (VERSIÓN CORREGIDA Y SIMPLIFICADA) =====
+// ===== GUARDAR PRODUCTO =====
 async function saveProduct() {
     const label = document.getElementById('productLabel').value.trim();
     const category = document.getElementById('productCategory').value;
@@ -726,12 +820,17 @@ async function saveProduct() {
     let episodes = document.getElementById('productEpisodes').value.trim();
     let pricePerEpisode = document.getElementById('productPricePerEpisode').value.trim();
 
-    if (!label || !category || !subcategory || !price) {
+    // ✅ Validación: El nombre es obligatorio
+    if (!label) {
+        showToast('⚠️ El nombre del título es obligatorio', 'warning');
+        return;
+    }
+
+    if (!category || !subcategory || !price) {
         showToast('Completa todos los campos obligatorios.', 'warning');
         return;
     }
 
-    // --- Normalizar tipo y episodios ---
     let normalizedType = type;
     if (['Película', 'película', 'movie', 'Movie'].includes(type)) normalizedType = 'movie';
     else if (['Serie', 'serie', 'episode', 'Episode', 'Telenovela', 'Documental', 'Show'].includes(type)) normalizedType = 'episode';
@@ -747,7 +846,6 @@ async function saveProduct() {
         normalizedPricePerEpisode = (parseFloat(price) / normalizedEpisodes).toFixed(2);
     }
 
-    // --- Subir imágenes nuevas ---
     const slug = ToSlug(label);
     const uploadedNames = [];
     try {
@@ -763,7 +861,6 @@ async function saveProduct() {
     const allImages = [...existingImages, ...uploadedNames];
     const imagesNames = allImages.join(';');
 
-    // --- Escapar todos los campos de texto ---
     const escapedCategory = escapeCSV(category);
     const escapedSubCategory = escapeCSV(subcategory);
     const escapedLabel = escapeCSV(label);
@@ -771,7 +868,6 @@ async function saveProduct() {
     const escapedFeatures = escapeCSV(features);
     const escapedType = escapeCSV(normalizedType);
 
-    // --- Construir la línea CSV completa (orden fijo) ---
     const csvRow = [
         escapedCategory,
         escapedSubCategory,
@@ -785,20 +881,16 @@ async function saveProduct() {
         normalizedPricePerEpisode
     ].join(',');
 
-    // --- Leer el CSV actual, reemplazar o añadir la línea ---
     try {
         const { content } = await fetchCSV();
-        const lines = content.split('\n').filter(line => line.trim());
+        const lines = splitCSVLines(content);
         let headers = lines[0];
         let bodyLines = lines.slice(1);
 
-        // Verificar que la cabecera tenga las 10 columnas esperadas
         const expectedHeaders = ['Category', 'SubCategory', 'Label', 'Price', 'Description', 'Features', 'Images', 'Type', 'Episodes', 'PricePerEpisode'];
         const currentHeaders = headers.split(',').map(h => h.trim());
         if (currentHeaders.length !== 10 || !currentHeaders.every((h, i) => h === expectedHeaders[i])) {
-            // Si la cabecera no coincide, la reemplazamos por la esperada
             headers = expectedHeaders.join(',');
-            // Reconstruir las líneas con el orden correcto
             const newBodyLines = bodyLines.map(line => {
                 const values = parseCSVLine(line);
                 const newValues = [];
@@ -811,12 +903,11 @@ async function saveProduct() {
             bodyLines = newBodyLines;
         }
 
-        // Buscar la línea a reemplazar usando el slug (para evitar falsos positivos)
         const slugToFind = slug;
         let replaced = false;
         for (let i = 0; i < bodyLines.length; i++) {
             const lineValues = parseCSVLine(bodyLines[i]);
-            const labelFromCSV = lineValues[2] ? lineValues[2].trim() : ''; // Columna Label (índice 2)
+            const labelFromCSV = lineValues[2] ? lineValues[2].trim() : '';
             if (ToSlug(labelFromCSV) === slugToFind) {
                 bodyLines[i] = csvRow;
                 replaced = true;
@@ -824,11 +915,9 @@ async function saveProduct() {
             }
         }
         if (!replaced) {
-            // Si no se encontró, se añade al final
             bodyLines.push(csvRow);
         }
 
-        // Reconstruir el CSV completo
         const newCSV = [headers, ...bodyLines].join('\n');
         await updateCSV(newCSV);
 
