@@ -1,1 +1,4202 @@
-{}
+{
+  "Películas": {
+    "Acción": [
+      {
+        "Label": "Duro de Matar",
+        "Price": "5.00",
+        "Description": "El policía neoyorquino John McClane viaja a Los Ángeles para reunirse con su esposa durante la víspera de Navidad. Pero su visita se convierte en una pesadilla cuando un grupo de terroristas toma el edificio donde ella trabaja. McClane deberá usar todo su ingenio para sobrevivir y salvar a los rehenes.",
+        "Images": [
+          "duro-de-matar-0.jpg"
+        ],
+        "Features": [
+          "Director: John McTiernan",
+          "Año: 1988",
+          "Duración: 132 min",
+          "Actores: Bruce Willis, Alan Rickman, Bonnie Bedelia"
+        ],
+        "Type": "movie",
+        "Episodes": 0,
+        "PricePerEpisode": "",
+        "Date": "2026-07-13T16:10:20.880Z",
+        "Update": "2026-07-13T16:10:20.880Z"
+      }
+    ],
+    "Drama": [
+      {
+        "Label": "La La Land",
+        "Price": "5.00",
+        "Description": "Mia, una aspirante a actriz, y Sebastian, un pianista de jazz, se enamoran en Los Ángeles mientras persiguen sus sueños. Pero el éxito y la vida los pondrán a prueba. Una historia de amor, música y pasión que cautivó al mundo.",
+        "Images": [
+          "la-la-land-0.webp",
+          "la-la-land-1.webp"
+        ],
+        "Features": [
+          "Director: Damien Chazelle",
+          "Año: 2016",
+          "Duración: 128 min",
+          "Actores: Ryan Gosling, Emma Stone, John Legend"
+        ],
+        "Type": "movie",
+        "Episodes": 0,
+        "PricePerEpisode": "5.00",
+        "Date": "2026-07-13T16:10:20.881Z",
+        "Update": "2026-07-13T16:10:20.881Z"
+      }
+    ]
+  },
+  "Series": {
+    "Ciencia Ficción": [
+      {
+        "Label": "The Expanse (Temporada 1)",
+        "Price": "20.00",
+        "Description": "Cientos de años en el futuro, la humanidad ha colonizado el Sistema Solar. Una conspiración que amenaza la paz entre la Tierra, Marte y el Cinturón de Asteroides desencadena una guerra. Basada en la exitosa serie de novelas de James S.A. Corey.",
+        "Images": [
+          "the-expanse-t1-0.webp",
+          "the-expanse-t1-1.webp"
+        ],
+        "Features": [
+          "Creador: Daniel Abraham, Ty Franck",
+          "Año: 2015",
+          "Episodios: 10",
+          "Actores: Steven Strait, Dominique Tipper, Wes Chatham"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.881Z",
+        "Update": "2026-07-13T16:10:20.881Z"
+      }
+    ]
+  },
+  "Documentales": {
+    "Naturaleza / Vida Salvaje": [
+      {
+        "Label": "Planeta Tierra II",
+        "Price": "12.00",
+        "Description": "La secuela del aclamado documental de la BBC. Utilizando tecnología de vanguardia, el equipo de David Attenborough viaja a los lugares más remotos del planeta para capturar imágenes impresionantes de la vida salvaje. Una experiencia visual inolvidable.",
+        "Images": [
+          "planeta-tierra-ii-0.jpg",
+          "planeta-tierra-ii-1.jpg"
+        ],
+        "Features": [
+          "Narrador: David Attenborough",
+          "Año: 2016",
+          "Episodios: 6",
+          "Duración: 50 min por episodio"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.881Z",
+        "Update": "2026-07-13T16:10:20.881Z"
+      }
+    ]
+  },
+  "Shows": {
+    "Stand-up Comedy": [
+      {
+        "Label": "The Office (Temporada 1)",
+        "Price": "12.00",
+        "Description": "Adaptación estadounidense de la serie británica. Sigue la vida cotidiana de los empleados de la empresa Dunder Mifflin, liderados por el excéntrico Michael Scott. Una comedia de oficina que se convirtió en un fenómeno cultural.",
+        "Images": [
+          "the-office-temporada-1-0.jpg",
+          "the-office-temporada-1-1.jpg"
+        ],
+        "Features": [
+          "Temporada: 1",
+          "Episodios: 6",
+          "Año: 2005",
+          "Creador: Greg Daniels",
+          "Actores: Steve Carell, John Krasinski, Jenna Fischer"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.881Z",
+        "Update": "2026-07-13T16:10:20.881Z"
+      }
+    ]
+  },
+  "Novelas": {
+    "Romance": [
+      {
+        "Label": "Pasión de Gavilanes",
+        "Price": "400.00",
+        "Description": "Tres hermanos llegan a un pueblo colombiano para vengar la muerte de su hermana, pero sus planes cambian cuando se enamoran de las hijas de la poderosa familia Reyes. Una telenovela llena de pasión, intriga y amor.",
+        "Images": [
+          "pasion-de-gavilanes-0.webp",
+          "pasion-de-gavilanes-1.webp",
+          "pasion-de-gavilanes-2.webp",
+          "pasion-de-gavilanes-3.webp"
+        ],
+        "Features": [
+          "Director: Rodrigo Triana",
+          "Año: 2003",
+          "Episodios: 200",
+          "Actores: Danna García, Mario Cimarro, Paola Rey"
+        ],
+        "Type": "episode",
+        "Episodes": 200,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.882Z",
+        "Update": "2026-07-13T16:10:20.882Z"
+      }
+    ],
+    "Dramas (coreanos, turcos, etc.)": [
+      {
+        "Label": "20 MINUTOS - 20 DAKIKA",
+        "Price": "118.00",
+        "Description": "20 Dakika (en español 20 Minutos) es una serie turca de suspenso y drama que narra la historia de Melek Halaskar, una mujer que lleva una vida tranquila junto a su esposo Ali y sus dos hijos, hasta que es acusada de asesinato y condenada a 20 años de prisión. Ali, convencido de su inocencia, emprende una lucha desesperada contra el sistema judicial para demostrar la verdad y liberar a su esposa. La trama se centra en el amor, la justicia y los sacrificios que una familia está dispuesta a hacer frente a la adversidad.",
+        "Images": [
+          "20-minutos-20-dakika-0.webp",
+          "20-minutos-20-dakika-1.webp"
+        ],
+        "Features": [
+          "Episodios: 59",
+          "Título original: 20 Dakika",
+          "Año: 2013",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 59,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.882Z",
+        "Update": "2026-07-13T16:10:20.882Z"
+      },
+      {
+        "Label": "46 DESAPARECIÉNDO - YOK OLAN",
+        "Price": "26.00",
+        "Description": "Yok Olan (en español 46 Desapareciendo) es una serie turca de suspenso psicológico que explora los límites de la mente humana y las consecuencias de la obsesión científica. La trama gira en torno a Murat Günay, un profesor de genética que desarrolla un suero experimental capaz de alterar la personalidad y liberar impulsos reprimidos. Lo que comienza como un proyecto científico se convierte en una pesadilla cuando Murat empieza a perder el control sobre sí mismo y su entorno.",
+        "Images": [
+          "46-desapareciendo-yok-olan-0.webp",
+          "46-desapareciendo-yok-olan-1.webp"
+        ],
+        "Features": [
+          "Episodios: 13",
+          "Título original: Yok Olan",
+          "Año: 2016",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 13,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.882Z",
+        "Update": "2026-07-13T16:10:20.882Z"
+      },
+      {
+        "Label": "ABISMO DE OSCURIDAD - KARANLIGIN UÇURUMU",
+        "Price": "20.00",
+        "Description": "Un grupo de refugiados que huye de la guerra y la violencia en sus países termina en una isla aislada, controlada por una red criminal internacional. Allí son obligados a competir en juegos de supervivencia transmitidos en directo para apuestas ilegales. Solo quienes sobreviven obtienen la libertad, mientras los demás mueren. La serie expone temas de tráfico humano, explotación, apuestas clandestinas y lucha por la esperanza.",
+        "Images": [
+          "abismo-de-oscuridad-karanligin-uurumu-0.webp"
+        ],
+        "Features": [
+          "Episodios: 10",
+          "Título original: Asylum",
+          "Año: 2026",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.882Z",
+        "Update": "2026-07-13T16:10:20.883Z"
+      },
+      {
+        "Label": "ADELA",
+        "Price": "156.00",
+        "Description": "Adela es la adaptación del drama turco 'O Hayat Benim' (Esa es mi vida). La trama gira en torno a dos hermanas, Adela y Andreea, que fueron criadas en un hogar pobre de un barrio marginal. Mientras Adela es capaz de renunciar a todo por su hermana, Andreea siente que todo lo que es de Adela también es suyo.",
+        "Images": [
+          "adela-0.webp",
+          "adela-1.webp",
+          "adela-2.webp"
+        ],
+        "Features": [
+          "Episodios: 78",
+          "Título original: O Hayat Benim",
+          "Año: 2021–2022",
+          "País: Rumanía"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.883Z",
+        "Update": "2026-07-13T16:10:20.883Z"
+      },
+      {
+        "Label": "AGENTES IMPLICADOS – MENTES OPUESTAS – MUHTESEM IKILI",
+        "Price": "80.00",
+        "Description": "Muhteşem İkili (en español Agentes Implicados / Mentes Opuestas) es una serie turca de acción y crimen que sigue a dos policías con personalidades completamente diferentes que deben trabajar juntos para desmantelar una poderosa red criminal. La historia se centra en Mert Barca, un agente frío y calculador, y Mustafa Kerim Can (MKC), un policía impulsivo y carismático. Aunque sus métodos chocan, la fuerza de su alianza se convierte en la clave para enfrentar a sus enemigos.",
+        "Images": [
+          "agentes-implicados-mentes-opuestas-muhtesem-ikili-0.webp",
+          "agentes-implicados-mentes-opuestas-muhtesem-ikili-1.webp"
+        ],
+        "Features": [
+          "Episodios: 40",
+          "Título original: Muhteşem İkili",
+          "Año de emisión: 2018–2019",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.883Z",
+        "Update": "2026-07-13T16:10:20.883Z"
+      },
+      {
+        "Label": "AL MARGEN DE LA LEY - YASANIN KENARINDA",
+        "Price": "48.00",
+        "Description": "La serie sigue a Ali Kemal Ateş, un agente secreto que trabaja infiltrado en organizaciones criminales mientras intenta proteger a su familia y mantener su identidad oculta. La trama mezcla acción, espionaje y drama personal, mostrando cómo Ali Kemal se mueve “al margen de la ley” para cumplir con su misión.",
+        "Images": [
+          "al-margen-de-la-ley-yasanin-kenarinda-0.jpg",
+          "al-margen-de-la-ley-yasanin-kenarinda-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 24",
+          "Título original: Kayıt Dışı",
+          "Año: 2017",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.883Z",
+        "Update": "2026-07-13T16:10:20.883Z"
+      },
+      {
+        "Label": "ALAS DE AMOR - ASK KANATLARI",
+        "Price": "138.00",
+        "Description": "La historia sigue a Leyla, una joven que se casa por conveniencia y pronto descubre que su matrimonio la atrapa en una vida que no desea. Al huir con su hijo, conoce a Alper, un hombre marcado por la pérdida y la traición. Entre ellos surge un amor inesperado, pero deberán enfrentarse a secretos, venganzas y obstáculos familiares.",
+        "Images": [
+          "alas-de-amor-ask-kanatlari-0.webp"
+        ],
+        "Features": [
+          "Episodios: 69",
+          "Título original: Bana Sevmeyi Anlat",
+          "Año: 2016–2017",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 69,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.884Z",
+        "Update": "2026-07-13T16:10:20.884Z"
+      },
+      {
+        "Label": "ALAS ROTAS - KIRIK KANATLAR",
+        "Price": "302.00",
+        "Description": "Kırık Kanatlar (en español Alas Rotas) es una serie turca de drama histórico ambientada durante la Guerra de Independencia de Turquía (1919–1922). La trama se centra en Azize, una joven que se convierte en símbolo de resistencia y sacrificio, enfrentando la ocupación extranjera y las dificultades de la época. La serie muestra cómo las mujeres también fueron protagonistas en la lucha por la libertad, equilibrando el dolor personal con el deber patriótico.",
+        "Images": [
+          "alas-rotas-kirik-kanatlar-0.webp",
+          "alas-rotas-kirik-kanatlar-1.webp"
+        ],
+        "Features": [
+          "Episodios: 151",
+          "Título original: Kırık Kanatlar",
+          "Año: 2006–2007",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 151,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.884Z",
+        "Update": "2026-07-13T16:10:20.884Z"
+      },
+      {
+        "Label": "ALEF",
+        "Price": "16.00",
+        "Description": "La serie turca Alef es un thriller policíaco y místico estrenado en 2020, con dos temporadas hasta 2022. Se centra en detectives que investigan asesinatos en Estambul, vinculados con símbolos sufíes y secretos históricos. Es considerada una de las producciones más innovadoras del género en Turquía.",
+        "Images": [
+          "alef-0.webp",
+          "alef-1.webp"
+        ],
+        "Features": [
+          "Episodios: 8",
+          "Título original: Alef",
+          "Año: 2020–2022",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.884Z",
+        "Update": "2026-07-13T16:10:20.884Z"
+      },
+      {
+        "Label": "ALMAS DE FUEGO",
+        "Price": "124.00",
+        "Description": "La historia sigue a Han (Birkan Sokullu), un hombre atrapado entre sus responsabilidades familiares y sus propios conflictos emocionales. Su vida cambia al conocer a İnci, desencadenando una trama intensa sobre el amor, los traumas del pasado y la complejidad de los vínculos humanos.",
+        "Images": [
+          "almas-de-fuego-0.jpg",
+          "almas-de-fuego-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 62",
+          "Título original: Masumlar Apartmanı",
+          "Año: 2020–2022",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.885Z",
+        "Update": "2026-07-13T16:10:20.885Z"
+      },
+      {
+        "Label": "AMAR ES PRIMAVERA - ILKBAHARDA ASK",
+        "Price": "230.00",
+        "Description": "İlkbaharda Aşk (en español Amar es Primavera) es una serie turca de drama romántico que narra la historia de dos jóvenes que, tras superar heridas del pasado, encuentran en la primavera una oportunidad para renacer y descubrir el amor verdadero. La trama se centra en los giros emocionales de sus vidas, marcados por secretos familiares, traiciones y la esperanza de un nuevo comienzo.",
+        "Images": [
+          "amar-es-primavera-ilkbaharda-ask-0.webp"
+        ],
+        "Features": [
+          "Episodios: 115",
+          "Título original: İlkbaharda Aşk",
+          "Año: 2014",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 115,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.885Z",
+        "Update": "2026-07-13T16:10:20.885Z"
+      },
+      {
+        "Label": "AMOR DE CONTRABANDO - KARA PARA ASK",
+        "Price": "334.00",
+        "Description": "Kara Para Aşk (en español Amor de Contrabando) es una de las series turcas más reconocidas internacionalmente, un thriller romántico que mezcla crimen, misterio y amor. La historia sigue a Ömer Demir, un policía honesto que investiga la muerte de su prometida, y a Elif Denizer, una diseñadora de joyas cuya familia está implicada en negocios turbios. Sus caminos se cruzan en medio de una red de contrabando, corrupción y secretos, donde el amor surge en circunstancias inesperadas.",
+        "Images": [
+          "amor-de-contrabando-kara-para-ask-0.webp",
+          "amor-de-contrabando-kara-para-ask-1.webp"
+        ],
+        "Features": [
+          "Episodios: 167",
+          "Título original: Kara Para Aşk",
+          "Año: 2014–2015",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 167,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.885Z",
+        "Update": "2026-07-13T16:10:20.885Z"
+      },
+      {
+        "Label": "AMOR DE FAMILIA - NUESTRA HISTORIA - BIZIM HIKAYE",
+        "Price": "400.00",
+        "Description": "Bizim Hikaye (en español Amor de Familia / Nuestra Historia) es la adaptación turca de la exitosa serie británica Shameless. La trama sigue a Filiz, la hija mayor de una familia numerosa que se ve obligada a asumir el rol de madre y sostén económico debido al abandono y alcoholismo de su padre. Su vida cambia cuando conoce a Barış, un joven con secretos, que le ofrece la posibilidad de experimentar el amor y la esperanza en medio de la adversidad.",
+        "Images": [
+          "amor-de-familia-nuestra-historia-bizim-hikaye-0.webp",
+          "amor-de-familia-nuestra-historia-bizim-hikaye-1.webp",
+          "amor-de-familia-nuestra-historia-bizim-hikaye-2.webp"
+        ],
+        "Features": [
+          "Episodios: 200",
+          "Título original: Bizim Hikaye",
+          "Año: 2017–2019",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 200,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.885Z",
+        "Update": "2026-07-13T16:10:20.885Z"
+      },
+      {
+        "Label": "AMOR EN BLANCO Y NEGRO - SIYAH BEYAZ ASK",
+        "Price": "128.00",
+        "Description": "Siyah Beyaz Aşk (en español Amor en Blanco y Negro) es una serie turca de drama romántico y acción que narra la historia de Ferhat Aslan, un hombre frío y violento vinculado al crimen organizado, y Aslı Çınar, una joven doctora idealista que se ve obligada a casarse con él para salvar su vida. Lo que comienza como un matrimonio forzado se transforma en una relación marcada por la pasión, el conflicto y la redención.",
+        "Images": [
+          "amor-en-blanco-y-negro-siyah-beyaz-ask-0.webp",
+          "amor-en-blanco-y-negro-siyah-beyaz-ask-1.webp"
+        ],
+        "Features": [
+          "Episodios: 64",
+          "Título original: Siyah Beyaz Aşk",
+          "Año: 2017–2018",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 64,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.885Z",
+        "Update": "2026-07-13T16:10:20.885Z"
+      },
+      {
+        "Label": "AMOR EN EL AIRE - ME ROBASTE EL CORAZÓN - LLAMAS A MI PUERTA",
+        "Price": "284.00",
+        "Description": "Sen Çal Kapımı (en español Amor en el Aire / Me Robaste el Corazón / Llamas a mi Puerta) es una de las comedias románticas turcas más populares de los últimos años. La historia sigue a Eda Yıldız, una joven arquitecta paisajista que pierde su beca universitaria y culpa al empresario Serkan Bolat. Para recuperar su futuro, acepta fingir ser su novia durante un tiempo, pero lo que comienza como un acuerdo termina convirtiéndose en un amor verdadero lleno de enredos, pasión y humor.",
+        "Images": [
+          "amor-en-el-aire-me-robaste-el-corazon-llamas-a-mi-puerta-0.webp",
+          "amor-en-el-aire-me-robaste-el-corazon-llamas-a-mi-puerta-1.webp"
+        ],
+        "Features": [
+          "Episodios: 142",
+          "Título original: Sen Çal Kapımı",
+          "Año: 2020–2021",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 142,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.885Z",
+        "Update": "2026-07-13T16:10:20.885Z"
+      },
+      {
+        "Label": "AMOR EN GUERRA - SURA & SEYIT",
+        "Price": "92.00",
+        "Description": "“Amor en Guerra – Sura & Seyit” corresponde a la serie turca Kurt Seyit ve Şura, un drama histórico y romántico basado en las novelas de Nermin Bezmen. La historia sigue el amor imposible entre Kurt Seyit Eminof, un teniente tártaro de Crimea del ejército del Zar, y Şura Verjenskaya, una joven noble rusa. Su romance nace en un baile en San Petersburgo y se ve arrastrado por los acontecimientos devastadores de la Primera Guerra Mundial, la Revolución Rusa y la caída del Imperio Otomano.",
+        "Images": [
+          "amor-en-guerra-sura-seyit-0.webp",
+          "amor-en-guerra-sura-seyit-1.webp"
+        ],
+        "Features": [
+          "Episodios: 46",
+          "Título original: Kurt Seyit ve Şura",
+          "Año: 2014",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 46,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.886Z",
+        "Update": "2026-07-13T16:10:20.886Z"
+      },
+      {
+        "Label": "AMOR EN LA AZOTEA - ÇATI KATI ASKI",
+        "Price": "120.00",
+        "Description": "Çatı Katı Aşk (en español Amor en la Azotea) es una comedia romántica turca ligera y familiar que gira en torno a dos jóvenes que, por distintas razones, terminan viviendo en la azotea de una casa tradicional de Estambul. Allí se forma una convivencia llena de enredos, secretos, malentendidos y, por supuesto, amor.",
+        "Images": [
+          "amor-en-la-azotea-ati-kati-aski-0.webp",
+          "amor-en-la-azotea-ati-kati-aski-1.webp"
+        ],
+        "Features": [
+          "Episodios: 60",
+          "Título original: Çatı Katı Aşk",
+          "Año: 2020",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 60,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.886Z",
+        "Update": "2026-07-13T16:10:20.886Z"
+      },
+      {
+        "Label": "AMOR ETERNO - KARA SEVDA",
+        "Price": "916.00",
+        "Description": "Kara Sevda (en español Amor Eterno) es uno de los dramas románticos turcos más exitosos de la historia, famoso por su intensidad emocional, su producción de alto nivel y por haber ganado el International Emmy Award a Mejor Telenovela.\nEl destino, los secretos familiares y la lucha entre clases sociales convierten su romance en una tragedia inolvidable.",
+        "Images": [
+          "amor-eterno-kara-sevda-0.webp",
+          "amor-eterno-kara-sevda-1.webp"
+        ],
+        "Features": [
+          "Episodios: 458",
+          "Título original: Kara Sevda",
+          "Año: 2015–2017",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 458,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.886Z",
+        "Update": "2026-07-13T16:10:20.886Z"
+      },
+      {
+        "Label": "AMOR IMPOSIBLE - GÜLCEMAL",
+        "Price": "44.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-imposible-gulcemal-0.webp",
+          "amor-imposible-gulcemal-1.webp"
+        ],
+        "Features": [
+          "Episodios: 22",
+          "Título original: Gülcemal"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.886Z",
+        "Update": "2026-07-13T16:10:20.886Z"
+      },
+      {
+        "Label": "AMOR INVENCIBLE - YENILMEZ ASK",
+        "Price": "192.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-invencible-yenilmez-ask-0.webp",
+          "amor-invencible-yenilmez-ask-1.webp"
+        ],
+        "Features": [
+          "Episodios: 96",
+          "Título original: Yenilmez Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 96,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.886Z",
+        "Update": "2026-07-13T16:10:20.886Z"
+      },
+      {
+        "Label": "AMOR LOGICA VENFANZA – ASK MANTIK INTIKAM",
+        "Price": "214.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-logica-venfanza-ask-mantik-intikam-0.webp",
+          "amor-logica-venfanza-ask-mantik-intikam-1.webp"
+        ],
+        "Features": [
+          "Episodios: 107",
+          "Título original: Aşk Mantık İntikam"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.887Z",
+        "Update": "2026-07-13T16:10:20.887Z"
+      },
+      {
+        "Label": "AMOR MANCHADO - TURK",
+        "Price": "60.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-manchado-turk-0.webp",
+          "amor-manchado-turk-1.webp"
+        ],
+        "Features": [
+          "Episodios: 30",
+          "Título original: Türk"
+        ],
+        "Type": "episode",
+        "Episodes": 30,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.887Z",
+        "Update": "2026-07-13T16:10:20.887Z"
+      },
+      {
+        "Label": "AMOR OBSTINADO - INADINA ASK",
+        "Price": "194.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-obstinado-inadina-ask-0.webp",
+          "amor-obstinado-inadina-ask-1.webp"
+        ],
+        "Features": [
+          "Episodios: 97",
+          "Título original: İnatçı Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 97,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.887Z",
+        "Update": "2026-07-13T16:10:20.887Z"
+      },
+      {
+        "Label": "AMOR SIN PALABRAS - HAYAT",
+        "Price": "164.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-sin-palabras-hayat-0.webp",
+          "amor-sin-palabras-hayat-1.webp"
+        ],
+        "Features": [
+          "Episodios: 82",
+          "Título original: Hayat"
+        ],
+        "Type": "episode",
+        "Episodes": 82,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.887Z",
+        "Update": "2026-07-13T16:10:20.887Z"
+      },
+      {
+        "Label": "AMOR Y ODIO - ASK VE MAVI",
+        "Price": "538.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-y-odio-ask-ve-mavi-0.webp",
+          "amor-y-odio-ask-ve-mavi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 269",
+          "Título original: Aşk ve Mavi"
+        ],
+        "Type": "episode",
+        "Episodes": 269,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.888Z",
+        "Update": "2026-07-13T16:10:20.888Z"
+      },
+      {
+        "Label": "AMOR Y PECADO - ASK VE GÜNAH",
+        "Price": "240.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-y-pecado-ask-ve-gunah-0.webp",
+          "amor-y-pecado-ask-ve-gunah-1.webp"
+        ],
+        "Features": [
+          "Episodios: 120",
+          "Título original: Aşk ve Günah"
+        ],
+        "Type": "episode",
+        "Episodes": 120,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.888Z",
+        "Update": "2026-07-13T16:10:20.888Z"
+      },
+      {
+        "Label": "AMOR Y VENGANZA - CEZUR",
+        "Price": "214.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amor-y-venganza-cezur-0.webp",
+          "amor-y-venganza-cezur-1.webp"
+        ],
+        "Features": [
+          "Episodios: 107",
+          "Título original: Cezur"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.888Z",
+        "Update": "2026-07-13T16:10:20.888Z"
+      },
+      {
+        "Label": "AMORES CRUZADOS - INTERSECCIÓN - KAVSAK",
+        "Price": "150.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "amores-cruzados-interseccion-kavsak-0.webp",
+          "amores-cruzados-interseccion-kavsak-1.webp"
+        ],
+        "Features": [
+          "Episodios: 75",
+          "Título original: Kavşak"
+        ],
+        "Type": "episode",
+        "Episodes": 75,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.888Z",
+        "Update": "2026-07-13T16:10:20.888Z"
+      },
+      {
+        "Label": "BONDAD - LA TRAICIÓN - EL AMOR Y LA VENGANZA - IYILIK, IHANET VE INTIKAM",
+        "Price": "148.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "bondad-la-traicion-el-amor-y-la-venganza-iyilik-ihanet-ve-intikam-0.webp",
+          "bondad-la-traicion-el-amor-y-la-venganza-iyilik-ihanet-ve-intikam-1.webp"
+        ],
+        "Features": [
+          "Episodios: 74",
+          "Título original: İyilik, İhanet ve İntikam"
+        ],
+        "Type": "episode",
+        "Episodes": 74,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.888Z",
+        "Update": "2026-07-13T16:10:20.888Z"
+      },
+      {
+        "Label": "CANCIÓN DE VERANO - YAZ SARKISI",
+        "Price": "48.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cancion-de-verano-yaz-sarkisi-0.webp",
+          "cancion-de-verano-yaz-sarkisi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 24",
+          "Título original: Yaz Şarkısı"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CARTA DE DESPEDIDA - VEDA MEKTUBU",
+        "Price": "152.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "carta-de-despedida-veda-mektubu-0.webp",
+          "carta-de-despedida-veda-mektubu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 76",
+          "Título original: Veda Mektubu"
+        ],
+        "Type": "episode",
+        "Episodes": 76,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CEMENTERIO - MEZARLIK",
+        "Price": "24.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cementerio-mezarlik-0.webp",
+          "cementerio-mezarlik-1.webp"
+        ],
+        "Features": [
+          "Episodios: 12",
+          "Título original: Mezarlık"
+        ],
+        "Type": "episode",
+        "Episodes": 12,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CENNET TODO VUELVE – CENNETIN GÖZYASLARI",
+        "Price": "318.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cennet-todo-vuelve-cennetin-gozyaslari-0.webp",
+          "cennet-todo-vuelve-cennetin-gozyaslari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 159",
+          "Título original: Cennet'in Gözyaşları"
+        ],
+        "Type": "episode",
+        "Episodes": 159,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CHOQUE - CRASH - CARPRISMA",
+        "Price": "136.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "choque-crash-carprisma-0.webp",
+          "choque-crash-carprisma-1.webp"
+        ],
+        "Features": [
+          "Episodios: 68",
+          "Título original: Çarpışma"
+        ],
+        "Type": "episode",
+        "Episodes": 68,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CIUDAD CRUEL – ZALIM ISTANBUL",
+        "Price": "216.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "ciudad-cruel-zalim-istanbul-0.webp",
+          "ciudad-cruel-zalim-istanbul-1.webp"
+        ],
+        "Features": [
+          "Episodios: 108",
+          "Título original: Zalim İstanbul"
+        ],
+        "Type": "episode",
+        "Episodes": 108,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CIUDAD DEL MIRZA - MIRZAPUR TEMP. 1, 2, 3 x 29 FIN",
+        "Price": "58.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "ciudad-del-mirza-mirzapur-temp-1-2-3-x-29-fin-0.webp",
+          "ciudad-del-mirza-mirzapur-temp-1-2-3-x-29-fin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 29",
+          "Título original: Mirzapur"
+        ],
+        "Type": "episode",
+        "Episodes": 29,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.889Z",
+        "Update": "2026-07-13T16:10:20.889Z"
+      },
+      {
+        "Label": "CLUB DE ESTAMBUL – ISTANBUL KULÜBÜ",
+        "Price": "20.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "club-de-estambul-istanbul-kulubu-0.webp",
+          "club-de-estambul-istanbul-kulubu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 10",
+          "Título original: İstanbul Kulübü"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.890Z",
+        "Update": "2026-07-13T16:10:20.890Z"
+      },
+      {
+        "Label": "CLUB ESTAMBUL - ISTANBUL KULÜBÜ",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "club-estambul-istanbul-kulubu-0.webp",
+          "club-estambul-istanbul-kulubu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: İstanbul Kulübü"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.890Z",
+        "Update": "2026-07-13T16:10:20.890Z"
+      },
+      {
+        "Label": "COLLAR POLVORIENTO - CHICOS DE BARRIO - TOZLUVAKA",
+        "Price": "160.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "collar-polvoriento-chicos-de-barrio-tozluvaka-0.webp",
+          "collar-polvoriento-chicos-de-barrio-tozluvaka-1.webp"
+        ],
+        "Features": [
+          "Episodios: 80",
+          "Título original: Tozluvaka"
+        ],
+        "Type": "episode",
+        "Episodes": 80,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.890Z",
+        "Update": "2026-07-13T16:10:20.890Z"
+      },
+      {
+        "Label": "COMBINACIÓN PERFECTA - MÜKEMMEL UYUM",
+        "Price": "66.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "combinacion-perfecta-mukemmel-uyum-0.webp",
+          "combinacion-perfecta-mukemmel-uyum-1.webp"
+        ],
+        "Features": [
+          "Episodios: 33",
+          "Título original: Mükemmel Uyum"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.890Z",
+        "Update": "2026-07-13T16:10:20.890Z"
+      },
+      {
+        "Label": "COMO VUELA EL CUERVO - LAS ALAS DE LA AMBICIÓN - KUS UÇUSU",
+        "Price": "48.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "como-vuela-el-cuervo-las-alas-de-la-ambicion-kus-ucusu-0.webp",
+          "como-vuela-el-cuervo-las-alas-de-la-ambicion-kus-ucusu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 24",
+          "Título original: Kuş Uçuşu"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.890Z",
+        "Update": "2026-07-13T16:10:20.890Z"
+      },
+      {
+        "Label": "CON OLOR A FRESA – ÇILEK KOKUSU",
+        "Price": "110.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "con-olor-a-fresa-cilek-kokusu-0.webp",
+          "con-olor-a-fresa-cilek-kokusu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 55",
+          "Título original: Çilek Kokusu"
+        ],
+        "Type": "episode",
+        "Episodes": 55,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.890Z",
+        "Update": "2026-07-13T16:10:20.890Z"
+      },
+      {
+        "Label": "CONVIRTIÉNDOSE EN UNA DAMA - GÖNÜLCELEN",
+        "Price": "224.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "convirtiendose-en-una-dama-gonulcelen-0.webp",
+          "convirtiendose-en-una-dama-gonulcelen-1.webp"
+        ],
+        "Features": [
+          "Episodios: 112",
+          "Título original: Gönülcelen"
+        ],
+        "Type": "episode",
+        "Episodes": 112,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CORAZONES HUÉRFANOS - YETIM KALPLER",
+        "Price": "68.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "corazones-huerfanos-yetim-kalpler-0.webp",
+          "corazones-huerfanos-yetim-kalpler-1.webp"
+        ],
+        "Features": [
+          "Episodios: 34",
+          "Título original: Yetim Kalpler"
+        ],
+        "Type": "episode",
+        "Episodes": 34,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CORAZÓN HERIDO - HERIDAS DEL CORAZÓN – KALP YARASI",
+        "Price": "214.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "corazon-herido-heridas-del-corazon-kalp-yarasi-0.webp",
+          "corazon-herido-heridas-del-corazon-kalp-yarasi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 107",
+          "Título original: Kalp Yarasi"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CRASH – ÇARPISMA",
+        "Price": "136.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "crash-carpisma-0.webp",
+          "crash-carpisma-1.webp"
+        ],
+        "Features": [
+          "Episodios: 68",
+          "Título original: Çarpışma"
+        ],
+        "Type": "episode",
+        "Episodes": 68,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CUENTOS DE INVIERNO - KIS MASALI",
+        "Price": "66.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cuentos-de-invierno-kis-masali-0.webp",
+          "cuentos-de-invierno-kis-masali-1.webp"
+        ],
+        "Features": [
+          "Episodios: 33",
+          "Título original: Kış Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CUENTOS DE LA ISLA - ADA MASALI",
+        "Price": "166.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cuentos-de-la-isla-ada-masali-0.webp",
+          "cuentos-de-la-isla-ada-masali-1.webp"
+        ],
+        "Features": [
+          "Episodios: 83",
+          "Título original: Ada Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 83,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CUERVO - KUZGUN",
+        "Price": "142.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cuervo-kuzgun-0.webp",
+          "cuervo-kuzgun-1.webp"
+        ],
+        "Features": [
+          "Episodios: 71",
+          "Título original: Kuzgun"
+        ],
+        "Type": "episode",
+        "Episodes": 71,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.891Z",
+        "Update": "2026-07-13T16:10:20.891Z"
+      },
+      {
+        "Label": "CUESTIÓN DE HONOR - NAMUS MESELESI",
+        "Price": "122.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cuestion-de-honor-namus-meselesi-0.webp",
+          "cuestion-de-honor-namus-meselesi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 61",
+          "Título original: Namus Meselesi"
+        ],
+        "Type": "episode",
+        "Episodes": 61,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.892Z",
+        "Update": "2026-07-13T16:10:20.892Z"
+      },
+      {
+        "Label": "CUKUR - EL NIÑO",
+        "Price": "312.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "cukur-el-nino-0.webp",
+          "cukur-el-nino-1.webp"
+        ],
+        "Features": [
+          "Episodios: 156",
+          "Título original: Çukur"
+        ],
+        "Type": "episode",
+        "Episodes": 156,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.892Z",
+        "Update": "2026-07-13T16:10:20.892Z"
+      },
+      {
+        "Label": "DE QUIÉN HUÍMOS MAMÁ - KIZIM NEREDE",
+        "Price": "14.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "de-quien-huimos-mama-kizim-nerede-0.webp",
+          "de-quien-huimos-mama-kizim-nerede-1.webp"
+        ],
+        "Features": [
+          "Episodios: 7",
+          "Título original: Kızım Nerede"
+        ],
+        "Type": "episode",
+        "Episodes": 7,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.892Z",
+        "Update": "2026-07-13T16:10:20.892Z"
+      },
+      {
+        "Label": "DONDE ESTÁ MI HIJA - KIZIM NEREDE",
+        "Price": "124.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "donde-esta-mi-hija-kizim-nerede-0.webp",
+          "donde-esta-mi-hija-kizim-nerede-1.webp"
+        ],
+        "Features": [
+          "Episodios: 62",
+          "Título original: Kızım Nerede"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.892Z",
+        "Update": "2026-07-13T16:10:20.892Z"
+      },
+      {
+        "Label": "DULCE VENGANZA - TATLI INTIKAM",
+        "Price": "196.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "dulce-venganza-tatli-intikam-0.webp",
+          "dulce-venganza-tatli-intikam-1.webp"
+        ],
+        "Features": [
+          "Episodios: 98",
+          "Título original: Tatlı İntikam"
+        ],
+        "Type": "episode",
+        "Episodes": 98,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.892Z",
+        "Update": "2026-07-13T16:10:20.892Z"
+      },
+      {
+        "Label": "EL JOVEN GENIO SINA - GENÇ DAHI SINA",
+        "Price": "20.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-joven-genio-sina-genc-dahi-sina-0.webp",
+          "el-joven-genio-sina-genc-dahi-sina-1.webp"
+        ],
+        "Features": [
+          "Episodios: 10",
+          "Título original: Genç Dahi Sina"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.892Z",
+        "Update": "2026-07-13T16:10:20.892Z"
+      },
+      {
+        "Label": "EL AMOR MÁS HERMOSO - ASKLARIN EN GÜZEL",
+        "Price": "100.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-amor-mas-hermoso-asklarin-en-guzel-0.webp",
+          "el-amor-mas-hermoso-asklarin-en-guzel-1.webp"
+        ],
+        "Features": [
+          "Episodios: 50",
+          "Título original: Aşkların En Güzel"
+        ],
+        "Type": "episode",
+        "Episodes": 50,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL CAMINO DE LA VIDA - HAYAT YOLU",
+        "Price": "64.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-camino-de-la-vida-hayat-yolu-0.webp",
+          "el-camino-de-la-vida-hayat-yolu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 32",
+          "Título original: Hayat Yolu"
+        ],
+        "Type": "episode",
+        "Episodes": 32,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL CORAZÓN DE LA CIUDAD – BU SEHIR ARKANDAN GELECEK",
+        "Price": "66.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-corazon-de-la-ciudad-bu-sehir-arkandan-gelecek-0.webp",
+          "el-corazon-de-la-ciudad-bu-sehir-arkandan-gelecek-1.webp"
+        ],
+        "Features": [
+          "Episodios: 33",
+          "Título original: Bu Şehir Arkandan Gelecek"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL CORAZÓN DE RÜZGAR - RÜZGARIN KALBI",
+        "Price": "54.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-corazon-de-ruzgar-ruzgarin-kalbi-0.webp",
+          "el-corazon-de-ruzgar-ruzgarin-kalbi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 27",
+          "Título original: Rüzgarın Kalbi"
+        ],
+        "Type": "episode",
+        "Episodes": 27,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL CUERVO - KUZGUN",
+        "Price": "142.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-cuervo-kuzgun-0.webp",
+          "el-cuervo-kuzgun-1.webp"
+        ],
+        "Features": [
+          "Episodios: 71",
+          "Título original: Kuzgun"
+        ],
+        "Type": "episode",
+        "Episodes": 71,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL DESTINO - KADER",
+        "Price": "60.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-destino-kader-0.webp",
+          "el-destino-kader-1.webp"
+        ],
+        "Features": [
+          "Episodios: 30",
+          "Título original: Kader"
+        ],
+        "Type": "episode",
+        "Episodes": 30,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL FUEGO DEL DESTINO - KADERIN ATESI",
+        "Price": "96.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-fuego-del-destino-kaderin-atesi-0.webp",
+          "el-fuego-del-destino-kaderin-atesi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 48",
+          "Título original: Kaderin Ateşi"
+        ],
+        "Type": "episode",
+        "Episodes": 48,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.893Z",
+        "Update": "2026-07-13T16:10:20.893Z"
+      },
+      {
+        "Label": "EL FUEGO EN NOSOTROS - BIZDEKI ATES",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-fuego-en-nosotros-bizdeki-ates-0.webp",
+          "el-fuego-en-nosotros-bizdeki-ates-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: Bizdeki Ateş"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL FÉNIX – ZÜMRÜDÜANKA",
+        "Price": "100.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-fenix-zumruduanka-0.webp",
+          "el-fenix-zumruduanka-1.webp"
+        ],
+        "Features": [
+          "Episodios: 50",
+          "Título original: Zümrüdüanka"
+        ],
+        "Type": "episode",
+        "Episodes": 50,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL HOMBRE EQUIVOCADO - BAY YANLIS",
+        "Price": "28.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-hombre-equivocado-bay-yanlis-0.webp",
+          "el-hombre-equivocado-bay-yanlis-1.webp"
+        ],
+        "Features": [
+          "Episodios: 14",
+          "Título original: Bay Yanlış"
+        ],
+        "Type": "episode",
+        "Episodes": 14,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL JARDÍN SECRETO - GIZLI BAHÇE",
+        "Price": "36.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-jardin-secreto-gizli-bahce-0.webp",
+          "el-jardin-secreto-gizli-bahce-1.webp"
+        ],
+        "Features": [
+          "Episodios: 18",
+          "Título original: Gizli Bahçe"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL JUEGO DE MI DESTINO - AMOR Y TRAICIÓN - KADERIMIN OYUNU",
+        "Price": "170.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-juego-de-mi-destino-amor-y-traicion-kaderimin-oyunu-0.webp",
+          "el-juego-de-mi-destino-amor-y-traicion-kaderimin-oyunu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 85",
+          "Título original: Kaderimin Oyunu"
+        ],
+        "Type": "episode",
+        "Episodes": 85,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL LEGADO DE AMOR - EMANET",
+        "Price": "0.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-legado-de-amor-emanet-0.webp",
+          "el-legado-de-amor-emanet-1.webp"
+        ],
+        "Features": [
+          "Episodios: ?",
+          "Título original: Emanet"
+        ],
+        "Type": "episode",
+        "Episodes": 0,
+        "PricePerEpisode": "0.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL NIÑO – ÇOCUK",
+        "Price": "124.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-nino-cocuk-0.webp",
+          "el-nino-cocuk-1.webp"
+        ],
+        "Features": [
+          "Episodios: 62",
+          "Título original: Çocuk"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.894Z",
+        "Update": "2026-07-13T16:10:20.894Z"
+      },
+      {
+        "Label": "EL OLOR DE UN NIÑO - BIR ÇOCUGUN KOKUSU",
+        "Price": "72.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-olor-de-un-nino-bir-cocugun-kokusu-0.webp",
+          "el-olor-de-un-nino-bir-cocugun-kokusu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 36",
+          "Título original: Bir Çocuğun Kokusu"
+        ],
+        "Type": "episode",
+        "Episodes": 36,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL PADRE - BABA",
+        "Price": "448.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-padre-baba-0.webp",
+          "el-padre-baba-1.webp"
+        ],
+        "Features": [
+          "Episodios: 224",
+          "Título original: Baba"
+        ],
+        "Type": "episode",
+        "Episodes": 224,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL PATIO - AVLU",
+        "Price": "290.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-patio-avlu-0.webp",
+          "el-patio-avlu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 145",
+          "Título original: Avlu"
+        ],
+        "Type": "episode",
+        "Episodes": 145,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL PAÑUELO ROJO - KIRMIZI MENDIL",
+        "Price": "176.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-panuelo-rojo-kirmizi-mendil-0.webp",
+          "el-panuelo-rojo-kirmizi-mendil-1.webp"
+        ],
+        "Features": [
+          "Episodios: 88",
+          "Título original: Kırmızı Mendil"
+        ],
+        "Type": "episode",
+        "Episodes": 88,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL POZO - CUKUR",
+        "Price": "310.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-pozo-cukur-0.webp",
+          "el-pozo-cukur-1.webp"
+        ],
+        "Features": [
+          "Episodios: 155",
+          "Título original: Çukur"
+        ],
+        "Type": "episode",
+        "Episodes": 155,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL PRECIO DEL AMOR - ASKIN BEDELI",
+        "Price": "52.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-precio-del-amor-askin-bedeli-0.webp",
+          "el-precio-del-amor-askin-bedeli-1.webp"
+        ],
+        "Features": [
+          "Episodios: 26",
+          "Título original: Aşkın Bedeli"
+        ],
+        "Type": "episode",
+        "Episodes": 26,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL SASTRE - TERZI",
+        "Price": "46.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-sastre-terzi-0.webp",
+          "el-sastre-terzi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 23",
+          "Título original: Terzi"
+        ],
+        "Type": "episode",
+        "Episodes": 23,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL SECRETO - SIR",
+        "Price": "76.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-secreto-sir-0.webp",
+          "el-secreto-sir-1.webp"
+        ],
+        "Features": [
+          "Episodios: 38",
+          "Título original: Sır"
+        ],
+        "Type": "episode",
+        "Episodes": 38,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.895Z",
+        "Update": "2026-07-13T16:10:20.895Z"
+      },
+      {
+        "Label": "EL SECRETO DE FERIHA – ADINI FERIHA KOYDUM",
+        "Price": "332.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-secreto-de-feriha-adini-feriha-koydum-0.webp",
+          "el-secreto-de-feriha-adini-feriha-koydum-1.webp"
+        ],
+        "Features": [
+          "Episodios: 166",
+          "Título original: Adını Feriha Koydum"
+        ],
+        "Type": "episode",
+        "Episodes": 166,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.896Z",
+        "Update": "2026-07-13T16:10:20.896Z"
+      },
+      {
+        "Label": "EL TURCO",
+        "Price": "12.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "el-turco-0.webp",
+          "el-turco-1.webp"
+        ],
+        "Features": [
+          "Episodios: 6"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.896Z",
+        "Update": "2026-07-13T16:10:20.896Z"
+      },
+      {
+        "Label": "EN BUSCA DE MI HIJA - HÍCRAN",
+        "Price": "254.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "en-busca-de-mi-hija-hicran-0.webp",
+          "en-busca-de-mi-hija-hicran-1.webp"
+        ],
+        "Features": [
+          "Episodios: 127",
+          "Título original: Hıçran"
+        ],
+        "Type": "episode",
+        "Episodes": 127,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.896Z",
+        "Update": "2026-07-13T16:10:20.896Z"
+      },
+      {
+        "Label": "EN LAS BUENAS Y EN LAS MALAS - IYI GÜNDE KÖTÜ GÜNDE",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "en-las-buenas-y-en-las-malas-iyi-gunde-kotu-gunde-0.webp",
+          "en-las-buenas-y-en-las-malas-iyi-gunde-kotu-gunde-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: İyi Günde Kötü Günde"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.896Z",
+        "Update": "2026-07-13T16:10:20.896Z"
+      },
+      {
+        "Label": "EN TODAS PARTES TÚ – HER YERDE SEN",
+        "Price": "108.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "en-todas-partes-tu-her-yerde-sen-0.webp",
+          "en-todas-partes-tu-her-yerde-sen-1.webp"
+        ],
+        "Features": [
+          "Episodios: 54",
+          "Título original: Her Yerde Sen"
+        ],
+        "Type": "episode",
+        "Episodes": 54,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.896Z",
+        "Update": "2026-07-13T16:10:20.896Z"
+      },
+      {
+        "Label": "ENAMORADOS ANÓNIMOS - ANONIM ÂSIKLAR",
+        "Price": "16.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "enamorados-anonimos-anonim-asiklar-0.webp",
+          "enamorados-anonimos-anonim-asiklar-1.webp"
+        ],
+        "Features": [
+          "Episodios: 8",
+          "Título original: Anonim Âşıklar"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.896Z",
+        "Update": "2026-07-13T16:10:20.896Z"
+      },
+      {
+        "Label": "ENTRE DOS AMORES - IKI ASK ARASINDA",
+        "Price": "238.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "entre-dos-amores-iki-ask-arasinda-0.webp",
+          "entre-dos-amores-iki-ask-arasinda-1.webp"
+        ],
+        "Features": [
+          "Episodios: 119",
+          "Título original: İki Aşk Arasında"
+        ],
+        "Type": "episode",
+        "Episodes": 119,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "ENTRE EL AMOR Y LA VENGANZA - HERCAI",
+        "Price": "0.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "entre-el-amor-y-la-venganza-hercai-0.webp",
+          "entre-el-amor-y-la-venganza-hercai-1.webp"
+        ],
+        "Features": [
+          "Episodios: ?",
+          "Título original: Hercai"
+        ],
+        "Type": "episode",
+        "Episodes": 0,
+        "PricePerEpisode": "0.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "ESCONDIÉNDO A NUESTRA MADRE - ANNEMIZI SAKLARKEN",
+        "Price": "48.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "escondiendo-a-nuestra-madre-annemizi-saklarken-0.webp",
+          "escondiendo-a-nuestra-madre-annemizi-saklarken-1.webp"
+        ],
+        "Features": [
+          "Episodios: 24",
+          "Título original: Annemizi Saklarken"
+        ],
+        "Type": "episode",
+        "Episodes": 24,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "ESCORPIÓN – AKREP",
+        "Price": "168.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "escorpion-akrep-0.webp",
+          "escorpion-akrep-1.webp"
+        ],
+        "Features": [
+          "Episodios: 84",
+          "Título original: Akrep"
+        ],
+        "Type": "episode",
+        "Episodes": 84,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "ESCÓNDEME - PERDIDOS EN EL AMOR - ASKTA KAYBOLANLAR",
+        "Price": "130.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "escondeme-perdidos-en-el-amor-askta-kaybolanlar-0.webp",
+          "escondeme-perdidos-en-el-amor-askta-kaybolanlar-1.webp"
+        ],
+        "Features": [
+          "Episodios: 65",
+          "Título original: Aşkta Kaybolanlar"
+        ],
+        "Type": "episode",
+        "Episodes": 65,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "ESCÚCHAME - BENI DINLE",
+        "Price": "120.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "escuchame-beni-dinle-0.webp",
+          "escuchame-beni-dinle-1.webp"
+        ],
+        "Features": [
+          "Episodios: 60",
+          "Título original: Beni Dinle"
+        ],
+        "Type": "episode",
+        "Episodes": 60,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "ESMIRNA – GÜNESIN KIZLARI",
+        "Price": "206.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "esmirna-gunesin-kizlari-0.webp",
+          "esmirna-gunesin-kizlari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 103",
+          "Título original: Güneşin Kızları"
+        ],
+        "Type": "episode",
+        "Episodes": 103,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.897Z",
+        "Update": "2026-07-13T16:10:20.897Z"
+      },
+      {
+        "Label": "EXILIO AZUL - ATRAPADA EN LA JAULA AZUL - MAVIYE SÜRGÜN",
+        "Price": "156.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "exilio-azul-atrapada-en-la-jaula-azul-maviye-surgun-0.webp",
+          "exilio-azul-atrapada-en-la-jaula-azul-maviye-surgun-1.webp"
+        ],
+        "Features": [
+          "Episodios: 78",
+          "Título original: Maviye Sürgün"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "EZEL",
+        "Price": "302.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "ezel-0.webp",
+          "ezel-1.webp"
+        ],
+        "Features": [
+          "Episodios: 151",
+          "Título original: Ezel"
+        ],
+        "Type": "episode",
+        "Episodes": 151,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "FAMILIA - AILE",
+        "Price": "190.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "familia-aile-0.webp",
+          "familia-aile-1.webp"
+        ],
+        "Features": [
+          "Episodios: 95",
+          "Título original: Aile"
+        ],
+        "Type": "episode",
+        "Episodes": 95,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "FATMAGÜL - FATMAGÜL'ÜN SUÇU NE",
+        "Price": "162.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "fatmagul-fatmagulun-sucu-ne-0.webp",
+          "fatmagul-fatmagulun-sucu-ne-1.webp"
+        ],
+        "Features": [
+          "Episodios: 81",
+          "Título original: Fatmagül'ün Suçu Ne"
+        ],
+        "Type": "episode",
+        "Episodes": 81,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "FERHAT Y SIRIN - FERHAT ILE SIRIN",
+        "Price": "30.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "ferhat-y-sirin-ferhat-ile-sirin-0.webp",
+          "ferhat-y-sirin-ferhat-ile-sirin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 15",
+          "Título original: Ferhat ile Şirin"
+        ],
+        "Type": "episode",
+        "Episodes": 15,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "FI",
+        "Price": "70.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "fi-0.webp",
+          "fi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 35",
+          "Título original: Fi"
+        ],
+        "Type": "episode",
+        "Episodes": 35,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "FUEGO FUEGO – ATES ATES",
+        "Price": "182.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "fuego-fuego-ates-ates-0.webp",
+          "fuego-fuego-ates-ates-1.webp"
+        ],
+        "Features": [
+          "Episodios: 91",
+          "Título original: Ateş Ateş"
+        ],
+        "Type": "episode",
+        "Episodes": 91,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.898Z",
+        "Update": "2026-07-13T16:10:20.898Z"
+      },
+      {
+        "Label": "GRANDES MENTIRAS - BÜYÜK YALANLAR",
+        "Price": "74.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "grandes-mentiras-buyuk-yalanlar-0.webp",
+          "grandes-mentiras-buyuk-yalanlar-1.webp"
+        ],
+        "Features": [
+          "Episodios: 37",
+          "Título original: Büyük Yalanlar"
+        ],
+        "Type": "episode",
+        "Episodes": 37,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "GRITOS DE AMOR – ASK ÇIGLIKLARI",
+        "Price": "92.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "gritos-de-amor-ask-cigliklari-0.webp",
+          "gritos-de-amor-ask-cigliklari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 46",
+          "Título original: Aşk Çığlıkları"
+        ],
+        "Type": "episode",
+        "Episodes": 46,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "GUERRA DE ROSAS - GÜLLERIN SAVASI",
+        "Price": "296.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "guerra-de-rosas-gullerin-savasi-0.webp",
+          "guerra-de-rosas-gullerin-savasi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 148",
+          "Título original: Güllerin Savaşı"
+        ],
+        "Type": "episode",
+        "Episodes": 148,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "GÖNÜL",
+        "Price": "38.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "gonul-0.webp",
+          "gonul-1.webp"
+        ],
+        "Features": [
+          "Episodios: 19",
+          "Título original: Gönül"
+        ],
+        "Type": "episode",
+        "Episodes": 19,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "HABITACIÓN 309 - No. 309",
+        "Price": "404.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "habitacion-309-no-309-0.webp",
+          "habitacion-309-no-309-1.webp"
+        ],
+        "Features": [
+          "Episodios: 202",
+          "Título original: No. 309"
+        ],
+        "Type": "episode",
+        "Episodes": 202,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "HASTA EL FINAL - NO ME DEJES IR - ASLA VAZGECMEN",
+        "Price": "344.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "hasta-el-final-no-me-dejes-ir-asla-vazgecmem-0.webp",
+          "hasta-el-final-no-me-dejes-ir-asla-vazgecmem-1.webp"
+        ],
+        "Features": [
+          "Episodios: 172",
+          "Título original: Asla Vazgeçmem"
+        ],
+        "Type": "episode",
+        "Episodes": 172,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "HAY SULTÁN - ABDULKA DIR GEGLANI HAZRETLEZLERI",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "hay-sultan-abdulka-dir-geglani-hazretle-zleri-0.webp",
+          "hay-sultan-abdulka-dir-geglani-hazretle-zleri-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: Hazretleri"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.899Z",
+        "Update": "2026-07-13T16:10:20.899Z"
+      },
+      {
+        "Label": "HERIDA DEL CORAZÓN - KALP YARASI",
+        "Price": "214.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "herida-del-corazon-kalp-yarasi-0.webp",
+          "herida-del-corazon-kalp-yarasi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 107",
+          "Título original: Kalp Yarasi"
+        ],
+        "Type": "episode",
+        "Episodes": 107,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "HERMANAS - KARDESLER",
+        "Price": "16.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "hermanas-kardesler-0.webp",
+          "hermanas-kardesler-1.webp"
+        ],
+        "Features": [
+          "Episodios: 8",
+          "Título original: Kardeşler"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "HERMOSAS CAMPESINAS - GÜZEL KÖYLÜ",
+        "Price": "212.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "hermosas-campesinas-guzel-koylu-0.webp",
+          "hermosas-campesinas-guzel-koylu-1.webp"
+        ],
+        "Features": [
+          "Episodios: 106",
+          "Título original: Güzel Köylü"
+        ],
+        "Type": "episode",
+        "Episodes": 106,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "HIEDRA VENENOSA - ZEHIRLI SARMASIK",
+        "Price": "46.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "hiedra-venenosa-zehirli-sarmasik-0.webp",
+          "hiedra-venenosa-zehirli-sarmasik-1.webp"
+        ],
+        "Features": [
+          "Episodios: 23",
+          "Título original: Zehirli Sarmaşık"
+        ],
+        "Type": "episode",
+        "Episodes": 23,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "HIJO, DÓNDE ESTÁS - OGUL, NEREDESIN",
+        "Price": "90.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "hijo-donde-estas-ogul-neredesin-0.webp",
+          "hijo-donde-estas-ogul-neredesin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 45",
+          "Título original: Oğul, Neredesin"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "HOLDING",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "holding-0.webp",
+          "holding-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: Holding"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "HONOR Y RESPETO - KÜBRA",
+        "Price": "32.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "honor-y-respeto-kubra-0.webp",
+          "honor-y-respeto-kubra-1.webp"
+        ],
+        "Features": [
+          "Episodios: 16",
+          "Título original: Kübra"
+        ],
+        "Type": "episode",
+        "Episodes": 16,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.900Z",
+        "Update": "2026-07-13T16:10:20.900Z"
+      },
+      {
+        "Label": "IDENTIDAD OCULTA - SOL DE INVIERNO - KIS GÜNESI",
+        "Price": "60.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "identidad-oculta-sol-de-invierno-kis-gunesi-0.webp",
+          "identidad-oculta-sol-de-invierno-kis-gunesi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 30",
+          "Título original: Kış Güneşi"
+        ],
+        "Type": "episode",
+        "Episodes": 30,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "INFIEL - TRAICIONADA - SADAKATSIZ",
+        "Price": "210.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "infiel-traicionada-sadakatsiz-0.webp",
+          "infiel-traicionada-sadakatsiz-1.webp"
+        ],
+        "Features": [
+          "Episodios: 105",
+          "Título original: Sadakatsiz"
+        ],
+        "Type": "episode",
+        "Episodes": 105,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "INVENCIBLE - A.Z.I.Z",
+        "Price": "182.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "invencible-a-z-i-z-0.webp",
+          "invencible-a-z-i-z-1.webp"
+        ],
+        "Features": [
+          "Episodios: 91",
+          "Título original: A.Z.I.Z"
+        ],
+        "Type": "episode",
+        "Episodes": 91,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "INVIERNO – KIS MASALI",
+        "Price": "66.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "invierno-kis-masali-0.webp",
+          "invierno-kis-masali-1.webp"
+        ],
+        "Features": [
+          "Episodios: 33",
+          "Título original: Kış Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "JAULA DORADA - ALTIN KAFES",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "jaula-dorada-altin-kafes-0.webp",
+          "jaula-dorada-altin-kafes-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: Altın Kafes"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "JUEGO DE AMOR - SEVEN NE YAPMAZ",
+        "Price": "66.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "juego-de-amor-seven-ne-yapmaz-0.webp",
+          "juego-de-amor-seven-ne-yapmaz-1.webp"
+        ],
+        "Features": [
+          "Episodios: 33",
+          "Título original: Seven Ne Yapmaz"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "JUEGO DESDE LA MIRADA DEL HOMBRE - EGO - ERKEÚN GÓZÚNDEN OYUN",
+        "Price": "26.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "juego-desde-la-mirada-del-hombre-ego-erkeun-gozunden-oyun-0.webp",
+          "juego-desde-la-mirada-del-hombre-ego-erkeun-gozunden-oyun-1.webp"
+        ],
+        "Features": [
+          "Episodios: 13",
+          "Título original: Ego - Erkeğin Gözünden Oyun"
+        ],
+        "Type": "episode",
+        "Episodes": 13,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "JUEGOS DEL DESTINO – KADER OYUNLARI",
+        "Price": "116.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "juegos-del-destino-kader-oyunlari-0.webp",
+          "juegos-del-destino-kader-oyunlari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 58",
+          "Título original: Kader Oyunları"
+        ],
+        "Type": "episode",
+        "Episodes": 58,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.901Z"
+      },
+      {
+        "Label": "KOSEM LA SULTANA - MUHTESEM YÜZYIL KÖSEM",
+        "Price": "230.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "kosem-la-sultana-muhtesem-yuzyil-kosem-0.webp",
+          "kosem-la-sultana-muhtesem-yuzyil-kosem-1.webp"
+        ],
+        "Features": [
+          "Episodios: 115",
+          "Título original: Muhteşem Yüzyıl Kösem"
+        ],
+        "Type": "episode",
+        "Episodes": 115,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.901Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA HISTORIA DE BLANCO Y NEGRO QUE SE TRASNFORMA EN GRIS - PIYASA",
+        "Price": "12.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-historia-de-blanco-y-negro-que-se-trasnforma-en-gris-piyasa-0.webp",
+          "la-historia-de-blanco-y-negro-que-se-trasnforma-en-gris-piyasa-1.webp"
+        ],
+        "Features": [
+          "Episodios: 6",
+          "Título original: Piyasa"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA HISTORIA DE NUNCA ACABAR – HIÇ BITMEYEN HIKAYE",
+        "Price": "44.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-historia-de-nunca-acabar-hic-bitmeyen-hikaye-0.webp",
+          "la-historia-de-nunca-acabar-hic-bitmeyen-hikaye-1.webp"
+        ],
+        "Features": [
+          "Episodios: 22",
+          "Título original: Hiç Bitmeyen Hikaye"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA NIÑA DEL VALLE VERDE – YESIL VADI’NIN KIZI",
+        "Price": "280.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-nina-del-valle-verde-yesil-vadi-nin-kizi-0.webp",
+          "la-nina-del-valle-verde-yesil-vadi-nin-kizi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 140",
+          "Título original: Yeşil Vadi'nin Kızı"
+        ],
+        "Type": "episode",
+        "Episodes": 140,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA NOVIA DE ESTAMBUL - ETERNAMENTE - ISTANBULLU GELIN",
+        "Price": "658.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-novia-de-estambul-eternamente-istanbullu-gelin-0.webp",
+          "la-novia-de-estambul-eternamente-istanbullu-gelin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 329",
+          "Título original: İstanbullu Gelin"
+        ],
+        "Type": "episode",
+        "Episodes": 329,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA SEÑORA FAZILET Y SUS HIJAS - FAZILET HANIM VE KIZLARI",
+        "Price": "330.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-senora-fazilet-y-sus-hijas-fazilet-hanim-ve-kizlari-0.webp",
+          "la-senora-fazilet-y-sus-hijas-fazilet-hanim-ve-kizlari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 165",
+          "Título original: Fazilet Hanım ve Kızları"
+        ],
+        "Type": "episode",
+        "Episodes": 165,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA TRAICIÓN - LA GRAN MENTIRA - IYILIK",
+        "Price": "170.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-traicion-la-gran-mentira-iyilik-0.webp",
+          "la-traicion-la-gran-mentira-iyilik-1.webp"
+        ],
+        "Features": [
+          "Episodios: 85",
+          "Título original: İyilik"
+        ],
+        "Type": "episode",
+        "Episodes": 85,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LA VERDAD - MARASLI",
+        "Price": "120.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "la-verdad-marasli-0.webp",
+          "la-verdad-marasli-1.webp"
+        ],
+        "Features": [
+          "Episodios: 60",
+          "Título original: Maraşlı"
+        ],
+        "Type": "episode",
+        "Episodes": 60,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.902Z",
+        "Update": "2026-07-13T16:10:20.902Z"
+      },
+      {
+        "Label": "LATIDOS DEL CORAZÓN - KALP ATISI",
+        "Price": "148.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "latidos-del-corazon-kalp-atisi-0.webp",
+          "latidos-del-corazon-kalp-atisi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 74",
+          "Título original: Kalp Atışı"
+        ],
+        "Type": "episode",
+        "Episodes": 74,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "LLAMAS DEL DESTINO – ALEV ALEV",
+        "Price": "56.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "llamas-del-destino-alev-alev-0.webp",
+          "llamas-del-destino-alev-alev-1.webp"
+        ],
+        "Features": [
+          "Episodios: 28",
+          "Título original: Alev Alev"
+        ],
+        "Type": "episode",
+        "Episodes": 28,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "LOBO - BÓRÚ",
+        "Price": "12.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "lobo-boru-0.webp",
+          "lobo-boru-1.webp"
+        ],
+        "Features": [
+          "Episodios: 6",
+          "Título original: Börü"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "LOBO - BÖRÜ",
+        "Price": "12.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "lobo-boru-6-0.webp",
+          "lobo-boru-6-1.webp"
+        ],
+        "Features": [
+          "Episodios: 6",
+          "Título original: Börü"
+        ],
+        "Type": "episode",
+        "Episodes": 6,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "LOVE IS IN THE AIR – SEN ÇAL KAPIMI",
+        "Price": "322.00",
+        "Description": "Eda, una joven florista, pierde su beca universitaria por culpa de Serkan, un exitoso arquitecto. Él le propone fingir un compromiso durante dos meses para salvar su reputación. Lo que empieza como un contrato falso se convierte en una historia de amor llena de enredos, humor y segundas oportunidades.",
+        "Images": [
+          "love-is-in-the-air-sen-cal-kapimi-0.webp",
+          "love-is-in-the-air-sen-cal-kapimi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 161",
+          "Título original: Sen Çal Kapımı.",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 161,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "LUCIÉRNAGA - ATESBÖCEGI",
+        "Price": "102.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "lucirnaga-atesbocegi-0.webp",
+          "lucirnaga-atesbocegi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 51",
+          "Título original: Ateşböceği"
+        ],
+        "Type": "episode",
+        "Episodes": 51,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "LUNA LLENA - DONULAY",
+        "Price": "138.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "luna-llena-donulay-0.webp",
+          "luna-llena-donulay-1.webp"
+        ],
+        "Features": [
+          "Episodios: 69",
+          "Título original: Dolunay"
+        ],
+        "Type": "episode",
+        "Episodes": 69,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.903Z",
+        "Update": "2026-07-13T16:10:20.903Z"
+      },
+      {
+        "Label": "MADRASTRA",
+        "Price": "80.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "madrastra-0.webp",
+          "madrastra-1.webp"
+        ],
+        "Features": [
+          "Episodios: 40"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.904Z",
+        "Update": "2026-07-13T16:10:20.904Z"
+      },
+      {
+        "Label": "MADRE, TODO POR MI HIJA - ANNE",
+        "Price": "222.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "madre-todo-por-mi-hija-anne-0.webp",
+          "madre-todo-por-mi-hija-anne-1.webp"
+        ],
+        "Features": [
+          "Episodios: 111",
+          "Título original: Anne"
+        ],
+        "Type": "episode",
+        "Episodes": 111,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.904Z",
+        "Update": "2026-07-13T16:10:20.904Z"
+      },
+      {
+        "Label": "MADRES E HIJAS - ANNE VE KAZLARI",
+        "Price": "52.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "madres-e-hijas-anne-ve-kazlari-0.webp",
+          "madres-e-hijas-anne-ve-kazlari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 26",
+          "Título original: Anne ve Kızları"
+        ],
+        "Type": "episode",
+        "Episodes": 26,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.904Z",
+        "Update": "2026-07-13T16:10:20.904Z"
+      },
+      {
+        "Label": "MARTÍN PESCADOR - UNA NUEVA VIDA - YENI BIR HAYAT",
+        "Price": "742.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "martin-pescador-una-nueva-vida-yeni-bir-hayat-0.webp",
+          "martin-pescador-una-nueva-vida-yeni-bir-hayat-1.webp"
+        ],
+        "Features": [
+          "Episodios: 371",
+          "Título original: Yeni Bir Hayat"
+        ],
+        "Type": "episode",
+        "Episodes": 371,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.904Z",
+        "Update": "2026-07-13T16:10:20.904Z"
+      },
+      {
+        "Label": "MEDCEZIR",
+        "Price": "326.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "medcezir-0.webp",
+          "medcezir-1.webp"
+        ],
+        "Features": [
+          "Episodios: 163",
+          "Título original: Medcezir"
+        ],
+        "Type": "episode",
+        "Episodes": 163,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.904Z",
+        "Update": "2026-07-13T16:10:20.904Z"
+      },
+      {
+        "Label": "MERYEM",
+        "Price": "188.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "meryem-0.webp",
+          "meryem-1.webp"
+        ],
+        "Features": [
+          "Episodios: 94",
+          "Título original: Meryem"
+        ],
+        "Type": "episode",
+        "Episodes": 94,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "METAMORFOSIS - BASKALASIM",
+        "Price": "20.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "metamorfosis-baskalasim-0.webp",
+          "metamorfosis-baskalasim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 10",
+          "Título original: Başkalaşım"
+        ],
+        "Type": "episode",
+        "Episodes": 10,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "MI HOGAR MI DESTINO - DOGDUGUN EV KADERINDIR",
+        "Price": "276.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mi-hogar-mi-destino-dogdugun-ev-kaderindir-0.webp",
+          "mi-hogar-mi-destino-dogdugun-ev-kaderindir-1.webp"
+        ],
+        "Features": [
+          "Episodios: 138",
+          "Título original: Doğduğun Ev Kaderindir"
+        ],
+        "Type": "episode",
+        "Episodes": 138,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "MI LADO IZQUIERDO - SOL YANIM",
+        "Price": "72.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mi-lado-izquierdo-sol-yanim-0.webp",
+          "mi-lado-izquierdo-sol-yanim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 36",
+          "Título original: Sol Yanım"
+        ],
+        "Type": "episode",
+        "Episodes": 36,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "MI MENTIRA MÁS DULCE – TATLI YALANIM",
+        "Price": "152.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mi-mentira-mas-dulce-tatli-yalanim-0.webp",
+          "mi-mentira-mas-dulce-tatli-yalanim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 76",
+          "Título original: Tatlı Yalanım"
+        ],
+        "Type": "episode",
+        "Episodes": 76,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "MI NOMBRE ES FARAH - ME LLAMO FARAH - ADIM FARAH",
+        "Price": "178.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mi-nombre-es-farah-me-llamo-farah-adim-farah-0.webp",
+          "mi-nombre-es-farah-me-llamo-farah-adim-farah-1.webp"
+        ],
+        "Features": [
+          "Episodios: 89",
+          "Título original: Adım Farah"
+        ],
+        "Type": "episode",
+        "Episodes": 89,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "MI VIDA - BENIM HAYATIM",
+        "Price": "36.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mi-vida-benim-hayatim-0.webp",
+          "mi-vida-benim-hayatim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 18",
+          "Título original: Benim Hayatım"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.905Z",
+        "Update": "2026-07-13T16:10:20.905Z"
+      },
+      {
+        "Label": "MISERICORDIA - MERHAMET",
+        "Price": "162.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "misericordia-merhamet-0.webp",
+          "misericordia-merhamet-1.webp"
+        ],
+        "Features": [
+          "Episodios: 81",
+          "Título original: Merhamet"
+        ],
+        "Type": "episode",
+        "Episodes": 81,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "MUNDOS OPUESTOS - KIZILCIK SERBETI",
+        "Price": "428.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mundos-opuestos-kizilcik-serbeti-0.webp",
+          "mundos-opuestos-kizilcik-serbeti-1.webp"
+        ],
+        "Features": [
+          "Episodios: 214",
+          "Título original: Kızılcık Şerbeti"
+        ],
+        "Type": "episode",
+        "Episodes": 214,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "MUY ESTIMADO - AZIZE",
+        "Price": "36.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "muy-estimado-azize-0.webp",
+          "muy-estimado-azize-1.webp"
+        ],
+        "Features": [
+          "Episodios: 18",
+          "Título original: Azize"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "MÁS ALLÁ DEL AMOR - SORBETE DE ARÁNDANOS - KIZIZLCIK SERBETI",
+        "Price": "428.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mas-alla-del-amor-sorbete-de-arandanos-kizizlcik-serbeti-0.webp",
+          "mas-alla-del-amor-sorbete-de-arandanos-kizizlcik-serbeti-1.webp"
+        ],
+        "Features": [
+          "Episodios: 214",
+          "Título original: Kızılcık Şerbeti"
+        ],
+        "Type": "episode",
+        "Episodes": 214,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "MÁS HERMOSA QUE TÚ - SENDEN DAHA GÜZEL",
+        "Price": "84.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "mas-hermosa-que-tu-senden-daha-guzel-0.webp",
+          "mas-hermosa-que-tu-senden-daha-guzel-1.webp"
+        ],
+        "Features": [
+          "Episodios: 42",
+          "Título original: Senden Daha Güzel"
+        ],
+        "Type": "episode",
+        "Episodes": 42,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "NADA ES LO QUE PARECE - ICERDE",
+        "Price": "202.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "nada-es-lo-que-parece-icerde-0.webp",
+          "nada-es-lo-que-parece-icerde-1.webp"
+        ],
+        "Features": [
+          "Episodios: 101",
+          "Título original: İçerde"
+        ],
+        "Type": "episode",
+        "Episodes": 101,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "NADIE SABE - SECRETOS DE AMOR - KIMSE BILMEZ",
+        "Price": "176.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "nadie-sabe-secretos-de-amor-kimse-bilmez-0.webp",
+          "nadie-sabe-secretos-de-amor-kimse-bilmez-1.webp"
+        ],
+        "Features": [
+          "Episodios: 88",
+          "Título original: Kimse Bilmez"
+        ],
+        "Type": "episode",
+        "Episodes": 88,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.906Z",
+        "Update": "2026-07-13T16:10:20.906Z"
+      },
+      {
+        "Label": "NIDO DE VÍBORA - SEN BENIMSIN",
+        "Price": "70.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "nido-de-vibora-sen-benimsin-0.webp",
+          "nido-de-vibora-sen-benimsin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 35",
+          "Título original: Sen Benimsin"
+        ],
+        "Type": "episode",
+        "Episodes": 35,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.907Z",
+        "Update": "2026-07-13T16:10:20.907Z"
+      },
+      {
+        "Label": "NIÑO - EL ES MI HIJO - ÇOCUK",
+        "Price": "124.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "nino-el-es-mi-hijo-cocuk-0.webp",
+          "nino-el-es-mi-hijo-cocuk-1.webp"
+        ],
+        "Features": [
+          "Episodios: 62",
+          "Título original: Çocuk"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.907Z",
+        "Update": "2026-07-13T16:10:20.907Z"
+      },
+      {
+        "Label": "NO LLORES POR MI - BENIM IÇIN AGLAMA",
+        "Price": "32.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "no-llores-por-mi-benim-icin-aglama-0.webp",
+          "no-llores-por-mi-benim-icin-aglama-1.webp"
+        ],
+        "Features": [
+          "Episodios: 16",
+          "Título original: Benim İçin Ağlama"
+        ],
+        "Type": "episode",
+        "Episodes": 16,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.907Z",
+        "Update": "2026-07-13T16:10:20.907Z"
+      },
+      {
+        "Label": "NO ME DEJES IR – ASLA VAZGEÇMEM",
+        "Price": "240.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "no-me-dejes-ir-asla-vazgecmem-0.webp",
+          "no-me-dejes-ir-asla-vazgecmem-1.webp"
+        ],
+        "Features": [
+          "Episodios: 120",
+          "Título original: Asla Vazgeçmem"
+        ],
+        "Type": "episode",
+        "Episodes": 120,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.907Z",
+        "Update": "2026-07-13T16:10:20.907Z"
+      },
+      {
+        "Label": "NO PUEDES CONFIAR EN LOS HOMBRES - EGO",
+        "Price": "26.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "no-puedes-confiar-en-los-hombres-ego-0.webp",
+          "no-puedes-confiar-en-los-hombres-ego-1.webp"
+        ],
+        "Features": [
+          "Episodios: 13",
+          "Título original: Ego"
+        ],
+        "Type": "episode",
+        "Episodes": 13,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.907Z",
+        "Update": "2026-07-13T16:10:20.907Z"
+      },
+      {
+        "Label": "NO TE ENTREGARÉ A NADIE - SENI KIMSEYE VERMEM",
+        "Price": "90.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "no-te-entregare-a-nadie-seni-kimseye-vermem-0.webp",
+          "no-te-entregare-a-nadie-seni-kimseye-vermem-1.webp"
+        ],
+        "Features": [
+          "Episodios: 45",
+          "Título original: Seni Kimseye Vermem"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.907Z",
+        "Update": "2026-07-13T16:10:20.907Z"
+      },
+      {
+        "Label": "OH DÓNDE - I0. EV",
+        "Price": "42.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "oh-donde-i0-ev-0.webp",
+          "oh-donde-i0-ev-1.webp"
+        ],
+        "Features": [
+          "Episodios: 21",
+          "Título original: 10. Ev"
+        ],
+        "Type": "episode",
+        "Episodes": 21,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PALOMA ESCLAVA DEL DESTINO - GUVERCIN",
+        "Price": "32.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "paloma-esclava-del-destino-guvercin-0.webp",
+          "paloma-esclava-del-destino-guvercin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 16",
+          "Título original: Güvercin"
+        ],
+        "Type": "episode",
+        "Episodes": 16,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PAN NEGRO - VIDA ROBADA - KARASEVDA EKMEGI",
+        "Price": "200.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "pan-negro-vida-robada-karasevda-ekmegi-0.webp",
+          "pan-negro-vida-robada-karasevda-ekmegi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 100",
+          "Título original: Karasevda Ekmeği"
+        ],
+        "Type": "episode",
+        "Episodes": 100,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PERLA NEGRA – SIYAH INC",
+        "Price": "134.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "perla-negra-siyah-inc-0.webp",
+          "perla-negra-siyah-inc-1.webp"
+        ],
+        "Features": [
+          "Episodios: 67",
+          "Título original: Siyah İnci"
+        ],
+        "Type": "episode",
+        "Episodes": 67,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PIEDAD - MERHAMET",
+        "Price": "162.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "piedad-merhamet-0.webp",
+          "piedad-merhamet-1.webp"
+        ],
+        "Features": [
+          "Episodios: 81",
+          "Título original: Merhamet"
+        ],
+        "Type": "episode",
+        "Episodes": 81,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PIEDRA DE LOS DESEOS - DILEK TASI",
+        "Price": "134.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "piedra-de-los-deseos-dilek-tasi-0.webp",
+          "piedra-de-los-deseos-dilek-tasi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 67",
+          "Título original: Dilek Taşı"
+        ],
+        "Type": "episode",
+        "Episodes": 67,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PLATÓNICO HOTEL LUNA AZUL -PLATONIK MAVI DOLUNAY OTEL",
+        "Price": "16.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "platonico-hotel-luna-azul-platonik-mavi-dolunay-otel-0.webp",
+          "platonico-hotel-luna-azul-platonik-mavi-dolunay-otel-1.webp"
+        ],
+        "Features": [
+          "Episodios: 8",
+          "Título original: Platonik Mavi Dolunay Otel"
+        ],
+        "Type": "episode",
+        "Episodes": 8,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PLOMO - KURSUN",
+        "Price": "44.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "plomo-kursun-0.webp",
+          "plomo-kursun-1.webp"
+        ],
+        "Features": [
+          "Episodios: 22",
+          "Título original: Kurşun"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.908Z",
+        "Update": "2026-07-13T16:10:20.908Z"
+      },
+      {
+        "Label": "PROPUESTA INDECENTE - INCE INCE YASEMINCE",
+        "Price": "128.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "propuesta-indecente-ince-ince-yasemince-0.webp",
+          "propuesta-indecente-ince-ince-yasemince-1.webp"
+        ],
+        "Features": [
+          "Episodios: 64",
+          "Título original: İnce İnce Yasemince"
+        ],
+        "Type": "episode",
+        "Episodes": 64,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.909Z",
+        "Update": "2026-07-13T16:10:20.909Z"
+      },
+      {
+        "Label": "PUNTO CIEGO - KÖR NOKTA",
+        "Price": "40.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "punto-ciego-kor-nokta-0.webp",
+          "punto-ciego-kor-nokta-1.webp"
+        ],
+        "Features": [
+          "Episodios: 20",
+          "Título original: Kör Nokta"
+        ],
+        "Type": "episode",
+        "Episodes": 20,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.909Z",
+        "Update": "2026-07-13T16:10:20.909Z"
+      },
+      {
+        "Label": "PURPÚRA COMO EL MAR - VIOLETA COMO EL MAR - DENIZ KADAR MOR",
+        "Price": "24.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "purpura-como-el-mar-violeta-como-el-mar-deniz-kadar-mor-0.webp",
+          "purpura-como-el-mar-violeta-como-el-mar-deniz-kadar-mor-1.webp"
+        ],
+        "Features": [
+          "Episodios: 12",
+          "Título original: Deniz Kadar Mor"
+        ],
+        "Type": "episode",
+        "Episodes": 12,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.909Z",
+        "Update": "2026-07-13T16:10:20.909Z"
+      },
+      {
+        "Label": "PÁJARO HERIDO - YARALI KUS",
+        "Price": "400.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "pajaro-herido-yarali-kus-0.webp",
+          "pajaro-herido-yarali-kus-1.webp"
+        ],
+        "Features": [
+          "Episodios: 200",
+          "Título original: Yaralı Kuş"
+        ],
+        "Type": "episode",
+        "Episodes": 200,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.909Z",
+        "Update": "2026-07-13T16:10:20.909Z"
+      },
+      {
+        "Label": "PÁJARO SOÑADOR - SUEÑO CONTIGO - ERKENCI KUS",
+        "Price": "260.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "pajaro-sonador-sueno-contigo-erkenci-kus-0.webp",
+          "pajaro-sonador-sueno-contigo-erkenci-kus-1.webp"
+        ],
+        "Features": [
+          "Episodios: 130",
+          "Título original: Erkenci Kuş"
+        ],
+        "Type": "episode",
+        "Episodes": 130,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.909Z",
+        "Update": "2026-07-13T16:10:20.909Z"
+      },
+      {
+        "Label": "QUIÉN TE LLEVÓ - SENI KIMLER ALDI",
+        "Price": "80.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "quien-te-llevo-seni-kimler-aldi-0.webp",
+          "quien-te-llevo-seni-kimler-aldi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 40",
+          "Título original: Seni Kimler Aldı"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.909Z",
+        "Update": "2026-07-13T16:10:20.909Z"
+      },
+      {
+        "Label": "QUIÉREME SIEMPRE - HEP BENI SEV",
+        "Price": "80.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "quiereme-siempre-hep-beni-sev-0.webp",
+          "quiereme-siempre-hep-beni-sev-1.webp"
+        ],
+        "Features": [
+          "Episodios: 40",
+          "Título original: Hep Beni Sev"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "QUÉ PASA SI AMAS DEMASIADO - ÇOK SEVERSEN NE OLUR",
+        "Price": "80.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "que-pasa-si-amas-demasiado-cok-seversen-ne-olur-0.webp",
+          "que-pasa-si-amas-demasiado-cok-seversen-ne-olur-1.webp"
+        ],
+        "Features": [
+          "Episodios: 40",
+          "Título original: Çok Seversen Ne Olur"
+        ],
+        "Type": "episode",
+        "Episodes": 40,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "RAMO - ADALETIN BU MU DÜNYA",
+        "Price": "90.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "ramo-adaletin-bu-mu-dunya-0.webp",
+          "ramo-adaletin-bu-mu-dunya-1.webp"
+        ],
+        "Features": [
+          "Episodios: 45",
+          "Título original: Adaletin Bu Mu Dünya"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "REBELDE - ASI",
+        "Price": "286.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "rebelde-asi-0.webp",
+          "rebelde-asi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 143",
+          "Título original: Asi"
+        ],
+        "Type": "episode",
+        "Episodes": 143,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "RECUERDA CORAZÓN - GÖNÜL",
+        "Price": "76.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "recuerda-corazon-gonul-0.webp",
+          "recuerda-corazon-gonul-1.webp"
+        ],
+        "Features": [
+          "Episodios: 38",
+          "Título original: Gönül"
+        ],
+        "Type": "episode",
+        "Episodes": 38,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "RICO Y POBRE - ZENGIN VE YOKSUL",
+        "Price": "64.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "rico-y-pobre-zengin-ve-yoksul-0.webp",
+          "rico-y-pobre-zengin-ve-yoksul-1.webp"
+        ],
+        "Features": [
+          "Episodios: 32",
+          "Título original: Zengin ve Yoksul"
+        ],
+        "Type": "episode",
+        "Episodes": 32,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "RIVALES DE SANGRE - KANLI RAKIPLER",
+        "Price": "100.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "rivales-de-sangre-kanli-rakipler-0.webp",
+          "rivales-de-sangre-kanli-rakipler-1.webp"
+        ],
+        "Features": [
+          "Episodios: 50",
+          "Título original: Kanlı Rakipler"
+        ],
+        "Type": "episode",
+        "Episodes": 50,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.910Z",
+        "Update": "2026-07-13T16:10:20.910Z"
+      },
+      {
+        "Label": "SAFIR - SAKLI KALEN ASK HIKAYESI",
+        "Price": "178.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "safir-sakli-kalen-ask-hikayesi-0.webp",
+          "safir-sakli-kalen-ask-hikayesi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 89",
+          "Título original: Saklı Kalen Aşk Hikayesi"
+        ],
+        "Type": "episode",
+        "Episodes": 89,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SECRETOS DE LA VIDA- HAYATIN SIRLARI",
+        "Price": "66.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "secretos-de-la-vida-hayatin-sirlari-0.webp",
+          "secretos-de-la-vida-hayatin-sirlari-1.webp"
+        ],
+        "Features": [
+          "Episodios: 33",
+          "Título original: Hayatın Sırları"
+        ],
+        "Type": "episode",
+        "Episodes": 33,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SECRETOS DE SANGRE - SECRETOS DE FAMILIA – YARGI",
+        "Price": "218.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "secretos-de-sangre-secretos-de-familia-yargi-0.webp",
+          "secretos-de-sangre-secretos-de-familia-yargi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 109",
+          "Título original: Yargı"
+        ],
+        "Type": "episode",
+        "Episodes": 109,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SECRETOS DE UN ÁNGEL - BIR PERI MASALI",
+        "Price": "232.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "secretos-de-un-angel-bir-peri-masali-0.webp",
+          "secretos-de-un-angel-bir-peri-masali-1.webp"
+        ],
+        "Features": [
+          "Episodios: 116",
+          "Título original: Bir Peri Masalı"
+        ],
+        "Type": "episode",
+        "Episodes": 116,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SECRETOS PROHIBIDOS - MI PADRE Y SU FAMILIA - BABAM VE AILESI",
+        "Price": "82.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "secretos-prohibidos-mi-padre-y-su-familia-babam-ve-ailesi-0.webp",
+          "secretos-prohibidos-mi-padre-y-su-familia-babam-ve-ailesi-1.webp"
+        ],
+        "Features": [
+          "Episodios: 41",
+          "Título original: Babam ve Ailesi"
+        ],
+        "Type": "episode",
+        "Episodes": 41,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SELIM Y SAHRA - SELIM VE SAHRA",
+        "Price": "70.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "selim-y-sahra-selim-ve-sahra-0.webp",
+          "selim-y-sahra-selim-ve-sahra-1.webp"
+        ],
+        "Features": [
+          "Episodios: 35",
+          "Título original: Selim ve Sahra"
+        ],
+        "Type": "episode",
+        "Episodes": 35,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SELIN UN AMOR INOLVIDABLE - UNUTULMAZ BIR ASK SELIN",
+        "Price": "90.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "selin-un-amor-inolvidable-unutulmaz-bir-ask-selin-0.webp",
+          "selin-un-amor-inolvidable-unutulmaz-bir-ask-selin-1.webp"
+        ],
+        "Features": [
+          "Episodios: 45",
+          "Título original: Unutulmaz Bir Aşk Selin"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SI YO FUERA UNA NUEVE -BIR BULUT OSLAM",
+        "Price": "126.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "si-yo-fuera-una-nueve-bir-bulut-oslam-0.webp",
+          "si-yo-fuera-una-nueve-bir-bulut-oslam-1.webp"
+        ],
+        "Features": [
+          "Episodios: 63",
+          "Título original: Bir Bulut Oslama"
+        ],
+        "Type": "episode",
+        "Episodes": 63,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.911Z",
+        "Update": "2026-07-13T16:10:20.911Z"
+      },
+      {
+        "Label": "SONRÍE A TU DESTINO - KADERINE GÜLÜMSE",
+        "Price": "28.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "sonrie-a-tu-destino-kaderine-gulumse-0.webp",
+          "sonrie-a-tu-destino-kaderine-gulumse-1.webp"
+        ],
+        "Features": [
+          "Episodios: 14",
+          "Título original: Kaderine Gülümse"
+        ],
+        "Type": "episode",
+        "Episodes": 14,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "SU NOMBRE ES ZEHRA - ADI ZEHRA",
+        "Price": "28.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "su-nombre-es-zehra-adi-zeh-ra-0.webp",
+          "su-nombre-es-zehra-adi-zeh-ra-1.webp"
+        ],
+        "Features": [
+          "Episodios: 14",
+          "Título original: Adı Zehra"
+        ],
+        "Type": "episode",
+        "Episodes": 14,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TE ALQUILO MI AMOR - AMOR POR ALQUILER - KIRALIK ASK",
+        "Price": "320.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "te-alquilo-mi-amor-amor-por-alquiler-kiralik-ask-0.webp",
+          "te-alquilo-mi-amor-amor-por-alquiler-kiralik-ask-1.webp"
+        ],
+        "Features": [
+          "Episodios: 160",
+          "Título original: Kiralık Aşk"
+        ],
+        "Type": "episode",
+        "Episodes": 160,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TE AMAS - SEVERSIN BIR ASK HIKAYESIT",
+        "Price": "122.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "te-amas-seversin-bir-ask-hikayesit-0.webp",
+          "te-amas-seversin-bir-ask-hikayesit-1.webp"
+        ],
+        "Features": [
+          "Episodios: 61",
+          "Título original: Seversin Bir Aşk Hikayesi"
+        ],
+        "Type": "episode",
+        "Episodes": 61,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TIERRA DE SECRETOS- KARAGÜL",
+        "Price": "662.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "tierra-de-secretos-karagul-0.webp",
+          "tierra-de-secretos-karagul-1.webp"
+        ],
+        "Features": [
+          "Episodios: 331",
+          "Título original: Karagül"
+        ],
+        "Type": "episode",
+        "Episodes": 331,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TODAVÍA TENGO ESPERANZA - UMUTUM HALA VAR",
+        "Price": "132.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "todavia-tengo-esperanza-umutum-hala-var-0.webp",
+          "todavia-tengo-esperanza-umutum-hala-var-1.webp"
+        ],
+        "Features": [
+          "Episodios: 66",
+          "Título original: Umutum Hala Var"
+        ],
+        "Type": "episode",
+        "Episodes": 66,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TODO AMOR ESCONDE UN SECRETO - GÜNES",
+        "Price": "206.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "todo-amor-esconde-un-secreto-gunes-0.webp",
+          "todo-amor-esconde-un-secreto-gunes-1.webp"
+        ],
+        "Features": [
+          "Episodios: 103",
+          "Título original: Güneş"
+        ],
+        "Type": "episode",
+        "Episodes": 103,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TODO POR MI FAMILIA (1) - KARDESLERIM",
+        "Price": "308.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "todo-por-mi-familia-1-kardeslerim-0.webp",
+          "todo-por-mi-familia-1-kardeslerim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 154",
+          "Título original: Kardeşlerim"
+        ],
+        "Type": "episode",
+        "Episodes": 154,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.912Z",
+        "Update": "2026-07-13T16:10:20.912Z"
+      },
+      {
+        "Label": "TODO POR MI HIJA - Y TÚ, QUIÉN ERES - KIZIM",
+        "Price": "76.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "todo-por-mi-hija-y-tu-quien-eres-kizim-0.webp",
+          "todo-por-mi-hija-y-tu-quien-eres-kizim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 38",
+          "Título original: Kızım"
+        ],
+        "Type": "episode",
+        "Episodes": 38,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TODO SOBRE EL MATRIMONIO – EVLILIK HAKKINDA HER SEY",
+        "Price": "210.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "todo-sobre-el-matrimonio-evlilik-hakkinda-her-sey-0.webp",
+          "todo-sobre-el-matrimonio-evlilik-hakkinda-her-sey-1.webp"
+        ],
+        "Features": [
+          "Episodios: 105",
+          "Título original: Evlilik Hakkında Her Şey"
+        ],
+        "Type": "episode",
+        "Episodes": 105,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TOMA MI MANO – ELIMI BIRAKMA",
+        "Price": "322.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "toma-mi-mano-elimi-birakma-0.webp",
+          "toma-mi-mano-elimi-birakma-1.webp"
+        ],
+        "Features": [
+          "Episodios: 161",
+          "Título original: Elimi Bırakma"
+        ],
+        "Type": "episode",
+        "Episodes": 161,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TRAICIÓN SECRETA - STILETTO VENDETTA",
+        "Price": "156.00",
+        "Description": "Sinopsis no disponible",
+        "Images": [
+          "traicion-secreta-stiletto-vendetta-0.webp",
+          "traicion-secreta-stiletto-vendetta-1.webp"
+        ],
+        "Features": [
+          "Episodios: 78",
+          "Título original: Stiletto Vendetta"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TRAMPA - TUZAK",
+        "Price": "44.00",
+        "Description": "Tuzak (en español, Trampa) es una serie turca de suspenso y drama que explora la venganza, la justicia y los dilemas morales. La historia sigue a Umut, un abogado brillante que busca vengarse de una poderosa familia responsable de la ruina de su infancia. Sin embargo, su plan se complica cuando se enamora de Ceren, la hija del hombre al que intenta destruir. Entre secretos, traiciones y emociones intensas, ambos deberán decidir si el amor puede sobrevivir a la venganza.",
+        "Images": [
+          "trampa-tuzak-0.jpg"
+        ],
+        "Features": [
+          "Episodios: 22",
+          "Título original: Tuzak",
+          "Año: 2022–2023",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 22,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TRAMPA DE AMOR – ASK TUZAGI",
+        "Price": "174.00",
+        "Description": "Ask Tuzagi (en español Trampa de Amor) es una serie turca que mezcla romance y drama con tintes de suspenso. La trama se centra en Demir, un hombre marcado por las traiciones del pasado, que decide tender una “trampa” emocional para vengarse de quienes lo dañaron. Sin embargo, su plan se complica cuando conoce a Zeynep, una mujer que despierta en él sentimientos genuinos y lo enfrenta al dilema entre el amor verdadero y la venganza.",
+        "Images": [
+          "trampa-de-amor-ask-tuzagi-0.webp"
+        ],
+        "Features": [
+          "Episodios: 87",
+          "Título original: Aşk Tuzağı",
+          "Año: 2014",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 87,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TRAMPAS DE AMOR - AFILI ASK",
+        "Price": "272.00",
+        "Description": "Afili Aşk (en español Trampas de Amor) es una comedia romántica turca que mezcla humor, enredos y sentimientos genuinos. La historia sigue a Ayşe Yılmaz, una joven soñadora que, para escapar de un matrimonio forzado, inventa una relación con Kerem Yiğiter, un empresario atractivo y mujeriego. Lo que comienza como una mentira se convierte en una convivencia llena de situaciones divertidas, malentendidos y, poco a poco, un amor verdadero.",
+        "Images": [
+          "trampas-de-amor-afili-ask-0.jpg",
+          "trampas-de-amor-afili-ask-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 136",
+          "Título original: Afili Aşk",
+          "Año: 2019–2020",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 136,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.913Z",
+        "Update": "2026-07-13T16:10:20.913Z"
+      },
+      {
+        "Label": "TROPICA - DÖNENCE",
+        "Price": "90.00",
+        "Description": "Durante el verano, Gece planea estudiar en la universidad y tocar música con su novio Emir en Estambul. Sin embargo, su familia se muda a Foça para ayudar a su hermana Gülce, quien tiene Asperger y no soporta el bullicio de la ciudad. Allí, Gece conoce a Özgür, un instructor de surf que también cuida de su hermano con Asperger. Entre ellos surge una conexión especial que la obliga a replantearse su vida y sus sentimientos, mientras la llegada inesperada de Emir complica aún más la situación.",
+        "Images": [
+          "tropica-dnence-0.jpg",
+          "tropica-dnence-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 45",
+          "Título original: Dönence",
+          "Año: 2023",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 45,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "TÍO NEGRO O TÍO OSCURO - KARADAYI",
+        "Price": "230.00",
+        "Description": "Karadayı (conocida en algunos países como Tío Negro o Tío Oscuro) es una serie turca de drama y acción que narra la vida de Mahir Kara, un joven cuyo padre es injustamente acusado de asesinato y condenado a muerte. Mahir decide infiltrarse en el mundo judicial bajo una identidad falsa para demostrar la inocencia de su padre. En el proceso, se enamora de la jueza Feride Şadoğlu, lo que complica aún más su misión de justicia y venganza.",
+        "Images": [
+          "tio-negro-o-tio-oscuro-karadayi-0.jpg",
+          "tio-negro-o-tio-oscuro-karadayi-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 115",
+          "Título original: Karadayı",
+          "Año: 2012–2015",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 115,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "UN POCO DE LUZ DEL DÍA - LA LUZ DE MI VIDA - GIRO DEL DESTINO - BIR KÜCÜK GÜNDÜZ ISIGI",
+        "Price": "218.00",
+        "Description": "Bir Küçük Gün Işığı (en español Un Poco de Luz del Día / La Luz de Mi Vida / Giro del Destino) es una serie turca de drama y romance que explora la resiliencia y los giros inesperados de la vida. La historia sigue a Elif, una joven que descubre tras la muerte de su esposo que él llevaba una doble vida y tenía una hija secreta. Obligada a enfrentar esta verdad, Elif debe rehacer su vida mientras se cruza con Fırat, un hombre poderoso que también guarda secretos. Entre ellos surge una relación marcada por el destino, el dolor y la esperanza.",
+        "Images": [
+          "un-poco-de-luz-del-dia-la-luz-de-mi-vida-giro-del-destino-bir-kucuk-gunduz-isigi-0.jpg",
+          "un-poco-de-luz-del-dia-la-luz-de-mi-vida-giro-del-destino-bir-kucuk-gunduz-isigi-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 109",
+          "Título original: Bir Küçük Gün Işığı",
+          "Año: 2022–2023",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 109,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "UN POLICÍA DE ANKARA - BEHZAT C",
+        "Price": "18.00",
+        "Description": "Behzat Ç.: Bir Ankara Polisiyesi (en español Un Policía de Ankara) es una serie turca de crimen y drama que sigue la vida del comisario Behzat Ç., un policía de homicidios en Ankara con un carácter duro, sarcástico y poco convencional. Junto a su equipo, investiga casos complejos de asesinato mientras lidia con la corrupción, la burocracia y sus propios demonios personales. La serie se caracteriza por su tono realista, su crítica social y su retrato crudo de la vida policial.",
+        "Images": [
+          "un-policia-de-ankara-behzat-c-0.jpg",
+          "un-policia-de-ankara-behzat-c-1.jpg",
+          "un-policia-de-ankara-behzat-c-2.jpg"
+        ],
+        "Features": [
+          "Episodios: 9",
+          "Título original: Behzat Ç.: Bir Ankara Polisiyesi",
+          "Año: 2010–2013, 2019–2022",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 9,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "UNA CANCIÓN INTERMINABLE - BITMEYEN SARKI",
+        "Price": "64.00",
+        "Description": "Bitmeyen Şarkı (en español Una Canción Interminable) es una serie turca de drama y romance que narra la historia de Feraye, una mujer que lucha por sobrevivir en un mundo lleno de injusticias mientras protege a su hijo. Su vida cambia cuando conoce a Yaman, un hombre poderoso y enigmático que se convierte en parte fundamental de su destino. La trama se centra en el amor, el sacrificio y la esperanza frente a las adversidades.",
+        "Images": [
+          "una-cancion-interminable-bitmeyen-sarki-0.jpg",
+          "una-cancion-interminable-bitmeyen-sarki-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 32",
+          "Título original: Bitmeyen Şarkı",
+          "Año: 2010–2011",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 32,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "UNA HISTORIA DE AMOR - BIR ASK HIKAYESI",
+        "Price": "116.00",
+        "Description": "Bir Aşk Hikayesi (en español Una Historia de Amor) es una serie turca de drama romántico que narra la vida de Korkut Ali, un joven que creció en Alemania en condiciones difíciles y regresa a Turquía tras descubrir que fue abandonado por su madre biológica. En su búsqueda de justicia y afecto, conoce a Ceylan, una mujer sensible y soñadora, con quien vivirá un amor intenso marcado por secretos, dolor y esperanza.",
+        "Images": [
+          "una-historia-de-amor-bir-ask-hikayesi-0.webp",
+          "una-historia-de-amor-bir-ask-hikayesi-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 58",
+          "Título original: Bir Aşk Hikayesi",
+          "Año: 2013–2014",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 58,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "UNA MADRE CONTRA LA INJUSTICIA - GÜLPERI",
+        "Price": "174.00",
+        "Description": "Gülperi (en español Una Madre contra la Injusticia) es una serie turca de drama que narra la lucha de una madre por recuperar a sus hijos tras quedar viuda y enfrentarse a la hostilidad de su familia política. La historia muestra cómo Gülperi, una mujer fuerte y resiliente, desafía las normas sociales y legales para proteger a sus hijos y darles un futuro digno, enfrentándose a juicios, prejuicios y poderosos enemigos.",
+        "Images": [
+          "una-madre-contra-la-injusticia-gulperi-0.jpg",
+          "una-madre-contra-la-injusticia-gulperi-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 87",
+          "Título original: Gülperi",
+          "Año: 2018–2019",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 87,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.914Z",
+        "Update": "2026-07-13T16:10:20.914Z"
+      },
+      {
+        "Label": "UNA PARTE DE MI - NO TE ENAMORES – BENIM ADIM GÜLTEPE",
+        "Price": "296.00",
+        "Description": "Benim Adım Gültepe (en español Una Parte de Mi / No Te Enamores) es una serie turca de drama que retrata la vida en un barrio humilde de Estambul durante los años 80. La historia se centra en Sema, una joven que sueña con escapar de la pobreza y las limitaciones de su entorno, mientras enfrenta las dificultades de crecer en un ambiente marcado por la injusticia, la violencia y los amores prohibidos.",
+        "Images": [
+          "una-parte-de-mi-no-te-enamores-benim-adim-gultepe-0.webp",
+          "una-parte-de-mi-no-te-enamores-benim-adim-gultepe-1.webp"
+        ],
+        "Features": [
+          "Episodios: 148",
+          "Título original: Benim Adım Gültepe",
+          "Año: 2014",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 148,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "UNA VIDA PERFECTA - MI MARAVILLOSA VIDA - HARIKA HAYATIM",
+        "Price": "194.00",
+        "Description": "Harika Hayatım (en español Una Vida Perfecta / Mi Maravillosa Vida) es una serie turca de drama y romance que explora los secretos detrás de una aparente vida ideal. La trama sigue a Şebnem Gümüşçü, una mujer que parece tenerlo todo: belleza, éxito y una familia perfecta. Sin embargo, su pasado oscuro y las mentiras que ha construido comienzan a salir a la luz, poniendo en riesgo su mundo y obligándola a enfrentarse a las consecuencias de sus decisiones.",
+        "Images": [
+          "una-vida-perfecta-mi-maravillosa-vida-harika-hayatim-0.jpg",
+          "una-vida-perfecta-mi-maravillosa-vida-harika-hayatim-1.webp"
+        ],
+        "Features": [
+          "Episodios: 97",
+          "Título original: Harika Hayatım",
+          "Año: 2023–2024",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 97,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "UNO DE NOSOTROS - BIZDEN BIRI",
+        "Price": "36.00",
+        "Description": "Cuenta la historia de Adam, hijo de un sacerdote católico, y Havva, hija de una familia turca muy tradicional. A pesar de provenir de mundos completamente distintos, sus caminos se cruzan y surge entre ellos un amor inesperado. Sin embargo, las diferencias culturales, religiosas y familiares se convierten en grandes obstáculos que ponen a prueba su relación.",
+        "Images": [
+          "uno-de-nosotros-bizden-biri-0.jpg",
+          "uno-de-nosotros-bizden-biri-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 18",
+          "Título original: Bizden Biri",
+          "Año: 2021",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 18,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "VENGANZA Y AMOR - SUHAN",
+        "Price": "156.00",
+        "Description": "La historia sigue a Suhan Korludağ, una joven heredera que vive en un pequeño pueblo junto a su padre, un poderoso terrateniente. Su vida cambia radicalmente cuando aparece Cesur Alemdaroğlu, un hombre misterioso que llega con un propósito oculto: vengar la muerte de su padre. Lo que comienza como un plan de venganza se transforma en una apasionada historia de amor marcada por secretos familiares, traiciones y enfrentamientos.",
+        "Images": [
+          "venganza-y-amor-suhan-0.jpg",
+          "venganza-y-amor-suhan-1.webp"
+        ],
+        "Features": [
+          "Episodios: 78",
+          "Título original: Cesur ve Güzel",
+          "Año: 2016–2017",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 78,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "VERDAD OCULTA - PRISIONERO - GIZLI GERÇEK - ESIR",
+        "Price": "150.00",
+        "Description": "La historia gira en torno a Kemal, un hombre injustamente acusado de asesinato y condenado a prisión. Tras años de encierro, logra escapar para demostrar su inocencia y descubrir la verdad detrás de una conspiración que involucra a poderosos empresarios y funcionarios corruptos. En su búsqueda se cruza con Elif, una periodista decidida a destapar el caso, y juntos enfrentan una red de mentiras, traiciones y secretos que pondrán en riesgo sus vidas.",
+        "Images": [
+          "verdad-oculta-prisionero-gizli-gerek-esir-0.jpg",
+          "verdad-oculta-prisionero-gizli-gerek-esir-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 75",
+          "Título original: Gizli Gerçek - Esir",
+          "Año: 2011",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 75,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "VIOLETA COMO EL MAR - PURPÚRA COMO EL MAR - DENIZ GIBI MENEKSELER",
+        "Price": "24.00",
+        "Description": "Viola Vitale, una joven periodista italiana, regresa a Sicilia para trabajar en una revista local y buscar a su padre desaparecido. Allí conoce a Francesco Demir, un inspector de policía reservado y metódico. Juntos se ven envueltos en la resolución de crímenes mientras entre ellos surge una relación marcada por la tensión, la química y los secretos del pasado.",
+        "Images": [
+          "violeta-como-el-mar-purpura-como-el-mar-deniz-gibi-menekseler-0.webp",
+          "violeta-como-el-mar-purpura-como-el-mar-deniz-gibi-menekseler-1.webp"
+        ],
+        "Features": [
+          "Episodios: 12",
+          "Título original: Deniz Gibi Menekşeler",
+          "Año: 2022–2023",
+          "País: Italia, Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 12,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "VOLVER A CASA - REGRESO A CASA - EVE DÖNÜS",
+        "Price": "132.00",
+        "Description": "Mustafa y su esposa Esma, obreros humildes que viven con su hija pequeña, llevan una vida tranquila al margen de la política. Tras el golpe militar del 12 de septiembre de 1980 en Turquía, Mustafa es denunciado falsamente como miembro de una organización clandestina y es detenido. Durante 22 días sufre brutales torturas, compartiendo celda con un maestro llamado Hoca. La película expone el trauma social y humano de la represión política de aquella época.",
+        "Images": [
+          "volver-a-casa-regreso-a-casa-eve-dnus-0.webp",
+          "volver-a-casa-regreso-a-casa-eve-dnus-1.webp"
+        ],
+        "Features": [
+          "Episodios: 66",
+          "Título original: Eve Dönüş",
+          "Año: 2006",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 66,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.915Z",
+        "Update": "2026-07-13T16:10:20.915Z"
+      },
+      {
+        "Label": "Y TÚ, ¿QUIÉN ERES – KIMSIN SEN",
+        "Price": "74.00",
+        "Description": "Tekin, un detective privado poco reconocido, recibe un encargo de una viuda adinerada para localizar a su hija desaparecida. Lo que parece un caso sencillo se convierte en una trama llena de enredos, persecuciones y humor absurdo, donde Tekin y su compañero İsmail se enfrentan a situaciones cada vez más disparatadas.",
+        "Images": [
+          "y-tu-quien-eres-kimsin-sen-0.webp",
+          "y-tu-quien-eres-kimsin-sen-1.webp"
+        ],
+        "Features": [
+          "Episodios: 37",
+          "Año: 2012",
+          "Título original: Kimsin Sen",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 37,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.916Z",
+        "Update": "2026-07-13T16:10:20.916Z"
+      },
+      {
+        "Label": "ÉPICO - DESTAN",
+        "Price": "182.00",
+        "Description": "La trama se desarrolla en las estepas de Asia Central del siglo VIII, donde Akkiz, una guerrera huérfana, busca venganza contra Alpagu Khan, responsable de la muerte de su padre. En su camino se cruza con Batuga, el hijo discapacitado del Khan, quien finge locura para sobrevivir.",
+        "Images": [
+          "epico-destan-0.jpg",
+          "epico-destan-1.webp",
+          "epico-destan-2.webp"
+        ],
+        "Features": [
+          "Episodios: 91",
+          "Año: 2021-2022",
+          "Título original: Destan",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 91,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.916Z",
+        "Update": "2026-07-13T16:10:20.916Z"
+      },
+      {
+        "Label": "LA HIJA DEL EMBAJADOR – SEFIRIN KIZI",
+        "Price": "328.00",
+        "Description": "Sancar, hijo de un campesino, y Nare, hija de un embajador, se aman desde niños. El padre de Nare se opone y ella desaparece misteriosamente en su noche de bodas. Años después reaparece con una hija, Melek, revelando secretos que desatan una historia de amor, traición y venganza.",
+        "Images": [
+          "la-hija-del-embajador-sen-al-kapimi-0.jpg",
+          "la-hija-del-embajador-sen-al-kapimi-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 164",
+          "Título original: Sefirin Kızı",
+          "Año: 2019-2021",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 164,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.916Z",
+        "Update": "2026-07-13T16:10:20.916Z"
+      },
+      {
+        "Label": "ALMAS DE FUEGO - ALMAS HERIDAS",
+        "Price": "124.00",
+        "Description": "La historia sigue a Han (Birkan Sokullu), un hombre atrapado entre sus responsabilidades familiares y sus propios conflictos emocionales. Su vida cambia al conocer a İnci, desencadenando una trama intensa sobre el amor, los traumas del pasado y la complejidad de los vínculos humanos.",
+        "Images": [
+          "almas-de-fuego-0.jpg",
+          "almas-de-fuego-1.jpg"
+        ],
+        "Features": [
+          "Episodios: 62",
+          "Título original: Masumlar Apartmanı",
+          "Año: 2020–2022",
+          "País: Turquía"
+        ],
+        "Type": "episode",
+        "Episodes": 62,
+        "PricePerEpisode": "2.00",
+        "Date": "2026-07-13T16:10:20.916Z",
+        "Update": "2026-07-13T16:10:20.916Z"
+      }
+    ]
+  }
+}
