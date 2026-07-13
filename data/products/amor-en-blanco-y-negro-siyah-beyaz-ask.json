@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "AMOR EN BLANCO Y NEGRO - SIYAH BEYAZ ASK",
   "Images": [
-    "amor-en-blanco-y-negro-siyah-beyaz-ask-0.webp",
-    "amor-en-blanco-y-negro-siyah-beyaz-ask-1.webp"
+    "amor-en-blanco-y-negro-siyah-beyaz-ask-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Siyah Beyaz Aşk (en español Amor en Blanco y Negro) es una serie turca de drama romántico y acción que narra la historia de Ferhat Aslan, un hombre frío y violento vinculado al crimen organizado, y Aslı Çınar, una joven doctora idealista que se ve obligada a casarse con él para salvar su vida. Lo que comienza como un matrimonio forzado se transforma en una relación marcada por la pasión, el conflicto y la redención.",
   "Price": "128.00",
   "Features": [
     "Episodios: 64",
-    "Título original: Siyah Beyaz Aşk"
+    "Título original: Siyah Beyaz Aşk",
+    "Año: 2017–2018",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 64,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-13T15:38:38.698Z",
-  "Update": "2026-07-13T15:38:38.698Z"
+  "Date": "2026-07-13T15:41:08.986Z",
+  "Update": "2026-07-13T15:41:08.986Z"
 }
