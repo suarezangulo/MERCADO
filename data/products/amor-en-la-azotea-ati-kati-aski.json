@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "AMOR EN LA AZOTEA - ÇATI KATI ASKI",
   "Images": [
-    "amor-en-la-azotea-cati-kati-aski-0.webp",
-    "amor-en-la-azotea-cati-kati-aski-1.webp"
+    "amor-en-la-azotea-ati-kati-aski-0.webp",
+    "amor-en-la-azotea-ati-kati-aski-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Çatı Katı Aşk (en español Amor en la Azotea) es una comedia romántica turca ligera y familiar que gira en torno a dos jóvenes que, por distintas razones, terminan viviendo en la azotea de una casa tradicional de Estambul. Allí se forma una convivencia llena de enredos, secretos, malentendidos y, por supuesto, amor.",
   "Price": "120.00",
   "Features": [
     "Episodios: 60",
-    "Título original: Çatı Katı Aşkı"
+    "Título original: Çatı Katı Aşk",
+    "Año: 2020",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 60,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-13T15:57:12.048Z",
-  "Update": "2026-07-13T15:57:12.048Z"
+  "Date": "2026-07-13T16:01:24.006Z",
+  "Update": "2026-07-13T16:01:24.006Z"
 }
