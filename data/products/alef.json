@@ -4,8 +4,7 @@
   "Label": "ALEF",
   "Images": [
     "alef-0.webp",
-    "alef-1.webp",
-    "alef-2.webp"
+    "alef-1.webp"
   ],
   "Description": "La serie turca Alef es un thriller policíaco y místico estrenado en 2020, con dos temporadas hasta 2022. Se centra en detectives que investigan asesinatos en Estambul, vinculados con símbolos sufíes y secretos históricos. Es considerada una de las producciones más innovadoras del género en Turquía.",
   "Price": "16.00",
@@ -18,6 +17,6 @@
   "Type": "episode",
   "Episodes": 8,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-13T15:10:52.478Z",
-  "Update": "2026-07-13T15:10:52.478Z"
+  "Date": "2026-07-13T15:25:05.468Z",
+  "Update": "2026-07-13T15:25:05.468Z"
 }
