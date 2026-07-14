@@ -215,7 +215,6 @@ function buildEpisodeSelector(product, $btn) {
     console.log('🔍 buildEpisodeSelector llamado con producto:', product);
     console.log('🔍 Type:', product.Type, 'Episodes:', product.Episodes);
     
-    // Verificar si el producto tiene capítulos
     if (product.Type !== "episode" || !product.Episodes || product.Episodes < 2) {
         console.log('❌ Producto NO tiene capítulos o no cumple condiciones.');
         return;
@@ -225,7 +224,6 @@ function buildEpisodeSelector(product, $btn) {
     var totalEpisodes = parseInt(product.Episodes);
     var pricePerEpisode = null;
 
-    // Buscar precio por capítulo en Features
     if (product.Features) {
         var priceFeature = product.Features.find(function(f) {
             return f.toLowerCase().includes('precio por capítulo') || f.toLowerCase().includes('costo por episodio');
@@ -236,32 +234,27 @@ function buildEpisodeSelector(product, $btn) {
         }
     }
 
-    // Si no se encontró, calcular como Price / TotalEpisodes
     if (pricePerEpisode === null || isNaN(pricePerEpisode)) {
         var totalPrice = parseFloat(product.Price) || 0;
         pricePerEpisode = totalPrice / totalEpisodes;
     }
     console.log('💰 Precio por capítulo:', pricePerEpisode);
 
-    // Crear el contenedor si no existe
     var container = document.getElementById('episodeSelectorContainer');
     if (!container) {
         console.log('🆘 Contenedor #episodeSelectorContainer no encontrado, creándolo...');
         container = document.createElement('div');
         container.id = 'episodeSelectorContainer';
         container.style.marginTop = '20px';
-        // Insertar después del bloque .product-actions
         var actions = document.querySelector('.product-actions');
         if (actions) {
             actions.parentNode.insertBefore(container, actions.nextSibling);
         } else {
-            // Fallback: insertar al final del .product-info-col
             var infoCol = document.querySelector('.product-info-col');
             if (infoCol) infoCol.appendChild(container);
         }
     }
 
-    // Generar el HTML del selector
     container.innerHTML = `
         <div style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-mica); border-radius: 12px; padding: 15px 20px; backdrop-filter: blur(10px);">
             <label style="font-weight: 600; color: #fff; display: block; margin-bottom: 10px;">Seleccionar capítulos:</label>
@@ -279,11 +272,9 @@ function buildEpisodeSelector(product, $btn) {
         </div>
     `;
 
-    // Variables para guardar la selección actual
     var currentRange = { from: 1, to: totalEpisodes, total: totalEpisodes };
     var currentPrice = pricePerEpisode * totalEpisodes;
 
-    // Función para recalcular
     function updatePrice() {
         var from = parseInt(document.getElementById('episodeFrom').value) || 1;
         var to = parseInt(document.getElementById('episodeTo').value) || 1;
@@ -310,7 +301,6 @@ function buildEpisodeSelector(product, $btn) {
         $btn.html('<i class="zmdi zmdi-shopping-cart-plus"></i> Agregar (' + toMoneyStr(price) + ')');
     }
 
-    // Eventos
     $('#episodeFrom').off('change').on('change', updatePrice);
     $('#episodeTo').off('change').on('change', updatePrice);
     $('#selectAllEpisodes').off('click').on('click', function(e) {
@@ -320,12 +310,112 @@ function buildEpisodeSelector(product, $btn) {
         updatePrice();
     });
 
-    // Inicializar
     updatePrice();
     $btn.attr('data-base-price', product.Price);
     $btn.attr('data-episode-active', 'true');
     console.log('✅ Selector de capítulos construido correctamente.');
 }
+
+// ============================================
+// ===== NUEVAS FUNCIONES PARA SEO =====
+// ============================================
+
+// ===== ACTUALIZAR META TAGS DINÁMICAMENTE =====
+function updateMetaTags(product) {
+    // Título
+    document.title = product.Label + ' - IMPRESIONES MR';
+    
+    // Meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = product.Description ? product.Description.substring(0, 160) : 'Compra ' + product.Label + ' en IMPRESIONES MR. Precios en CUP.';
+    
+    // Open Graph
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.content = product.Label + ' - IMPRESIONES MR';
+    
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.content = product.Description ? product.Description.substring(0, 200) : 'Compra ' + product.Label + ' en IMPRESIONES MR.';
+    
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = 'https://impresionesmr.rf.gd/product.html?id=' + ToSlug(product.Label);
+    
+    // Twitter
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.content = product.Label + ' - IMPRESIONES MR';
+    
+    let twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc) twitterDesc.content = product.Description ? product.Description.substring(0, 200) : 'Compra ' + product.Label + ' en IMPRESIONES MR.';
+}
+
+// ===== ACTUALIZAR JSON-LD =====
+function updateProductSchema(product) {
+    const script = document.getElementById('productSchema');
+    if (!script) return;
+    
+    const slug = ToSlug(product.Label);
+    
+    // Obtener la primera imagen
+    let imageUrl = 'https://impresionesmr.rf.gd/images/og-image.jpg';
+    if (product.Images && product.Images.length > 0) {
+        const baseName = product.Images[0].replace(/\.[^.]+$/, '');
+        resolveImageUrl(baseName, ['webp', 'jpg', 'jpeg', 'png'], function(url) {
+            if (url) {
+                imageUrl = url;
+                updateScript();
+            } else {
+                updateScript();
+            }
+        });
+    } else {
+        updateScript();
+    }
+    
+    function updateScript() {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": product.Label,
+            "description": product.Description ? product.Description.substring(0, 200) : '',
+            "image": imageUrl,
+            "sku": slug,
+            "offers": {
+                "@type": "Offer",
+                "price": parseFloat(product.Price) || 0,
+                "priceCurrency": "CUP",
+                "availability": "https://schema.org/InStock",
+                "url": 'https://impresionesmr.rf.gd/product.html?id=' + slug,
+                "priceValidUntil": "2026-12-31"
+            }
+        };
+        
+        // Si el producto tiene episodios
+        if (product.Type === 'episode' && product.Episodes > 0) {
+            schema.additionalProperty = [
+                {
+                    "@type": "PropertyValue",
+                    "name": "Episodios",
+                    "value": product.Episodes
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Tipo",
+                    "value": "Serie"
+                }
+            ];
+        }
+        
+        script.textContent = JSON.stringify(schema, null, 2);
+    }
+}
+
+// ============================================
+// ===== CARGA DEL PRODUCTO =====
+// ============================================
 
 (function(n) {
     "use strict";
@@ -355,6 +445,8 @@ function buildEpisodeSelector(product, $btn) {
             whatsappMessage = spanishFormat(whatsappMessage);
 
             buildBreadCrumb(i);
+            updateMetaTags(i);
+            updateProductSchema(i);
             buildGallery(i);
             buildDetailsGrid(i);
             buildFeatures(i);
@@ -387,7 +479,6 @@ function buildEpisodeSelector(product, $btn) {
             buildEpisodeSelector(i, $btn);
 
             // ===== EVENTO CLICK DEL BOTÓN (CON DELEGACIÓN) =====
-            // Usamos delegación para asegurar que funcione incluso si el botón se regenera
             $(document).off('click', '.js-addcart-detail').on('click', '.js-addcart-detail', function(e) {
                 e.preventDefault();
                 var $this = $(this);
@@ -399,7 +490,6 @@ function buildEpisodeSelector(product, $btn) {
                 var priceToUse = null;
                 var rangeData = null;
 
-                // Si el producto tiene selector de capítulos activo
                 if ($this.attr('data-episode-active') === 'true') {
                     var priceAttr = $this.attr('data-episode-price');
                     var rangeAttr = $this.attr('data-episode-range');
@@ -420,7 +510,6 @@ function buildEpisodeSelector(product, $btn) {
                     }
                 }
 
-                // Llamar a addToCart con extraData
                 var wasRemoved = addToCart(productId, productLabel, 1, true, extraData);
                 console.log('🛒 addToCart resultado:', wasRemoved);
                 updateCartQty();
@@ -451,7 +540,6 @@ function buildEpisodeSelector(product, $btn) {
                 }
             });
 
-            // Si el producto ya está en el carrito, actualizar el botón
             if (inCart(t)) {
                 $btn.html('<i class="zmdi zmdi-check"></i> Agregado ✓');
             }
