@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CON OLOR A FRESA – ÇILEK KOKUSU",
   "Images": [
-    "con-olor-a-fresa-cilek-kokusu-0.webp",
-    "con-olor-a-fresa-cilek-kokusu-1.webp"
+    "con-olor-a-fresa-ilek-kokusu-0.webp",
+    "con-olor-a-fresa-ilek-kokusu-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Çilek Kokusu (en español Con Olor a Fresa) es una serie turca de comedia romántica que combina juventud, amor y destino en un ambiente veraniego lleno de frescura. La historia sigue a Aslı, una joven trabajadora y soñadora que conoce a Burak, un chico rico y despreocupado, tras un accidente que cambia sus vidas. Aunque provienen de mundos opuestos, el destino los une en una historia de amor marcada por malentendidos, orgullo y sentimientos sinceros.",
   "Price": "110.00",
   "Features": [
     "Episodios: 55",
-    "Título original: Çilek Kokusu"
+    "Título original: Çilek Kokusu",
+    "Año: 2015",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 55,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T15:21:43.592Z",
-  "Update": "2026-07-14T15:21:43.592Z"
+  "Date": "2026-07-14T15:26:28.819Z",
+  "Update": "2026-07-14T15:26:28.819Z"
 }
