@@ -434,7 +434,7 @@ function updateProductSchema(product) {
             n("head").append('<meta property="og:title" content="' + spanishFormat(r) + '">');
             
             var baseName = t + "-0";
-            var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+            var extensions = ['webp'];
             resolveImageUrl(baseName, extensions, function(url) {
                 if (url) {
                     n("head").append('<meta property="og:image" content="' + url + '">');
