@@ -1,0 +1,22 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "AMOR INVENCIBLE - UCURUM",
+  "Images": [
+    "amor-invencible-ucurum-0.webp",
+    "amor-invencible-ucurum-1.webp"
+  ],
+  "Description": "Ucurum (título internacional Amor Invencible) es un drama turco emitido en 2012 por ATV que narra la historia de tres vidas que se cruzan en circunstancias extremas: Adem, un joven que regresa del ejército como héroe pero marcado por traumas de guerra; Eva, una estudiante de medicina moldava que lucha por sobrevivir junto a su hermana Felicia; y Yaman, un hombre ambicioso y despiadado que controla el destino de quienes lo rodean. Sus caminos se entrelazan en un relato de supervivencia, amor y lucha contra la adversidad, donde cada uno debe enfrentar sus propios demonios y decidir hasta dónde llegar para proteger lo que ama.",
+  "Price": "192.00",
+  "Features": [
+    "Episodios: 96",
+    "Título original: Ucurum",
+    "Año: 2012",
+    "País: Turquía"
+  ],
+  "Type": "episode",
+  "Episodes": 96,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-14T04:25:38.126Z",
+  "Update": "2026-07-14T04:25:38.126Z"
+}
