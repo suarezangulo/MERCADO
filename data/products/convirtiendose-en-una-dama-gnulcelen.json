@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CONVIRTIÉNDOSE EN UNA DAMA - GÖNÜLCELEN",
   "Images": [
-    "convirtiendose-en-una-dama-gonulcelen-0.webp",
-    "convirtiendose-en-una-dama-gonulcelen-1.webp"
+    "convirtiendose-en-una-dama-gnulcelen-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Gönülçelen (en español Convirtiéndose en una Dama) es una serie turca romántica y dramática que narra la historia de Hasret, una joven de origen humilde con un talento natural para el canto, y Murat, un músico culto y refinado que decide transformarla en una artista profesional. A través de su relación, la serie explora el choque entre dos mundos: la elegancia y la educación frente a la espontaneidad y la pasión del pueblo.",
   "Price": "224.00",
   "Features": [
     "Episodios: 112",
-    "Título original: Gönülcelen"
+    "Título original: Gönülçelen",
+    "Año: 2010–2011",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 112,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T15:26:28.819Z",
-  "Update": "2026-07-14T15:26:28.819Z"
+  "Date": "2026-07-14T15:31:43.362Z",
+  "Update": "2026-07-14T15:31:43.362Z"
 }
