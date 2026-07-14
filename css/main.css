@@ -310,7 +310,7 @@ body::before {
     background: linear-gradient(135deg, #25D366, #128C7E);
     border-radius: 50%; display: flex; justify-content: center; align-items: center;
     cursor: pointer; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    transition: var(--transition-fast); z-index: 999;
+    transition: var(--transition-fast); z-index: 9999;
 }
 .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6); }
 .whatsapp-btn img { max-width: 55%; }
