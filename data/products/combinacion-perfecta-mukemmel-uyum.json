@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "COMBINACIÓN PERFECTA - MÜKEMMEL UYUM",
   "Images": [
-    "combinacion-perfecta-mukemmel-uyum-0.webp",
-    "combinacion-perfecta-mukemmel-uyum-1.webp"
+    "combinacion-perfecta-mukemmel-uyum-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Mükemmel Uyum (en español Combinación Perfecta) es una serie turca de comedia romántica que explora las relaciones modernas y los contrastes entre personalidades opuestas. La trama sigue a un grupo de jóvenes que, a pesar de sus diferencias, buscan construir vínculos auténticos en medio de enredos amorosos, amistades complicadas y situaciones divertidas. El título hace referencia a cómo, incluso en medio de las imperfecciones, puede surgir una “combinación perfecta” entre dos personas.",
   "Price": "66.00",
   "Features": [
     "Episodios: 33",
-    "Título original: Mükemmel Uyum"
+    "Título original: Mükemmel Uyum",
+    "Año: 2022",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 33,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T15:15:07.079Z",
-  "Update": "2026-07-14T15:15:07.079Z"
+  "Date": "2026-07-14T15:18:38.311Z",
+  "Update": "2026-07-14T15:18:38.311Z"
 }
