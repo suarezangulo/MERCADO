@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CHOQUE - CRASH - CARPRISMA",
   "Images": [
-    "choque-crash-carprisma-0.webp",
-    "choque-crash-carprisma-1.webp"
+    "choque-crash-carprisma-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Çarpışma (en español Choque – Crash) es un drama turco de acción y suspenso que entrelaza las vidas de varios personajes a partir de un accidente automovilístico. La serie muestra cómo un choque en Estambul conecta de manera inesperada a cuatro personas con destinos muy distintos: Kadir Adalı, un comisario marcado por la pérdida de su familia; Zeynep Tunç, una mujer que lucha por proteger a su hija; Kerem Korkmaz, un joven que intenta escapar de la delincuencia; y Cemre Gür, una abogada que busca justicia. A partir de ese momento, sus historias se cruzan en un relato de amor, venganza, redención y lucha contra el crimen.",
   "Price": "136.00",
   "Features": [
     "Episodios: 68",
-    "Título original: Çarpışma"
+    "Título original: Çarpışma",
+    "Año: 2018–2019",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 68,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:56:11.548Z",
-  "Update": "2026-07-14T14:56:11.548Z"
+  "Date": "2026-07-14T14:59:11.552Z",
+  "Update": "2026-07-14T14:59:11.552Z"
 }
