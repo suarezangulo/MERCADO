@@ -1,0 +1,22 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "AMOR MANCHADO - LEKE",
+  "Images": [
+    "amor-manchado-leke-0.webp",
+    "amor-manchado-leke-1.webp"
+  ],
+  "Description": "Leke (en español Amor Manchado) es un drama turco que explora las heridas del pasado y cómo afectan las relaciones presentes. La historia sigue a Yasemin, una joven que trabaja como camarera y sueña con una vida mejor, y a Cem, un hombre exitoso y aparentemente seguro de sí mismo, pero marcado por traumas familiares. Cuando sus caminos se cruzan, surge un romance lleno de obstáculos, secretos y prejuicios que ponen a prueba la fuerza de sus sentimientos.",
+  "Price": "60.00",
+  "Features": [
+    "Episodios: 30",
+    "Título original: Leke",
+    "Año: 2019",
+    "País: Turquía"
+  ],
+  "Type": "episode",
+  "Episodes": 30,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-14T04:35:20.559Z",
+  "Update": "2026-07-14T04:35:20.559Z"
+}
