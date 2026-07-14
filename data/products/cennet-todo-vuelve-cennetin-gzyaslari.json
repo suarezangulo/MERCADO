@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CENNET TODO VUELVE – CENNETIN GÖZYASLARI",
   "Images": [
-    "cennet-todo-vuelve-cennetin-gozyaslari-0.webp",
-    "cennet-todo-vuelve-cennetin-gozyaslari-1.webp"
+    "cennet-todo-vuelve-cennetin-gzyaslari-0.webp",
+    "cennet-todo-vuelve-cennetin-gzyaslari-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Cennet’in Gözyaşları (en español Cennet: Todo Vuelve) es un drama turco que narra la historia de Cennet Yılmaz, una joven huérfana criada por su abuela que, a pesar de las dificultades, logra convertirse en arquitecta. Su vida cambia radicalmente cuando descubre que su madre biológica, Arzu, la abandonó al nacer y ahora reaparece en su vida, generando un torbellino de emociones, secretos y enfrentamientos familiares. Entre el amor, el dolor y la traición, Cennet debe decidir si perdonar o dejarse consumir por el resentimiento.",
   "Price": "318.00",
   "Features": [
     "Episodios: 159",
-    "Título original: Cennet'in Gözyaşları"
+    "Título original: Cennet’in Gözyaşları",
+    "Año: 2017–2018",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 159,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:51:04.494Z",
-  "Update": "2026-07-14T14:51:04.494Z"
+  "Date": "2026-07-14T14:56:11.548Z",
+  "Update": "2026-07-14T14:56:11.548Z"
 }
