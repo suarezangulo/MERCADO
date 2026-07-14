@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "COLLAR POLVORIENTO - CHICOS DE BARRIO - TOZLUVAKA",
   "Images": [
-    "collar-polvoriento-chicos-de-barrio-tozluvaka-0.webp",
-    "collar-polvoriento-chicos-de-barrio-tozluvaka-1.webp"
+    "collar-polvoriento-chicos-de-barrio-tozluvaka-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Tozlu Vaka (en español Collar Polvoriento – Chicos de Barrio) es un drama juvenil turco que refleja la vida de un grupo de jóvenes en un barrio humilde, donde los sueños, las amistades y los conflictos se entrelazan con la dureza de la realidad. La serie muestra cómo la juventud intenta abrirse camino en medio de dificultades económicas, rivalidades y amores complicados, mientras la lealtad y la traición marcan sus destinos.",
   "Price": "160.00",
   "Features": [
     "Episodios: 80",
-    "Título original: Tozluvaka"
+    "Título original: Tozluvaka",
+    "Título original: Tozluyaka",
+    "Año: 2022–2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 80,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T15:09:26.648Z",
-  "Update": "2026-07-14T15:09:26.648Z"
+  "Date": "2026-07-14T15:15:07.079Z",
+  "Update": "2026-07-14T15:15:07.079Z"
 }
