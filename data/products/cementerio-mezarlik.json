@@ -6,15 +6,17 @@
     "cementerio-mezarlik-0.webp",
     "cementerio-mezarlik-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Mezarlık (en español Cementerio) es una miniserie turca de suspenso y crimen que aborda la violencia contra las mujeres desde una perspectiva policial y social. La trama sigue a Önem Özülkü, una comisaria fuerte y determinada que lidera una unidad especial dedicada a investigar feminicidios y crímenes de género. Cada caso revela no solo la brutalidad de los delitos, sino también las estructuras sociales y culturales que los permiten.",
   "Price": "24.00",
   "Features": [
     "Episodios: 12",
-    "Título original: Mezarlık"
+    "Título original: Mezarlık",
+    "Año: 2022",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 12,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:49:10.661Z",
-  "Update": "2026-07-14T14:49:10.661Z"
+  "Date": "2026-07-14T14:51:04.493Z",
+  "Update": "2026-07-14T14:51:04.493Z"
 }
