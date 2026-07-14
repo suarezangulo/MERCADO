@@ -10,11 +10,42 @@
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="CINEMARKET">
 	
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://tutienda.com/">
-	<meta property="og:title" content="CINEMARKET - Detalle del título">
-	<meta property="og:description" content="Información completa del título audiovisual.">
-	<meta property="og:image" content="https://tutienda.com/images/icons/favicon.png">
+	<!-- ===== OPEN GRAPH PARA REDES SOCIALES ===== -->
+	<meta property="og:type" content="product">
+	<meta property="og:title" content="IMPRESIONES MR - Catálogo Audiovisual">
+	<meta property="og:description" content="Disfruta del mejor contenido audiovisual en CUP. Películas, series, documentales y más.">
+	<meta property="og:image" content="https://impresionesmr.rf.gd/images/og-image.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://impresionesmr.rf.gd/">
+	<meta property="og:site_name" content="IMPRESIONES MR">
+	<meta property="og:locale" content="es_ES">
+	
+	<!-- ===== TWITTER CARDS ===== -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="IMPRESIONES MR - Catálogo Audiovisual">
+	<meta name="twitter:description" content="Catálogo audiovisual en CUP. Películas, series, documentales y más.">
+	<meta name="twitter:image" content="https://impresionesmr.rf.gd/images/og-image.jpg">
+	
+	<!-- ===== DATOS ESTRUCTURADOS (JSON-LD) PARA GOOGLE ===== -->
+	<script type="application/ld+json" id="productSchema">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Product",
+	  "name": "Título del Producto",
+	  "description": "Descripción del producto",
+	  "image": "https://impresionesmr.rf.gd/images/og-image.jpg",
+	  "sku": "slug-del-producto",
+	  "offers": {
+	    "@type": "Offer",
+	    "price": "0.00",
+	    "priceCurrency": "CUP",
+	    "availability": "https://schema.org/InStock",
+	    "url": "https://impresionesmr.rf.gd/product.html?id=",
+	    "priceValidUntil": "2026-12-31"
+	  }
+	}
+	</script>
 	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
