@@ -247,7 +247,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     pic.appendChild(img);
     
     (function(imgEl, baseName, idx) {
-        var extensions = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+        var extensions = ['webp'];
         resolveImageUrl(baseName, extensions, function(url) {
             if (url) {
                 imgEl.setAttribute('src', url);
