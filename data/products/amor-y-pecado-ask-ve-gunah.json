@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "AMOR Y PECADO - ASK VE GÜNAH",
   "Images": [
-    "amor-y-pecado-ask-ve-gunah-0.webp",
-    "amor-y-pecado-ask-ve-gunah-1.webp"
+    "amor-y-pecado-ask-ve-gunah-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Aşk ve Günah (en español Amor y Pecado) es un drama romántico turco que explora las consecuencias de las decisiones impulsadas por la pasión y la culpa. La trama gira en torno a dos jóvenes cuyas vidas se ven marcadas por un amor prohibido que desafía las normas sociales y familiares, enfrentándolos a dilemas morales, secretos oscuros y la lucha entre el deseo y la redención.",
   "Price": "240.00",
   "Features": [
     "Episodios: 120",
-    "Título original: Aşk ve Günah"
+    "Título original: Aşk ve Günah",
+    "Año: 2015–2016",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 120,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:38:32.076Z",
-  "Update": "2026-07-14T14:38:32.076Z"
+  "Date": "2026-07-14T14:40:13.958Z",
+  "Update": "2026-07-14T14:40:13.958Z"
 }
