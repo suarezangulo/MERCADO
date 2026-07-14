@@ -10,7 +10,7 @@ function resolveImageUrl(baseName, extensions, callback) {
         callback(imageCache[baseName]);
         return;
     }
-    const extList = extensions || ['webp', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+    const extList = extensions || ['webp'];
     let index = 0;
     
     function tryNext() {
