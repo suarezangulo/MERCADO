@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "AMORES CRUZADOS - INTERSECCIÓN - KAVSAK",
   "Images": [
-    "amores-cruzados-interseccion-kavsak-0.webp",
-    "amores-cruzados-interseccion-kavsak-1.webp"
+    "amores-cruzados-interseccion-kavsak-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Kavşak (en español Amores Cruzados – Intersección) es un drama turco que explora la soledad, las heridas emocionales y los encuentros inesperados que cambian vidas. La historia se centra en Güven, un hombre aparentemente tranquilo y rutinario que trabaja en una oficina y vive aislado, atrapado en una existencia marcada por la monotonía y el silencio. Su vida da un giro cuando se cruza con personas que, como él, cargan con secretos y dolores ocultos. A través de estos encuentros, la serie muestra cómo las vidas pueden entrelazarse en un “cruce” que revela tanto la fragilidad humana como la posibilidad de redención.",
   "Price": "150.00",
   "Features": [
     "Episodios: 75",
-    "Título original: Kavşak"
+    "Título original: Kavşak",
+    "Año de emisión: 2010",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 75,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:40:13.958Z",
-  "Update": "2026-07-14T14:40:13.958Z"
+  "Date": "2026-07-14T14:43:52.360Z",
+  "Update": "2026-07-14T14:43:52.360Z"
 }
