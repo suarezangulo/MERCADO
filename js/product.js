@@ -56,7 +56,7 @@ function buildGallery(n) {
     
     imagesToProcess.forEach(function(imgName, idx) {
         var baseName = imgName.replace(/\.[^.]+$/, '');
-        var extensions = ['webp', 'jpg', 'jpeg', 'png'];
+        var extensions = ['webp'];
         var csvExt = imgName.includes('.') ? imgName.split('.').pop().toLowerCase() : 'webp';
         var orderedExtensions = [csvExt].concat(extensions.filter(function(ext) { return ext !== csvExt; }));
         
