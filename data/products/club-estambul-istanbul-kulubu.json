@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CLUB ESTAMBUL - ISTANBUL KULÜBÜ",
   "Images": [
-    "club-estambul-istanbul-kulubu-0.webp",
-    "club-estambul-istanbul-kulubu-1.webp"
+    "club-estambul-istanbul-kulubu-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "İstanbul Kulübü (en español Club Estambul) es un drama turco ambientado en los años 50 que combina historia, música y emociones intensas. La trama sigue a Matilda Aseo, una mujer judía sefardí que, tras salir de prisión, comienza a trabajar en un club nocturno de Estambul. Allí debe enfrentar los fantasmas de su pasado, proteger a su hija Rana y sobrevivir en un entorno lleno de tensiones sociales, políticas y culturales. La serie retrata la vida nocturna de la ciudad, los conflictos de identidad y las heridas de la posguerra.",
   "Price": "40.00",
   "Features": [
     "Episodios: 20",
-    "Título original: İstanbul Kulübü"
+    "Título original: Kulüp (İstanbul Kulübü)",
+    "Año: 2021–2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 20,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T15:06:33.541Z",
-  "Update": "2026-07-14T15:06:33.541Z"
+  "Date": "2026-07-14T15:09:26.647Z",
+  "Update": "2026-07-14T15:09:26.647Z"
 }
