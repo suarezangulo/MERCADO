@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CANCIÓN DE VERANO - YAZ SARKISI",
   "Images": [
-    "cancion-de-verano-yaz-sarkisi-0.webp",
-    "cancion-de-verano-yaz-sarkisi-1.webp"
+    "cancion-de-verano-yaz-sarkisi-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Yaz Şarkısı (en español Canción de Verano) es una serie turca de comedia romántica fresca y juvenil que celebra el amor, la música y los nuevos comienzos. La historia sigue a Yaz, una joven soñadora que viaja a Estambul para cumplir el deseo de su difunto padre: convertirse en cantante. Allí conoce a Murat, un productor musical reservado y perfeccionista, y a Kerem, un músico libre y apasionado. Entre melodías, rivalidades y emociones, Yaz se debate entre dos mundos: el amor que la inspira y la ambición que la desafía.",
   "Price": "48.00",
   "Features": [
     "Episodios: 24",
-    "Título original: Yaz Şarkısı"
+    "Título original: Yaz Şarkısı",
+    "Año de emisión: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 24,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:45:52.987Z",
-  "Update": "2026-07-14T14:45:52.987Z"
+  "Date": "2026-07-14T14:47:42.386Z",
+  "Update": "2026-07-14T14:47:42.386Z"
 }
