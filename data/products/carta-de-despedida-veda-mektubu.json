@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "CARTA DE DESPEDIDA - VEDA MEKTUBU",
   "Images": [
-    "carta-de-despedida-veda-mektubu-0.webp",
-    "carta-de-despedida-veda-mektubu-1.webp"
+    "carta-de-despedida-veda-mektubu-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Veda Mektubu (en español Carta de Despedida) es un drama turco que entrelaza el pasado y el presente a través de una historia de amor, arrepentimiento y segundas oportunidades. La trama gira en torno a Alanur, una mujer que en su juventud vivió un romance apasionado con Ziya, pero que terminó en separación y dolor. Años después, sus caminos vuelven a cruzarse cuando sus hijos, Mehmet y Aslı, se enamoran, reviviendo viejas heridas y enfrentando a las familias a secretos que nunca fueron olvidados. La “carta de despedida” que da nombre a la serie simboliza tanto el cierre de un capítulo como la apertura de otro marcado por el destino.",
   "Price": "152.00",
   "Features": [
     "Episodios: 76",
-    "Título original: Veda Mektubu"
+    "Título original: Veda Mektubu",
+    "Año: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 76,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-14T14:47:42.386Z",
-  "Update": "2026-07-14T14:47:42.386Z"
+  "Date": "2026-07-14T14:49:10.660Z",
+  "Update": "2026-07-14T14:49:10.660Z"
 }
