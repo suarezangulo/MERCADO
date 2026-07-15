@@ -6,15 +6,17 @@
     "el-cuervo-kuzgun-0.webp",
     "el-cuervo-kuzgun-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Kuzgun es una serie turca de drama y acción que explora la venganza, el amor y los secretos familiares. La historia sigue a Kuzgun Cebeci, un hombre marcado por la traición y la injusticia sufrida en su infancia, que regresa años después para ajustar cuentas con quienes destruyeron su vida. En medio de su plan de venganza, se reencuentra con Dila, su amor de juventud, lo que complica sus sentimientos y su destino.",
   "Price": "142.00",
   "Features": [
     "Episodios: 71",
-    "Título original: Kuzgun"
+    "Título original: Kuzgun",
+    "Año: 2019–2020",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 71,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T01:57:29.199Z",
-  "Update": "2026-07-15T01:57:29.199Z"
+  "Date": "2026-07-15T01:58:40.510Z",
+  "Update": "2026-07-15T01:58:40.510Z"
 }
