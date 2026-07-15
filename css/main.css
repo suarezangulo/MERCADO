@@ -36,7 +36,7 @@
 }
 
 /* ============================================
-   FONDO DINÁMICO
+   BASE Y FONDO
    ============================================ */
 body {
     font-family: 'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -71,14 +71,11 @@ body::before {
 ::-webkit-scrollbar-thumb:hover { background: #3aa3ff; }
 
 /* ============================================
-   CONTENEDOR PRINCIPAL
+   CONTENEDORES Y EFECTOS MICA
    ============================================ */
 .container { max-width: 1380px; }
 @media(max-width: 1600px) { .container { max-width: 1200px; } }
 
-/* ============================================
-   EFECTO MICA BASE
-   ============================================ */
 .mica-surface {
     background: var(--mica-card);
     backdrop-filter: blur(20px) saturate(150%);
@@ -136,7 +133,7 @@ body::before {
 .limiter-menu-desktop { height: 100%; display: flex; align-items: center; background: transparent; }
 
 /* ============================================
-   MENÚ
+   MENÚ PRINCIPAL
    ============================================ */
 .main-menu { list-style: none; margin: 0; display: flex; align-items: center; }
 .main-menu > li { display: block; position: relative; padding: 20px 10px 20px 0; margin: 0 4px 0 14px; }
@@ -199,13 +196,10 @@ body::before {
 .wrap-search-header button:hover { color: var(--accent-blue); }
 
 /* ============================================
-   HEADER FIJO
+   HEADER FIJO Y MÓVIL
    ============================================ */
 .fix-menu-desktop .wrap-menu-desktop { height: 70px; background: rgba(18, 18, 18, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
 
-/* ============================================
-   MOBILE
-   ============================================ */
 .wrap-header-mobile {
     display: none; align-items: center; height: 70px; background: rgba(18, 18, 18, 0.9);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -222,109 +216,127 @@ body::before {
 .sub-menu-m a { color: var(--text-secondary); line-height: 2.5; padding: 5px 0; }
 
 /* ============================================
-   TARJETAS DE PRODUCTO CON ALTURA IGUAL (CORREGIDO)
+   TARJETAS DE PRODUCTO (MICA) - CON ALTURA IGUAL
    ============================================ */
 
-/* El contenedor de Isotope debe ser flex para estirar los items */
-.isotope-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: stretch !important;
-}
-
-/* Cada item de Isotope debe ocupar todo el alto disponible */
-.isotope-item {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important; /* Para que Isotope no fuerce altura fija */
-    margin-bottom: 0 !important; /* Eliminamos el margin-bottom que Isotope añade */
-}
-
-/* La tarjeta en sí (block2) debe ocupar todo el alto */
+/* Cada tarjeta es un contenedor flex en columna que ocupa toda la altura disponible */
 .block2 {
-    flex: 1 1 auto !important; /* Ocupa todo el espacio vertical */
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-    width: 100% !important;
+    position: relative;
+    background: var(--mica-card);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid var(--border-mica);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-smooth);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* ← Ocupa toda la altura del contenedor Isotope */
+}
+.block2:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(30, 144, 255, 0.15);
+    border-color: rgba(30, 144, 255, 0.3);
+}
+.block2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    z-index: 1;
+}
+.block2:hover::before {
+    opacity: 1;
 }
 
-/* El contenedor de texto debe estirarse y empujar el precio hacia abajo */
-.block2 .block2-txt {
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 15px 18px 18px !important;
-}
-
-/* El precio se mantiene abajo */
-.block2-txt-child1 .stext-105.cl2 {
-    margin-top: auto !important;
-    padding-top: 8px !important;
-}
-
-/* Asegurar que la imagen tenga altura fija y no distorsione */
+/* Imagen: mantiene proporción fija y no se encoge */
 .block2-pic {
-    position: relative !important;
-    width: 100% !important;
-    padding-top: 140% !important; /* Relación de aspecto 1:1.4 */
-    overflow: hidden !important;
-    background: rgba(255,255,255,0.03) !important;
-    flex-shrink: 0 !important;
+    position: relative;
+    width: 100%;
+    padding-top: 140%; /* Relación de aspecto 1:1.4 (ajústala según prefieras) */
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    flex-shrink: 0; /* Evita que la imagen se encoja */
 }
-
 .block2-pic img {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Las imágenes se recortan para llenar el contenedor sin deformarse */
+    transition: transform 0.9s ease;
+}
+.block2:hover .block2-pic img {
+    transform: scale(1.08);
 }
 
-/* Ajustes para el contenido dentro de block2-txt-child1 */
+/* Contenedor de texto: crece para ocupar el espacio restante y empuja el precio hacia abajo */
+.block2 .block2-txt {
+    padding: 15px 18px 18px;
+    flex: 1; /* Ocupa todo el espacio vertical disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye espacio entre título y precio */
+}
+
+/* Bloque izquierdo (título, descripción, precio) */
 .block2-txt-child1 {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    width: calc(100% - 30px) !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: calc(100% - 30px);
+}
+
+/* Bloque derecho (icono del carrito) */
+.block2-txt-child2 {
+    width: 30px;
+    margin-top: auto; /* Se alinea al fondo junto con el precio */
+    padding-top: 8px;
 }
 
 /* Título */
 .block2-txt-child1 .js-name-b2 {
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: #FFFFFF !important;
-    line-height: 1.3 !important;
-    text-decoration: none !important;
-    display: block !important;
-    transition: color 0.3s ease !important;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.3;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
 }
-
 .block2-txt-child1 .js-name-b2:hover {
-    color: #1E90FF !important;
+    color: #1E90FF;
 }
 
-/* Descripción / Características */
+/* Descripción / características */
 .block2-txt-child1 .stext-111.cl4 {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    color: #AAAAAA !important;
-    display: block !important;
-    flex: 0 1 auto !important; /* No se estira, solo ocupa su contenido */
+    font-size: 13px;
+    line-height: 1.5;
+    color: #AAAAAA;
+    display: block;
+    margin-bottom: 6px;
+    min-height: 36px; /* Para mantener altura uniforme aunque la descripción sea corta */
 }
 
-/* Icono del carrito */
-.block2-txt-child2 {
-    margin-top: auto !important;
-    padding-top: 8px !important;
-    width: 30px !important;
-    flex-shrink: 0 !important;
+/* Precio: siempre al fondo */
+.block2-txt-child1 .stext-105.cl2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: auto; /* Empuja el precio hacia abajo */
+    padding-top: 8px;
 }
 
 /* ============================================
-   BOTONES
+   BOTONES Y FILTROS
    ============================================ */
 .btn, .flex-c-m.stext-101 {
     position: relative; overflow: hidden;
@@ -350,13 +362,135 @@ body::before {
 .js-addcart-detail.bg1 { background: var(--accent-blue) !important; }
 .js-addcart-detail.bg3 { background: linear-gradient(135deg, #1a1a1a, #0d0d0d) !important; }
 
-/* ============================================
-   FILTROS
-   ============================================ */
 .filter-link { color: var(--text-muted); border-bottom: 1px solid transparent; transition: var(--transition-fast); }
 .filter-link:hover { color: var(--accent-blue); border-bottom: 1px solid var(--accent-blue); }
 .filter-link-active { color: var(--accent-blue) !important; border-bottom: 1px solid var(--accent-blue) !important; }
 .how-active1 { color: var(--accent-blue) !important; border-color: var(--accent-blue) !important; }
+
+/* ============================================
+   BOTONES MICA (UNIFICADOS)
+   ============================================ */
+.mica-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 25px;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #CCCCCC;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    white-space: nowrap;
+    outline: none;
+    line-height: 1.2;
+}
+.mica-btn i { font-size: 16px; transition: transform 0.3s ease; }
+.mica-btn:hover {
+    background: rgba(30, 144, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.5);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.25);
+}
+.mica-btn:active { transform: scale(0.97); }
+.mica-btn-primary {
+    background: linear-gradient(135deg, #1E90FF, #0066cc);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+}
+.mica-btn-primary:hover {
+    background: linear-gradient(135deg, #3aa3ff, #1E90FF);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.6);
+    color: #fff;
+}
+.mica-btn-danger {
+    background: linear-gradient(135deg, #FF3B3B, #cc0000);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 59, 59, 0.4);
+}
+.mica-btn-danger:hover {
+    background: linear-gradient(135deg, #ff5555, #FF3B3B);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(255, 59, 59, 0.6);
+    color: #fff;
+}
+.mica-btn-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+}
+.mica-btn-success:hover {
+    background: linear-gradient(135deg, #3ddb84, #2ecc71);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+    color: #fff;
+}
+.mica-btn:disabled,
+.mica-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(30%);
+}
+
+/* ============================================
+   BOTONES FLOTANTES (Filtro / Búsqueda)
+   ============================================ */
+.mica-floating-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #CCCCCC;
+    font-family: Poppins-Medium, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+.mica-floating-btn i { font-size: 16px; transition: all 0.3s ease; }
+.mica-floating-btn:hover {
+    background: rgba(30, 144, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.5);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+}
+.mica-floating-btn.show-filter,
+.mica-floating-btn.show-search {
+    background: rgba(30, 144, 255, 0.25);
+    border-color: rgba(30, 144, 255, 0.6);
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+}
+.mica-floating-btn .icon-close-filter,
+.mica-floating-btn .icon-close-search { display: none; }
+.mica-floating-btn.show-filter .icon-filter,
+.mica-floating-btn.show-search .icon-search { display: none; }
+.mica-floating-btn.show-filter .icon-close-filter,
+.mica-floating-btn.show-search .icon-close-search { display: inline-block; }
 
 /* ============================================
    FOOTER MICA
@@ -389,7 +523,7 @@ body::before {
 .show-sidebar .sidebar, .show-header-cart .header-cart { right: 0; }
 
 /* ============================================
-   ANIMACIONES DE ENTRADA
+   ANIMACIONES
    ============================================ */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -402,17 +536,13 @@ body::before {
 .isotope-item:nth-child(4) { animation-delay: 0.4s; }
 
 /* ============================================
-   TOAST MICA
+   TOAST, WHATSAPP, QR
    ============================================ */
 .toast {
     background: var(--mica-card); backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border-mica);
     border-radius: var(--radius-lg); box-shadow: var(--shadow-mica);
 }
-
-/* ============================================
-   WHATSAPP FLOAT
-   ============================================ */
 .whatsapp-btn {
     position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px;
     background: linear-gradient(135deg, #25D366, #128C7E);
@@ -423,27 +553,12 @@ body::before {
 .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6); }
 .whatsapp-btn img { max-width: 55%; }
 
-/* ============================================
-   QR CONTAINER
-   ============================================ */
 .qr-container { border-top: 1px solid var(--border-mica); padding-top: 20px; margin-top: 20px; }
 .qr-code { max-width: 120px; border-radius: var(--radius-md); background: #fff; padding: 8px; cursor: pointer; transition: var(--transition-fast); }
 .qr-code:hover { transform: scale(1.05); }
 
 /* ============================================
-   UTILIDADES DE COLOR MICA
-   ============================================ */
-.cl1 { color: var(--accent-blue) !important; }
-.cl2 { color: var(--text-primary) !important; }
-.cl3 { color: var(--text-secondary) !important; }
-.cl4 { color: var(--text-muted) !important; }
-.bg0 { background: transparent !important; }
-.bg1 { background: linear-gradient(135deg, var(--accent-blue), #0066cc) !important; }
-.hov-cl1:hover { color: var(--accent-blue) !important; }
-.hov-btn3:hover { background: var(--accent-blue) !important; border-color: var(--accent-blue) !important; color: #fff !important; }
-
-/* ============================================
-   BREADCRUMB ESTILO MICA
+   BREADCRUMB
    ============================================ */
 .breadcrumb-list {
     list-style: none;
@@ -496,9 +611,22 @@ body::before {
     display: flex;
     align-items: center;
 }
+.breadcrumb-item + .breadcrumb-item::before {
+    content: none !important;
+    display: none !important;
+}
+.breadcrumb-item + .breadcrumb-item .breadcrumb-sep {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 8px !important;
+}
+.breadcrumb-item + .breadcrumb-item .breadcrumb-sep i {
+    font-size: 16px !important;
+    color: #1E90FF !important;
+}
 
 /* ============================================
-   TABLA DEL CARRITO TEMA OSCURO
+   TABLA DEL CARRITO
    ============================================ */
 .table-shopping-cart {
     background: rgba(26, 26, 26, 0.5);
@@ -521,157 +649,13 @@ body::before {
 }
 
 /* ============================================
-   ELIMINAR EL SEPARADOR POR DEFECTO DE BOOTSTRAP
+   UTILIDADES DE COLOR
    ============================================ */
-.breadcrumb-item + .breadcrumb-item::before {
-    content: none !important;
-    display: none !important;
-}
-.breadcrumb-item + .breadcrumb-item .breadcrumb-sep {
-    display: inline-flex !important;
-    align-items: center !important;
-    margin: 0 8px !important;
-}
-.breadcrumb-item + .breadcrumb-item .breadcrumb-sep i {
-    font-size: 16px !important;
-    color: #1E90FF !important;
-}
-
-/* ============================================
-   BOTONES FLOTANTES MICA
-   ============================================ */
-.mica-floating-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 22px;
-    border-radius: 25px;
-    background: rgba(26, 26, 26, 0.65);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #CCCCCC;
-    font-family: Poppins-Medium, sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    white-space: nowrap;
-}
-.mica-floating-btn i {
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-.mica-floating-btn:hover {
-    background: rgba(30, 144, 255, 0.2);
-    border-color: rgba(30, 144, 255, 0.5);
-    color: #FFFFFF;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
-}
-.mica-floating-btn.show-filter,
-.mica-floating-btn.show-search {
-    background: rgba(30, 144, 255, 0.25);
-    border-color: rgba(30, 144, 255, 0.6);
-    color: #FFFFFF;
-    box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
-}
-.mica-floating-btn .icon-close-filter,
-.mica-floating-btn .icon-close-search {
-    display: none;
-}
-.mica-floating-btn.show-filter .icon-filter,
-.mica-floating-btn.show-search .icon-search {
-    display: none;
-}
-.mica-floating-btn.show-filter .icon-close-filter,
-.mica-floating-btn.show-search .icon-close-search {
-    display: inline-block;
-}
-
-/* ============================================
-   BOTÓN MICA UNIFICADO
-   ============================================ */
-.mica-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 24px;
-    border-radius: 25px;
-    background: rgba(26, 26, 26, 0.65);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #CCCCCC;
-    font-family: 'Segoe UI', 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
-    white-space: nowrap;
-    outline: none;
-    line-height: 1.2;
-}
-.mica-btn i {
-    font-size: 16px;
-    transition: transform 0.3s ease;
-}
-.mica-btn:hover {
-    background: rgba(30, 144, 255, 0.2);
-    border-color: rgba(30, 144, 255, 0.5);
-    color: #FFFFFF;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.25);
-}
-.mica-btn:active {
-    transform: scale(0.97);
-}
-.mica-btn-primary {
-    background: linear-gradient(135deg, #1E90FF, #0066cc);
-    border-color: transparent;
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
-}
-.mica-btn-primary:hover {
-    background: linear-gradient(135deg, #3aa3ff, #1E90FF);
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.6);
-    color: #fff;
-}
-.mica-btn-danger {
-    background: linear-gradient(135deg, #FF3B3B, #cc0000);
-    border-color: transparent;
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(255, 59, 59, 0.4);
-}
-.mica-btn-danger:hover {
-    background: linear-gradient(135deg, #ff5555, #FF3B3B);
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(255, 59, 59, 0.6);
-    color: #fff;
-}
-.mica-btn-success {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-    border-color: transparent;
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
-}
-.mica-btn-success:hover {
-    background: linear-gradient(135deg, #3ddb84, #2ecc71);
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
-    color: #fff;
-}
-.mica-btn:disabled,
-.mica-btn.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-    filter: grayscale(30%);
-}
+.cl1 { color: var(--accent-blue) !important; }
+.cl2 { color: var(--text-primary) !important; }
+.cl3 { color: var(--text-secondary) !important; }
+.cl4 { color: var(--text-muted) !important; }
+.bg0 { background: transparent !important; }
+.bg1 { background: linear-gradient(135deg, var(--accent-blue), #0066cc) !important; }
+.hov-cl1:hover { color: var(--accent-blue) !important; }
+.hov-btn3:hover { background: var(--accent-blue) !important; border-color: var(--accent-blue) !important; color: #fff !important; }
