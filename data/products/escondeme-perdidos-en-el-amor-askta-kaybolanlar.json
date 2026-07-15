@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ESCÓNDEME - PERDIDOS EN EL AMOR - ASKTA KAYBOLANLAR",
   "Images": [
-    "escondeme-perdidos-en-el-amor-askta-kaybolanlar-0.webp",
-    "escondeme-perdidos-en-el-amor-askta-kaybolanlar-1.webp"
+    "escondeme-perdidos-en-el-amor-askta-kaybolanlar-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Kerem y Elif se reencuentran después de años separados por secretos familiares y decisiones dolorosas. Aunque intentan rehacer sus vidas, el destino los vuelve a unir en un triángulo amoroso con Baran, el mejor amigo de Kerem. La serie muestra cómo el amor puede ser un refugio pero también una prisión, donde esconder la verdad puede costar demasiado.",
   "Price": "130.00",
   "Features": [
     "Episodios: 65",
-    "Título original: Aşkta Kaybolanlar"
+    "Título original: Aşkta Kaybolanlar",
+    "Año: 2025",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 65,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:30:48.204Z",
-  "Update": "2026-07-15T03:30:48.204Z"
+  "Date": "2026-07-15T03:31:52.733Z",
+  "Update": "2026-07-15T03:31:52.733Z"
 }
