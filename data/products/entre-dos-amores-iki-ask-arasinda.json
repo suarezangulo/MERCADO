@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ENTRE DOS AMORES - IKI ASK ARASINDA",
   "Images": [
-    "entre-dos-amores-iki-ask-arasinda-0.webp",
-    "entre-dos-amores-iki-ask-arasinda-1.webp"
+    "entre-dos-amores-iki-ask-arasinda-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Pars, un joven que descubre que su padre adinerado aún vive y se convierte en heredero de la fortuna Akabey. Para resolver una disputa familiar, acepta un matrimonio arreglado con Asya, aunque en su corazón sigue presente Gül, su amor del pasado. El drama se centra en el dilema entre deber y pasión, mostrando cómo las decisiones familiares pueden marcar el destino personal.",
   "Price": "238.00",
   "Features": [
     "Episodios: 119",
-    "Título original: İki Aşk Arasında"
+    "Título original: Iki Aşk Arasında",
+    "Año de estreno: 2025",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 119,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:21:40.450Z",
-  "Update": "2026-07-15T03:21:40.450Z"
+  "Date": "2026-07-15T03:23:45.615Z",
+  "Update": "2026-07-15T03:23:45.615Z"
 }
