@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EL JUEGO DE MI DESTINO - AMOR Y TRAICIÓN - KADERIMIN OYUNU",
   "Images": [
-    "el-juego-de-mi-destino-amor-y-traicion-kaderimin-oyunu-0.webp",
-    "el-juego-de-mi-destino-amor-y-traicion-kaderimin-oyunu-1.webp"
+    "el-juego-de-mi-destino-amor-y-traicion-kaderimin-oyunu-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Kaderimin Oyunu es una serie turca de drama que explora cómo las decisiones del pasado y las circunstancias inesperadas moldean la vida de sus protagonistas. La historia se centra en Asiye, una mujer que lucha por proteger a sus hijos y rehacer su vida, enfrentándose a secretos, traiciones y un destino que parece inevitable.",
   "Price": "170.00",
   "Features": [
     "Episodios: 85",
-    "Título original: Kaderimin Oyunu"
+    "Título original: Kaderimin Oyunu",
+    "Año: 2021–2022",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 85,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T02:16:12.459Z",
-  "Update": "2026-07-15T02:16:12.459Z"
+  "Date": "2026-07-15T02:17:22.376Z",
+  "Update": "2026-07-15T02:17:22.376Z"
 }
