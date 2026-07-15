@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ENAMORADOS ANÓNIMOS - ANONIM ÂSIKLAR",
   "Images": [
-    "enamorados-anonimos-anonim-asiklar-0.webp",
-    "enamorados-anonimos-anonim-asiklar-1.webp"
+    "enamorados-anonimos-anonim-siklar-0.webp",
+    "enamorados-anonimos-anonim-siklar-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La serie sigue a Cem, un hombre marcado por una infancia que destruyó su confianza en el amor. Ahora dirige el llamado “Love Hospital”, un centro donde se tratan problemas emocionales y sentimentales. Su vida cambia cuando aparece Hazal, una mujer que cree firmemente en el poder del amor y que desafía el cinismo de Cem. A través de pacientes, dilemas éticos y situaciones inesperadas, ambos se enfrentan a sus propios miedos y sentimientos.",
   "Price": "16.00",
   "Features": [
     "Episodios: 8",
-    "Título original: Anonim Âşıklar"
+    "Título original: Adsız Aşıklar (Anonim Âşıklar)",
+    "Año de estreno: 2025",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 8,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:20:01.798Z",
-  "Update": "2026-07-15T03:20:01.798Z"
+  "Date": "2026-07-15T03:21:40.450Z",
+  "Update": "2026-07-15T03:21:40.450Z"
 }
