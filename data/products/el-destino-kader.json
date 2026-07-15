@@ -6,15 +6,17 @@
     "el-destino-kader-0.webp",
     "el-destino-kader-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Kader es una serie turca de drama que aborda la fuerza del destino en la vida de sus protagonistas, quienes se ven atrapados entre el amor, la traición y las decisiones que marcarán su futuro. La trama se centra en cómo los caminos de los personajes se entrelazan de manera inevitable, mostrando que el destino puede ser tanto una bendición como una condena.",
   "Price": "60.00",
   "Features": [
     "Episodios: 30",
-    "Título original: Kader"
+    "Título original: Kader",
+    "Año: 2007",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 30,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T02:01:26.538Z",
-  "Update": "2026-07-15T02:01:26.538Z"
+  "Date": "2026-07-15T02:05:47.124Z",
+  "Update": "2026-07-15T02:05:47.124Z"
 }
