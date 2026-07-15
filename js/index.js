@@ -53,30 +53,43 @@ function equalizeCardHeights() {
     }, 50);
 }
 
+// ============================================
+// OBSERVAR CAMBIOS EN EL GRID PARA REAJUSTAR ALTURAS
+// ============================================
+function setupHeightObserver() {
+    var $grid = $('.isotope-grid');
+    if (!$grid.length) return;
+    
+    var observer = new MutationObserver(function() {
+        equalizeCardHeights();
+    });
+    
+    observer.observe($grid[0], {
+        childList: true,
+        subtree: true,
+        attributes: false
+    });
+}
+
 // ===== FUNCIÓN PARA RECONSTRUIR ISOTOPE DESDE CERO =====
 function rebuildIsotope() {
     var $grid = $('.isotope-grid');
     if (!$grid.length) return;
 
-    // Destruir instancia anterior si existe
     if ($grid.data('isotope')) {
         $grid.isotope('destroy');
     }
 
-    // Construir función de filtro combinada
     var filterFn = function() {
         var $item = $(this);
         var show = true;
 
-        // Filtro por categoría
         if (currentFilter.category) {
             show = show && $item.hasClass('category-' + currentFilter.category);
         }
-        // Filtro por subcategoría
         if (currentFilter.subcategory) {
             show = show && $item.hasClass('subcategory-' + currentFilter.subcategory);
         }
-        // Filtro por búsqueda
         if (currentFilter.search && currentFilter.search.trim() !== '') {
             var query = currentFilter.search.toLowerCase().trim();
             var label = $item.find('.js-name-b2').text().trim().toLowerCase();
@@ -99,7 +112,6 @@ function rebuildIsotope() {
         return show;
     };
 
-    // Configurar orden
     var sortBy = 'update';
     var sortAsc = false;
     if (currentFilter.orderBy === 'price-asc') {
@@ -115,7 +127,6 @@ function rebuildIsotope() {
 
     console.log('🔄 Reconstruyendo Isotope con filtro combinado. Categoría:', currentFilter.category, 'Subcat:', currentFilter.subcategory, 'Búsqueda:', currentFilter.search, 'Orden:', sortBy, sortAsc ? 'asc' : 'desc');
 
-    // Inicializar con las opciones actuales
     $grid.isotope({
         itemSelector: '.isotope-item',
         layoutMode: 'fitRows',
@@ -139,12 +150,10 @@ function rebuildIsotope() {
     }, 100);
 }
 
-// ===== APLICAR FILTRO Y ORDEN =====
 function applyFilterAndSort() {
     rebuildIsotope();
 }
 
-// ===== BÚSQUEDA EN TIEMPO REAL =====
 function setupSearch() {
     var $searchInput = $('#searchInput');
     if (!$searchInput.length) return;
@@ -208,10 +217,8 @@ function loadData($, data) {
             }
         }
 
-        // Construir filtros en el dropdown
         $filterContent.empty();
 
-        // Categorías
         var catSection = document.createElement("div");
         catSection.className = "p-b-20";
         catSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Categorías</div>';
@@ -227,7 +234,6 @@ function loadData($, data) {
             addCategoryTag($catContainer, cat, normalizeText(cat), currentFilter.category === normalizeText(cat));
         }
 
-        // Ordenar
         var orderSection = document.createElement("div");
         orderSection.className = "p-b-20";
         orderSection.innerHTML = '<div class="mtext-102 cl2 p-b-10">Ordenar por</div>';
@@ -238,14 +244,10 @@ function loadData($, data) {
         addOrderLi(orderList, "Más económicos", "price-asc", currentFilter.orderBy === 'price-asc');
         addOrderLi(orderList, "Más costosos", "price-desc", currentFilter.orderBy === 'price-desc');
 
-        // Subcategorías
         $filterContent.append('<div id="subcategorySection" class="p-b-20"></div>');
         updateSubcategoryFilters();
 
-        // Inicializar Isotope
         rebuildIsotope();
-
-        // Configurar búsqueda
         setupSearch();
 
         var searchParam = urlParams.get('search');
@@ -261,14 +263,13 @@ function loadData($, data) {
                 $('.isotope-grid').isotope('layout');
                 setTimeout(function() {
                     equalizeCardHeights();
-                }, 100);
+                }, 200);
             }
         });
 
     }, 600);
 }
 
-// ===== BOTONES DE CATEGORÍA =====
 function addCategoryTag($container, label, filterValue, active) {
     var btn = document.createElement("button");
     btn.className = "mica-pill-btn" + (active ? " active" : "");
@@ -282,9 +283,6 @@ function addCategoryTag($container, label, filterValue, active) {
             delete currentFilter.subcategory;
         }
         console.log('🔄 Categoría seleccionada:', currentFilter.category);
-        // ❌ ELIMINAMOS estas líneas para NO borrar la búsqueda
-        // $('#searchInput').val('');
-        // delete currentFilter.search;
         applyFilterAndSort();
         updateSubcategoryFilters();
         $('#categoryFiltersContainer .mica-pill-btn').removeClass('active');
@@ -411,5 +409,15 @@ function addProductCard($container, product, categoryKey, subcategoryKey, filter
             $('.panel-search').slideToggle(400);
             $dropdown.removeClass('show');
         });
+        
+        // ============================================
+        // CONFIGURAR OBSERVADOR DE CAMBIOS
+        // ============================================
+        setupHeightObserver();
+        
+        // ✅ Forzar igualdad de alturas después de la carga inicial
+        setTimeout(function() {
+            equalizeCardHeights();
+        }, 1000);
     });
 })(jQuery);
