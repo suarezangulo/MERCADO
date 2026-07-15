@@ -181,7 +181,7 @@ function toMoneyStr(valor) {
     return "CUP$ " + valor.toFixed(2);
 }
 
-// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO (CORREGIDA) =====
+// ===== FUNCIÓN PARA AGREGAR TARJETA DE PRODUCTO (CORREGIDA PARA USAR IMAGES) =====
 function addProductCardBase(container, product, extraClass, mode) {
     extraClass = extraClass || "";
     mode = mode || 1;
@@ -221,7 +221,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     link.setAttribute("class", "stext-104 cl3 hov-cl1 trans-04 js-name-b2");
     link.setAttribute("href", "product.html?id=" + slug);
 
-    // ===== IMAGEN =====
+    // ===== 🔧 OBTENER EL NOMBRE BASE DE LA IMAGEN DESDE product.Images =====
     var imagesArray = [];
     if (product.Images) {
         if (Array.isArray(product.Images)) {
@@ -233,6 +233,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     var firstImage = imagesArray.length > 0 ? imagesArray[0] : null;
     var baseName = firstImage ? firstImage.replace(/\.[^.]+$/, '') : null;
     if (!baseName) {
+        // Fallback: usar slug + "-0"
         baseName = slug + "-0";
     }
 
@@ -246,8 +247,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     pic.appendChild(img);
     
     (function(imgEl, baseName, idx) {
-        // ✅ SOPORTE PARA MÚLTIPLES FORMATOS
-        var extensions = ['webp', 'jpg', 'jpeg', 'png'];
+        var extensions = ['webp'];
         resolveImageUrl(baseName, extensions, function(url) {
             if (url) {
                 imgEl.setAttribute('src', url);
@@ -259,21 +259,17 @@ function addProductCardBase(container, product, extraClass, mode) {
     link.appendChild(pic);
     block.appendChild(link);
 
-    // ===== TEXTO - ESTRUCTURA LIMPIA PARA FLEX =====
     var txt = document.createElement("div");
-    txt.setAttribute("class", "block2-txt"); // ✅ Sin clases flex conflictivas
+    txt.setAttribute("class", "block2-txt flex-w flex-t p-t-14");
 
     var child1 = document.createElement("div");
-    child1.setAttribute("class", "block2-txt-child1"); // ✅ Sin clases flex conflictivas
+    child1.setAttribute("class", "block2-txt-child1 flex-col-l");
     
     var nameLink = document.createElement("a");
     nameLink.setAttribute("class", "stext-104 cl2 hov-cl1 trans-04 js-name-b2");
     nameLink.setAttribute("href", "product.html?id=" + slug);
     nameLink.setAttribute("style", "display: block; margin-bottom: 8px; font-size: 16px; font-weight: 600;");
-    
-    // ✅ LIMPIAR TÍTULO: eliminar saltos de línea y espacios extra
-    var cleanLabel = product.Label ? product.Label.replace(/\s+/g, ' ').trim() : '';
-    nameLink.textContent = spanishFormat(cleanLabel);
+    nameLink.textContent = spanishFormat(product.Label);
     child1.appendChild(nameLink);
 
     var featuresText = "";
@@ -304,7 +300,7 @@ function addProductCardBase(container, product, extraClass, mode) {
     txt.appendChild(child1);
 
     var child2 = document.createElement("div");
-    child2.setAttribute("class", "block2-txt-child2");
+    child2.setAttribute("class", "block2-txt-child2 flex-r p-t-3");
     var inCartFlag = inCart(slug);
     var cartBtn = document.createElement("a");
     cartBtn.setAttribute("class", "mica-btn-icon " + (inCartFlag ? "in-cart" : ""));
