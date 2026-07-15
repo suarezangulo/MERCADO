@@ -3,17 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EL TURCO",
   "Images": [
-    "el-turco-0.webp",
-    "el-turco-1.webp"
+    "el-turco-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La serie narra la historia de un soldado otomano que, tras la Batalla de Viena (1683), se refugia en un pequeño pueblo italiano. Allí, mientras intenta sobrevivir y ocultar su identidad, se convierte en un héroe inesperado para los aldeanos, ayudándolos a liberarse de la opresión. En medio de la lucha, surge un romance imposible y un dilema entre el deber y el corazón.",
   "Price": "12.00",
   "Features": [
-    "Episodios: 6"
+    "Episodios: 6",
+    "Título original: El Turco",
+    "Año: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 6,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:14:45.645Z",
-  "Update": "2026-07-15T03:14:45.645Z"
+  "Date": "2026-07-15T03:16:50.586Z",
+  "Update": "2026-07-15T03:16:50.586Z"
 }
