@@ -6,15 +6,17 @@
     "el-panuelo-rojo-kirmizi-mendil-0.webp",
     "el-panuelo-rojo-kirmizi-mendil-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Kırmızı Mendil es una serie turca de drama y romance que simboliza la fuerza de las tradiciones y los lazos familiares frente a las pasiones y conflictos personales. El título hace referencia al pañuelo rojo como un símbolo de amor, compromiso y destino en la cultura turca.",
   "Price": "176.00",
   "Features": [
     "Episodios: 88",
-    "Título original: Kırmızı Mendil"
+    "Título original: Kırmızı Mendil",
+    "Año: 2018",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 88,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T02:27:39.828Z",
-  "Update": "2026-07-15T02:27:39.828Z"
+  "Date": "2026-07-15T02:29:03.685Z",
+  "Update": "2026-07-15T02:29:03.685Z"
 }
