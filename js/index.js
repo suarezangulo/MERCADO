@@ -7,16 +7,16 @@ var gTagSubCategory = "";
 var allProductsData = [];
 
 // ============================================
-// IGUALAR ALTURA DE TARJETAS
+// IGUALAR ALTURA DE TARJETAS (VERSIÓN CORREGIDA)
 // ============================================
 function equalizeCardHeights() {
     var $grid = $('.isotope-grid');
     if (!$grid.length) return;
     
-    var $items = $grid.find('.isotope-item');
+    var $items = $grid.find('.isotope-item:visible');
     if ($items.length === 0) return;
     
-    // Agrupar por fila (Isotope usa posición top)
+    // Agrupar por fila (usando la posición top)
     var rows = {};
     $items.each(function() {
         var $item = $(this);
@@ -27,20 +27,26 @@ function equalizeCardHeights() {
     
     // Para cada fila, igualar alturas
     for (var row in rows) {
-        var $rowItems = rows[row];
+        var $rowItems = rows[row]; // Esto es un array de objetos jQuery
+        
+        // ✅ Convertir a jQuery correctamente
+        var $row = $($rowItems);
+        
         var maxHeight = 0;
         
-        // Encontrar la altura máxima en la fila
-        $rowItems.each(function() {
-            var $item = $(this);
-            // Restablecer altura automática
-            $item.css('height', 'auto');
-            var height = $item.outerHeight();
+        // Restablecer alturas a auto
+        $row.each(function() {
+            $(this).css('height', 'auto');
+        });
+        
+        // Calcular la altura máxima de la fila
+        $row.each(function() {
+            var height = $(this).outerHeight();
             if (height > maxHeight) maxHeight = height;
         });
         
         // Aplicar la altura máxima a todos los items de la fila
-        $rowItems.each(function() {
+        $row.each(function() {
             $(this).css('height', maxHeight + 'px');
         });
     }
