@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EL CORAZÓN DE LA CIUDAD – BU SEHIR ARKANDAN GELECEK",
   "Images": [
-    "el-corazon-de-la-ciudad-bu-sehir-arkandan-gelecek-0.webp",
-    "el-corazon-de-la-ciudad-bu-sehir-arkandan-gelecek-1.webp"
+    "el-corazon-de-la-ciudad-bu-sehir-arkandan-gelecek-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Bu Şehir Arkandan Gelecek es una serie turca de drama y romance que combina acción, secretos familiares y la búsqueda de identidad. La historia sigue a Ali, un joven que creció en circunstancias difíciles y que, tras conocer a Derin, se ve envuelto en un torbellino de amor, traición y enfrentamientos con su propio pasado.",
   "Price": "66.00",
   "Features": [
     "Episodios: 33",
-    "Título original: Bu Şehir Arkandan Gelecek"
+    "Título original: Bu Şehir Arkandan Gelecek",
+    "Año: 2017",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 33,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T01:54:54.721Z",
-  "Update": "2026-07-15T01:54:54.721Z"
+  "Date": "2026-07-15T01:57:29.198Z",
+  "Update": "2026-07-15T01:57:29.198Z"
 }
