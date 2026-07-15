@@ -6,6 +6,46 @@ var gTagCategory = "";
 var gTagSubCategory = "";
 var allProductsData = [];
 
+// ============================================
+// IGUALAR ALTURA DE TARJETAS
+// ============================================
+function equalizeCardHeights() {
+    var $grid = $('.isotope-grid');
+    if (!$grid.length) return;
+    
+    var $items = $grid.find('.isotope-item');
+    if ($items.length === 0) return;
+    
+    // Agrupar por fila (Isotope usa posición top)
+    var rows = {};
+    $items.each(function() {
+        var $item = $(this);
+        var top = Math.round($item.position().top);
+        if (!rows[top]) rows[top] = [];
+        rows[top].push($item);
+    });
+    
+    // Para cada fila, igualar alturas
+    for (var row in rows) {
+        var $rowItems = rows[row];
+        var maxHeight = 0;
+        
+        // Encontrar la altura máxima en la fila
+        $rowItems.each(function() {
+            var $item = $(this);
+            // Restablecer altura automática
+            $item.css('height', 'auto');
+            var height = $item.outerHeight();
+            if (height > maxHeight) maxHeight = height;
+        });
+        
+        // Aplicar la altura máxima a todos los items de la fila
+        $rowItems.each(function() {
+            $(this).css('height', maxHeight + 'px');
+        });
+    }
+}
+
 // ===== FUNCIÓN PARA RECONSTRUIR ISOTOPE DESDE CERO =====
 function rebuildIsotope() {
     var $grid = $('.isotope-grid');
@@ -83,7 +123,13 @@ function rebuildIsotope() {
             update: '[data-update] parseFloat'
         }
     });
+    
     $grid.isotope('layout');
+    
+    // ✅ Igualar alturas después del layout
+    setTimeout(function() {
+        equalizeCardHeights();
+    }, 100);
 }
 
 // ===== APLICAR FILTRO Y ORDEN =====
@@ -204,7 +250,12 @@ function loadData($, data) {
 
         new LazyLoad({
             elements_selector: "img[data-src]",
-            callback_loaded: function() { $('.isotope-grid').isotope('layout'); }
+            callback_loaded: function() { 
+                $('.isotope-grid').isotope('layout');
+                setTimeout(function() {
+                    equalizeCardHeights();
+                }, 100);
+            }
         });
 
     }, 600);
@@ -301,7 +352,9 @@ function addProductCard($container, product, categoryKey, subcategoryKey, filter
     addProductCardBase($container, product, filterClass);
 }
 
-// ===== INICIALIZACIÓN =====
+// ============================================
+// INICIALIZACIÓN
+// ============================================
 (function ($) {
     "use strict";
     $.getJSON("./data/products-index.json", function (data) {
