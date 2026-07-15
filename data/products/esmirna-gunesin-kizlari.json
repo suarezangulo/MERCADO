@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "ESMIRNA – GÜNESIN KIZLARI",
   "Images": [
-    "esmirna-gunesin-kizlari-0.webp",
-    "esmirna-gunesin-kizlari-1.webp"
+    "esmirna-gunesin-kizlari-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Güneş, una madre soltera de Esmirna con tres hijas adolescentes (Nazlı, Selin y Peri). Su vida cambia cuando conoce a Haluk, un hombre rico de Estambul que le ofrece matrimonio y una nueva vida. Al mudarse a la mansión de Haluk, las jóvenes deben adaptarse a un mundo lleno de secretos, rivalidades y romances, mientras descubren que no todo es tan perfecto como parece.",
   "Price": "206.00",
   "Features": [
     "Episodios: 103",
-    "Título original: Güneşin Kızları"
+    "Título original: Güneşin Kızları",
+    "Año: 2015–2016",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 103,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:33:32.893Z",
-  "Update": "2026-07-15T03:33:32.893Z"
+  "Date": "2026-07-15T03:34:58.626Z",
+  "Update": "2026-07-15T03:34:58.626Z"
 }
