@@ -7,49 +7,50 @@ var gTagSubCategory = "";
 var allProductsData = [];
 
 // ============================================
-// IGUALAR ALTURA DE TARJETAS (VERSIÓN CORREGIDA)
+// IGUALAR ALTURA DE TARJETAS (VERSIÓN MEJORADA)
 // ============================================
 function equalizeCardHeights() {
     var $grid = $('.isotope-grid');
     if (!$grid.length) return;
     
-    var $items = $grid.find('.isotope-item:visible');
-    if ($items.length === 0) return;
+    // Forzar que Isotope termine su layout
+    $grid.isotope('layout');
     
-    // Agrupar por fila (usando la posición top)
-    var rows = {};
-    $items.each(function() {
-        var $item = $(this);
-        var top = Math.round($item.position().top);
-        if (!rows[top]) rows[top] = [];
-        rows[top].push($item);
-    });
-    
-    // Para cada fila, igualar alturas
-    for (var row in rows) {
-        var $rowItems = rows[row]; // Esto es un array de objetos jQuery
+    // Esperar a que Isotope termine
+    setTimeout(function() {
+        var $items = $grid.find('.isotope-item:visible');
+        if ($items.length === 0) return;
         
-        // ✅ Convertir a jQuery correctamente
-        var $row = $($rowItems);
-        
-        var maxHeight = 0;
-        
-        // Restablecer alturas a auto
-        $row.each(function() {
-            $(this).css('height', 'auto');
+        // Agrupar por fila (usando la posición top)
+        var rows = {};
+        $items.each(function() {
+            var $item = $(this);
+            var top = Math.round($item.position().top);
+            if (!rows[top]) rows[top] = [];
+            rows[top].push($item);
         });
         
-        // Calcular la altura máxima de la fila
-        $row.each(function() {
-            var height = $(this).outerHeight();
-            if (height > maxHeight) maxHeight = height;
-        });
-        
-        // Aplicar la altura máxima a todos los items de la fila
-        $row.each(function() {
-            $(this).css('height', maxHeight + 'px');
-        });
-    }
+        // Para cada fila, igualar alturas
+        for (var row in rows) {
+            var $rowItems = rows[row];
+            var $row = $($rowItems);
+            var maxHeight = 0;
+            
+            // Calcular la altura máxima de la fila
+            $row.each(function() {
+                var $item = $(this);
+                // Resetear altura a auto para calcular correctamente
+                $item.css('height', 'auto');
+                var height = $item.outerHeight();
+                if (height > maxHeight) maxHeight = height;
+            });
+            
+            // Aplicar la altura máxima a todos los items de la fila
+            $row.each(function() {
+                $(this).css('height', maxHeight + 'px');
+            });
+        }
+    }, 50);
 }
 
 // ===== FUNCIÓN PARA RECONSTRUIR ISOTOPE DESDE CERO =====
