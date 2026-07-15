@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EL JOVEN GENIO SINA - GENÇ DAHI SINA",
   "Images": [
-    "el-joven-genio-sina-genc-dahi-sina-0.webp",
-    "el-joven-genio-sina-genc-dahi-sina-1.webp"
+    "el-joven-genio-sina-gen-dahi-sina-0.webp",
+    "el-joven-genio-sina-gen-dahi-sina-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Genç Dâhi Sina es una producción turca juvenil y dramática que presenta la vida de Sina, un muchacho con un talento extraordinario para la ciencia y la tecnología, pero que debe enfrentarse a las dificultades de crecer en un entorno marcado por la desigualdad y los conflictos familiares. La serie combina elementos de superación personal, amistad y romance, mostrando cómo el ingenio y la perseverancia pueden abrir caminos inesperados.",
   "Price": "20.00",
   "Features": [
     "Episodios: 10",
-    "Título original: Genç Dahi Sina"
+    "Título original: Genç Dâhi Sina",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 10,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T01:39:19.864Z",
-  "Update": "2026-07-15T01:39:19.864Z"
+  "Date": "2026-07-15T01:43:23.532Z",
+  "Update": "2026-07-15T01:43:23.532Z"
 }
