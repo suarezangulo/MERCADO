@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EN BUSCA DE MI HIJA - HÍCRAN",
   "Images": [
-    "en-busca-de-mi-hija-hicran-0.webp",
-    "en-busca-de-mi-hija-hicran-1.webp"
+    "en-busca-de-mi-hija-hicran-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Hicran es una mujer que vive atormentada por la pérdida de su hija. Años después, el destino la lleva a reencontrarse con Melek, una niña que necesita protección y cariño. Sin saberlo, Hicran se convierte en la figura materna que tanto anhelaba, mientras descubre secretos que la acercan a la verdad sobre su propia hija.",
   "Price": "254.00",
   "Features": [
     "Episodios: 127",
-    "Título original: Hıçran"
+    "Título original: Hicran",
+    "Año: 2022–2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 127,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:16:50.586Z",
-  "Update": "2026-07-15T03:16:50.586Z"
+  "Date": "2026-07-15T03:18:02.486Z",
+  "Update": "2026-07-15T03:18:02.486Z"
 }
