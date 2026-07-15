@@ -659,3 +659,62 @@ body::before {
 .bg1 { background: linear-gradient(135deg, var(--accent-blue), #0066cc) !important; }
 .hov-cl1:hover { color: var(--accent-blue) !important; }
 .hov-btn3:hover { background: var(--accent-blue) !important; border-color: var(--accent-blue) !important; color: #fff !important; }
+
+/* ============================================
+   FORZAR ALTURA IGUAL EN TARJETAS (SIN ROMPER ISOTOPE)
+   ============================================ */
+
+/* El contenedor de Isotope debe ser flex para estirar los items */
+.isotope-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+}
+
+/* Cada item de Isotope debe ocupar todo el alto disponible */
+.isotope-item {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+}
+
+/* La tarjeta en sí (block2) debe ocupar todo el alto */
+.block2 {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+/* El contenedor de texto debe estirarse y empujar el precio hacia abajo */
+.block2 .block2-txt {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* El precio se mantiene abajo */
+.block2-txt-child1 .stext-105.cl2 {
+    margin-top: auto !important;
+    padding-top: 8px !important;
+}
+
+/* Asegurar que la imagen no se deforme */
+.block2-pic {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    padding-top: 140% !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: rgba(255,255,255,0.03) !important;
+}
+
+.block2-pic img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
