@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EL OLOR DE UN NIÑO - BIR ÇOCUGUN KOKUSU",
   "Images": [
-    "el-olor-de-un-nino-bir-cocugun-kokusu-0.webp",
-    "el-olor-de-un-nino-bir-cocugun-kokusu-1.webp"
+    "el-olor-de-un-nino-bir-ocugun-kokusu-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Bir Çocuğun Kokusu es una serie turca de drama que aborda la maternidad, el sacrificio y los secretos familiares. La trama se centra en una madre que lucha por proteger a su hijo en medio de circunstancias difíciles, enfrentando traiciones, dolor y la fuerza del destino.",
   "Price": "72.00",
   "Features": [
     "Episodios: 36",
-    "Título original: Bir Çocuğun Kokusu"
+    "Título original: Bir Çocuğun Kokusu",
+    "Año: 2015",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 36,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T02:21:54.096Z",
-  "Update": "2026-07-15T02:21:54.096Z"
+  "Date": "2026-07-15T02:25:18.684Z",
+  "Update": "2026-07-15T02:25:18.684Z"
 }
