@@ -6,15 +6,17 @@
     "el-amor-mas-hermoso-asklarin-en-guzel-0.webp",
     "el-amor-mas-hermoso-asklarin-en-guzel-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Aşklarin En Güzel es una serie turca romántica que explora la intensidad de los sentimientos juveniles y la fuerza del destino en medio de las dificultades. La historia sigue a dos protagonistas que, pese a los obstáculos sociales y familiares, descubren que el amor verdadero puede transformar sus vidas.",
   "Price": "100.00",
   "Features": [
     "Episodios: 50",
-    "Título original: Aşkların En Güzel"
+    "Título original: Aşklarin En Güzel",
+    "Año: 2021",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 50,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T01:43:23.532Z",
-  "Update": "2026-07-15T01:43:23.532Z"
+  "Date": "2026-07-15T01:53:02.044Z",
+  "Update": "2026-07-15T01:53:02.044Z"
 }
