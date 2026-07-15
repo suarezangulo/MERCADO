@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "FATMAGÜL - FATMAGÜL'ÜN SUÇU NE",
   "Images": [
-    "fatmagul-fatmagulun-sucu-ne-0.webp",
-    "fatmagul-fatmagulun-sucu-ne-1.webp"
+    "fatmagul-fatmagulun-suu-ne-0.webp",
+    "fatmagul-fatmagulun-suu-ne-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Fatmagül es una joven humilde que sueña con casarse con su prometido Mustafa. Sin embargo, su vida cambia drásticamente tras ser víctima de una agresión por parte de cuatro hombres, entre ellos Kerim. Aunque Kerim no participó directamente, es obligado a casarse con ella para encubrir el crimen. La serie narra la lucha de Fatmagül por la justicia, su proceso de sanación y la compleja relación que surge entre ella y Kerim.",
   "Price": "162.00",
   "Features": [
     "Episodios: 81",
-    "Título original: Fatmagül'ün Suçu Ne"
+    "Título original: Fatmagül’ün Suçu Ne?",
+    "Año: 2010–2012",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 81,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:43:10.277Z",
-  "Update": "2026-07-15T03:43:10.277Z"
+  "Date": "2026-07-15T03:44:36.819Z",
+  "Update": "2026-07-15T03:44:36.819Z"
 }
