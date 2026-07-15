@@ -4,17 +4,20 @@
   "Label": "ENTRE EL AMOR Y LA VENGANZA - HERCAI",
   "Images": [
     "entre-el-amor-y-la-venganza-hercai-0.webp",
-    "entre-el-amor-y-la-venganza-hercai-1.webp"
+    "entre-el-amor-y-la-venganza-hercai-1.webp",
+    "entre-el-amor-y-la-venganza-hercai-2.webp"
   ],
-  "Description": "Sinopsis no disponible",
-  "Price": "0.00",
+  "Description": "La historia sigue a Miran, un hombre que busca vengar la muerte de sus padres, y para ello se acerca a la familia Şadoğlu. Sin embargo, su plan se complica cuando se enamora de Reyyan, la hija de la familia contra la que juró venganza. Entre secretos, traiciones y pasiones intensas, ambos deben enfrentar el dilema entre el amor verdadero y la sed de justicia.",
+  "Price": "956.00",
   "Features": [
-    "Episodios: ?",
-    "Título original: Hercai"
+    "Episodios: 478",
+    "Título original: Hercai",
+    "Año: 2019–2021",
+    "País: Turquía"
   ],
   "Type": "episode",
-  "Episodes": 0,
-  "PricePerEpisode": "0.00",
-  "Date": "2026-07-15T03:23:45.615Z",
-  "Update": "2026-07-15T03:23:45.615Z"
+  "Episodes": 478,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-15T03:28:48.127Z",
+  "Update": "2026-07-15T03:28:48.127Z"
 }
