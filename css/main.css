@@ -735,6 +735,7 @@ body::before {
     color: rgba(255, 255, 255, 0.4);
     font-size: 14px;
 }
+
 /* ===== ELIMINAR EL SEPARADOR POR DEFECTO DE BOOTSTRAP ===== */
 .breadcrumb-item + .breadcrumb-item::before {
     content: none !important;
@@ -752,4 +753,62 @@ body::before {
     font-size: 16px !important;
     color: #1E90FF !important;
     /* o el estilo que quieras: degradado, brillo, etc. */
+}
+/* ============================================
+   TARJETAS DE PRODUCTO CON ALTURA IGUAL
+   ============================================ */
+
+/* El contenedor de Isotope debe ser flex para estirar los items */
+.isotope-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* <-- CLAVE: todas las tarjetas se estiran a la misma altura */
+}
+
+/* Cada item de Isotope debe ocupar todo el alto disponible */
+.isotope-item {
+    display: flex;
+    flex-direction: column;
+    height: auto !important; /* Para que Isotope no fuerce altura fija */
+}
+
+/* La tarjeta en sí (block2) debe ocupar todo el alto */
+.block2 {
+    flex: 1; /* Ocupa todo el espacio vertical */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Asegura que ocupe todo el alto del item */
+}
+
+/* El contenedor de texto debe estirarse y empujar el precio hacia abajo */
+.block2 .block2-txt {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye espacio entre título y precio */
+}
+
+/* El precio se mantiene abajo */
+.block2-txt-child1 .stext-105.cl2 {
+    margin-top: auto; /* Empuja el precio hacia abajo */
+    padding-top: 8px;
+}
+
+/* Asegurar que la imagen tenga altura fija para no distorsionar */
+.block2-pic {
+    position: relative;
+    width: 100%;
+    padding-top: 140%; /* Relación de aspecto 1:1.4 (ajústala según prefieras) */
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+.block2-pic img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Las imágenes se recortan para llenar el contenedor sin deformarse */
 }
