@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EN LAS BUENAS Y EN LAS MALAS - IYI GÜNDE KÖTÜ GÜNDE",
   "Images": [
-    "en-las-buenas-y-en-las-malas-iyi-gunde-kotu-gunde-0.webp",
-    "en-las-buenas-y-en-las-malas-iyi-gunde-kotu-gunde-1.webp"
+    "en-las-buenas-y-en-las-malas-iyi-gunde-ktu-gunde-0.webp",
+    "en-las-buenas-y-en-las-malas-iyi-gunde-ktu-gunde-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Leyla es una organizadora de bodas que debe encargarse de la boda de su exnovio Sarp con Melisa. Entre enredos, recuerdos y emociones, la serie muestra cómo el amor y el destino pueden jugar en las situaciones más inesperadas, poniendo a prueba la fuerza y la madurez de los personajes.",
   "Price": "40.00",
   "Features": [
     "Episodios: 20",
-    "Título original: İyi Günde Kötü Günde"
+    "Título original: İyi Günde Kötü Günde",
+    "Año: 2020",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 20,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T03:18:02.486Z",
-  "Update": "2026-07-15T03:18:02.486Z"
+  "Date": "2026-07-15T03:19:08.200Z",
+  "Update": "2026-07-15T03:19:08.200Z"
 }
