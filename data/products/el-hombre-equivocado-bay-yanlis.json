@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "EL HOMBRE EQUIVOCADO - BAY YANLIS",
   "Images": [
-    "el-hombre-equivocado-bay-yanlis-0.webp",
-    "el-hombre-equivocado-bay-yanlis-1.webp"
+    "el-hombre-equivocado-bay-yanlis-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Bay Yanlış es una serie turca de comedia romántica que narra la historia de Özgür Atasoy, un hombre encantador pero escéptico respecto al amor, y Ezgi İnal, una joven que busca estabilidad y sueña con casarse. Sus caminos se cruzan de manera inesperada, dando lugar a una relación llena de enredos, humor y pasión.",
   "Price": "28.00",
   "Features": [
     "Episodios: 14",
-    "Título original: Bay Yanlış"
+    "Título original: Bay Yanlış",
+    "Año: 2020",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 14,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T02:13:47.941Z",
-  "Update": "2026-07-15T02:13:47.941Z"
+  "Date": "2026-07-15T02:15:07.593Z",
+  "Update": "2026-07-15T02:15:07.593Z"
 }
