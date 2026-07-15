@@ -6,15 +6,17 @@
     "el-fenix-zumruduanka-0.webp",
     "el-fenix-zumruduanka-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Zümrüdüanka es una serie turca de drama y romance que narra la historia de Zümrüt, una joven que se ve atrapada entre el amor y las dificultades de la vida, enfrentando secretos familiares y las duras pruebas del destino. El título hace referencia al ave mítica que renace de sus cenizas, simbolizando la resiliencia y la capacidad de empezar de nuevo.",
   "Price": "100.00",
   "Features": [
     "Episodios: 50",
-    "Título original: Zümrüdüanka"
+    "Título original: Zümrüdüanka",
+    "Año: 2020",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 50,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-15T02:12:20.165Z",
-  "Update": "2026-07-15T02:12:20.165Z"
+  "Date": "2026-07-15T02:13:47.941Z",
+  "Update": "2026-07-15T02:13:47.941Z"
 }
