@@ -1,0 +1,22 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "EL FUEGO EN NOSOTROS - İÇİMİZDEKİ ATEŞ",
+  "Images": [
+    "el-fuego-en-nosotros-iimizdeki-ate-0.webp",
+    "el-fuego-en-nosotros-iimizdeki-ate-1.webp"
+  ],
+  "Description": "Bizdeki Ateş es una serie turca de drama y romance que explora la pasión, los secretos y las heridas emocionales que arden en el interior de sus protagonistas. La historia sigue a un grupo de jóvenes cuyas vidas se entrelazan en medio de conflictos familiares, ambiciones y amores intensos, mostrando cómo el fuego interior puede ser tanto una fuerza destructiva como transformadora.",
+  "Price": "40.00",
+  "Features": [
+    "Episodios: 20",
+    "Título original: Bizdeki Ateş",
+    "Año: 2022",
+    "País: Turquía"
+  ],
+  "Type": "episode",
+  "Episodes": 20,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-15T02:11:24.837Z",
+  "Update": "2026-07-15T02:11:24.837Z"
+}
