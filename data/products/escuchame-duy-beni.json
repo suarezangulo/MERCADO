@@ -1,0 +1,22 @@
+{
+  "Category": "Novelas",
+  "SubCategory": "Dramas (coreanos, turcos, etc.)",
+  "Label": "ESCÚCHAME - DUY BENI",
+  "Images": [
+    "escuchame-duy-beni-0.webp",
+    "escuchame-duy-beni-1.webp"
+  ],
+  "Description": "La historia comienza cuando Ekim, una joven de un barrio humilde, presencia un accidente en el que su mejor amiga Leyla queda gravemente herida por un coche conducido por un estudiante de un colegio de élite. Como compensación, la escuela ofrece becas a estudiantes de su barrio, incluyendo a Ekim. Allí, ella y sus amigos deben enfrentarse a la brecha social, el bullying y los secretos de los jóvenes privilegiados. En medio de todo, surge un romance con Kanat, que complica aún más las tensiones entre ambos mundos.",
+  "Price": "120.00",
+  "Features": [
+    "Episodios: 60",
+    "Título original: Duy Beni",
+    "Año de emisión: 2022–2023",
+    "País: Turquía"
+  ],
+  "Type": "episode",
+  "Episodes": 60,
+  "PricePerEpisode": "2.00",
+  "Date": "2026-07-15T03:33:32.915Z",
+  "Update": "2026-07-15T03:33:32.915Z"
+}
