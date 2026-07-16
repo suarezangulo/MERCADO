@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "GÖNÜL",
   "Images": [
-    "gonul-0.webp",
-    "gonul-1.webp"
+    "gnul-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Gönül, una joven que trabaja como enfermera y que sueña con una vida tranquila. Su destino cambia cuando conoce a Yusuf, un hombre marcado por un pasado doloroso. Entre ambos surge un amor intenso, pero la sombra de Tekin, un hombre obsesionado con Gönül, amenaza con destruir su felicidad. La serie explora cómo el amor puede convertirse en fuerza de redención frente a la obsesión y la traición.",
   "Price": "38.00",
   "Features": [
     "Episodios: 19",
-    "Título original: Gönül"
+    "Título original: Gönül",
+    "Año: 2015",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 19,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-16T11:59:13.193Z",
-  "Update": "2026-07-16T11:59:13.193Z"
+  "Date": "2026-07-16T12:00:30.805Z",
+  "Update": "2026-07-16T12:00:30.805Z"
 }
