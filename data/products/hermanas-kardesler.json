@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "HERMANAS - KARDESLER",
   "Images": [
-    "hermanas-kardesler-0.webp",
-    "hermanas-kardesler-1.webp"
+    "hermanas-kardesler-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La serie narra la historia de Zeynep y Elif, dos hermanas que, tras la muerte de sus padres, deben enfrentar juntas las dificultades de la vida. Sin embargo, sus caminos se separan cuando el amor, la ambición y los secretos familiares las ponen en conflicto. Mientras una busca la felicidad en el amor verdadero, la otra se ve atrapada en un mundo de poder y traición.",
   "Price": "16.00",
   "Features": [
     "Episodios: 8",
-    "Título original: Kardeşler"
+    "Título original: Kardeşler",
+    "Año: 2017",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 8,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-16T12:08:45.844Z",
-  "Update": "2026-07-16T12:08:45.844Z"
+  "Date": "2026-07-16T12:09:56.791Z",
+  "Update": "2026-07-16T12:09:56.791Z"
 }
