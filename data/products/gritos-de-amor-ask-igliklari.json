@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "GRITOS DE AMOR – ASK ÇIGLIKLARI",
   "Images": [
-    "gritos-de-amor-ask-cigliklari-0.webp",
-    "gritos-de-amor-ask-cigliklari-1.webp"
+    "gritos-de-amor-ask-igliklari-0.webp",
+    "gritos-de-amor-ask-igliklari-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Ada, una joven que llega a Estambul desde un pueblo, se ve atrapada entre las dificultades de la gran ciudad y los sentimientos que surgen con Yusuf, un joven trabajador y honesto. Sin embargo, la presencia de Rüzgar, un hombre ambicioso que busca conquistarla, complica la relación. La serie muestra cómo los protagonistas deben elegir entre seguir su conciencia o dejarse llevar por el amor, en un entorno marcado por desigualdades sociales y secretos familiares.",
   "Price": "92.00",
   "Features": [
     "Episodios: 46",
-    "Título original: Aşk Çığlıkları"
+    "Título original: Aşk Ağlatır",
+    "Año de emisión: 2019",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 46,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-16T11:54:53.443Z",
-  "Update": "2026-07-16T11:54:53.443Z"
+  "Date": "2026-07-16T11:57:51.905Z",
+  "Update": "2026-07-16T11:57:51.905Z"
 }
