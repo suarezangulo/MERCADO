@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "FUEGO FUEGO – ATES ATES",
   "Images": [
-    "fuego-fuego-ates-ates-0.webp",
-    "fuego-fuego-ates-ates-1.webp"
+    "fuego-fuego-ates-ates-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Ateş, un hombre marcado por un pasado turbulento que regresa para enfrentar viejas deudas y secretos familiares. En medio de su lucha, conoce a Zeynep, una mujer fuerte que desafía su mundo y despierta en él sentimientos que creía apagados. Entre ambos surge una relación apasionada, mientras el fuego de la venganza y el amor amenaza con consumirlos.",
   "Price": "182.00",
   "Features": [
     "Episodios: 91",
-    "Título original: Ateş Ateş"
+    "Título original: Ateş Ateş",
+    "Año: 2024",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 91,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-16T11:50:38.302Z",
-  "Update": "2026-07-16T11:50:38.302Z"
+  "Date": "2026-07-16T11:52:37.319Z",
+  "Update": "2026-07-16T11:52:37.319Z"
 }
