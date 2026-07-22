@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "HIJO, DÓNDE ESTÁS - OGUL, NEREDESIN",
   "Images": [
-    "hijo-donde-estas-ogul-neredesin-0.webp",
-    "hijo-donde-estas-ogul-neredesin-1.webp"
+    "hijo-donde-estas-ogul-neredesin-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia se centra en una familia que pierde a su hijo en circunstancias misteriosas. El relato muestra la desesperación de los padres, la búsqueda incansable y el impacto emocional que la ausencia provoca en todos los miembros de la familia. A lo largo de la trama, se revelan secretos, traiciones y dilemas morales que ponen a prueba la fortaleza de los lazos familiares.",
   "Price": "90.00",
   "Features": [
     "Episodios: 45",
-    "Título original: Oğul, Neredesin"
+    "Título original: Oğul, Neredesin?",
+    "Año: 2012",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 45,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:02:46.039Z",
-  "Update": "2026-07-22T09:02:46.039Z"
+  "Date": "2026-07-22T09:07:16.605Z",
+  "Update": "2026-07-22T09:07:16.605Z"
 }
