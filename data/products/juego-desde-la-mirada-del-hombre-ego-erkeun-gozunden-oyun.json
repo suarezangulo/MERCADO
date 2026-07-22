@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "JUEGO DESDE LA MIRADA DEL HOMBRE - EGO - ERKEÚN GÓZÚNDEN OYUN",
   "Images": [
-    "juego-desde-la-mirada-del-hombre-ego-erkeun-gozunden-oyun-0.webp",
-    "juego-desde-la-mirada-del-hombre-ego-erkeun-gozunden-oyun-1.webp"
+    "juego-desde-la-mirada-del-hombre-ego-erkeun-gozunden-oyun-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Erhan, un joven que descubre que su prometida Elif lo traiciona en medio de una crisis económica. En ese momento aparece Sibel, una mujer poderosa y enigmática que le propone un acuerdo inesperado: casarse con ella para resolver sus problemas financieros. Lo que comienza como un trato frío se convierte en un juego de emociones, celos y pasión, donde el amor y la confianza se ponen a prueba.",
   "Price": "26.00",
   "Features": [
     "Episodios: 13",
-    "Título original: Ego - Erkeğin Gözünden Oyun"
+    "Título original: EGO (Erkeğin Gözünden Oyun)",
+    "Año: 2023",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 13,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:43:34.881Z",
-  "Update": "2026-07-22T09:43:34.881Z"
+  "Date": "2026-07-22T09:47:17.878Z",
+  "Update": "2026-07-22T09:47:17.878Z"
 }
