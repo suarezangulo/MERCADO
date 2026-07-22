@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "LA NIÑA DEL VALLE VERDE – YESIL VADI’NIN KIZI",
   "Images": [
-    "la-nina-del-valle-verde-yesil-vadi-nin-kizi-0.webp",
-    "la-nina-del-valle-verde-yesil-vadi-nin-kizi-1.webp"
+    "la-nina-del-valle-verde-yesil-vadinin-kizi-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Melissa, una niña huérfana con una imaginación desbordante que llega al tranquilo Valle Verde para vivir con una familia que no esperaba recibirla. Su energía, curiosidad y sensibilidad transforman la vida de todos a su alrededor, enseñando lecciones sobre amor, perdón y esperanza. La serie combina paisajes naturales con una narrativa emocional que celebra la inocencia y la fuerza interior.",
   "Price": "280.00",
   "Features": [
     "Episodios: 140",
-    "Título original: Yeşil Vadi'nin Kızı"
+    "Título original: Yeşil Vadi’nin Kızı",
+    "Año: 2023–2024",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 140,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:54:45.119Z",
-  "Update": "2026-07-22T09:54:45.119Z"
+  "Date": "2026-07-22T09:55:56.723Z",
+  "Update": "2026-07-22T09:55:56.723Z"
 }
