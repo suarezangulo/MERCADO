@@ -3,18 +3,20 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "INVENCIBLE - A.Z.I.Z",
   "Images": [
-    "invencible-a-z-i-z-0.webp",
-    "invencible-a-z-i-z-1.webp"
+    "invencible-aziz-0.webp",
+    "invencible-aziz-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Aziz Payidar, heredero de una influyente familia de Antakya, cuya vida cambia radicalmente tras un trágico incidente. Obligado a abandonar su tierra y su amor, regresa años después para enfrentarse a la injusticia, recuperar su honor y luchar por la libertad de su pueblo. En medio de la tensión política y social de la época, Aziz se debate entre el amor imposible por Dilruba y la esperanza que encuentra en Efnan, una joven humilde que le devuelve la fe en la vida.",
   "Price": "182.00",
   "Features": [
     "Episodios: 91",
-    "Título original: A.Z.I.Z"
+    "Título original: Aziz",
+    "Año: 2021–2022",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 91,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:28:32.245Z",
-  "Update": "2026-07-22T09:28:32.245Z"
+  "Date": "2026-07-22T09:38:54.669Z",
+  "Update": "2026-07-22T09:38:54.669Z"
 }
