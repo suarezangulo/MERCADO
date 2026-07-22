@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "KOSEM LA SULTANA - MUHTESEM YÜZYIL KÖSEM",
   "Images": [
-    "kosem-la-sultana-muhtesem-yuzyil-kosem-0.webp",
-    "kosem-la-sultana-muhtesem-yuzyil-kosem-1.webp"
+    "kosem-la-sultana-muhtesem-yuzyil-ksem-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La serie narra la vida de Kösem Sultan, una de las mujeres más poderosas del Imperio Otomano. Desde su llegada al palacio como concubina del sultán Ahmed I, Kösem asciende hasta convertirse en regente del imperio, enfrentando conspiraciones, traiciones y guerras internas. Su inteligencia y ambición la transforman en una figura clave de la historia otomana, símbolo de poder femenino en una era dominada por hombres.",
   "Price": "230.00",
   "Features": [
     "Episodios: 115",
-    "Título original: Muhteşem Yüzyıl Kösem"
+    "Título original: Muhteşem Yüzyıl: Kösem",
+    "Año: 2015–2017",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 115,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:48:57.136Z",
-  "Update": "2026-07-22T09:48:57.136Z"
+  "Date": "2026-07-22T09:50:21.696Z",
+  "Update": "2026-07-22T09:50:21.696Z"
 }
