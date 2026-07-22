@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "LA HISTORIA DE NUNCA ACABAR – HIÇ BITMEYEN HIKAYE",
   "Images": [
-    "la-historia-de-nunca-acabar-hic-bitmeyen-hikaye-0.webp",
-    "la-historia-de-nunca-acabar-hic-bitmeyen-hikaye-1.webp"
+    "la-historia-de-nunca-acabar-hi-bitmeyen-hikaye-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La trama sigue a Yaman, un hombre marcado por su pasado, y a Elif, una mujer que lucha por mantener su vida en equilibrio. Sus destinos se cruzan en medio de secretos familiares, traiciones y un amor que parece no tener fin. La serie explora cómo las heridas del pasado y las decisiones del presente se entrelazan en una historia que nunca termina, donde cada capítulo abre nuevas puertas al dolor y a la esperanza.",
   "Price": "44.00",
   "Features": [
     "Episodios: 22",
-    "Título original: Hiç Bitmeyen Hikaye"
+    "Título original: Hiç Bitmeyen Hikaye",
+    "Año: 2008",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 22,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:51:43.900Z",
-  "Update": "2026-07-22T09:51:43.900Z"
+  "Date": "2026-07-22T09:54:45.119Z",
+  "Update": "2026-07-22T09:54:45.119Z"
 }
