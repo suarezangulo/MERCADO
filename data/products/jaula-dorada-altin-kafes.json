@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "JAULA DORADA - ALTIN KAFES",
   "Images": [
-    "jaula-dorada-altin-kafes-0.webp",
-    "jaula-dorada-altin-kafes-1.webp"
+    "jaula-dorada-altin-kafes-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia gira en torno a Zeynep, una joven que entra en el mundo de lujo y poder de la familia Demirkan, donde conoce a Emir, heredero de un imperio empresarial. Aunque entre ellos surge un amor intenso, la “jaula dorada” en la que viven está marcada por secretos, traiciones y la presión de mantener las apariencias. La serie explora cómo el amor puede sobrevivir en un entorno donde el poder y la ambición lo dominan todo.",
   "Price": "40.00",
   "Features": [
     "Episodios: 20",
-    "Título original: Altın Kafes"
+    "Título original: Altın Kafes",
+    "Año: 2023–2024",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 20,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:40:22.287Z",
-  "Update": "2026-07-22T09:40:22.287Z"
+  "Date": "2026-07-22T09:42:20.656Z",
+  "Update": "2026-07-22T09:42:20.656Z"
 }
