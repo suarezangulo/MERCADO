@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "INVIERNO – KIS MASALI",
   "Images": [
-    "invierno-kis-masali-0.webp",
-    "invierno-kis-masali-1.webp"
+    "invierno-kis-masali-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Ali, un joven que regresa a su ciudad natal tras años de ausencia, y a Zeynep, su amor de juventud, con quien se reencuentra en circunstancias difíciles. Entre secretos familiares, heridas del pasado y la lucha por un futuro mejor, ambos intentan reconstruir sus vidas en medio de un invierno que simboliza tanto la dureza como la esperanza.",
   "Price": "66.00",
   "Features": [
     "Episodios: 33",
-    "Título original: Kış Masalı"
+    "Título original: Kış Masalı",
+    "Año de emisión: 2009",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 33,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:38:54.669Z",
-  "Update": "2026-07-22T09:38:54.669Z"
+  "Date": "2026-07-22T09:40:22.287Z",
+  "Update": "2026-07-22T09:40:22.287Z"
 }
