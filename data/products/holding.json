@@ -6,15 +6,17 @@
     "holding-0.webp",
     "holding-1.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "Sigue la historia de Emir, heredero de un imperio empresarial que debe enfrentarse a su padre y a los secretos que rodean la compañía familiar. En medio de luchas de poder, traiciones y ambiciones, conoce a Selin, una mujer decidida que desafía las reglas del juego corporativo y despierta en él sentimientos que lo ponen en conflicto con su deber.",
   "Price": "40.00",
   "Features": [
     "Episodios: 20",
-    "Título original: Holding"
+    "Título original: Holding",
+    "Año: 2024–2025",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 20,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:07:16.606Z",
-  "Update": "2026-07-22T09:07:16.606Z"
+  "Date": "2026-07-22T09:24:12.130Z",
+  "Update": "2026-07-22T09:24:12.130Z"
 }
