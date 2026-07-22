@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "IDENTIDAD OCULTA - SOL DE INVIERNO - KIS GÜNESI",
   "Images": [
-    "identidad-oculta-sol-de-invierno-kis-gunesi-0.webp",
-    "identidad-oculta-sol-de-invierno-kis-gunesi-1.webp"
+    "identidad-oculta-sol-de-invierno-kis-gunesi-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La trama sigue a Efe, un joven pescador que descubre que en realidad es el hermano gemelo de Mete, heredero de una poderosa familia. Tras la misteriosa muerte de Mete, Efe asume su identidad para descubrir la verdad detrás de la conspiración que destruyó a su familia. En el proceso, se reencuentra con Nisan, el amor de su infancia, y debe decidir entre la venganza y el amor verdadero.",
   "Price": "60.00",
   "Features": [
     "Episodios: 30",
-    "Título original: Kış Güneşi"
+    "Título original: Kış Güneşi",
+    "Año: 2016",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 30,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:26:09.242Z",
-  "Update": "2026-07-22T09:26:09.242Z"
+  "Date": "2026-07-22T09:27:25.923Z",
+  "Update": "2026-07-22T09:27:25.923Z"
 }
