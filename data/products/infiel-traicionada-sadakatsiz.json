@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "INFIEL - TRAICIONADA - SADAKATSIZ",
   "Images": [
-    "infiel-traicionada-sadakatsiz-0.webp",
-    "infiel-traicionada-sadakatsiz-1.webp"
+    "infiel-traicionada-sadakatsiz-0.webp"
   ],
-  "Description": "Sinopsis no disponible",
+  "Description": "La historia sigue a Asya, una exitosa doctora que vive feliz con su esposo Volkan y su hijo. Todo cambia cuando descubre que Volkan mantiene una relación secreta con Derin, una joven perteneciente a una poderosa familia. A partir de ese momento, Asya se enfrenta a la traición y debe decidir entre la venganza, la justicia y la reconstrucción de su vida.",
   "Price": "210.00",
   "Features": [
     "Episodios: 105",
-    "Título original: Sadakatsiz"
+    "Título original: Sadakatsiz",
+    "Año: 2020–2022",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 105,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:27:25.923Z",
-  "Update": "2026-07-22T09:27:25.923Z"
+  "Date": "2026-07-22T09:28:32.245Z",
+  "Update": "2026-07-22T09:28:32.245Z"
 }
