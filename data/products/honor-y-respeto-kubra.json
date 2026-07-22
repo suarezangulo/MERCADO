@@ -3,18 +3,19 @@
   "SubCategory": "Dramas (coreanos, turcos, etc.)",
   "Label": "HONOR Y RESPETO - KÜBRA",
   "Images": [
-    "honor-y-respeto-kubra-0.webp",
-    "honor-y-respeto-kubra-1.webp"
+    "honor-y-respeto-kubra-0.webp"
   ],
   "Description": "Sinopsis no disponible",
   "Price": "32.00",
   "Features": [
     "Episodios: 16",
-    "Título original: Kübra"
+    "Título original: Kübra",
+    "Año: 2024–2025",
+    "País: Turquía"
   ],
   "Type": "episode",
   "Episodes": 16,
   "PricePerEpisode": "2.00",
-  "Date": "2026-07-22T09:24:12.130Z",
-  "Update": "2026-07-22T09:24:12.130Z"
+  "Date": "2026-07-22T09:25:28.385Z",
+  "Update": "2026-07-22T09:25:28.385Z"
 }
